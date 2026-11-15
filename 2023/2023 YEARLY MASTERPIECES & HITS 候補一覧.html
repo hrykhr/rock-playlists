@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>2023 YEARLY MASTERPIECES &amp; HITS 候補一覧</title>
+<style>
+:root{
+  --bg:#f4f0e8; --surface:#fffdf7; --surface2:#efe9db; --ink:#1c1a16; --muted:#6b655a; --line:#ddd3bf;
+  --accent:#8f2a1e; --accent-ink:#fff;
+  --s-bg:#8f2a1e; --s-ink:#fff;
+  --p-bg:#e8dfc8; --p-ink:#4a3f22;
+  --d-bg:#1e4d3f; --d-ink:#fff;
+  --warn-bg:#fdf3e0; --warn-line:#d9a441; --warn-ink:#5a4310;
+  --link:#8f2a1e;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#171512; --surface:#211e1a; --surface2:#2a2620; --ink:#f0ebe0; --muted:#a89f8f; --line:#3d382f;
+    --accent:#e0785f; --accent-ink:#1c1a16;
+    --s-bg:#b8452f; --s-ink:#fff;
+    --p-bg:#4a4028; --p-ink:#e8d9a8;
+    --d-bg:#2f7a62; --d-ink:#fff;
+    --warn-bg:#332a18; --warn-line:#a87f2e; --warn-ink:#f0d48a;
+    --link:#e89a85;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;line-height:1.75;font-size:15.5px}
+a{color:var(--link)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px 64px}
+header{padding:36px 0 8px;border-bottom:3px double var(--line)}
+.kicker{font-size:12px;letter-spacing:.14em;color:var(--muted);font-weight:700}
+h1{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(26px,5.2vw,42px);line-height:1.25;margin:8px 0 6px;font-weight:700}
+h1 .en{display:block;font-size:.52em;letter-spacing:.04em;color:var(--accent);font-family:Georgia,serif}
+.status{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:14px;padding:7px 14px;border-radius:999px;margin:14px 0 4px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.9}
+.lead{color:var(--muted);max-width:44em;margin:12px 0 0}
+.spotify{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:#1db954;color:#0b2e1a;text-decoration:none;font-weight:800;padding:12px 20px;border-radius:10px;min-height:48px}
+.spotify:hover{filter:brightness(1.06)}
+.spotify svg{flex:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:26px 0 6px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:26px;line-height:1.1;font-family:Georgia,serif}
+.stat span{font-size:12.5px;color:var(--muted)}
+h2{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:22px;margin:44px 0 6px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+h2 .no{color:var(--accent);font-family:Georgia,serif;margin-right:.4em}
+.sub{color:var(--muted);font-size:14px;margin:0 0 16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.card ul{margin:8px 0;padding-left:1.3em}
+.card li{margin:6px 0}
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{position:relative;padding:0 0 18px 28px;border-left:2px solid var(--line);margin-left:6px}
+.timeline li:last-child{padding-bottom:2px}
+.timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.timeline b{display:block}
+.dropped{background:var(--surface2);border-radius:10px;padding:12px 16px;margin-top:6px;font-size:14px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.filters button{font:inherit;font-size:13.5px;font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 16px;min-height:40px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.badge{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.03em;padding:2px 9px;border-radius:999px;white-space:nowrap;vertical-align:middle}
+.badge.s{background:var(--s-bg);color:var(--s-ink)}
+.badge.p{background:var(--p-bg);color:var(--p-ink)}
+.badge.d{background:var(--d-bg);color:var(--d-ink)}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th,td{padding:13px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--surface2);font-size:12.5px;letter-spacing:.05em}
+tr:last-child td{border-bottom:none}
+td.album{font-weight:700;min-width:150px}
+td.album .artist{display:block;font-weight:400;color:var(--muted);font-size:13.5px}
+td.date{white-space:nowrap;font-variant-numeric:tabular-nums;font-size:13.5px}
+td.ev{font-size:13.8px}
+.srcs{margin-top:6px;font-size:12.5px}
+.srcs a{display:inline-block;margin-right:10px;word-break:break-all}
+.warn{border:1px solid var(--warn-line);background:var(--warn-bg);color:var(--warn-ink);border-radius:12px;padding:16px 18px;margin:12px 0}
+.warn h3{margin:0 0 4px;font-size:15.5px;color:inherit}
+.warn p{margin:4px 0;font-size:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cand{font-size:14px}
+.cand td{padding:9px 12px}
+.fit{font-weight:800;font-family:Georgia,serif}
+.removed td{background:var(--surface2)}
+footer{margin-top:48px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px}
+footer p{margin:6px 0}
+.hidden{display:none!important}
+@media (max-width:720px){
+  .stats{grid-template-columns:1fr 1fr}
+  .grid2{grid-template-columns:1fr}
+  table.final thead{display:none}
+  table.final, table.final tbody, table.final tr, table.final td{display:block;width:100%}
+  table.final tr{border-bottom:1px solid var(--line);padding:8px 0}
+  table.final td{border-bottom:none;padding:5px 14px}
+  table.final td.date::before{content:"発売日 ";color:var(--muted);font-size:12px}
+  .cand-wrap{overflow:visible}
+  table.cand thead{display:none}
+  table.cand, table.cand tbody, table.cand tr, table.cand td{display:block;width:100%}
+  table.cand tr{border-bottom:1px solid var(--line);padding:6px 0}
+  table.cand td{border-bottom:none;padding:3px 12px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">2023年 ・ ジャンル 7 ／ YEARLY</div>
+  <h1>2023 YEARLY MASTERPIECES &amp; HITS<span class="en">候補一覧 — 最終20枚と検証の記録</span></h1>
+  <div class="status">選出完了（最終20枚・各1曲）</div>
+  <p class="lead">2026-11-14に再定義された新ルールによる初選出。候補25枚の収集から、S検証・昇格・国内追加・境界判断まで、全工程をエビデンスURL付きで記録する。</p>
+  <a class="spotify" href="https://open.spotify.com/playlist/0tevmLMx5gCXzPbmt5IwfB" target="_blank" rel="noopener">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5 15.9a.9.9 0 0 1-1.2.3c-3.3-2-7.5-2.5-12.4-1.4a.9.9 0 1 1-.4-1.8c5.4-1.2 9.9-.7 13.6 1.6.4.3.5.9.4 1.3zm1.5-3.4a1.1 1.1 0 0 1-1.6.4c-3.8-2.3-9.5-3-14-1.6a1.1 1.1 0 1 1-.6-2.1c5.1-1.6 11.4-.8 15.8 1.9.5.3.6.9.4 1.4zm.1-3.5C14.1 7.3 8.4 7.1 4.5 8.6a1.3 1.3 0 1 1-.9-2.4c4.5-1.7 10.7-1.5 15.6 1.4a1.3 1.3 0 0 1-1.4 2.2z"/></svg>
+    Spotifyプレイリスト「2023年YEARLY MASTERPIECES &amp; HITS」を開く
+  </a>
+  <div class="stats">
+    <div class="stat"><b>25</b><span>収集した候補（枚）</span></div>
+    <div class="stat"><b>4</b><span>重複除外（他ジャンル選出済み）</span></div>
+    <div class="stat"><b>7</b><span>S検証で確定した枚数</span></div>
+    <div class="stat"><b>20</b><span>最終選出（各1曲・計20曲）</span></div>
+  </div>
+</header>
+
+<h2><span class="no">01</span>ルール（2026-11-14 再定義）</h2>
+<p class="sub">YEARLY MASTERPIECES &amp; HITS は今回から以下の新ルールで運用する。特別救済ルールとポップ枠の上限は撤廃された。</p>
+<div class="card">
+  <ul>
+    <li><b>ジャンルの内訳は設けない。</b>その年に実際に売れた、または世界的に話題になった「その年を象徴する」アルバムを <b>20枚</b>選び、各アルバムから <b>1曲</b>ずつ収録する。</li>
+    <li><b>象徴性の根拠</b>は、年間チャート・売上・ストリーミング実績・世界的ヒットシングル・主要メディアの年間ベスト等で示し、出典URLを付ける。</li>
+    <li><b>全ジャンル共通の絶対除外は維持する</b>（ラップ／ヒップホップ、ミクスチャー／ニューメタル系、トランス／エレクトロニカ）。</li>
+    <li><b>他ジャンルとの重複排除は継続する</b>（2023年の他7ジャンルで選出済みのアルバムは対象外）。</li>
+    <li>指定年（2023年）発売の正規スタジオ・アルバムが対象。再録盤は対象外（例：Taylor Swift の2023年作は再録のため候補外）。</li>
+  </ul>
+</div>
+
+<h2><span class="no">02</span>経緯 — 7枚から20枚へ</h2>
+<p class="sub">厳密なS検証だけでは20枚に届かず、2度の判断を経て最終形になった。</p>
+<div class="card">
+  <ol class="timeline">
+    <li><b>候補収集：25枚</b>2023年を象徴する候補として25枚を収集。うち4枚（Zach Bryan、The Rolling Stones、Foo Fighters、Chris Stapleton）は他ジャンルで選出済みのため重複除外し、21枚が検証対象になった。</li>
+    <li><b>S検証：確定は7枚のみ</b>「実際に売れた／世界的に話題になった」S基準を厳密に検証した結果、S判定は Morgan Wallen、Miley Cyrus、Olivia Rodrigo、Karol G、Jung Kook、Metallica、boygenius の7枚だけだった。20枚枠に13枚不足し、ここで一度停止した。</li>
+    <li><b>Hiroの判断1：昇格＋国内追加</b>A／B候補からの昇格案に対し、Hiro が「国内アーティストはどうかな?」と提起。収集プールに国内盤が1枚も無かったため、実績エビデンス付きで King Gnu『THE GREATEST UNKNOWN』と YOASOBI『THE BOOK 3』を提示し、Hiro は「YOASOBIも入れて20枚で進めて」と決定。昇格11枚＋国内追加2枚で20枚が揃った。</li>
+    <li><b>Hiroの判断2：境界2件を残す</b>昇格・追加13枚の再検証で、Stray Kids『5-STAR』と King Gnu に絶対除外抵触の疑いが判明（詳細は「04 境界判断」）。両件を明示した上で Hiro は「両方残して20枚で進める」と決定した（2026-11-15）。この決定は2023年 YEARLY 限りの判断として記録する。</li>
+  </ol>
+  <div class="dropped"><b>外れた候補（3枚）：</b> Sam Smith『Gloria』／ Post Malone『Austin』／ NCT Dream『ISTJ』 — NCT Dream は当初から落選（売上は韓国中心で世界的象徴性が最弱と判断）。Sam Smith と Post Malone は国内2枚の追加に伴い枠から外れた。</div>
+</div>
+
+<h2><span class="no">03</span>最終20枚</h2>
+<p class="sub">区分： <span class="badge s">S</span> S検証で確定 ／ <span class="badge p">昇格</span> A・B候補から昇格 ／ <span class="badge d">国内追加</span> Hiroの提起で追加。根拠は検証ファイルの実績エビデンスに基づく。</p>
+<div class="filters" role="group" aria-label="区分で絞り込む">
+  <button type="button" data-f="all" aria-pressed="true">すべて（20）</button>
+  <button type="button" data-f="s" aria-pressed="false">S（7）</button>
+  <button type="button" data-f="p" aria-pressed="false">昇格（11）</button>
+  <button type="button" data-f="d" aria-pressed="false">国内追加（2）</button>
+</div>
+<table class="final" id="finalTable">
+<thead><tr><th>区分</th><th>アーティスト／アルバム</th><th>発売日</th><th>象徴性の根拠（実績）・出典</th></tr></thead>
+<tbody>
+<tr data-cat="s"><td><span class="badge s">S</span></td><td class="album">Morgan Wallen<span class="artist">One Thing at a Time</span></td><td class="date">2023-03-03</td><td class="ev">Wikipedia: ジャンル Country pop、第3作スタジオ盤。Billboard 200 年間1位・2023年最も消費されたアルバム、19週（非連続）1位、シングル「Last Night」は年間 Hot 100 1位。YEARLYのS基準を最も強く満たす1枚。絶対除外要素なし。<div class="srcs"><a href="https://en.wikipedia.org/wiki/One_Thing_at_a_Time" target="_blank" rel="noopener">Wikipedia</a><a href="https://musicrow.com/2023/01/morgan-wallens-one-thing-at-a-time-album-to-be-unveiled-in-march/" target="_blank" rel="noopener">MusicRow</a></div></td></tr>
+<tr data-cat="s"><td><span class="badge s">S</span></td><td class="album">Miley Cyrus<span class="artist">Endless Summer Vacation</span></td><td class="date">2023-03-10</td><td class="ev">第8作スタジオ盤（Pop／dance-pop）。「Flowers」が Hot 100 で8週1位・36か国で1位、Spotify 2023年世界最多ストリーミング曲となり Grammy Record of the Year 受賞。アルバムは10か国で1位。なお米国 Billboard 200 の最高位は3位で、強さは主に「Flowers」の世界的ヒットに牽引されている。<div class="srcs"><a href="https://en.wikipedia.org/wiki/Endless_Summer_Vacation" target="_blank" rel="noopener">Wikipedia</a><a href="https://elpee.jp/album/Endless%20Summer%20Vacation/Miley%20Cyrus/" target="_blank" rel="noopener">elpee</a></div></td></tr>
+<tr data-cat="s"><td><span class="badge s">S</span></td><td class="album">Olivia Rodrigo<span class="artist">GUTS</span></td><td class="date">2023-09-08</td><td class="ev">第2作スタジオ盤（Pop／rock／pop-punk 等）。「vampire」が Hot 100 1位、各国アルバム1位と主要年間ベスト入り。収集段階では全12曲が Hot 100 トップ40入りしたことも確認。作風説明に rap rock 要素への言及があるが、1曲のデリバリーに限られ、アルバム全体はポップ／ロックのため絶対除外には該当しないと判定。<div class="srcs"><a href="https://en.wikipedia.org/wiki/Guts_(Olivia_Rodrigo_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/guts-mw0004033993" target="_blank" rel="noopener">AllMusic</a></div></td></tr>
+<tr data-cat="s"><td><span class="badge s">S</span></td><td class="album">Karol G<span class="artist">Mañana Será Bonito</span></td><td class="date">2023-02-24</td><td class="ev">第4作スタジオ盤（Latin pop／reggaeton、17曲）。女性アーティスト初の全編スペイン語盤として Billboard 200 初登場1位、Grammy Best Música Urbana Album、Latin Grammy Album of the Year 受賞。Shakira との「TQG」は世界的ヒット。境界扱いの詳細は「04」参照。<div class="srcs"><a href="https://en.wikipedia.org/wiki/Ma%C3%B1ana_Ser%C3%A1_Bonito" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/MW0003929310" target="_blank" rel="noopener">AllMusic</a></div></td></tr>
+<tr data-cat="s"><td><span class="badge s">S</span></td><td class="album">Jung Kook<span class="artist">Golden</span></td><td class="date">2023-11-03</td><td class="ev">デビュー・スタジオ盤（Pop、全英語11曲）。「Seven」が Hot 100／Global 200 で1位かつ Spotify 最速10億回再生。アルバムは Billboard 200 で2位、25か国でチャートインし、IFPI 2023 世界ベストセラー7位（約270万枚）。尺は11曲・31分48秒と短く、Sの中では相対的に最も弱い1枚と明記されている。<div class="srcs"><a href="https://en.wikipedia.org/wiki/Golden_(Jung_Kook_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://en.wikipedia.org/wiki/Jung_Kook_discography" target="_blank" rel="noopener">Jung Kook discography</a></div></td></tr>
+<tr data-cat="s"><td><span class="badge s">S</span></td><td class="album">Metallica<span class="artist">72 Seasons</span></td><td class="date">2023-04-14</td><td class="ev">第11作スタジオ盤（Heavy metal／thrash metal、12曲・77分14秒）。20か国でアルバム1位、米国 Billboard 200 で2位（初週146,000ユニット、うち純売上134,000）。タイトル曲で Grammy Best Metal Performance 受賞。米国での累計はポップ系候補より小さく、強さは純売上と20か国1位にある。<div class="srcs"><a href="https://en.wikipedia.org/wiki/72_Seasons" target="_blank" rel="noopener">Wikipedia</a><a href="https://blabbermouth.net/news/watch-members-of-metallica-break-down-72-seasons-album-track-by-track" target="_blank" rel="noopener">Blabbermouth</a></div></td></tr>
+<tr data-cat="s"><td><span class="badge s">S</span></td><td class="album">boygenius<span class="artist">the record</span></td><td class="date">2023-03-31</td><td class="ev">デビュー・スタジオ盤（Indie rock／indie folk）。アイルランド／オランダ／英国で1位、Billboard 200 で4位、Metacritic 90/100。年間ベストでは Billboard 2位、Rolling Stone 2位、NME 1位、Variety 1位など多数トップ入りし、Grammy 3部門受賞。商業規模は小さく、Sの根拠は主に批評的評価・年間リスト・Grammy による話題性。<div class="srcs"><a href="https://en.wikipedia.org/wiki/The_Record_(Boygenius_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/artist/mn0003770197/" target="_blank" rel="noopener">AllMusic</a><a href="https://www.qobuz.com/gb-en/interpreter/boygenius/3939752" target="_blank" rel="noopener">Qobuz</a></div></td></tr>
+
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Lana Del Rey<span class="artist">Did You Know That There's a Tunnel Under Ocean Blvd</span></td><td class="date">2023-03-24</td><td class="ev">第9作。Billboard 200 初登場3位（115,000ユニット）、UK 1位（当時2023年UK最速売上）、8か国で1位。Grammy Album of the Year 等にノミネート。年間ベストは Billboard 9位、Slant 1位、Variety 2位、Pitchfork 11位。Metacritic 80。主分類は alt-pop／Americana で絶対除外なし。<div class="srcs"><a href="https://en.wikipedia.org/wiki/Did_You_Know_That_There%27s_a_Tunnel_Under_Ocean_Blvd" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/did-you-know-that-theres-a-tunnel-under-ocean-blvd-mw0003879288" target="_blank" rel="noopener">AllMusic</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Blink-182<span class="artist">One More Time...</span></td><td class="date">2023-10-20</td><td class="ev">第9作（punk rock／pop-punk）。Tom DeLonge 復帰によるクラシック編成の再結成盤。Billboard 200 初登場1位（125,000ユニット、うち純売上101,000）でバンド3作目の1位。除外上の問題なし。<div class="srcs"><a href="https://en.wikipedia.org/wiki/One_More_Time..._(Blink-182_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.billboard.com/music/chart-beat/blink-182-one-more-time-album-debuts-number-one-billboard-200-chart-1235457561/" target="_blank" rel="noopener">Billboard</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Ed Sheeran<span class="artist">- (Subtract)</span></td><td class="date">2023-05-05</td><td class="ev">第6作（folk-pop）。UK を含む13か国で1位（UK初週76,000ユニット、当時2023年UK最速売上）。米国 Billboard 200 は2位（112,000ユニット）。Grammy Best Pop Vocal Album ノミネート。除外上の問題なし。<div class="srcs"><a href="https://en.wikipedia.org/wiki/%E2%88%92_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Luke Combs<span class="artist">Gettin' Old</span></td><td class="date">2023-03-24</td><td class="ev">第4作（country）。Billboard 200 4位、Top Country Albums 2位、2023年年間 Billboard 200 で20位、RIAA 2×プラチナ。Tracy Chapman カバー「Fast Car」が Hot 100 2位、CMA Single of the Year（2023）、Grammy Best Country Solo Performance 受賞。カバーはこの1曲のみで、アルバム自体はオリジナル・スタジオ盤。<div class="srcs"><a href="https://en.wikipedia.org/wiki/Gettin%27_Old" target="_blank" rel="noopener">Wikipedia</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Jelly Roll<span class="artist">Whitsitt Chapel</span></td><td class="date">2023-06-02</td><td class="ev">第9作で初のカントリー・アルバム（country／country rock）。Billboard 200 初登場3位（90,000ユニット）、Top Rock Albums 1位、RIAA プラチナ、CMA Album of the Year ノミネート。本人は元ラッパーだが、本作自体は両ソースともカントリー分類で、ラップ・アルバムではない（Karol G と同種の境界ノートあり）。<div class="srcs"><a href="https://en.wikipedia.org/wiki/Whitsitt_Chapel" target="_blank" rel="noopener">Wikipedia</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Mitski<span class="artist">The Land Is Inhospitable and So Are We</span></td><td class="date">2023-09-15</td><td class="ev">第7作（Americana／country／folk／orchestral pop）。Billboard 200 12位、UK 4位、Metacritic 90。「My Love Mine All Mine」が TikTok でバイラルし自身初の Hot 100 入り（最高26位）・UK 8位、2024年7月までに Spotify 10億再生超。年間ベストは Rolling Stone 7位、Exclaim! 2位、Pitchfork 23位、Paste 8位。<div class="srcs"><a href="https://en.wikipedia.org/wiki/The_Land_Is_Inhospitable_and_So_Are_We" target="_blank" rel="noopener">Wikipedia</a><a href="https://en.wikipedia.org/wiki/My_Love_Mine_All_Mine" target="_blank" rel="noopener">My Love Mine All Mine</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Stray Kids<span class="artist">5-STAR</span></td><td class="date">2023-06-02</td><td class="ev">第3作韓国スタジオ盤。IFPI 2023年世界ベストセラー・アルバム2位（約530万枚）、Billboard 200 1位、KMCA クインタプル・ミリオン認定。売上・ストリーミングの実績は圧倒的。一方でジャンル表記を巡る重大な境界判断があり、Hiroの判断で残した（「04」参照）。<div class="srcs"><a href="https://en.wikipedia.org/wiki/5-Star_(Stray_Kids_album)" target="_blank" rel="noopener">Wikipedia</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Peso Pluma<span class="artist">Génesis</span></td><td class="date">2023-06-22</td><td class="ev">第3作（regional Mexican／corridos tumbados）。Billboard 200 初登場3位（73,000ユニット、同チャート史上最高位のリージョナル・メキシカン盤）、Top Latin Albums 1位、Grammy Best Música Mexicana Album 受賞、RIAA 3×プラチナ（Latin）。リージョナル・メキシカン史上最大のストリーミング初週（1億180万回）を記録し、2023年のムシカ・メヒカーナ世界的急伸の中心作。主分類は regional Mexican でヒップホップ盤ではない。<div class="srcs"><a href="https://en.wikipedia.org/wiki/G%C3%A9nesis_(Peso_Pluma_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.billboardmusicawards.com/2023/11/musica-mexicana-superstar-peso-pluma-to-perform/" target="_blank" rel="noopener">Billboard Music Awards</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Sleep Token<span class="artist">Take Me Back to Eden</span></td><td class="date">2023-05-19</td><td class="ev">第3作（alternative metal／progressive metal 等）。Spotify で2023年最もストリーミングされたメタル・アルバム。UK 3位、Billboard 200 16位、「The Summoning」は Spotify バイラル・チャート1位。年間ベストは Revolver 読者・ライター両部門1位、Rock Sound 1位、Kerrang! 3位、Metal Hammer 読者1位。Billboard Music Award Best Hard Rock Album 受賞。主分類は alt／prog metal でニューメタル／ラップ分類なし。<div class="srcs"><a href="https://en.wikipedia.org/wiki/Take_Me_Back_to_Eden" target="_blank" rel="noopener">Wikipedia</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Fall Out Boy<span class="artist">So Much (for) Stardust</span></td><td class="date">2023-03-24</td><td class="ev">5年ぶりの第8作（pop rock／alternative rock／pop-punk）。Billboard 200 初登場6位（64,000ユニット、うち純売上49,000）で7作連続トップ10。初期レーベル Fueled by Ramen への回帰とギター主体のサウンドが話題になった。象徴性は中程度だが実在すると検証で明記。除外上の問題なし。<div class="srcs"><a href="https://en.wikipedia.org/wiki/So_Much_(for)_Stardust" target="_blank" rel="noopener">Wikipedia</a><a href="https://radiox.cms.socastsrm.com/2023/04/02/morgan-wallens-one-thing-at-a-time-spends-a-month-at-no-1-on-the-billboard-200/" target="_blank" rel="noopener">Radio X</a></div></td></tr>
+<tr data-cat="p"><td><span class="badge p">昇格</span></td><td class="album">Depeche Mode<span class="artist">Memento Mori</span></td><td class="date">2023-03-24</td><td class="ev">Andy Fletcher 没後初の第15作（synth-pop／electronic rock／dark wave）。UK 2位、フランス・ドイツ1位、米国 Billboard 200 14位、Metacritic 85。112公演のワールドツアーを実施。エレクトロニックなバンドだが、synth-pop／electronic rock は絶対除外が対象とするトランス／クラブ系エレクトロニカではない（Miley Cyrus の dance-pop と同じ前例扱い）。<div class="srcs"><a href="https://en.wikipedia.org/wiki/Memento_Mori_(Depeche_Mode_album)" target="_blank" rel="noopener">Wikipedia</a></div></td></tr>
+
+<tr data-cat="d"><td><span class="badge d">国内追加</span></td><td class="album">King Gnu<span class="artist">THE GREATEST UNKNOWN</span></td><td class="date">2023-11-29</td><td class="ev">第4作フル・スタジオ・アルバム（Ariola Japan）。オリコン週間1位（初週20.3万枚、累計30万枚超）、Billboard Japan Hot Albums 1位、RIAJ プラチナ。「SPECIALZ」は Billboard Global Japan Songs Excl. Japan で首位、5か国の日本楽曲チャートで1位。収録は既発シングル11曲＋インターリュード7曲＋新曲3曲の21曲で、公式に第4作オリジナル・アルバム（コンピレーションではない）。「ミクスチャー・ロック」分類を巡る境界判断は「04」参照。<div class="srcs"><a href="https://www.oricon.co.jp/news/2305228/full/" target="_blank" rel="noopener">ORICON NEWS</a><a href="https://en.wikipedia.org/wiki/The_Greatest_Unknown" target="_blank" rel="noopener">Wikipedia</a></div></td></tr>
+<tr data-cat="d"><td><span class="badge d">国内追加</span></td><td class="album">YOASOBI<span class="artist">THE BOOK 3</span></td><td class="date">2023-10-04</td><td class="ev">オリコン・アルバム2位、Billboard Japan Hot Albums 2位、日本合算売上20.5万、RIAJ ゴールド（フィジカル）。「アイドル」は日本語曲として史上初の Billboard Global Excl. US 1位、Global 200 で7位、IFPI 2023年世界ベストセラー・ソング19位、Japan Hot 100 で史上最長の22週1位となり、2023年日本で最も成績を上げた曲になった。EP分類を巡る特例は「04」参照。<div class="srcs"><a href="https://en.wikipedia.org/wiki/The_Book_3" target="_blank" rel="noopener">Wikipedia</a></div></td></tr>
+</tbody>
+</table>
+<p class="sub" id="filterNote" style="margin-top:10px"></p>
+
+<h2><span class="no">04</span>境界判断の明記</h2>
+<p class="sub">絶対除外ルールや形式ルールに触れる4件は、隠さずここに残す。いずれも検証側がフラグを立て、最終判断は Hiro が行った。</p>
+
+<div class="warn">
+  <h3>Stray Kids『5-STAR』— 主ジャンル表記が絶対除外に抵触する疑い → Hiroの判断で残した</h3>
+  <p>Wikipedia の infobox のジャンル表記そのものが「Hip-hop, pop, electronica」であり、アルバムの主分類自体が絶対除外2項目（ラップ／ヒップホップ、トランス／エレクトロニカ）に触れている。リード曲「S-Class」はヒップホップ曲、「Topline」は Tiger JK を迎えた boom-bap／East-Coast ヒップホップ、「Hall of Fame」は R&amp;B／trap-metal 融合と、内容面でも裏付けがある。Karol G（主分類が両ソースとも reggaeton／Latin pop）とは違い、クリーンな OK は出せないというのが再検証の結論だった。それでも IFPI 2023年世界2位・約530万枚という実績を重く見て、Hiro は「両方残して20枚で進める」と決定した。</p>
+</div>
+<div class="warn">
+  <h3>King Gnu『THE GREATEST UNKNOWN』— 「ミクスチャー・ロック」分類と絶対除外の関係 → Hiroの判断で残した</h3>
+  <p>日本語版 Wikipedia は King Gnu を「日本のミクスチャー・ロックバンド」と定義し、ジャンル表記にも「ミクスチャー・ロック」が含まれる。マニュアルの絶対除外「ミクスチャー／ニューメタル系」に字義通り読めば抵触する。ただし実態として、King Gnu の「ミクスチャー」はジャズやクラシック等を混ぜる日本のメディア用語としてのジャンル融合型オルタナティヴ・ロックであり、マニュアルが排除したいラップメタル／ニューメタル系とは別物、という解釈も提示した。なお当初 Hiro への提示で「ルール上の問題なし」と伝えたのは形式面（正規スタジオ盤かどうか）だけの話で、ジャンル分類の確認前だったことも、検証ファイルに明記されている。この分類を明示した上で、Hiro は残すと決定した。</p>
+</div>
+<div class="grid2">
+  <div class="warn">
+    <h3>Karol G『Mañana Será Bonito』— 境界扱い（Sのまま採用）</h3>
+    <p>主分類は両ソースとも reggaeton／Latin pop で、ラップ／ヒップホップ盤としての分類はないため、絶対除外の自動適用はしないと検証で判定した。ただしアーティストの背景には Latin trap／música urbana（スペイン語ヒップホップに隣接）が含まれるため、境界として明記する。</p>
+  </div>
+  <div class="warn">
+    <h3>YOASOBI『THE BOOK 3』— EP分類への今回限りの例外</h3>
+    <p>本作は公式に「EP」分類（YOASOBI の3作目の EP で、THE BOOK シリーズは全て EP 扱い）であり、通常ルールでは EP は収集対象外になる。今回は「アイドル」の世界的実績という象徴性を優先し、Hiro の今回限りの例外として採用した。</p>
+  </div>
+</div>
+<p class="sub">その他の境界ノート（再検証で OK 判定）：Jelly Roll は元ラッパーだが本作は country 分類／ Peso Pluma の corridos tumbados は trap にルーツを持つが主分類は regional Mexican ／ Sleep Token は主分類 alt／prog metal ／ Depeche Mode の synth-pop は除外対象の trance／electronica ではない ／ Lana Del Rey は一部に hip-hop 系プロダクションへの言及があるが主分類は alt-pop。</p>
+
+<h2><span class="no">05</span>候補一覧（収集段階・全25枚）</h2>
+<p class="sub">収集時点の適合ランク（S／A／B）と根拠の要約。最終結果列で、20枚に残ったか・外れたか・重複除外かが分かる。</p>
+<div class="cand-wrap">
+<table class="cand">
+<thead><tr><th>アーティスト／アルバム</th><th>発売日</th><th>収集時ランク</th><th>根拠の要約</th><th>出典</th><th>結果</th></tr></thead>
+<tbody>
+<tr><td><b>Morgan Wallen</b> — One Thing at a Time</td><td>2023-03-03</td><td class="fit">S</td><td>Country pop。Billboard 200 年間1位、「Last Night」は Hot 100 年間1位</td><td><a href="https://en.wikipedia.org/wiki/One_Thing_at_a_Time" target="_blank" rel="noopener">出典</a></td><td><span class="badge s">S・最終</span></td></tr>
+<tr><td><b>Miley Cyrus</b> — Endless Summer Vacation</td><td>2023-03-10</td><td class="fit">S</td><td>「Flowers」が36か国以上で1位、Grammy Record of the Year</td><td><a href="https://en.wikipedia.org/wiki/Endless_Summer_Vacation" target="_blank" rel="noopener">出典</a></td><td><span class="badge s">S・最終</span></td></tr>
+<tr><td><b>Olivia Rodrigo</b> — GUTS</td><td>2023-09-08</td><td class="fit">S</td><td>Billboard 200 初登場1位、全12曲 Hot 100 トップ40入り</td><td><a href="https://rockcellarmagazine.com/olivia-rodrigo-guts-billboard-no-1-debut-world-tour-details-listen/" target="_blank" rel="noopener">出典</a></td><td><span class="badge s">S・最終</span></td></tr>
+<tr><td><b>Karol G</b> — Mañana Será Bonito</td><td>2023-02-24</td><td class="fit">S</td><td>女性初の全編スペイン語 Billboard 200 1位、「TQG」世界的ヒット</td><td><a href="https://en.wikipedia.org/wiki/Ma%C3%B1ana_Ser%C3%A1_Bonito" target="_blank" rel="noopener">出典</a></td><td><span class="badge s">S・最終</span></td></tr>
+<tr><td><b>Jung Kook</b> — Golden</td><td>2023-11-03</td><td class="fit">S</td><td>世界270万枚超、「Seven」が Hot 100・Global 200 で1位</td><td><a href="https://en.wikipedia.org/wiki/Golden_(Jung_Kook_album)" target="_blank" rel="noopener">出典</a></td><td><span class="badge s">S・最終</span></td></tr>
+<tr><td><b>Metallica</b> — 72 Seasons</td><td>2023-04-14</td><td class="fit">S</td><td>20か国で1位、2019年以降最大のロック・アルバム初週（米国）</td><td><a href="https://elpee.jp/album/72%20Seasons/Metallica/" target="_blank" rel="noopener">出典</a></td><td><span class="badge s">S・最終</span></td></tr>
+<tr><td><b>boygenius</b> — The Record</td><td>2023-03-31</td><td class="fit">S</td><td>NME・Variety の年間ベスト1位、Grammy 3部門受賞</td><td><a href="https://en.wikipedia.org/wiki/The_Record_(Boygenius_album)" target="_blank" rel="noopener">出典</a></td><td><span class="badge s">S・最終</span></td></tr>
+<tr><td><b>Lana Del Rey</b> — Did You Know That There's a Tunnel Under Ocean Blvd</td><td>2023-03-24</td><td class="fit">A</td><td>Billboard 200 最高3位、Grammy ノミネート、年間ベスト多数</td><td><a href="https://en.wikipedia.org/wiki/Did_You_Know_That_There%27s_a_Tunnel_Under_Ocean_Blvd" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Blink-182</b> — One More Time...</td><td>2023-10-20</td><td class="fit">A</td><td>クラシック編成12年ぶりの新作、Billboard 200 で3作目の1位</td><td><a href="https://en.wikipedia.org/wiki/One_More_Time..." target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Ed Sheeran</b> — - (Subtract)</td><td>2023-05-05</td><td class="fit">A</td><td>UK 1位、世界的ツアーで2023年を通じて話題</td><td><a href="https://indianexpress.com/article/entertainment/music/ed-sheeran-announces-release-date-for-new-album-8473572/" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Luke Combs</b> — Gettin' Old</td><td>2023-03-24</td><td class="fit">A</td><td>「Fast Car」が Hot 100 最高2位、CMA Single of the Year</td><td><a href="https://en.wikipedia.org/wiki/Gettin%27_Old" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Jelly Roll</b> — Whitsitt Chapel</td><td>2023-06-02</td><td class="fit">A</td><td>ブレイクスルー作、CMA Album of the Year ノミネート</td><td><a href="https://djfrosty.com/2024/11/18/cma-awards-2024-predictions-who-will-win-the-top-honors/" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Mitski</b> — The Land Is Inhospitable and So Are We</td><td>2023-09-15</td><td class="fit">A</td><td>「My Love Mine All Mine」が TikTok で大バイラル、Spotify 10億再生超</td><td><a href="https://en.wikipedia.org/wiki/My_Love_Mine_All_Mine" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Stray Kids</b> — 5-STAR</td><td>2023-06-02</td><td class="fit">B</td><td>IFPI 世界アルバム売上2位（530万枚）。ヒップホップ／EDM 要素で境界フラグ</td><td><a href="https://www.recordoftheday.com/on-the-move/news-press/taylor-swift-seventeen-and-morgan-wallen-top-ifpi-global-album-charts" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Peso Pluma</b> — Génesis</td><td>2023-06-22</td><td class="fit">B</td><td>ムシカ・メヒカーナ世界的急伸の中心作</td><td><a href="https://radiox.cms.socastsrm.com/2023/06/13/peso-pluma-announces-new-albums-release-date-unveils-tracklist/" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Sleep Token</b> — Take Me Back to Eden</td><td>2023-05-19</td><td class="fit">B</td><td>「The Summoning」がバイラル、2023年ヘヴィ音楽最大のブレイクスルー</td><td><a href="https://www.revolvermag.com/music/sleep-token-announce-new-album-debut-stunning-single-vore/" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Fall Out Boy</b> — So Much (for) Stardust</td><td>2023-03-24</td><td class="fit">B</td><td>5年ぶりの新作、初期レーベルへの回帰作として話題</td><td><a href="https://en.wikipedia.org/wiki/So_Much_(for)_Stardust" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Depeche Mode</b> — Memento Mori</td><td>2023-03-24</td><td class="fit">B</td><td>Fletcher 没後初の新作、各国1位級＋112公演ツアー。electronic 分類で境界フラグ</td><td><a href="https://en.wikipedia.org/wiki/Memento_Mori_(Depeche_Mode_album)" target="_blank" rel="noopener">出典</a></td><td><span class="badge p">昇格・最終</span></td></tr>
+<tr><td><b>Sam Smith</b> — Gloria</td><td>2023-01-27</td><td class="fit">A</td><td>「Unholy」が世界的1位ヒット（Grammy 受賞）</td><td><a href="https://www.nylon.com/entertainment/sam-smith-gloria-album-release-date-tracklist" target="_blank" rel="noopener">出典</a></td><td>落選</td></tr>
+<tr><td><b>Post Malone</b> — Austin</td><td>2023-07-28</td><td class="fit">B</td><td>全曲ギター参加のポップロック／フォーク寄り作品</td><td><a href="https://www.udiscovermusic.com/news/post-malone-austin-new-album/" target="_blank" rel="noopener">出典</a></td><td>落選</td></tr>
+<tr><td><b>NCT Dream</b> — ISTJ</td><td>2023-07-17</td><td class="fit">B</td><td>IFPI 世界アルバム売上3位（460万枚）。hip hop 表記で境界フラグ</td><td><a href="https://en.wikipedia.org/wiki/ISTJ_(album)" target="_blank" rel="noopener">出典</a></td><td>落選</td></tr>
+<tr class="removed"><td><b>Zach Bryan</b> — Zach Bryan</td><td>2023-08-25</td><td class="fit">S</td><td>Billboard 200 初登場1位、全16曲 Hot 100 入り</td><td><a href="https://www.broadwayworld.com/bwwmusic/article/Zach-Bryans-Self-Titled-Album-Debuts-at-1-on-Billboard-200-20230905" target="_blank" rel="noopener">出典</a></td><td>重複除外</td></tr>
+<tr class="removed"><td><b>The Rolling Stones</b> — Hackney Diamonds</td><td>2023-10-20</td><td class="fit">S</td><td>18年ぶりのオリジナル盤、UK 1位</td><td><a href="https://en.m.wikipedia.org/wiki/Hackney_Diamonds" target="_blank" rel="noopener">出典</a></td><td>重複除外</td></tr>
+<tr class="removed"><td><b>Foo Fighters</b> — But Here We Are</td><td>2023-06-02</td><td class="fit">A</td><td>Hawkins 没後初の新作、批評家から高評価</td><td><a href="https://en.wikipedia.org/wiki/But_Here_We_Are" target="_blank" rel="noopener">出典</a></td><td>重複除外</td></tr>
+<tr class="removed"><td><b>Chris Stapleton</b> — Higher</td><td>2023-11-10</td><td class="fit">A</td><td>「White Horse」ヒット、CMA Album of the Year ノミネート</td><td><a href="https://www.udiscovermusic.com/news/chris-stapleton-new-album-higher-shares-white-horse/" target="_blank" rel="noopener">出典</a></td><td>重複除外</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 style="margin:26px 0 8px;font-size:16px">重複除外の4枚（他ジャンルで選出済み）</h3>
+<div class="card">
+  <ul>
+    <li><b>Zach Bryan『Zach Bryan』</b> — STADIUM COUNTRY &amp; SOUTHERN ROCK／2023 として既出・他ジャンル既採用</li>
+    <li><b>The Rolling Stones『Hackney Diamonds』</b> — MAINSTREAM ROCK / ARENA HEROES／2023 として既出・他ジャンル既採用</li>
+    <li><b>Foo Fighters『But Here We Are』</b> — MAINSTREAM ROCK / ARENA HEROES／2023 として既出・他ジャンル既採用</li>
+    <li><b>Chris Stapleton『Higher』</b> — STADIUM COUNTRY &amp; SOUTHERN ROCK／2023 として既出・他ジャンル既採用</li>
+  </ul>
+  <p style="margin:8px 0 0;color:var(--muted);font-size:13.5px">照合先：既出アルバム累積リスト（完全版）。なお候補に入らなかった有名作として、Taylor Swift の2023年作は再録盤のため対象外、Travis Scott と Drake はラップで絶対除外、SZA『SOS』は2022年12月発売のため対象年外。</p>
+</div>
+
+<footer>
+  <p><b>検証方法の注記</b></p>
+  <p>本ページの内容は、選出ワークフローの記録ファイル（候補・重複除外・S検証／昇格・追加13枚の再検証／選出ノート）だけに基づく。発売日・スタジオ盤であること・ジャンル分類・2023年の実績は、原則として2ソース以上でクロスチェックし、各アルバムに出典リンクを付けた。S検証では7枚のみが厳密なS基準を満たしたこと、昇格・追加13枚の再検証では11枚が OK・2枚（Stray Kids、King Gnu）が「問題あり：要 Hiro 判断」とされたことを、そのまま記録している。</p>
+  <p>境界判断（Stray Kids、King Gnu、Karol G、YOASOBI の EP 特例）はいずれも検証側がフラグを明示し、Hiro の判断で確定したもので、2023年 YEARLY 限りの判断として扱う。確認できなかった事項は推測で埋めていない。</p>
+  <p>2023年 YEARLY MASTERPIECES &amp; HITS ／ 選出完了：最終20枚・各1曲</p>
+</footer>
+
+</div>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.filters button');
+  var rows=document.querySelectorAll('#finalTable tbody tr');
+  var note=document.getElementById('filterNote');
+  var names={all:'最終20枚すべてを表示中',s:'S検証で確定した7枚を表示中',p:'A・B候補から昇格した11枚を表示中',d:'国内追加の2枚を表示中'};
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');
+      var f=b.getAttribute('data-f');
+      rows.forEach(function(r){
+        r.classList.toggle('hidden', f!=='all' && r.getAttribute('data-cat')!==f);
+      });
+      note.textContent=names[f]+'。';
+    });
+  });
+})();
+</script>
+</body>
+</html>

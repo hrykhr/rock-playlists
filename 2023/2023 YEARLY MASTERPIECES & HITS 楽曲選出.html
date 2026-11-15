@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>2023 YEARLY MASTERPIECES &amp; HITS 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f4f2; --surface:#ffffff; --surface2:#eeeeea; --ink:#171713; --muted:#6b6b66; --line:#ddd9d0;
+  --accent:#c1381f; --accent-ink:#ffffff; --gold:#8a6d1b; --gold-bg:#fdf6d8; --chip:#171713; --chip-ink:#fff;
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#121210; --surface:#1c1c19; --surface2:#242421; --ink:#f2f0ea; --muted:#a8a49b; --line:#33312c; --accent:#ff6a4d; --accent-ink:#171713; --gold:#e8c96a; --gold-bg:#2e2a16; --chip:#f2f0ea; --chip-ink:#171713; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+button,[role="button"]{min-height:44px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px 56px}
+
+/* header */
+header{padding:28px 0 22px;border-bottom:2px solid var(--ink)}
+.kicker{font-size:11px;letter-spacing:.18em;font-weight:700;color:var(--muted);text-transform:uppercase}
+h1{font-size:clamp(28px,6vw,48px);line-height:1.08;font-weight:900;letter-spacing:-.02em;margin:10px 0 6px}
+h1 span{display:block;font-size:.52em;letter-spacing:.06em;font-weight:700;margin-top:6px}
+.lead{font-size:15px;color:var(--muted);max-width:720px;margin:10px 0 0}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600}
+.pill strong{font-family:"IBM Plex Mono",monospace;font-size:14px}
+.spotify{display:inline-flex;align-items:center;gap:10px;background:#1db954;color:#0b1a0f;text-decoration:none;font-weight:800;font-size:14px;padding:12px 18px;border-radius:999px;margin-top:16px;min-height:48px}
+.spotify:hover{filter:brightness(1.05)}
+.spotify small{font-weight:600;opacity:.75}
+
+/* summary strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 6px}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--ink);color:var(--bg);border-radius:12px;padding:14px 14px 12px}
+.stat b{display:block;font-family:"IBM Plex Mono",monospace;font-size:26px;line-height:1;font-weight:600}
+.stat span{font-size:12px;opacity:.75;font-weight:600;letter-spacing:.04em}
+
+/* sections */
+h2{font-size:20px;font-weight:900;letter-spacing:-.01em;margin:36px 0 6px;display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.section-note{font-size:13.5px;color:var(--muted);margin:0 0 16px;max-width:760px}
+
+/* cards */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;display:flex;flex-direction:column}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.08em}
+.length{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:15px;background:var(--surface2);border-radius:8px;padding:4px 9px;white-space:nowrap}
+.artist{font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--muted);margin-top:10px;text-transform:uppercase}
+.album{font-size:13.5px;color:var(--muted);font-style:italic;margin-top:1px;line-height:1.4}
+.track{font-size:24px;font-weight:900;line-height:1.15;letter-spacing:-.02em;margin:6px 0 8px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:4px 9px;border-radius:999px}
+.badge-single{background:var(--chip);color:var(--chip-ink)}
+.badge-warn{background:var(--gold-bg);color:var(--gold);border:1px solid color-mix(in srgb, var(--gold) 35%, transparent)}
+.label{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin:10px 0 4px}
+.evidence{font-size:14px;line-height:1.75;margin:0}
+.notes{font-size:12.5px;line-height:1.7;color:var(--muted);background:var(--surface2);border-radius:10px;padding:10px 12px;margin-top:12px}
+.sources{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.sources span{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted)}
+.sources ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+.sources a{display:inline-flex;align-items:center;min-height:36px;font-size:12.5px;font-weight:600;text-decoration:none;word-break:break-all;line-height:1.4;padding:4px 0}
+.sources a:hover{text-decoration:underline}
+
+/* callouts */
+.callouts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:720px){.callouts{grid-template-columns:1fr}}
+.callout{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:10px;padding:16px 16px 14px}
+.callout h3{margin:0 0 6px;font-size:15px;font-weight:800}
+.callout p{margin:0;font-size:13.5px;line-height:1.75;color:var(--muted)}
+.callout p strong{color:var(--ink)}
+.notice{background:var(--gold-bg);border:1px solid color-mix(in srgb, var(--gold) 30%, transparent);border-radius:12px;padding:16px 18px}
+.notice h3{margin:0 0 6px;font-size:15px}
+.notice p{margin:0;font-size:13.5px;line-height:1.8}
+footer{margin-top:40px;border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;color:var(--muted);line-height:1.8}
+footer strong{color:var(--ink)}
+.tsv{margin-top:18px}
+.tsv summary{font-weight:700;font-size:13px;cursor:pointer;min-height:44px;display:flex;align-items:center}
+.tsv pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font-size:11.5px;line-height:1.6;font-family:"IBM Plex Mono",monospace;white-space:pre}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">2023 · Genre 7 — Yearly Masterpieces &amp; Hits · Track Selection</div>
+  <h1>2023 YEARLY<span>MASTERPIECES &amp; HITS — 楽曲選出</span></h1>
+  <p class="lead">2023年を象徴する20枚（各1曲）から選んだ20曲の記録。各アルバムにつき1曲、曲の長さ・シングルかどうか・選出理由のエビデンス・確認に使った出典をアルバムごとに示す。新ルール（2026-11-14再定義）による初選出で、ジャンル内訳は設けず、年間チャート・売上・ストリーミング実績を根拠とした。</p>
+  <div class="meta-row">
+    <span class="pill">最終 <strong>20</strong> 枚</span>
+    <span class="pill">選出 <strong>20</strong> 曲</span>
+    <span class="pill">シングル <strong>20 / 20</strong> 全曲</span>
+    <span class="pill">合計 <strong>81:02</strong></span>
+    <span class="pill">国内アーティスト <strong>2</strong> 枚</span>
+  </div>
+  <a class="spotify" href="https://open.spotify.com/playlist/0tevmLMx5gCXzPbmt5IwfB" target="_blank" rel="noopener">▶ Spotify プレイリスト「2023年YEARLY MASTERPIECES &amp; HITS」 <small>20曲・TSV順</small></a>
+</header>
+
+<div class="stats" aria-label="概要">
+  <div class="stat"><b>20</b><span>ALBUMS — 最終20枚</span></div>
+  <div class="stat"><b>20</b><span>TRACKS — 各アルバム1曲</span></div>
+  <div class="stat"><b>100%</b><span>SINGLES — 全曲シングル</span></div>
+  <div class="stat"><b>3</b><span>BALLAD EXCEPTIONS — 理由明記</span></div>
+</div>
+
+<h2>選出20曲 — アルバム別</h2>
+<p class="section-note">並びは最終TSV順。長さは原則アルバム収録版。シングル版と異なる場合は備考に明記した。人気指標については末尾の注記も参照。</p>
+
+<div class="grid" id="grid"></div>
+
+<h2>特記事項</h2>
+<p class="section-note">原則から外れる採用は、すべて理由を明記して残す。</p>
+<div class="callouts">
+  <article class="callout">
+    <h3>バラード例外 — 3曲</h3>
+    <p>バラードは原則不採用だが、以下の3曲は<strong>いずれも年を象徴する最大級のヒット</strong>のため例外採用とした。<br>・ <strong>Olivia Rodrigo「Vampire」</strong> — ピアノ・バラードからロック・クライマックスへ展開。本作最大のヒット（Hot 100 初登場1位）。<br>・ <strong>Blink-182「One More Time」</strong> — ジャンル表記に ballad を含むスロー曲だが、再結成アルバムのタイトル曲かつ Alternative Airplay 20週1位の最大のラジオヒット。<br>・ <strong>Mitski「My Love Mine All Mine」</strong> — スローなバラード／子守歌的楽曲だが、本人のキャリア初の Hot 100 入り（最高26位）でアルバム最大のヒット。長さ 2:17 で2分超の条件は満たす。</p>
+  </article>
+  <article class="callout">
+    <h3>Luke Combs「Fast Car」— カバー採用の理由</h3>
+    <p><strong>Tracy Chapman（1988年）のカバー</strong>であることを明記した上で採用した。他者の代用ではなく <strong>『Gettin' Old』自体の収録曲</strong>であり、アルバム最大のヒット（Hot 100 2位、Country Airplay 1位、CMA Single of the Year）。2024年グラミー賞での Chapman 本人とのデュエット披露も含め、2023年のカントリー最大の話題曲だった。Chapman は作詞者として CMA Song of the Year を受賞（同賞初の黒人受賞者）。</p>
+  </article>
+  <article class="callout">
+    <h3>Peso Pluma — 最大ヒットは未収録</h3>
+    <p>Peso Pluma の最大ヒット <strong>「Ella Baila Sola」はアルバム未収録</strong>の単独シングルで、『Génesis』の標準トラックリスト（Wikipedia と独立したトラックリストの2サイトで確認）に含まれないため採用不可とした。代わりに収録曲の中から、発売時点で最もストリーミングされ、後に最終シングルとなった <strong>「Lady Gaga」</strong>（Gabito Ballesteros、Junior H との共演）を選んだ。</p>
+  </article>
+  <article class="callout">
+    <h3>境界判断 — Hiro の決定として記録</h3>
+    <p>・ <strong>Stray Kids『5-STAR』</strong>：Wikipedia の主ジャンル表記が「Hip-hop, pop, electronica」で絶対除外2項目に触れる疑いが強いが、IFPI 2023年世界アルバム2位の実績を踏まえ Hiro が残すと決定。<br>・ <strong>King Gnu</strong>：日本語版 Wikipedia で「ミクスチャー・ロックバンド」と定義され絶対除外に字義通り触れる疑いがあるが、実態はジャンル融合型オルタナティヴ・ロックという解釈で Hiro が残すと決定。<br>・ <strong>YOASOBI『THE BOOK 3』</strong>：公式分類は EP で通常は対象外だが、「アイドル」の世界的象徴性を優先する今回限りの例外として Hiro が承認。いずれも <strong>2023年 YEARLY 限りの判断</strong>として記録する。</p>
+  </article>
+</div>
+
+<h2>人気指標についての注記</h2>
+<div class="notice">
+  <h3>YouTube 再生回数を優先指標とした — ただし確認できたのは1曲のみ</h3>
+  <p>Spotify 公式の曲別再生回数は取得できないため、人気指標は <strong>YouTube の公開再生回数（公式MV／公式オーディオ）を優先</strong>する運用（2026-11-13決定）とした。ただし今回の検証で数値まで確認できたのは <strong>Stray Kids「S-Class」公式MVの2億回突破（2024-06-02、報道ベース）</strong>のみで、その後2026年2月に3億回到達も報じられている。<strong>残り19曲はすべて「確認できない」と明記</strong>し、推測で数字を埋めていない。各カードの備考欄にも同じ表記を残してある。現在の正確な再生回数については S-Class も含め確認できていない。</p>
+</div>
+
+<details class="tsv">
+  <summary>最終TSV（GENRE / ARTIST / ALBUM / TRACK）— 20行を表示</summary>
+  <pre id="tsvPre"></pre>
+</details>
+
+<footer>
+  <p><strong>検証方法：</strong>収録曲は最低2サイトでクロスチェック（原則 Wikipedia の楽曲ページ＋アルバムページのトラックリスト、入手できない場合は Discogs／Billboard 報道等で代替し、その旨を備考に明記）。<strong>2分以下の曲は除外</strong>（最短は Mitski「My Love Mine All Mine」2:17）。<strong>バラードは原則不採用</strong>、例外3曲は上記のとおり理由を明記。発売年・実績は出典URL付きで確認し、確認できない項目は「確認できない」と明記した。</p>
+  <p>選出経緯：候補25枚 → 他ジャンル選出済み4枚を重複除外 → S検証で S は7枚のみ → Hiro の判断で昇格・国内2枚を追加して20枚に確定（外れたのは Sam Smith『Gloria』、Post Malone『Austin』、NCT Dream『ISTJ』）。Taylor Swift の2023年作は再録盤のため対象外、Travis Scott／Drake はラップで絶対除外、SZA『SOS』は2022年12月発売のため対象外。シート追記済み（累積リスト289〜308行、2020s ROCK BEST SONGS 2023タブ127〜146行）。</p>
+</footer>
+</div>
+
+<script>
+var DATA = [
+{"n":1,"artist":"Morgan Wallen","album":"One Thing at a Time","track":"Last Night","length":"2:43","evidence":"第3シングル。Billboard Hot 100で16週（非連続）1位を記録し、2023年のBillboard年間Hot 100でも1位。アルバム自体も2023年Billboard年間アルバム1位であり、この年を象徴する最大のヒット曲。","notes":"収録確認：Wikipediaの楽曲ページとアルバムページのトラックリスト（2曲目、2:43）でクロスチェック済み。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Last_Night_(Morgan_Wallen_song)","https://en.wikipedia.org/wiki/One_Thing_at_a_Time"]},
+{"n":2,"artist":"Miley Cyrus","album":"Endless Summer Vacation","track":"Flowers","length":"3:20","evidence":"リードシングル。IFPI発表の2023年世界ベストセラー・シングル（2.70 billion subscription streams equivalents）。Hot 100で8週1位、グラミー賞Record of the YearとBest Pop Solo Performanceを受賞。","notes":"収録確認：Wikipediaの楽曲ページとアルバムのトラックリスト（1曲目、3:20）でクロスチェック済み。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Flowers_(Miley_Cyrus_song)","https://en.wikipedia.org/wiki/List_of_best-selling_singles"]},
+{"n":3,"artist":"Olivia Rodrigo","album":"GUTS","track":"Vampire","length":"3:39","warn":"バラード例外","evidence":"リードシングル。Hot 100初登場1位（通算2週1位）で本人の3曲目の全米1位。グラミー賞Record of the Year／Song of the Year／Best Pop Solo Performanceノミネート、Billboard 2023年間チャート30位。","notes":"収録確認：Wikipediaの楽曲ページとアルバムページのトラックリスト（3曲目、3:39）でクロスチェック済み。バラード例外：ピアノ・バラードとして始まりロック・クライマックスへ展開する構成だが、本作最大のヒット（全米1位）であり「その年を象徴する最大のヒット」として例外採用。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Vampire_(Olivia_Rodrigo_song)","https://en.wikipedia.org/wiki/Guts_(album)"]},
+{"n":4,"artist":"Karol G","album":"Mañana Será Bonito","track":"TQG","length":"3:17","evidence":"Shakiraとのコラボによる第5シングル。Billboard Global 200とGlobal Excl. USで初登場1位、Hot 100で7位。IFPIの2023年世界ベストセラー・シングル15位（1.18 billion）。","notes":"収録確認：Wikipediaの楽曲ページとアルバムのトラックリスト（6曲目、3:17）でクロスチェック済み。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/TQG","https://www.wikiwand.com/en/Manana_Sera_Bonito"]},
+{"n":5,"artist":"Jung Kook","album":"Golden","track":"Seven","length":"3:05","evidence":"Lattoを迎えたリードシングル。Hot 100／Global 200／Global Excl. USの3チャート同時初登場1位（韓国ソロ初の快挙）。Spotify史上最速で10億回再生を突破し、2023年最もストリーミングされたコラボ曲となった。","notes":"収録確認：Wikipediaの楽曲ページ（from the album Golden、長さ3:05。シングル盤表記は3:03）とアルバム収録情報でクロスチェック済み。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Seven_(Jung_Kook_song)"]},
+{"n":6,"artist":"Metallica","album":"72 Seasons","track":"72 Seasons","length":"7:39","evidence":"タイトル曲で第4シングル。第66回グラミー賞Best Metal Performance受賞（リードシングル「Lux Æterna」はBest Rock Songノミネートに留まり、実際に受賞した本曲を採用）。","notes":"収録確認：Wikipediaの楽曲ページ（from the album 72 Seasons、7:39）で確認。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/72_Seasons_(song)"]},
+{"n":7,"artist":"boygenius","album":"The Record","track":"Not Strong Enough","length":"3:54","evidence":"シングル。第66回グラミー賞でBest Rock SongとBest Rock Performanceの2部門を受賞し、Record of the Yearにもノミネート。アルバムもBest Alternative Music Albumを受賞した、その年を象徴するロック曲。","notes":"収録確認：Wikipediaの楽曲ページ（from the album The Record、3:54）で確認。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Not_Strong_Enough","https://en.wikipedia.org/wiki/66th_Annual_Grammy_Awards"]},
+{"n":8,"artist":"Lana Del Rey","album":"Did You Know That There's a Tunnel Under Ocean Blvd","track":"A&W","length":"7:13","evidence":"第2シングル。Pitchfork、The Guardian、NME、BBCがそろって2023年のベストソング1位に選出。グラミー賞Song of the Yearノミネート。商業チャート以上に「2023年を象徴する曲」として批評面で圧倒的な評価を得た。","notes":"収録確認：Wikipediaの楽曲ページ（from the album、アルバムバージョン7:13）で確認。長さはアルバムバージョンを採用（ラジオエディットは4:36）。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/A%26W_(song)"]},
+{"n":9,"artist":"Blink-182","album":"One More Time...","track":"One More Time","length":"3:28","warn":"バラード例外","evidence":"タイトル曲で第2シングル。Alternative Airplayで記録的な20週連続1位を達成し、クラシックラインナップ再結成を象徴するアルバムの顔となった曲。","notes":"収録確認：Wikipediaの楽曲ページとアルバムページのトラックリスト（5曲目、3:28）でクロスチェック済み。バラード例外：Wikipediaのジャンル表記は「Pop-punk, ballad, acoustic」でスローな楽曲だが、再結成アルバムのタイトル曲かつ最大のラジオヒットであり「その年を象徴する曲」として例外採用。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/One_More_Time_(Blink-182_song)","https://en.wikipedia.org/wiki/One_More_Time..."]},
+{"n":10,"artist":"Ed Sheeran","album":"- (Subtract)","track":"Eyes Closed","length":"3:14","evidence":"リードシングル。全英シングルチャート初登場1位で、本人の14曲目の全英1位（「Flowers」の10週連続1位を止めての首位）。アルバムを代表する曲。","notes":"収録確認：Wikipediaの楽曲ページとアルバムページのトラックリスト（3曲目、3:14）でクロスチェック済み。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Eyes_Closed_(Ed_Sheeran_song)","https://en.wikipedia.org/wiki/%E2%88%92_(album)"]},
+{"n":11,"artist":"Luke Combs","album":"Gettin' Old","track":"Fast Car","length":"4:25","warn":"カバー曲 — 理由明記","evidence":"シングル（2023年4月18日リリース）。Hot 100で2位、Country Airplay／Hot Country Songs／Adult Pop Airplayで1位、CMA Single of the Year受賞。2024年グラミー賞ではTracy Chapman本人とのデュエット披露が大きな話題になった。","notes":"カバー曲である点の明記：Tracy Chapmanの1988年の名曲のカバー。ただしこれは他者の代用ではなく本アルバム自体の収録曲であり、アルバム最大のヒットかつ2023年のカントリー最大の話題曲であるため、あえて採用した。Chapmanは作詞者としてCMA Song of the Yearを受賞（同賞初の黒人受賞者）。収録確認：Wikipediaのアルバムページのトラックリスト（14曲目、4:25）と楽曲ページでクロスチェック済み。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Gettin'_Old","https://en.wikipedia.org/wiki/Fast_Car","https://en.wikipedia.org/wiki/Luke_Combs"]},
+{"n":12,"artist":"Jelly Roll","album":"Whitsitt Chapel","track":"Need a Favor","length":"3:17","evidence":"リードシングル（アルバムに先行して2022年12月9日リリース）。Hot 100で13位、Country Airplay／Hot Rock & Alternative Songs／Mainstream Rock Airplayで1位を獲得し、史上初めてMainstream Rock AirplayとCountry Airplayの両方でトップ10入りした曲。People's Choice Countryで「The Song of 2023」に選出。","notes":"収録確認：Wikipediaの楽曲ページ（from the album Whitsitt Chapel）とBillboard報道でクロスチェック済み。長さ3:17は報道ソースで確認。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Need_a_Favor","https://radiox.cms.socastsrm.com/2023/07/12/jelly-roll-scores-first-hot-rock-need-a-favor/"]},
+{"n":13,"artist":"Mitski","album":"The Land Is Inhospitable and So Are We","track":"My Love Mine All Mine","length":"2:17","warn":"バラード例外","evidence":"第3シングル。TikTokでのバイラルをきっかけにブレイクし、本人のキャリア初のHot 100入り（最高26位）、全英8位を記録。2024年7月までにSpotifyで10億回再生を突破した、アルバム最大のヒット。","notes":"収録確認：Wikipediaの楽曲ページ（from the album、長さ2:17。一部データベースは2:18表記）で確認。2分超のため長さ条件は満たす。バラード例外：スローなバラード／子守歌的な楽曲だが、本作最大のヒットであり「その年を象徴する最大のヒット」として例外採用。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/My_Love_Mine_All_Mine"]},
+{"n":14,"artist":"Stray Kids","album":"5-STAR","track":"S-Class","length":"3:16","warn":"境界判断あり","evidence":"リードシングル／タイトル曲。アルバムはIFPI 2023年世界アルバム2位の世界的ヒット。公式MVは2024年6月2日にYouTube再生回数2億回を突破（グループ5本目）し、その後2026年2月に3億回到達が報じられた。","notes":"収録確認：Wikipediaの楽曲ページとアルバムページ（2曲目、リードシングル表記、3:16）でクロスチェック済み。YouTube指標：公式MVの2億回突破（2024年6月2日）をWikipedia／allkpop報道で確認。現在の正確な再生回数は確認できない。","sources":["https://en.wikipedia.org/wiki/S-Class_(song)","https://en.wikipedia.org/wiki/5-Star_(Stray_Kids_album)"]},
+{"n":15,"artist":"Peso Pluma","album":"Génesis","track":"Lady Gaga","length":"3:32","warn":"最大ヒットは未収録","evidence":"Gabito BallesterosとJunior Hとの共演曲。アルバム発売時点で収録曲中最もストリーミングされた曲となり、後に第8弾（最終）シングルとしてリリース。Hot Latin Songsで1位、Hot 100で35位、Billboard Global 200で最高13位、メキシコで1位。","notes":"重要な確認事項：最大のヒット「Ella Baila Sola」はアルバム未収録の単独シングルであり、『Génesis』の標準トラックリスト（Wikipediaと独立したトラックリストの2サイトで確認）に含まれないため採用不可。収録曲の中から本曲を選んだ。収録確認：Wikipediaの楽曲ページとアルバムページのトラックリスト（10曲目、3:32）でクロスチェック済み。YouTube公式動画の再生回数：確認できない（発売直後にYouTubeメキシコのトレンド1位との報道あり）。","sources":["https://en.wikipedia.org/wiki/Lady_Gaga_(song)","https://en.wikipedia.org/wiki/G%C3%A9nesis_(Peso_Pluma_album)"]},
+{"n":16,"artist":"Sleep Token","album":"Take Me Back to Eden","track":"The Summoning","length":"6:35","evidence":"第2シングル。Spotify Viral 50で1位を獲得してバイラルブレイクの火付け役となり、アルバムはSpotifyで2023年最もストリーミングされたメタルアルバムとなった。本曲はアルバム最多再生曲。","notes":"収録確認：Wikipediaのアルバムページのトラックリスト（2曲目、6:35）とDiscogsのリリース情報でクロスチェック済み。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Take_Me_Back_to_Eden"]},
+{"n":17,"artist":"Fall Out Boy","album":"So Much (for) Stardust","track":"Love from the Other Side","length":"4:39","evidence":"リードシングル。バンド史上初のAlternative Airplay 1位を獲得し、初チャートインから初1位までの17年9か月は同チャート史上最長の記録となった、復活を象徴する曲。","notes":"収録確認：Wikipediaのアルバムページのトラックリスト（1曲目、4:39）とBillboard報道でクロスチェック済み。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/So_Much_(for)_Stardust","https://radiox.cms.socastsrm.com/2023/02/24/fall-out-boy-breaks-alternative-airplay-record-with-first-no-1/"]},
+{"n":18,"artist":"Depeche Mode","album":"Memento Mori","track":"Ghosts Again","length":"3:58","evidence":"リードシングル。Adult Alternative Airplayで2位、Alternative Airplayで9位（1997年以来のトップ10入り）を記録し、「近年の最高のシングル」と批評面でも高く評価された、Andy Fletcher追悼の意味も持つアルバムの顔。","notes":"収録確認：Wikipediaの楽曲ページとアルバムページのトラックリスト（3曲目、3:58。CD盤Discogs表記は3:59で表記揺れあり）でクロスチェック済み。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Ghosts_Again","https://en.wikipedia.org/wiki/Memento_Mori_(Depeche_Mode_album)"]},
+{"n":19,"artist":"King Gnu","album":"THE GREATEST UNKNOWN","track":"SPECIALZ","length":"3:58","warn":"境界判断あり","evidence":"シングル（2023年9月1日）。TVアニメ『呪術廻戦』第2期「渋谷事変」オープニングテーマ。Billboard Japan Hot 100で2位、Global 200で28位、Hot Animationで1位。Billboard JAPANの「Global Japan Songs Excl. Japan」ではYOASOBI「アイドル」を抑えて1位を獲得し、米・英・仏・ブラジル・南アフリカの各国Japan Songsチャートでも1位。バンド史上最速でストリーミング1億回を達成し、RIAJゴールド認定。","notes":"収録確認：Wikipediaの楽曲ページ（from the album The Greatest Unknown）とQobuz等のアルバムトラックリスト（4曲目）でクロスチェック済み。長さはシングル版の3:58を採用（ストリーミングのアルバム版表記は3:53〜3:54で、デジタルマスター差異あり）。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Specialz","https://magazine.weverse.io/article/view/1015?ref=main&lang=ja"]},
+{"n":20,"artist":"YOASOBI","album":"THE BOOK 3","track":"Idol","length":"3:33","warn":"EP特例","evidence":"シングル（2023年4月12日）。日本語曲として史上初めてBillboard Global Excl. USで1位、Global 200で7位（当時の日本人最高位）。IFPIの2023年世界ベストセラー・シングル19位（1.01 billion）。Billboard Japan Hot 100では史上最長記録の通算22週1位を記録し、2023年の日本年間1位曲となった。","notes":"収録確認：Wikipediaの楽曲ページ（from the EP The Book 3）と『THE BOOK 3』のトラックリスト（7曲目）でクロスチェック済み。長さはシングル版の3:33を採用（EP収録版のトラックリスト表記は3:31）。なお『THE BOOK 3』は公式分類上EPであり、採用はHiro承認済みの今回限りの例外。YouTube公式動画の再生回数：確認できない。","sources":["https://en.wikipedia.org/wiki/Idol_(Yoasobi_song)","https://en.wikipedia.org/wiki/The_Book_3","https://en.wikipedia.org/wiki/Yoasobi_discography"]}
+];
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function host(u){try{return new URL(u).hostname.replace(/^www\./,"");}catch(e){return u;}}
+var grid=document.getElementById("grid");
+grid.innerHTML=DATA.map(function(d){
+  var warn=d.warn?'<span class="badge badge-warn">⚠ '+esc(d.warn)+'</span>':"";
+  var src=d.sources.map(function(u){return '<li><a href="'+u+'" target="_blank" rel="noopener">↗ '+esc(host(u))+' — '+esc(decodeURIComponent(u.split("/").pop()).replace(/_/g," "))+'</a></li>';}).join("");
+  return '<article class="card">'
+  +'<div class="card-top"><span class="num">No. '+String(d.n).padStart(2,"0")+' / 20</span><span class="length">'+d.length+'</span></div>'
+  +'<div class="artist">'+esc(d.artist)+'</div><div class="album">『'+esc(d.album)+'』</div>'
+  +'<div class="track">'+esc(d.track)+'</div>'
+  +'<div class="badges"><span class="badge badge-single">● シングル</span>'+warn+'</div>'
+  +'<div class="label">選出理由 — エビデンス</div><p class="evidence">'+esc(d.evidence)+'</p>'
+  +'<div class="notes"><strong>備考・収録確認：</strong>'+esc(d.notes)+'</div>'
+  +'<div class="sources"><span>出典 — 確認に使ったサイト</span><ul>'+src+'</ul></div>'
+  +'</article>';
+}).join("");
+document.getElementById("tsvPre").textContent = DATA.map(function(d){
+  return "YEARLY MASTERPIECES & HITS\t"+d.artist+"\t"+d.album+"\t"+d.track;
+}).join("\n");
+</script>
+</body>
+</html>
