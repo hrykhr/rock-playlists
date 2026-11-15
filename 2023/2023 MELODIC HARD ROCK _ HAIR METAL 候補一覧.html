@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2023 MELODIC HARD ROCK / HAIR METAL 候補一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, a.btn { min-height: 2.25rem; }
+      :root{
+        --bg:#f7f7f4; --surface:#ffffff; --surface2:#eef0ec;
+        --ink:#1c2024; --ink2:#4a5158; --ink3:#6f777f;
+        --line:#dde0da; --line2:#c3cbc2;
+        --accent:#31572c; --accent-ink:#ffffff; --accent-soft:#e4efe0;
+        --steel:#33526e; --steel-soft:#e2ebf2;
+        --rust:#a34d24; --rust-soft:#f8e9df;
+        --gold:#7d6414; --gold-soft:#f3ecc9;
+        --rose:#9c3d54; --rose-soft:#f7e3e8;
+        --spotify:#177245;
+        --shadow:0 1px 2px rgba(28,32,36,.05),0 10px 26px -20px rgba(28,32,36,.4);
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#111417; --surface:#191d20; --surface2:#21262a;
+          --ink:#edf0ee; --ink2:#bcc3bd; --ink3:#939d95;
+          --line:#2c3330; --line2:#3e4842;
+          --accent:#8fc47e; --accent-ink:#12240f; --accent-soft:#243a20;
+          --steel:#8fb4d4; --steel-soft:#22303d;
+          --rust:#e09a6d; --rust-soft:#3a2a1e;
+          --gold:#d9bc6a; --gold-soft:#38311c;
+          --rose:#e59cae; --rose-soft:#3a232b;
+          --spotify:#4cc983;
+          --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px -20px rgba(0,0,0,.8);
+        }
+      }
+      *{ box-sizing:border-box; }
+      html{ scroll-behavior:smooth; }
+      body{
+        margin:0; background:var(--bg); color:var(--ink);
+        font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+        font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+      }
+      .wrap{ max-width:1060px; margin:0 auto; padding:0 20px 72px; }
+      a{ color:var(--steel); }
+      a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+      header{ padding:52px 0 8px; }
+      .genre-line{
+        display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+        font-size:.82rem; font-weight:700; letter-spacing:.14em; color:var(--ink3);
+      }
+      .status{
+        letter-spacing:.02em; color:var(--accent); background:var(--accent-soft);
+        border:1px solid var(--line2); border-radius:999px; padding:3px 12px; font-size:.8rem;
+      }
+      h1{
+        font-family:"Shippori Mincho",serif; font-weight:800;
+        font-size:clamp(1.85rem,5.2vw,2.9rem); line-height:1.3; margin:14px 0 6px; letter-spacing:.01em;
+      }
+      .en-sub{ font-family:"Shippori Mincho",serif; font-size:1rem; font-weight:600; color:var(--ink2); letter-spacing:.05em; margin:2px 0 0; }
+      .lede{ color:var(--ink2); max-width:48em; margin:10px 0 0; }
+      .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:28px 0 18px; }
+      .stat{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px 10px; box-shadow:var(--shadow); }
+      .stat b{ display:block; font-family:"Shippori Mincho",serif; font-size:1.9rem; line-height:1.1; font-weight:800; }
+      .stat span{ font-size:.8rem; color:var(--ink2); font-weight:500; }
+      .stat.warn b{ color:var(--rust); }
+      .btn{
+        display:inline-flex; align-items:center; gap:9px; text-decoration:none;
+        background:var(--spotify); color:#fff; font-weight:700; border-radius:999px;
+        padding:9px 20px; font-size:.95rem;
+      }
+      @media (prefers-color-scheme: dark){ .btn{ color:#0d2013; } }
+      .btn:hover{ filter:brightness(1.08); }
+
+      section{ margin-top:52px; }
+      .sec-head{ display:flex; align-items:baseline; gap:14px; border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:20px; flex-wrap:wrap; }
+      .sec-head .no{ font-family:"Shippori Mincho",serif; font-weight:800; color:var(--accent); font-size:1.05rem; }
+      h2{ font-family:"Shippori Mincho",serif; font-size:1.5rem; font-weight:800; margin:0; line-height:1.4; }
+      .sec-head p{ margin:0 0 2px auto; color:var(--ink3); font-size:.85rem; text-align:right; }
+      h3{ font-size:1.05rem; font-weight:900; margin:30px 0 10px; }
+      p.note{ color:var(--ink2); }
+
+      .timeline{ list-style:none; margin:0; padding:0; position:relative; }
+      .timeline::before{ content:""; position:absolute; left:17px; top:10px; bottom:10px; width:2px; background:var(--line2); }
+      .timeline li{ position:relative; padding:0 0 22px 52px; }
+      .timeline li:last-child{ padding-bottom:2px; }
+      .dot{
+        position:absolute; left:0; top:2px; width:36px; height:36px; border-radius:50%;
+        background:var(--surface); border:2px solid var(--accent); color:var(--accent);
+        display:flex; align-items:center; justify-content:center;
+        font-family:"Shippori Mincho",serif; font-weight:800; font-size:.95rem; z-index:1;
+      }
+      .timeline li.stop .dot{ border-color:var(--rust); color:var(--rust); }
+      .timeline li.decide .dot{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+      .timeline h4{ margin:0 0 2px; font-size:1rem; font-weight:900; }
+      .timeline p{ margin:0; color:var(--ink2); max-width:54em; }
+      .tag{ display:inline-block; font-size:.72rem; font-weight:700; border-radius:4px; padding:0 7px; margin-left:8px; vertical-align:2px; }
+      .tag-stop{ background:var(--rust-soft); color:var(--rust); }
+      .tag-decide{ background:var(--accent-soft); color:var(--accent); }
+
+      .cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+      .card{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px 20px 14px; box-shadow:var(--shadow); }
+      .card .rankline{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
+      .num{ font-family:"Shippori Mincho",serif; font-weight:800; color:var(--ink3); font-size:.95rem; }
+      .chip{ font-size:.72rem; font-weight:900; letter-spacing:.06em; border-radius:4px; padding:1px 8px; }
+      .chip-s{ background:var(--gold-soft); color:var(--gold); border:1px solid var(--gold); }
+      .chip-final{ background:var(--accent-soft); color:var(--accent); }
+      .chip-out{ background:var(--surface2); color:var(--ink3); }
+      .chip-ng{ background:var(--rose-soft); color:var(--rose); }
+      .card h3{ margin:2px 0 0; font-size:1.12rem; line-height:1.45; }
+      .card h3 .album{ font-family:"Shippori Mincho",serif; font-weight:800; }
+      .card .meta{ color:var(--ink3); font-size:.82rem; margin:2px 0 8px; }
+      .card p{ margin:0 0 8px; font-size:.92rem; color:var(--ink2); }
+      .card p b{ color:var(--ink); }
+      .srcs{ font-size:.82rem; margin:6px 0 2px; }
+      .srcs a{ margin-right:12px; white-space:nowrap; }
+
+      .all-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+      .all-list li{
+        display:grid; grid-template-columns:44px 1fr auto; gap:6px 14px; align-items:baseline;
+        padding:13px 4px; border-bottom:1px solid var(--line);
+      }
+      .all-list .r{ font-family:"Shippori Mincho",serif; font-weight:800; font-size:1.15rem; text-align:center; }
+      .r-s{ color:var(--gold); } .r-a{ color:var(--steel); } .r-b{ color:var(--ink3); }
+      .all-list .who b{ font-weight:900; }
+      .all-list .who .alb{ font-family:"Shippori Mincho",serif; font-weight:700; }
+      .all-list .who p{ margin:2px 0 0; font-size:.86rem; color:var(--ink2); }
+      .all-list .when{ color:var(--ink3); font-size:.82rem; white-space:nowrap; }
+      .all-list .res{ font-size:.78rem; font-weight:700; }
+      .res-final{ color:var(--accent); } .res-out{ color:var(--ink3); } .res-ng{ color:var(--rose); } .res-none{ color:var(--ink3); }
+
+      .tsv{
+        background:var(--surface2); border:1px solid var(--line); border-radius:10px;
+        padding:16px 18px; overflow-x:auto; font-size:.85rem; line-height:1.7;
+        font-family:ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre;
+      }
+      footer{ margin-top:56px; border-top:1px solid var(--line); padding-top:16px; color:var(--ink3); font-size:.85rem; }
+
+      @media (max-width:720px){
+        .stats{ grid-template-columns:repeat(2,1fr); }
+        .cards{ grid-template-columns:1fr; }
+        .all-list li{ grid-template-columns:34px 1fr; }
+        .all-list .when{ grid-column:2; }
+        header{ padding-top:36px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="genre-line">
+          <span>2023年 ・ ジャンル 8（新設）</span>
+          <span class="status">最終8枚 確定済み</span>
+        </div>
+        <h1>MELODIC HARD ROCK / HAIR METAL<br />候補一覧</h1>
+        <p class="en-sub">2023 Melodic Hard Rock / Hair Metal — Candidates &amp; Verification</p>
+        <p class="lede">
+          2023年に発売されたメロディック・ハードロック／ヘアメタルの候補28枚を集め、発売年とジャンル適合性を出典付きで検証した記録。
+          このジャンルは2023年から新設された枠で、ベンチマークは H.E.A.T、Nestor、Eclipse、Treat、Crazy Lixx。
+          重複除外で6枚が外れ、S検証では S候補10枚のうち2枚がA降格となり、残る S 8枚がそのまま最終確定した（停止ゲートなし）。
+        </p>
+        <div class="stats">
+          <div class="stat"><b>28</b><span>候補アルバム（S 15／A 8／B 5）</span></div>
+          <div class="stat warn"><b>6</b><span>重複除外（他ジャンルで選出済み）</span></div>
+          <div class="stat"><b>10</b><span>S検証の対象（S候補）</span></div>
+          <div class="stat"><b>8</b><span>最終確定アルバム（各2曲・計16曲）</span></div>
+        </div>
+        <a class="btn" href="https://open.spotify.com/playlist/5UiqsuhPD9xM1nMKtdPne3" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5.1 15.9a.75.75 0 0 1-1 .25c-2.9-1.8-6.5-2.1-10.8-1.2a.75.75 0 1 1-.3-1.5c4.7-1 8.7-.6 11.9 1.3.34.2.44.7.2 1.1v.05zm1.4-3.5a.94.94 0 0 1-1.3.3c-3.3-2-8.3-2.6-12.2-1.4a.94.94 0 1 1-.55-1.8c4.45-1.35 10-0.65 13.8 1.65.42.26.55.83.25 1.25zm.1-3.65C14.7 7.4 8.2 7.2 4.5 8.6a1.13 1.13 0 1 1-.8-2.1c4.25-1.6 11.25-1.4 15.65 1.2a1.13 1.13 0 0 1-1.15 1.95v.1z"/></svg>
+          Spotify「2023年MELODIC HARD ROCK / HAIR METAL」（16曲）
+        </a>
+      </header>
+
+      <section aria-labelledby="flow">
+        <div class="sec-head"><span class="no">01</span><h2 id="flow">選出の経緯 — 新ジャンル初選出、S 8枚で確定</h2></div>
+        <ol class="timeline">
+          <li>
+            <span class="dot">1</span>
+            <h4>候補収集 — 28枚</h4>
+            <p>2023年発売のオリジナル・スタジオ盤を収集。収集時点の適合ランクは S 15枚／A 8枚／B 5枚（S＝美旋律とコーラスの華やかさが支配的、A＝AOR色のあるメロディック・ハードロック、B＝境界要素を含む条件付き）。境界ルール：骨太リフやブルース／クラシック色が支配的なら HARD ROCK、パワーメタル的疾走が支配的なら MELODIC POWER 側。全候補は下の「候補28枚 全一覧」に出典付きで掲載。</p>
+          </li>
+          <li>
+            <span class="dot">2</span>
+            <h4>重複除外 — 6枚（他ジャンルで選出済み）</h4>
+            <p>既出アルバム累積リストと照合し、Eclipse『Megalomanium』、Winger『Seven』、Extreme『Six』（いずれも MAINSTREAM ROCK / ARENA HEROES で既採用）、Midnite City『In at the Deep End』、Temple Balls『Avalanche』、Heaven's Edge『Get It Right』（いずれも HARD ROCK で既採用）を除外。Midnite City と Heaven's Edge は表記揺れを重複と判定した。残り22枚のうち S候補10枚が検証対象となった。</p>
+          </li>
+          <li>
+            <span class="dot">3</span>
+            <h4>S検証 — S 8枚／A降格 2枚</h4>
+            <p>S候補10枚を発売年・オリジナル盤であること・ジャンル適合性で再検証。8枚がS確定。L.A. Guns『Black Diamonds』は骨太リフとブルース／クラシック・ハードロック色が強く、Joel Hoekstra's 13『Crash Of Life』は Whitesnake 的なブルース／骨太色とフックの弱さが指摘され、どちらも本ジャンルでは<strong>A降格</strong>（HARD ROCK寄りの境界）。絶対除外要素（ラップ／ヒップホップ、ミクスチャー／ニューメタル、トランス／エレクトロニカ）は全10枚とも該当なし。</p>
+          </li>
+          <li class="decide">
+            <span class="dot">✓</span>
+            <h4>最終8枚で確定<span class="tag tag-decide">停止なし</span></h4>
+            <p>S 8枚は最終枠（品質優先で5〜10枚）の範囲内のため、停止ゲートにかからずそのまま確定。各2曲・計16曲の楽曲選出（シングル14曲＋タイトル曲等2曲）と Spotify プレイリスト作成へ進んだ。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="final">
+        <div class="sec-head"><span class="no">02</span><h2 id="final">最終8枚</h2><p>TSV順 ・ すべてS検証通過</p></div>
+        <div class="cards">
+
+          <article class="card">
+            <div class="rankline"><span class="num">01</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>The Defiants — <span class="album">『Drive』</span></h3>
+            <p class="meta">発売：2023-06-09</p>
+            <p><b>ジャンル根拠：</b>MyGlobalMind: Genre: Melodic Hard Rock（Frontiers）。Metal Forces も American melodic hard rock band の3rd full-length と明記。Danger Danger 系の美旋律・コーラスが支配的で、本ジャンルのS基準に合致。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバム単独ページなし）。3rd studio album、11曲。2023年内・オリジナル・スタジオ盤を確認。</p>
+            <p class="srcs">出典：<a href="https://myglobalmind.com/2023/06/12/the-defiants-drive-review/" target="_blank" rel="noopener">MyGlobalMind</a><a href="https://www.metalforcesmagazine.com/site/2023/06/page/4/" target="_blank" rel="noopener">Metal Forces</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">02</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Art Nation — <span class="album">『Inception』</span></h3>
+            <p class="meta">発売：2023-06-09</p>
+            <p><b>ジャンル根拠：</b>Frontiers 公式ショップ: GENRE: Melodic Hard Rock / Metal。発表文は「Huge, anthemic melodic hard rock mixed with European metal influences」。アンセミックなメロディが支配的でS。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバム単独ページなし）。4年ぶりの新作スタジオ盤。欧州メタル色は MELODIC POWER 側との境界要素として明記するが、コーラスの華やかさが支配的。</p>
+            <p class="srcs">出典：<a href="https://frontiers.shop/products/art-nation-inception-lp?srsltid=AfmBOop3A1AwDPH5cwupOyN21nh-pmjuBjGCPAKVqzuKbgRIKG-y7-nj" target="_blank" rel="noopener">Frontiers</a><a href="https://grande-rock.com/news/art-nation-to-release-new-studio-album-inception-on-june-9th-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">03</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Wig Wam — <span class="album">『Out of the Dark』</span></h3>
+            <p class="meta">発売：2023-02-10</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Genre Glam metal, hard rock、6th studio album。Frontiers 公式は GENRE Melodic Rock。グラム／ヘアメタル系の華やかさが本ジャンルのS基準に直結。</p>
+            <p><b>備考：</b>Wikipediaで確認可能。44:02、11曲。LP版は2023-05-12発売だが、CD／デジタル等の初出は2023-02-10。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Out_of_the_Dark_(Wig_Wam_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://grande-rock.com/news/wig-wam-to-release-new-studio-album-out-of-the-dark-on-february-10th-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">04</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Steel Panther — <span class="album">『On the Prowl』</span></h3>
+            <p class="meta">発売：2023-02-24</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Genres Glam metal, comedy rock、6th studio album、47:27。Crucial Rhythm も Glam Metal, Heavy Metal, Hard Rock と分類。音楽的には80sヘアメタルの様式と華やかなコーラスが支配的でS。</p>
+            <p><b>備考：</b>Wikipediaで確認可能。13曲。新ベーシスト Spyder 参加初作。コメディ要素は歌詞面のもので、絶対除外要素には該当しない。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/On_the_Prowl_(Steel_Panther_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.crucialrhythm.com/steel-panther-on-the-prowl-review" target="_blank" rel="noopener">Crucial Rhythm</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">05</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>John Diva &amp; The Rockets Of Love — <span class="album">『The Big Easy』</span></h3>
+            <p class="meta">発売：2023-03-17</p>
+            <p><b>ジャンル根拠：</b>Grande Rock／SPV 発表: third studio album、80s vibes。SPV 紹介文は「Hair Metal heroes」、FOR FANS OF Steel Panther, Mötley Crüe, Poison, H.E.A.T と明記。ヘアメタル様式とキャッチーさが支配的でS。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバム単独ページなし）。冒頭「California Rhapsody」は0:53のイントロ的トラック。Steamhammer／SPV 発売。</p>
+            <p class="srcs">出典：<a href="https://grande-rock.com/news/john-diva-and-the-rockets-of-love-to-release-new-studio-album-the-big-easy-on-march-17th-2023/" target="_blank" rel="noopener">Grande Rock</a><a href="https://metal-temple.com/news/john-diva-the-rockets-of-love-new-album-out-in-march-2023/" target="_blank" rel="noopener">Metal Temple</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">06</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Bai Bang — <span class="album">『Sha Na Na Na』</span></h3>
+            <p class="meta">発売：2023-03-24</p>
+            <p><b>ジャンル根拠：</b>Metal Express: Swedish Glam Rock、ninth studio album、great riffs, melodies, catchy hooks。Pride &amp; Joy 紹介も「sleaze with glamorous flair to classic melodic hard rock」、For fans of Crazy Lixx, Eclipse。グラム＋メロディック・ハードロックでS。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバム単独ページなし）。11曲で総時間は約34〜36分と短め。一部小売で3/31や4/7の表記があるが、レーベル発表・複数メディアは2023-03-24で一致。</p>
+            <p class="srcs">出典：<a href="https://www.metalexpressradio.com/2023/03/26/bai-bang-sha-na-na-na/" target="_blank" rel="noopener">Metal Express</a><a href="https://sleazeroxx.com/bai-bang-to-release-new-album-sha-na-na-na-on-march-24th/" target="_blank" rel="noopener">Sleaze Roxx</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">07</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>House Of Shakira — <span class="album">『XIT』</span></h3>
+            <p class="meta">発売：2023-05-19</p>
+            <p><b>ジャンル根拠：</b>Grande Rock／Frontiers: Long-running Swedish melodic hard rockers の新作スタジオ盤。Qobuz も 11 tracks、43:34、2023 Frontiers と記載。長年のメロディック・ハードロックの中核バンドで美旋律が支配的、S。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバム単独ページなし）。通算枚数の数え方にソース間で違いあり（10th overall 相当）。発売日も一部二次情報に2023-04-21表記があるが、Frontiers 発表・Tower・Qobuz は2023-05-19で一致。</p>
+            <p class="srcs">出典：<a href="https://grande-rock.com/news/house-of-shakira-to-release-new-studio-album-xit-on-may-19th-2023/" target="_blank" rel="noopener">Grande Rock</a><a href="https://www.qobuz.com/dk-en/album/xit-house-of-shakira/xiyhlt8zepy2a" target="_blank" rel="noopener">Qobuz</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">08</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Degreed — <span class="album">『Public Address』</span></h3>
+            <p class="meta">発売：2023-07-07</p>
+            <p><b>ジャンル根拠：</b>Grande Rock／Frontiers: seventh studio album。MyGlobalMind レビュー: Genre Melodic Hard Rock、Swedish AOR／Melodic Hard Rock の leading figure。Frontiers 公式は Hard Rock 表記だがメロディック色が支配的でS。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバム単独ページなし）。12曲・約44分（日本盤表記では47:30、ボーナス等の版違いの可能性あり）。</p>
+            <p class="srcs">出典：<a href="https://grande-rock.com/news/degreed-to-release-new-studio-album-public-address-on-july-7th-2023/" target="_blank" rel="noopener">Grande Rock</a><a href="https://myglobalmind.com/2023/08/16/degreed-public-address-review/" target="_blank" rel="noopener">MyGlobalMind</a></p>
+          </article>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="demoted">
+        <div class="sec-head"><span class="no">03</span><h2 id="demoted">S検証の結果 — A降格2枚</h2><p>S候補10枚のうち2枚が境界判定でAへ</p></div>
+        <p class="note">2枚とも「質が低い」わけではない。美旋律とコーラスの華やかさが支配的かどうかという本ジャンルのS基準で測ると、骨太リフやブルース色が上回る HARD ROCK 寄りの境界作と判定された。検証側の推薦では、落とすなら Joel Hoekstra's 13 を最優先、次点が L.A. Guns だった。</p>
+        <div class="cards">
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-out">A降格</span><span class="chip chip-out">HARD ROCK寄りの境界</span></div>
+            <h3>L.A. Guns — <span class="album">『Black Diamonds』</span></h3>
+            <p class="meta">発売：2023-04-14 ・ 収集時はS候補</p>
+            <p><b>判定理由：</b>Wikipedia discography で2023-04-14 Frontiers 発売の studio album を確認。歴史的にはグラム／ヘア系だが、本作は骨太リフとブルース／クラシック・ハードロック色が強く、美旋律・コーラスの華やかさが支配的とは言い難いため、本ジャンルではSではなくA。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバム単独ページなし、discography で確認）。11曲・約41分。Tracii Guns 版 L.A. Guns（Riley 版とは別）。通算枚数の数え方はソースにより異なる。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/L.A._Guns_discography" target="_blank" rel="noopener">Wikipedia</a><a href="https://grande-rock.com/news/l-a-guns-to-release-new-studio-album-black-diamonds-on-april-14th-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-out">A降格</span><span class="chip chip-out">S候補中最弱の適合</span></div>
+            <h3>Joel Hoekstra's 13 — <span class="album">『Crash Of Life』</span></h3>
+            <p class="meta">発売：2023-06-16 ・ 収集時はS候補</p>
+            <p><b>判定理由：</b>Blabbermouth／Frontiers: ソロ・プロジェクトの3rd album、2023-06-16 発売。Music Waves は MELODIC HARD ROCK と分類する一方、Sea of Tranquility は hard rock base steered into metal とし、Whitesnake 的なブルージー曲やフックの弱さを指摘。骨太・ブルース色が美旋律支配を上回る境界作のためA。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバム単独ページなし）。12曲。リードボーカルは Girish Pradhan に交替。Whitesnake ギタリストのプロジェクト作。</p>
+            <p class="srcs">出典：<a href="https://blabbermouth.net/news/whitesnakes-joel-hoekstra-once-again-recruits-vinny-appice-tony-franklin-for-third-joel-hoekstras-13-album-crash-of-life" target="_blank" rel="noopener">Blabbermouth</a><a href="https://grande-rock.com/news/joel-hoekstras-13-to-release-new-studio-album-crash-of-life-on-june-16th-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="dup">
+        <div class="sec-head"><span class="no">04</span><h2 id="dup">重複除外6枚</h2><p>既出アルバム累積リストと照合 ・ 他ジャンルで選出済み</p></div>
+        <p class="note">6枚とも本ジャンルへの適合自体は高かったが、アルバム重複禁止ルールにより、既に他ジャンルで採用済みのため除外した。ベンチマーク・アーティスト Eclipse の新作もここに含まれる。</p>
+        <div class="cards">
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">重複除外</span></div>
+            <h3>Eclipse — <span class="album">『Megalomanium』</span></h3>
+            <p class="meta">発売：2023-09-01 ・ MAINSTREAM ROCK / ARENA HEROES で既採用</p>
+            <p><b>ジャンル根拠：</b>MyGlobalMind: Genre: Melodic Hard Rock（Frontiers）。Grande Rock も 80s-influenced Melodic Hard Rock、hook-laden と説明。本ジャンルのベンチマーク・アーティスト自身の9th studio album。</p>
+            <p><b>除外理由：</b>既出アルバム累積リストに MAINSTREAM ROCK / ARENA HEROES、2023として既採用のため重複除外。Wikipediaでは確認できない（MyGlobalMind／Grande Rock／Frontiers で検証）。</p>
+            <p class="srcs">出典：<a href="https://myglobalmind.com/2023/08/16/eclipse-megalomanium-review/" target="_blank" rel="noopener">MyGlobalMind</a><a href="https://grande-rock.com/news/eclipse-to-release-new-studio-album-megalomanium-on-september-1st-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">重複除外</span></div>
+            <h3>Winger — <span class="album">『Seven』</span></h3>
+            <p class="meta">発売：2023-05-05 ・ MAINSTREAM ROCK / ARENA HEROES で既採用</p>
+            <p><b>ジャンル根拠：</b>Sonic Perspectives: Genre: Melodic Hard Rock、2023-05-05、Frontiers。Wikipedia でも studio album として2023-05-05発売を確認。</p>
+            <p><b>除外理由：</b>既出アルバム累積リストに MAINSTREAM ROCK / ARENA HEROES、2023として既採用のため重複除外。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Seven_(Winger_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.sonicperspectives.com/album-reviews/winger-seven/" target="_blank" rel="noopener">Sonic Perspectives</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-out">A（収集時）</span><span class="chip chip-out">重複除外</span></div>
+            <h3>Extreme — <span class="album">『Six』</span></h3>
+            <p class="meta">発売：2023-06-09 ・ MAINSTREAM ROCK / ARENA HEROES で既採用</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Genre Hard rock、2023-06-09発売。Sonic Perspectives は Genre Melodic Hard Rock と分類。ファンク／メタル要素を含むが、ヘアメタル出身バンドのメロディックなハードロックとして収集時はA。</p>
+            <p><b>除外理由：</b>既出アルバム累積リストに MAINSTREAM ROCK / ARENA HEROES、2023として既採用のため重複除外。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Six_(Extreme_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.sonicperspectives.com/album-reviews/extreme-six/" target="_blank" rel="noopener">Sonic Perspectives</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">重複除外</span></div>
+            <h3>Midnite City — <span class="album">『In At The Deep End』</span></h3>
+            <p class="meta">発売：2023-06-23 ・ HARD ROCK で既採用</p>
+            <p><b>ジャンル根拠：</b>Metal Temple:「true kings of Hair Metal」、late 80s style Hair Metal の全条件を満たすと評された4th studio album（Pride &amp; Joy）。日本盤は2023-06-21（Marquee Avalon）、全世界盤は6月23日。</p>
+            <p><b>除外理由：</b>既出アルバム累積リストに HARD ROCK、『In at the Deep End』、2023として既採用のため重複除外（大文字小文字の表記揺れを重複と判定）。Wikipediaでは確認できない。</p>
+            <p class="srcs">出典：<a href="https://metal-temple.com/review/midnite-city-in-at-the-deep-end/" target="_blank" rel="noopener">Metal Temple</a><a href="https://sleazeroxx.com/midnite-city-unveil-video-for-new-single-girls-gone-wild/" target="_blank" rel="noopener">Sleaze Roxx</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">重複除外</span></div>
+            <h3>Temple Balls — <span class="album">『Avalanche』</span></h3>
+            <p class="meta">発売：2023-11-10 ・ HARD ROCK で既採用</p>
+            <p><b>ジャンル根拠：</b>Grande Rock: 4th studio album、プロデューサーは Jona Tee（H.E.A.T）、strong melodies, choruses。Tuonela も bombastic melodic hard rock と評した Frontiers 盤。</p>
+            <p><b>除外理由：</b>既出アルバム累積リストに HARD ROCK、2023として既採用のため重複除外。Wikipediaでは確認できない（Grande Rock／Qobuz／Discogs で検証）。</p>
+            <p class="srcs">出典：<a href="https://grande-rock.com/news/temple-balls-to-release-new-studio-album-avalanche-on-november-10th-2023/" target="_blank" rel="noopener">Grande Rock</a><a href="https://tuonelamagazine.com/review-temple-balls-avalanche/" target="_blank" rel="noopener">Tuonela</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">重複除外</span></div>
+            <h3>Heaven's Edge — <span class="album">『Get It Right』</span></h3>
+            <p class="meta">発売：2023-05-12 ・ HARD ROCK で既採用</p>
+            <p><b>ジャンル根拠：</b>Wikipedia バンドページ: Genres Glam metal, hard rock, AOR。Grande Rock も Philadelphia hard rockers の新作スタジオ盤として2023-05-12 Frontiers 発売を報道。25年ぶりのスタジオ盤。</p>
+            <p><b>除外理由：</b>既出アルバム累積リストに HARD ROCK、「Heaven's Edge」名義で既採用のため重複除外（候補収集時の表記 Heavens Edge と同一アーティストの表記揺れとして判定）。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Heavens_Edge" target="_blank" rel="noopener">Wikipedia（バンド）</a><a href="https://grande-rock.com/news/heavens-edge-to-release-new-studio-album-get-it-right-on-may-12th-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="all">
+        <div class="sec-head"><span class="no">05</span><h2 id="all">候補28枚 全一覧</h2><p>収集時点の適合ランク付き ・ 発売日順</p></div>
+        <p class="note">ランクは収集時点のジャンル適合度。S＝美旋律とコーラスの華やかさが支配的、A＝AOR色のあるメロディック・ハードロック、B＝境界要素を含む条件付き。重複除外の6枚を除き、S候補10枚のみ次段のS検証に進み、A・Bは最終枠の対象外となった。</p>
+        <ol class="all-list">
+          <li><span class="r r-b">B</span><div class="who"><b>Heroes And Monsters</b> — <span class="alb">『Heroes And Monsters』</span> <span class="res res-none">／ 最終対象外</span><p>Frontiers 公式ショップ: GENRE Hard Rock、デビュー盤（2023-01-20）。ビッグリフとグルーヴが支配的で HARD ROCK 寄りの境界Bとして広く収集。Wikipediaでは確認できない。<a href="https://frontiers-us.shop/products/heroes-monsters-heroes-monsters-cd" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-01-20</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Wig Wam</b> — <span class="alb">『Out of the Dark』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: Genre Glam metal, hard rock、6th studio album。Grande Rock は 80s inspired glam metal と classic hard rock の融合と説明。<a href="https://en.wikipedia.org/wiki/Out_of_the_Dark_(Wig_Wam_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-10</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Sister Morphine</b> — <span class="alb">『Ghosts Of Heartbreak City』</span> <span class="res res-none">／ 最終対象外</span><p>Sleaze Roxx 系: Valleys のスリーズ・ロッカーズのデビュー盤（2023-02-14）。1989〜91年のアーカイヴ曲の再録＋新曲4曲を含む構成で、オリジナル・スタジオ盤扱いに判定が必要な境界B。Wikipediaでは確認できない。<a href="https://rpmonline.co.uk/?m=202211&paged=4" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-14</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Creye</b> — <span class="alb">『III: Weightless』</span> <span class="res res-none">／ 最終対象外</span><p>MyGlobalMind: Genre Melodic Rock（Frontiers）。Grande Rock は AOR と melodic rock、pop-rock のブレンドと説明。ポップ寄りの境界B。Wikipediaでは確認できない。<a href="https://myglobalmind.com/2023/02/24/creye-iii-weightless-review/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-17</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Steel Panther</b> — <span class="alb">『On the Prowl』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: Genres Glam metal, comedy rock、6th studio album。Blabbermouth も California glam metal の6作目と報道。<a href="https://en.wikipedia.org/wiki/On_the_Prowl_(Steel_Panther_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-24</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>John Diva &amp; The Rockets Of Love</b> — <span class="alb">『The Big Easy』</span> <span class="res res-final">／ 最終確定</span><p>Discogs: Style Glam, Hard Rock（Steamhammer）。SPV 発表は「Hair Metal heroes」の3rd album と明記。Wikipediaでは確認できない。<a href="https://www.discogs.com/release/26655974-John-Diva-And-The-Rockets-Of-Love-The-Big-Easy?srsltid=AfmBOopUxdwJsHjHo3WAyJl37o0GN1rMk5Z6tQ9kwubNBD6_Ry3m5NnV" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-17</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Bai Bang</b> — <span class="alb">『Sha Na Na Na』</span> <span class="res res-final">／ 最終確定</span><p>Metal Express／Sleaze Roxx: Swedish Glam Rock、classic raunchy Sleaze Rock から Melodic Hard Rock まで、9th studio album（Pride &amp; Joy）。Crazy Lixx、Eclipse のファン向けと紹介。Wikipediaでは確認できない。<a href="https://sleazeroxx.com/bai-bang-to-release-new-album-sha-na-na-na-on-march-24th/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-24</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>L.A. Guns</b> — <span class="alb">『Black Diamonds』</span> <span class="res res-out">／ S検証でA降格</span><p>Wikipedia discography で2023-04-14 Frontiers 発売を確認。Rock Cellar は Los Angeles glam/rock/metal icons と紹介するが、検証では骨太・ブルース色が強い HARD ROCK 寄りと判定しA降格。<a href="https://en.wikipedia.org/wiki/L.A._Guns_discography" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-04-14</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Revolution Saints</b> — <span class="alb">『Eagle Flight』</span> <span class="res res-none">／ 最終対象外</span><p>MyGlobalMind: Genre Melodic Rock（Frontiers、2023-04-21）。Metal Talk は hook-soaked な high-octane melodic rock と評したスーパーグループ作。AOR色のあるA。Wikipediaでは確認できない。<a href="https://myglobalmind.com/2023/04/24/revolution-saints-eagle-flight-review/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-04-21</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Winger</b> — <span class="alb">『Seven』</span> <span class="res res-out">／ 重複除外（MAINSTREAM で既採用）</span><p>Sonic Perspectives: Genre: Melodic Hard Rock、2023-05-05、Frontiers。Wikipedia でも studio album を確認。<a href="https://en.wikipedia.org/wiki/Seven_(Winger_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-05</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Heavens Edge</b> — <span class="alb">『Get It Right』</span> <span class="res res-out">／ 重複除外（HARD ROCK で既採用）</span><p>Wikipedia バンドページ: Genres Glam metal, hard rock, AOR、2023-05-12 Frontiers。累積リストの「Heaven's Edge」と同一アーティストの表記揺れとして重複判定。<a href="https://en.wikipedia.org/wiki/Heavens_Edge" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-12</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Sweet &amp; Lynch</b> — <span class="alb">『Heart &amp; Sacrifice』</span> <span class="res res-none">／ 最終対象外</span><p>MyGlobalMind: Genre Melodic Metal（Frontiers、2023-05-19）。Michael Sweet（Stryper）＋ George Lynch（Dokken）。メロディック・メタル寄りだがメロディ支配的としてA。Wikipediaでは確認できない。<a href="https://myglobalmind.com/2023/05/23/sweet-lynch-heart-sacrifice-review/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-19</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>House Of Shakira</b> — <span class="alb">『XIT』</span> <span class="res res-final">／ 最終確定</span><p>Grande Rock: Long-running Swedish melodic hard rockers の新作。Dangerdog も Melodic Hard Rock/AOR と分類（2023-05-19）。Wikipediaでは確認できない。<a href="https://grande-rock.com/news/house-of-shakira-to-release-new-studio-album-xit-on-may-19th-2023/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-19</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>The Defiants</b> — <span class="alb">『Drive』</span> <span class="res res-final">／ 最終確定</span><p>Frontiers 発表（All Music Magazine／MyGlobalMind）: impeccable slice of melodic hard rock、big choruses/hooks、2023-06-09。Danger Danger のメンバーによる3rd studio album。Wikipediaでは確認できない。<a href="https://allmusicmagazine.com/the-defiants-announce-new-album-drive-set-for-release-on-june-9-2023/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-09</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Art Nation</b> — <span class="alb">『Inception』</span> <span class="res res-final">／ 最終確定</span><p>Frontiers 公式ショップ: GENRE: Melodic Hard Rock / Metal、2023-06-09。欧州メタル色は境界要素として記録。Wikipediaでは確認できない。<a href="https://frontiers.shop/products/art-nation-inception-lp?srsltid=AfmBOop3A1AwDPH5cwupOyN21nh-pmjuBjGCPAKVqzuKbgRIKG-y7-nj" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-09</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Extreme</b> — <span class="alb">『Six』</span> <span class="res res-out">／ 重複除外（MAINSTREAM で既採用）</span><p>Wikipedia: Genre Hard rock、2023-06-09。Sonic Perspectives は Melodic Hard Rock と分類。ファンク／メタル要素を含む境界として収集時はA。<a href="https://en.wikipedia.org/wiki/Six_(Extreme_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-09</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Stardust</b> — <span class="alb">『Kingdom of Illusion』</span> <span class="res res-none">／ 最終対象外</span><p>Frontiers 公式ショップ: GENRE Melodic Hard Rock。Grande Rock は classic melodic hard rock と AOR の融合、hooky choruses と説明（2023-06-16）。ハンガリーのバンドの2nd studio album。Wikipediaでは確認できない。<a href="https://frontiers-us.shop/products/stardust-kingdom-of-illusion-cd" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-16</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Joel Hoekstra's 13</b> — <span class="alb">『Crash Of Life』</span> <span class="res res-out">／ S検証でA降格</span><p>Dangerdog: Melodic Hard Rock/AOR（Frontiers、2023-06-16）。CDJapan もメロディック・ハードロックとして紹介。検証では Whitesnake 的なブルース／骨太色が上回ると判定しA降格。Wikipediaでは確認できない。<a href="https://dangerdog.com/2023-music-reviews/joel-hoekstra-13-crash-of-life.php" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-16</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Vypera</b> — <span class="alb">『Race Of Time』</span> <span class="res res-none">／ 最終対象外</span><p>Grande Rock／Frontiers: Swedish hard rock/trad metal、2nd studio album（2023-06-16）。トラッド・メタル要素が強ければ MELODIC POWER 寄りの境界B。Wikipediaでは確認できない。<a href="https://grande-rock.com/news/vypera-to-release-new-studio-album-race-of-time-on-june-16th-2023/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-16</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Midnite City</b> — <span class="alb">『In At The Deep End』</span> <span class="res res-out">／ 重複除外（HARD ROCK で既採用）</span><p>Metal Temple:「true kings of Hair Metal」、late 80s style Hair Metal（2023-06-23）。累積リストの『In at the Deep End』と表記揺れを重複判定。Wikipediaでは確認できない。<a href="https://metal-temple.com/review/midnite-city-in-at-the-deep-end/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-23</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Degreed</b> — <span class="alb">『Public Address』</span> <span class="res res-final">／ 最終確定</span><p>Dangerdog: Melodic Hard Rock（Frontiers、2023-07-07）、song melody／vocal harmony／catchy choruses を評価。スウェーデンのバンドの7th studio album。Wikipediaでは確認できない。<a href="https://dangerdog.com/2023-music-reviews/degreed-public-address.php" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-07-07</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Eclipse</b> — <span class="alb">『Megalomanium』</span> <span class="res res-out">／ 重複除外（MAINSTREAM で既採用）</span><p>MyGlobalMind: Genre: Melodic Hard Rock（Frontiers、2023-09-01）。ベンチマーク・アーティスト自身の9th studio album。Wikipediaでは確認できない。<a href="https://myglobalmind.com/2023/08/16/eclipse-megalomanium-review/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-09-01</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>VEGA</b> — <span class="alb">『Battlelines』</span> <span class="res res-none">／ 最終対象外</span><p>Grande Rock: melodic rock with hard edge、Bon Jovi（late 80s/90s）と Def Leppard の影響（2023-09-08）。Discogs の Style は AOR。AOR色のあるハードロックとしてA。Wikipediaでは確認できない。<a href="https://grande-rock.com/news/vega-to-release-new-studio-album-battlelines-on-september-8th-2023/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-09-08</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Blackbird Angels</b> — <span class="alb">『Solsorte』</span> <span class="res res-none">／ 最終対象外</span><p>Consequence: melodic hard rock with hint of 80s glam metal、デビュー盤（2023-09-08、Frontiers）。Tracii Guns と Todd Kerns の新バンド。70s ロックの影響が強く HARD ROCK 寄りの可能性のある境界B。Wikipediaでは確認できない。<a href="https://consequence.net/2023/07/blackbird-angels-tracii-guns-new-band/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-09-08</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Nitrate</b> — <span class="alb">『Feel The Heat』</span> <span class="res res-none">／ 最終対象外</span><p>Frontiers 系: UK melodic/hard rockers の4th studio album（2023-10-13）、late 80s の Def Leppard／Europe／Journey／Bon Jovi に影響された anthemic な作風。MyGlobalMind は Genre Melodic Rock。Wikipediaでは確認できない。<a href="https://rocknloadmag.com/nitrate-feel-the-heat-new-album-by-uk-melodic-hard-rockers-out-13-10-23-via-frontiers/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-10-13</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Temple Balls</b> — <span class="alb">『Avalanche』</span> <span class="res res-out">／ 重複除外（HARD ROCK で既採用）</span><p>Grande Rock: 4th studio album（2023-11-10、Frontiers）、プロデューサー Jona Tee（H.E.A.T）。Tuonela は bombastic melodic hard rock と評価。Wikipediaでは確認できない。<a href="https://grande-rock.com/news/temple-balls-to-release-new-studio-album-avalanche-on-november-10th-2023/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-11-10</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Care Of Night</b> — <span class="alb">『Reconnected』</span> <span class="res res-none">／ 最終対象外</span><p>Dangerdog: Melodic Hard Rock/AOR（Frontiers、2023-11-17）、arena-ready AOR の包み。Frontiers 公式ショップは GENRE Melodic Rock、Swedish AOR/Melodic Rock。3rd studio album。Wikipediaでは確認できない。<a href="https://dangerdog.com/2023-music-reviews/care-of-night-reconnected.php" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-11-17</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Cassidy Paris</b> — <span class="alb">『New Sensation』</span> <span class="res res-none">／ 最終対象外</span><p>Discogs: Style AOR, Hard Rock（Frontiers、2023-12-08）。デビュー・フルアルバムで、メンターは Paul Laine（Danger Danger／The Defiants）。Wikipediaでは確認できない。<a href="https://www.discogs.com/release/29139265-Cassidy-Paris-New-Sensation" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-12-08</span></li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="tsv">
+        <div class="sec-head"><span class="no">06</span><h2 id="tsv">最終アルバムTSV</h2><p>GENRE ／ ARTIST ／ ALBUM ／ YEAR</p></div>
+        <div class="tsv">GENRE	ARTIST	ALBUM	YEAR
+MELODIC HARD ROCK / HAIR METAL	The Defiants	Drive	2023
+MELODIC HARD ROCK / HAIR METAL	Art Nation	Inception	2023
+MELODIC HARD ROCK / HAIR METAL	Wig Wam	Out of the Dark	2023
+MELODIC HARD ROCK / HAIR METAL	Steel Panther	On the Prowl	2023
+MELODIC HARD ROCK / HAIR METAL	John Diva &amp; The Rockets Of Love	The Big Easy	2023
+MELODIC HARD ROCK / HAIR METAL	Bai Bang	Sha Na Na Na	2023
+MELODIC HARD ROCK / HAIR METAL	House Of Shakira	XIT	2023
+MELODIC HARD ROCK / HAIR METAL	Degreed	Public Address	2023</div>
+      </section>
+
+      <footer>
+        <p>2023年 ジャンル8「MELODIC HARD ROCK / HAIR METAL」候補一覧。2023年から新設されたジャンルの初選出で、実行順は FEMALE VOCAL の後・YEARLY の前。楽曲選出（各2曲・計16曲）と Spotify プレイリスト「2023年MELODIC HARD ROCK / HAIR METAL」は別ページ／プレイリストに記録。</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2023 MELODIC HARD ROCK / HAIR METAL 楽曲選出</title>
+<style>
+  :root{
+    --bg:#faf5ef; --surface:#ffffff; --surface-2:#f3e9dc; --ink:#221a14; --ink-2:#6b5d52;
+    --line:#e2d5c3; --accent:#9a3b12; --accent-2:#c47a12; --accent-soft:#fbeed6;
+    --badge-bg:#9a3b12; --badge-ink:#fff; --link:#9a3b12; --note-bg:#f3e9dc;
+    --warn-bg:#fff4d6; --warn-line:#c9a24d; --warn-ink:#5c4510;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#171310; --surface:#221c18; --surface-2:#2c241e; --ink:#f0e7dc; --ink-2:#b8a99a;
+      --line:#3d332a; --accent:#f0a35e; --accent-2:#e8b34a; --accent-soft:#33251a;
+      --badge-bg:#b45a1f; --badge-ink:#fff; --link:#f0a35e; --note-bg:#2c241e;
+      --warn-bg:#332a17; --warn-line:#8a6d2f; --warn-ink:#e6cf8f;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP",system-ui,sans-serif;line-height:1.75;font-size:16px}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 56px}
+  a{color:var(--link)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  button,[role="button"],select,summary,input:not([type="checkbox"],[type="radio"]){min-height:2rem}
+  header.hero{padding:38px 0 8px}
+  .genre-label{font-size:13px;letter-spacing:.12em;font-weight:700;color:var(--accent);margin:0 0 10px}
+  h1{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:clamp(24px,5vw,35px);line-height:1.32;margin:0 0 14px;font-weight:700}
+  .hero-lead{color:var(--ink-2);margin:0 0 22px;max-width:700px}
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px;padding:0;list-style:none}
+  .stats li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 16px;font-size:14px}
+  .stats strong{font-size:20px;font-weight:800;margin-right:4px}
+  .spotify-btn{display:inline-flex;align-items:center;gap:10px;background:#1db954;color:#0c2413;font-weight:700;text-decoration:none;border-radius:999px;padding:12px 22px;min-height:48px;font-size:15px}
+  .spotify-btn:hover{filter:brightness(1.06)}
+  .playlist-note{font-size:13.5px;color:var(--ink-2);margin:10px 0 0;max-width:680px}
+  section{margin-top:40px}
+  h2{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:22px;margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+  .context-box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .context-box p{margin:0 0 10px}.context-box p:last-child{margin-bottom:0}
+  .album{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 22px 8px;margin-top:22px}
+  .album-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-bottom:6px}
+  .album-artist{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:21px;font-weight:700;margin:0}
+  .album-title{font-style:italic;font-size:17px;margin:0}
+  .album-meta{color:var(--ink-2);font-size:13.5px;margin:0 0 14px}
+  .track{border-top:1px solid var(--line);padding:16px 0 18px}
+  .track-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+  .track-num{font-size:12px;font-weight:700;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 9px}
+  .track-name{font-size:18px;font-weight:700;margin:0}
+  .track-length{color:var(--ink-2);font-variant-numeric:tabular-nums;font-size:15px}
+  .badge-single{background:var(--badge-bg);color:var(--badge-ink);font-size:12px;font-weight:700;border-radius:999px;padding:3px 11px}
+  .badge-album{background:transparent;color:var(--ink-2);border:1.5px solid var(--line);font-size:12px;font-weight:700;border-radius:999px;padding:2px 11px}
+  .evidence{margin:10px 0 0}
+  .track-note{margin:10px 0 0;font-size:13.5px;color:var(--ink-2);background:var(--note-bg);border-radius:8px;padding:9px 13px}
+  .sources{margin:12px 0 0}
+  .sources-label{font-size:12.5px;font-weight:700;color:var(--ink-2);letter-spacing:.06em}
+  .sources ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .sources a{display:inline-flex;align-items:center;padding:7px 13px;min-height:36px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13.5px;background:var(--bg)}
+  .sources a:hover{border-color:var(--accent)}
+  .metric-note{background:var(--accent-soft);border-radius:10px;padding:18px 20px}
+  .metric-note p{margin:0 0 10px}.metric-note p:last-child{margin-bottom:0}
+  .metric-note ul{margin:6px 0 10px;padding-left:1.3em}.metric-note li{margin-bottom:4px}
+  .rejected-list{margin:0;padding-left:1.3em}.rejected-list li{margin-bottom:8px}
+  footer{margin-top:48px;border-top:1px solid var(--line);padding-top:20px;color:var(--ink-2);font-size:14px}
+  footer h2{font-size:17px;border-bottom:none;padding-bottom:0;margin-bottom:8px;color:var(--ink)}
+  footer ul{margin:0;padding-left:1.3em}footer li{margin-bottom:4px}
+  .tsv-box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .tsv-box pre{margin:0;font-size:12.5px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink-2)}
+  @media (max-width:560px){.wrap{padding:0 14px 44px}.album{padding:18px 16px 4px}header.hero{padding-top:28px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <p class="genre-label">2023年 ・ ジャンル 8. MELODIC HARD ROCK / HAIR METAL ― 新設ジャンル初選出</p>
+    <h1>2023 MELODIC HARD ROCK / HAIR METAL 楽曲選出</h1>
+    <p class="hero-lead">最終選出アルバム8枚から、各2曲ずつ計16曲を選出。シングル14曲に、タイトル曲など2曲を加えた構成で、曲の長さ・シングルかどうか・選出理由のエビデンスと、確認に使った出典をアルバムごとに記録する。</p>
+    <ul class="stats">
+      <li><strong>8</strong>枚 最終アルバム</li>
+      <li><strong>16</strong>曲 選出曲</li>
+      <li><strong>14</strong>曲 シングル</li>
+      <li><strong>64分21秒</strong> 合計（採用曲長ベース）</li>
+    </ul>
+    <a class="spotify-btn" href="https://open.spotify.com/playlist/5UiqsuhPD9xM1nMKtdPne3" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.3a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 1 1-.33-1.46c4.57-1.05 8.48-.6 11.66 1.34.35.21.46.68.25 1.03zm1.47-3.83a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.54-1.8c4.36-1.32 9.78-.68 13.49 1.6.41.25.56.88.31 1.29zm.13-3.98C15.3 7.22 8.86 6.9 4.9 8.1a1.13 1.13 0 1 1-.65-2.16c4.53-1.37 11.5-1.03 16.05 1.67a1.13 1.13 0 0 1-1.15 1.94z"/></svg>
+      Spotifyプレイリスト「2023年MELODIC HARD ROCK / HAIR METAL」を開く
+    </a>
+    <p class="playlist-note">プレイリストは最終TSVの順序どおり全16曲を確認済み。カバー／トリビュート／カラオケ／ライヴ版は使用していない。</p>
+  </header>
+
+  <section aria-labelledby="context-h">
+    <h2 id="context-h">選出の経緯</h2>
+    <div class="context-box">
+      <p>このジャンルは2026-11-13に新設された枠で、今回が初選出。ベンチマークは H.E.A.T、Nestor、Eclipse、Treat、Crazy Lixx。美旋律とコーラスの華やかさが支配的なら本ジャンル、骨太リフやブルース／クラシック色が支配的なら HARD ROCK、パワーメタル的疾走は MELODIC POWER へ振り分ける境界ルールを適用した。</p>
+      <p>候補28枚から、他ジャンルで選出済みの6枚 ― Eclipse『Megalomanium』、Winger『Seven』、Extreme『Six』（いずれも MAINSTREAM ROCK / ARENA HEROES）、Midnite City『In at the Deep End』、Temple Balls『Avalanche』、Heaven's Edge『Get It Right』（いずれも HARD ROCK）― を重複除外。S検証では L.A. Guns『Black Diamonds』と Joel Hoekstra's 13『Crash Of Life』が、スリーズ／ブルース寄りで美旋律の支配性がS基準に届かずA降格となり、最終8枚で確定した。停止ゲートは発生しなかった。</p>
+      <p>楽曲は各アルバム2曲・計16曲。2分以下・バラードは原則除外し、シングルを基本に選んだ。</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="tracks-h">
+    <h2 id="tracks-h">選出曲（アルバム別）</h2>
+
+    <article class="album">
+      <div class="album-head"><h3 class="album-artist">The Defiants</h3><p class="album-title">Drive</p></div>
+      <p class="album-meta">2023年6月9日発売 ・ Frontiers ・ Danger Danger 系メンバーによる3rdアルバム ・ 選出2曲</p>
+      <div class="track">
+        <div class="track-head"><span class="track-num">1曲目</span><h4 class="track-name">Hey Life</h4><span class="track-length">4:37</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">第1弾シングル。BraveWords／Sonic Perspectives が「The first single from the album, Hey Life, is out today」と lyric video 公開を明記。2Loud2OldMusic が「massive anthemic rocker」と評するアップテンポ曲でバラードではない。Last.fm（第三者集計）では 745 listeners。収録は Frontiers 公式ショップと Sleaze Roxx のトラックリストでクロスチェックした。</p>
+        <p class="track-note">Wikipediaでは確認できない（アルバム単独ページなし。Frontiers／Sleaze Roxx／Last.fm 等で確認）。長さは Last.fm 4:37、Discogs 4:38 と表記揺れがあり、Last.fm 値を採用。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://bravewords.com/news/the-defiants-featuring-danger-danger-members-to-release-drive-album-in-june-hey-life-lyric-video-streaming/" target="_blank" rel="noopener">BraveWords</a></li>
+          <li><a href="https://frontiers-us.shop/collections/2023/products/the-defiants-drive-cd" target="_blank" rel="noopener">Frontiers 公式ショップ</a></li>
+          <li><a href="https://sleazeroxx.com/reviews/the-defiants-drive/" target="_blank" rel="noopener">Sleaze Roxx（レビュー）</a></li>
+          <li><a href="https://www.last.fm/music/The+Defiants/Drive" target="_blank" rel="noopener">Last.fm</a></li>
+        </ul></div>
+      </div>
+      <div class="track">
+        <div class="track-head"><span class="track-num">2曲目</span><h4 class="track-name">19 Summertime</h4><span class="track-length">4:39</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">公式 Music Video が存在し、Sleaze Roxx レビューが動画を埋め込み、Metal Kingdom も Music Video として掲載。Heavy Harmonies の掲載コメントでは本作の3シングル（19 Summertime／Hey Life／Go Big Or Go Home）の一つとして言及されている。Last.fm（第三者集計）ではアルバム内最多の 749 listeners。Metal Planet Music が「proper summertime, feel-good AOR」と評するアップテンポ曲。</p>
+        <p class="track-note">Wikipediaでは確認できない。収録は Frontiers 公式ショップと Sleaze Roxx でクロスチェック。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://sleazeroxx.com/reviews/the-defiants-drive/" target="_blank" rel="noopener">Sleaze Roxx（レビュー）</a></li>
+          <li><a href="https://www.last.fm/music/The+Defiants/Drive" target="_blank" rel="noopener">Last.fm</a></li>
+          <li><a href="https://frontiers-us.shop/collections/2023/products/the-defiants-drive-cd" target="_blank" rel="noopener">Frontiers 公式ショップ</a></li>
+          <li><a href="https://metalplanetmusic.com/2023/06/album-review-the-defiants-drive/" target="_blank" rel="noopener">Metal Planet Music（レビュー）</a></li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="album">
+      <div class="album-head"><h3 class="album-artist">Art Nation</h3><p class="album-title">Inception</p></div>
+      <p class="album-meta">2023年6月9日発売 ・ Frontiers ・ 選出2曲</p>
+      <div class="track">
+        <div class="track-head"><span class="track-num">1曲目</span><h4 class="track-name">Brutal &amp; Beautiful</h4><span class="track-length">4:13</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">第1弾シングル。Frontiers 発表を伝える Grande Rock／Kick Ass Forever が「An epic new single, Brutal And Beautiful, is out today」と明記し、Music Video も公開された。オープニングのアップテンポなメロディック・メタル曲でバラードではない。長さは Deezer で 4:13 を確認し、収録は Frontiers 公式ショップと Grande Rock のトラックリストでクロスチェックした。</p>
+        <p class="track-note">Wikipediaでは確認できない（Deezer／Metal Archives／Frontiers 等で確認）。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://grande-rock.com/news/art-nation-to-release-new-studio-album-inception-on-june-9th-2023/" target="_blank" rel="noopener">Grande Rock</a></li>
+          <li><a href="https://frontiers.shop/collections/art-nation/products/art-nation-inception-lp" target="_blank" rel="noopener">Frontiers 公式ショップ</a></li>
+          <li><a href="https://www.deezer.com/en/album/413487937" target="_blank" rel="noopener">Deezer</a></li>
+        </ul></div>
+      </div>
+      <div class="track">
+        <div class="track-head"><span class="track-num">2曲目</span><h4 class="track-name">1001</h4><span class="track-length">3:18</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">シングル。BraveWords が「A music video for the new single, 1001」と明記。Deezer の Singles 欄にも2023年5月12日付で「1001」単体リリースが掲載され、長さ 3:18。収録は Frontiers 公式ショップと Deezer アルバムページでクロスチェックした。アップテンポ曲でバラードではない。</p>
+        <p class="track-note">Wikipediaでは確認できない。同じくシングルの Echo（3:47）も候補だったが、より新しいシングル／MV の 1001 を優先した。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://bravewords.com/news/art-nation-release-1001-music-video" target="_blank" rel="noopener">BraveWords</a></li>
+          <li><a href="https://www.deezer.com/en/artist/6098976" target="_blank" rel="noopener">Deezer（アーティスト）</a></li>
+          <li><a href="https://frontiers.shop/collections/art-nation/products/art-nation-inception-lp" target="_blank" rel="noopener">Frontiers 公式ショップ</a></li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="album">
+      <div class="album-head"><h3 class="album-artist">Wig Wam</h3><p class="album-title">Out of the Dark</p></div>
+      <p class="album-meta">2023年2月10日発売 ・ Frontiers ・ 6thアルバム ・ Wikipediaで確認済み ・ 選出2曲</p>
+      <div class="track">
+        <div class="track-head"><span class="track-num">1曲目</span><h4 class="track-name">Out of the Dark</h4><span class="track-length">4:28</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">シングル。Wikipedia の「Singles from Out of the Dark」に「Out of the Dark Released: 2 December 2022」と明記され、本文でも先行シングル3曲の一つとされるタイトル曲／オープニング曲。収録と長さは Wikipedia のトラックリストで確認し、Sleaze Roxx でもクロスチェックした。Sleaze Roxx が「crunching, heavy guitars」のキャッチーなハードロックと評し、バラードではない。</p>
+        <p class="track-note">Wikipediaで確認済み（優先ソース）。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://en.wikipedia.org/wiki/Out_of_the_Dark_(Wig_Wam_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+          <li><a href="https://sleazeroxx.com/reviews/wig-wam-out-of-the-dark/" target="_blank" rel="noopener">Sleaze Roxx（レビュー）</a></li>
+          <li><a href="https://grande-rock.com/news/wig-wam-to-release-new-studio-album-out-of-the-dark-on-february-10th-2023/" target="_blank" rel="noopener">Grande Rock</a></li>
+        </ul></div>
+      </div>
+      <div class="track">
+        <div class="track-head"><span class="track-num">2曲目</span><h4 class="track-name">High n Dry</h4><span class="track-length">3:33</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">シングル。Wikipedia の「Singles from Out of the Dark」に「High n Dry Released: 3 January 2023」と明記。BraveWords も lyric video 公開を報道している。収録と長さは Wikipedia で確認し、Frontiers 公式ショップのトラックリストでもクロスチェックした。アップテンポな曲でバラードではない（同じくシングルの Forevermore 4:55 より短く勢いのある2曲目として選出）。</p>
+        <p class="track-note">Wikipediaで確認済み。曲名表記は Wikipedia の「High n Dry」を採用（ショップ等では High 'N Dry／High And Dry 表記もあり）。YouTube公式 lyric video の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://en.wikipedia.org/wiki/Out_of_the_Dark_(Wig_Wam_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+          <li><a href="https://bravewords.com/news/wig-wam-shares-lyric-video-for-high-n-dry/" target="_blank" rel="noopener">BraveWords</a></li>
+          <li><a href="https://frontiers.shop/collections/exclusives/products/wig-wam-out-of-the-dark-lp" target="_blank" rel="noopener">Frontiers 公式ショップ</a></li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="album">
+      <div class="album-head"><h3 class="album-artist">Steel Panther</h3><p class="album-title">On the Prowl</p></div>
+      <p class="album-meta">2023年2月24日発売 ・ 6thアルバム ・ Wikipediaで確認済み ・ 選出2曲</p>
+      <div class="track">
+        <div class="track-head"><span class="track-num">1曲目</span><h4 class="track-name">Never Too Late (To Get Some Pussy Tonight)</h4><span class="track-length">4:00</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">第1弾シングル。Wikipedia の「Singles from On the Prowl」に2022年リリースと明記され、Blabbermouth も「The first single from On The Prowl is Never Too Late (To Get Some Pussy Tonight)」と報道。収録と長さは Wikipedia のトラックリストで確認し、Blabbermouth のトラックリストでもクロスチェックした。アップテンポなグラム・メタル曲でバラードではない。</p>
+        <p class="track-note">Wikipediaで確認済み（優先ソース）。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://en.wikipedia.org/wiki/On_the_Prowl_(Steel_Panther_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+          <li><a href="https://blabbermouth.net/news/steel-panther-on-the-prowl-album-details-revealed-never-too-late-to-get-some-py-tonight-video-available" target="_blank" rel="noopener">Blabbermouth</a></li>
+        </ul></div>
+      </div>
+      <div class="track">
+        <div class="track-head"><span class="track-num">2曲目</span><h4 class="track-name">1987</h4><span class="track-length">3:27</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">シングル。Wikipedia の「Singles from On the Prowl」に「1987 Released: 2022」と明記。Metal-Roos が music video 付きシングルとして「unforgettable hooks, relatable lyrics, and fretboard fireworks」と紹介するアップテンポ曲でバラードではない。収録と長さは Wikipedia で確認し、Blabbermouth でもクロスチェックした。</p>
+        <p class="track-note">Wikipediaで確認済み。もう一つのシングル Friends With Benefits（3:54）も候補だったが、1987 は年／時代を象徴するフックの強さで優先した。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://en.wikipedia.org/wiki/On_the_Prowl_(Steel_Panther_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+          <li><a href="https://metal-roos.com.au/steel-panther-release-music-video-for-new-single-1987-off-upcoming-album-on-the-prowl/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=steel-panther-release-music-video-for-new-single-1987-off-upcoming-album-on-the-prowl" target="_blank" rel="noopener">Metal-Roos</a></li>
+          <li><a href="https://blabbermouth.net/news/steel-panther-on-the-prowl-album-details-revealed-never-too-late-to-get-some-py-tonight-video-available" target="_blank" rel="noopener">Blabbermouth</a></li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="album">
+      <div class="album-head"><h3 class="album-artist">John Diva &amp; The Rockets Of Love</h3><p class="album-title">The Big Easy</p></div>
+      <p class="album-meta">2023年3月17日発売 ・ Steamhammer / SPV ・ 選出2曲</p>
+      <div class="track">
+        <div class="track-head"><span class="track-num">1曲目</span><h4 class="track-name">The Big Easy</h4><span class="track-length">3:45</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">シングル。Metalheads Forever が「Release New Single The Big Easy」「New Album Title Track + Music Video」と明記。長さ 3:45 は同記事および Deejay.de の収録時間付きトラックリストで確認し、収録は両サイトでクロスチェックした。タイトル曲のアップテンポなヘアメタル曲でバラードではない。なお冒頭 California Rhapsody は 0:53 のため2分以下ルールで除外した。</p>
+        <p class="track-note">Wikipediaでは確認できない（SPV系発表記事／販売サイトで確認）。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://mhf-mag.com/news/john-diva-the-rockets-of-love-release-new-single-the-big-easy/" target="_blank" rel="noopener">Metalheads Forever</a></li>
+          <li><a href="https://www.deejay.de/Diva_John_%26_The_Rockets_Of_Love_The_Big_Easy_247661__1016192" target="_blank" rel="noopener">Deejay.de</a></li>
+          <li><a href="https://www.target.com/p/john-diva-the-rockets-of-love-the-big-easy-cd/-/A-90754600" target="_blank" rel="noopener">Target</a></li>
+        </ul></div>
+      </div>
+      <div class="track">
+        <div class="track-head"><span class="track-num">2曲目</span><h4 class="track-name">Runaway Train</h4><span class="track-length">4:46</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">シングル。Melodic.net が「Drop New Single Runaway Train」「new single and video for the song Runaway Train」と明記。長さ 4:46 は同記事の時間付きトラックリストで確認し、収録は Melodic.net と Metalheads Forever のトラックリストでクロスチェックした。疾走感のあるロック曲でバラードではない（シングル Believe はバラード寄りの懸念があるため避け、Runaway Train を優先）。</p>
+        <p class="track-note">Wikipediaでは確認できない。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="http://www.melodic.net/news/carefree-rockers-john-diva-the-rockets-of-love-drop-new-single-runaway-train" target="_blank" rel="noopener">Melodic.net</a></li>
+          <li><a href="https://mhf-mag.com/news/john-diva-the-rockets-of-love-release-new-single-the-big-easy/" target="_blank" rel="noopener">Metalheads Forever</a></li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="album">
+      <div class="album-head"><h3 class="album-artist">Bai Bang</h3><p class="album-title">Sha Na Na Na</p></div>
+      <p class="album-meta">2023年3月24日発売 ・ Pride &amp; Joy ・ 9thアルバム ・ 選出2曲（うちタイトル曲1曲は非シングル）</p>
+      <div class="track">
+        <div class="track-head"><span class="track-num">1曲目</span><h4 class="track-name">Sha Na Na Na</h4><span class="track-length">3:22</span><span class="badge-album">タイトル曲 ・ 非シングル</span></div>
+        <p class="evidence">シングルとしての発売は確認できないため非シングルとして扱う。選出理由は、アルバムのタイトル曲／オープニング曲で、The Rockpit が「infectious Pop chorus」と評する代表曲であること。setlist.fm（第三者集計）では同アルバム曲中最多の10回ライブ演奏。長さ 3:22 は Qobuz で確認し、収録は Qobuz と Eonian Records のトラックリストでクロスチェックした。アップテンポなパーティ・ロックでバラードではない。</p>
+        <p class="track-note">Wikipediaでは確認できない（Qobuz／Eonian Records 等で確認）。YouTubeの正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://www.qobuz.com/no-en/album/sha-na-na-na-bai-bang/x7n1lkyj12vdc" target="_blank" rel="noopener">Qobuz</a></li>
+          <li><a href="https://www.eonianrecords.com/new-products-b-c/bai-bang-sha-na-na-na" target="_blank" rel="noopener">Eonian Records</a></li>
+          <li><a href="https://www.therockpit.net/2023/album-review-bai-bang-sha-na-na-na/" target="_blank" rel="noopener">The Rockpit（レビュー）</a></li>
+        </ul></div>
+      </div>
+      <div class="track">
+        <div class="track-head"><span class="track-num">2曲目</span><h4 class="track-name">My Favorite Enemy</h4><span class="track-length">3:30</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">シングル。Viberate（第三者集計サイト）が「The latest single from Bai Bang is titled My Favorite Enemy (2023)」と明記。長さ 3:30 は Qobuz で確認し、収録は Qobuz と Eonian Records でクロスチェックした。Metal Express Radio が「simple riff that is repetitive yet catchy」と評するキャッチーな曲でバラードではない。</p>
+        <p class="track-note">Wikipediaでは確認できない。シングル根拠は第三者サイト Viberate の記述であり、レーベル発表では確認できない旨を明記する。YouTubeの正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://www.viberate.com/artist/songs/bai-bang-top-songs/" target="_blank" rel="noopener">Viberate</a></li>
+          <li><a href="https://www.qobuz.com/no-en/album/sha-na-na-na-bai-bang/x7n1lkyj12vdc" target="_blank" rel="noopener">Qobuz</a></li>
+          <li><a href="https://www.eonianrecords.com/new-products-b-c/bai-bang-sha-na-na-na" target="_blank" rel="noopener">Eonian Records</a></li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="album">
+      <div class="album-head"><h3 class="album-artist">House Of Shakira</h3><p class="album-title">XIT</p></div>
+      <p class="album-meta">2023年5月19日発売 ・ Frontiers ・ 選出2曲（うち1曲は非シングル）</p>
+      <div class="track">
+        <div class="track-head"><span class="track-num">1曲目</span><h4 class="track-name">Something in the Water</h4><span class="track-length">4:33</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">シングル。BraveWords が「Something In The Water Single And Music Video Out Now」、Metal Temple も「A new single and video, Something In The Water is out today」と明記。長さ 4:33 は Qobuz／Deezer で確認し、収録は Qobuz と Frontiers 公式ショップのトラックリストでクロスチェックした。オープニングのアップテンポ曲でバラードではない。</p>
+        <p class="track-note">Wikipediaでは確認できない（Qobuz／Frontiers／BraveWords 等で確認）。アルバム名表記は Frontiers 等で XIT／Xit が併存し、指定どおり XIT を使用。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://bravewords.com/news/house-of-shakira-to-release-xit-album-in-may-something-in-the-water-single-and-music-video-out-now/" target="_blank" rel="noopener">BraveWords</a></li>
+          <li><a href="https://www.qobuz.com/dk-en/album/xit-house-of-shakira/xiyhlt8zepy2a" target="_blank" rel="noopener">Qobuz</a></li>
+          <li><a href="https://frontiers.shop/products/house-of-shakira-xit-cd" target="_blank" rel="noopener">Frontiers 公式ショップ</a></li>
+        </ul></div>
+      </div>
+      <div class="track">
+        <div class="track-head"><span class="track-num">2曲目</span><h4 class="track-name">Toxic Train</h4><span class="track-length">4:28</span><span class="badge-album">アルバム曲 ・ 非シングル</span></div>
+        <p class="evidence">シングルとしての発売は確認できないため非シングルとして扱う。選出理由は、アルバム発表時に BackStage360 が先行試聴曲として「Listen to Toxic Train」とフィーチャーした曲で、Get Ready To Rock のライブ評でも XIT からの演奏曲として挙がる実演実績のある曲であること。長さ 4:28 は Qobuz／Deezer で確認し、収録は Qobuz と Frontiers 公式ショップでクロスチェックした。アップテンポなハードロックでバラードではない。</p>
+        <p class="track-note">Wikipediaでは確認できない。YouTubeの正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://backstage360.com/house-of-shakira-xit/" target="_blank" rel="noopener">BackStage360</a></li>
+          <li><a href="https://www.qobuz.com/dk-en/album/xit-house-of-shakira/xiyhlt8zepy2a" target="_blank" rel="noopener">Qobuz</a></li>
+          <li><a href="https://frontiers.shop/products/house-of-shakira-xit-cd" target="_blank" rel="noopener">Frontiers 公式ショップ</a></li>
+          <li><a href="https://getreadytorock.me.uk/blog/2025/08/gig-review-malmo-melodic-plan-b-malmo-sweden-25-27-july-2025/" target="_blank" rel="noopener">Get Ready To Rock（ライブ評）</a></li>
+        </ul></div>
+      </div>
+    </article>
+
+    <article class="album">
+      <div class="album-head"><h3 class="album-artist">Degreed</h3><p class="album-title">Public Address</p></div>
+      <p class="album-meta">2023年7月7日発売 ・ Frontiers ・ 7thアルバム ・ 選出2曲</p>
+      <div class="track">
+        <div class="track-head"><span class="track-num">1曲目</span><h4 class="track-name">Big Plans</h4><span class="track-length">3:50</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">第1弾シングル。Grande Rock／Metal Express Radio が「Big Plans, the album's first single」「Watch the official video for the new single Big Plans」と明記。長さ 3:50 は SongData.io／Online Radio Box で確認し、収録は Grande Rock と Frontiers 公式ショップのトラックリストでクロスチェックした。MyGlobalMind が「energetic Hard Rock track」と評し、バラードではない。</p>
+        <p class="track-note">Wikipediaでは確認できない（Frontiers／Grande Rock 等で確認）。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://grande-rock.com/news/degreed-to-release-new-studio-album-public-address-on-july-7th-2023/" target="_blank" rel="noopener">Grande Rock</a></li>
+          <li><a href="https://www.metalexpressradio.com/2023/07/16/degreed-public-address/" target="_blank" rel="noopener">Metal Express Radio</a></li>
+          <li><a href="https://frontiers.shop/collections/vinyl/products/degreed-public-address-limited-edition-lp" target="_blank" rel="noopener">Frontiers 公式ショップ</a></li>
+          <li><a href="https://songdata.io/track/0LznolM73NXmE8OnsZkc3E/Big-Plans-by-Degreed" target="_blank" rel="noopener">SongData.io</a></li>
+        </ul></div>
+      </div>
+      <div class="track">
+        <div class="track-head"><span class="track-num">2曲目</span><h4 class="track-name">Ride Along</h4><span class="track-length">3:52</span><span class="badge-single">シングル</span></div>
+        <p class="evidence">シングル。Junkyard Rock Stories が先行シングル Big Plans に続く新曲として紹介し、Qobuz のディスコグラフィにも2023年5月26日付単体リリース「Ride Along」が掲載。Viberate（第三者）も2023年シングルとして列挙している。長さ 3:52 は Online Radio Box／Metal Kingdom で確認し、収録は Grande Rock と Frontiers 公式ショップでクロスチェックした。Dangerdog が「melodic metal groove」のある曲群の一つに挙げるアップテンポ曲でバラードではない。</p>
+        <p class="track-note">Wikipediaでは確認できない。YouTube公式動画の正確な現在の再生回数は確認できない。</p>
+        <div class="sources"><span class="sources-label">出典</span><ul>
+          <li><a href="https://junkyardrockstories.com/2023/05/swedish-rockers-degreed-unveil-groovy-new-single-ride-along-from-upcoming-album/" target="_blank" rel="noopener">Junkyard Rock Stories</a></li>
+          <li><a href="https://grande-rock.com/news/degreed-to-release-new-studio-album-public-address-on-july-7th-2023/" target="_blank" rel="noopener">Grande Rock</a></li>
+          <li><a href="https://frontiers.shop/collections/vinyl/products/degreed-public-address-limited-edition-lp" target="_blank" rel="noopener">Frontiers 公式ショップ</a></li>
+          <li><a href="https://onlineradiobox.com/album/1680768880-public-address" target="_blank" rel="noopener">Online Radio Box</a></li>
+        </ul></div>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="rejected-h">
+    <h2 id="rejected-h">次点・除外メモ</h2>
+    <div class="context-box">
+      <ul class="rejected-list">
+        <li><strong>The Defiants『Drive』</strong> ― バラードとされた「Miracle」「Another Time, Another Place」はバラード原則不採用で除外。</li>
+        <li><strong>Art Nation『Inception』</strong> ― シングル「Echo」（3:47）も候補だったが、より新しいシングル／MV の「1001」を優先。</li>
+        <li><strong>Wig Wam『Out of the Dark』</strong> ― シングル「Forevermore」（4:55）より、短く勢いのある「High n Dry」を2曲目に選出。</li>
+        <li><strong>Steel Panther『On the Prowl』</strong> ― シングル「Friends With Benefits」（3:54）も候補だったが、時代を象徴するフックの強さで「1987」を優先。</li>
+        <li><strong>John Diva &amp; The Rockets Of Love『The Big Easy』</strong> ― 冒頭「California Rhapsody」（0:53）は2分以下ルールで除外。シングル「Believe」はバラード寄りの懸念があるため避けた。</li>
+        <li><strong>アルバム段階のA降格</strong> ― L.A. Guns『Black Diamonds』（スリーズ寄りで美旋律の支配性が弱い）と Joel Hoekstra's 13『Crash Of Life』（ソロ・プロジェクト作、Whitesnake系のブルース／骨太色が強い）はS基準に届かず最終8枚から外れた。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="metric-h">
+    <h2 id="metric-h">人気指標について</h2>
+    <div class="metric-note">
+      <p>Spotify公式の曲別再生回数は取得できないため、YouTube の公開再生回数を人気の参考指標とする運用（2026-11-13に決定）だが、今回の16曲はいずれも YouTube公式動画の正確な現在の再生回数は確認できなかった。数字は作っていない。</p>
+      <ul>
+        <li><strong>The Defiants「Hey Life」</strong> ― Last.fm（第三者集計）745 listeners</li>
+        <li><strong>The Defiants「19 Summertime」</strong> ― Last.fm（第三者集計）749 listeners（アルバム内最多）</li>
+        <li><strong>Bai Bang「Sha Na Na Na」</strong> ― setlist.fm（第三者集計）で同アルバム曲中最多の10回ライブ演奏</li>
+      </ul>
+      <p>そのため今回の選出根拠は、シングル実績（順位・MV／ビデオの有無）と複数メディアの報道・レビューを中心とした。</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="tsv-h">
+    <h2 id="tsv-h">最終楽曲リスト（TSV順）</h2>
+    <div class="tsv-box"><pre>MELODIC HARD ROCK / HAIR METAL	The Defiants	Drive	Hey Life
+MELODIC HARD ROCK / HAIR METAL	The Defiants	Drive	19 Summertime
+MELODIC HARD ROCK / HAIR METAL	Art Nation	Inception	Brutal &amp; Beautiful
+MELODIC HARD ROCK / HAIR METAL	Art Nation	Inception	1001
+MELODIC HARD ROCK / HAIR METAL	Wig Wam	Out of the Dark	Out of the Dark
+MELODIC HARD ROCK / HAIR METAL	Wig Wam	Out of the Dark	High n Dry
+MELODIC HARD ROCK / HAIR METAL	Steel Panther	On the Prowl	Never Too Late (To Get Some Pussy Tonight)
+MELODIC HARD ROCK / HAIR METAL	Steel Panther	On the Prowl	1987
+MELODIC HARD ROCK / HAIR METAL	John Diva &amp; The Rockets Of Love	The Big Easy	The Big Easy
+MELODIC HARD ROCK / HAIR METAL	John Diva &amp; The Rockets Of Love	The Big Easy	Runaway Train
+MELODIC HARD ROCK / HAIR METAL	Bai Bang	Sha Na Na Na	Sha Na Na Na
+MELODIC HARD ROCK / HAIR METAL	Bai Bang	Sha Na Na Na	My Favorite Enemy
+MELODIC HARD ROCK / HAIR METAL	House Of Shakira	XIT	Something in the Water
+MELODIC HARD ROCK / HAIR METAL	House Of Shakira	XIT	Toxic Train
+MELODIC HARD ROCK / HAIR METAL	Degreed	Public Address	Big Plans
+MELODIC HARD ROCK / HAIR METAL	Degreed	Public Address	Ride Along</pre></div>
+  </section>
+
+  <footer>
+    <h2>検証方法</h2>
+    <ul>
+      <li>収録曲・曲長・シングル該当は、原則2サイト以上でクロスチェックして確認した（各曲の出典リンク参照）。Wikipediaにアルバム単独ページがない作品は、その旨を各曲の注記に明記し、レーベル公式・Frontiers・Qobuz・Deezer 等で確認した。</li>
+      <li>曲長に出典間の差異がある場合は採用値と内訳を明記した（The Defiants「Hey Life」Last.fm 4:37／Discogs 4:38、Last.fm値を採用）。Wig Wam「High n Dry」は表記揺れがあるため Wikipedia 表記を採用した。</li>
+      <li>2分以下の曲は除外（John Diva「California Rhapsody」0:53）。バラードは原則不採用とし、今回のバラード採用は0件。</li>
+      <li>非シングル2曲（Bai Bang「Sha Na Na Na」＝タイトル曲、House Of Shakira「Toxic Train」）は、シングルと誤認しないよう理由と根拠を分けて記載した。Bai Bang「My Favorite Enemy」のシングル根拠は第三者サイト Viberate の記述である旨も明記した。</li>
+      <li>Spotifyプレイリスト「2023年MELODIC HARD ROCK / HAIR METAL」（spotify:playlist:5UiqsuhPD9xM1nMKtdPne3）は、最終TSVの順序どおり全16曲が入っていることを確認済み。</li>
+    </ul>
+  </footer>
+</div>
+</body>
+</html>
