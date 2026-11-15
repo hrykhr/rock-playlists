@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2022 FEMALE VOCAL ROCK / METAL 候補一覧</title>
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #f6f3ef;
+        --surface: #ffffff;
+        --surface-2: #efe9e2;
+        --ink: #211c18;
+        --ink-soft: #5c554d;
+        --line: #ddd3c7;
+        --accent: #9c1f2e;
+        --accent-ink: #ffffff;
+        --gold: #8a6414;
+        --gold-bg: #f7ecd2;
+        --ok: #1e6b3a;
+        --ok-bg: #e2f1e6;
+        --dup: #7a4a12;
+        --dup-bg: #f6e8d3;
+        --ng: #9c1f2e;
+        --ng-bg: #f9e3e5;
+        --out: #5c554d;
+        --out-bg: #ece7e0;
+        --chip-s: #9c1f2e;
+        --chip-a: #8a6414;
+        --chip-b: #4c5a68;
+        --shadow: 0 1px 3px rgba(33, 28, 24, .08), 0 6px 18px rgba(33, 28, 24, .06);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #17130f;
+          --surface: #221c17;
+          --surface-2: #2a231d;
+          --ink: #f0e9e0;
+          --ink-soft: #b8ab9c;
+          --line: #41372c;
+          --accent: #e0586a;
+          --accent-ink: #1c0d10;
+          --gold: #d9ab4e;
+          --gold-bg: #3a2f16;
+          --ok: #7fc793;
+          --ok-bg: #1d3325;
+          --dup: #e0aa6b;
+          --dup-bg: #3a2b17;
+          --ng: #f08b97;
+          --ng-bg: #3d1e23;
+          --out: #b8ab9c;
+          --out-bg: #2c2620;
+          --chip-s: #e0586a;
+          --chip-a: #d9ab4e;
+          --chip-b: #9db2c4;
+          --shadow: 0 1px 3px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.3);
+        }
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+        line-height: 1.65;
+        font-size: 16px;
+      }
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 72px; }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      header.hero { padding: 44px 0 8px; }
+      .hero .genre-line {
+        font-size: .82rem; letter-spacing: .14em; font-weight: 700; color: var(--accent);
+        text-transform: uppercase; margin: 0 0 10px;
+      }
+      h1 {
+        font-family: Georgia, "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: clamp(1.7rem, 5.2vw, 2.7rem); line-height: 1.25; margin: 0 0 14px; font-weight: 700;
+      }
+      .hero p.lead { color: var(--ink-soft); max-width: 46em; margin: 0 0 20px; }
+      .stats { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 8px; }
+      .stat {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        padding: 10px 16px; min-width: 118px; box-shadow: var(--shadow);
+      }
+      .stat b { display: block; font-size: 1.45rem; line-height: 1.2; font-family: Georgia, serif; }
+      .stat span { font-size: .8rem; color: var(--ink-soft); }
+
+      nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 6px; }
+      nav.toc a {
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+        border-radius: 999px; padding: 8px 16px; font-size: .9rem; min-height: 2.25rem;
+        display: inline-flex; align-items: center;
+      }
+      nav.toc a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+      section { margin-top: 52px; }
+      h2 {
+        font-family: Georgia, "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: clamp(1.35rem, 3.6vw, 1.8rem); margin: 0 0 6px; line-height: 1.3;
+      }
+      h2 .num { color: var(--accent); margin-right: .35em; }
+      .sec-lead { color: var(--ink-soft); margin: 0 0 22px; max-width: 48em; }
+
+      .final-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+      .card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px;
+      }
+      .card .order {
+        font-family: Georgia, serif; font-size: .85rem; color: var(--accent); font-weight: 700; letter-spacing: .08em;
+      }
+      .card h3 { margin: 0; font-size: 1.18rem; line-height: 1.35; }
+      .card h3 .album { font-style: italic; }
+      .meta-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+      .date-badge {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px;
+        padding: 2px 10px; font-size: .85rem; font-variant-numeric: tabular-nums; font-weight: 600;
+      }
+      .wiki-ng {
+        background: var(--ng-bg); color: var(--ng); border-radius: 6px; padding: 2px 10px;
+        font-size: .8rem; font-weight: 700;
+      }
+      .card dl { margin: 0; display: grid; gap: 8px; }
+      .card dt { font-size: .78rem; font-weight: 700; letter-spacing: .06em; color: var(--ink-soft); }
+      .card dd { margin: 2px 0 0; font-size: .93rem; }
+      .sources { margin-top: auto; padding-top: 8px; border-top: 1px dashed var(--line); }
+      .sources span { font-size: .78rem; font-weight: 700; letter-spacing: .06em; color: var(--ink-soft); display: block; margin-bottom: 4px; }
+      .sources ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 3px; }
+      .sources a { font-size: .85rem; word-break: break-all; }
+
+      /* controls */
+      .controls {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 16px; box-shadow: var(--shadow); display: grid; gap: 12px; margin-bottom: 18px;
+      }
+      .controls .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+      .controls label.lbl { font-size: .85rem; font-weight: 700; color: var(--ink-soft); }
+      .rank-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+      .rank-btns button {
+        border: 1px solid var(--line); background: var(--surface-2); color: var(--ink);
+        border-radius: 999px; padding: 6px 18px; font-size: .92rem; font-weight: 700; cursor: pointer;
+      }
+      .rank-btns button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+      .controls input[type="search"], .controls select {
+        border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+        border-radius: 8px; padding: 8px 12px; font-size: .95rem;
+      }
+      .controls input[type="search"] { flex: 1 1 220px; }
+      .count-line { font-size: .9rem; color: var(--ink-soft); margin: 0 0 12px; }
+
+      .cand-list { display: grid; gap: 10px; }
+      .cand {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 14px 16px; box-shadow: var(--shadow);
+        display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: start;
+      }
+      .rank-chip {
+        grid-row: span 3; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+        font-family: Georgia, serif; font-weight: 700; font-size: 1.15rem; color: #fff;
+      }
+      .rank-S { background: var(--chip-s); } .rank-A { background: var(--chip-a); } .rank-B { background: var(--chip-b); }
+      @media (prefers-color-scheme: dark) { .rank-chip { color: #17130f; } }
+      .cand .head { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+      .cand .head b { font-size: 1.05rem; }
+      .cand .head .album { font-style: italic; }
+      .cand .head time { color: var(--ink-soft); font-size: .88rem; font-variant-numeric: tabular-nums; }
+      .status { border-radius: 999px; padding: 1px 11px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+      .st-selected { background: var(--ok-bg); color: var(--ok); }
+      .st-duplicate { background: var(--dup-bg); color: var(--dup); }
+      .st-rejected { background: var(--ng-bg); color: var(--ng); }
+      .st-out { background: var(--out-bg); color: var(--out); }
+      .cand p.memo { margin: 0; font-size: .9rem; color: var(--ink-soft); }
+      .cand .src { font-size: .83rem; word-break: break-all; }
+      .empty-note { color: var(--ink-soft); padding: 24px; text-align: center; border: 1px dashed var(--line); border-radius: 12px; }
+
+      .verify-box {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px;
+      }
+      .verify-box h3 { margin: 0 0 8px; font-size: 1.1rem; }
+      .verify-box p { margin: 0 0 10px; }
+      .verify-box p:last-child { margin-bottom: 0; }
+      .verify-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+      .verify-list li {
+        display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline;
+        border-bottom: 1px dashed var(--line); padding: 7px 0;
+      }
+      .verify-list li:last-child { border-bottom: none; }
+      .verdict { font-weight: 700; font-size: .85rem; border-radius: 6px; padding: 1px 10px; }
+      .v-s { background: var(--ok-bg); color: var(--ok); }
+      .v-ng { background: var(--ng-bg); color: var(--ng); }
+      .ng-card { border-color: var(--ng); border-width: 1px; }
+      .ng-card h3 { color: var(--ng); }
+
+      .dup-list { display: grid; gap: 12px; }
+      .dup-item {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 16px 18px; box-shadow: var(--shadow);
+      }
+      .dup-item h3 { margin: 0 0 4px; font-size: 1.05rem; }
+      .dup-item h3 .album { font-style: italic; }
+      .dup-item p { margin: 0; color: var(--ink-soft); font-size: .93rem; }
+
+      .tsv-box {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 18px; box-shadow: var(--shadow);
+      }
+      .tsv-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+      pre.tsv {
+        margin: 0; padding: 14px 16px; font-size: .82rem; line-height: 1.7;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; white-space: pre;
+      }
+      .tsv-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; align-items: center; }
+      .tsv-actions button {
+        border-radius: 10px; padding: 9px 20px; font-size: .95rem; font-weight: 700; cursor: pointer;
+        border: 1px solid var(--accent);
+      }
+      #copyBtn { background: var(--accent); color: var(--accent-ink); }
+      #dlBtn { background: transparent; color: var(--accent); }
+      .copy-msg { font-size: .88rem; color: var(--ok); font-weight: 700; }
+
+      footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: .85rem; }
+      @media (max-width: 560px) {
+        .wrap { padding: 0 14px 56px; }
+        .final-grid { grid-template-columns: 1fr; }
+        .cand { grid-template-columns: auto 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero">
+        <p class="genre-line">2022 · FEMALE VOCAL ROCK / METAL</p>
+        <h1>2022 FEMALE VOCAL ROCK / METAL 候補一覧</h1>
+        <p class="lead">2022年発売の女性ボーカルによるロック／メタル・アルバムについて、候補25枚の収集からSランク検証、重複除外を経て最終選出9枚に至るまでのエビデンスをまとめたページです。各項目のジャンル根拠と出典リンクを併記しています。</p>
+        <div class="stats">
+          <div class="stat"><b>25枚</b><span>候補の総数</span></div>
+          <div class="stat"><b>10件</b><span>Sランク検証の対象</span></div>
+          <div class="stat"><b>9枚</b><span>最終選出</span></div>
+          <div class="stat"><b>4枚</b><span>重複除外</span></div>
+          <div class="stat"><b>1枚</b><span>検証で不適合</span></div>
+        </div>
+        <nav class="toc" aria-label="目次">
+          <a href="#final">最終選出9枚</a>
+          <a href="#candidates">候補一覧25枚</a>
+          <a href="#verify">Sランク検証</a>
+          <a href="#duplicates">重複除外</a>
+          <a href="#tsv">最終アルバムTSV</a>
+        </nav>
+      </header>
+
+      <section id="final">
+        <h2><span class="num">1</span>最終選出9枚</h2>
+        <p class="sec-lead">Sランク検証と重複除外を通過した最終選出9枚です。並び順は最終アルバムTSVの順序と同一です。</p>
+        <div class="final-grid">
+
+          <article class="card">
+            <span class="order">No. 1</span>
+            <h3>Visions of Atlantis<br><span class="album">『Pirates』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-05-13</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Symphonic metal, power metal, pirate metal。女性ボーカルClémentine Delauneyと男性Michele Guaitoliのツインボーカルによるシンフォニック・メタルで、FEMALE VOCAL ROCK / METALの中核に適合。</dd></div>
+              <div><dt>備考</dt><dd>8thスタジオ盤、12曲58:06。女性単独ではなく男女ツインボーカル。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Pirates_(Visions_of_Atlantis_album)" target="_blank" rel="noopener">Wikipedia — Pirates (Visions of Atlantis album)</a></li>
+              <li><a href="https://tuonelamagazine.com/symphonic-metal-force-visions-of-atlantis-announce-new-upcoming-studio-album-pirates/" target="_blank" rel="noopener">Tuonela Magazine — アルバム『Pirates』告知</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 2</span>
+            <h3>Edenbridge<br><span class="album">『Shangri-La』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-09-16</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Symphonic metal。ソプラノ歌手Sabine Edelsbacherがフロントを務めるオーストリアのシンフォニック・メタルで、対象ジャンル中核に適合。</dd></div>
+              <div><dt>備考</dt><dd>11thスタジオ盤、9曲57:53。発売日の表記揺れあり：当初発表は2022-08-26だが、アルバム側Wikipedia・Metal Archives・Discogs・AFM最終告知は2022-09-16で、実際の発売は9月16日と判定（いずれも2022年内）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Shangri-La_(Edenbridge_album)" target="_blank" rel="noopener">Wikipedia — Shangri-La (Edenbridge album)</a></li>
+              <li><a href="https://www.AFM-RECORDS.DE/en/news/423-edenbridge/1751-edenbridge-somwhere-else-but-here.html" target="_blank" rel="noopener">AFM Records — Edenbridge告知</a></li>
+              <li><a href="https://cats.metal-archives.com/albums/Edenbridge/Shangri-La/1074301" target="_blank" rel="noopener">Metal Archives — Shangri-La</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 3</span>
+            <h3>Nocturna<br><span class="album">『Daughters of the Night』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-01-21</span><span class="wiki-ng">Wikipediaでは確認できない</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Discogs: Gothic Metal, Symphonic Metal。AllMusic／Rock Reportもsymphonic metalと記述。女性ボーカル2名（Grace Darkling、Rehn Stillnight）がフロントで中核適合。</dd></div>
+              <div><dt>備考</dt><dd>Wikipediaでは確認できない（アルバム／バンドのWikipediaページなし）。デビュー・スタジオ盤、10曲約38分。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://www.discogs.com/release/21508558-Nocturna-Daughters-Of-The-Night" target="_blank" rel="noopener">Discogs — Daughters Of The Night</a></li>
+              <li><a href="https://www.rockreport.be/albums/nocturna-daughters-of-the-night" target="_blank" rel="noopener">Rock Report — Daughters of the Night</a></li>
+              <li><a href="http://www.allmusic.com/album/daughters-of-the-night-mw0003625791" target="_blank" rel="noopener">AllMusic — Daughters of the Night</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 4</span>
+            <h3>SheWolf<br><span class="album">『SheWolf』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-03-18</span><span class="wiki-ng">Wikipediaでは確認できない</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Frontiers／各レビュー: symphonic elements + folk vibes + heavy/power metal riffing、Symphonic Power Metal。ギリシャ人女性歌手Angel Wolf-Blackを中心としたバンドで中核適合。</dd></div>
+              <div><dt>備考</dt><dd>Wikipediaでは確認できない（Wikipediaページなし）。セルフタイトル・デビュー・スタジオ盤、Frontiers Music Srlより発売。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://grande-rock.com/news/shewolf-to-release-self-titled-debut-album-on-march-18th-2022/" target="_blank" rel="noopener">Grande Rock — SheWolfデビュー盤告知</a></li>
+              <li><a href="https://metal-temple.com/review/shewolf-shewolf/" target="_blank" rel="noopener">Metal Temple — SheWolf レビュー</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 5</span>
+            <h3>Fortis Ventus<br><span class="album">『Vertalia』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-06-03</span><span class="wiki-ng">Wikipediaでは確認できない</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Rockshots／Metal Rules: symphonic and cinematic elements、symphonic metal act。女性ボーカルNancy Mosが歌唱・作詞を担い、Tarja期Nightwish系と評され対象ジャンルに適合。</dd></div>
+              <div><dt>備考</dt><dd>Wikipediaでは確認できない（Wikipediaページなし）。デビュー・スタジオ盤、12曲約59分、コンセプト盤。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://fortisventus.bandcamp.com/album/vertalia" target="_blank" rel="noopener">Bandcamp — Vertalia</a></li>
+              <li><a href="https://grande-rock.com/news/fortis-ventus-to-release-debut-album-vertalia-on-june-3rd-2022/" target="_blank" rel="noopener">Grande Rock — Vertalia告知</a></li>
+              <li><a href="https://www.metal-rules.com/2022/07/07/fortis-ventus-keyboard-player-george-helliwall-and-singer-nancy-mos/" target="_blank" rel="noopener">Metal Rules — Fortis Ventusインタビュー</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 6</span>
+            <h3>Crystal Gates<br><span class="album">『Torment &amp; Wonder: The Ways Of The Lonely Ones』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-07-29</span><span class="wiki-ng">Wikipediaでは確認できない</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Grande Rock／Femme Metal: Female-fronted symphonic/power metal。女性ボーカルCarolina Pérezがフロントで中核適合。</dd></div>
+              <div><dt>備考</dt><dd>Wikipediaでは確認できない（Wikipediaページなし）。デビュー・フルレングス、10曲約51分。デジタル発売2022-07-29（Metal ArchivesのCD版は2022-11-26表記だがいずれも2022年内）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://grande-rock.com/news/crystal-gates-to-release-debut-full-length-album-torment-wonder-the-ways-of-the-lonely-ones-on-july-29th-2022/" target="_blank" rel="noopener">Grande Rock — Crystal Gates告知</a></li>
+              <li><a href="https://crystalgatesuy.bandcamp.com/album/torment-wonder-the-ways-of-the-lonely-ones?action=embed" target="_blank" rel="noopener">Bandcamp — Torment &amp; Wonder</a></li>
+              <li><a href="https://cats.metal-archives.com/albums/Crystal_Gates/Torment_%26_Wonder%3A_The_Ways_of_the_Lonely_Ones/1048389" target="_blank" rel="noopener">Metal Archives — Torment &amp; Wonder</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 7</span>
+            <h3>Eva Under Fire<br><span class="album">『Love, Drugs &amp; Misery』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-09-23</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Alternative metal, hard rock, post-grunge。AllMusic: classic rock, punk, heavy metal, popに根ざしたhard-hitting style。女性ボーカルEva Marie（Amanda Lyberg）フロントのハードロックでFEMALE VOCAL ROCK側の中核に適合。</dd></div>
+              <div><dt>備考</dt><dd>発売日は当初2022-03-04予定から延期され2022-09-23で確定。Better Noise公式紹介に1曲のrap-rock interludeとelectronic sheenへの言及があるが、アルバム全体はハードロックであり絶対除外には当たらないと判定。Deluxe版は2023年発売で対象外（本編12曲版が対象）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Eva_Under_Fire" target="_blank" rel="noopener">Wikipedia — Eva Under Fire</a></li>
+              <li><a href="https://www.allmusic.com/artist/eva-under-fire-mn0004051754" target="_blank" rel="noopener">AllMusic — Eva Under Fire</a></li>
+              <li><a href="https://www.deezer.com/us/artist/9484842" target="_blank" rel="noopener">Deezer — Eva Under Fire</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 8</span>
+            <h3>Wet Leg<br><span class="album">『Wet Leg』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-04-08</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Indie rock, post-punk revival, Britpop, pop-punk, indie pop。女性2人組（Rhian Teasdaleがリードボーカル）によるインディー・ロックで、FEMALE VOCAL ROCKのROCK側に適合。メタルではない点は境界として明記。</dd></div>
+              <div><dt>備考</dt><dd>デビュー・スタジオ盤、12曲36:47。UKアルバムチャート1位、Grammy Best Alternative Music Album受賞。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Wet_Leg_(album)" target="_blank" rel="noopener">Wikipedia — Wet Leg (album)</a></li>
+              <li><a href="https://www.metacritic.com/music/wet-leg/wet-leg/" target="_blank" rel="noopener">Metacritic — Wet Leg</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 9</span>
+            <h3>Yeah Yeah Yeahs<br><span class="album">『Cool It Down』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-09-30</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia／AllMusic: Alternative/Indie Rock, Garage Punk。女性ボーカルKaren OがフロントでFEMALE VOCAL ROCKのROCK側に適合。メタルではない点とdance-punk／シンセ要素は境界として明記。</dd></div>
+              <div><dt>備考</dt><dd>5thスタジオ盤だが8曲・32:24で本候補中最短。9年ぶりの新作。ダンスビート／シンセ要素の指摘はあるが主体はインディー・ロックであり、トランス／エレクトロニカとしての絶対除外には当たらないと判定。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Cool_It_Down" target="_blank" rel="noopener">Wikipedia — Cool It Down</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Yeah_Yeah_Yeahs" target="_blank" rel="noopener">Wikipedia — Yeah Yeah Yeahs</a></li>
+              <li><a href="https://www.allmusic.com/artist/yeah-yeah-yeahs-mn0000681154" target="_blank" rel="noopener">AllMusic — Yeah Yeah Yeahs</a></li>
+            </ul></div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="candidates">
+        <h2><span class="num">2</span>候補一覧25枚</h2>
+        <p class="sec-lead">収集した候補25枚（Sランク10枚／Aランク10枚／Bランク5枚）の一覧です。ランクで絞り込み、アーティスト・アルバム名で検索、発売日で並べ替えができます。ステータスは「最終選出」「重複除外」「検証で不適合」「落選」のいずれかを表示します。</p>
+        <div class="controls">
+          <div class="row">
+            <span class="lbl" id="rankLbl">ランクで絞り込み</span>
+            <div class="rank-btns" role="group" aria-labelledby="rankLbl">
+              <button type="button" data-rank="all" aria-pressed="true">すべて</button>
+              <button type="button" data-rank="S" aria-pressed="false">S</button>
+              <button type="button" data-rank="A" aria-pressed="false">A</button>
+              <button type="button" data-rank="B" aria-pressed="false">B</button>
+            </div>
+          </div>
+          <div class="row">
+            <label class="lbl" for="searchBox">検索</label>
+            <input type="search" id="searchBox" placeholder="アーティスト名・アルバム名で検索" autocomplete="off">
+            <label class="lbl" for="sortSel">並べ替え</label>
+            <select id="sortSel">
+              <option value="default">既定（ランク順）</option>
+              <option value="date-asc">発売日 昇順</option>
+              <option value="date-desc">発売日 降順</option>
+            </select>
+          </div>
+        </div>
+        <p class="count-line" id="countLine" aria-live="polite"></p>
+        <div class="cand-list" id="candList"></div>
+      </section>
+
+      <section id="verify">
+        <h2><span class="num">3</span>Sランク検証</h2>
+        <p class="sec-lead">Sランク候補10件について、発売年（2022年）とジャンル適合性を出典で検証しました。結果は9件がS判定、1件（League of Distortion）が絶対除外要素により不適合です。</p>
+        <div class="verify-box">
+          <h3>検証結果の一覧（10件中9件がS判定）</h3>
+          <ul class="verify-list">
+            <li><span class="verdict v-s">S判定</span><span><b>Visions of Atlantis</b>『Pirates』</span></li>
+            <li><span class="verdict v-s">S判定</span><span><b>Edenbridge</b>『Shangri-La』</span></li>
+            <li><span class="verdict v-s">S判定</span><span><b>Nocturna</b>『Daughters of the Night』</span></li>
+            <li><span class="verdict v-s">S判定</span><span><b>SheWolf</b>『SheWolf』</span></li>
+            <li><span class="verdict v-s">S判定</span><span><b>Fortis Ventus</b>『Vertalia』</span></li>
+            <li><span class="verdict v-s">S判定</span><span><b>Crystal Gates</b>『Torment &amp; Wonder: The Ways Of The Lonely Ones』</span></li>
+            <li><span class="verdict v-s">S判定</span><span><b>Eva Under Fire</b>『Love, Drugs &amp; Misery』</span></li>
+            <li><span class="verdict v-s">S判定</span><span><b>Wet Leg</b>『Wet Leg』</span></li>
+            <li><span class="verdict v-s">S判定</span><span><b>Yeah Yeah Yeahs</b>『Cool It Down』</span></li>
+            <li><span class="verdict v-ng">不適合</span><span><b>League of Distortion</b>『League of Distortion』— 絶対除外に抵触</span></li>
+          </ul>
+        </div>
+        <article class="card ng-card">
+          <h3>検証で不適合 — League of Distortion『League of Distortion』</h3>
+          <div class="meta-row"><span class="date-badge">発売日 2022-11-25</span><span class="wiki-ng">Wikipediaでは確認できない</span></div>
+          <dl>
+            <div><dt>不適合の理由</dt><dd>Napalm告知ではmodern metalとされるが、複数レビューがnu-metal approach、rap beats、industrial/electronic beatsを特徴として明記。女性ボーカルAnna Brunner自体は適合するが、サウンドの中核に絶対除外要素を含むため、2020年代マニュアルの全ジャンル共通絶対除外（ニューメタル／ミクスチャー、ラップ／ヒップホップ、エレクトロニカ要素）に抵触し不適合。</dd></div>
+            <div><dt>備考</dt><dd>Wikipediaでは確認できない（専用アルバムページなし）。</dd></div>
+          </dl>
+          <div class="sources"><span>出典</span><ul>
+            <li><a href="https://brutalplanetmag.com/modern-metal-upstarts-league-of-distortion-announce-self-titled-debut-album-out-november-25-2022-via-napalm-records/" target="_blank" rel="noopener">Brutal Planet Magazine — デビュー盤告知（Napalm Records）</a></li>
+            <li><a href="https://www.screamblastrepeat.com/league-of-distortion-league-of-distortion/" target="_blank" rel="noopener">Scream Blast Repeat — レビュー</a></li>
+            <li><a href="https://tuonelamagazine.com/review-league-of-distortion-league-of-distortion/" target="_blank" rel="noopener">Tuonela Magazine — レビュー</a></li>
+          </ul></div>
+        </article>
+      </section>
+
+      <section id="duplicates">
+        <h2><span class="num">4</span>重複除外4枚</h2>
+        <p class="sec-lead">ジャンル適合性はあるものの、既出アルバム累積リスト（完全版）に既出のため、重複を避けて除外した4枚です。</p>
+        <div class="dup-list">
+          <div class="dup-item">
+            <h3>Halestorm <span class="album">『Back From The Dead』</span></h3>
+            <p>既出アルバム累積リスト（完全版）に既出（2022年、MAINSTREAM ROCK / ARENA HEROESで既採用）</p>
+          </div>
+          <div class="dup-item">
+            <h3>Battle Beast <span class="album">『Circus of Doom』</span></h3>
+            <p>既出アルバム累積リスト（完全版）に既出（2022年、MELODIC POWER &amp; TRADITIONAL METALで既採用）</p>
+          </div>
+          <div class="dup-item">
+            <h3>Thundermother <span class="album">『Black And Gold』</span></h3>
+            <p>既出アルバム累積リスト（完全版）に既出（2022年、HARD ROCKで既採用）</p>
+          </div>
+          <div class="dup-item">
+            <h3>Chez Kane <span class="album">『Powerzone』</span></h3>
+            <p>既出アルバム累積リスト（完全版）に既出（2022年、HARD ROCKで既採用）</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tsv">
+        <h2><span class="num">5</span>最終アルバムTSV</h2>
+        <p class="sec-lead">最終選出9枚のアルバムTSV（GENRE／ARTIST／ALBUM／YEAR）です。そのままコピー、または .tsv ファイルとしてダウンロードできます。</p>
+        <div class="tsv-box">
+          <div class="tsv-scroll"><pre class="tsv" id="tsvPre"></pre></div>
+          <div class="tsv-actions">
+            <button type="button" id="copyBtn">TSVをコピー</button>
+            <button type="button" id="dlBtn">.tsv をダウンロード</button>
+            <span class="copy-msg" id="copyMsg" role="status"></span>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>2022年 FEMALE VOCAL ROCK / METAL アルバム選出エビデンスページ。掲載内容は選出時に確認した出典に基づきます。</p>
+      </footer>
+    </div>
+
+    <script>
+      var TSV_TEXT = "GENRE\tARTIST\tALBUM\tYEAR\n" +
+        "FEMALE VOCAL ROCK / METAL\tVisions of Atlantis\tPirates\t2022\n" +
+        "FEMALE VOCAL ROCK / METAL\tEdenbridge\tShangri-La\t2022\n" +
+        "FEMALE VOCAL ROCK / METAL\tNocturna\tDaughters of the Night\t2022\n" +
+        "FEMALE VOCAL ROCK / METAL\tSheWolf\tSheWolf\t2022\n" +
+        "FEMALE VOCAL ROCK / METAL\tFortis Ventus\tVertalia\t2022\n" +
+        "FEMALE VOCAL ROCK / METAL\tCrystal Gates\tTorment & Wonder: The Ways Of The Lonely Ones\t2022\n" +
+        "FEMALE VOCAL ROCK / METAL\tEva Under Fire\tLove, Drugs & Misery\t2022\n" +
+        "FEMALE VOCAL ROCK / METAL\tWet Leg\tWet Leg\t2022\n" +
+        "FEMALE VOCAL ROCK / METAL\tYeah Yeah Yeahs\tCool It Down\t2022";
+
+      document.getElementById("tsvPre").textContent = TSV_TEXT;
+
+      document.getElementById("copyBtn").addEventListener("click", function () {
+        var msg = document.getElementById("copyMsg");
+        function done() { msg.textContent = "コピーしました"; }
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = TSV_TEXT;
+          ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); done(); }
+          catch (e) { msg.textContent = "コピーできませんでした"; }
+          document.body.removeChild(ta);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(TSV_TEXT).then(done, fallback);
+        } else { fallback(); }
+      });
+
+      document.getElementById("dlBtn").addEventListener("click", function () {
+        var blob = new Blob([TSV_TEXT], { type: "text/tab-separated-values;charset=utf-8" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "2022-female-vocal-rock-metal-final.tsv";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      });
+
+      var CANDIDATES = [
+        { rank: "S", artist: "Visions of Atlantis", album: "Pirates", date: "2022-05-13", dateNote: "", status: "selected",
+          memo: "Wikipedia: Symphonic metal, power metal; eighth studio album; fronted by Clementine Delauney (with male co-vocalist Michele Guaitoli)",
+          url: "https://en.wikipedia.org/wiki/Pirates_(Visions_of_Atlantis_album)" },
+        { rank: "S", artist: "Edenbridge", album: "Shangri-La", date: "2022-08-26", dateNote: "当初の候補記載日。検証で2022-09-16に確定", status: "selected",
+          memo: "Grande Rock / AFM: Austria's symphonic metal force, eleventh studio album; lead vocalist Sabine Edelsbacher",
+          url: "https://grande-rock.com/news/edenbridge-to-release-new-studio-album-shangri-la-on-august-26th-2022/" },
+        { rank: "S", artist: "Nocturna", album: "Daughters of the Night", date: "2022-01-21", dateNote: "", status: "selected",
+          memo: "Discogs: Gothic Metal, Symphonic Metal; debut album founded by frontwomen Grace Darkling and Rehn Stillnight｜Wikipediaでは確認できない（Discogs等で確認）",
+          url: "https://www.discogs.com/release/21508558-Nocturna-Daughters-Of-The-Night" },
+        { rank: "S", artist: "SheWolf", album: "SheWolf", date: "2022-03-18", dateNote: "", status: "selected",
+          memo: "Frontiers debut built around Greek singer Angel Wolf-Black; symphonic elements, folk vibes and heavy/power metal riffing｜Wikipediaでは確認できない",
+          url: "https://folknrock.com/news/shewolf-announces-debut-album" },
+        { rank: "S", artist: "Fortis Ventus", album: "Vertalia", date: "2022-06-03", dateNote: "", status: "selected",
+          memo: "Rockshots debut; symphonic and cinematic elements; vocalist/lyricist Nancy Mos, operatic soprano lead vocals｜Wikipediaでは確認できない",
+          url: "https://grande-rock.com/news/fortis-ventus-to-release-debut-album-vertalia-on-june-3rd-2022/" },
+        { rank: "S", artist: "Crystal Gates", album: "Torment & Wonder: The Ways Of The Lonely Ones", date: "2022-07-29", dateNote: "", status: "selected",
+          memo: "Grande Rock: Female-fronted symphonic/power metal band, debut full-length; singer Carolina Perez (soprano)｜Wikipediaでは確認できない",
+          url: "https://grande-rock.com/news/crystal-gates-to-release-debut-full-length-album-torment-wonder-the-ways-of-the-lonely-ones-on-july-29th-2022/" },
+        { rank: "S", artist: "League of Distortion", album: "League of Distortion", date: "2022-11-25", dateNote: "", status: "rejected",
+          memo: "Napalm Records: Genre Modern Metal, self-titled debut; Anna 'Ace' Brunner vocals｜検証で絶対除外により不適合",
+          url: "https://napalmrecords.com/english/league-of-distortion-black-vinyl.html" },
+        { rank: "S", artist: "Eva Under Fire", album: "Love, Drugs & Misery", date: "2022-09-23", dateNote: "", status: "selected",
+          memo: "MyGlobalMind: Rock, Better Noise Music, vocalist Amanda Lyberg (Eva Marie); alternative-metal/hard-rock coverage",
+          url: "https://myglobalmind.com/2022/09/23/eva-under-fire-love-drugs-misery-review/" },
+        { rank: "S", artist: "Wet Leg", album: "Wet Leg", date: "2022-04-08", dateNote: "", status: "selected",
+          memo: "Wikipedia: Indie rock, post-punk revival, Britpop, pop-punk; debut studio album; Grammy Best Alternative Music Album winner",
+          url: "https://en.wikipedia.org/wiki/Wet_Leg_(album)" },
+        { rank: "S", artist: "Yeah Yeah Yeahs", album: "Cool It Down", date: "2022-09-30", dateNote: "", status: "selected",
+          memo: "Wikipedia: fifth studio album by indie rock band; vocalist Karen O; indie rock, garage rock, art punk, post-punk revival。Only 8 tracks",
+          url: "https://en.wikipedia.org/wiki/Cool_It_Down" },
+        { rank: "A", artist: "Halestorm", album: "Back From The Dead", date: "2022-05-06", dateNote: "", status: "duplicate",
+          memo: "Wikipedia: Hard rock, heavy metal; fifth studio album; Lzzy Hale - benchmark artist itself｜重複除外",
+          url: "https://en.wikipedia.org/wiki/Back_from_the_Dead_(Halestorm_album)" },
+        { rank: "A", artist: "The Warning", album: "ERROR", date: "2022-06-24", dateNote: "", status: "out",
+          memo: "Wikipedia: Alternative rock, hard rock, alternative metal, post-grunge; Mexican sister trio, Daniela Villarreal lead vocals/guitar",
+          url: "https://en.wikipedia.org/wiki/Error_(The_Warning_album)" },
+        { rank: "A", artist: "Dorothy", album: "Gifts From The Holy Ghost", date: "2022-04-22", dateNote: "", status: "out",
+          memo: "Wikipedia: Hard rock; third studio album fronted by vocalist Dorothy Martin",
+          url: "https://en.wikipedia.org/wiki/Gifts_from_the_Holy_Ghost" },
+        { rank: "A", artist: "Thundermother", album: "Black And Gold", date: "2022-08-19", dateNote: "", status: "duplicate",
+          memo: "AFM Records press: all-female hard rock band; Guernica Mancini - Vocals｜重複除外",
+          url: "https://mythofrock.gr/thundermother-new-album-announced-new-video-released/" },
+        { rank: "A", artist: "Chez Kane", album: "Powerzone", date: "2022-10-21", dateNote: "", status: "duplicate",
+          memo: "MyGlobalMind: Melodic Rock, Frontiers Records; second album from singer Chez Kane｜重複除外",
+          url: "https://myglobalmind.com/2022/09/28/chez-kane-powerzone-review/" },
+        { rank: "A", artist: "Lee Aaron", album: "Elevate", date: "2022-11-25", dateNote: "", status: "out",
+          memo: "Discogs: Rock / Hard Rock; Heavy Music HQ: ten feel-good hard rock tracks by Canadian vocalist Lee Aaron｜Wikipediaでは確認できない（アルバムページ）",
+          url: "https://heavymusichq.com/heavy-music-hq-album-reviews-week-of-november-25-2022/" },
+        { rank: "A", artist: "Avril Lavigne", album: "Love Sux", date: "2022-02-25", dateNote: "", status: "out",
+          memo: "Wikipedia: Pop-punk, alternative rock, emo pop; seventh studio album",
+          url: "https://en.m.wikipedia.org/wiki/Love_Sux#Songs" },
+        { rank: "A", artist: "Pale Waves", album: "Unwanted", date: "2022-08-12", dateNote: "", status: "out",
+          memo: "Wikipedia: Pop-punk; third studio album fronted by Heather Baron-Gracie",
+          url: "https://en.wikipedia.org/wiki/Unwanted_(album)" },
+        { rank: "A", artist: "Stand Atlantic", album: "F.E.A.R.", date: "2022-05-06", dateNote: "", status: "out",
+          memo: "Wikipedia: third studio album from Australian pop punk group; Bonnie Fraser - lead vocals",
+          url: "https://en.wikipedia.org/wiki/F.E.A.R._(Stand_Atlantic_album)" },
+        { rank: "A", artist: "Maggie Lindemann", album: "SUCKERPUNCH", date: "2022-09-16", dateNote: "", status: "out",
+          memo: "Wikipedia: Pop rock, pop-punk, alternative metal; debut studio album",
+          url: "https://en.wikipedia.org/wiki/Suckerpunch_(Maggie_Lindemann_album)" },
+        { rank: "B", artist: "Battle Beast", album: "Circus of Doom", date: "2022-01-21", dateNote: "", status: "duplicate",
+          memo: "Heavy Metal / Power Metal, female-fronted by Noora Louhimo｜重複除外",
+          url: "https://blabbermouth.net/news/battle-beast-shares-music-video-for-new-single-eye-of-the-storm" },
+        { rank: "B", artist: "Volturian", album: "Red Dragon", date: "2022-05-20", dateNote: "", status: "out",
+          memo: "Discogs CD: Symphonic Metal; second studio album founded by singer Federica Lanna｜Wikipediaでは確認できない。electronic/pop layersへの言及あり（境界）",
+          url: "https://www.discogs.com/release/23325869-Volturian-Red-Dragon" },
+        { rank: "B", artist: "Charlotte Wessels", album: "Tales From Six Feet Under Vol II", date: "2022-10-07", dateNote: "", status: "out",
+          memo: "Napalm Records: Genre Rock, second full-length by former Delain frontwoman Charlotte Wessels｜Wikipediaでは確認できない（アルバムページ）",
+          url: "https://napalmrecords.com/english/charlotte-wessels-tales-from-six-feet-under-vol-ii-gold-vinyl.html" },
+        { rank: "B", artist: "Arch Enemy", album: "Deceivers", date: "2022-08-12", dateNote: "", status: "out",
+          memo: "Wikipedia: Melodic death metal, eleventh studio album; vocals by Alissa White-Gluz｜境界：エクストリームなボーカルがベンチマークと異なる",
+          url: "https://en.wikipedia.org/wiki/Deceivers_(Arch_Enemy_album)" },
+        { rank: "B", artist: "Florence + The Machine", album: "Dance Fever", date: "2022-05-13", dateNote: "", status: "out",
+          memo: "Wikipedia: Pop rock, baroque pop, progressive pop, alternative rock, gothic pop, folk; fifth studio album, Florence Welch｜B: pop/baroque要素が強い",
+          url: "https://en.wikipedia.org/wiki/Dance_Fever_(album)" }
+      ];
+
+      var STATUS_LABEL = {
+        selected: "最終選出",
+        duplicate: "重複除外",
+        rejected: "検証で不適合",
+        out: "落選"
+      };
+
+      var state = { rank: "all", query: "", sort: "default" };
+      var listEl = document.getElementById("candList");
+      var countEl = document.getElementById("countLine");
+
+      function esc(s) {
+        return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
+
+      function hostOf(url) {
+        var m = url.replace(/^https?:\/\//, "").split("/")[0];
+        return m.replace(/^www\./, "").replace(/^en\.m\.|^en\./, function (p) { return p; });
+      }
+
+      function render() {
+        var items = CANDIDATES.filter(function (c) {
+          if (state.rank !== "all" && c.rank !== state.rank) return false;
+          if (state.query) {
+            var hay = (c.artist + " " + c.album).toLowerCase();
+            if (hay.indexOf(state.query.toLowerCase()) === -1) return false;
+          }
+          return true;
+        });
+        if (state.sort === "date-asc" || state.sort === "date-desc") {
+          var dir = state.sort === "date-asc" ? 1 : -1;
+          items = items.slice().sort(function (a, b) {
+            if (a.date < b.date) return -1 * dir;
+            if (a.date > b.date) return 1 * dir;
+            return 0;
+          });
+        }
+        countEl.textContent = "表示 " + items.length + " 件 / 全 " + CANDIDATES.length + " 件";
+        if (items.length === 0) {
+          listEl.innerHTML = '<div class="empty-note">条件に合う候補がありません。</div>';
+          return;
+        }
+        var html = "";
+        items.forEach(function (c) {
+          html += '<article class="cand">' +
+            '<span class="rank-chip rank-' + c.rank + '">' + c.rank + '</span>' +
+            '<div class="head"><b>' + esc(c.artist) + '</b><span class="album">『' + esc(c.album) + '』</span>' +
+            '<time datetime="' + c.date + '">' + c.date + '</time>' +
+            '<span class="status st-' + c.status + '">' + STATUS_LABEL[c.status] + '</span></div>' +
+            '<p class="memo">' + esc(c.memo) + (c.dateNote ? '（発売日：' + esc(c.dateNote) + '）' : '') + '</p>' +
+            '<span class="src">出典：<a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(hostOf(c.url)) + '</a></span>' +
+            '</article>';
+        });
+        listEl.innerHTML = html;
+      }
+
+      var rankBtns = document.querySelectorAll(".rank-btns button");
+      rankBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          state.rank = btn.getAttribute("data-rank");
+          rankBtns.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+          render();
+        });
+      });
+      document.getElementById("searchBox").addEventListener("input", function (e) {
+        state.query = e.target.value.trim();
+        render();
+      });
+      document.getElementById("sortSel").addEventListener("change", function (e) {
+        state.sort = e.target.value;
+        render();
+      });
+
+      render();
+    </script>
+  </body>
+</html>

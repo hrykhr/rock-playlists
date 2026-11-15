@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>2023 STADIUM COUNTRY &amp; SOUTHERN ROCK 楽曲選出</title>
+<style>
+:root{
+  --bg:#f4efe8; --surface:#fffdf9; --surface2:#ece5d9; --ink:#1c1917; --muted:#5c554d; --faint:#8a8177;
+  --line:#ddd3c2; --accent:#9a3412; --accent-ink:#7c2d12; --accent-soft:#fdebd3;
+  --single-bg:#dcfce7; --single-ink:#14532d; --single-dot:#16a34a;
+  --non-bg:#e7e5e4; --non-ink:#44403c; --non-dot:#78716c;
+  --unk-bg:#fef3c7; --unk-ink:#78350f; --unk-dot:#d97706;
+  --header-bg:#1c1917; --header-ink:#faf6ef; --header-muted:#c9beb0;
+  --radius:14px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#131110; --surface:#1e1b18; --surface2:#262220; --ink:#f2ede6; --muted:#b8aca0; --faint:#8f8478;
+    --line:#3a342e; --accent:#fb923c; --accent-ink:#fdba74; --accent-soft:#3a2415;
+    --single-bg:#142e1d; --single-ink:#86efac; --single-dot:#4ade80;
+    --non-bg:#292524; --non-ink:#d6d3d1; --non-dot:#a8a29e;
+    --unk-bg:#332508; --unk-ink:#fcd34d; --unk-dot:#fbbf24;
+    --header-bg:#0c0a09; --header-ink:#faf6ef; --header-muted:#b8aca0;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Noto Sans JP",system-ui,-apple-system,sans-serif;line-height:1.65;font-size:16px}
+a{color:var(--accent-ink);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+button,[role="button"],summary{min-height:2.25rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 56px}
+
+/* Header */
+header.hero{background:var(--header-bg);color:var(--header-ink);margin:0 -20px 0;padding:36px 24px 30px;border-bottom:4px solid var(--accent)}
+@media(min-width:700px){header.hero{padding:48px 36px 36px;border-radius:0 0 18px 18px}}
+.genre-label{font-size:.78rem;letter-spacing:.14em;font-weight:700;color:var(--accent);text-transform:uppercase;margin:0 0 10px}
+h1{font-family:Georgia,"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(1.55rem,4.5vw,2.5rem);line-height:1.25;margin:0 0 14px;font-weight:700;letter-spacing:.01em}
+h1 .jp{display:block;font-size:.62em;margin-top:6px;letter-spacing:.06em}
+.lede{color:var(--header-muted);font-size:.95rem;max-width:44em;margin:0 0 22px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:10px 14px;min-width:118px}
+.stat b{display:block;font-size:1.35rem;line-height:1.1;font-family:Georgia,serif}
+.stat span{font-size:.78rem;color:var(--header-muted)}
+.spotify-btn{display:inline-flex;align-items:center;gap:10px;background:#1db954;color:#0b2e16;font-weight:800;text-decoration:none;padding:12px 18px;border-radius:999px;font-size:.95rem;min-height:48px}
+.spotify-btn:hover{background:#22c55e}
+.spotify-btn svg{flex:none}
+.spotify-note{font-size:.82rem;color:var(--header-muted);margin:10px 0 0}
+
+/* Nav / filter */
+.toolbar{position:sticky;top:0;z-index:20;background:var(--bg);padding:14px 0 10px;border-bottom:1px solid var(--line)}
+.toolbar-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.toolbar-label{font-size:.82rem;font-weight:700;color:var(--muted);margin-right:2px}
+.chip{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:.88rem;font-weight:600;cursor:pointer;min-height:40px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:focus-visible,.spotify-btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.count-note{font-size:.84rem;color:var(--muted);margin:8px 0 0}
+.album-jump{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.album-jump a{font-size:.8rem;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);text-decoration:none;color:var(--ink);display:inline-flex;align-items:center;min-height:32px}
+.album-jump a:hover{border-color:var(--accent);color:var(--accent-ink)}
+
+/* Album sections */
+section.album{margin-top:38px}
+.album-head{display:flex;gap:16px;align-items:flex-start;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.num{font-family:Georgia,serif;font-size:2rem;line-height:1;color:var(--accent);font-weight:700;flex:none;padding-top:2px}
+.album-head h2{margin:0;font-size:1.35rem;line-height:1.3}
+.album-head h2 .artist{display:block}
+.album-head h2 .album-title{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-weight:600;font-size:1.08rem;color:var(--muted)}
+.album-meta{font-size:.84rem;color:var(--muted);margin:6px 0 0}
+.tracks{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px}
+@media(min-width:760px){.tracks{grid-template-columns:1fr 1fr}}
+.track{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 14px;display:flex;flex-direction:column;gap:10px}
+.track[hidden]{display:none}
+.track-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.track h3{margin:0;font-size:1.08rem;line-height:1.35}
+.length{font-variant-numeric:tabular-nums;font-family:Georgia,serif;font-weight:700;color:var(--muted);white-space:nowrap;padding-top:2px}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:800;border-radius:999px;padding:4px 10px;line-height:1.3}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;flex:none}
+.badge.single{background:var(--single-bg);color:var(--single-ink)} .badge.single::before{background:var(--single-dot)}
+.badge.non{background:var(--non-bg);color:var(--non-ink)} .badge.non::before{background:var(--non-dot)}
+.badge.unk{background:var(--unk-bg);color:var(--unk-ink)} .badge.unk::before{background:var(--unk-dot)}
+.badge.exception{background:var(--accent-soft);color:var(--accent-ink)} .badge.exception::before{background:var(--accent);border-radius:2px}
+.label{font-size:.74rem;letter-spacing:.08em;font-weight:800;color:var(--faint);text-transform:uppercase;margin:0}
+.evidence{margin:0;font-size:.94rem}
+.note{margin:0;font-size:.88rem;background:var(--surface2);border-radius:8px;padding:10px 12px;color:var(--ink)}
+.note strong{color:var(--accent-ink)}
+.sources{margin-top:auto;border-top:1px dashed var(--line);padding-top:10px}
+.sources p{margin:0 0 6px}
+.sources ul{margin:0;padding:0;list-style:none;display:grid;gap:4px}
+.sources li{font-size:.8rem;word-break:break-all;line-height:1.45}
+.sources a{color:var(--muted)}
+.sources a:hover{color:var(--accent-ink)}
+
+/* Exceptions */
+section.panel{margin-top:44px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 20px}
+@media(min-width:700px){section.panel{padding:30px 32px}}
+section.panel h2{margin:0 0 6px;font-size:1.4rem;font-family:Georgia,"Hiragino Mincho ProN",serif}
+section.panel .intro{color:var(--muted);margin:0 0 20px;font-size:.94rem}
+.ex-list{display:grid;gap:18px}
+@media(min-width:760px){.ex-list{grid-template-columns:1fr 1fr}}
+.ex-item h3{margin:0 0 6px;font-size:1rem;display:flex;gap:8px;align-items:baseline}
+.ex-item h3 .tag{font-size:.72rem;background:var(--accent-soft);color:var(--accent-ink);border-radius:999px;padding:3px 9px;font-weight:800;white-space:nowrap}
+.ex-item p{margin:0;font-size:.92rem;color:var(--ink)}
+.ex-item p + p{margin-top:6px}
+.ex-full{grid-column:1/-1}
+
+footer{margin-top:44px;border-top:2px solid var(--ink);padding-top:20px}
+footer h2{font-size:1.05rem;margin:0 0 10px}
+footer ul{margin:0;padding-left:1.2em;font-size:.9rem;color:var(--muted);display:grid;gap:6px}
+footer .fine{font-size:.82rem;color:var(--faint);margin:16px 0 0}
+.empty-msg{display:none;background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:20px;text-align:center;color:var(--muted);margin-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="genre-label">Year × Genre Playlist — Track Selection Evidence</p>
+  <h1>2023 STADIUM COUNTRY &amp; SOUTHERN ROCK<span class="jp">楽曲選出</span></h1>
+  <p class="lede">最終10枚のアルバムから各2曲ずつ選出した全20曲について、曲の長さ、シングルかどうか、選出理由のエビデンスと、確認に使った出典をアルバムごとにまとめています。女性アーティスト5枚／10枚で、このジャンルの厳格ルール（女性5枚必須）を満たした最終選出です。</p>
+  <div class="stats" aria-label="集計">
+    <div class="stat"><b>10枚</b><span>最終アルバム</span></div>
+    <div class="stat"><b>20曲</b><span>選出曲（各アルバム2曲）</span></div>
+    <div class="stat"><b>17曲</b><span>シングル</span></div>
+    <div class="stat"><b>2曲</b><span>非シングル</span></div>
+    <div class="stat"><b>1曲</b><span>シングル未確認</span></div>
+    <div class="stat"><b>3件</b><span>バラード例外</span></div>
+  </div>
+  <a class="spotify-btn" href="https://open.spotify.com/playlist/4jzPcOzeVCEu0iBC3LQ1u4" target="_blank" rel="noopener">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5.1 15.9a.7.7 0 0 1-1 .24c-2.7-1.65-6.1-2.02-10.1-1.1a.7.7 0 1 1-.32-1.37c4.37-1 8.1-.58 11.1 1.24.3.18.4.58.32.98zm1.47-3.27a.88.88 0 0 1-1.2.3c-3.1-1.9-7.8-2.45-11.46-1.35a.88.88 0 0 1-.5-1.68c4.17-1.27 9.33-.65 12.86 1.53.4.25.52.8.3 1.2zm.12-3.4C15.05 7.9 8.6 7.72 5.4 9a.88.88 0 1 1-.54-1.67c3.66-1.47 10.6-1.28 14.82 1.23a.88.88 0 0 1-1 1.67z"/></svg>
+    Spotifyで聴く
+  </a>
+  <p class="spotify-note">プレイリスト名：「2023年STADIUM COUNTRY &amp; SOUTHERN ROCK」（20曲・このページの順序どおり）</p>
+</header>
+
+<div class="toolbar" aria-label="絞り込みと目次">
+  <div class="toolbar-row">
+    <span class="toolbar-label">絞り込み：</span>
+    <button type="button" class="chip" data-filter="all" aria-pressed="true">すべて（20曲）</button>
+    <button type="button" class="chip" data-filter="single" aria-pressed="false">シングル（17曲）</button>
+    <button type="button" class="chip" data-filter="non" aria-pressed="false">非シングル（2曲）</button>
+    <button type="button" class="chip" data-filter="unk" aria-pressed="false">シングル未確認（1曲）</button>
+    <button type="button" class="chip" data-filter="exception" aria-pressed="false">バラード例外（3曲）</button>
+  </div>
+  <p class="count-note" id="countNote">全20曲を表示しています。</p>
+  <nav class="album-jump" aria-label="アルバム目次">
+    <a href="#album-1">1. Chris Stapleton</a>
+    <a href="#album-2">2. Zach Bryan</a>
+    <a href="#album-3">3. Ashley McBryde</a>
+    <a href="#album-4">4. The Cadillac Three</a>
+    <a href="#album-5">5. Gov't Mule</a>
+    <a href="#album-6">6. Bailey Zimmerman</a>
+    <a href="#album-7">7. Elle King</a>
+    <a href="#album-8">8. Megan Moroney</a>
+    <a href="#album-9">9. Morgan Wade</a>
+    <a href="#album-10">10. Caitlyn Smith</a>
+    <a href="#exceptions">例外・注記</a>
+  </nav>
+</div>
+
+<main id="albums">
+
+<!-- 1 -->
+<section class="album" id="album-1">
+  <div class="album-head"><div class="num">01</div><div>
+    <h2><span class="artist">Chris Stapleton</span><span class="album-title">『Higher』</span></h2>
+    <p class="album-meta">2曲選出 ・ いずれも本作の公式シングル（本作の公式シングルはこの2曲のみ）</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>White Horse</h3><span class="length">4:27</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">リードシングル（2023-07-21）。第66回グラミー賞 Best Country Song 受賞。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Higher_(Chris_Stapleton_album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Higher_(Chris_Stapleton_album)</a></li>
+        <li><a href="https://www.everythingnash.com/chris-stapleton-announces-higher-album-drops-white-horse/" target="_blank" rel="noopener">https://www.everythingnash.com/chris-stapleton-announces-higher-album-drops-white-horse/</a></li>
+        <li><a href="https://vinylscouter.com/album/higher-chris-stapleton" target="_blank" rel="noopener">https://vinylscouter.com/album/higher-chris-stapleton</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Think I'm in Love with You</h3><span class="length">3:42</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">第2シングル（2024-02-12）。本作の公式シングルはこの2曲のみ。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Higher_(Chris_Stapleton_album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Higher_(Chris_Stapleton_album)</a></li>
+        <li><a href="https://vinylscouter.com/album/higher-chris-stapleton" target="_blank" rel="noopener">https://vinylscouter.com/album/higher-chris-stapleton</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="album" id="album-2">
+  <div class="album-head"><div class="num">02</div><div>
+    <h2><span class="artist">Zach Bryan</span><span class="album-title">『Zach Bryan』</span></h2>
+    <p class="album-meta">2曲選出 ・ 公式シングル1曲＋非シングル1曲（バラード例外1件を含む）</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single exception">
+      <div class="track-top"><h3>I Remember Everything</h3><span class="length">3:47</span></div>
+      <div class="badges"><span class="badge single">シングル</span><span class="badge exception">バラード例外</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">本作唯一の公式シングル（Kacey Musgravesとのデュエット）。Billboard Hot 100初登場1位の歴史的ヒット。</p></div>
+      <p class="note"><strong>注記：</strong>バラード例外採用（歴史的重要性）</p>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Zach_Bryan_(album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Zach_Bryan_(album)</a></li>
+        <li><a href="https://www.whiskeyriff.com/2023/09/05/all-16-songs-from-zach-bryan-simultaneously-debuted-in-the-top-50-of-billboard-hot-100-chart/" target="_blank" rel="noopener">https://www.whiskeyriff.com/2023/09/05/all-16-songs-from-zach-bryan-simultaneously-debuted-in-the-top-50-of-billboard-hot-100-chart/</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="non">
+      <div class="track-top"><h3>Hey Driver</h3><span class="length">3:47</span></div>
+      <div class="badges"><span class="badge non">非シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">The War and Treatyとの共演曲。Hot 100初登場14位、Hot Country Songs 5位、RIAA 3×プラチナム。</p></div>
+      <p class="note"><strong>注記：</strong>非シングル（チャート実績と人気で選出）</p>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Zach_Bryan_(album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Zach_Bryan_(album)</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/The_War_and_Treaty" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/The_War_and_Treaty</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="album" id="album-3">
+  <div class="album-head"><div class="num">03</div><div>
+    <h2><span class="artist">Ashley McBryde</span><span class="album-title">『The Devil I Know』</span></h2>
+    <p class="album-meta">2曲選出 ・ リードシングル＋タイトル曲（第2シングル）</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Light On in the Kitchen</h3><span class="length">3:32</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">リードシングル（2023-02-24）。カントリーチャートトップ25入り、Rolling Stone 2023年ベストソング中間リスト選出。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/The_Devil_I_Know" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/The_Devil_I_Know</a></li>
+        <li><a href="https://www.everythingnash.com/ashley-mcbryde-releases-honest-personal-devil-i-know-album/" target="_blank" rel="noopener">https://www.everythingnash.com/ashley-mcbryde-releases-honest-personal-devil-i-know-album/</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>The Devil I Know</h3><span class="length">3:07</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">タイトル曲で第2シングル（2024-03-04）。Stereogumが「大きなサザンロック・コーラス」と評した。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/The_Devil_I_Know" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/The_Devil_I_Know</a></li>
+        <li><a href="https://guitargirlmag.com/news/music-news/ashley-mcbryde-releases-made-for-this-from-highly-anticipated-the-devil-i-know-arriving-9-8/" target="_blank" rel="noopener">https://guitargirlmag.com/news/music-news/ashley-mcbryde-releases-made-for-this-from-highly-anticipated-the-devil-i-know-arriving-9-8/</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="album" id="album-4">
+  <div class="album-head"><div class="num">04</div><div>
+    <h2><span class="artist">The Cadillac Three</span><span class="album-title">『The Years Go Fast』</span></h2>
+    <p class="album-meta">2曲選出 ・ 確認できるシングル1曲＋シングル未確認1曲</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Young &amp; Hungry</h3><span class="length">3:14</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">公式ストアが「featuring the single」と明記する唯一の確認できるシングル。オープニング曲。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://townsendmusic.store/product/the-years-go-fast-complete-bundle" target="_blank" rel="noopener">https://townsendmusic.store/product/the-years-go-fast-complete-bundle</a></li>
+        <li><a href="https://www.qobuz.com/gb-en/album/the-years-go-fast-the-cadillac-three/a02yckklxd4pc" target="_blank" rel="noopener">https://www.qobuz.com/gb-en/album/the-years-go-fast-the-cadillac-three/a02yckklxd4pc</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="unk">
+      <div class="track-top"><h3>The Worst</h3><span class="length">3:46</span></div>
+      <div class="badges"><span class="badge unk">シングル未確認</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">AllMusicのレビューが本作の代表例として名指しした曲。</p></div>
+      <p class="note"><strong>注記：</strong>シングルかどうかは確認できない</p>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://www.qobuz.com/gb-en/album/the-years-go-fast-the-cadillac-three/a02yckklxd4pc" target="_blank" rel="noopener">https://www.qobuz.com/gb-en/album/the-years-go-fast-the-cadillac-three/a02yckklxd4pc</a></li>
+        <li><a href="https://heavyharmonies.com/cgi-bin/glamcd.cgi?BandNum=9470&amp;CDName=The+Years+Go+Fast&amp;Letter=A" target="_blank" rel="noopener">https://heavyharmonies.com/cgi-bin/glamcd.cgi?BandNum=9470&amp;CDName=The+Years+Go+Fast&amp;Letter=A</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="album" id="album-5">
+  <div class="album-head"><div class="num">05</div><div>
+    <h2><span class="artist">Gov't Mule</span><span class="album-title">『Peace... Like a River』</span></h2>
+    <p class="album-meta">2曲選出 ・ レーベル公式発表でシングルと明記された2曲</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Dreaming Out Loud</h3><span class="length">4:38</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">レーベル（Concord/Fantasy）公式発表で「first single / lead single」と明記。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://concord.com/news/govt-mule-new-studio-album-peacelike-a-river-out-now-via-fantasy-records/" target="_blank" rel="noopener">https://concord.com/news/govt-mule-new-studio-album-peacelike-a-river-out-now-via-fantasy-records/</a></li>
+        <li><a href="https://govtmule.bandcamp.com/album/peace-like-a-river" target="_blank" rel="noopener">https://govtmule.bandcamp.com/album/peace-like-a-river</a></li>
+        <li><a href="https://liveforlivemusic.com/news/govt-mule-dreaming-out-loud-single-new-album-peace-like-a-river/" target="_blank" rel="noopener">https://liveforlivemusic.com/news/govt-mule-dreaming-out-loud-single-new-album-peace-like-a-river/</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Same As It Ever Was</h3><span class="length">6:44</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">Concord公式発表で先行シングルの1曲として明記。オープニング曲。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://concord.com/news/govt-mule-new-studio-album-peacelike-a-river-out-now-via-fantasy-records/" target="_blank" rel="noopener">https://concord.com/news/govt-mule-new-studio-album-peacelike-a-river-out-now-via-fantasy-records/</a></li>
+        <li><a href="https://govtmule.bandcamp.com/album/peace-like-a-river" target="_blank" rel="noopener">https://govtmule.bandcamp.com/album/peace-like-a-river</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="album" id="album-6">
+  <div class="album-head"><div class="num">06</div><div>
+    <h2><span class="artist">Bailey Zimmerman</span><span class="album-title">『Religiously. The Album.』</span></h2>
+    <p class="album-meta">2曲選出 ・ いずれもナンバーワン・シングル</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Rock and a Hard Place</h3><span class="length">3:27</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">Wikipediaが本作の「ナンバーワン・シングル」と明記。Taste of Countryの楽曲トップ5で1位。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Religiously._The_Album." target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Religiously._The_Album.</a></li>
+        <li><a href="https://www.qobuz.com/ca-en/album/religiously-the-album-bailey-zimmerman/xs01dicoqfd7a" target="_blank" rel="noopener">https://www.qobuz.com/ca-en/album/religiously-the-album-bailey-zimmerman/xs01dicoqfd7a</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Where It Ends</h3><span class="length">2:59</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">シングル（2023-10-02）、ナンバーワン・シングル。楽曲人気ランキングで「Religiously」を上回る2位。</p></div>
+      <p class="note"><strong>注記：</strong>一部の小売資料ではプロモーションシングル扱いの記載もあるが、WikipediaおよびHMVはシングルとして記載</p>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Religiously._The_Album." target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Religiously._The_Album.</a></li>
+        <li><a href="https://www.qobuz.com/ca-en/album/religiously-the-album-bailey-zimmerman/xs01dicoqfd7a" target="_blank" rel="noopener">https://www.qobuz.com/ca-en/album/religiously-the-album-bailey-zimmerman/xs01dicoqfd7a</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="album" id="album-7">
+  <div class="album-head"><div class="num">07</div><div>
+    <h2><span class="artist">Elle King</span><span class="album-title">『Come Get Your Wife』</span></h2>
+    <p class="album-meta">2曲選出 ・ デュエットによるリード／第2シングル（昇格検証でS判定）</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Drunk (And I Don't Wanna Go Home)</h3><span class="length">4:04</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">Miranda Lambertとのデュエットでリードシングル。カントリーチャート1位、CMA/ACM受賞のヒットデュエット。</p></div>
+      <p class="note"><strong>注記：</strong>Discogs表記は4:05でWikipediaの4:04と1秒差</p>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Come_Get_Your_Wife" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Come_Get_Your_Wife</a></li>
+        <li><a href="https://www.discogs.com/release/25953004-Elle-King-Come-Get-Your-Wife" target="_blank" rel="noopener">https://www.discogs.com/release/25953004-Elle-King-Come-Get-Your-Wife</a></li>
+        <li><a href="https://musicrow.com/2022/10/1elle-king-makes-it-country-music-official-with-come-get-your-wife-due-out-in-january/" target="_blank" rel="noopener">https://musicrow.com/2022/10/1elle-king-makes-it-country-music-official-with-come-get-your-wife-due-out-in-january/</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Worth a Shot</h3><span class="length">3:31</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">Dierks Bentleyとのデュエットで第2公式シングル。</p></div>
+      <p class="note"><strong>注記：</strong>Discogs表記は3:32でWikipediaの3:31と1秒差</p>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Come_Get_Your_Wife" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Come_Get_Your_Wife</a></li>
+        <li><a href="https://www.discogs.com/release/25953004-Elle-King-Come-Get-Your-Wife" target="_blank" rel="noopener">https://www.discogs.com/release/25953004-Elle-King-Come-Get-Your-Wife</a></li>
+        <li><a href="https://www.sonymusicnashville.com/elle-king-releases-spirited-new-track-try-jesus-from-upcoming-album-come-get-your-wife/" target="_blank" rel="noopener">https://www.sonymusicnashville.com/elle-king-releases-spirited-new-track-try-jesus-from-upcoming-album-come-get-your-wife/</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="album" id="album-8">
+  <div class="album-head"><div class="num">08</div><div>
+    <h2><span class="artist">Megan Moroney</span><span class="album-title">『Lucky』</span></h2>
+    <p class="album-meta">2曲選出 ・ リードシングル＋第2シングル（バラード例外1件を含む）</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single exception">
+      <div class="track-top"><h3>Tennessee Orange</h3><span class="length">3:43</span></div>
+      <div class="badges"><span class="badge single">シングル</span><span class="badge exception">バラード例外</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">リードシングル。Sony Music Nashville公式が「breakout hit」と明記、女性ソロ・カントリーで週間ストリーミング1位を記録。</p></div>
+      <p class="note"><strong>注記：</strong>ミッドテンポのラブソングでバラード寄りの側面もあるが、決定的に重要な代表シングルのため例外的に採用</p>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Lucky_(Megan_Moroney_album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Lucky_(Megan_Moroney_album)</a></li>
+        <li><a href="https://www.sonymusicnashville.com/megan-moroneys-debut-album-lucky-out-now/" target="_blank" rel="noopener">https://www.sonymusicnashville.com/megan-moroneys-debut-album-lucky-out-now/</a></li>
+        <li><a href="https://music.apple.com/us/album/lucky-deluxe/1706570971" target="_blank" rel="noopener">https://music.apple.com/us/album/lucky-deluxe/1706570971</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>I'm Not Pretty</h3><span class="length">3:01</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">第2シングル（2023-08-07）。Sony公式も「follow-up hit」と紹介したアップテンポ曲。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Lucky_(Megan_Moroney_album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Lucky_(Megan_Moroney_album)</a></li>
+        <li><a href="https://www.sonymusicnashville.com/megan-moroneys-debut-album-lucky-out-now/" target="_blank" rel="noopener">https://www.sonymusicnashville.com/megan-moroneys-debut-album-lucky-out-now/</a></li>
+        <li><a href="https://music.apple.com/us/album/lucky-deluxe/1706570971" target="_blank" rel="noopener">https://music.apple.com/us/album/lucky-deluxe/1706570971</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="album" id="album-9">
+  <div class="album-head"><div class="num">09</div><div>
+    <h2><span class="artist">Morgan Wade</span><span class="album-title">『Psychopath』</span></h2>
+    <p class="album-meta">2曲選出 ・ タイトル曲（リードシングル）＋第2シングル（昇格検証でS判定）</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Psychopath</h3><span class="length">3:28</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">タイトル曲でリードシングル（2023-05-19）。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Psychopath_(album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Psychopath_(album)</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Morgan_Wade" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Morgan_Wade</a></li>
+        <li><a href="https://www.qobuz.com/gb-en/album/psychopath-morgan-wade/chtz7qumxy0ac" target="_blank" rel="noopener">https://www.qobuz.com/gb-en/album/psychopath-morgan-wade/chtz7qumxy0ac</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>80's Movie</h3><span class="length">3:51</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">第2シングル（2023-07-10）。AllMusicが本作の成功要因として挙げたフォローアップ・シングル。</p></div>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/Psychopath_(album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Psychopath_(album)</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Morgan_Wade" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Morgan_Wade</a></li>
+        <li><a href="https://www.qobuz.com/gb-en/album/psychopath-morgan-wade/chtz7qumxy0ac" target="_blank" rel="noopener">https://www.qobuz.com/gb-en/album/psychopath-morgan-wade/chtz7qumxy0ac</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="album" id="album-10">
+  <div class="album-head"><div class="num">10</div><div>
+    <h2><span class="artist">Caitlyn Smith</span><span class="album-title">『High &amp; Low』</span></h2>
+    <p class="album-meta">2曲選出 ・ いずれも2022年のEP『High』収録の先行発表曲（下記の形式上の境界を参照）</p>
+  </div></div>
+  <div class="tracks">
+    <article class="track" data-type="single">
+      <div class="track-top"><h3>Downtown Baby</h3><span class="length">2:48</span></div>
+      <div class="badges"><span class="badge single">シングル</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">公式シングル（2022-03-04）。Billboardが「ほとばしるようなエネルギー」と評したアップテンポ曲。</p></div>
+      <p class="note"><strong>注記：</strong>2022年のEP『High』収録曲（先行発表曲）</p>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/High_%26_Low_(album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/High_%26_Low_(album)</a></li>
+        <li><a href="https://www.monument-records.com/caitlyn-smiths-high-low-available-today-on-monument-records/" target="_blank" rel="noopener">https://www.monument-records.com/caitlyn-smiths-high-low-available-today-on-monument-records/</a></li>
+        <li><a href="https://countrynow.com/caitlyn-smith-details-the-terrifying-leap-of-faith-she-took-when-recording-her-new-album-high/" target="_blank" rel="noopener">https://countrynow.com/caitlyn-smith-details-the-terrifying-leap-of-faith-she-took-when-recording-her-new-album-high/</a></li>
+      </ul></div>
+    </article>
+    <article class="track" data-type="non exception">
+      <div class="track-top"><h3>High</h3><span class="length">3:47</span></div>
+      <div class="badges"><span class="badge non">非シングル</span><span class="badge exception">バラード例外</span></div>
+      <div><p class="label">選出理由</p><p class="evidence">プロジェクトのタイトル曲。Miley Cyrusが『Plastic Hearts』に先行収録した楽曲で、Hollerが高く評価。</p></div>
+      <p class="note"><strong>注記：</strong>バラード例外採用（プロジェクトの看板曲）。2022年のEP『High』収録曲（先行発表曲）。シングルではない</p>
+      <div class="sources"><p class="label">出典</p><ul>
+        <li><a href="https://en.wikipedia.org/wiki/High_%26_Low_(album)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/High_%26_Low_(album)</a></li>
+        <li><a href="https://www.monument-records.com/caitlyn-smiths-high-low-available-today-on-monument-records/" target="_blank" rel="noopener">https://www.monument-records.com/caitlyn-smiths-high-low-available-today-on-monument-records/</a></li>
+        <li><a href="https://holler.country/reviews/album-review/caitlyn-smith-high/" target="_blank" rel="noopener">https://holler.country/reviews/album-review/caitlyn-smith-high/</a></li>
+      </ul></div>
+    </article>
+  </div>
+</section>
+
+<p class="empty-msg" id="emptyMsg">この条件に合う曲は表示されていません。絞り込みを「すべて」に戻してください。</p>
+</main>
+
+<section class="panel" id="exceptions">
+  <h2>例外・注記</h2>
+  <p class="intro">原則から外れて採用した曲と、形式上の境界がある曲について、理由と経緯を明示します。</p>
+  <div class="ex-list">
+    <div class="ex-item">
+      <h3>Zach Bryan「I Remember Everything」 <span class="tag">バラード例外 1</span></h3>
+      <p>本作唯一の公式シングルで、Kacey Musgravesとのデュエット。Billboard Hot 100初登場1位という歴史的ヒットであり、その歴史的重要性からバラード例外として採用しました。</p>
+    </div>
+    <div class="ex-item">
+      <h3>Megan Moroney「Tennessee Orange」 <span class="tag">バラード例外 2</span></h3>
+      <p>リードシングル。ミッドテンポのラブソングでバラード寄りの側面もありますが、決定的に重要な代表シングルのため例外的に採用しました。Sony Music Nashville公式が「breakout hit」と明記し、女性ソロ・カントリーで週間ストリーミング1位を記録しています。</p>
+    </div>
+    <div class="ex-item">
+      <h3>Caitlyn Smith「High」 <span class="tag">バラード例外 3</span></h3>
+      <p>プロジェクトのタイトル曲であり看板曲のため、バラード例外として採用しました。シングルではありません。Miley Cyrusが『Plastic Hearts』に先行収録した楽曲で、Hollerが高く評価しています。</p>
+    </div>
+    <div class="ex-item">
+      <h3>Zach Bryan「Hey Driver」 <span class="tag">非シングル</span></h3>
+      <p>非シングルですが、チャート実績で選出しました。The War and Treatyとの共演曲で、Hot 100初登場14位、Hot Country Songs 5位、RIAA 3×プラチナムを記録しています。</p>
+    </div>
+    <div class="ex-item">
+      <h3>The Cadillac Three「The Worst」 <span class="tag">シングル未確認</span></h3>
+      <p>シングルかどうかは確認できませんでした。そのため「シングル未確認」と区別して表示しています。選出の根拠は、AllMusicのレビューが本作の代表例としてこの曲を名指ししたことです。</p>
+    </div>
+    <div class="ex-item">
+      <h3>Bailey Zimmerman「Where It Ends」 <span class="tag">表記ゆれ</span></h3>
+      <p>一部の小売資料ではプロモーションシングル扱いの記載もありますが、WikipediaおよびHMVはシングルとして記載しているため、本ページでは「シングル」として扱っています。</p>
+    </div>
+    <div class="ex-item ex-full">
+      <h3>Caitlyn Smith『High &amp; Low』の形式上の境界 <span class="tag">明示のうえ採用</span></h3>
+      <p>選出した2曲「Downtown Baby」と「High」はいずれも、2022年のEP『High』に収録された先行発表曲です（「Downtown Baby」は2022-03-04の公式シングル）。</p>
+      <p>アルバム『High &amp; Low』自体も、14曲中8曲が2022年の先行プロジェクト／EP『High』収録曲で、2023年に6曲を追加して完成した作品です。「指定年厳守」の観点では形式上の境界ケースにあたりますが、この点をエビデンスページと選出ノートに明示したうえで採用することが決まりました。昇格検証では判定A（下限寄り）で、代替候補だった Brandy Clark『Brandy Clark』（判定B・アメリカーナ寄り）よりジャンル適合が高いことも採用の背景です。</p>
+    </div>
+    <div class="ex-item ex-full">
+      <h3>曲の長さの出典差（Elle King） <span class="tag">1秒差</span></h3>
+      <p>「Drunk (And I Don't Wanna Go Home)」は Discogs表記が4:05で、Wikipediaの4:04と1秒差があります。「Worth a Shot」も Discogs表記が3:32で、Wikipediaの3:31と1秒差があります。本ページの長さはWikipedia表記に合わせています。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2>検証方法について</h2>
+  <ul>
+    <li>収録曲は2サイト以上でクロスチェックして確認しています。各曲の出典はカード内にすべて掲載しています。</li>
+    <li>2分以下の曲は除外しています（本ページの20曲はすべて2分を超えています。最短は Caitlyn Smith「Downtown Baby」の2:48）。</li>
+    <li>バラードは原則不採用とし、例外は理由を明記しています（本ページでは3件：上記「例外・注記」参照）。</li>
+    <li>再生回数などの数字は、出典に記載された数字のみを使用しています。チャート順位や認定についても、出典に基づくものだけを記載しています。</li>
+    <li>シングルの判定が確認できない曲は、推測で埋めず「シングル未確認」と明示しています（The Cadillac Three「The Worst」の1曲）。</li>
+  </ul>
+  <p class="fine">対象：2023年 STADIUM COUNTRY &amp; SOUTHERN ROCK 最終10枚（女性5枚／10枚）／ 楽曲：各アルバム2曲・計20曲 ／ Spotifyプレイリスト：「2023年STADIUM COUNTRY &amp; SOUTHERN ROCK」</p>
+</footer>
+
+</div>
+<script>
+(function(){
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var tracks = Array.prototype.slice.call(document.querySelectorAll('.track'));
+  var albums = Array.prototype.slice.call(document.querySelectorAll('section.album'));
+  var note = document.getElementById('countNote');
+  var emptyMsg = document.getElementById('emptyMsg');
+  var labels = {all:'全20曲', single:'シングル17曲', non:'非シングル2曲', unk:'シングル未確認1曲', exception:'バラード例外3曲'};
+  function apply(filter){
+    var visible = 0;
+    tracks.forEach(function(t){
+      var types = (t.getAttribute('data-type')||'').split(' ');
+      var show = filter==='all' || types.indexOf(filter)!==-1;
+      t.hidden = !show;
+      if(show) visible++;
+    });
+    albums.forEach(function(a){
+      var any = Array.prototype.some.call(a.querySelectorAll('.track'), function(t){ return !t.hidden; });
+      a.style.display = any ? '' : 'none';
+    });
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-filter')===filter ? 'true' : 'false'); });
+    note.textContent = filter==='all' ? '全20曲を表示しています。' : (labels[filter] + 'を表示しています（' + visible + '曲）。');
+    emptyMsg.style.display = visible===0 ? 'block' : 'none';
+  }
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){ apply(c.getAttribute('data-filter')); });
+  });
+})();
+</script>
+</body>
+</html>

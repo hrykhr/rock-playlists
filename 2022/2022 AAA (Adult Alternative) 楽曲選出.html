@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2022 AAA (Adult Alternative) 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f4f1ec; --surface:#fffdf9; --surface2:#ece7dd; --ink:#1c1a17; --muted:#5d574e;
+    --line:#d8d1c2; --accent:#1f6b4a; --accent-ink:#fff; --gold:#8a6d1f; --chip:#efe9db;
+    --ok:#2e6b34;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#141210; --surface:#1e1b17; --surface2:#28241e; --ink:#f0eadf; --muted:#b3aa9a;
+      --line:#3a352c; --accent:#4dbb8a; --accent-ink:#0f1a14; --gold:#d9b45c; --chip:#2b2721;
+      --ok:#7fc98a;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    line-height:1.65;font-size:15.5px}
+  .wrap{max-width:1060px;margin:0 auto;padding:28px 18px 64px}
+  .kicker{font-family:"Archivo",sans-serif;font-weight:800;letter-spacing:.14em;font-size:12px;color:var(--accent);text-transform:uppercase}
+  h1{font-family:"Archivo","Zen Kaku Gothic New",sans-serif;font-weight:900;font-size:clamp(26px,5.4vw,44px);line-height:1.12;margin:8px 0 6px;letter-spacing:.01em}
+  h1 .jp{display:block;font-size:.52em;font-weight:900;margin-top:8px;letter-spacing:.06em}
+  .lede{color:var(--muted);max-width:46em;margin:10px 0 0}
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;min-width:118px}
+  .stat b{font-family:"Archivo",sans-serif;font-size:24px;font-weight:900;display:block;line-height:1.1}
+  .stat span{font-size:12.5px;color:var(--muted)}
+  .rules{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:8px;padding:14px 18px;margin:18px 0 8px}
+  .rules h2{font-size:15px;margin:0 0 6px;font-weight:900}
+  .rules ul{margin:0;padding-left:1.2em;color:var(--muted);font-size:14px}
+  .toolbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 0 10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .toolbar input[type=search]{flex:1 1 220px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:14.5px}
+  button{font:inherit;font-weight:700;font-size:14px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);padding:10px 16px;cursor:pointer;min-height:44px}
+  button.ghost{background:transparent;color:var(--accent)}
+  button:active{transform:translateY(1px)}
+  .toast{font-size:13.5px;color:var(--ok);font-weight:700;min-height:1.4em}
+  .album{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 20px 14px;margin:16px 0}
+  .album-head{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:10px}
+  .album-head .no{font-family:"Archivo",sans-serif;font-weight:900;color:var(--accent);font-size:20px}
+  .album-head h2{font-family:"Archivo","Zen Kaku Gothic New",sans-serif;font-size:21px;font-weight:900;margin:0}
+  .album-head .meta{color:var(--muted);font-size:13px;margin-left:auto}
+  .track{display:grid;grid-template-columns:1fr;gap:4px;padding:14px 0;border-bottom:1px dashed var(--line)}
+  .track:last-of-type{border-bottom:none}
+  .track-title{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+  .track-title h3{font-size:17.5px;margin:0;font-weight:900}
+  .len{font-family:"Archivo",sans-serif;font-weight:700;color:var(--muted);font-size:14px}
+  .badge{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:1px 10px;font-size:12px;font-weight:700}
+  .badge.single{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .track p{margin:2px 0;font-size:14px}
+  .track .label{font-weight:900;font-size:12.5px;color:var(--gold);letter-spacing:.05em;margin-right:6px}
+  .srcs{font-size:13px}
+  .srcs a{color:var(--accent);word-break:break-all}
+  section.plain{margin:34px 0 0}
+  section.plain h2{font-size:20px;font-weight:900;border-bottom:2px solid var(--ink);padding-bottom:6px}
+  pre.tsv{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font-size:12.5px;line-height:1.7;white-space:pre}
+  .caveats li{margin:6px 0}
+  .caveats{color:var(--muted);font-size:14.5px;padding-left:1.2em}
+  footer{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+  .hidden{display:none!important}
+  @media (max-width:560px){
+    .album{padding:16px 14px 10px}
+    .album-head .meta{margin-left:0}
+    .stat{min-width:calc(50% - 6px)}
+  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">2022 · AAA (Adult Alternative)</div>
+    <h1>Song Selection<span class="jp">楽曲選出 ― 最終5枚 × 各2曲 ＝ 全10曲</span></h1>
+    <p class="lede">確定済みの最終5枚から、楽曲選定マニュアルに沿って各アルバム2曲ずつ選出した結果です。収録確認はWikipediaを優先し、2サイト以上でクロスチェックしています。再生回数は出典が実際に示した数値だけを載せ、確認できないものは「確認できない」と明記しています。なお今回の5枚は全員男性アーティストで、女性アーティスト必須の厳格ルールについては「無理に選出するより質を大事にする」という判断で例外としてこのまま進めた回です。</p>
+    <div class="stats">
+      <div class="stat"><b>5</b><span>対象アルバム</span></div>
+      <div class="stat"><b>10</b><span>選出曲（各2曲）</span></div>
+      <div class="stat"><b>10 / 10</b><span>シングル曲</span></div>
+      <div class="stat"><b>3</b><span>再生回数が未確認の曲</span></div>
+    </div>
+    <div class="rules">
+      <h2>適用したマニュアルのルール</h2>
+      <ul>
+        <li>各アルバムから2曲。シングル曲・再生回数の多い曲・ファン人気の高い曲を優先し、原則2つ以上の基準を満たす曲を選出</li>
+        <li>収録曲は最低2サイトでクロスチェック（Wikipedia優先、次にAllMusic／Apple Music／Bandcamp等）。エビデンスのURLを必ず明記</li>
+        <li>2分以下の曲は除外</li>
+        <li>バラードは原則不採用。歴史的・バンド的・その年における重要性がある場合のみ例外</li>
+        <li>確認できないものは「確認できない」と明示し、記憶や推測で埋めない。再生回数の根拠はKworb（第三者集計）とLast.fmのリスナー数であり、公式のSpotify／YouTube現行値ではない</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="アーティスト・アルバム・曲名で絞り込み" aria-label="絞り込み検索" />
+    <button id="copyBtn" type="button">TSVをコピー</button>
+    <button id="dlBtn" type="button" class="ghost">TSVをダウンロード</button>
+    <span class="toast" id="toast" role="status"></span>
+  </div>
+
+  <main id="albums"></main>
+
+  <section class="plain">
+    <h2>最終TSV（ジャンル／アーティスト／アルバム／曲名）</h2>
+    <p style="color:var(--muted);font-size:14px">ヘッダー＋1行1曲・全10行のタブ区切りです。上のボタンからコピー／ダウンロードできます。</p>
+    <pre class="tsv" id="tsvBlock"></pre>
+  </section>
+
+  <section class="plain">
+    <h2>確認できなかったこと・注記</h2>
+    <ul class="caveats">
+      <li><strong>再生回数が確認できていない曲：</strong>Dawesの2曲（「Someone Else's Café / Doomscroller Tries to Relax」「Comes in Waves」）と Amos Lee「Shoulda Known Better」は、正確な現在の再生回数が確認できていません。数値は作らず、そのまま明記しています。</li>
+      <li><strong>再生回数の出典について：</strong>本ページの再生回数の根拠は Kworb（第三者集計）と Last.fm のリスナー数であり、公式のSpotify／YouTubeの現行値ではありません。数値がある曲にはKworbの値をそのまま使っています。</li>
+      <li><strong>Train「Cleopatra」のシングル分類の食い違い：</strong>Wikipedia内でも記述が食い違い、シングル一覧では「正式シングル（2022年5月31日）」、本文のプロモーション記述では「プロモーショナル・シングル（2022年5月18日）」の両表記があります。本ページでは両方を併記しています。</li>
+      <li><strong>曲の長さの表記ゆれ：</strong>曲長に1〜2秒差が複数あります（例：Dawes「Comes in Waves」は資料により5:30／5:31）。選出曲はWikipedia／公式の値を採用しています。Amos Lee「Shoulda Known Better」もWikipedia 3:05／Bandcamp 3:04と1秒差があります。</li>
+      <li><strong>Amos Leeのシングル日付：</strong>「Worry No More」は2021年8月に先行公開された第1シングルで、正確な日付は資料により確認が限られます。「Shoulda Known Better」は2021年9月27日にアルバム発表とあわせて公開された第2シングルです。</li>
+      <li><strong>Dawes「Comes in Waves」のシングル扱い：</strong>Wikipediaのアルバムページのシングル一覧にはリードシングルのみが載っていますが、レーベル側の発表（BroadwayWorld／American Songwriter、2022年5月27〜28日）で第2シングルとして配信開始が報じられているため、本ページでは第2シングルとして扱っています。</li>
+    </ul>
+  </section>
+
+  <footer>
+    リサーチ実施：2026年11月11日（Web検索によるエビデンス確認）。ジャンルは全曲 AAA (Adult Alternative)、対象年は2022年です。Spotifyプレイリスト「2022年AAA (Adult Alternative)」はこの10曲の順番で作成済みです。
+  </footer>
+</div>
+
+<script>
+var GENRE = "AAA (Adult Alternative)";
+var ALBUMS = [
+{ n:1, artist:"Amos Lee", album:"Dreamland", meta:"2022年2月11日発売",
+  tracks:[
+   { title:"Worry No More", len:"3:41", single:"第1シングル · 2021年8月先行公開",
+     pop:"Billboard Adult Alternative Airplay（AAAチャート）で6位、トップ10入り。10年以上ぶりの大きなラジオ・ヒットと報じられている。",
+     reason:"第1シングルでAAAチャート6位という明確な人気の根拠があるため選出。アルバムの顔となる1曲。",
+     srcs:[["Wikipedia — Dreamland (Amos Lee album)","https://en.wikipedia.org/wiki/Dreamland_(Amos_Lee_album)"],["SongwriterUniverse — Amos Lee Interview","https://www.songwriteruniverse.com/amos-lee-interview-2022/"]]},
+   { title:"Shoulda Known Better", len:"3:05", single:"第2シングル · 2021年9月27日",
+     pop:"第2シングルであることが根拠。正確な現在の再生回数は確認できない（未確認）。",
+     reason:"シングルであることが選出理由。第1シングルに続く先行曲で、アルバム発表とあわせて公開された。",
+     srcs:[["Wikipedia — Dreamland (Amos Lee album)","https://en.wikipedia.org/wiki/Dreamland_(Amos_Lee_album)"],["JamBase — Amos Lee Announces Dreamland","https://www.jambase.com/article/amos-lee-dreamland-new-album-single"],["Bandcamp — Dreamland","https://amoslee.bandcamp.com/album/dreamland"]]}
+  ],
+  rejected:[
+   ["Dreamland","タイトル曲だがシングルではなく、人気の根拠がないため不採用"],
+   ["Hold You","シングルではなく、人気の根拠がないため不採用"]
+  ]},
+{ n:2, artist:"Train", album:"AM Gold", meta:"2022年5月20日発売",
+  tracks:[
+   { title:"AM Gold", len:"2:49", single:"リードシングル · 2022年2月16日",
+     pop:"Spotify再生数 5,990,103回（Kworb、第三者集計）。公式の現行値ではない。",
+     reason:"リードシングルでタイトル曲。Kworbの再生数が人気の根拠。",
+     srcs:[["Wikipedia — AM Gold (album)","https://en.wikipedia.org/wiki/AM_Gold_(album)"],["AllMusic — AM Gold","https://www.allmusic.com/album/am-gold-mw0003707979"],["Apple Music — AM Gold","https://music.apple.com/us/album/am-gold/1618870551"]]},
+   { title:"Cleopatra", len:"3:20", single:"第2シングル · 正式シングル 2022年5月31日／プロモーショナル・シングル表記 2022年5月18日（分類に食い違いあり）",
+     pop:"Spotify再生数 1,978,587回（Kworb、第三者集計）。公式の現行値ではない。feat. Sofía Reyes。",
+     reason:"第2シングルであることが選出理由。ただしWikipedia内でも正式シングル（5月31日）とプロモーショナル・シングル（5月18日）の両表記があり、分類に食い違いがある点を明記する。",
+     srcs:[["Wikipedia — AM Gold (album)","https://en.wikipedia.org/wiki/AM_Gold_(album)"],["AllMusic — AM Gold","https://www.allmusic.com/album/am-gold-mw0003707979"],["Apple Music — AM Gold","https://music.apple.com/us/album/am-gold/1618870551"]]}
+  ],
+  rejected:[
+   ["Turn the Radio Up (feat. Jewel)","プロモーショナル・シングル扱いのため、正式シングル2曲を優先して不採用"],
+   ["Running Back (Trying to Talk to You)","プロモーショナル・シングル扱いのため、正式シングル2曲を優先して不採用"]
+  ]},
+{ n:3, artist:"Noah Kahan", album:"Stick Season", meta:"2022年10月14日発売",
+  tracks:[
+   { title:"Stick Season", len:"3:02", single:"リードシングル · 2022年7月8日",
+     pop:"UKシングルチャート1位、Billboard Hot 100で最高9位、AAAラジオチャートでも1位。",
+     reason:"リードシングルでタイトル曲。UK1位・Hot 100トップ10・AAA1位と人気の根拠が最も強い1曲。",
+     srcs:[["Wikipedia — Stick Season (album)","https://en.wikipedia.org/wiki/Stick_Season_(album)"],["AllMusic — Stick Season","https://www.allmusic.com/album/mw0003816324"],["Wikipedia — Noah Kahan","https://en.wikipedia.org/wiki/Noah_Kahan"]]},
+   { title:"Northern Attitude", len:"4:27", single:"第2シングル · 2022年9月16日",
+     pop:"第2シングルであることが根拠。アルバムのオープニング曲。",
+     reason:"シングルであることが選出理由。リードシングルに続く第2シングル。",
+     srcs:[["Wikipedia — Stick Season (album)","https://en.wikipedia.org/wiki/Stick_Season_(album)"],["AllMusic — Stick Season","https://www.allmusic.com/album/mw0003816324"]]}
+  ],
+  rejected:[
+   ["All My Love","シングルではなく、リスナー数も下位のため不採用"],
+   ["She Calls Me Back","シングル化は2023年の拡張版時代（2023年10月6日）のため、2022年オリジナル盤の選出対象としては不採用"],
+   ["Dial Drunk","2022年オリジナル盤に未収録（2023年拡張版の追加曲）のため不採用"]
+  ]},
+{ n:4, artist:"Dawes", album:"Misadventures of Doomscroller", meta:"2022年7月22日発売",
+  tracks:[
+   { title:"Someone Else's Café / Doomscroller Tries to Relax", len:"9:26", single:"リードシングル · 2022年5月6日",
+     pop:"リードシングルであることが根拠。正確な現在の再生回数は確認できない（未確認）。2部構成の1曲として扱う、9分超のオープニング曲。",
+     reason:"リードシングルであることが選出理由。アルバムを象徴する長尺のオープニング曲。",
+     srcs:[["Wikipedia — Misadventures of Doomscroller","https://en.wikipedia.org/wiki/Misadventures_of_Doomscroller"],["Consequence — Dawes Announce Misadventures of Doomscroller","https://consequence.net/2022/05/dawes-misadventures-of-doomscroller-new-album/amp/"],["Qobuz — Misadventures of Doomscroller","https://www.qobuz.com:443/us-en/album/misadventures-of-doomscroller-dawes/gppthet2ie61b"]]},
+   { title:"Comes in Waves", len:"5:30", single:"第2シングル · 2022年5月27日",
+     pop:"第2シングルであることが根拠。正確な現在の再生回数は確認できない（未確認）。曲長は資料により5:30／5:31と1秒差があり、本ページはWikipedia／公式の5:30を採用。",
+     reason:"シングルであることが選出理由。リードシングルに続いて配信された第2シングル。",
+     srcs:[["Wikipedia — Misadventures of Doomscroller","https://en.wikipedia.org/wiki/Misadventures_of_Doomscroller"],["BroadwayWorld — Dawes Share New Single 'Comes in Waves'","https://www.broadwayworld.com/bwwmusic/article/Dawes-Share-New-Single-Comes-in-Waves-20220527"],["American Songwriter — Dawes Releases New Single","https://americansongwriter.com/dawes-releases-new-single-comes-in-waves/"]]}
+  ],
+  rejected:[
+   ["Everything Is Permanent","発売日PRではシングル扱いもあったが、先行シングル2曲に優先度で劣るため不採用"],
+   ["Ghost in the Machine","発売日PRではシングル扱いもあったが、先行シングル2曲に優先度で劣るため不採用"],
+   ["Joke in There Somewhere (Outro)","1:37で2分以下のため除外"],
+   ["Joke in There Somewhere","シングルではなく、人気の根拠がないため不採用"],
+   ["Sound That No One Made / Doomscroller Sunrise","シングルではなく、人気の根拠がないため不採用"]
+  ]},
+{ n:5, artist:"Caamp", album:"Lavender Days", meta:"2022年6月24日発売",
+  tracks:[
+   { title:"Lavender Girl", len:"3:23", single:"第3シングル · 2022年5月20日",
+     pop:"Spotify再生数 74,631,370回（Kworb、第三者集計）でアルバム内1位。公式の現行値ではない。",
+     reason:"第3シングルで、Kworbの再生数がアルバム内1位という人気の根拠があるため選出。",
+     srcs:[["Wikipedia — Lavender Days","https://en.wikipedia.org/wiki/Lavender_Days"],["Apple Music — Lavender Days","https://music.apple.com/gb/album/lavender-days/1886492711"]]},
+   { title:"Believe", len:"3:15", single:"リードシングル · 2022年3月14日",
+     pop:"Billboard Adult Alternative Airplay（AAAラジオチャート）で1位。Spotify再生数 57,879,366回（Kworb、第三者集計）。公式の現行値ではない。",
+     reason:"リードシングルでAAAチャート1位。チャート実績と再生数の両方が人気の根拠。",
+     srcs:[["Wikipedia — Lavender Days","https://en.wikipedia.org/wiki/Lavender_Days"],["Apple Music — Lavender Days","https://music.apple.com/gb/album/lavender-days/1886492711"],["BroadwayWorld — Caamp Announces New Album","https://www.broadwayworld.com/bwwmusic/article/Caamp-Announces-New-Album-Shares-New-Single-20220311"]]}
+  ],
+  rejected:[
+   ["Apple Tree Blues","第2シングルだが、再生数が選出2シングル（Lavender Girl／Believe）を下回るため不採用。最も惜しい落選候補"],
+   ["Come with Me Now","シングルではなく、人気の根拠が選出2曲に劣るため不採用"]
+  ]}
+];
+
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function render(){
+  var host=document.getElementById("albums");
+  var html="";
+  ALBUMS.forEach(function(a){
+    html+='<article class="album" data-search="'+esc((a.artist+" "+a.album+" "+a.tracks.map(function(t){return t.title;}).join(" ")).toLowerCase())+'">';
+    html+='<div class="album-head"><span class="no">'+String(a.n).padStart(2,"0")+'</span><h2>'+esc(a.artist)+' — 『'+esc(a.album)+'』</h2><span class="meta">'+esc(a.meta)+'</span></div>';
+    a.tracks.forEach(function(t){
+      html+='<div class="track"><div class="track-title"><h3>'+esc(t.title)+'</h3><span class="len">'+esc(t.len)+'</span><span class="badge single">シングル</span></div>';
+      html+='<p><span class="label">シングル</span>'+esc(t.single)+'</p>';
+      html+='<p><span class="label">人気の根拠</span>'+esc(t.pop)+'</p>';
+      html+='<p><span class="label">選出理由</span>'+esc(t.reason)+'</p>';
+      html+='<p class="srcs"><span class="label">検証ソース（2サイト以上）</span>'+t.srcs.map(function(s){return '<a href="'+s[1]+'" target="_blank" rel="noopener">'+esc(s[0])+'</a>';}).join(' ／ ')+'</p></div>';
+    });
+    if(a.rejected && a.rejected.length){
+      html+='<details><summary>検討して外した候補と理由（'+a.rejected.length+'件）</summary><ul>';
+      a.rejected.forEach(function(r){ html+='<li><strong>'+esc(r[0])+'</strong> ― '+esc(r[1])+'</li>'; });
+      html+='</ul></details>';
+    }
+    html+='</article>';
+  });
+  host.innerHTML=html;
+}
+function tsvText(){
+  var rows=["GENRE\tARTIST\tALBUM\tTRACK"];
+  ALBUMS.forEach(function(a){ a.tracks.forEach(function(t){
+    var trackTitle = t.title;
+    if(a.artist==="Train" && t.title==="Cleopatra"){ trackTitle="Cleopatra"; }
+    rows.push([GENRE,a.artist,a.album,trackTitle].join("\t"));
+  }); });
+  return rows.join("\n");
+}
+render();
+document.getElementById("tsvBlock").textContent=tsvText();
+
+var toast=document.getElementById("toast");
+function showToast(msg){ toast.textContent=msg; setTimeout(function(){toast.textContent="";},2600); }
+document.getElementById("copyBtn").addEventListener("click",function(){
+  var text=tsvText();
+  function done(){ showToast("TSV（ヘッダー＋10行）をコピーしました"); }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done,function(){ fallback(); });
+  } else { fallback(); }
+  function fallback(){
+    var ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); done(); }catch(e){ showToast("コピーできませんでした。下のTSV欄から選択してください"); }
+    document.body.removeChild(ta);
+  }
+});
+document.getElementById("dlBtn").addEventListener("click",function(){
+  var blob=new Blob([tsvText()],{type:"text/tab-separated-values;charset=utf-8"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url; a.download="2022-aaa-adult-alternative-tracks.tsv";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  showToast("TSVファイルをダウンロードしました");
+});
+document.getElementById("q").addEventListener("input",function(e){
+  var q=e.target.value.trim().toLowerCase();
+  document.querySelectorAll(".album").forEach(function(el){
+    el.classList.toggle("hidden", q!=="" && el.getAttribute("data-search").indexOf(q)===-1);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2023 MELODIC POWER &amp; TRADITIONAL METAL 候補一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, a.btn { min-height: 2.25rem; }
+      :root{
+        --bg:#f7f7f4; --surface:#ffffff; --surface2:#eef0ec;
+        --ink:#1c2024; --ink2:#4a5158; --ink3:#6f777f;
+        --line:#dde0da; --line2:#c3cbc2;
+        --accent:#31572c; --accent-ink:#ffffff; --accent-soft:#e4efe0;
+        --steel:#33526e; --steel-soft:#e2ebf2;
+        --rust:#a34d24; --rust-soft:#f8e9df;
+        --gold:#7d6414; --gold-soft:#f3ecc9;
+        --rose:#9c3d54; --rose-soft:#f7e3e8;
+        --spotify:#177245;
+        --shadow:0 1px 2px rgba(28,32,36,.05),0 10px 26px -20px rgba(28,32,36,.4);
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#111417; --surface:#191d20; --surface2:#21262a;
+          --ink:#edf0ee; --ink2:#bcc3bd; --ink3:#939d95;
+          --line:#2c3330; --line2:#3e4842;
+          --accent:#8fc47e; --accent-ink:#12240f; --accent-soft:#243a20;
+          --steel:#8fb4d4; --steel-soft:#22303d;
+          --rust:#e09a6d; --rust-soft:#3a2a1e;
+          --gold:#d9bc6a; --gold-soft:#38311c;
+          --rose:#e59cae; --rose-soft:#3a232b;
+          --spotify:#4cc983;
+          --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px -20px rgba(0,0,0,.8);
+        }
+      }
+      *{ box-sizing:border-box; }
+      html{ scroll-behavior:smooth; }
+      body{
+        margin:0; background:var(--bg); color:var(--ink);
+        font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+        font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+      }
+      .wrap{ max-width:1060px; margin:0 auto; padding:0 20px 72px; }
+      a{ color:var(--steel); }
+      a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+      header{ padding:52px 0 8px; }
+      .genre-line{
+        display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+        font-size:.82rem; font-weight:700; letter-spacing:.14em; color:var(--ink3);
+      }
+      .status{
+        letter-spacing:.02em; color:var(--accent); background:var(--accent-soft);
+        border:1px solid var(--line2); border-radius:999px; padding:3px 12px; font-size:.8rem;
+      }
+      h1{
+        font-family:"Shippori Mincho",serif; font-weight:800;
+        font-size:clamp(1.85rem,5.2vw,2.9rem); line-height:1.3; margin:14px 0 6px; letter-spacing:.01em;
+      }
+      .en-sub{ font-family:"Shippori Mincho",serif; font-size:1rem; font-weight:600; color:var(--ink2); letter-spacing:.05em; margin:2px 0 0; }
+      .lede{ color:var(--ink2); max-width:48em; margin:10px 0 0; }
+      .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:28px 0 18px; }
+      .stat{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px 10px; box-shadow:var(--shadow); }
+      .stat b{ display:block; font-family:"Shippori Mincho",serif; font-size:1.9rem; line-height:1.1; font-weight:800; }
+      .stat span{ font-size:.8rem; color:var(--ink2); font-weight:500; }
+      .stat.warn b{ color:var(--rust); }
+      .btn{
+        display:inline-flex; align-items:center; gap:9px; text-decoration:none;
+        background:var(--spotify); color:#fff; font-weight:700; border-radius:999px;
+        padding:9px 20px; font-size:.95rem;
+      }
+      @media (prefers-color-scheme: dark){ .btn{ color:#0d2013; } }
+      .btn:hover{ filter:brightness(1.08); }
+
+      section{ margin-top:52px; }
+      .sec-head{ display:flex; align-items:baseline; gap:14px; border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:20px; flex-wrap:wrap; }
+      .sec-head .no{ font-family:"Shippori Mincho",serif; font-weight:800; color:var(--accent); font-size:1.05rem; }
+      h2{ font-family:"Shippori Mincho",serif; font-size:1.5rem; font-weight:800; margin:0; line-height:1.4; }
+      .sec-head p{ margin:0 0 2px auto; color:var(--ink3); font-size:.85rem; text-align:right; }
+      h3{ font-size:1.05rem; font-weight:900; margin:30px 0 10px; }
+      p.note{ color:var(--ink2); }
+
+      .timeline{ list-style:none; margin:0; padding:0; position:relative; }
+      .timeline::before{ content:""; position:absolute; left:17px; top:10px; bottom:10px; width:2px; background:var(--line2); }
+      .timeline li{ position:relative; padding:0 0 22px 52px; }
+      .timeline li:last-child{ padding-bottom:2px; }
+      .dot{
+        position:absolute; left:0; top:2px; width:36px; height:36px; border-radius:50%;
+        background:var(--surface); border:2px solid var(--accent); color:var(--accent);
+        display:flex; align-items:center; justify-content:center;
+        font-family:"Shippori Mincho",serif; font-weight:800; font-size:.95rem; z-index:1;
+      }
+      .timeline li.stop .dot{ border-color:var(--rust); color:var(--rust); }
+      .timeline li.decide .dot{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+      .timeline h4{ margin:0 0 2px; font-size:1rem; font-weight:900; }
+      .timeline p{ margin:0; color:var(--ink2); max-width:54em; }
+      .tag{ display:inline-block; font-size:.72rem; font-weight:700; border-radius:4px; padding:0 7px; margin-left:8px; vertical-align:2px; }
+      .tag-stop{ background:var(--rust-soft); color:var(--rust); }
+      .tag-decide{ background:var(--accent-soft); color:var(--accent); }
+
+      .cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+      .card{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px 20px 14px; box-shadow:var(--shadow); }
+      .card .rankline{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
+      .num{ font-family:"Shippori Mincho",serif; font-weight:800; color:var(--ink3); font-size:.95rem; }
+      .chip{ font-size:.72rem; font-weight:900; letter-spacing:.06em; border-radius:4px; padding:1px 8px; }
+      .chip-s{ background:var(--gold-soft); color:var(--gold); border:1px solid var(--gold); }
+      .chip-final{ background:var(--accent-soft); color:var(--accent); }
+      .chip-out{ background:var(--surface2); color:var(--ink3); }
+      .chip-ng{ background:var(--rose-soft); color:var(--rose); }
+      .card h3{ margin:2px 0 0; font-size:1.12rem; line-height:1.45; }
+      .card h3 .album{ font-family:"Shippori Mincho",serif; font-weight:800; }
+      .card .meta{ color:var(--ink3); font-size:.82rem; margin:2px 0 8px; }
+      .card p{ margin:0 0 8px; font-size:.92rem; color:var(--ink2); }
+      .card p b{ color:var(--ink); }
+      .srcs{ font-size:.82rem; margin:6px 0 2px; }
+      .srcs a{ margin-right:12px; white-space:nowrap; }
+
+      .all-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+      .all-list li{
+        display:grid; grid-template-columns:44px 1fr auto; gap:6px 14px; align-items:baseline;
+        padding:13px 4px; border-bottom:1px solid var(--line);
+      }
+      .all-list .r{ font-family:"Shippori Mincho",serif; font-weight:800; font-size:1.15rem; text-align:center; }
+      .r-s{ color:var(--gold); } .r-a{ color:var(--steel); } .r-b{ color:var(--ink3); }
+      .all-list .who b{ font-weight:900; }
+      .all-list .who .alb{ font-family:"Shippori Mincho",serif; font-weight:700; }
+      .all-list .who p{ margin:2px 0 0; font-size:.86rem; color:var(--ink2); }
+      .all-list .when{ color:var(--ink3); font-size:.82rem; white-space:nowrap; }
+      .all-list .res{ font-size:.78rem; font-weight:700; }
+      .res-final{ color:var(--accent); } .res-out{ color:var(--ink3); } .res-ng{ color:var(--rose); } .res-none{ color:var(--ink3); }
+
+      .tsv{
+        background:var(--surface2); border:1px solid var(--line); border-radius:10px;
+        padding:16px 18px; overflow-x:auto; font-size:.85rem; line-height:1.7;
+        font-family:ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre;
+      }
+      footer{ margin-top:56px; border-top:1px solid var(--line); padding-top:16px; color:var(--ink3); font-size:.85rem; }
+
+      @media (max-width:720px){
+        .stats{ grid-template-columns:repeat(2,1fr); }
+        .cards{ grid-template-columns:1fr; }
+        .all-list li{ grid-template-columns:34px 1fr; }
+        .all-list .when{ grid-column:2; }
+        header{ padding-top:36px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="genre-line">
+          <span>2023年 ・ ジャンル 5</span>
+          <span class="status">最終10枚 確定済み</span>
+        </div>
+        <h1>MELODIC POWER &amp;<br />TRADITIONAL METAL 候補一覧</h1>
+        <p class="en-sub">2023 Melodic Power &amp; Traditional Metal — Candidates &amp; Verification</p>
+        <p class="lede">
+          2023年に発売されたメロディック・パワーメタル／トラディショナル・ヘヴィメタルの候補28枚を集め、
+          発売年とジャンル適合性を出典付きで検証した記録。Sランクが15枚と上限を超えたため一度停止し、
+          検証側の推薦を Hiro が承認して5枚を落とし、最終10枚で確定した。
+        </p>
+        <div class="stats">
+          <div class="stat"><b>28</b><span>候補アルバム（重複除外 0枚）</span></div>
+          <div class="stat"><b>15</b><span>S検証を通過したアルバム</span></div>
+          <div class="stat warn"><b>+5</b><span>上限10枚に対する超過 → 停止</span></div>
+          <div class="stat"><b>10</b><span>最終確定アルバム（各2曲・計20曲）</span></div>
+        </div>
+        <a class="btn" href="https://open.spotify.com/playlist/2AXxmXfozin4DGbdjZv7Cy" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5.1 15.9a.75.75 0 0 1-1 .25c-2.9-1.8-6.5-2.1-10.8-1.2a.75.75 0 1 1-.3-1.5c4.7-1 8.7-.6 11.9 1.3.34.2.44.7.2 1.1v.05zm1.4-3.5a.94.94 0 0 1-1.3.3c-3.3-2-8.3-2.6-12.2-1.4a.94.94 0 1 1-.55-1.8c4.45-1.35 10-0.65 13.8 1.65.42.26.55.83.25 1.25zm.1-3.65C14.7 7.4 8.2 7.2 4.5 8.6a1.13 1.13 0 1 1-.8-2.1c4.25-1.6 11.25-1.4 15.65 1.2a1.13 1.13 0 0 1-1.15 1.95v.1z"/></svg>
+          Spotify「2023年MELODIC POWER &amp; TRADITIONAL METAL」（20曲）
+        </a>
+      </header>
+
+      <section aria-labelledby="flow">
+        <div class="sec-head"><span class="no">01</span><h2 id="flow">選出の経緯 — S過多で停止、Hiro の決定で確定</h2></div>
+        <ol class="timeline">
+          <li>
+            <span class="dot">1</span>
+            <h4>候補収集 — 28枚・重複除外0枚</h4>
+            <p>2023年発売のオリジナル・スタジオ盤を収集。既出アルバム累積リストとの重複は0枚。収集時点の適合ランクは S 16枚／A 7枚／B 5枚（A＝シンフォニック／プログレッシブ寄り、B＝ヘヴィメタル条件付き）。全候補は下の「候補28枚 全一覧」に出典付きで掲載。</p>
+          </li>
+          <li>
+            <span class="dot">2</span>
+            <h4>S検証 — S確定15枚、Powerwolf は不適合で除外</h4>
+            <p>S候補16枚を発売年・オリジナル盤であること・ジャンル適合性で再検証。15枚がS確定。Powerwolf『Interludium』はジャンル自体は適合するものの、全10曲中 新曲は6曲のみで残りは既発レア曲のコンピレーション的性格が強く（Metal Archives は Type: Compilation）、オリジナル・スタジオ盤の要件を満たさないため<strong>不適合</strong>として削減対象以前に除外した。</p>
+          </li>
+          <li class="stop">
+            <span class="dot">!</span>
+            <h4>S過多で停止<span class="tag tag-stop">ゲート停止</span></h4>
+            <p>Sが15枚で最終枠（5〜10枚）の上限を5枚超過。ルール上、ここで自動確定はせず停止し、落とす候補の判断を Hiro に仰いだ。検証側は「落とす順序」の推薦を提示した：① All For Metal『Legends』（アンセム／メロディック比重が高くS基準では最弱、デビュー作で実績も最薄）② Mystic Prophecy『Hellriot』（適合は確実だが定型的なドイツ型パワーで独自性・優先度が最も低い）③ Smoulder『Violent Creed of Vengeance』（7曲のみで母数が最小、ドゥーム境界）④ Gatekeeper『From Western Shores』（8曲・エピック寄りで推進力では他Sに劣る）⑤ Night Demon『Outsider』（8曲・約35分と最短級で2曲選出時の厚みに欠ける）。</p>
+          </li>
+          <li class="decide">
+            <span class="dot">✓</span>
+            <h4>Hiro の決定 — 推薦どおり5枚を落として10枚で確定<span class="tag tag-decide">2026-11-14</span></h4>
+            <p>Hiro が「推薦どおり5枚落として10枚で進めて」と決定。OUT は All For Metal、Mystic Prophecy、Smoulder、Gatekeeper、Night Demon の5枚。残る10枚が最終確定となり、各2曲・計20曲の楽曲選出と Spotify プレイリスト作成へ進んだ。国内アーティストの Lovebites と Anthem は国籍不問ルールのもと、どちらもS検証を通過して最終10枚に残っている。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="final">
+        <div class="sec-head"><span class="no">02</span><h2 id="final">最終10枚</h2><p>発売日順 ・ すべてS検証通過</p></div>
+        <div class="cards">
+
+          <article class="card">
+            <div class="rankline"><span class="num">01</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Lovebites — <span class="album">『Judgement Day』</span></h3>
+            <p class="meta">発売：2023-02-22（日本盤／UK盤 02-24）</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Genre Power metal、4th studio album。Blabbermouth も power/speed metal 系の新作として報道。メロディックパワー中核でS基準に適合。</p>
+            <p><b>備考：</b>10曲の完全新曲オリジナル盤。絶対除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Judgement_Day_(Lovebites_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://blabbermouth.net/news/japans-all-female-metal-band-lovebites-returns-with-new-bassist-and-judgement-day-music-video" target="_blank" rel="noopener">Blabbermouth</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">02</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Frozen Crown — <span class="album">『Call of the North』</span></h3>
+            <p class="meta">発売：2023-03-10</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Genres Power metal, symphonic metal、4th studio album、Length 53:28。Bandcamp でも2023-03-10発売を確認。パワーが支配的でS適合。</p>
+            <p><b>備考：</b>シンフォニック要素は副次的で、絶対除外のトランス／エレクトロニカではない。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Call_of_the_North_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://frozencrown.bandcamp.com/album/call-of-the-north" target="_blank" rel="noopener">Bandcamp</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">03</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Anthem — <span class="album">『Crimson &amp; Jet Black』</span></h3>
+            <p class="meta">発売：2023-04-21</p>
+            <p><b>ジャンル根拠：</b>Metal Archives: Type Full-length、2023-04-21。Grande Rock／各報道が Japanese heavy metal band の brand new studio album、11曲と明記。トラディショナル・ヘヴィメタル中核でS適合。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバムページなし）。CDJapan はオリジナル盤としては2017年『Engraved』以来6年ぶり・通算17作目とする。前作『Nucleus』(2019) は英語再録ベスト的作品で、本作自体は全曲英語詞のオリジナル新作。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://www.metal-archives.com/albums/Anthem/Crimson_%26_Jet_Black/1105021" target="_blank" rel="noopener">Metal Archives</a><a href="https://www.cdjapan.co.jp/product/GQCS-91280" target="_blank" rel="noopener">CDJapan</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">04</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Enforcer — <span class="album">『Nostalgia』</span></h3>
+            <p class="meta">発売：2023-05-05</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Studio album、2023-05-05、6th album。Nuclear Blast 公式も new studio album、13 heavy metal anthems、speed metal roots への回帰と明記。NWOTHM／スピードの代表格でS適合。</p>
+            <p><b>備考：</b>除外要素なし。オリジナル盤であることに疑義なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Nostalgia_(Enforcer_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.nuclearblast.com/pages/album/nostalgia" target="_blank" rel="noopener">Nuclear Blast</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">05</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Burning Witches — <span class="album">『The Dark Tower』</span></h3>
+            <p class="meta">発売：2023-05-05</p>
+            <p><b>ジャンル根拠：</b>Blabbermouth: fifth studio album、2023-05-05 Napalm。Discogs Style: Heavy Metal, Power Metal。80年代型ヘヴィ／パワー中核でS適合。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（専用アルバムページは検索で確認できず）。通常盤13曲に加え、一部エディションは Ozzy／W.A.S.P. カバーを含む15曲構成だが、カバーはボーナス扱いで本編はオリジナル盤。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://blabbermouth.net/news/burning-witches-announce-new-album-the-dark-tower" target="_blank" rel="noopener">Blabbermouth</a><a href="https://grande-rock.com/news/burning-witches-to-release-new-studio-album-the-dark-tower-on-may-5th-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">06</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Sacred Outcry — <span class="album">『Towers of Gold』</span></h3>
+            <p class="meta">発売：2023-05-19</p>
+            <p><b>ジャンル根拠：</b>Sonic Perspectives: Genre Power Metal、Release May 19 2023、sophomore album。Metal Kingdom: Studio full-length、Genres Power Metal, Heavy Metal、Daniel Heiman 参加。エピック・パワーの王道でS適合、Loudwire でも2023年ベストパワーメタル候補として話題化。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバムページなし）。約55分のコンセプト盤、タイトル曲は約15分の長尺。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://www.discogs.com/release/27098721-Sacred-Outcry-Towers-Of-Gold" target="_blank" rel="noopener">Discogs</a><a href="https://www.sonicperspectives.com/album-reviews/sacred-outcry-towers-of-gold/" target="_blank" rel="noopener">Sonic Perspectives</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">07</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Jag Panzer — <span class="album">『The Hallowed』</span></h3>
+            <p class="meta">発売：2023-06-23</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Studio album、12th studio album by American power metal band、2023-06-23 Atomic Fire。Metal Archives: Type Full-length、同日。USパワー中核でS適合。</p>
+            <p><b>備考：</b>10曲のコンセプト盤（原作コミックと連動）だが全曲オリジナル新作。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/The_Hallowed" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.metal-archives.com/albums/Jag_Panzer/The_Hallowed/1125623" target="_blank" rel="noopener">Metal Archives</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">08</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Tailgunner — <span class="album">『Guns for Hire』</span></h3>
+            <p class="meta">発売：2023-07-14</p>
+            <p><b>ジャンル根拠：</b>Wikipedia バンドページ: debut album、2023-07-14 Fireflash、Studio albums 欄に収録。Grande Rock／Metal Forces も debut full-length studio album と明記。NWOTHM／トラディショナル＋スピード／パワー要素でS適合。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（専用アルバムページなし、バンドページで確認）。10曲。先行EP『Crashdive』由来曲を含むが、再録を含むデビュー・フルレングスとして各源が扱う。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Tailgunner_(band)" target="_blank" rel="noopener">Wikipedia（バンド）</a><a href="https://grande-rock.com/news/tailgunner-to-release-debut-full-length-album-guns-for-hire-on-july-14th-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">09</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Primal Fear — <span class="album">『Code Red』</span></h3>
+            <p class="meta">発売：2023-09-01</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Studio album、14th studio album by German heavy metal band、2023-09-01 Atomic Fire。Metal Forces も 14th full-length studio album と一致。パワー／ヘヴィ中核でS適合。</p>
+            <p><b>備考：</b>除外要素なし。通算14作目の数え方は2源で一致。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Code_Red_(Primal_Fear_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.metalforcesmagazine.com/site/news-primal-fear-release-14th-studio-album-code-red/" target="_blank" rel="noopener">Metal Forces</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">10</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Diviner — <span class="album">『Avaton』</span></h3>
+            <p class="meta">発売：2023-11-10</p>
+            <p><b>ジャンル根拠：</b>Metal Archives: Type Full-length、2023-11-10 ROAR。Angry Metal Guy: third opus、51分、classic metal。レーベル系も Third full-length album by Greek heavy metallers と明記。トラディショナル・ヘヴィ中核でS適合。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバムページなし）。Tower US盤は2023-11-24と表示するが、Metal Archives／Bandcamp／レーベル発表は世界発売2023-11-10で一致し対象年内。CD盤のみボーナス曲を含み本編10曲。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://www.metal-archives.com/albums/Diviner/Avaton/1168356" target="_blank" rel="noopener">Metal Archives</a><a href="https://www.angrymetalguy.com/diviner-avaton-review/" target="_blank" rel="noopener">Angry Metal Guy</a></p>
+          </article>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="dropped">
+        <div class="sec-head"><span class="no">03</span><h2 id="dropped">S検証の結果 — 落選5枚と不適合1枚</h2><p>S通過15枚のうち5枚が Hiro の決定で落選</p></div>
+        <p class="note">以下6枚はいずれも「候補の質が低いから」落ちたのではない。Powerwolf は検証段階で不適合、残り5枚はSのまま上限超過の調整として、検証側の推薦順に落とされた。</p>
+        <div class="cards">
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-ng">不適合</span><span class="chip chip-out">検証で除外</span></div>
+            <h3>Powerwolf — <span class="album">『Interludium』</span></h3>
+            <p class="meta">発売：2023-04-07 ・ 収集時はS候補</p>
+            <p><b>判定理由：</b>ジャンル自体は Power metal で適合するが、作品形態が不適合。Wikipedia は 9th studio album とする一方、Metal Archives は Type: Compilation とし、Tuonela Magazine は「not a proper studio album, but rather a compilation that also features some new material」と明記。</p>
+            <p><b>備考：</b>全10曲中、新曲は6曲のみ。残りは2012／2015年の限定サンプラー・ツアーEP曲、2018年 Earbook 曲、2021年曲のフランス語版等の既発レア曲。オリジナル・スタジオ盤の要件を満たさないためSにはできない。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Interludium" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.metal-archives.com/albums/Powerwolf/Interludium/1130327" target="_blank" rel="noopener">Metal Archives</a><a href="https://tuonelamagazine.com/review-powerwolf-interludium/" target="_blank" rel="noopener">Tuonela Magazine</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">落選 ・ 推薦順 1</span></div>
+            <h3>All For Metal — <span class="album">『Legends』</span></h3>
+            <p class="meta">発売：2023-07-07</p>
+            <p><b>ジャンル根拠：</b>Grande Rock: debut full-length studio album、2023-07-07 AFM。アンセミックなヘヴィ／メロディック・パワーとしてS圏内。</p>
+            <p><b>落選理由：</b>大合唱型アンセムとメロディック寄りの比重が高く、トラディショナル／パワーの複雑さ・疾走感ではS中最弱級。デビュー作で実績も最薄のため、S内では最優先の削減候補とされた。Wikipediaでは確認できない（アルバムページなし）。</p>
+            <p class="srcs">出典：<a href="https://grande-rock.com/news/all-for-metal-to-release-debut-full-length-studio-album-legends-on-july-7th-2023/" target="_blank" rel="noopener">Grande Rock</a><a href="https://www.angrymetalguy.com/all-for-metal-legends-review/" target="_blank" rel="noopener">Angry Metal Guy</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">落選 ・ 推薦順 2</span></div>
+            <h3>Mystic Prophecy — <span class="album">『Hellriot』</span></h3>
+            <p class="meta">発売：2023-05-19</p>
+            <p><b>ジャンル根拠：</b>Grande Rock 等複数源：12th studio album、2023-05-19 ROAR。Tower Genre: Heavy Metal。ドイツ型パワー／ヘヴィの中核バンドでS適合。</p>
+            <p><b>落選理由：</b>適合は確実だが定型的なドイツ型パワーで、本リスト内での独自性・優先度が最も低い。11曲のオリジナル盤、除外要素なし。Wikipediaでは確認できない（アルバムページなし）。</p>
+            <p class="srcs">出典：<a href="https://grande-rock.com/news/mystic-prophecy-to-release-new-studio-album-hellriot-on-may-19th-2023/" target="_blank" rel="noopener">Grande Rock</a><a href="https://www.discogs.com/release/27134331-Mystic-Prophecy-Hellriot" target="_blank" rel="noopener">Discogs</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">落選 ・ 推薦順 3</span></div>
+            <h3>Smoulder — <span class="album">『Violent Creed of Vengeance』</span></h3>
+            <p class="meta">発売：2023-04-21</p>
+            <p><b>ジャンル根拠：</b>Metal Forces: second full-length studio album、2023-04-21 Cruz Del Sur。Discogs Style: Heavy Metal, Doom Metal。エピック・ヘヴィを中核とするトラディショナル盤でS適合。</p>
+            <p><b>落選理由：</b>7曲・42:30 と短めで母数が最小。ドゥーム色は境界要素だが、支配的ジャンルはエピック・ヘヴィメタルであり絶対除外には該当しない。女性ボーカル盤。Wikipediaでは確認できない（アルバムページなし）。</p>
+            <p class="srcs">出典：<a href="https://www.metal-archives.com/albums/Smoulder/Violent_Creed_of_Vengeance/1119600" target="_blank" rel="noopener">Metal Archives</a><a href="https://www.metalforcesmagazine.com/site/news-smoulder-release-second-studio-album-violent-creed-of-vengeance/" target="_blank" rel="noopener">Metal Forces</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">落選 ・ 推薦順 4</span></div>
+            <h3>Gatekeeper — <span class="album">『From Western Shores』</span></h3>
+            <p class="meta">発売：2023-03-24</p>
+            <p><b>ジャンル根拠：</b>Discogs: Style Heavy Metal、2023-03-24。レーベル系報道が Canadian Epic/Melodic Heavy Metal、Metal Storm も Heavy metal／Traditional heavy metal と分類。エピック＋メロディックなトラディショナルでS適合。</p>
+            <p><b>落選理由：</b>8曲・エピック寄りで、メロディックパワーの推進力では他Sに劣る。5年ぶりのオリジナル盤。CD発売日が2023-04-14とされる地域差があるが初出は2023-03-24で対象年内。Wikipediaでは確認できない（アルバムページなし）。</p>
+            <p class="srcs">出典：<a href="https://www.discogs.com/release/26525819-Gatekeeper-From-Western-Shores" target="_blank" rel="noopener">Discogs</a><a href="https://lotsofmuzik.com/gatekeeper-will-release-from-western-shores-on-march-24th/" target="_blank" rel="noopener">Lots of Muzik</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">落選 ・ 推薦順 5</span></div>
+            <h3>Night Demon — <span class="album">『Outsider』</span></h3>
+            <p class="meta">発売：2023-03-17</p>
+            <p><b>ジャンル根拠：</b>Wikipedia バンドページ：3rd studio album、2023-03-17発売。Metal Express 等が Traditional Heavy Metal と明記。NWOTHM／トラディショナル中核でS適合。</p>
+            <p><b>落選理由：</b>デジタル版8曲・約35分（CDボーナス込みでも約38分）と最短級で、2曲選出時の厚みに欠ける。コンセプト盤だがオリジナル盤、除外要素なし。Wikipediaでは確認できない（専用アルバムページなし、バンドページで確認）。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Night_Demon_(band)" target="_blank" rel="noopener">Wikipedia（バンド）</a><a href="https://nightdemon.bandcamp.com/album/outsider" target="_blank" rel="noopener">Bandcamp</a></p>
+          </article>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="all">
+        <div class="sec-head"><span class="no">04</span><h2 id="all">候補28枚 全一覧</h2><p>収集時点の適合ランク付き ・ 発売日順</p></div>
+        <p class="note">ランクは収集時点のジャンル適合度。S＝パワーメタル／トラディショナル中核、A＝シンフォニック／プログレッシブ寄り、B＝ヘヴィメタル条件付き。S候補のみ次段のS検証に進み、A・Bは最終枠の対象外となった。</p>
+        <ol class="all-list">
+          <li><span class="r r-a">A</span><div class="who"><b>Beyond the Black</b> — <span class="alb">『Beyond the Black』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: Genre Symphonic metal。Fifth studio album、Nuclear Blast。<a href="https://en.wikipedia.org/wiki/Beyond_the_Black_(album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-01-13</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Twilight Force</b> — <span class="alb">『At the Heart of Wintervale』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: Genre Symphonic power metal。Fourth studio album、Nuclear Blast。<a href="https://en.wikipedia.org/wiki/At_the_Heart_of_Wintervale" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-01-20</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Lovebites</b> — <span class="alb">『Judgement Day』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: Genre Power metal。Fourth studio album。日本のバンド（国籍は選出基準ではない）。<a href="https://en.wikipedia.org/wiki/Judgement_Day_(Lovebites_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-22</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Frozen Crown</b> — <span class="alb">『Call of the North』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: Genres Power metal, symphonic metal。Fourth studio album、Scarlet Records。<a href="https://en.wikipedia.org/wiki/Call_of_the_North_(album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-10</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Night Demon</b> — <span class="alb">『Outsider』</span> <span class="res res-out">／ S通過 → 落選（推薦順5）</span><p>Bandcamp／Century Media 系テキストが「traditional heavy metal」と明記、third full-length。Wikipediaのアルバムページは使わず公式Bandcampで確認。<a href="https://nightdemon.bandcamp.com/album/outsider" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-17</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Kamelot</b> — <span class="alb">『The Awakening』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: Genres Symphonic metal, progressive metal, power metal。Thirteenth studio album、Napalm Records。<a href="https://en.wikipedia.org/wiki/The_Awakening_(Kamelot_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-17</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Gatekeeper</b> — <span class="alb">『From Western Shores』</span> <span class="res res-out">／ S通過 → 落選（推薦順4）</span><p>Epic heavy metal／traditional heavy metal、second full-length。Wikipediaでは確認できない（Last Rites とレーベル／Bandcamp、Cruz Del Sur Music、2023-03-24で確認）。<a href="https://yourlastrites.com/2023/03/01/gatekeeper-from-western-shores-review/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-24</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Powerwolf</b> — <span class="alb">『Interludium』</span> <span class="res res-ng">／ S検証で不適合</span><p>Wikipedia: Genre Power metal, heavy metal、ninth studio album とされるが、新曲6曲＋レア曲という特殊盤の性格を収集時点から境界として記録。検証で不適合が確定。<a href="https://en.wikipedia.org/wiki/Interludium" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-04-07</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Anthem</b> — <span class="alb">『Crimson &amp; Jet Black』</span> <span class="res res-final">／ 最終確定</span><p>Napalm Records: Genre Heavy Metal、「Japanese heavy/power metal faction」の new studio album。Wikipediaでは確認できない（Napalm／Reaperで確認）。オリジナル盤としては『Engraved』(2017) 以来。<a href="https://napalmrecords.com/english/anthem-crimson-and-jet-black-cd.html" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-04-21</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Smoulder</b> — <span class="alb">『Violent Creed of Vengeance』</span> <span class="res res-out">／ S通過 → 落選（推薦順3）</span><p>Bandcamp:「second full-length by epic heavy metal band」。Wikipediaでは確認できない（公式Bandcamp、Cruz Del Sur Music、2023-04-21で確認）。一部小売で 2023-05-12 表示とドゥーム要素あり。<a href="https://smoulder.bandcamp.com/album/violent-creed-of-vengeance?from=footer-bcw-a791909981" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-04-21</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Enforcer</b> — <span class="alb">『Nostalgia』</span> <span class="res res-final">／ 最終確定</span><p>「new wave of traditional heavy metal」の pioneers、sixth studio album、speed metal roots への回帰。Discogs Style: Speed Metal, Heavy Metal。<a href="https://grande-rock.com/news/enforcer-to-release-new-studio-album-nostalgia-on-may-5th-2023/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-05</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Burning Witches</b> — <span class="alb">『The Dark Tower』</span> <span class="res res-final">／ 最終確定</span><p>Sonic Perspectives: Genre Heavy Metal、fifth studio album。Napalm 製品データ Genre Power Metal、Discogs Style: Heavy Metal, Power Metal。<a href="https://www.sonicperspectives.com/album-reviews/burning-witches-the-dark-tower/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-05</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Mystic Prophecy</b> — <span class="alb">『Hellriot』</span> <span class="res res-out">／ S通過 → 落選（推薦順2）</span><p>Discogs Style: Heavy Metal, Power Metal、12th studio album。Wikipediaでは確認できない（Discogs と ROAR! Rock Of Angels のプレスで確認）。<a href="https://www.discogs.com/release/27134331-Mystic-Prophecy-Hellriot" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-19</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Sacred Outcry</b> — <span class="alb">『Towers of Gold』</span> <span class="res res-final">／ 最終確定</span><p>Sonic Perspectives: Genre Power Metal、No Remorse Records。Discogs Style: Heavy Metal, Power Metal。Wikipediaでは確認できない。<a href="https://www.sonicperspectives.com/album-reviews/sacred-outcry-towers-of-gold/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-19</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Metal Church</b> — <span class="alb">『Congregation of Annihilation』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: Genre Heavy metal, thrash metal、thirteenth studio album。スラッシュ要素があり条件付きのB。<a href="https://en.wikipedia.org/wiki/Congregation_of_Annihilation" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-26</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Wytch Hazel</b> — <span class="alb">『IV: Sacrament』</span> <span class="res res-none">／ 最終対象外</span><p>Discogs Style: Heavy Metal、hard rock／heavy metal と紹介されるレトロ寄りの境界盤。Wikipediaでは確認できない（Discogs、2023-06-02、Bad Omenで確認）。<a href="https://www.discogs.com/release/27337467-Wytch-Hazel-IV-Sacrament" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-02</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Jag Panzer</b> — <span class="alb">『The Hallowed』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: Genre Power metal, heavy metal、American power metal band の studio album、Atomic Fire Records。<a href="https://en.wikipedia.org/wiki/The_Hallowed" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-23</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Pyramaze</b> — <span class="alb">『Bloodlines』</span> <span class="res res-none">／ 最終対象外</span><p>Sonic Perspectives: Genre Power Metal（progressive との融合）、Discogs Style: Progressive Metal, Power Metal。Wikipediaでは確認できない（AFM、2023-06-23、seventh studio album で確認）。<a href="https://www.sonicperspectives.com/album-reviews/pyramaze-bloodlines/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-23</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>All For Metal</b> — <span class="alb">『Legends』</span> <span class="res res-out">／ S通過 → 落選（推薦順1）</span><p>Debut long play、classically inspired hard rock／power metal。Wikipediaでは確認できない（Sleaze Roxx／AFM、2023-07-07、debut album で確認）。<a href="https://sleazeroxx.com/reviews/all-for-metal-legends/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-07-07</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Eleine</b> — <span class="alb">『We Shall Remain』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: Genre Symphonic metal、Swedish symphonic metal band の fourth studio album、Atomic Fire Records。<a href="https://en.wikipedia.org/wiki/We_Shall_Remain_(album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-07-14</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Tailgunner</b> — <span class="alb">『Guns for Hire』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia バンドページ：Genres Heavy metal, N.W.O.T.H.M., power metal、debut album 2023-07-14、Fireflash Records。<a href="https://en.wikipedia.org/wiki/Tailgunner_(band)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-07-14</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>U.D.O.</b> — <span class="alb">『Touchdown』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia ディスコグラフィ：studio album、2023-08-25、ジャンルは Heavy metal のみのためB。<a href="https://en.wikipedia.org/wiki/U.D.O._discography" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-08-25</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Primal Fear</b> — <span class="alb">『Code Red』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: Genre Heavy metal, power metal、fourteenth studio album、Atomic Fire。<a href="https://en.wikipedia.org/wiki/Code_Red_(Primal_Fear_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-09-01</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>KK's Priest</b> — <span class="alb">『The Sinner Rides Again』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: Genre Heavy metal、second studio album。Judas Priest 系譜は強いが出典のジャンル表記が Heavy Metal のみのため候補段階ではB。<a href="https://en.wikipedia.org/wiki/The_Sinner_Rides_Again" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-09-29</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Theocracy</b> — <span class="alb">『Mosaic』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: Genres Christian metal, progressive metal, power metal、fifth studio album、Atomic Fire Records。<a href="https://en.wikipedia.org/wiki/Mosaic_(Theocracy_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-10-13</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Doro</b> — <span class="alb">『Conqueress - Forever Strong and Proud』</span> <span class="res res-none">／ 最終対象外</span><p>Discogs Style: Heavy Metal、2023-10-27、Nuclear Blast。一部にカバー曲を含むためオリジナル盤扱いは要再確認として記録。Wikipediaのアルバムページは使わず Discogs／公式で確認。<a href="https://www.discogs.com/release/28709035-Doro-Conqueress-Forever-Strong-And-Proud" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-10-27</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Angra</b> — <span class="alb">『Cycles of Pain』</span> <span class="res res-none">／ 最終対象外</span><p>Genres Power Metal, Progressive Metal、2023-11-03、tenth studio album、Atomic Fire Records。<a href="https://www.themetalpit.org/album-review-angra/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-11-03</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Diviner</b> — <span class="alb">『Avaton』</span> <span class="res res-final">／ 最終確定</span><p>Last Rites「Top 25 Power 2023」: Style Heavy/Power、classic trad metal with power element、third full-length、Rock of Angels。Wikipediaでは確認できない。<a href="https://yourlastrites.com/2023/12/01/we-have-the-power-the-top-25-power-and-power-related-albums-of-2023/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-11-10</span></li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="tsv">
+        <div class="sec-head"><span class="no">05</span><h2 id="tsv">最終アルバムTSV</h2><p>GENRE ／ ARTIST ／ ALBUM ／ YEAR</p></div>
+        <div class="tsv">GENRE	ARTIST	ALBUM	YEAR
+MELODIC POWER &amp; TRADITIONAL METAL	Lovebites	Judgement Day	2023
+MELODIC POWER &amp; TRADITIONAL METAL	Frozen Crown	Call of the North	2023
+MELODIC POWER &amp; TRADITIONAL METAL	Anthem	Crimson &amp; Jet Black	2023
+MELODIC POWER &amp; TRADITIONAL METAL	Enforcer	Nostalgia	2023
+MELODIC POWER &amp; TRADITIONAL METAL	Burning Witches	The Dark Tower	2023
+MELODIC POWER &amp; TRADITIONAL METAL	Sacred Outcry	Towers of Gold	2023
+MELODIC POWER &amp; TRADITIONAL METAL	Jag Panzer	The Hallowed	2023
+MELODIC POWER &amp; TRADITIONAL METAL	Tailgunner	Guns for Hire	2023
+MELODIC POWER &amp; TRADITIONAL METAL	Primal Fear	Code Red	2023
+MELODIC POWER &amp; TRADITIONAL METAL	Diviner	Avaton	2023</div>
+        <p class="note">この10枚から各2曲・計20曲を選出した楽曲選出は別ページにまとめる。Spotify 正式版プレイリスト（20曲）はページ冒頭のリンクから開ける。なお同名の旧プレイリスト（18曲版）が残っているため、削除する際は曲数で見分けること。</p>
+      </section>
+
+      <footer>
+        選出ルール：指定年厳守／アルバム重複禁止／品質優先で5〜10枚に厳選／発売年とジャンル適合性はWeb出典で確認し、確認できないものはその旨を明記する。全ジャンル共通の絶対除外（ラップ／ヒップホップ、ミクスチャー／ニューメタル系、トランス／エレクトロニカ）は本ジャンルでも適用。アーティストの国籍・活動拠点は問わない。
+      </footer>
+    </div>
+  </body>
+</html>

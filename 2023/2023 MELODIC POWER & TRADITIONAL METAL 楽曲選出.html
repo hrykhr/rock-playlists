@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2023 MELODIC POWER &amp; TRADITIONAL METAL 楽曲選出</title>
+<style>
+  :root {
+    --bg: #f3f5f4;
+    --surface: #ffffff;
+    --surface-2: #e9edec;
+    --ink: #1e2422;
+    --ink-2: #57625e;
+    --line: #d3dad7;
+    --accent: #0d5a54;
+    --accent-soft: #d9ebe8;
+    --badge-bg: #0d5a54;
+    --badge-ink: #ffffff;
+    --link: #0d5a54;
+    --note-bg: #e9edec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121615;
+      --surface: #1c2120;
+      --surface-2: #262c2b;
+      --ink: #e7ebe9;
+      --ink-2: #a9b4af;
+      --line: #39413f;
+      --accent: #6fc7bc;
+      --accent-soft: #1f3532;
+      --badge-bg: #2e7d74;
+      --badge-ink: #ffffff;
+      --link: #6fc7bc;
+      --note-bg: #262c2b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+    line-height: 1.75;
+    font-size: 16px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px 56px; }
+  a { color: var(--link); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { padding: 40px 0 8px; }
+  .genre-label {
+    font-size: 13px; letter-spacing: .14em; font-weight: 700;
+    color: var(--accent); margin: 0 0 10px;
+  }
+  h1 {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    font-size: clamp(25px, 5.2vw, 36px); line-height: 1.3; margin: 0 0 14px; font-weight: 700;
+  }
+  .hero-lead { color: var(--ink-2); margin: 0 0 22px; max-width: 660px; }
+  .stats {
+    display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 22px; padding: 0; list-style: none;
+  }
+  .stats li {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 16px; font-size: 14px;
+  }
+  .stats strong { font-size: 20px; font-weight: 800; margin-right: 4px; }
+  .spotify-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #1db954; color: #0c2413; font-weight: 700; text-decoration: none;
+    border-radius: 999px; padding: 12px 22px; min-height: 48px; font-size: 15px;
+  }
+  .spotify-btn svg { flex: none; }
+  .spotify-btn:hover { filter: brightness(1.06); }
+  .playlist-note { font-size: 13.5px; color: var(--ink-2); margin: 10px 0 0; max-width: 640px; }
+
+  section { margin-top: 40px; }
+  h2 {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    font-size: 22px; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--accent);
+  }
+  .context-box {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .context-box p { margin: 0 0 10px; }
+  .context-box p:last-child { margin-bottom: 0; }
+
+  .album {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 22px 8px; margin-top: 22px;
+  }
+  .album-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 6px; }
+  .album-artist {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    font-size: 21px; font-weight: 700; margin: 0;
+  }
+  .album-title { font-style: italic; font-size: 17px; margin: 0; }
+  .album-meta { color: var(--ink-2); font-size: 13.5px; margin: 0 0 14px; }
+
+  .track { border-top: 1px solid var(--line); padding: 16px 0 18px; }
+  .track-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .track-num {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px; padding: 1px 9px;
+  }
+  .track-name { font-size: 18px; font-weight: 700; margin: 0; }
+  .track-length { color: var(--ink-2); font-variant-numeric: tabular-nums; font-size: 15px; }
+  .badge-single {
+    background: var(--badge-bg); color: var(--badge-ink);
+    font-size: 12px; font-weight: 700; border-radius: 999px; padding: 3px 11px;
+  }
+  .badge-promo {
+    background: transparent; color: var(--accent);
+    border: 1.5px solid var(--accent);
+    font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 11px;
+  }
+  .evidence { margin: 10px 0 0; }
+  .track-note {
+    margin: 10px 0 0; font-size: 13.5px; color: var(--ink-2);
+    background: var(--note-bg); border-radius: 8px; padding: 9px 13px;
+  }
+  .sources { margin: 12px 0 0; }
+  .sources-label { font-size: 12.5px; font-weight: 700; color: var(--ink-2); letter-spacing: .06em; }
+  .sources ul { margin: 6px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sources a {
+    display: inline-block; padding: 7px 13px; min-height: 36px;
+    border: 1px solid var(--line); border-radius: 999px; text-decoration: none;
+    font-size: 13.5px; background: var(--bg);
+  }
+  .sources a:hover { border-color: var(--accent); }
+
+  .metric-note {
+    background: var(--accent-soft); border-radius: 10px; padding: 18px 20px;
+  }
+  .metric-note p { margin: 0 0 10px; }
+  .metric-note p:last-child { margin-bottom: 0; }
+  .metric-note ul { margin: 6px 0 10px; padding-left: 1.3em; }
+  .metric-note li { margin-bottom: 4px; }
+
+  .rejected-list { margin: 0; padding-left: 1.3em; }
+  .rejected-list li { margin-bottom: 8px; }
+  .rejected-list li:last-child { margin-bottom: 0; }
+
+  footer {
+    margin-top: 48px; border-top: 1px solid var(--line); padding-top: 20px;
+    color: var(--ink-2); font-size: 14px;
+  }
+  footer h2 { font-size: 17px; border-bottom: none; padding-bottom: 0; margin-bottom: 8px; color: var(--ink); }
+  footer ul { margin: 0; padding-left: 1.3em; }
+  footer li { margin-bottom: 4px; }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px 44px; }
+    .album { padding: 18px 16px 4px; }
+    header.hero { padding-top: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="genre-label">2023年 ・ ジャンル 5. MELODIC POWER &amp; TRADITIONAL METAL</p>
+    <h1>2023 MELODIC POWER &amp; TRADITIONAL METAL 楽曲選出</h1>
+    <p class="hero-lead">最終選出アルバム10枚から、各2曲ずつ計20曲を選出。20曲すべてをシングル曲（1曲はプロモーションシングル扱い）で揃え、曲長・シングル該当・選出理由のエビデンスと確認に使った出典をアルバムごとに記録する。</p>
+    <ul class="stats">
+      <li><strong>10</strong>枚 最終アルバム</li>
+      <li><strong>20</strong>曲 選出曲</li>
+      <li><strong>19+1</strong>曲 シングル＋プロモーション扱い1曲</li>
+      <li><strong>99</strong>分 合計（採用曲長ベース）</li>
+    </ul>
+    <a class="spotify-btn" href="https://open.spotify.com/playlist/2AXxmXfozin4DGbdjZv7Cy" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.3a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 1 1-.33-1.46c4.57-1.05 8.48-.6 11.66 1.34.35.21.46.68.25 1.03zm1.47-3.83a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.54-1.8c4.36-1.32 9.78-.68 13.49 1.6.41.25.56.88.31 1.29zm.13-3.98C15.3 7.22 8.86 6.9 4.9 8.1a1.13 1.13 0 1 1-.65-2.16c4.53-1.37 11.5-1.03 16.05 1.67a1.13 1.13 0 0 1-1.15 1.94z"/></svg>
+      Spotifyプレイリスト「2023年MELODIC POWER &amp; TRADITIONAL METAL」を開く
+    </a>
+    <p class="playlist-note">上のリンクは作り直した20曲版（版A）。同名の旧18曲版プレイリストも残っているため、Spotifyアプリ側で見分ける際は曲数（20曲／18曲）を確認すること。</p>
+  </header>
+
+  <section aria-labelledby="context-h">
+    <h2 id="context-h">選出の経緯</h2>
+    <div class="context-box">
+      <p>候補28枚を収集し（既出アルバムとの重複除外は0枚）、Sランク検証を行った結果、S確定は15枚となり、上限の10枚を5枚上回った（Powerwolf『Interludium』は検証でジャンル不適合となり除外済み）。</p>
+      <p>このため選出をいったん停止し、Hiro の判断を仰いだ。Hiro が推薦案どおり5枚を落として10枚で進めることを決定し、その最終10枚から各2曲・計20曲を選出した。</p>
+      <p>楽曲選出では全曲をシングル曲で構成できた。Sacred Outcry「The Voyage (Towards Immortality)」のみ、配信シングルとしての明示表記は確認できず、リリックビデオ制作とディスコグラフィ独立掲載に基づくプロモーションシングル扱いとしている。</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="tracks-h">
+    <h2 id="tracks-h">選出曲（アルバム別）</h2>
+
+    <!-- Lovebites -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Lovebites</h3>
+        <p class="album-title">Judgement Day</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Judgement Day</h4>
+          <span class="track-length">5:52</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">タイトル曲。先行リード・デジタルシングルとして2022年12月に配信され、公式MVも公開された（ChaosZine、Brave Words が「single」と明記）。収録・曲長は Wikipedia と Metal Kingdom でクロスチェック済み。YouTube公式MVの再生回数は、ページ本文から取得できず確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://chaoszine.net/lovebites-dropped-official-video-for-judgement-day/" target="_blank" rel="noopener">ChaosZine</a></li>
+            <li><a href="https://bravewords.com/news/japans-lovebites-issue-stand-and-deliver-shoot-em-down-video-judgement-day-album-out-now/" target="_blank" rel="noopener">Brave Words</a></li>
+            <li><a href="https://www.metalkingdom.net/album/lovebites-judgement-day-160911" target="_blank" rel="noopener">Metal Kingdom</a></li>
+            <li><a href="https://www.youtube.com/watch?v=m3uGjp-P7DI" target="_blank" rel="noopener">YouTube 公式MV</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Stand and Deliver (Shoot 'em Down)</h4>
+          <span class="track-length">5:09</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第2弾シングル。Brave Words は「Single and new music video」、ChaosZine は「the latest single」と明記し、公式MVがアルバム発売日に公開された。収録・曲長は Metal Kingdom と YouTube 公式MVページ（トラックリスト記載）でクロスチェック済み。YouTube再生回数はページ本文から取得できず確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://bravewords.com/news/japans-lovebites-issue-stand-and-deliver-shoot-em-down-video-judgement-day-album-out-now/" target="_blank" rel="noopener">Brave Words</a></li>
+            <li><a href="https://chaoszine.net/lovebites-drops-new-official-video-for-stand-and-deliver-shoot-em-down/" target="_blank" rel="noopener">ChaosZine</a></li>
+            <li><a href="https://www.youtube.com/watch?v=4ImGA7cPyrs" target="_blank" rel="noopener">YouTube 公式MV</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Frozen Crown -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Frozen Crown</h3>
+        <p class="album-title">Call of the North</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Call of the North</h4>
+          <span class="track-length">6:24</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">タイトル曲で第1弾シングル（公式MVあり）。収録・曲長は Wikipedia、Qobuz、Metal Kingdom でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Call_of_the_North_(album)" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://www.qobuz.com:443/gb-en/album/call-of-the-north-frozen-crown/awrbset6mq4ra" target="_blank" rel="noopener">Qobuz</a></li>
+            <li><a href="https://www.metalkingdom.net/videos/frozen-crown-call-of-the-north-music-video-31280" target="_blank" rel="noopener">Metal Kingdom（MV）</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Victorious</h4>
+          <span class="track-length">5:07</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第2弾シングル（AWA に「Victorious - Single」の表記あり、公式MVあり）。収録・曲長は Wikipedia、Qobuz、AWA でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <p class="track-note">曲長は出典により 5:05（Wikipedia）／5:07（Qobuz・AWA・Metal Kingdom）／5:08（Discogs）と±3秒の差異あり。多数派の 5:07 を採用。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Call_of_the_North_(album)" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://www.qobuz.com:443/gb-en/album/call-of-the-north-frozen-crown/awrbset6mq4ra" target="_blank" rel="noopener">Qobuz</a></li>
+            <li><a href="https://s.awa.fm/album/9603eb5cbbcd99104a53" target="_blank" rel="noopener">AWA</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Anthem -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Anthem</h3>
+        <p class="album-title">Crimson &amp; Jet Black</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Wheels of Fire</h4>
+          <span class="track-length">4:33</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第1弾シングル（2023-02-03、公式MVあり）。「Snake Eyes」公式MVの概要欄でも「1st single『WHEELS OF FIRE』」と明記されている。収録・曲長は Metal Archives と Brave Words（MV紹介記事）でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <p class="track-note">曲長は Metal Kingdom で 4:34 と±1秒の表記差異あり。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://www.metal-archives.com/albums/Anthem/Crimson_%26_Jet_Black/1105021" target="_blank" rel="noopener">Metal Archives</a></li>
+            <li><a href="https://bravewords.com/news/japans-anthem-issues-snake-eyes-video/" target="_blank" rel="noopener">Brave Words</a></li>
+            <li><a href="https://www.youtube.com/watch?v=p5jwaFWt0zw" target="_blank" rel="noopener">YouTube 公式MV（Snake Eyes）</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Snake Eyes</h4>
+          <span class="track-length">4:08</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第2弾シングル（オープニング曲）。Kronos Mortus News、The Gallery、Kick Ass Forever、Brave Words がいずれも「second single」と明記し、公式MVも公開された。収録・曲長は Metal Archives と HIGHRESAUDIO でクロスチェック済み。YouTube公式MVの再生回数はページ本文から取得できず確認できない。</p>
+        <p class="track-note">曲長は Metal Kingdom で 4:09 と±1秒の表記差異あり。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://kronosmortusnews.com/?p=79767" target="_blank" rel="noopener">Kronos Mortus News</a></li>
+            <li><a href="https://thegallery.gr/en/japanese-heavy-metal-legends-anthem-release-new-single-snake-eyes/" target="_blank" rel="noopener">The Gallery</a></li>
+            <li><a href="https://www.metal-archives.com/albums/Anthem/Crimson_%26_Jet_Black/1105021" target="_blank" rel="noopener">Metal Archives</a></li>
+            <li><a href="https://www.youtube.com/watch?v=p5jwaFWt0zw" target="_blank" rel="noopener">YouTube 公式MV</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Enforcer -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Enforcer</h3>
+        <p class="album-title">Nostalgia</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Coming Alive</h4>
+          <span class="track-length">3:12</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第1弾シングル。レーベル Nuclear Blast の公式発表が「the first single from the record, titled 'Coming Alive', accompanied by a brand-new music video」と明記。収録・曲長は Wikipedia と Nuclear Blast 公式発表（トラックリスト）でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://www.nuclearblast.com/blogs/news/enforcer-announce-new-studio-album-nostalgia-32066" target="_blank" rel="noopener">Nuclear Blast 公式発表</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Nostalgia_(Enforcer_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://bravewords.com/news/enforcer-announce-new-album-nostalgia-release-first-single-coming-alive/" target="_blank" rel="noopener">Brave Words</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Nostalgia</h4>
+          <span class="track-length">3:53</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">タイトル曲で第2弾シングル＋MV（先行調査で確認）。収録・曲長は Wikipedia と CDJapan／Metal Kingdom でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <p class="track-note">シングル順位（第2弾）は先行調査に基づく。今回取得した Nuclear Blast 公式発表は第1弾シングルまでしか扱っていないため、この点は出典ページ上では未再確認。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Nostalgia_(Enforcer_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://www.nuclearblast.com/blogs/news/enforcer-announce-new-studio-album-nostalgia-32066" target="_blank" rel="noopener">Nuclear Blast 公式発表</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Burning Witches -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Burning Witches</h3>
+        <p class="album-title">The Dark Tower</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">The Dark Tower</h4>
+          <span class="track-length">5:56</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">タイトル曲でリードシングル。Blabbermouth が「brand-new single 'The Dark Tower'」と報じ、バンドも「セットリストに完璧にフィットする」とコメントした看板曲。収録・曲長は Metal Archives と Blabbermouth（トラックリスト掲載）でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://blabbermouth.net/news/burning-witches-announce-new-album-the-dark-tower" target="_blank" rel="noopener">Blabbermouth</a></li>
+            <li><a href="https://cats.metal-archives.com/albums/Burning_Witches/The_Dark_Tower/1118262" target="_blank" rel="noopener">Metal Archives</a></li>
+            <li><a href="https://thegallery.gr/en/burning-witches-release-a-new-video-for-the-dark-tower/" target="_blank" rel="noopener">The Gallery</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Unleash the Beast</h4>
+          <span class="track-length">3:59</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第2弾シングル（公式MVあり）。Kick Ass Forever、Live-Metal、Brave Words がいずれも「second single」と明記。収録・曲長は Metal Archives と Brave Words（トラックリスト掲載）でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://cats.metal-archives.com/albums/Burning_Witches/The_Dark_Tower/1118262" target="_blank" rel="noopener">Metal Archives</a></li>
+            <li><a href="https://live-metal.com/2023/03/30/burning-witches-reveal-second-new-single-and-video-unleash-the-beast/" target="_blank" rel="noopener">Live-Metal</a></li>
+            <li><a href="https://bravewords.com/news/burning-witches-release-unleash-the-beast-single-and-music-video/" target="_blank" rel="noopener">Brave Words</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Sacred Outcry -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Sacred Outcry</h3>
+        <p class="album-title">Towers of Gold</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲 ・ Spotify収録時はサブタイトルなしの表示タイトルで収録</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">The Flame Rekindled (Lurid Lights and Drunken Revelry)</h4>
+          <span class="track-length">5:06</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">アルバム先行シングル。ChaosZine が「drops new single 'The Flame Rekindled'」と報じ、No Remorse Records 公式リリックビデオが公開された。収録・曲長は Qobuz と Deezer でクロスチェック済み。YouTube公式リリックビデオの再生回数はページ本文から取得できず確認できない。</p>
+        <p class="track-note">ChaosZine の記事見出しではアルバム名が「Towers of God」と誤記されているが、正しくは『Towers of Gold』。Spotify上ではサブタイトルなしの「The Flame Rekindled」として収録。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://chaoszine.net/sacred-outcry-drops-new-single-the-flame-rekindled/" target="_blank" rel="noopener">ChaosZine</a></li>
+            <li><a href="https://www.qobuz.com/au-en/album/towers-of-gold-sacred-outcry/kgb5us8v64hdc" target="_blank" rel="noopener">Qobuz</a></li>
+            <li><a href="https://www.youtube.com/watch?v=KS42Mn1mfEU" target="_blank" rel="noopener">YouTube 公式リリックビデオ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">The Voyage (Towards Immortality)</h4>
+          <span class="track-length">5:11</span>
+          <span class="badge-promo">プロモーションシングル</span>
+        </div>
+        <p class="evidence">公式リリックビデオが制作され、Metal Storm のバンド・ディスコグラフィにも 2023年の「The Voyage [Lyric video]」として独立項目で掲載されているプロモーション曲。収録・曲長は Metal Archives と Qobuz でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <p class="track-note">プロモーションシングル扱い（リリックビデオ＋ディスコグラフィ独立掲載に基づく）。配信シングルとしての明示的なリリース表記は確認できない。Spotify上ではサブタイトルなしの「The Voyage」として収録。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="http://metalstorm.net/bands/band.php?band_id=13055" target="_blank" rel="noopener">Metal Storm</a></li>
+            <li><a href="https://www.qobuz.com/au-en/album/towers-of-gold-sacred-outcry/kgb5us8v64hdc" target="_blank" rel="noopener">Qobuz</a></li>
+            <li><a href="https://loudwire.com/sacred-outcry-towers-of-gold-fans-react-best-power-metal-album-2023/" target="_blank" rel="noopener">Loudwire</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Jag Panzer -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Jag Panzer</h3>
+        <p class="album-title">The Hallowed</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Onward We Toil</h4>
+          <span class="track-length">5:31</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第1弾デジタルシングル（リリックビデオあり）。収録・曲長は Wikipedia と Metal Archives でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <p class="track-note">曲長は hoopla／Metal Kingdom で 5:29 と±2秒の表記差異あり。Wikipedia／Metal Archives の 5:31 を採用。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/The_Hallowed" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://www.metal-archives.com/albums/Jag_Panzer/The_Hallowed/1151885" target="_blank" rel="noopener">Metal Archives</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Stronger Than You Know</h4>
+          <span class="track-length">5:05</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第2弾シングル（リリックビデオあり）。Frame Music のレビューでも「classic 5-minute banger」と評された代表曲。収録・曲長は Wikipedia と Metal Archives でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <p class="track-note">曲長は hoopla／Metal Kingdom で 5:04 と±1秒の表記差異あり。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/The_Hallowed" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://www.metal-archives.com/albums/Jag_Panzer/The_Hallowed/1151885" target="_blank" rel="noopener">Metal Archives</a></li>
+            <li><a href="https://www.hoopladigital.com/music/the-hallowed-jag-panzer/16008975" target="_blank" rel="noopener">hoopla</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Tailgunner -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Tailgunner</h3>
+        <p class="album-title">Guns for Hire</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲 ・ 曲長は媒体により差異あり（下記注記参照）</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Guns for Hire</h4>
+          <span class="track-length">3:29</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">タイトル曲でシングル実績あり（レビュー誌が「the single 'Guns For Hire'」として言及）。人気面では Last.fm（第三者集計）のリスナー数がアルバム内最多の 4,436。収録・曲長は Metal Archives と Last.fm でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <p class="track-note">曲長は Metal Archives（CD）3:29、Last.fm（配信）3:22 と媒体差あり。Spotifyプレイリスト収録版（版A）は 3:23。Last.fm の数字は第三者集計であり Spotify 公式再生回数ではない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://www.metal-archives.com/albums/Tailgunner/Guns_for_Hire/1165721" target="_blank" rel="noopener">Metal Archives</a></li>
+            <li><a href="https://www.last.fm/music/Tailgunner/Guns+For+Hire" target="_blank" rel="noopener">Last.fm</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Crashdive</h4>
+          <span class="track-length">5:08</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">公式ビデオ付きシングルとして2023年5月にリリースされた曲で、2022年のデビューEP『Crashdive』のタイトル曲でもあるバンド初期の看板曲。Last.fm（第三者集計）リスナー数 1,880。収録・曲長は Metal Archives と Last.fm でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <p class="track-note">曲長は Metal Archives（CD）5:08、Last.fm（配信）4:59 と媒体差あり。Spotifyプレイリスト収録版（版A）は 4:59。Last.fm の数字は第三者集計。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://www.metal-archives.com/albums/Tailgunner/Guns_for_Hire/1165721" target="_blank" rel="noopener">Metal Archives</a></li>
+            <li><a href="https://www.last.fm/music/Tailgunner/Guns+For+Hire" target="_blank" rel="noopener">Last.fm</a></li>
+            <li><a href="https://www.metal-archives.com/albums/Tailgunner/Crashdive/1056166" target="_blank" rel="noopener">Metal Archives（EP『Crashdive』）</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Primal Fear -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Primal Fear</h3>
+        <p class="album-title">Code Red</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Another Hero</h4>
+          <span class="track-length">4:59</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第1弾シングル（2023-06-01、公式MVあり）。Wikipedia のシングル欄と Blabbermouth の記事で確認。収録・曲長も Wikipedia と Metal Archives でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Code_Red_(Primal_Fear_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://blabbermouth.net/news/primal-fear-shares-another-hero-single-from-code-red-album" target="_blank" rel="noopener">Blabbermouth</a></li>
+            <li><a href="https://www.metal-archives.com/albums/Primal_Fear/Code_Red/1146498" target="_blank" rel="noopener">Metal Archives</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Deep in the Night</h4>
+          <span class="track-length">5:47</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第2弾シングル（2023-07-20、公式MVあり）。Wikipedia のシングル欄と Blabbermouth／Brave Words の記事で確認。収録・曲長も Wikipedia と Metal Archives でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Code_Red_(Primal_Fear_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://blabbermouth.net/news/primal-fear-shares-music-video-for-deep-in-the-night-single-from-code-red-album" target="_blank" rel="noopener">Blabbermouth</a></li>
+            <li><a href="https://www.metal-archives.com/albums/Primal_Fear/Code_Red/1146498" target="_blank" rel="noopener">Metal Archives</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Diviner -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Diviner</h3>
+        <p class="album-title">Avaton</p>
+      </div>
+      <p class="album-meta">2023年 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Mountains High</h4>
+          <span class="track-length">5:35</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第2弾シングル（公式ビデオあり）。Kick Ass Forever が「second single 'Mountains High'」、Brave Words も「new single」と明記。Forgotten Scroll は「epic standouts of the album」と評した。収録・曲長は Metal Archives と Discogs でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://kickassforever.com/diviner-heavy-metal-greece-mountains-high-official-video-taken-from-the-bands-upcoming-album-avaton-that-will-be-released-on-november-10-2023-diviner/" target="_blank" rel="noopener">Kick Ass Forever</a></li>
+            <li><a href="https://bravewords.com/news/diviner-drop-music-video-for-new-single-mountains-high/" target="_blank" rel="noopener">Brave Words</a></li>
+            <li><a href="https://www.metal-archives.com/albums/Diviner/Avaton/1168356" target="_blank" rel="noopener">Metal Archives</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Dominator</h4>
+          <span class="track-length">4:56</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">第3弾シングル（公式リリックビデオあり、2023-11-04）。Kick Ass Forever が「third single 'Dominator'」と明記し、Brave Words／Metal Radio も新シングルとして報道。Forgotten Scroll は「バンドのサウンドを要約する完璧な曲」と評した。収録・曲長は Metal Archives と Discogs でクロスチェック済み。YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://kickassforever.com/diviner-heavy-metal-greece-release-dominator-official-lyric-video-via-roar-rock-of-angels-records-diviner/" target="_blank" rel="noopener">Kick Ass Forever</a></li>
+            <li><a href="https://bravewords.com/news/diviner-release-dominator-video" target="_blank" rel="noopener">Brave Words</a></li>
+            <li><a href="https://www.metal-archives.com/albums/Diviner/Avaton/1168356" target="_blank" rel="noopener">Metal Archives</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="rejected-h">
+    <h2 id="rejected-h">次点・除外メモ</h2>
+    <div class="context-box">
+      <ul class="rejected-list">
+        <li><strong>Lovebites『Judgement Day』</strong> — 「We Are the Resurrection」はオープニング曲だがシングル／MVの実績がなく次点。「Wicked Witch」「Lost in the Garden」は公式オーディオのみでシングル実績なし。他の収録曲もシングル実績が確認できず、シングル2曲で枠が埋まった。</li>
+        <li><strong>Frozen Crown『Call of the North』</strong> — 「Black Heart」（第3弾シングル）と「Fire in the Sky」（第4弾シングル）は、2曲枠のため第1弾・第2弾シングルを優先し次点。他の6曲はシングル実績なし（「In a Moment」は公式オーディオのみ）。</li>
+        <li><strong>Anthem『Crimson &amp; Jet Black』</strong> — 「Blood Brothers」はMVがある（2023-07公開）がシングルとしての明示的確認が取れず次点。他の8曲はシングル／MVの実績が確認できない。</li>
+        <li><strong>Enforcer『Nostalgia』</strong> — 「Armageddon」（0:38）はイントロのため2分以下除外ルールにより不採用。「Kiss of Death」「Metal Supremacia」はMVがあるが、シングル2曲（第1弾・タイトル曲）を優先し次点。</li>
+        <li><strong>Burning Witches『The Dark Tower』</strong> — 「World on Fire」（第3弾シングル）は2曲枠のため次点。「Tomorrow」はレビューが明示的にバラードと呼ぶ曲のため、バラード原則不採用ルールにより除外。「Rise of Darkness」（1:02）と「House of Blood」（0:53）は2分以下除外。一部エディションの追加曲は Ozzy Osbourne／W.A.S.P. のカバーで対象外。</li>
+        <li><strong>Sacred Outcry『Towers of Gold』</strong> — タイトル曲「Towers of Gold (Tempus Edax Rerum)」（14:52）はファン評価が高いが、シングル／ビデオでのプロモーション実績がなく次点。「Into the Storm」もレビューのハイライトに挙がるがシングル実績なし。「A Midnight Reverie」（1:41）は2分以下除外。</li>
+        <li><strong>Jag Panzer『The Hallowed』</strong> — 「Edge of a Knife」（第3弾シングル、リリックビデオあり）は2曲枠のため次点。他の7曲はシングル実績が確認できない。</li>
+        <li><strong>Tailgunner『Guns for Hire』</strong> — 「Shadows of War」は Last.fm（第三者集計）のリスナー数 2,923 で「Crashdive」を上回るが、シングル実績が確認できず、シングル＋公式ビデオのある「Crashdive」を優先し次点。「Rebirth」（9:00）は長尺曲でシングル実績なし。</li>
+        <li><strong>Primal Fear『Code Red』</strong> — 「Cancel Culture」（第3弾シングル、2023-08-31）は2曲枠のため次点。他の8曲はシングル実績が確認できない。なお第2曲の曲名は一部サイトで「The Flood」と誤記されているが、正しくは「Bring That Noise」。</li>
+        <li><strong>Diviner『Avaton』</strong> — 「Waste No Time」は動画が制作され第1弾シングルの可能性が高いが、シングルとしての明示的な報道確認が取れなかったため次点。「Avaton」（1:21）はアコースティック・インストゥルメンタル・イントロのため2分以下除外。「Dead New World」はCD盤のみのボーナストラックのため不採用。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="metric-h">
+    <h2 id="metric-h">人気指標について</h2>
+    <div class="metric-note">
+      <p>Spotify公式の曲別再生回数は取得できないため、本来は YouTube の公開再生回数を人気の参考指標とする運用（2026-11-13に決定）だが、今回の選出では公式MV／公式動画のページ本文から再生回数を取得できず、<strong>20曲すべて YouTube 再生回数は「確認できない」</strong>である。数字は作っていない。</p>
+      <ul>
+        <li><strong>Tailgunner の2曲のみ</strong>、第三者集計である Last.fm のリスナー数を確認できたため参考として記載した（「Guns for Hire」4,436／「Crashdive」1,880。いずれも Spotify 公式の再生回数ではない）。</li>
+        <li>そのため今回の選出根拠は、シングル実績（順位・MV／ビデオの有無）と複数メディアの報道・レビュー言及を中心とした。</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <h2>検証方法</h2>
+    <ul>
+      <li>収録曲・曲長・シングル該当は、原則2サイト以上でクロスチェックして確認した（各曲の出典リンク参照）。曲長に出典間の差異がある場合は、採用値と差異の内訳を各曲の注記に明記した。</li>
+      <li>2分以下の曲は選出から除外する規定を適用した（Enforcer「Armageddon」0:38、Burning Witches「Rise of Darkness」1:02／「House of Blood」0:53、Sacred Outcry「A Midnight Reverie」1:41、Diviner「Avaton」1:21）。</li>
+      <li>バラードは原則不採用とし、今回のバラード採用は0件（Burning Witches「Tomorrow」はバラードと明示されていたため除外）。</li>
+      <li>Spotifyプレイリスト「2023年MELODIC POWER &amp; TRADITIONAL METAL」（20曲版）は、最終TSVの順序どおりに全20曲が入っていることを読み返して確認済み。カバー／トリビュート／カラオケ／ライヴ版は使用していない。Tailgunner の2曲は版Aのトラックを採用し、Sacred Outcry の2曲は Spotify 表示タイトル（サブタイトルなし）で収録した。</li>
+    </ul>
+  </footer>
+
+</div>
+</body>
+</html>

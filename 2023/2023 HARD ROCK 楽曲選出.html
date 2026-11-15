@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2023 HARD ROCK 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4efe7;
+    --bg2:#ece4d6;
+    --surface:#fffdf8;
+    --surface2:#f8f2e7;
+    --ink:#1c1917;
+    --ink2:#44403c;
+    --muted:#78716c;
+    --line:#ddd2bf;
+    --accent:#c2410c;
+    --accent-ink:#9a3412;
+    --accent-bg:#ffedd5;
+    --dark:#1c1917;
+    --gold:#b45309;
+    --ok:#166534;
+    --ok-bg:#dcfce7;
+    --warn-bg:#fef3c7;
+    --warn-line:#f59e0b;
+    --warn-ink:#92400e;
+    --shadow:0 10px 30px rgba(28,25,23,.08);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0c0a09;
+      --bg2:#141110;
+      --surface:#1c1917;
+      --surface2:#24201c;
+      --ink:#f5f0e8;
+      --ink2:#d6d0c4;
+      --muted:#a8a29e;
+      --line:#3a332c;
+      --accent:#fb923c;
+      --accent-ink:#fdba74;
+      --accent-bg:#431407;
+      --dark:#f5f0e8;
+      --gold:#fbbf24;
+      --ok:#86efac;
+      --ok-bg:#052e16;
+      --warn-bg:#451a03;
+      --warn-line:#b45309;
+      --warn-ink:#fde68a;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-ink)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px 72px}
+  /* Header */
+  .hero{padding:40px 0 28px;border-bottom:3px solid var(--ink)}
+  .kicker{font-family:Oswald,sans-serif;letter-spacing:.18em;font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase}
+  h1{font-size:clamp(34px,6vw,58px);line-height:1.08;margin:10px 0 6px;font-weight:900;letter-spacing:-.02em}
+  h1 .en{font-family:Oswald,sans-serif;font-weight:700;letter-spacing:.01em}
+  .lead{font-size:16.5px;color:var(--ink2);max-width:760px;margin:12px 0 0}
+  .lead strong{color:var(--ink)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 12px;box-shadow:var(--shadow)}
+  .stat b{display:block;font-family:Oswald,sans-serif;font-size:32px;line-height:1;font-weight:700}
+  .stat span{font-size:12.5px;color:var(--muted);font-weight:700;letter-spacing:.04em}
+  .notice{margin-top:16px;background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--warn-ink);line-height:1.7}
+  .notice strong{font-weight:900}
+  /* Playlist banner */
+  .playlist{margin-top:20px;background:var(--dark);color:var(--bg);border-radius:16px;padding:22px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  @media (prefers-color-scheme: dark){.playlist{background:#292524;border:1px solid var(--line);color:var(--ink)}}
+  .playlist h2{margin:0;font-size:20px;font-weight:900}
+  .playlist p{margin:4px 0 0;font-size:13.5px;opacity:.85;max-width:560px}
+  .btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 20px;border-radius:999px;background:#1db954;color:#052e12;font-weight:900;font-size:15px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
+  .btn:active{transform:scale(.98)}
+  .btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+  /* Controls */
+  .controls{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(10px);padding:16px 0 12px;margin-top:8px}
+  .searchrow{display:flex;gap:10px;flex-wrap:wrap}
+  .search{flex:1 1 260px;min-height:48px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:0 18px;font-size:16px;color:var(--ink);font-family:inherit}
+  .search:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .chip{min-height:40px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink2);font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .result-note{font-size:13px;color:var(--muted);margin-top:8px;min-height:20px}
+  /* Nav */
+  .toc{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px}
+  .toc a{display:inline-flex;align-items:center;min-height:38px;padding:6px 12px;border-radius:8px;background:var(--surface2);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px;font-weight:700}
+  .toc a:hover{border-color:var(--accent)}
+  .toc a small{font-family:Oswald,sans-serif;color:var(--accent);margin-right:6px;font-weight:700}
+  /* Sections */
+  section.block{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:20px}
+  .sec-head h2{font-size:26px;margin:0;font-weight:900}
+  .sec-head p{margin:0;color:var(--muted);font-size:13.5px}
+  /* Album */
+  .album{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:18px;box-shadow:var(--shadow)}
+  .album-head{display:flex;gap:16px;padding:20px 22px 16px;border-bottom:1px dashed var(--line);align-items:flex-start}
+  .num{font-family:Oswald,sans-serif;font-size:40px;line-height:.9;font-weight:700;color:var(--accent);flex:0 0 auto;min-width:52px}
+  .album-head-main{flex:1;min-width:0}
+  .artist{font-family:Oswald,sans-serif;font-size:14px;letter-spacing:.08em;font-weight:600;color:var(--muted);text-transform:uppercase}
+  .album-title{font-size:23px;font-weight:900;line-height:1.3;margin:2px 0 0}
+  .album-note{font-size:13.5px;color:var(--ink2);background:var(--surface2);border-radius:8px;padding:8px 12px;margin-top:10px}
+  .src{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .src a{display:inline-flex;align-items:center;min-height:38px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);font-size:12.5px;font-weight:700;text-decoration:none;color:var(--accent-ink);background:var(--surface);word-break:break-all}
+  .src a:hover{border-color:var(--accent)}
+  .tracks{padding:6px 22px 18px}
+  .track{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .track:last-child{border-bottom:0}
+  .track-name{font-size:18px;font-weight:900;line-height:1.4}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+  .badge{display:inline-flex;align-items:center;min-height:26px;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:800;white-space:nowrap}
+  .badge.single{background:var(--accent-bg);color:var(--accent-ink)}
+  .badge.nonsingle{background:var(--ok-bg);color:var(--ok)}
+  .badge.time{background:var(--surface2);color:var(--ink2);border:1px solid var(--line);font-family:Oswald,sans-serif;letter-spacing:.04em}
+  .reason{grid-column:1 / -1;font-size:14.5px;color:var(--ink2);margin:0}
+  .reason strong{color:var(--ink)}
+  .empty{display:none;text-align:center;padding:36px 16px;color:var(--muted);font-weight:700}
+  /* Swap */
+  .swap{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch}
+  .swap-box{border-radius:14px;padding:18px;border:1.5px solid var(--line);background:var(--surface)}
+  .swap-box.out{opacity:.75;border-style:dashed}
+  .swap-box.in{border-color:var(--accent);background:var(--surface)}
+  .swap-box .tag{font-size:12px;font-weight:900;letter-spacing:.06em}
+  .swap-box.out .tag{color:var(--muted)}
+  .swap-box.in .tag{color:var(--accent)}
+  .swap-box h3{margin:6px 0 4px;font-size:18px}
+  .swap-box p{margin:0;font-size:13.5px;color:var(--ink2)}
+  .arrow{display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--accent);font-weight:900}
+  .swap-text{margin-top:16px;font-size:14.5px;color:var(--ink2)}
+  .swap-text strong{color:var(--ink)}
+  .big-fact{margin-top:14px;background:var(--accent-bg);border-radius:12px;padding:14px 16px;font-weight:800;font-size:15px;color:var(--accent-ink)}
+  /* Rejected */
+  .rej-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .rej{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .rej .who{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.03em}
+  .rej .song{font-weight:900;font-size:16px;margin:1px 0 4px}
+  .rej p{margin:0;font-size:13.5px;color:var(--ink2)}
+  .rej .why{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:800;padding:2px 9px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);color:var(--ink2)}
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--muted)}
+  footer a{word-break:break-all}
+  @media (max-width:720px){
+    .stats{grid-template-columns:1fr 1fr}
+    .album-head{padding:16px 16px 12px;gap:12px}
+    .num{font-size:30px;min-width:38px}
+    .album-title{font-size:19px}
+    .tracks{padding:2px 16px 12px}
+    .track{grid-template-columns:1fr}
+    .badges{justify-content:flex-start}
+    .swap{grid-template-columns:1fr}
+    .arrow{transform:rotate(90deg);padding:2px 0}
+    .rej-grid{grid-template-columns:1fr}
+    .playlist{padding:18px}
+    .hero{padding-top:28px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">2023 · Hard Rock · Track Selection Evidence</div>
+    <h1>2023 <span class="en">HARD ROCK</span><br>楽曲選出</h1>
+    <p class="lead">2023年の HARD ROCK で確定した<strong>最終10枚</strong>のアルバムから、<strong>各2曲・計20曲</strong>を選出。シングル区分、曲の長さ、選出理由、出典、備考をアルバムごとに記録したエビデンスページです。</p>
+
+    <div class="stats" aria-label="概要">
+      <div class="stat"><b>10</b><span>アルバム</span></div>
+      <div class="stat"><b>20</b><span>選出曲</span></div>
+      <div class="stat"><b>19 + 1</b><span>シングル / 非シングル</span></div>
+      <div class="stat"><b>80:48</b><span>合計時間</span></div>
+    </div>
+
+    <div class="notice" role="note">
+      <strong>数値についての注意：</strong> 本ページで触れる再生回数・リスナー数・ライブ演奏回数は、Kworb / Last.fm / setlist.fm による<strong>いずれも第三者集計であり、公式数値ではありません</strong>。選出の参考指標としてのみ用いています。
+    </div>
+
+    <div class="playlist">
+      <div>
+        <h2>🎧 Spotify プレイリスト「2023年HARD ROCK」</h2>
+        <p>最終版・20曲確認済み。こちらが正式なプレイリストです。</p>
+      </div>
+      <a class="btn" href="https://open.spotify.com/playlist/1Y11UroqbBAHrvCr3Af9NS" target="_blank" rel="noopener">Spotifyで開く →</a>
+    </div>
+    <div class="notice" role="note" style="margin-top:12px">
+      <strong>旧プレイリストについて：</strong> 順番を直すためにプレイリストを作り直したため、旧プレイリスト（18曲入り、Vandenberg の2曲なし）が別に残っています。旧プレイリストはツールから削除できないため残存しており、<strong>正式なのは上記の最終版リンクのみ</strong>です。
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="searchrow">
+      <input class="search" id="q" type="search" placeholder="曲名・アーティスト・アルバムで検索…" aria-label="曲を検索">
+    </div>
+    <div class="filters" role="group" aria-label="絞り込み">
+      <button class="chip" data-filter="all" aria-pressed="true">すべて（20曲）</button>
+      <button class="chip" data-filter="single" aria-pressed="false">シングルのみ</button>
+      <button class="chip" data-filter="nonsingle" aria-pressed="false">非シングル</button>
+      <button class="chip" data-filter="wiki-none" aria-pressed="false">Wikipedia単独ページなし</button>
+    </div>
+    <div class="result-note" id="resultNote" aria-live="polite"></div>
+    <nav class="toc" aria-label="アルバム目次">
+      <a href="#album-1"><small>01</small>Alice Cooper</a>
+      <a href="#album-2"><small>02</small>Black Star Riders</a>
+      <a href="#album-3"><small>03</small>Black Stone Cherry</a>
+      <a href="#album-4"><small>04</small>The Winery Dogs</a>
+      <a href="#album-5"><small>05</small>Midnite City</a>
+      <a href="#album-6"><small>06</small>Crowne</a>
+      <a href="#album-7"><small>07</small>Temple Balls</a>
+      <a href="#album-8"><small>08</small>Heaven's Edge</a>
+      <a href="#album-9"><small>09</small>Shakra</a>
+      <a href="#album-10"><small>10</small>Lynch Mob</a>
+    </nav>
+  </div>
+
+  <main id="albumList">
+
+    <!-- 1 -->
+    <article class="album" id="album-1" data-search="alice cooper road i'm alice welcome to the show">
+      <div class="album-head">
+        <div class="num">01</div>
+        <div class="album-head-main">
+          <div class="artist">Alice Cooper</div>
+          <h3 class="album-title">『Road』</h3>
+          <div class="src"><a href="https://en.wikipedia.org/wiki/Road_(Alice_Cooper_album)" target="_blank" rel="noopener">出典： Wikipedia — Road (Alice Cooper album) ↗</a></div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">I'm Alice</div>
+          <div class="badges"><span class="badge single">第1シングル</span><span class="badge time">3:55</span></div>
+          <p class="reason">アルバム冒頭曲。Kworb（第三者集計）でアルバム内最多の Spotify 再生数、Last.fm でもアルバム内最多リスナー。</p>
+        </div>
+        <div class="track" data-type="single">
+          <div class="track-name">Welcome to the Show</div>
+          <div class="badges"><span class="badge single">第3シングル</span><span class="badge time">3:36</span></div>
+          <p class="reason">Kworb（第三者集計）でアルバム内2位の再生数。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="album" id="album-2" data-search="black star riders wrong side of paradise better than saturday night pay dirt">
+      <div class="album-head">
+        <div class="num">02</div>
+        <div class="album-head-main">
+          <div class="artist">Black Star Riders</div>
+          <h3 class="album-title">『Wrong Side of Paradise』</h3>
+          <div class="src"><a href="https://en.wikipedia.org/wiki/Wrong_Side_of_Paradise" target="_blank" rel="noopener">出典： Wikipedia — Wrong Side of Paradise ↗</a></div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">Better Than Saturday Night</div>
+          <div class="badges"><span class="badge single">第1シングル</span><span class="badge time">3:40</span></div>
+          <p class="reason">アルバム発表と同時に公開されたリード曲。Joe Elliott がバッキングボーカル参加。</p>
+        </div>
+        <div class="track" data-type="single">
+          <div class="track-name">Pay Dirt</div>
+          <div class="badges"><span class="badge single">第2シングル</span><span class="badge time">3:45</span></div>
+          <p class="reason">アップテンポのオリジナル・シングル。バラード寄りの Riding Out the Storm、カバーの Crazy Horses より優先して選出。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="album" id="album-3" data-search="black stone cherry screamin at the sky nervous when the pain comes">
+      <div class="album-head">
+        <div class="num">03</div>
+        <div class="album-head-main">
+          <div class="artist">Black Stone Cherry</div>
+          <h3 class="album-title">『Screamin' at the Sky』</h3>
+          <div class="src"><a href="https://en.wikipedia.org/wiki/Screamin%27_at_the_Sky" target="_blank" rel="noopener">出典： Wikipedia — Screamin' at the Sky ↗</a></div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">Nervous</div>
+          <div class="badges"><span class="badge single">シングル</span><span class="badge time">3:15</span></div>
+          <p class="reason">US Mainstream Rock チャート最高 <strong>21位</strong>。</p>
+        </div>
+        <div class="track" data-type="single">
+          <div class="track-name">When the Pain Comes</div>
+          <div class="badges"><span class="badge single">シングル</span><span class="badge time">3:24</span></div>
+          <p class="reason">US Mainstream Rock チャート最高 <strong>16位</strong>（アルバム内シングルで最高位）。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="album" id="album-4" data-search="the winery dogs iii xanadu mad world" data-wiki="none">
+      <div class="album-head">
+        <div class="num">04</div>
+        <div class="album-head-main">
+          <div class="artist">The Winery Dogs</div>
+          <h3 class="album-title">『III』</h3>
+          <div class="album-note">備考： Wikipedia に単独アルバムページはないため、他サイトで確認。</div>
+          <div class="src"><a href="https://www.metaltalk.net/the-winery-dogs-more-than-a-supergroup-iii-is-album-of-the-year-material.php" target="_blank" rel="noopener">出典： MetalTalk — The Winery Dogs『III』レビュー ↗</a></div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">Xanadu</div>
+          <div class="badges"><span class="badge single">リードシングル</span><span class="badge time">4:01</span></div>
+          <p class="reason">アルバム冒頭曲。</p>
+        </div>
+        <div class="track" data-type="single">
+          <div class="track-name">Mad World</div>
+          <div class="badges"><span class="badge single">第2シングル</span><span class="badge time">4:48</span></div>
+          <p class="reason">公式ビデオも公開。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="album" id="album-5" data-search="midnite city in at the deep end someday girls gone wild" data-wiki="none">
+      <div class="album-head">
+        <div class="num">05</div>
+        <div class="album-head-main">
+          <div class="artist">Midnite City</div>
+          <h3 class="album-title">『In at the Deep End』</h3>
+          <div class="album-note">備考： Wikipedia に単独ページがないため、収録・曲長は Qobuz と Discogs で確認（両源 4:38 / 3:46 で一致）。</div>
+          <div class="src"><a href="https://www.qobuz.com/au-en/album/in-at-the-deep-end-midnite-city/owl3vdlz6hn7a" target="_blank" rel="noopener">出典： Qobuz — In at the Deep End ↗</a></div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">Someday</div>
+          <div class="badges"><span class="badge single">第1シングル</span><span class="badge time">4:38</span></div>
+          <p class="reason">バンド自身が最も Midnite City らしい曲として第1シングルに選んだ。</p>
+        </div>
+        <div class="track" data-type="single">
+          <div class="track-name">Girls Gone Wild</div>
+          <div class="badges"><span class="badge single">第2シングル</span><span class="badge time">3:46</span></div>
+          <p class="reason">公式ビデオあり、アルバム中最もキャッチーな曲の一つと評される。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="album" id="album-6" data-search="crowne operation phoenix champions in the name of the fallen">
+      <div class="album-head">
+        <div class="num">06</div>
+        <div class="album-head-main">
+          <div class="artist">Crowne</div>
+          <h3 class="album-title">『Operation Phoenix』</h3>
+          <div class="src"><a href="https://www.sonicperspectives.com/news/crowne-announce-new-album-operation-phoenix-watch-music-video-for-champions/" target="_blank" rel="noopener">出典： Sonic Perspectives — Crowne 新作発表 ↗</a></div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">Champions</div>
+          <div class="badges"><span class="badge single">第1シングル</span><span class="badge time">3:22</span></div>
+          <p class="reason">アルバムからの第1シングルとして選出。</p>
+        </div>
+        <div class="track" data-type="single">
+          <div class="track-name">In the Name of the Fallen</div>
+          <div class="badges"><span class="badge single">第2シングル</span><span class="badge time">3:28</span></div>
+          <p class="reason">アルバムからの第2シングルとして選出。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="album" id="album-7" data-search="temple balls avalanche strike like a cobra trap" data-wiki="none">
+      <div class="album-head">
+        <div class="num">07</div>
+        <div class="album-head-main">
+          <div class="artist">Temple Balls</div>
+          <h3 class="album-title">『Avalanche』</h3>
+          <div class="album-note">備考： Wikipedia に単独アルバムページはないため Deezer 等で確認。</div>
+          <div class="src"><a href="https://bravewords.com/news/temple-balls-to-release-avalanche-album-in-november-trap-music-video-streaming" target="_blank" rel="noopener">出典： BraveWords — Temple Balls『Avalanche』発表 ↗</a></div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">Strike Like a Cobra</div>
+          <div class="badges"><span class="badge single">シングル</span><span class="badge time">3:25</span></div>
+          <p class="reason">Last.fm（第三者集計）のリスナー数がアルバム内最多。</p>
+        </div>
+        <div class="track" data-type="single">
+          <div class="track-name">Trap</div>
+          <div class="badges"><span class="badge single">シングル</span><span class="badge time">3:53</span></div>
+          <p class="reason">Last.fm（第三者集計）のリスナー数がアルバム内2位。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8 -->
+    <article class="album" id="album-8" data-search="heaven's edge heavens edge get it right had enough gone gone gone">
+      <div class="album-head">
+        <div class="num">08</div>
+        <div class="album-head-main">
+          <div class="artist">Heaven's Edge</div>
+          <h3 class="album-title">『Get It Right』</h3>
+          <div class="album-note">備考： A候補からの昇格・差し替え採用アルバム（経緯は下の「差し替えの経緯」セクション参照）。</div>
+          <div class="src">
+            <a href="https://bravewords.com/news/heavens-edge-to-release-get-it-right-album-in-may-had-enough-lyric-video-streaming/" target="_blank" rel="noopener">出典： BraveWords — Heaven's Edge 発表 ↗</a>
+            <a href="https://dangerdog.com/2023-music-reviews/heavens-edge-get-it-right.php" target="_blank" rel="noopener">出典： Dangerdog — レビュー ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">Had Enough</div>
+          <div class="badges"><span class="badge single">第1シングル</span><span class="badge time">4:04</span></div>
+          <p class="reason">アルバムからの第1シングルとして選出。</p>
+        </div>
+        <div class="track" data-type="nonsingle">
+          <div class="track-name">Gone Gone Gone</div>
+          <div class="badges"><span class="badge nonsingle">非シングル</span><span class="badge time">3:36</span></div>
+          <p class="reason">レビューでの言及と setlist.fm（第三者集計）のライブ演奏回数により選出。第2シングル What Could've Been はバラードのため不採用。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 9 -->
+    <article class="album" id="album-9" data-search="shakra invincible the way it is" data-wiki="none">
+      <div class="album-head">
+        <div class="num">09</div>
+        <div class="album-head-main">
+          <div class="artist">Shakra</div>
+          <h3 class="album-title">『Invincible』</h3>
+          <div class="album-note">備考： Wikipedia に単独アルバムページは確認できないため Deezer 等で確認。</div>
+          <div class="src"><a href="https://grande-rock.com/news/shakra-to-release-new-studio-album-invincible-on-june-9th-2023/" target="_blank" rel="noopener">出典： Grande Rock — Shakra『Invincible』発表 ↗</a></div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">The Way It Is</div>
+          <div class="badges"><span class="badge single">先行シングル</span><span class="badge time">4:59</span></div>
+          <p class="reason">アルバム冒頭曲。</p>
+        </div>
+        <div class="track" data-type="single">
+          <div class="track-name">Invincible</div>
+          <div class="badges"><span class="badge single">タイトル曲シングル</span><span class="badge time">5:38</span></div>
+          <p class="reason">アルバムのタイトル曲シングルとして選出。20曲中最長。</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="album" id="album-10" data-search="lynch mob babylon time after time caught up" data-wiki="none">
+      <div class="album-head">
+        <div class="num">10</div>
+        <div class="album-head-main">
+          <div class="artist">Lynch Mob</div>
+          <h3 class="album-title">『Babylon』</h3>
+          <div class="album-note">備考： Wikipedia に単独アルバムページは確認できないため Discogs 等で確認。</div>
+          <div class="src"><a href="https://blabbermouth.net/news/lynch-mob-announces-babylon-album-details-shares-first-single-time-after-time" target="_blank" rel="noopener">出典： Blabbermouth — Lynch Mob『Babylon』発表 ↗</a></div>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track" data-type="single">
+          <div class="track-name">Time After Time</div>
+          <div class="badges"><span class="badge single">ファーストシングル</span><span class="badge time">4:58</span></div>
+          <p class="reason">setlist.fm（第三者集計）でアルバム曲中ライブ演奏回数が突出。</p>
+        </div>
+        <div class="track" data-type="single">
+          <div class="track-name">Caught Up</div>
+          <div class="badges"><span class="badge single">セカンドシングル</span><span class="badge time">4:37</span></div>
+          <p class="reason">複数レビューが track of the album 候補と高評価。</p>
+        </div>
+      </div>
+    </article>
+
+    <div class="empty" id="emptyState">条件に合う曲が見つかりませんでした。検索や絞り込みを変えてみてください。</div>
+  </main>
+
+  <section class="block" id="swap">
+    <div class="sec-head"><h2>差し替えの経緯</h2><p>Vandenberg → Heaven's Edge</p></div>
+    <div class="swap">
+      <div class="swap-box out">
+        <div class="tag">当初選出 → 除外</div>
+        <h3>Vandenberg『Sin』</h3>
+        <p>当初選出曲：「House On Fire」「Light It Up」の2曲</p>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="swap-box in">
+        <div class="tag">A候補から昇格 → 最終採用</div>
+        <h3>Heaven's Edge『Get It Right』</h3>
+        <p>選出曲：「Had Enough」「Gone Gone Gone」の2曲</p>
+      </div>
+    </div>
+    <p class="swap-text">当初は Vandenberg『Sin』から2曲を選出していました。しかし Spotify プレイリスト作成時、この2曲が Spotify カタログ（<strong>CLI検索・Web検索の両方</strong>）で見つからず、アルバム自体が表示されなかったため追加できませんでした。<strong>Hiro の決定</strong>により、Vandenberg を外し、A候補だった Heaven's Edge『Get It Right』に差し替え、その2曲を選出しました。</p>
+    <div class="big-fact">この結果、最終20曲のうちシングルは19曲 — 非シングルは Heaven's Edge「Gone Gone Gone」のみです。</div>
+  </section>
+
+  <section class="block" id="rejected">
+    <div class="sec-head"><h2>落選候補</h2><p>主なもの</p></div>
+    <div class="rej-grid">
+      <div class="rej"><div class="who">ALICE COOPER —『ROAD』</div><div class="song">White Line Frankenstein</div><p>第2シングルだが、Kworb（第三者集計）の再生数が Welcome to the Show に僅差で次点。</p><span class="why">僅差で次点</span></div>
+      <div class="rej"><div class="who">BLACK STAR RIDERS —『WRONG SIDE OF PARADISE』</div><div class="song">Crazy Horses</div><p>シングルだが The Osmonds のカバーのため除外。「Riding Out the Storm」もバラード寄りのため見送り。</p><span class="why">カバー / バラード寄り</span></div>
+      <div class="rej"><div class="who">BLACK STONE CHERRY —『SCREAMIN' AT THE SKY』</div><div class="song">Out of Pocket</div><p>リードシングルだがチャート最高32位で、選出2曲の成績を下回り次点。</p><span class="why">チャート成績で次点</span></div>
+      <div class="rej"><div class="who">THE WINERY DOGS —『III』</div><div class="song">Lorelei</div><p>バラードのため不採用。</p><span class="why">バラード</span></div>
+      <div class="rej"><div class="who">MIDNITE CITY —『IN AT THE DEEP END』</div><div class="song">Outbreak / Hardest Heart to Break</div><p>「Outbreak」は 0:37 のイントロ曲で、2分以下のため除外。「Hardest Heart to Break」はバラードのため不採用。</p><span class="why">2分以下 / バラード</span></div>
+      <div class="rej"><div class="who">CROWNE —『OPERATION PHOENIX』</div><div class="song">Operation Phoenix</div><p>タイトル曲で第3シングルだが次点。</p><span class="why">次点</span></div>
+      <div class="rej"><div class="who">TEMPLE BALLS —『AVALANCHE』</div><div class="song">Stone Cold Bones</div><p>バラードのため落選。</p><span class="why">バラード</span></div>
+      <div class="rej"><div class="who">SHAKRA —『INVINCIBLE』</div><div class="song">Tell Her That I'm Sorry</div><p>バラードのため落選。</p><span class="why">バラード</span></div>
+      <div class="rej"><div class="who">LYNCH MOB —『BABYLON』</div><div class="song">Million Miles Away</div><p>バラードのため落選。</p><span class="why">バラード</span></div>
+      <div class="rej"><div class="who">HEAVEN'S EDGE —『GET IT RIGHT』</div><div class="song">What Could've Been / 9 Lives (My Immortal Life)</div><p>「What Could've Been」は第2シングルだがバラードのため不採用。「9 Lives (My Immortal Life)」は次点。</p><span class="why">バラード / 次点</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>2023年 HARD ROCK 楽曲選出 — 最終10枚・各2曲・計20曲（シングル19曲＋非シングル1曲）。Spotify 最終版プレイリスト「2023年HARD ROCK」（20曲確認済み）： <a href="https://open.spotify.com/playlist/1Y11UroqbBAHrvCr3Af9NS" target="_blank" rel="noopener">https://open.spotify.com/playlist/1Y11UroqbBAHrvCr3Af9NS</a></p>
+    <p>再生回数・リスナー数・ライブ演奏回数はいずれも Kworb / Last.fm / setlist.fm による第三者集計であり、公式数値ではありません。</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var albums = Array.prototype.slice.call(document.querySelectorAll('.album'));
+  var note = document.getElementById('resultNote');
+  var empty = document.getElementById('emptyState');
+  var filter = 'all';
+
+  function apply(){
+    var term = (q.value || '').trim().toLowerCase();
+    var visibleTracks = 0;
+    albums.forEach(function(album){
+      var albumText = (album.getAttribute('data-search') || '').toLowerCase();
+      var albumMatch = !term || albumText.indexOf(term) !== -1;
+      var wikiNone = album.getAttribute('data-wiki') === 'none';
+      var albumVisible = false;
+      album.querySelectorAll('.track').forEach(function(track){
+        var name = track.querySelector('.track-name').textContent.toLowerCase();
+        var type = track.getAttribute('data-type');
+        var okFilter = filter === 'all' || (filter === 'single' && type === 'single') || (filter === 'nonsingle' && type === 'nonsingle') || (filter === 'wiki-none' && wikiNone);
+        var okTerm = !term || albumMatch || name.indexOf(term) !== -1;
+        var show = okFilter && okTerm;
+        track.style.display = show ? '' : 'none';
+        if (show){ albumVisible = true; visibleTracks++; }
+      });
+      album.style.display = albumVisible ? '' : 'none';
+    });
+    empty.style.display = visibleTracks === 0 ? 'block' : 'none';
+    note.textContent = (term || filter !== 'all') ? visibleTracks + '曲を表示中' : '';
+  }
+  q.addEventListener('input', apply);
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+      chip.setAttribute('aria-pressed','true');
+      filter = chip.getAttribute('data-filter');
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>

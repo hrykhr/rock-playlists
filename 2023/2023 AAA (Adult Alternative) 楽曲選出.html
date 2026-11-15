@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2023 AAA (Adult Alternative) 楽曲選出</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --surface-2: #efeae0;
+    --ink: #23211c;
+    --ink-2: #5c574c;
+    --line: #ddd5c4;
+    --accent: #7a4a1e;
+    --accent-soft: #f3e7d3;
+    --badge-bg: #2e5d3a;
+    --badge-ink: #ffffff;
+    --link: #7a4a1e;
+    --note-bg: #efeae0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171512;
+      --surface: #211e1a;
+      --surface-2: #2a2621;
+      --ink: #ece7dc;
+      --ink-2: #b3ab9c;
+      --line: #3d382f;
+      --accent: #e0a55e;
+      --accent-soft: #38301f;
+      --badge-bg: #3f7d50;
+      --badge-ink: #ffffff;
+      --link: #e0a55e;
+      --note-bg: #2a2621;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+    line-height: 1.75;
+    font-size: 16px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px 56px; }
+  a { color: var(--link); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.hero { padding: 40px 0 8px; }
+  .genre-label {
+    font-size: 13px; letter-spacing: .14em; font-weight: 700;
+    color: var(--accent); margin: 0 0 10px;
+  }
+  h1 {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    font-size: clamp(26px, 5.4vw, 38px); line-height: 1.3; margin: 0 0 14px; font-weight: 700;
+  }
+  .hero-lead { color: var(--ink-2); margin: 0 0 22px; max-width: 640px; }
+  .stats {
+    display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 22px; padding: 0; list-style: none;
+  }
+  .stats li {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 16px; font-size: 14px;
+  }
+  .stats strong { font-size: 20px; font-weight: 800; margin-right: 4px; }
+  .spotify-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #1db954; color: #0c2413; font-weight: 700; text-decoration: none;
+    border-radius: 999px; padding: 12px 22px; min-height: 48px; font-size: 15px;
+  }
+  .spotify-btn svg { flex: none; }
+  .spotify-btn:hover { filter: brightness(1.06); }
+
+  section { margin-top: 40px; }
+  h2 {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    font-size: 22px; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--accent);
+  }
+  .context-box {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .context-box p { margin: 0 0 10px; }
+  .context-box p:last-child { margin-bottom: 0; }
+
+  .album {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 22px 8px; margin-top: 22px;
+  }
+  .album-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 6px; }
+  .album-artist {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+    font-size: 21px; font-weight: 700; margin: 0;
+  }
+  .album-title { font-style: italic; font-size: 17px; margin: 0; }
+  .album-meta { color: var(--ink-2); font-size: 13.5px; margin: 0 0 14px; }
+
+  .track { border-top: 1px solid var(--line); padding: 16px 0 18px; }
+  .track-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .track-num {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px; padding: 1px 9px;
+  }
+  .track-name { font-size: 18px; font-weight: 700; margin: 0; }
+  .track-length { color: var(--ink-2); font-variant-numeric: tabular-nums; font-size: 15px; }
+  .badge-single {
+    background: var(--badge-bg); color: var(--badge-ink);
+    font-size: 12px; font-weight: 700; border-radius: 999px; padding: 3px 11px;
+  }
+  .evidence { margin: 10px 0 0; }
+  .track-note {
+    margin: 10px 0 0; font-size: 13.5px; color: var(--ink-2);
+    background: var(--note-bg); border-radius: 8px; padding: 9px 13px;
+  }
+  .sources { margin: 12px 0 0; }
+  .sources-label { font-size: 12.5px; font-weight: 700; color: var(--ink-2); letter-spacing: .06em; }
+  .sources ul { margin: 6px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sources a {
+    display: inline-block; padding: 7px 13px; min-height: 36px;
+    border: 1px solid var(--line); border-radius: 999px; text-decoration: none;
+    font-size: 13.5px; background: var(--bg);
+  }
+  .sources a:hover { border-color: var(--accent); }
+
+  .metric-note {
+    background: var(--accent-soft); border-radius: 10px; padding: 18px 20px;
+  }
+  .metric-note p { margin: 0 0 10px; }
+  .metric-note p:last-child { margin-bottom: 0; }
+  .metric-note ul { margin: 6px 0 10px; padding-left: 1.3em; }
+  .metric-note li { margin-bottom: 4px; }
+
+  footer {
+    margin-top: 48px; border-top: 1px solid var(--line); padding-top: 20px;
+    color: var(--ink-2); font-size: 14px;
+  }
+  footer h2 { font-size: 17px; border-bottom: none; padding-bottom: 0; margin-bottom: 8px; color: var(--ink); }
+  footer ul { margin: 0; padding-left: 1.3em; }
+  footer li { margin-bottom: 4px; }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px 44px; }
+    .album { padding: 18px 16px 4px; }
+    header.hero { padding-top: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="genre-label">2023年 ・ ジャンル 4. AAA (ADULT ALTERNATIVE)</p>
+    <h1>2023 AAA (Adult Alternative) 楽曲選出</h1>
+    <p class="hero-lead">最終選出アルバム4枚から、各2曲ずつ計8曲を選出。全曲シングル曲で構成し、選出理由のエビデンスと確認に使った出典をアルバムごとに記録する。</p>
+    <ul class="stats">
+      <li><strong>4</strong>枚 最終アルバム</li>
+      <li><strong>8</strong>曲 選出曲</li>
+      <li><strong>8/8</strong>曲 シングル</li>
+    </ul>
+    <a class="spotify-btn" href="https://open.spotify.com/playlist/0nbOK6C5UyoosdROlo1X0S" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.3a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 1 1-.33-1.46c4.57-1.05 8.48-.6 11.66 1.34.35.21.46.68.25 1.03zm1.47-3.83a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.54-1.8c4.36-1.32 9.78-.68 13.49 1.6.41.25.56.88.31 1.29zm.13-3.98C15.3 7.22 8.86 6.9 4.9 8.1a1.13 1.13 0 1 1-.65-2.16c4.53-1.37 11.5-1.03 16.05 1.67a1.13 1.13 0 0 1-1.15 1.94z"/></svg>
+      Spotifyプレイリスト「2023年AAA (Adult Alternative)」を開く
+    </a>
+  </header>
+
+  <section aria-labelledby="context-h">
+    <h2 id="context-h">選出の経緯</h2>
+    <div class="context-box">
+      <p>候補30枚を収集し（既出アルバムとの重複除外は0枚）、Sランク検証を行った結果、Semisonic『Little Bit of Sun』がAランクへ降格し、S確定は4枚となった。ジャンルの下限5枚には届かず、また厳格ルール（女性アーティストが半数以上）に対しても女性は Natalie Merchant の1枚のみだった。</p>
+      <p>昇格による10枚案も検討したが、最終的に Hiro の判断で、無理な昇格はせずS確定4枚のまま最終とすることを決定した（今回限りの例外。2022年 AAA での例外判断と同じ扱い）。</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="tracks-h">
+    <h2 id="tracks-h">選出曲（アルバム別）</h2>
+
+    <!-- Hozier -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Hozier</h3>
+        <p class="album-title">Unreal Unearth</p>
+      </div>
+      <p class="album-meta">2023年8月18日発売 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Eat Your Young</h4>
+          <span class="track-length">4:02</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">リードシングル（2023-03-17）。YouTube再生回数（Kworb集計のYouTube統計）: 公式MV約1,141万回、公式リリックビデオ約2,120万回で収録曲中突出。</p>
+        <p class="track-note">再生回数はKworb集計のYouTube再生回数であり、Spotify公式の再生回数ではない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://hozier.fandom.com/wiki/Unreal_Unearth" target="_blank" rel="noopener">Hozier Wiki（Fandom）</a></li>
+            <li><a href="https://www.qobuz.com/br-pt/album/unreal-unearth-hozier/dncbli7cll6ja" target="_blank" rel="noopener">Qobuz</a></li>
+            <li><a href="https://www.youtube.com/watch?v=e6LM0sIA_Eg" target="_blank" rel="noopener">YouTube 公式動画</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Francesca</h4>
+          <span class="track-length">4:30</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">シングル（2023-05-19）。YouTube再生回数（Kworb集計）: 公式MV約799万回。ドラマチックなフルバンドのロック曲。</p>
+        <p class="track-note">再生回数はKworb集計のYouTube再生回数。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://hozier.fandom.com/wiki/Unreal_Unearth" target="_blank" rel="noopener">Hozier Wiki（Fandom）</a></li>
+            <li><a href="https://hmv.com/store/music/vinyl/unreal-unearth" target="_blank" rel="noopener">HMV</a></li>
+            <li><a href="https://www.youtube.com/watch?v=K1u_hL11auM" target="_blank" rel="noopener">YouTube 公式MV</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Dave Matthews Band -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Dave Matthews Band</h3>
+        <p class="album-title">Walk Around the Moon</p>
+      </div>
+      <p class="album-meta">2023年5月19日発売 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Madman's Eyes</h4>
+          <span class="track-length">4:48</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">先行リードシングル（2023-01-24）。公式YouTube「Official Audio」の再生回数は約530K回（YouTube公開表示の概数）。</p>
+        <p class="track-note">YouTube再生回数は丸め表示のため概数。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Walk_Around_the_Moon" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://consequence.net/2023/01/dave-matthews-band-walk-around-the-moon-2023-tour-dates/" target="_blank" rel="noopener">Consequence</a></li>
+            <li><a href="https://www.youtube.com/watch?v=CGvo5m5QTSs" target="_blank" rel="noopener">YouTube Official Audio</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Monsters</h4>
+          <span class="track-length">3:33</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">セカンドシングル（2023-04-20）。レーベルのプレスリリースで紹介されたフルボディな楽曲。公式ビジュアライザー動画の再生回数は確認できない。</p>
+        <p class="track-note">YouTube再生回数は確認できないため数字は記載しない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Walk_Around_the_Moon" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://www.youtube.com/watch?v=Fi61TB6bsG4" target="_blank" rel="noopener">YouTube 公式動画</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Natalie Merchant -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Natalie Merchant</h3>
+        <p class="album-title">Keep Your Courage</p>
+      </div>
+      <p class="album-meta">2023年4月14日発売 ・ 選出2曲 ・ 検証では Americana／baroque pop の境界要素ありと明記</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Come On, Aphrodite</h4>
+          <span class="track-length">5:20</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">レーベルNonesuchが「ファーストシングル」と明記（2023-02-15、Abena Koomson-Davis参加）。公式MVの再生回数は確認できない。</p>
+        <p class="track-note">曲長は情報源により5:20／5:21と1秒の表記差。YouTube再生回数は確認できない。Spotifyプレイリストには Edit版ではなくアルバム版（5:20）を収録。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://www.nonesuch.com/journal/natalie-merchant-come-on-aphrodite-first-single-upcoming-album-keep-your-courage-2023-02-15" target="_blank" rel="noopener">Nonesuch Records</a></li>
+            <li><a href="https://nataliemerchant.bandcamp.com/album/keep-your-courage?action=buy" target="_blank" rel="noopener">Bandcamp</a></li>
+            <li><a href="https://www.qobuz.com/us-en/album/keep-your-courage-natalie-merchant/cwm1i0r83ewba" target="_blank" rel="noopener">Qobuz</a></li>
+            <li><a href="https://www.youtube.com/watch?v=_roE1N7Urio" target="_blank" rel="noopener">YouTube 公式MV</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">Tower of Babel</h4>
+          <span class="track-length">2:28</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">レーベルNonesuchがセカンドシングルとして発表（2023-03-30）。ホーンが目立つダンサブルな楽曲。公式MVの再生回数は確認できない。</p>
+        <p class="track-note">曲長2:28で2分超のため除外規定には当たらない。YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://www.nonesuch.com/journal/watch-natalie-merchant-tower-babel-new-song-upcoming-album-keep-your-courage-2023-03-30" target="_blank" rel="noopener">Nonesuch Records</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Keep_Your_Courage" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://www.youtube.com/watch?v=Zs6GkCbxnyw" target="_blank" rel="noopener">YouTube 公式MV</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Barenaked Ladies -->
+    <article class="album">
+      <div class="album-head">
+        <h3 class="album-artist">Barenaked Ladies</h3>
+        <p class="album-title">In Flight</p>
+      </div>
+      <p class="album-meta">2023年9月15日発売 ・ 選出2曲</p>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">1曲目</span>
+          <h4 class="track-name">Lovin' Life</h4>
+          <span class="track-length">3:34</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">オープニング曲で最初のシングル（2023-06-23）。公式MV公開。再生回数は確認できない。</p>
+        <p class="track-note">YouTube再生回数は確認できない。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/In_Flight_(Barenaked_Ladies_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://www.qobuz.com/gb-en/album/in-flight-barenaked-ladies/ifyruunbqazgb" target="_blank" rel="noopener">Qobuz</a></li>
+            <li><a href="https://www.youtube.com/watch?v=Uf3uik5QH40" target="_blank" rel="noopener">YouTube 公式MV</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-head">
+          <span class="track-num">2曲目</span>
+          <h4 class="track-name">One Night</h4>
+          <span class="track-length">3:17</span>
+          <span class="badge-single">シングル</span>
+        </div>
+        <p class="evidence">シングル（2023-08-18）で公式MV公開。アップビートな楽曲。再生回数は確認できない。</p>
+        <p class="track-note">一部PRでは本曲を「リードシングル」と呼ぶが、Lovin' Life の方が発売日が早い。YouTube再生回数は確認できない。Spotifyプレイリストには Acoustic版ではなくスタジオ版を収録。</p>
+        <div class="sources">
+          <span class="sources-label">出典</span>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/In_Flight_(Barenaked_Ladies_album)" target="_blank" rel="noopener">Wikipedia</a></li>
+            <li><a href="https://exclaim.ca/music/article/barenaked_ladies_announce_in_flight_lp_share_new_single_one_night" target="_blank" rel="noopener">Exclaim!</a></li>
+            <li><a href="https://www.qobuz.com/gb-en/album/in-flight-barenaked-ladies/ifyruunbqazgb" target="_blank" rel="noopener">Qobuz</a></li>
+            <li><a href="https://www.youtube.com/watch?v=ETEslmfhgEg" target="_blank" rel="noopener">YouTube 公式MV</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="metric-h">
+    <h2 id="metric-h">人気指標について</h2>
+    <div class="metric-note">
+      <p>Spotify公式の曲別再生回数は取得できないため、この選出では YouTube の公開再生回数を人気の参考指標として用いた（2026-11-13に定めた運用ルール）。数字の扱いは曲ごとに異なる。</p>
+      <ul>
+        <li><strong>Hozier の2曲</strong>（Eat Your Young / Francesca）: 数字は Kworb が集計した YouTube 統計であり、YouTube 上の表示そのものではない。</li>
+        <li><strong>Madman's Eyes</strong>（Dave Matthews Band）: YouTube 表示の概数（約530K回）。丸め表示のため正確な回数ではない。</li>
+        <li><strong>その他の5曲</strong>: 再生回数を確認できなかったため、数字は載せていない。推測で補うことはしていない。</li>
+      </ul>
+      <p>いずれの数字も Spotify の再生回数ではない。</p>
+    </div>
+  </section>
+
+  <footer>
+    <h2>検証方法</h2>
+    <ul>
+      <li>収録曲・曲長・シングル該当は、2サイト以上でクロスチェックして確認した（各曲の出典リンク参照）。</li>
+      <li>2分以下の曲は選出から除外する規定を適用した（Tower of Babel は2:28のため対象外）。</li>
+      <li>バラードは原則不採用とし、アップビートでフルバンド編成の楽曲を優先した。</li>
+      <li>Spotifyプレイリスト「2023年AAA (Adult Alternative)」は8曲をTSVの順序どおりに収録し、確認済み。</li>
+    </ul>
+  </footer>
+
+</div>
+</body>
+</html>

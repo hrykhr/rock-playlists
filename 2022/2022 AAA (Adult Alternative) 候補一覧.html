@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2022 AAA (Adult Alternative) 候補一覧</title>
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+
+      :root {
+        color-scheme: light dark;
+        --bg: #f6f6f3;
+        --surface: #ffffff;
+        --surface-2: #eef1ec;
+        --ink: #1c2420;
+        --ink-2: #45514a;
+        --ink-3: #6d7a72;
+        --line: #d8ddd5;
+        --accent: #1e5c44;
+        --accent-ink: #ffffff;
+        --accent-soft: #e2eee7;
+        --s: #a8321f;
+        --s-bg: #f9e9e4;
+        --a: #2c5f7c;
+        --a-bg: #e6eef3;
+        --b: #6e6250;
+        --b-bg: #efeadf;
+        --warn-bg: #fdf3e0;
+        --warn-line: #d9a83e;
+        --warn-ink: #5d4a12;
+        --code-bg: #17211c;
+        --code-ink: #d9e8dd;
+        --shadow: 0 1px 2px rgba(20, 35, 27, .06), 0 8px 24px rgba(20, 35, 27, .05);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121714;
+          --surface: #1b221e;
+          --surface-2: #232b26;
+          --ink: #e8ede9;
+          --ink-2: #b9c4bc;
+          --ink-3: #8d9a91;
+          --line: #333d36;
+          --accent: #7cc4a2;
+          --accent-ink: #0f1a14;
+          --accent-soft: #22352b;
+          --s: #f0927d;
+          --s-bg: #3a2620;
+          --a: #93c3dd;
+          --a-bg: #22333e;
+          --b: #cdbf9f;
+          --b-bg: #33301f;
+          --warn-bg: #33290f;
+          --warn-line: #a97f22;
+          --warn-ink: #ecd9a0;
+          --code-bg: #0b0f0c;
+          --code-ink: #cfe3d4;
+          --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+        line-height: 1.75;
+        font-size: 16px;
+      }
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 72px; }
+
+      /* ---------- ヘッダー ---------- */
+      header.page-head { padding: 40px 0 8px; }
+      .genre-line {
+        font-size: .82rem; letter-spacing: .14em; font-weight: 700;
+        color: var(--accent); text-transform: uppercase; margin: 0 0 10px;
+      }
+      h1 {
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", Georgia, serif;
+        font-size: clamp(1.7rem, 5.4vw, 2.6rem);
+        line-height: 1.3; margin: 0 0 14px; font-weight: 700;
+      }
+      .lede { color: var(--ink-2); max-width: 46em; margin: 0 0 22px; }
+      .stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 8px; }
+      .stat {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        padding: 10px 16px; min-width: 118px; box-shadow: var(--shadow);
+      }
+      .stat b { display: block; font-size: 1.35rem; line-height: 1.25; font-variant-numeric: tabular-nums; }
+      .stat span { font-size: .8rem; color: var(--ink-3); }
+
+      h2 {
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", Georgia, serif;
+        font-size: clamp(1.3rem, 3.6vw, 1.7rem); line-height: 1.4;
+        margin: 52px 0 6px; padding-bottom: 10px; border-bottom: 2px solid var(--accent);
+      }
+      .section-note { color: var(--ink-2); margin: 10px 0 20px; max-width: 46em; }
+      h3 { font-size: 1.02rem; margin: 0; }
+
+      /* ---------- 最終5枚 ---------- */
+      .final-list { display: grid; gap: 16px; }
+      .final-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        box-shadow: var(--shadow); padding: 22px 22px 18px;
+        display: grid; grid-template-columns: 52px 1fr; gap: 6px 18px;
+      }
+      .final-num {
+        grid-row: span 3; width: 52px; height: 52px; border-radius: 50%;
+        background: var(--accent); color: var(--accent-ink);
+        display: flex; align-items: center; justify-content: center;
+        font-family: Georgia, "Times New Roman", serif; font-size: 1.5rem; font-weight: 700;
+      }
+      .final-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+      .final-artist { font-size: 1.02rem; color: var(--ink-2); font-weight: 600; }
+      .final-album {
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", Georgia, serif;
+        font-size: clamp(1.35rem, 4vw, 1.8rem); font-weight: 700; line-height: 1.3;
+      }
+      .final-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: .88rem; color: var(--ink-2); }
+      .final-body { grid-column: 2; }
+      .final-body p { margin: 8px 0; font-size: .95rem; }
+      .final-body p b.label { color: var(--accent); font-size: .85rem; letter-spacing: .04em; }
+      .rank-badge {
+        display: inline-flex; align-items: center; justify-content: center;
+        min-width: 30px; height: 26px; padding: 0 8px; border-radius: 6px;
+        font-weight: 800; font-size: .85rem; line-height: 1;
+      }
+      .rank-S { background: var(--s-bg); color: var(--s); }
+      .rank-A { background: var(--a-bg); color: var(--a); }
+      .rank-B { background: var(--b-bg); color: var(--b); }
+      .date-chip {
+        background: var(--surface-2); border-radius: 6px; padding: 2px 10px;
+        font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink);
+      }
+      .final-tag {
+        background: var(--accent-soft); color: var(--accent); border-radius: 999px;
+        padding: 2px 12px; font-size: .8rem; font-weight: 700;
+      }
+      .sources { margin: 12px 0 4px; font-size: .86rem; color: var(--ink-3); }
+      .sources a { color: var(--accent); font-weight: 600; text-decoration: none; padding: 4px 2px; display: inline-block; }
+      .sources a:hover, .sources a:focus-visible { text-decoration: underline; }
+      .sources .sep { margin: 0 4px; color: var(--line); }
+
+      /* ---------- 例外経緯 ---------- */
+      .notice {
+        background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 14px;
+        padding: 20px 22px; color: var(--warn-ink);
+      }
+      .notice h3 { margin-bottom: 8px; font-size: 1.05rem; }
+      .notice p { margin: 8px 0; font-size: .95rem; }
+      .notice blockquote {
+        margin: 12px 0; padding: 10px 16px; border-left: 4px solid var(--warn-line);
+        background: rgba(255,255,255,.25); font-weight: 600;
+      }
+      @media (prefers-color-scheme: dark) { .notice blockquote { background: rgba(0,0,0,.2); } }
+
+      /* ---------- 候補コントロール ---------- */
+      .controls {
+        display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 14px; box-shadow: var(--shadow); margin-bottom: 8px;
+      }
+      .controls .search-box { flex: 1 1 220px; }
+      .controls input[type="search"] {
+        width: 100%; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px;
+        background: var(--bg); color: var(--ink); font-size: 1rem; min-height: 2.5rem;
+      }
+      .rank-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+      .rank-filters button {
+        border: 1px solid var(--line); background: var(--surface-2); color: var(--ink);
+        border-radius: 999px; padding: 6px 16px; font-size: .92rem; font-weight: 700; cursor: pointer;
+        min-height: 2.5rem;
+      }
+      .rank-filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+      .controls select {
+        padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px;
+        background: var(--bg); color: var(--ink); font-size: .95rem; min-height: 2.5rem;
+      }
+      .controls label.sort-label { font-size: .85rem; color: var(--ink-3); font-weight: 600; }
+      .result-count { font-size: .9rem; color: var(--ink-2); margin: 12px 2px 14px; }
+
+      /* ---------- 候補カード ---------- */
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+      .card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 16px 18px 12px; display: flex; flex-direction: column;
+      }
+      .card-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+      .card-date { font-size: .85rem; color: var(--ink-3); font-variant-numeric: tabular-nums; font-weight: 600; }
+      .card .artist { font-size: .92rem; color: var(--ink-2); font-weight: 600; margin: 0; }
+      .card .album {
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", Georgia, serif;
+        font-size: 1.22rem; font-weight: 700; line-height: 1.35; margin: 2px 0 8px;
+      }
+      .card .memo { font-size: .9rem; color: var(--ink-2); margin: 0 0 10px; flex: 1; }
+      .card .sources { margin-top: auto; border-top: 1px solid var(--line); padding-top: 8px; }
+      .female-tag {
+        font-size: .75rem; font-weight: 700; color: var(--accent);
+        border: 1px solid var(--accent); border-radius: 999px; padding: 1px 9px;
+      }
+      .empty-msg { color: var(--ink-3); padding: 28px 0; text-align: center; }
+
+      /* ---------- 重複除外 ---------- */
+      .dup-card {
+        background: var(--surface-2); border: 1px dashed var(--ink-3); border-radius: 12px;
+        padding: 18px 20px 12px;
+      }
+      .dup-card .album { font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif; font-size: 1.25rem; font-weight: 700; }
+      .dup-card p { font-size: .93rem; color: var(--ink-2); margin: 8px 0; }
+      .dup-tag {
+        display: inline-block; background: var(--ink-2); color: var(--bg);
+        border-radius: 6px; padding: 2px 10px; font-size: .78rem; font-weight: 700; margin-bottom: 8px;
+      }
+
+      /* ---------- TSV ---------- */
+      .tsv-box { background: var(--code-bg); border-radius: 12px; padding: 18px; overflow-x: auto; }
+      .tsv-box pre {
+        margin: 0; color: var(--code-ink); font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: .82rem; line-height: 1.7; white-space: pre; tab-size: 4;
+      }
+      .tsv-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; align-items: center; }
+      .tsv-actions button {
+        border: none; border-radius: 8px; padding: 10px 22px; font-size: .95rem; font-weight: 700;
+        cursor: pointer; min-height: 2.75rem;
+      }
+      .btn-copy { background: var(--accent); color: var(--accent-ink); }
+      .btn-dl { background: var(--surface); color: var(--ink); border: 1px solid var(--line) !important; }
+      .copy-status { font-size: .88rem; color: var(--accent); font-weight: 600; min-height: 1.4em; }
+
+      footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--ink-3); font-size: .85rem; }
+
+      @media (max-width: 560px) {
+        .wrap { padding: 0 14px 56px; }
+        .final-card { grid-template-columns: 44px 1fr; padding: 18px 16px 14px; }
+        .final-num { width: 44px; height: 44px; font-size: 1.25rem; }
+        .grid { grid-template-columns: 1fr; }
+        .controls { flex-direction: column; align-items: stretch; }
+        .rank-filters { justify-content: flex-start; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <header class="page-head">
+        <p class="genre-line">2022 · AAA (Adult Alternative)</p>
+        <h1>2022年 AAA（Adult Alternative）<br />アルバム選出・候補一覧</h1>
+        <p class="lede">2022年に発売されたAAA（アダルト・オルタナティブ）のスタジオ・アルバムを対象に、候補を集めてランク付けし、最終5枚を選出した記録です。候補は全26枚（重複除外後）で、最終5枚はすべてSランクです。AAAの女性アーティスト必須ルールについては、今回は例外として進めた経緯を下の専用セクションに明記しています。</p>
+        <div class="stat-row">
+          <div class="stat"><b>5枚</b><span>最終選出（全てSランク）</span></div>
+          <div class="stat"><b>26枚</b><span>候補（重複除外後）</span></div>
+          <div class="stat"><b>S 5 ／ A 17 ／ B 4</b><span>候補のランク内訳</span></div>
+          <div class="stat"><b>1枚</b><span>重複で除外</span></div>
+        </div>
+      </header>
+
+      <main>
+        <!-- ============ 最終5枚 ============ -->
+        <section aria-labelledby="final-h">
+          <h2 id="final-h">最終選出アルバム（5枚）</h2>
+          <p class="section-note">確定順はこの5枚です。各アルバムに、AAAへのジャンル適合の根拠と、境界線の判定を含む注意点を出典付きで記しています。</p>
+
+          <div class="final-list">
+
+            <article class="final-card">
+              <div class="final-num">1</div>
+              <div class="final-head">
+                <span class="final-artist">Amos Lee</span>
+                <span class="final-album">『Dreamland』</span>
+              </div>
+              <div class="final-meta">
+                <span class="rank-badge rank-S">S</span>
+                <span class="date-chip">2022-02-11 発売</span>
+                <span class="final-tag">最終選出</span>
+              </div>
+              <div class="final-body">
+                <p><b class="label">ジャンル根拠：</b>Wikipediaでは2022年のスタジオ・アルバムで、Billboard Top Rock Albumsで39位。アーティストのスタイルはフォーク／ロック／ソウルのシンガーソングライターで、AAAの中核です。第1シングル「Worry No More」はBillboard Adult Alternative Airplay（AAAチャート）でトップ10入りしました。Qobuzでは「8作目のスタジオ・アルバム、2022年2月発売」とされ、フォークのシンガーソングライターにR&amp;Bの質感があると紹介されています。Discogs／Towerではジャンル Rock、2022-02-11発売。ラップ／ヒップホップ、ニューメタル、エレクトロニカ等の絶対除外要素はありません。</p>
+                <p><b class="label">注意点：</b>オリジナル・スタジオ盤（標準盤11曲・39:46）。Wikipediaのアルバムページはありますが、取得した版のインフォボックスにジャンル欄の明記がなかったため、ジャンルはアーティストのスタイル、Billboard Top Rock Albumsのチャート入り、Qobuz／Discogsで確認しました。同年にはカバー／トリビュート盤『My Ideal』も出ていますが、オリジナルのスタジオ盤は本作で、通算8作目です。</p>
+                <p class="sources">出典：
+                  <a href="https://en.wikipedia.org/wiki/Dreamland_(Amos_Lee_album)" target="_blank" rel="noopener">Wikipedia</a><span class="sep">／</span><a href="https://www.discogs.com/release/22173778-Amos-Lee-Dreamland" target="_blank" rel="noopener">Discogs</a><span class="sep">／</span><a href="https://www.qobuz.com/us-en/interpreter/amos-lee/34531" target="_blank" rel="noopener">Qobuz</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="final-card">
+              <div class="final-num">2</div>
+              <div class="final-head">
+                <span class="final-artist">Train</span>
+                <span class="final-album">『AM Gold』</span>
+              </div>
+              <div class="final-meta">
+                <span class="rank-badge rank-S">S</span>
+                <span class="date-chip">2022-05-20 発売</span>
+                <span class="final-tag">最終選出</span>
+              </div>
+              <div class="final-body">
+                <p><b class="label">ジャンル根拠：</b>Wikipediaでは「アメリカのポップ・ロック・バンドTrainの11作目のスタジオ・アルバム、2022-05-20にColumbia Recordsから発売」。Discogsではジャンル Rock、スタイル Indie Rock、2022-05-20発売。AllMusicのアーティスト・スタイルに「Adult Alternative Pop/Rock, American Trad Rock, Alternative/Indie Rock」があり、AAAへの直接の適合が示されています。</p>
+                <p><b class="label">注意点（境界線の判定）：</b>AllMusicのレビューは本作を「maximalist pop music」と呼び、70年代ディスコとヨット・ロックの影響が強い作品です。5枚の中で最もポップ寄りで、最も弱いSと判定しました。通算枚数の数え方には食い違いがあります（Wikipediaは11作目、一部の小売・データベースは9作目または10作目。クリスマス盤とLed Zeppelinカバー盤を数えるかどうかで変わります）。オリジナル曲のTrain作品として初めてBillboard 200にチャートインしませんでした。11曲・38:50。</p>
+                <p class="sources">出典：
+                  <a href="https://en.wikipedia.org/wiki/AM_Gold_(album)" target="_blank" rel="noopener">Wikipedia</a><span class="sep">／</span><a href="https://www.discogs.com/release/23292893-Train-AM-Gold" target="_blank" rel="noopener">Discogs</a><span class="sep">／</span><a href="http://www.allmusic.com/artist/train-mn0000746302" target="_blank" rel="noopener">AllMusic</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="final-card">
+              <div class="final-num">3</div>
+              <div class="final-head">
+                <span class="final-artist">Noah Kahan</span>
+                <span class="final-album">『Stick Season』</span>
+              </div>
+              <div class="final-meta">
+                <span class="rank-badge rank-S">S</span>
+                <span class="date-chip">2022-10-14 発売</span>
+                <span class="final-tag">最終選出</span>
+              </div>
+              <div class="final-body">
+                <p><b class="label">ジャンル根拠：</b>Wikipediaではスタジオ・アルバム、2022-10-14発売、ジャンル Folk、Mercury／Republicから出た3作目のスタジオ・アルバム。Discogsではジャンル Rock／Pop／Folk、スタイル Folk Rock、2022-10-14発売。Atwood Magazineによればタイトル曲がAAAラジオチャートで1位になり、アルバムはBillboard Top Rock &amp; Alternative Albumsにチャートインしています — AAAの直接の根拠であり、このセットで最もAAAの根拠が強い1枚です。</p>
+                <p><b class="label">注意点：</b>オリジナル盤は14曲。2023年の拡張版『Stick Season (We'll All Be Here Forever)』は後のデラックス再発で、2022年オリジナルの資格に影響しません。</p>
+                <p class="sources">出典：
+                  <a href="https://en.wikipedia.org/wiki/Stick_Season_(album)" target="_blank" rel="noopener">Wikipedia</a><span class="sep">／</span><a href="https://www.discogs.com/release/24957121-Noah-Kahan-Stick-Season" target="_blank" rel="noopener">Discogs</a><span class="sep">／</span><a href="https://atwoodmagazine.com/nkss-noah-kahan-stick-season-album-interview-music-feature/" target="_blank" rel="noopener">Atwood Magazine</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="final-card">
+              <div class="final-num">4</div>
+              <div class="final-head">
+                <span class="final-artist">Dawes</span>
+                <span class="final-album">『Misadventures of Doomscroller』</span>
+              </div>
+              <div class="final-meta">
+                <span class="rank-badge rank-S">S</span>
+                <span class="date-chip">2022-07-22 発売</span>
+                <span class="final-tag">最終選出</span>
+              </div>
+              <div class="final-body">
+                <p><b class="label">ジャンル根拠：</b>Wikipediaではスタジオ・アルバム、2022-07-22発売、ジャンル Rock、全長46:07、Rounder Recordsから出た8作目のスタジオ・アルバム。Qobuzのジャンルは Pop/Rock, Rock, Alternative &amp; Indie で、レビューは「南カリフォルニアとThe Bandが出会ったようなメインストリーム・ポップ・ロック」のシンガーソングライター作と評しています。Dawesはフォーク・ロック・バンドで、AAAの中核です。</p>
+                <p><b class="label">注意点：</b>全7曲・46:07と曲数が少なく、うち1曲「Joke in There Somewhere - Outro」（1:37）が2分未満のため実質6曲です。一部のCD掲載ではアウトロを除いた6曲表示もあります。曲は長尺でインスト寄り、ジャズ／プログ／ジャム要素があります。</p>
+                <p class="sources">出典：
+                  <a href="https://en.wikipedia.org/wiki/Misadventures_of_Doomscroller" target="_blank" rel="noopener">Wikipedia</a><span class="sep">／</span><a href="https://www.jambase.com/article/dawes-misadventures-doomscroller-new-album-single-livestream" target="_blank" rel="noopener">JamBase</a><span class="sep">／</span><a href="https://www.discogs.com/release/23956310-Dawes-Misadventures-of-Doomscroller" target="_blank" rel="noopener">Discogs</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="final-card">
+              <div class="final-num">5</div>
+              <div class="final-head">
+                <span class="final-artist">Caamp</span>
+                <span class="final-album">『Lavender Days』</span>
+              </div>
+              <div class="final-meta">
+                <span class="rank-badge rank-S">S</span>
+                <span class="date-chip">2022-06-24 発売</span>
+                <span class="final-tag">最終選出</span>
+              </div>
+              <div class="final-body">
+                <p><b class="label">ジャンル根拠：</b>Wikipediaではアメリカのフォーク・バンドCaampのスタジオ・アルバム、2022-06-24発売、全長39:26、レーベルは By and By / Mom + Pop。リードシングル「Believe」が2022年6月にBillboard Adult Alternative Airplayチャートで1位になりました — AAAの直接の根拠です。Discogsではジャンル Folk, World, &amp; Country / Folk Rock、2022-06-24発売。</p>
+                <p><b class="label">注意点：</b>オリジナル・スタジオ盤（12曲・39:26）。通算枚数の数え方に食い違いがあります（Wikipediaのアルバムページは4作目、バンドのページとQobuzは3作目。2018年の『Boys』の数え方の違いによるもの）。発売年・オリジナル性・ジャンル適合には影響しません。</p>
+                <p class="sources">出典：
+                  <a href="https://en.wikipedia.org/wiki/Lavender_Days" target="_blank" rel="noopener">Wikipedia</a><span class="sep">／</span><a href="https://www.discogs.com/release/23688692-Caamp-Lavender-Days" target="_blank" rel="noopener">Discogs</a><span class="sep">／</span><a href="https://www.qobuz.com/fi-en/interpreter/caamp/2836503" target="_blank" rel="noopener">Qobuz</a>
+                </p>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- ============ 厳格ルールの例外 ============ -->
+        <section aria-labelledby="rule-h">
+          <h2 id="rule-h">厳格ルール（女性アーティスト必須）の例外経緯</h2>
+          <div class="notice">
+            <h3>この回はルールを満たしておらず、例外として確定しました</h3>
+            <p>AAAには女性アーティスト必須の厳格ルールがあります（最終10枚なら5枚、10枚未満なら半数以上が女性／女性フロント）。今回、S判定の5枚は全員男性／男性フロント（Amos Lee＝男性ソロ、Train＝Pat Monahanが男性フロント、Noah Kahan＝男性ソロ、Dawes＝Taylor Goldsmithが男性フロント、Caamp＝Taylor Meierが男性フロント）で、女性は0枚でした。</p>
+            <p>最終5枚では半数以上の3枚が必要なところ、ルールには届かなかったため、ワークフローは厳格ルール確認の段階でいったん停止しました。その後、Hiroが次のように判断し、この回は例外として入れ替えを行わず、S5枚のまま確定しました。</p>
+            <blockquote>「女性アーティストがいなくてもいいよ。無理に選出するより質を大事にしよう。このまま進めて」</blockquote>
+            <p>これは今回限りの判断であり、ルールを満たしたとは書けません。また、推薦されていた入れ替え（境界が最も弱いTrain『AM Gold』、実質6曲のDawes『Misadventures of Doomscroller』から差し替え）も行われませんでした。</p>
+          </div>
+        </section>
+
+        <!-- ============ 候補一覧 ============ -->
+        <section aria-labelledby="cand-h">
+          <h2 id="cand-h">候補一覧（全26枚・重複除外後）</h2>
+          <p class="section-note">Sランク5枚（＝最終選出）、Aランク17枚、Bランク4枚。ランクで絞り込み、アーティスト名・アルバム名で検索、発売日順に並べ替えができます。各カードにはジャンル適合メモと出典リンクを付けています。</p>
+
+          <div class="controls">
+            <div class="search-box">
+              <input type="search" id="search" placeholder="アーティスト名・アルバム名で検索" aria-label="候補を検索" />
+            </div>
+            <div class="rank-filters" role="group" aria-label="ランクで絞り込み">
+              <button type="button" data-rank="ALL" aria-pressed="true">すべて</button>
+              <button type="button" data-rank="S" aria-pressed="false">S</button>
+              <button type="button" data-rank="A" aria-pressed="false">A</button>
+              <button type="button" data-rank="B" aria-pressed="false">B</button>
+            </div>
+            <label class="sort-label" for="sort">並び順</label>
+            <select id="sort">
+              <option value="rank" selected>ランク順（S→A→B）</option>
+              <option value="date-asc">発売日（古い順）</option>
+              <option value="date-desc">発売日（新しい順）</option>
+            </select>
+          </div>
+
+          <p class="result-count" id="result-count" aria-live="polite"></p>
+          <div class="grid" id="grid"></div>
+          <p class="empty-msg" id="empty-msg" hidden>条件に合う候補はありません。</p>
+        </section>
+
+        <!-- ============ 重複除外 ============ -->
+        <section aria-labelledby="dup-h">
+          <h2 id="dup-h">重複で除外されたアルバム</h2>
+          <div class="dup-card">
+            <span class="dup-tag">重複除外（候補段階ではSランク）</span>
+            <p style="margin-top:2px;"><span style="color:var(--ink-2); font-weight:600;">The Lumineers</span><br />
+            <span class="album">『Brightside』</span> <span style="color:var(--ink-3); font-size:.88rem;">発売日 2022-01-14／シート上の表記は BRIGHTSIDE</span></p>
+            <p><b>除外理由：</b>既出アルバム累積リスト（完全版）に「AAA (Adult Alternative)／The Lumineers／BRIGHTSIDE（シート上の年表記2021）」として既出でした。大文字表記の揺れを重複とみなし、除外しました。</p>
+            <p><b>メモ：</b>Wikipediaでは4作目のスタジオ盤、ジャンルはインディー・フォーク、フォーク・ロック、Americana。アルバムはBillboard Top Alternative / Top Rock Albumsで首位。</p>
+            <p class="sources">出典：
+              <a href="https://en.wikipedia.org/wiki/Brightside_(The_Lumineers_album)" target="_blank" rel="noopener">Wikipedia</a><span class="sep">／</span><a href="https://www.discogs.com/release/21727441-The-Lumineers-Brightside" target="_blank" rel="noopener">Discogs</a>
+            </p>
+          </div>
+        </section>
+
+        <!-- ============ 最終TSV ============ -->
+        <section aria-labelledby="tsv-h">
+          <h2 id="tsv-h">最終TSV</h2>
+          <p class="section-note">最終5枚のTSV（ヘッダー＋5行、タブ区切り）です。コピーとダウンロードができます。</p>
+          <div class="tsv-box">
+            <pre id="tsv-text">GENRE	ARTIST	ALBUM	YEAR
+AAA (Adult Alternative)	Amos Lee	Dreamland	2022
+AAA (Adult Alternative)	Train	AM Gold	2022
+AAA (Adult Alternative)	Noah Kahan	Stick Season	2022
+AAA (Adult Alternative)	Dawes	Misadventures of Doomscroller	2022
+AAA (Adult Alternative)	Caamp	Lavender Days	2022</pre>
+          </div>
+          <div class="tsv-actions">
+            <button type="button" class="btn-copy" id="btn-copy">TSVをコピー</button>
+            <button type="button" class="btn-dl" id="btn-dl">TSVをダウンロード</button>
+            <span class="copy-status" id="copy-status" aria-live="polite"></span>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>2022年 AAA (Adult Alternative) アルバム選出の記録。候補26枚＝S 5枚／A 17枚／B 4枚、重複除外1枚。最終5枚は女性アーティスト必須ルールを満たしておらず、今回限りの例外として確定しています。</p>
+      </footer>
+    </div>
+
+    <script>
+      var CANDIDATES = [
+        /* ---- Sランク（最終5枚） ---- */
+        { artist: "Amos Lee", album: "Dreamland", date: "2022-02-11", rank: "S", final: true,
+          memo: "フォーク／ロック／ソウルのシンガーソングライターでAAAの中核。第1シングル「Worry No More」はBillboard Adult Alternative Airplayでトップ10入りし、アルバムはBillboard Top Rock Albumsで39位。通算8作目のスタジオ盤。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Dreamland_(Amos_Lee_album)"], ["Discogs", "https://www.discogs.com/release/22173778-Amos-Lee-Dreamland"], ["Qobuz", "https://www.qobuz.com/us-en/interpreter/amos-lee/34531"]] },
+        { artist: "Train", album: "AM Gold", date: "2022-05-20", rank: "S", final: true,
+          memo: "ポップ・ロックの11作目。AllMusicのアーティスト・スタイルに「Adult Alternative Pop/Rock」がありAAAへ直接適合。ただしAllMusicのレビューは「maximalist pop music」と呼び、70年代ディスコとヨット・ロックの影響が強く、5枚の中で最もポップ寄りで最も弱いS。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/AM_Gold_(album)"], ["Discogs", "https://www.discogs.com/release/23292893-Train-AM-Gold"], ["AllMusic", "http://www.allmusic.com/artist/train-mn0000746302"]] },
+        { artist: "Caamp", album: "Lavender Days", date: "2022-06-24", rank: "S", final: true,
+          memo: "アメリカのフォーク・バンドのスタジオ盤（12曲・39:26）。リードシングル「Believe」が2022年6月にBillboard Adult Alternative Airplayチャートで1位 — AAAの直接の根拠。Discogsのジャンルは Folk, World, & Country / Folk Rock。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Lavender_Days"], ["Discogs", "https://www.discogs.com/release/23688692-Caamp-Lavender-Days"], ["Qobuz", "https://www.qobuz.com/fi-en/interpreter/caamp/2836503"]] },
+        { artist: "Dawes", album: "Misadventures of Doomscroller", date: "2022-07-22", rank: "S", final: true,
+          memo: "フォーク・ロック・バンドでAAAの中核。Wikipediaのジャンルは Rock、Rounder Recordsから出た8作目。全7曲・46:07で、2分未満のアウトロを除くと実質6曲。長尺でインスト寄り、ジャズ／プログ／ジャム要素がある。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Misadventures_of_Doomscroller"], ["JamBase", "https://www.jambase.com/article/dawes-misadventures-doomscroller-new-album-single-livestream"], ["Discogs", "https://www.discogs.com/release/23956310-Dawes-Misadventures-of-Doomscroller"]] },
+        { artist: "Noah Kahan", album: "Stick Season", date: "2022-10-14", rank: "S", final: true,
+          memo: "3作目のスタジオ盤、ジャンルはFolk／Folk Rock。タイトル曲がAAAラジオチャートで1位、アルバムはBillboard Top Rock & Alternative Albumsにチャートイン。このセットで最もAAAの根拠が強い。オリジナル盤は14曲。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Stick_Season_(album)"], ["Discogs", "https://www.discogs.com/release/24957121-Noah-Kahan-Stick-Season"], ["Atwood Magazine", "https://atwoodmagazine.com/nkss-noah-kahan-stick-season-album-interview-music-feature/"]] },
+
+        /* ---- Aランク（17枚） ---- */
+        { artist: "Elvis Costello and the Imposters", album: "The Boy Named If", date: "2022-01-14", rank: "A",
+          memo: "32作目のスタジオ盤、Wikipediaのジャンルはロックンロール。MetacriticのジャンルはPop/Rock、DiscogsのスタイルはPop Rock。グラミー賞のBest Rock Albumにノミネート。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/The_Boy_Named_If"], ["Metacritic", "https://www.metacritic.com/music/the-boy-named-if/elvis-costello-the-imposters?ftag=pinsoshares"]] },
+        { artist: "Tears for Fears", album: "The Tipping Point", date: "2022-02-25", rank: "A",
+          memo: "Wikipediaのジャンルはポップ・ロック（二次資料ではエレクトロポップ／アートポップの表記も）、DiscogsのスタイルはPop Rock。洗練されたアダルト・ポップ／ロック。エレクトロポップのタグもあるが、主要な分類はポップ・ロックでクラブ／エレクトロニカではない。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/The_Tipping_Point_%28Tears_for_Fears_album%29"], ["Discogs", "https://www.discogs.com/release/22301938-Tears-For-Fears-The-Tipping-Point"]] },
+        { artist: "Ben Rector", album: "The Joy of Music", date: "2022-03-11", rank: "A",
+          memo: "8作目のスタジオ盤、音楽性はロックとフォークを混ぜたポップが中心。注意：1曲「Sunday」にラッパーのSnoop Doggが客演している。アルバム全体はピアノ・ポップのシンガーソングライター作だが、ラップ／ヒップホップ絶対除外の観点で要確認として記録された。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/The_Joy_of_Music_(album)"], ["pm studio", "https://www.pmstudio.com/music/20220313-16203"]] },
+        { artist: "Father John Misty", album: "Chloë and the Next 20th Century", date: "2022-04-08", rank: "A",
+          memo: "5作目のスタジオ盤、ジャンルはフォーク、ジャズ、スウィング。ビッグバンド、ジャズ・スタンダード、トラディショナル・ポップに寄せた作りで、高度なアダルト・ポップの職人芸。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Chlo%C3%AB_and_the_Next_20th_Century"]] },
+        { artist: "Bonnie Raitt", album: "Just Like That...", date: "2022-04-22", rank: "A", female: "女性アーティスト",
+          memo: "Wikipediaのジャンルはブルース・ロック／フォーク・ロック。ブルース、R&B、ロック、ポップを混ぜるスタイルで、リードシングルはUS Adult Album Alternativeチャートにチャートイン。2016年以来のオリジナル・スタジオ盤。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Just_Like_That..."], ["Shore Fire", "https://shorefire.com/releases/print/bonnie-raitt-new-album-just-like-that-out-now"]] },
+        { artist: "Sharon Van Etten", album: "We've Been Going About This All Wrong", date: "2022-05-06", rank: "A", female: "女性アーティスト",
+          memo: "Qobuzのジャンルは Pop/Rock, Rock, Alternative & Indie、DiscogsのスタイルはIndie Rock。6作目。瞑想的で感情の深いアダルト・オルタナティブ。",
+          sources: [["Qobuz", "https://www.qobuz.com/us-en/album/weve-been-going-about-this-all-wrong-sharon-van-etten/wuj550ifsfhva"], ["Discogs", "https://www.discogs.com/release/23122880-Sharon-Van-Etten-Weve-Been-Going-About-This-All-Wrong"]] },
+        { artist: "Florence + the Machine", album: "Dance Fever", date: "2022-05-13", rank: "A", female: "女性フロント",
+          memo: "女性フロント（Florence Welch）。5作目のスタジオ盤、ジャンルはポップ・ロック、バロック・ポップ、プログレッシブ・ポップ、オルタナティブ・ロック、ゴシック・ポップ、フォーク。MetacriticのジャンルはPop/Rock。一部楽曲にディスコ／インダストリアル風味があるが中核はポップ・ロック。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Dance_Fever_(album)"], ["Metacritic", "https://www.metacritic.com/music/dance-fever/florence-+-the-machine"]] },
+        { artist: "Angel Olsen", album: "Big Time", date: "2022-06-03", rank: "A", female: "女性アーティスト",
+          memo: "Wikipediaのジャンルはカントリー、US Americana/Folk Albumsにチャートイン。他の資料ではAmericana／シンガーソングライター／トラディショナル・ポップ。カントリー寄りのためジャンル境界の確認対象。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Big_Time_(Angel_Olsen_album)"]] },
+        { artist: "Vance Joy", album: "In Our Own Sweet Time", date: "2022-06-10", rank: "A",
+          memo: "3作目のスタジオ盤、ジャンルはフォーク・ポップ。AllMusicはメロディックなフォーク・ポップ集と評する。アコースティックなフォーク・ポップ。",
+          sources: [["AllMusic", "https://www.allmusic.com/album/in-our-own-sweet-time-mw0003719537"], ["Discogs", "https://www.discogs.com/release/24083777-Vance-Joy-In-Our-Own-Sweet-Time-"]] },
+        { artist: "George Ezra", album: "Gold Rush Kid", date: "2022-06-10", rank: "A",
+          memo: "Metacriticでは3作目のフルアルバム、ジャンル Pop/Rock, Alternative/Indie Rock, Indie Folk。温かくメロディックなフォーク・ポップ。",
+          sources: [["Metacritic", "https://www.metacritic.com/music/gold-rush-kid/george-ezra/?recent-sort=userscore"], ["imusic", "https://imusic.uk/music/0194399841228/george-ezra-2022-gold-rush-kid-cd"]] },
+        { artist: "Regina Spektor", album: "Home, before and after", date: "2022-06-24", rank: "A", female: "女性アーティスト",
+          memo: "Metacriticでは8作目のスタジオ盤、ジャンル Pop/Rock, Alternative/Indie Rock。Qobuzのジャンルは Pop/Rock, Rock, Alternative & Indie。ピアノ中心のオーケストラルなアダルト・ポップ。",
+          sources: [["Qobuz", "https://www.qobuz.com/us-en/album/home-before-and-after-regina-spektor/vqjgsj8udpp2b"], ["Metacritic", "https://www.metacritic.com/music/home-before-and-after/regina-spektor"]] },
+        { artist: "Maggie Rogers", album: "Surrender", date: "2022-07-29", rank: "A", female: "女性アーティスト",
+          memo: "Metacriticでは2作目のフルアルバム、ジャンル Pop/Rock、1990年代オルタナ・ロックとポップの融合。小売掲載でもジャンル Pop/Rock。",
+          sources: [["Metacritic", "https://www.metacritic.com/music/surrender/maggie-rogers/"], ["Plaid Room Records", "https://www.plaidroomrecords.com/products/maggie-rogers-surrender"]] },
+        { artist: "The Goo Goo Dolls", album: "Chaos in Bloom", date: "2022-08-12", rank: "A",
+          memo: "13作目のスタジオ盤、ジャンルはオルタナティブ・ロック、ポップ・ロック。Qobuzのジャンルは Pop/Rock Pop。長年アダルト・オルタナティブ／ポップ・ロックのラジオで活躍。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Chaos_in_Bloom"], ["Qobuz", "https://www.qobuz.com/us-en/album/chaos-in-bloom-goo-goo-dolls/g7r3u6xdujygc"]] },
+        { artist: "Julia Jacklin", album: "Pre Pleasure", date: "2022-08-26", rank: "A", female: "女性アーティスト",
+          memo: "表記は PRE PLEASURE。3作目のスタジオ盤、ジャンルはインディー・ポップ、インディー・フォーク、オルタナティブ・カントリー。2022年ARIA賞のBest Adult Contemporary Albumにノミネート。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Pre_Pleasure"], ["Metacritic", "https://www.metacritic.com/music/pre-pleasure/julia-jacklin"]] },
+        { artist: "Madison Cunningham", album: "Revealer", date: "2022-09-09", rank: "A", female: "女性アーティスト",
+          memo: "Wikipediaのジャンルはフォーク・ロック（ジャズとポップの混合）。2023年グラミー賞のBest Folk Album受賞。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Revealer_(album)"], ["Wikipedia（アーティスト）", "https://en.wikipedia.org/wiki/Madison_Cunningham"]] },
+        { artist: "Marcus Mumford", album: "Self-Titled", date: "2022-09-16", rank: "A",
+          memo: "表記は (self-titled)。デビュー・ソロ・アルバム、プロデュースはBlake Mills、客演にBrandi Carlile、Phoebe Bridgers、Clairo、Monica Martin。Wikipediaの専用アルバムページはなく、アーティストページのディスコグラフィ（2022-09-16発売、レーベル Island）と発売報道で確認。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Marcus_Mumford"], ["pm studio", "https://www.pmstudio.com/music/20220919-17798"]] },
+        { artist: "First Aid Kit", album: "Palomino", date: "2022-11-04", rank: "A", female: "女性デュオ",
+          memo: "女性デュオ（姉妹）。Metacriticのジャンルは Pop/Rock, Alternative/Indie Rock, Contemporary Pop/Rock, Alternative Singer/Songwriter, Indie Folk。Fleetwood MacやTom Pettyの影響を受けたフォーク・ポップで、最もポップな作風。5作目のスタジオ盤。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Palomino_(First_Aid_Kit_album)"], ["Metacritic", "https://www.metacritic.com/music/palomino/first-aid-kit"]] },
+
+        /* ---- Bランク（4枚） ---- */
+        { artist: "Bryan Adams", album: "So Happy It Hurts", date: "2022-03-11", rank: "B",
+          memo: "15作目のスタジオ盤。ジャンル掲載は Rock, Pop Rock, Soft Rock, Arena Rock、DiscogsのスタイルはPop Rock。アリーナ・ロックのタグがMAINSTREAM ROCK側へ引くため、AAA適合は条件付きのB。",
+          sources: [["Best of Music Radio", "https://bestofmusicradio.com/2022/03/11/bryan-adams-so-happy-it-hurts-released-22-03-11/"], ["Discogs", "https://www.discogs.com/release/22483214-Bryan-Adams-So-Happy-It-Hurts?srsltid=AfmBOopnCi-vCbeum7tv8hwoZ1JQEPRtEv4pCsu-yJOjqP0Qfug3EWcU"]] },
+        { artist: "Jack Johnson", album: "Meet the Moonlight", date: "2022-06-24", rank: "B",
+          memo: "Discogsのジャンルは Rock, Pop／スタイル Soft Rock, Pop Rock, Acoustic。8作目のスタジオ盤。アコースティックで穏やかなシンガーソングライター作。ソフト・ロックのためB（条件付き）。",
+          sources: [["Wikipedia", "https://en.wikipedia.org/wiki/Meet_the_Moonlight"], ["Discogs", "https://www.discogs.com/release/24206063-Jack-Johnson-Meet-The-Moonlight"]] },
+        { artist: "Paolo Nutini", album: "Last Night in the Bittersweet", date: "2022-07-01", rank: "B",
+          memo: "Metacriticでは4作目のフルアルバム、ジャンル Pop/Rock。小売掲載で「Soft Rock」のタグ。クラシック・ロックからポストパンク／クラウトロックまで幅広く、AAA適合は条件付きのB。",
+          sources: [["Metacritic", "https://www.metacritic.com/music/last-night-in-the-bittersweet/paolo-nutini/?ftag=redsoshares"], ["CDs Vinyl Japan", "https://cdsvinyljapan.com/en-ie/products/190296224690"]] },
+        { artist: "Weyes Blood", album: "And in the Darkness, Hearts Aglow", date: "2022-11-18", rank: "B", female: "女性アーティスト",
+          memo: "女性アーティスト（Natalie Mering）。Discogsのスタイルは Baroque Pop, Dream Pop, Indie Rock, Soft Rock, Art Rock。AllMusicは1970年代ソフト・ロックへの関心と豪華なアレンジを挙げる。ドリーム・ポップ色のためB。",
+          sources: [["Discogs", "https://www.discogs.com/release/25151986-Weyes-Blood-And-In-The-Darkness-Hearts-Aglow"], ["AllMusic", "https://www.allmusic.com/album/MW0003793813"]] }
+      ];
+
+      var state = { rank: "ALL", query: "", sort: "rank" };
+      var RANK_ORDER = { S: 0, A: 1, B: 2 };
+      var grid = document.getElementById("grid");
+      var countEl = document.getElementById("result-count");
+      var emptyEl = document.getElementById("empty-msg");
+
+      function esc(s) {
+        return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
+
+      function render() {
+        var q = state.query.trim().toLowerCase();
+        var list = CANDIDATES.filter(function (c) {
+          if (state.rank !== "ALL" && c.rank !== state.rank) return false;
+          if (q && (c.artist + " " + c.album).toLowerCase().indexOf(q) === -1) return false;
+          return true;
+        });
+        list.sort(function (x, y) {
+          if (state.sort === "date-asc") return x.date < y.date ? -1 : x.date > y.date ? 1 : 0;
+          if (state.sort === "date-desc") return x.date > y.date ? -1 : x.date < y.date ? 1 : 0;
+          var r = RANK_ORDER[x.rank] - RANK_ORDER[y.rank];
+          return r !== 0 ? r : (x.date < y.date ? -1 : x.date > y.date ? 1 : 0);
+        });
+
+        grid.innerHTML = list.map(function (c) {
+          var srcs = c.sources.map(function (s) {
+            return '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + "</a>";
+          }).join('<span class="sep">／</span>');
+          return '<article class="card">' +
+            '<div class="card-top"><span class="rank-badge rank-' + c.rank + '">' + c.rank + "</span>" +
+            '<span class="card-date">' + c.date + " 発売</span>" +
+            (c.final ? '<span class="final-tag">最終選出</span>' : "") +
+            (c.female ? '<span class="female-tag">' + esc(c.female) + "</span>" : "") +
+            "</div>" +
+            '<p class="artist">' + esc(c.artist) + "</p>" +
+            '<p class="album">『' + esc(c.album) + "』</p>" +
+            '<p class="memo">' + esc(c.memo) + "</p>" +
+            '<p class="sources">出典：' + srcs + "</p>" +
+            "</article>";
+        }).join("");
+
+        countEl.textContent = "全26枚中 " + list.length + " 枚を表示" +
+          (state.rank !== "ALL" ? "（" + state.rank + "ランク）" : "");
+        emptyEl.hidden = list.length !== 0;
+      }
+
+      document.querySelectorAll(".rank-filters button").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          state.rank = btn.getAttribute("data-rank");
+          document.querySelectorAll(".rank-filters button").forEach(function (b) {
+            b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+          });
+          render();
+        });
+      });
+      document.getElementById("search").addEventListener("input", function (e) {
+        state.query = e.target.value;
+        render();
+      });
+      document.getElementById("sort").addEventListener("change", function (e) {
+        state.sort = e.target.value;
+        render();
+      });
+      render();
+
+      /* ---- TSV コピー／ダウンロード ---- */
+      var tsvText = document.getElementById("tsv-text").textContent.replace(/\s+$/, "") + "\n";
+      var statusEl = document.getElementById("copy-status");
+      document.getElementById("btn-copy").addEventListener("click", function () {
+        function done() { statusEl.textContent = "コピーしました。"; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(tsvText).then(done, function () { fallback(); });
+        } else { fallback(); }
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = tsvText;
+          ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); done(); }
+          catch (e) { statusEl.textContent = "コピーできませんでした。上のTSVを手動で選択してください。"; }
+          document.body.removeChild(ta);
+        }
+      });
+      document.getElementById("btn-dl").addEventListener("click", function () {
+        var blob = new Blob([tsvText], { type: "text/tab-separated-values;charset=utf-8" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "2022-aaa-adult-alternative-final.tsv";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        statusEl.textContent = "ダウンロードを開始しました。";
+      });
+    </script>
+  </body>
+</html>

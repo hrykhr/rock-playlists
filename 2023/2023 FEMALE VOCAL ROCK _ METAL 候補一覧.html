@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2023 FEMALE VOCAL ROCK / METAL 候補一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, a.btn { min-height: 2.25rem; }
+      :root{
+        --bg:#f7f7f4; --surface:#ffffff; --surface2:#eef0ec;
+        --ink:#1c2024; --ink2:#4a5158; --ink3:#6f777f;
+        --line:#dde0da; --line2:#c3cbc2;
+        --accent:#31572c; --accent-ink:#ffffff; --accent-soft:#e4efe0;
+        --steel:#33526e; --steel-soft:#e2ebf2;
+        --rust:#a34d24; --rust-soft:#f8e9df;
+        --gold:#7d6414; --gold-soft:#f3ecc9;
+        --rose:#9c3d54; --rose-soft:#f7e3e8;
+        --spotify:#177245;
+        --shadow:0 1px 2px rgba(28,32,36,.05),0 10px 26px -20px rgba(28,32,36,.4);
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#111417; --surface:#191d20; --surface2:#21262a;
+          --ink:#edf0ee; --ink2:#bcc3bd; --ink3:#939d95;
+          --line:#2c3330; --line2:#3e4842;
+          --accent:#8fc47e; --accent-ink:#12240f; --accent-soft:#243a20;
+          --steel:#8fb4d4; --steel-soft:#22303d;
+          --rust:#e09a6d; --rust-soft:#3a2a1e;
+          --gold:#d9bc6a; --gold-soft:#38311c;
+          --rose:#e59cae; --rose-soft:#3a232b;
+          --spotify:#4cc983;
+          --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px -20px rgba(0,0,0,.8);
+        }
+      }
+      *{ box-sizing:border-box; }
+      html{ scroll-behavior:smooth; }
+      body{
+        margin:0; background:var(--bg); color:var(--ink);
+        font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+        font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+      }
+      .wrap{ max-width:1060px; margin:0 auto; padding:0 20px 72px; }
+      a{ color:var(--steel); }
+      a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+      header{ padding:52px 0 8px; }
+      .genre-line{
+        display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+        font-size:.82rem; font-weight:700; letter-spacing:.14em; color:var(--ink3);
+      }
+      .status{
+        letter-spacing:.02em; color:var(--accent); background:var(--accent-soft);
+        border:1px solid var(--line2); border-radius:999px; padding:3px 12px; font-size:.8rem;
+      }
+      h1{
+        font-family:"Shippori Mincho",serif; font-weight:800;
+        font-size:clamp(1.85rem,5.2vw,2.9rem); line-height:1.3; margin:14px 0 6px; letter-spacing:.01em;
+      }
+      .en-sub{ font-family:"Shippori Mincho",serif; font-size:1rem; font-weight:600; color:var(--ink2); letter-spacing:.05em; margin:2px 0 0; }
+      .lede{ color:var(--ink2); max-width:48em; margin:10px 0 0; }
+      .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:28px 0 18px; }
+      .stat{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px 10px; box-shadow:var(--shadow); }
+      .stat b{ display:block; font-family:"Shippori Mincho",serif; font-size:1.9rem; line-height:1.1; font-weight:800; }
+      .stat span{ font-size:.8rem; color:var(--ink2); font-weight:500; }
+      .stat.warn b{ color:var(--rust); }
+      .btn{
+        display:inline-flex; align-items:center; gap:9px; text-decoration:none;
+        background:var(--spotify); color:#fff; font-weight:700; border-radius:999px;
+        padding:9px 20px; font-size:.95rem;
+      }
+      @media (prefers-color-scheme: dark){ .btn{ color:#0d2013; } }
+      .btn:hover{ filter:brightness(1.08); }
+
+      section{ margin-top:52px; }
+      .sec-head{ display:flex; align-items:baseline; gap:14px; border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:20px; flex-wrap:wrap; }
+      .sec-head .no{ font-family:"Shippori Mincho",serif; font-weight:800; color:var(--accent); font-size:1.05rem; }
+      h2{ font-family:"Shippori Mincho",serif; font-size:1.5rem; font-weight:800; margin:0; line-height:1.4; }
+      .sec-head p{ margin:0 0 2px auto; color:var(--ink3); font-size:.85rem; text-align:right; }
+      h3{ font-size:1.05rem; font-weight:900; margin:30px 0 10px; }
+      p.note{ color:var(--ink2); }
+
+      .timeline{ list-style:none; margin:0; padding:0; position:relative; }
+      .timeline::before{ content:""; position:absolute; left:17px; top:10px; bottom:10px; width:2px; background:var(--line2); }
+      .timeline li{ position:relative; padding:0 0 22px 52px; }
+      .timeline li:last-child{ padding-bottom:2px; }
+      .dot{
+        position:absolute; left:0; top:2px; width:36px; height:36px; border-radius:50%;
+        background:var(--surface); border:2px solid var(--accent); color:var(--accent);
+        display:flex; align-items:center; justify-content:center;
+        font-family:"Shippori Mincho",serif; font-weight:800; font-size:.95rem; z-index:1;
+      }
+      .timeline li.stop .dot{ border-color:var(--rust); color:var(--rust); }
+      .timeline li.decide .dot{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+      .timeline h4{ margin:0 0 2px; font-size:1rem; font-weight:900; }
+      .timeline p{ margin:0; color:var(--ink2); max-width:54em; }
+      .tag{ display:inline-block; font-size:.72rem; font-weight:700; border-radius:4px; padding:0 7px; margin-left:8px; vertical-align:2px; }
+      .tag-stop{ background:var(--rust-soft); color:var(--rust); }
+      .tag-decide{ background:var(--accent-soft); color:var(--accent); }
+
+      .cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+      .card{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px 20px 14px; box-shadow:var(--shadow); }
+      .card .rankline{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
+      .num{ font-family:"Shippori Mincho",serif; font-weight:800; color:var(--ink3); font-size:.95rem; }
+      .chip{ font-size:.72rem; font-weight:900; letter-spacing:.06em; border-radius:4px; padding:1px 8px; }
+      .chip-s{ background:var(--gold-soft); color:var(--gold); border:1px solid var(--gold); }
+      .chip-final{ background:var(--accent-soft); color:var(--accent); }
+      .chip-out{ background:var(--surface2); color:var(--ink3); }
+      .chip-ng{ background:var(--rose-soft); color:var(--rose); }
+      .card h3{ margin:2px 0 0; font-size:1.12rem; line-height:1.45; }
+      .card h3 .album{ font-family:"Shippori Mincho",serif; font-weight:800; }
+      .card .meta{ color:var(--ink3); font-size:.82rem; margin:2px 0 8px; }
+      .card p{ margin:0 0 8px; font-size:.92rem; color:var(--ink2); }
+      .card p b{ color:var(--ink); }
+      .srcs{ font-size:.82rem; margin:6px 0 2px; }
+      .srcs a{ margin-right:12px; white-space:nowrap; }
+
+      .all-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+      .all-list li{
+        display:grid; grid-template-columns:44px 1fr auto; gap:6px 14px; align-items:baseline;
+        padding:13px 4px; border-bottom:1px solid var(--line);
+      }
+      .all-list .r{ font-family:"Shippori Mincho",serif; font-weight:800; font-size:1.15rem; text-align:center; }
+      .r-s{ color:var(--gold); } .r-a{ color:var(--steel); } .r-b{ color:var(--ink3); }
+      .all-list .who b{ font-weight:900; }
+      .all-list .who .alb{ font-family:"Shippori Mincho",serif; font-weight:700; }
+      .all-list .who p{ margin:2px 0 0; font-size:.86rem; color:var(--ink2); }
+      .all-list .when{ color:var(--ink3); font-size:.82rem; white-space:nowrap; }
+      .all-list .res{ font-size:.78rem; font-weight:700; }
+      .res-final{ color:var(--accent); } .res-out{ color:var(--ink3); } .res-ng{ color:var(--rose); } .res-none{ color:var(--ink3); }
+
+      .tsv{
+        background:var(--surface2); border:1px solid var(--line); border-radius:10px;
+        padding:16px 18px; overflow-x:auto; font-size:.85rem; line-height:1.7;
+        font-family:ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre;
+      }
+      footer{ margin-top:56px; border-top:1px solid var(--line); padding-top:16px; color:var(--ink3); font-size:.85rem; }
+
+      @media (max-width:720px){
+        .stats{ grid-template-columns:repeat(2,1fr); }
+        .cards{ grid-template-columns:1fr; }
+        .all-list li{ grid-template-columns:34px 1fr; }
+        .all-list .when{ grid-column:2; }
+        header{ padding-top:36px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="genre-line">
+          <span>2023年 ・ ジャンル 6</span>
+          <span class="status">最終10枚 確定済み</span>
+        </div>
+        <h1>FEMALE VOCAL ROCK / METAL<br />候補一覧</h1>
+        <p class="en-sub">2023 Female Vocal Rock / Metal — Candidates &amp; Verification</p>
+        <p class="lede">
+          2023年に発売された女性ボーカル・ロック／メタルの候補29枚を集め、発売年とジャンル適合性を出典付きで検証した記録。
+          重複除外で2枚が外れ、S検証で S が14枚と上限を超えたため一度停止し、検証側の推薦を Hiro が承認して4枚を落とし、最終10枚で確定した。
+        </p>
+        <div class="stats">
+          <div class="stat"><b>29</b><span>候補アルバム（重複除外 2枚）</span></div>
+          <div class="stat"><b>14</b><span>S検証を通過したアルバム</span></div>
+          <div class="stat warn"><b>+4</b><span>上限10枚に対する超過 → 停止</span></div>
+          <div class="stat"><b>10</b><span>最終確定アルバム（各2曲・計20曲）</span></div>
+        </div>
+        <a class="btn" href="https://open.spotify.com/playlist/7tjzGHI0Hw9GVcSGG7M8Z4" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5.1 15.9a.75.75 0 0 1-1 .25c-2.9-1.8-6.5-2.1-10.8-1.2a.75.75 0 1 1-.3-1.5c4.7-1 8.7-.6 11.9 1.3.34.2.44.7.2 1.1v.05zm1.4-3.5a.94.94 0 0 1-1.3.3c-3.3-2-8.3-2.6-12.2-1.4a.94.94 0 1 1-.55-1.8c4.45-1.35 10-0.65 13.8 1.65.42.26.55.83.25 1.25zm.1-3.65C14.7 7.4 8.2 7.2 4.5 8.6a1.13 1.13 0 1 1-.8-2.1c4.25-1.6 11.25-1.4 15.65 1.2a1.13 1.13 0 0 1-1.15 1.95v.1z"/></svg>
+          Spotify「2023年FEMALE VOCAL ROCK / METAL」（20曲）
+        </a>
+      </header>
+
+      <section aria-labelledby="flow">
+        <div class="sec-head"><span class="no">01</span><h2 id="flow">選出の経緯 — S過多で停止、Hiro の決定で確定</h2></div>
+        <ol class="timeline">
+          <li>
+            <span class="dot">1</span>
+            <h4>候補収集 — 29枚</h4>
+            <p>2023年発売のオリジナル・スタジオ盤を収集。収集時点の適合ランクは S 16枚／A 4枚／B 9枚（S＝シンフォニック／オルタナティヴ・メタルのベンチマーク水準、A＝ハードロック系、B＝メロディック・メタル等の条件付き拡張）。全候補は下の「候補29枚 全一覧」に出典付きで掲載。</p>
+          </li>
+          <li>
+            <span class="dot">2</span>
+            <h4>重複除外 — 2枚（他ジャンルで選出済み）</h4>
+            <p>既出アルバム累積リストと照合し、Lovebites『Judgement Day』と Burning Witches『The Dark Tower』が 2023 MELODIC POWER &amp; TRADITIONAL METAL で既に採用済みのため除外。残り27枚が検証対象となった。</p>
+          </li>
+          <li>
+            <span class="dot">3</span>
+            <h4>S検証 — S 14枚／A降格 1枚／不適合 1枚</h4>
+            <p>S候補16枚を発売年・オリジナル盤であること・ジャンル適合性で再検証。14枚がS確定。Sirenia『1977』は Wikipedia のジャンル欄が Synth-pop 単独表記でシンセポップ色が支配的なため<strong>A降格</strong>（繰り上げ第一候補）。Pvris『Evergreen』はジャンル自体がエレクトロポップで、ロック／メタルが主体ではないため<strong>不適合</strong>。</p>
+          </li>
+          <li class="stop">
+            <span class="dot">!</span>
+            <h4>S過多で停止<span class="tag tag-stop">ゲート停止</span></h4>
+            <p>Sが14枚で最終枠（5〜10枚）の上限を4枚超過。ルール上、ここで自動確定はせず停止し、落とす候補の判断を Hiro に仰いだ。検証側は「落とす順序」の推薦を提示した：① Degrees of Truth『Alchemists』（Wikipediaで確認できず、知名度・実績が最弱でプログレ寄り）② Edge of Paradise『Hologram』（Wikipediaで確認できず、ジャンル表記が Heavy Metal／Alternative Metal で揺れる）③ Stitched Up Heart『To The Wolves』（アルバム単独の Wikipedia ページがなく、メタル色が最も薄い）④ Phantom Elite『Blue Blood』（Wikipediaで確認できず、metalcore 要素の言及と通算枚数の数え方の差異あり）。</p>
+          </li>
+          <li class="decide">
+            <span class="dot">✓</span>
+            <h4>Hiro の決定 — 推薦どおり4枚を落として10枚で確定<span class="tag tag-decide">2026-11-15</span></h4>
+            <p>Hiro が「推薦どおり4枚落として10枚で進めて」と決定。OUT は Degrees of Truth、Edge of Paradise、Stitched Up Heart、Phantom Elite の4枚。残る10枚が最終確定となり、各2曲・計20曲の楽曲選出と Spotify プレイリスト作成へ進んだ。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="final">
+        <div class="sec-head"><span class="no">02</span><h2 id="final">最終10枚</h2><p>TSV順 ・ すべてS検証通過</p></div>
+        <div class="cards">
+
+          <article class="card">
+            <div class="rankline"><span class="num">01</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Within Temptation — <span class="album">『Bleed Out』</span></h3>
+            <p class="meta">発売：2023-10-20</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Alternative metal, symphonic metal, gothic metal, pop metal。女性ボーカル Sharon den Adel 率いるシンフォニック・メタル本流で、FEMALE VOCAL METAL のS基準に合致（ベンチマーク・アーティスト自身）。</p>
+            <p><b>備考：</b>8th studio album、11曲 47:10。メタルコア／djent 影響の指摘はあるが、絶対除外要素（ラップ／ニューメタル／トランス等）には当たらない。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Bleed_Out_(Within_Temptation_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://blabbermouth.net/news/within-temptation-shares-official-music-video-for-bleed-out-title-track" target="_blank" rel="noopener">Blabbermouth</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">02</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Beyond The Black — <span class="album">『Beyond The Black』</span></h3>
+            <p class="meta">発売：2023-01-13</p>
+            <p><b>ジャンル根拠：</b>Wikipedia／Nuclear Blast 系報道とも German symphonic metal、女性ボーカル Jennifer Haben。シンフォニック・メタルとしてS基準に合致（ベンチマーク・アーティスト自身）。</p>
+            <p><b>備考：</b>5th studio album（セルフタイトル）。通算枚数の混乱なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Beyond_the_Black_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://metal-temple.com/news/beyond-the-black-announce-new-studio-album-release-new-single-winter-is-coming/" target="_blank" rel="noopener">Metal Temple</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">03</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Delain — <span class="album">『Dark Waters』</span></h3>
+            <p class="meta">発売：2023-02-10</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Symphonic metal。Blabbermouth も Napalm 発のシンフォニック・メタルとして報道。新女性ボーカル Diana Leah を迎えた編成でS基準に合致。</p>
+            <p><b>備考：</b>7th studio album、48:00。Diana Leah 唯一の在籍スタジオ盤だが、オリジナル・スタジオ盤であることに問題なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Dark_Waters_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://blabbermouth.net/news/delain-announces-dark-waters-album-shares-beneath-single" target="_blank" rel="noopener">Blabbermouth</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">04</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Xandria — <span class="album">『The Wonders Still Awaiting』</span></h3>
+            <p class="meta">発売：2023-02-03</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Symphonic metal。Napalm 公式資料も symphonic metal icons と明記。女性ボーカル Ambre Vourvahis でS基準に合致。</p>
+            <p><b>備考：</b>8th studio album、13曲 74:20 と長尺。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/The_Wonders_Still_Awaiting" target="_blank" rel="noopener">Wikipedia</a><a href="https://label.napalmrecords.com/images/bands/xandria/XANDRIA_-The_Wonders_Still_Awaiting-product_description.pdf" target="_blank" rel="noopener">Napalm Records</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">05</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Ad Infinitum — <span class="album">『Chapter III: Downfall』</span></h3>
+            <p class="meta">発売：2023-03-31</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Symphonic metal。Grande Rock も modern symphonic metal、女性ボーカル Melissa Bonny と明記。S基準に合致。</p>
+            <p><b>備考：</b>3rd studio album、54:12（ソースにより 46:52 表記あり、曲数12曲は一致）。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Chapter_III:_Downfall" target="_blank" rel="noopener">Wikipedia</a><a href="https://grande-rock.com/news/ad-infinitum-to-release-new-studio-album-chapter-iii-downfall-on-march-31st-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">06</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Eleine — <span class="album">『We Shall Remain』</span></h3>
+            <p class="meta">発売：2023-07-14</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Symphonic metal。Grande Rock も Swedish dark symphonic metal、女性ボーカル Madeleine Liljestam。S基準に合致。</p>
+            <p><b>備考：</b>4th studio album、10曲 36:52 とやや短めだがフルアルバムとして成立。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/We_Shall_Remain_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://grande-rock.com/news/eleine-to-release-new-studio-album-we-shall-remain-on-july-14th-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">07</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>In This Moment — <span class="album">『Godmode』</span></h3>
+            <p class="meta">発売：2023-10-27</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Industrial, industrial metal, alternative metal、構成面で metalcore 要素の言及あり。女性ボーカル Maria Brink のメタル盤として FEMALE VOCAL METAL に合致。インダストリアルは絶対除外のトランス／エレクトロニカとは別扱い。</p>
+            <p><b>備考：</b>8th studio album、10曲。インダストリアル／メタルコア要素が強めの境界寄りS。ラップ／ニューメタルの分類は両ソースともなし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Godmode" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.discogs.com/release/28973659-In-This-Moment-Godmode" target="_blank" rel="noopener">Discogs</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">08</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Paramore — <span class="album">『This Is Why』</span></h3>
+            <p class="meta">発売：2023-02-10</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Post-punk, dance-punk, art punk, new wave, alternative rock。Qobuz も post-punk-influenced なロック盤と説明し、グラミー Best Rock Album 受賞。女性ボーカル Hayley Williams で FEMALE VOCAL ROCK 側のS基準に合致（メタルではない）。</p>
+            <p><b>備考：</b>6th studio album、10曲 36:12 と短め。2022年同ジャンルで Wet Leg／Yeah Yeah Yeahs 等のオルタナ系が採用された前例と同系統。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/This_is_Why" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.qobuz.com/ie-en/interpreter/paramore/145577" target="_blank" rel="noopener">Qobuz</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">09</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Dark Sarah — <span class="album">『Attack of Orym』</span></h3>
+            <p class="meta">発売：2023-01-27</p>
+            <p><b>ジャンル根拠：</b>Wikipedia: Symphonic metal。レビュー／報道も Genre: Symphonic Metal、女性ボーカル Heidi Parviainen のコンセプト盤。S基準に合致。</p>
+            <p><b>備考：</b>5th studio album、10曲 44:27、クラウドファンディング制作だがオリジナル・スタジオ盤。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Attack_of_Orym" target="_blank" rel="noopener">Wikipedia</a><a href="https://myglobalmind.com/2023/01/27/dark-sarah-attack-of-orym-review/" target="_blank" rel="noopener">MyGlobalMind</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="num">10</span><span class="chip chip-s">S</span><span class="chip chip-final">最終確定</span></div>
+            <h3>Blackbriar — <span class="album">『A Dark Euphony』</span></h3>
+            <p class="meta">発売：2023-09-29</p>
+            <p><b>ジャンル根拠：</b>Qobuz: Metal（Nuclear Blast、2023-09-29）、Metal Forces: Dutch symphonic metal band の 2nd full-length studio album。Discogs も Symphonic Metal／Gothic Metal。女性ボーカル Zora Cock でS基準に合致。</p>
+            <p><b>備考：</b>Wikipediaでは確認できない（アルバム単独ページ確認できず、Qobuz／Metal Forces／Discogs で検証）。2nd studio album、11曲。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://www.qobuz.com/se-en/interpreter/blackbriar/11940346" target="_blank" rel="noopener">Qobuz</a><a href="https://www.metalforcesmagazine.com/site/news-blackbriar-release-second-studio-album-a-dark-euphony/" target="_blank" rel="noopener">Metal Forces</a></p>
+          </article>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="dropped">
+        <div class="sec-head"><span class="no">03</span><h2 id="dropped">S検証の結果 — 落選4枚・A降格1枚・不適合1枚</h2><p>S通過14枚のうち4枚が Hiro の決定で落選</p></div>
+        <p class="note">落選4枚はいずれも「候補の質が低いから」落ちたのではない。Sのまま上限超過の調整として、検証側の推薦順に落とされた。Sirenia は検証でA降格、Pvris は不適合で、どちらも削減対象以前に最終枠から外れている。</p>
+        <div class="cards">
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">落選 ・ 推薦順 1</span></div>
+            <h3>Degrees of Truth — <span class="album">『Alchemists』</span></h3>
+            <p class="meta">発売：2023-06-23</p>
+            <p><b>ジャンル根拠：</b>Metal Kingdom: Symphonic Metal、Studio full-length、Scarlet Records。Metal Epidemic も Symphonic Metal, Progressive Metal（FFO: Nightwish, Epica 等）、女性ボーカル Claudia Beltrame。ジャンル適合自体はS相当だがプログレ寄り。</p>
+            <p><b>落選理由：</b>Wikipediaでは確認できない（アルバム単独ページなし）。3rd album、10曲 44:21。知名度・実績面では候補中最弱クラスで、レビュー評価も中程度（例：RockMusicRaider 6/10）のため、最優先の削減候補とされた。</p>
+            <p class="srcs">出典：<a href="https://www.metalkingdom.net/album/degrees-of-truth-alchemists-163954" target="_blank" rel="noopener">Metal Kingdom</a><a href="https://www.metalepidemic.com/degrees-of-truth-alchemists/" target="_blank" rel="noopener">Metal Epidemic</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">落選 ・ 推薦順 2</span></div>
+            <h3>Edge of Paradise — <span class="album">『Hologram』</span></h3>
+            <p class="meta">発売：2023-07-14</p>
+            <p><b>ジャンル根拠：</b>Discogs: Heavy Metal。レーベル Frontiers 公式ショップは Genre: Alternative Metal、5th studio album と明記。女性ボーカル Margarita Monet で FEMALE VOCAL METAL に合致するが、ジャンル表記がソース間で揺れる境界寄りS。</p>
+            <p><b>落選理由：</b>Wikipediaでは確認できない（アルバム単独ページなし）。5th studio album、10曲 44:55。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://www.discogs.com/release/30719534-Edge-Of-Paradise-Hologram" target="_blank" rel="noopener">Discogs</a><a href="https://frontiers.shop/products/edge-of-paradise-hologram-cd" target="_blank" rel="noopener">Frontiers</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">落選 ・ 推薦順 3</span></div>
+            <h3>Stitched Up Heart — <span class="album">『To The Wolves』</span></h3>
+            <p class="meta">発売：2023-09-01</p>
+            <p><b>ジャンル根拠：</b>Wikipedia バンドページで 3rd studio album（2023-09-01）を確認、Blabbermouth／Metal Underground は alternative metal／heavy rock と分類。女性ボーカル Alecia 'Mixi' Demner で FEMALE VOCAL ROCK／METAL に合致。</p>
+            <p><b>落選理由：</b>Wikipediaでは確認できない（アルバム単独ページはなくバンドページで検証）。Century Media 発。メタル色はシンフォニック勢より薄めの境界寄りS。除外要素なし。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Stitched_Up_Heart" target="_blank" rel="noopener">Wikipedia（バンド）</a><a href="https://blabbermouth.net/news/stitched-up-heart-shares-conquer-and-divide-music-video" target="_blank" rel="noopener">Blabbermouth</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-s">S</span><span class="chip chip-out">落選 ・ 推薦順 4</span></div>
+            <h3>Phantom Elite — <span class="album">『Blue Blood』</span></h3>
+            <p class="meta">発売：2023-03-17</p>
+            <p><b>ジャンル根拠：</b>Discogs: Symphonic Metal, Alternative Metal。Frontiers 系報道は symphonic／progressive／heavy metal を混ぜる modern metal、女性ボーカル Marina La Torraca。FEMALE VOCAL METAL に合致。</p>
+            <p><b>落選理由：</b>Wikipediaでは確認できない（アルバム単独ページなし）。通算では 3rd studio album だが、現編成／Frontiers では2作目と数えるソースがあり数え方に差異あり。10曲 43:06 前後。一部ソースに metalcore 要素の言及あり（絶対除外には非該当）。</p>
+            <p class="srcs">出典：<a href="https://www.discogs.com/release/26447222-Phantom-Elite-Blue-Blood" target="_blank" rel="noopener">Discogs</a><a href="https://grande-rock.com/news/phantom-elite-to-release-new-studio-album-blue-blood-on-march-17th-2023/" target="_blank" rel="noopener">Grande Rock</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-out">A降格</span><span class="chip chip-out">繰り上げ第一候補</span></div>
+            <h3>Sirenia — <span class="album">『1977』</span></h3>
+            <p class="meta">発売：2023-05-26 ・ 収集時はS候補</p>
+            <p><b>判定理由：</b>境界例。Wikipedia のジャンル欄は Synth-pop 単独表記。一方 Napalm 系報道は symphonic metal icons が 80s rock／synthwave とシンフォニックなメロディを融合と説明。メタル要素は残るがシンセポップ色が支配的で、S基準からは一段下がるためA降格。</p>
+            <p><b>備考：</b>11th studio album。全11曲中ラストは Tanita Tikaram カバー『Twist in My Sobriety』（ボーナス扱い）。女性ボーカル Emmanuelle Zoldan 中心だが男性ボーカルも併用。シンセ／エレクトロニック寄りのため絶対除外（トランス／エレクトロニカ）ではないものの要境界フラグ。最終枠に空きが出た場合の繰り上げ第一候補。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/1977_(Sirenia_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://kronosmortusnews.com/2023/03/23/symphonic-metal-icons-sirenia-to-release-new-album-1977-on-may-26-2023/" target="_blank" rel="noopener">Kronos Mortus News</a></p>
+          </article>
+
+          <article class="card">
+            <div class="rankline"><span class="chip chip-ng">不適合</span><span class="chip chip-out">検証で除外</span></div>
+            <h3>Pvris — <span class="album">『Evergreen』</span></h3>
+            <p class="meta">発売：2023-07-14 ・ 収集時はS候補</p>
+            <p><b>判定理由：</b>絶対除外フラグ。Wikipedia のジャンルは Electropop 単独、Discogs も Electronic, Rock, Pop／Alt-Pop, Electro。ロック／メタルが主体ではなくエレクトロポップ盤であり、FEMALE VOCAL ROCK／METAL のS基準を満たさない。</p>
+            <p><b>備考：</b>4th studio album であることと発売日は両ソースで確認できるが、11曲 32:00 と短く、ジャンル自体がエレクトロニカ／ポップ側のため不適合。女性ボーカル（Lyndsey Gunnulfsen）であること自体は問題なし。繰り上げ対象外。</p>
+            <p class="srcs">出典：<a href="https://en.wikipedia.org/wiki/Evergreen_(Pvris_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.discogs.com/release/27659061-PVRIS-Evergreen" target="_blank" rel="noopener">Discogs</a></p>
+          </article>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="all">
+        <div class="sec-head"><span class="no">04</span><h2 id="all">候補29枚 全一覧</h2><p>収集時点の適合ランク付き ・ 発売日順</p></div>
+        <p class="note">ランクは収集時点のジャンル適合度。S＝シンフォニック／オルタナティヴ・メタルのベンチマーク水準、A＝ハードロック系、B＝メロディック・メタル等の条件付き拡張。重複除外の2枚を除き、S候補16枚のみ次段のS検証に進み、A・Bは最終枠の対象外となった。</p>
+        <ol class="all-list">
+          <li><span class="r r-s">S</span><div class="who"><b>Beyond The Black</b> — <span class="alb">『Beyond The Black』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: fifth studio album by German symphonic metal band Beyond the Black, fronted by Jennifer Haben。ベンチマーク・アーティスト自身のセルフタイトル盤。<a href="https://en.wikipedia.org/wiki/Beyond_the_Black_(album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-01-13</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Issa</b> — <span class="alb">『Lights of Japan』</span> <span class="res res-none">／ 最終対象外</span><p>Grande Rock: Norwegian melodic rock queen Issa, seventh studio album。レビューは Melodic Hard Rock／AOR と分類。Wikipediaでは確認できない（Discogs と Grande Rock／Frontiers で確認）。<a href="https://grande-rock.com/news/issa-to-release-new-studio-album-lights-of-japan-on-january-20th-2023/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-01-20</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Dark Sarah</b> — <span class="alb">『Attack of Orym』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: fifth studio album by symphonic metal band Dark Sarah, founded/fronted by Heidi Parviainen。オリジナルのコンセプト・スタジオ盤。<a href="https://en.wikipedia.org/wiki/Attack_of_Orym" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-01-27</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Xandria</b> — <span class="alb">『The Wonders Still Awaiting』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: eighth studio album by German symphonic metal band Xandria, first with vocalist Ambre Vourvahis。<a href="https://en.wikipedia.org/wiki/The_Wonders_Still_Awaiting" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-03</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Rexoria</b> — <span class="alb">『Imperial Dawn』</span> <span class="res res-none">／ 最終対象外</span><p>Napalm ショップ:「Third album of the female fronted melodic power metal band REXORIA」、Genre Heavy Metal/Power Metal、singer Frida Ohlin。Wikipediaでは確認できない。発売日は Bandcamp／MHF の 2月3日 と Napalm CD リスティングの 2月17日 に差異があり、2月3日を採用。<a href="https://rexoria.bandcamp.com/album/imperial-dawn" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-03</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Delain</b> — <span class="alb">『Dark Waters』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: seventh studio album by Dutch symphonic metal band Delain, with new female lead vocalist Diana Leah。<a href="https://en.wikipedia.org/wiki/Dark_Waters_(album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-10</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Paramore</b> — <span class="alb">『This Is Why』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: sixth studio album by American rock band Paramore, fronted by Hayley Williams。グラミー Best Rock Album 受賞。リミックス盤『Re: This Is Why』は別作品として除外。<a href="https://en.wikipedia.org/wiki/This_is_Why" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-10</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Lovebites</b> — <span class="alb">『Judgement Day』</span> <span class="res res-out">／ 重複除外</span><p>Wikipedia: fourth studio album by Japanese power metal band Lovebites, all-female, vocalist Asami。既出アルバム累積リストに MELODIC POWER &amp; TRADITIONAL METAL で既採用のため重複除外。<a href="https://en.wikipedia.org/wiki/Judgement_Day_(Lovebites_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-02-22</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Phantom Elite</b> — <span class="alb">『Blue Blood』</span> <span class="res res-out">／ S通過 → 落選（推薦順4）</span><p>Discogs: Style Symphonic Metal, Alternative Metal。Grande Rock: international metal band fronted by Marina La Torraca。Wikipediaでは確認できない。metalcore 要素の言及があり境界として記録。<a href="https://www.discogs.com/release/26447222-Phantom-Elite-Blue-Blood" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-17</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Floor Jansen</b> — <span class="alb">『Paragon』</span> <span class="res res-none">／ 最終対象外</span><p>Nightwish のリードボーカル Floor Jansen のデビュー・ソロ盤。Style Pop/Rock でポップ／バラード寄りの境界盤。Wikipediaでは確認できない（公式サイトと Apocalypse Later で確認）。<a href="https://www.apocalypselatermusic.com/2023/04/floor-jansen-paragon-2023.html" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-24</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Babymetal</b> — <span class="alb">『The Other One』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: fourth studio album by Japanese heavy metal band Babymetal, all-female vocal front (Su-metal/Moametal)。かわいいメタル特有のエレクトロニック／ポップ要素があり境界として記録。全曲新曲のコンセプト・スタジオ盤。<a href="https://en.wikipedia.org/wiki/The_Other_One_(Babymetal_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-24</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Ad Infinitum</b> — <span class="alb">『Chapter III: Downfall』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia／Napalm: third studio album by Swiss symphonic metal band Ad Infinitum, fronted by Melissa Bonny。<a href="https://en.wikipedia.org/wiki/Chapter_III:_Downfall" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-31</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>boygenius</b> — <span class="alb">『The Record』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: debut studio album by American indie rock supergroup boygenius（Julien Baker、Phoebe Bridgers、Lucy Dacus、全員女性シンガーソングライター）。インディー・ロックで本ジャンルのメタル中核より柔らかく、境界として広く収集。<a href="https://en.wikipedia.org/wiki/The_Record_(Boygenius_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-03-31</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Ignea</b> — <span class="alb">『Dreams of Lands Unseen』</span> <span class="res res-none">／ 最終対象外</span><p>Napalm: melodic metal five-piece led by singer Helle Bohdanova。シンフォニック／エレクトロニック／民族フォーク要素の混合があり境界として記録。FemMetal Best Album 2023 受賞。オリジナルのコンセプト・スタジオ盤。<a href="https://napalmrecords.com/english/ignea-dreams-of-lands-unseen-digisleeve-cd.html" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-04-28</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Burning Witches</b> — <span class="alb">『The Dark Tower』</span> <span class="res res-out">／ 重複除外</span><p>Sonic Perspectives／Napalm: fifth studio album、Genre Heavy Metal、all-female quintet、vocalist Laura Guldemond。既出アルバム累積リストに MELODIC POWER &amp; TRADITIONAL METAL で既採用のため重複除外。<a href="https://www.sonicperspectives.com/album-reviews/burning-witches-the-dark-tower/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-05</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Sirenia</b> — <span class="alb">『1977』</span> <span class="res res-out">／ S検証でA降格</span><p>Bandcamp／Napalm: 11th studio album、「features female fronted symphonic metal」、lead vocals Emmanuelle Zoldan。80s ロック／シンセウェイヴ要素とカバー曲『Twist in My Sobriety』のボーナス収録、男性ボーカルの併用があり、検証でA降格。<a href="https://sirenia.bandcamp.com/album/1977" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-05-26</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Degrees of Truth</b> — <span class="alb">『Alchemists』</span> <span class="res res-out">／ S通過 → 落選（推薦順1）</span><p>Bandcamp／Scarlet:「For fans of symphonic female fronted metal somewhere between Xandria, Delain」、frontwoman Claudia Beltrame のデビュー作、third album。Wikipediaでは確認できない。日本盤CDの日付（11月24日）と異なるため原盤の 6月23日 を採用。<a href="https://scarletrecords.bandcamp.com/album/alchemists" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-06-23</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Eleine</b> — <span class="alb">『We Shall Remain』</span> <span class="res res-final">／ 最終確定</span><p>MyGlobalMind／Tuonela: Genre Symphonic Metal、Swedish dark symphonic metal、lead vocalist Madeleine Liljestam、fourth album。収集時は Wikipedia のアルバムページを確認できず MyGlobalMind／Discogs／Tuonela で確認（検証段階で Wikipedia でも確認）。<a href="https://myglobalmind.com/2023/07/13/eleine-we-shall-remain-review/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-07-14</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Edge of Paradise</b> — <span class="alb">『Hologram』</span> <span class="res res-out">／ S通過 → 落選（推薦順2）</span><p>Frontiers 公式ショップ: GENRE Alternative Metal、fifth studio album、fronted by singer Margarita Monet。Wikipediaでは確認できない（Frontiers と Cryptic Rock で確認）。<a href="https://frontiers-us.shop/collections/cds/products/edge-of-paradise-hologram-cd" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-07-14</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Pvris</b> — <span class="alb">『Evergreen』</span> <span class="res res-ng">／ S検証で不適合</span><p>Wikipedia: fourth studio album by American rock band Pvris, frontwoman Lyndsey Gunnulfsen。収集時はロック盤として記録したが、検証でジャンルが Electropop と判明し不適合。<a href="https://en.wikipedia.org/wiki/Evergreen_(Pvris_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-07-14</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Crypta</b> — <span class="alb">『Shades of Sorrow』</span> <span class="res res-none">／ 最終対象外</span><p>Wikipedia: second studio album by Brazilian death metal band Crypta, all-female, frontwoman Fernanda Lira。デスメタルで通常のメロディックな意味ではS／A中核の外にあり、検証判断用に広く収集。<a href="https://en.wikipedia.org/wiki/Shades_of_Sorrow" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-08-04</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Stitched Up Heart</b> — <span class="alb">『To The Wolves』</span> <span class="res res-out">／ S通過 → 落選（推薦順3）</span><p>MyGlobalMind: Modern Metal、third album、fronted by Alecia 'Mixi' Demner。Discogs で 2023年9月1日発売を確認。Wikipediaでは確認できない（Discogs と MyGlobalMind で確認）。<a href="https://www.discogs.com/release/28136407-Stitched-Up-Heart-To-The-Wolves" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-09-01</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Blackbriar</b> — <span class="alb">『A Dark Euphony』</span> <span class="res res-final">／ 最終確定</span><p>Metal Forces: Dutch symphonic metal band Blackbriar, second full-length studio album, vocalist Zora Cock。Wikipediaでは確認できない（Metal Forces、Qobuz、Discogs、Nuclear Blast で確認）。<a href="https://www.metalforcesmagazine.com/site/news-blackbriar-release-second-studio-album-a-dark-euphony/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-09-29</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Ann Wilson &amp; Tripsitter</b> — <span class="alb">『Another Door』</span> <span class="res res-none">／ 最終対象外</span><p>Blabbermouth: Ann Wilson, founder and lead singer of Heart, releasing all-original album with Tripsitter。発売日は一部レビューの 9月15日（シングル日）に対し、Blabbermouth／Consequence 等の発表する 9月29日 を採用。<a href="https://blabbermouth.net/news/ann-wilson-pbs-concert-special-to-air-in-november" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-09-29</span></li>
+          <li><span class="r r-b">B</span><div class="who"><b>Nervosa</b> — <span class="alb">『Jailbreak』</span> <span class="res res-none">／ 最終対象外</span><p>Blabbermouth: thrash metallers Nervosa, fifth full-length、創設ギタリスト Prika Amaral がボーカルを初担当、all-female lineup。スラッシュメタルでメロディック中核の外にあり、広く収集。<a href="https://blabbermouth.net/news/nervosa-announces-new-album-jailbreak" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-09-29</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>Within Temptation</b> — <span class="alb">『Bleed Out』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: eighth studio album by Dutch symphonic metal band Within Temptation, fronted by Sharon den Adel。ベンチマーク・アーティスト自身。<a href="https://en.wikipedia.org/wiki/Bleed_Out_(Within_Temptation_album)" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-10-20</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Doro</b> — <span class="alb">『Conqueress - Forever Strong and Proud』</span> <span class="res res-none">／ 最終対象外</span><p>MyGlobalMind: Genre Metal、女性メタルボーカリスト Doro Pesch の 14th solo album。Rob Halford とのデュエット／カバー曲を含むが本編はオリジナル・スタジオ盤。Wikipedia のアルバムページは使わず確認。<a href="https://myglobalmind.com/2023/11/08/doro-conqueress-forever-strong-and-proud-review/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-10-27</span></li>
+          <li><span class="r r-s">S</span><div class="who"><b>In This Moment</b> — <span class="alb">『Godmode』</span> <span class="res res-final">／ 最終確定</span><p>Wikipedia: eighth studio album by American rock band In This Moment。Cryptic Rock: fronted by female vocalist Maria Brink, alternative metal。シンセと Björk カバーを含むモダン・オルタナティヴ・メタルで境界として記録。<a href="https://en.wikipedia.org/wiki/Godmode" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-10-27</span></li>
+          <li><span class="r r-a">A</span><div class="who"><b>Cassidy Paris</b> — <span class="alb">『New Sensation』</span> <span class="res res-none">／ 最終対象外</span><p>Grande Rock／Frontiers: debut album by Australian female rocker Cassidy Paris。Season of Mist ショップは hard rock sound と説明。Wikipediaでは確認できない（Frontiers の発表と Grande Rock で確認）。<a href="https://grande-rock.com/news/cassidy-paris-to-release-debut-album-new-sensation-on-december-8th-2023/" target="_blank" rel="noopener">出典</a></p></div><span class="when">2023-12-08</span></li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="tsv">
+        <div class="sec-head"><span class="no">05</span><h2 id="tsv">最終アルバムTSV</h2><p>GENRE ／ ARTIST ／ ALBUM ／ YEAR</p></div>
+        <div class="tsv">GENRE	ARTIST	ALBUM	YEAR
+FEMALE VOCAL ROCK / METAL	Within Temptation	Bleed Out	2023
+FEMALE VOCAL ROCK / METAL	Beyond The Black	Beyond The Black	2023
+FEMALE VOCAL ROCK / METAL	Delain	Dark Waters	2023
+FEMALE VOCAL ROCK / METAL	Xandria	The Wonders Still Awaiting	2023
+FEMALE VOCAL ROCK / METAL	Ad Infinitum	Chapter III: Downfall	2023
+FEMALE VOCAL ROCK / METAL	Eleine	We Shall Remain	2023
+FEMALE VOCAL ROCK / METAL	In This Moment	Godmode	2023
+FEMALE VOCAL ROCK / METAL	Paramore	This Is Why	2023
+FEMALE VOCAL ROCK / METAL	Dark Sarah	Attack of Orym	2023
+FEMALE VOCAL ROCK / METAL	Blackbriar	A Dark Euphony	2023</div>
+        <p class="note">この10枚から各2曲・計20曲を選出した楽曲選出は別ページにまとめる。Spotify 正式版プレイリスト（20曲）はページ冒頭のリンクから開ける。なお同名の旧プレイリスト（19曲版）が残っているため、削除する際は曲数で見分けること。</p>
+      </section>
+
+      <footer>
+        選出ルール：指定年厳守／アルバム重複禁止／品質優先で5〜10枚に厳選／発売年とジャンル適合性はWeb出典で確認し、確認できないものはその旨を明記する。全ジャンル共通の絶対除外（ラップ／ヒップホップ、ミクスチャー／ニューメタル系、トランス／エレクトロニカ）は本ジャンルでも適用。アーティストの国籍・活動拠点は問わない。
+      </footer>
+    </div>
+  </body>
+</html>

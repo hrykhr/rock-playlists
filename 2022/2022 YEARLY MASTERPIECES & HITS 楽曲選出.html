@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2022 YEARLY MASTERPIECES &amp; HITS 楽曲選出</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      :root {
+        --bg: #f4f1ec;
+        --surface: #fffdf9;
+        --surface-2: #ece7dd;
+        --ink: #1d1a16;
+        --ink-soft: #57504a;
+        --line: #d8d0c2;
+        --accent: #9a3b1e;
+        --accent-ink: #7e2d14;
+        --gold: #8a6d1f;
+        --warn-bg: #fbf3d9;
+        --warn-line: #d9bd55;
+        --warn-ink: #5c4a08;
+        --chip-bg: #efe6d8;
+        --link: #8c2f12;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #14120f;
+          --surface: #1e1b17;
+          --surface-2: #26221c;
+          --ink: #f0e9dd;
+          --ink-soft: #b3a893;
+          --line: #3a342a;
+          --accent: #e0784a;
+          --accent-ink: #f0956c;
+          --gold: #d3ab4a;
+          --warn-bg: #2e2712;
+          --warn-line: #8a6f22;
+          --warn-ink: #ecd28a;
+          --chip-bg: #2c271e;
+          --link: #f0956c;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 16px;
+        line-height: 1.75;
+      }
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 72px; }
+      a { color: var(--link); }
+      a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {
+        outline: 2px solid var(--accent); outline-offset: 2px;
+      }
+
+      /* ---------- header ---------- */
+      header.hero { padding: 44px 0 8px; border-bottom: 3px solid var(--ink); }
+      .hero .year {
+        font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: .14em;
+        color: var(--accent); font-size: 15px; margin: 0 0 6px;
+      }
+      h1 {
+        font-family: "Archivo", "Zen Kaku Gothic New", sans-serif;
+        font-size: clamp(26px, 5.4vw, 44px); line-height: 1.25; font-weight: 800;
+        margin: 0 0 10px; overflow-wrap: break-word;
+      }
+      h1 .jp { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; }
+      .hero p.lede { color: var(--ink-soft); margin: 0 0 18px; max-width: 46em; }
+      .stats { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 20px; padding: 0; list-style: none; }
+      .stats li {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+        padding: 8px 14px; font-size: 14px;
+      }
+      .stats b { font-family: "Archivo", sans-serif; font-size: 18px; margin-right: 4px; }
+      .spotify-btn {
+        display: inline-flex; align-items: center; gap: 10px;
+        background: #1db954; color: #0c2416; font-weight: 900; text-decoration: none;
+        padding: 10px 20px; border-radius: 999px; min-height: 48px; font-size: 15px;
+      }
+      .spotify-btn svg { flex: none; }
+      .spotify-note { font-size: 13px; color: var(--ink-soft); margin: 8px 0 22px; }
+
+      /* ---------- sections ---------- */
+      section { margin-top: 48px; }
+      h2 {
+        font-size: clamp(20px, 3.6vw, 26px); font-weight: 900; line-height: 1.4;
+        margin: 0 0 6px; padding-bottom: 8px; border-bottom: 2px solid var(--ink);
+      }
+      h2 .en { font-family: "Archivo", sans-serif; font-weight: 700; font-size: .62em; letter-spacing: .1em; color: var(--accent); display: block; }
+      .sec-note { color: var(--ink-soft); margin: 10px 0 20px; max-width: 48em; }
+
+      .caution {
+        background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 8px;
+        padding: 16px 20px; margin-top: 28px; color: var(--warn-ink);
+      }
+      .caution h2 { border: none; padding: 0; margin: 0 0 6px; font-size: 17px; color: var(--warn-ink); }
+      .caution p { margin: 0 0 8px; }
+      .caution p:last-child { margin-bottom: 0; }
+
+      /* ---------- track cards ---------- */
+      .cards { display: grid; grid-template-columns: 1fr; gap: 18px; }
+      @media (min-width: 820px) { .cards { grid-template-columns: 1fr 1fr; } }
+      .card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        padding: 20px 22px 18px; display: flex; flex-direction: column;
+      }
+      .card-head { display: flex; align-items: baseline; gap: 12px; }
+      .num {
+        font-family: "Archivo", sans-serif; font-weight: 800; font-size: 22px;
+        color: var(--accent); line-height: 1;
+      }
+      .card-head .who { flex: 1; min-width: 0; }
+      .artist { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 15px; margin: 0; }
+      .album { margin: 0; font-size: 13.5px; color: var(--ink-soft); overflow-wrap: break-word; }
+      .dur {
+        font-family: "Archivo", sans-serif; font-weight: 700; font-size: 15px;
+        background: var(--chip-bg); border-radius: 5px; padding: 2px 10px; white-space: nowrap;
+      }
+      .track {
+        font-family: "Archivo", "Zen Kaku Gothic New", sans-serif;
+        font-size: 23px; font-weight: 800; line-height: 1.3; margin: 12px 0 10px; overflow-wrap: break-word;
+      }
+      .badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+      .badge {
+        font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 3px 11px;
+        background: var(--accent); color: #fff;
+      }
+      @media (prefers-color-scheme: dark) { .badge { color: #221105; background: var(--accent); } }
+      .badge.sub { background: var(--chip-bg); color: var(--ink); border: 1px solid var(--line); }
+      .badge.warn { background: transparent; color: var(--accent-ink); border: 1.5px dashed var(--accent); }
+      .field { margin: 0 0 10px; font-size: 14.5px; }
+      .field .label {
+        display: block; font-size: 12px; font-weight: 900; letter-spacing: .08em;
+        color: var(--gold); margin-bottom: 2px;
+      }
+      .field p { margin: 0; }
+      .unknown { font-weight: 700; }
+      .links { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); }
+      .links .label { display: block; font-size: 12px; font-weight: 900; letter-spacing: .08em; color: var(--gold); margin-bottom: 4px; }
+      .links ul { margin: 0; padding: 0; list-style: none; }
+      .links li { margin: 2px 0; }
+      .links a { font-size: 14px; display: inline-block; padding: 4px 0; overflow-wrap: anywhere; }
+
+      /* ---------- rejected ---------- */
+      details.rej {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+        margin: 0 0 10px; padding: 0 18px;
+      }
+      details.rej summary {
+        cursor: pointer; font-weight: 700; padding: 12px 0; min-height: 48px;
+        display: flex; align-items: center; gap: 8px; list-style: none;
+      }
+      details.rej summary::-webkit-details-marker { display: none; }
+      details.rej summary::before { content: "＋"; color: var(--accent); font-weight: 900; }
+      details.rej[open ] summary::before { content: "－"; }
+      details.rej .body { padding: 0 0 16px; font-size: 14.5px; }
+      details.rej .body p { margin: 0 0 8px; }
+      details.rej .body p:last-child { margin-bottom: 0; }
+      .none-record { font-weight: 700; }
+
+      /* ---------- TSV ---------- */
+      .tsv-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0 14px; }
+      .tsv-tools input[type="search"] {
+        flex: 1 1 240px; padding: 9px 14px; font-size: 15px; border-radius: 6px;
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+        font-family: inherit; min-height: 44px;
+      }
+      .btn {
+        font-family: inherit; font-size: 14.5px; font-weight: 700; cursor: pointer;
+        border-radius: 6px; padding: 9px 18px; min-height: 44px;
+        border: 1px solid var(--ink); background: var(--ink); color: var(--bg);
+      }
+      .btn.ghost { background: transparent; color: var(--ink); }
+      .copy-msg { font-size: 13.5px; color: var(--accent-ink); font-weight: 700; min-height: 1.4em; }
+      .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+      table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 560px; }
+      th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      th { font-family: "Archivo", sans-serif; font-size: 12px; letter-spacing: .06em; background: var(--surface-2); white-space: nowrap; }
+      td.genre { white-space: nowrap; font-size: 12.5px; }
+      @media (max-width: 640px) {
+        table { min-width: 0; font-size: 12.5px; }
+        th, td { padding: 7px 8px; overflow-wrap: break-word; }
+        td.genre { white-space: normal; }
+      }
+      tr:last-child td { border-bottom: none; }
+      .no-hit td { text-align: center; color: var(--ink-soft); padding: 20px; }
+      details.raw { margin-top: 14px; }
+      details.raw summary { cursor: pointer; font-weight: 700; padding: 8px 0; }
+      pre.tsv {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;
+        padding: 14px 16px; font-size: 11.5px; line-height: 1.6; overflow-x: auto;
+        font-family: ui-monospace, "SF Mono", Menlo, monospace; white-space: pre;
+      }
+      footer { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 16px; color: var(--ink-soft); font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero">
+        <p class="year">2022 ・ GENRE 7 / YEARLY MASTERPIECES &amp; HITS</p>
+        <h1>2022 YEARLY MASTERPIECES &amp; HITS <span class="jp">楽曲選出</span></h1>
+        <p class="lede">2022年を代表する20アルバムから、各1曲・計20曲を選出した記録です。各曲について、シングル区分、長さ、選出理由と出典を残しています。<strong>選出した20曲は全曲シングル</strong>です。なお2曲（Arctic Monkeys、The 1975）はバラード原則不採用に対する例外採用で、その旨を各カードに明記しています。</p>
+        <ul class="stats">
+          <li><b>20</b>アルバム</li>
+          <li><b>20</b>曲（各アルバム1曲）</li>
+          <li><b>20 / 20</b>全曲シングル</li>
+        </ul>
+        <a class="spotify-btn" href="https://open.spotify.com/playlist/323onWKHWtBcNGc3TS3Uvd" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5.1 15.9a.75.75 0 0 1-1 .25c-2.9-1.77-6.5-2.17-10.7-1.19a.75.75 0 1 1-.34-1.46c4.6-1.05 8.55-.6 11.8 1.37.34.2.45.68.24 1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.3-2.03-8.34-2.62-12.25-1.44a.94.94 0 0 1-.54-1.8c4.45-1.35 10-0.7 13.77 1.64.43.26.57.86.31 1.29zm.13-3.4C14.75 7.9 8.2 7.68 4.5 9a1.13 1.13 0 1 1-.78-2.12c4.24-1.55 11.4-1.3 15.9 1.37a1.13 1.13 0 0 1-1.15 1.94z"/></svg>
+          Spotifyプレイリスト「2022年YEARLY MASTERPIECES &amp; HITS」を開く
+        </a>
+        <p class="spotify-note">プレイリストには選出20曲が同順で入っていることを確認済みです。</p>
+      </header>
+
+      <div class="caution" role="note">
+        <h2>数字の扱いについての注意</h2>
+        <p>このページに出てくる再生回数・リスナー数などの数字は、Last.fm 等の第三者集計や、レーベル・告知側の表示値であり、<strong>公式の再生回数ではありません</strong>。Fontaines D.C.「I Love You」について言及される Last.fm のリスナー数も第三者集計です。選出はシングル実績・受賞歴・チャート実績などの確認できた根拠に基づいています。</p>
+        <p>また、バラードは原則不採用ですが、Arctic Monkeys「There'd Better Be a Mirrorball」と The 1975「About You」の2曲は、理由を明記したうえで<strong>例外として採用</strong>しています。各カードの備考と「落選候補について」の代替候補の記載をご覧ください。</p>
+      </div>
+
+      <section aria-labelledby="tracks-h">
+        <h2 id="tracks-h"><span class="en">SELECTED TRACKS</span>選出20曲（全曲シングル）</h2>
+        <p class="sec-note">並びは最終楽曲TSVの順番どおりです。各カードに、長さ、シングル区分、選出理由、備考、出典リンクを載せています。</p>
+        <div class="cards">
+
+          <!-- 1 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">01</span>
+              <div class="who">
+                <p class="artist">Muse</p>
+                <p class="album">『Will of the People』</p>
+              </div>
+              <span class="dur">4:59</span>
+            </div>
+            <h3 class="track">Kill or Be Killed</h3>
+            <div class="badges">
+              <span class="badge">シングル（4th）</span>
+              <span class="badge sub">グラミー Best Metal Performance ノミネート</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『Will of the People』の第4シングル。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>グラミー賞 Best Metal Performance にノミネートされた、本作を代表するヘヴィな1曲として選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Kill_or_Be_Killed_(song)" target="_blank" rel="noopener">Wikipedia「Kill or Be Killed」</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">02</span>
+              <div class="who">
+                <p class="artist">Ozzy Osbourne</p>
+                <p class="album">『Patient Number 9』</p>
+              </div>
+              <span class="dur">4:10</span>
+            </div>
+            <h3 class="track">Degradation Rules</h3>
+            <div class="badges">
+              <span class="badge">シングル（2nd）</span>
+              <span class="badge sub">feat. Tony Iommi</span>
+              <span class="badge sub">グラミー Best Metal Performance 受賞</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『Patient Number 9』の第2シングル。Tony Iommi が参加している。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>グラミー賞 Best Metal Performance を受賞した曲であり、タイトル曲よりも受賞曲を優先して選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Patient_Number_9" target="_blank" rel="noopener">Wikipedia『Patient Number 9』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">03</span>
+              <div class="who">
+                <p class="artist">Bad Omens</p>
+                <p class="album">『The Death of Peace of Mind』</p>
+              </div>
+              <span class="dur">3:24</span>
+            </div>
+            <h3 class="track">Just Pretend</h3>
+            <div class="badges">
+              <span class="badge">シングル（6th）</span>
+              <span class="badge sub">Mainstream Rock 1位</span>
+              <span class="badge sub">RIAA 2x Platinum</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『The Death of Peace of Mind』の第6シングル。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>Mainstream Rock チャートで1位を獲得し、RIAA 2x Platinum 認定を受けた、本作最大のヒット曲として選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Just_Pretend_(Bad_Omens_song)" target="_blank" rel="noopener">Wikipedia「Just Pretend」</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">04</span>
+              <div class="who">
+                <p class="artist">Megadeth</p>
+                <p class="album">『The Sick, the Dying... and the Dead!』</p>
+              </div>
+              <span class="dur">4:29</span>
+            </div>
+            <h3 class="track">We'll Be Back</h3>
+            <div class="badges">
+              <span class="badge">シングル（1st）</span>
+              <span class="badge sub">グラミーノミネート</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『The Sick, the Dying... and the Dead!』の第1シングル。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>グラミー賞にノミネートされたリード曲として選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://blabbermouth.net/news/megadeth-announces-the-sick-the-dying-and-the-dead-album-shares-well-be-back-single" target="_blank" rel="noopener">Blabbermouth（アルバム告知・We'll Be Back 紹介）</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">05</span>
+              <div class="who">
+                <p class="artist">Porcupine Tree</p>
+                <p class="album">『Closure/Continuation』</p>
+              </div>
+              <span class="dur">8:07</span>
+            </div>
+            <h3 class="track">Harridan</h3>
+            <div class="badges">
+              <span class="badge">リードシングル</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『Closure/Continuation』のリードシングル。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>復帰作の幕開けを告げたリードシングルとして選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Harridan_(song)" target="_blank" rel="noopener">Wikipedia「Harridan」</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">06</span>
+              <div class="who">
+                <p class="artist">The Black Keys</p>
+                <p class="album">『Dropout Boogie』</p>
+              </div>
+              <span class="dur">2:44</span>
+            </div>
+            <h3 class="track">Wild Child</h3>
+            <div class="badges">
+              <span class="badge">リードシングル</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『Dropout Boogie』のリードシングル。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>本作を代表するリードシングルとして選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Wild_Child_(The_Black_Keys_song)" target="_blank" rel="noopener">Wikipedia「Wild Child」</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 7 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">07</span>
+              <div class="who">
+                <p class="artist">Architects</p>
+                <p class="album">『The Classic Symptoms of a Broken Spirit』</p>
+              </div>
+              <span class="dur">3:13</span>
+            </div>
+            <h3 class="track">When We Were Young</h3>
+            <div class="badges">
+              <span class="badge">シングル（最初のシングル）</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『The Classic Symptoms of a Broken Spirit』から最初に公開されたシングル。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>本作の先行シングルとして選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/The_Classic_Symptoms_of_a_Broken_Spirit" target="_blank" rel="noopener">Wikipedia『The Classic Symptoms of a Broken Spirit』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 8 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">08</span>
+              <div class="who">
+                <p class="artist">Placebo</p>
+                <p class="album">『Never Let Me Go』</p>
+              </div>
+              <span class="dur">4:08</span>
+            </div>
+            <h3 class="track">Beautiful James</h3>
+            <div class="badges">
+              <span class="badge">シングル（1st）</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『Never Let Me Go』の第1シングル。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>復帰作の第1シングルとして選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Never_Let_Me_Go_(Placebo_album)" target="_blank" rel="noopener">Wikipedia『Never Let Me Go』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 9 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">09</span>
+              <div class="who">
+                <p class="artist">Marcus King</p>
+                <p class="album">『Young Blood』</p>
+              </div>
+              <span class="dur">3:37</span>
+            </div>
+            <h3 class="track">Hard Working Man</h3>
+            <div class="badges">
+              <span class="badge">シングル（1st）</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『Young Blood』の第1シングル。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>Dan Auerbach プロデュース作の第1シングルとして選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://www.spinmagazine.com/2022/04/marcus-king-young-blood-dan-auerbach/" target="_blank" rel="noopener">SPIN（Marcus King『Young Blood』紹介）</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 10 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">10</span>
+              <div class="who">
+                <p class="artist">Panic! at the Disco</p>
+                <p class="album">『Viva Las Vengeance』</p>
+              </div>
+              <span class="dur">3:27</span>
+            </div>
+            <h3 class="track">Viva Las Vengeance</h3>
+            <div class="badges">
+              <span class="badge">リードシングル</span>
+              <span class="badge sub">タイトル曲</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『Viva Las Vengeance』のリードシングルで、アルバムのタイトル曲。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>リードシングル兼タイトル曲として選出。</p>
+            </div>
+            <div class="field">
+              <span class="label">備考</span>
+              <p>特記事項なし。</p>
+            </div>
+            <div class="links">
+              <span class="label">出典</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Viva_Las_Vengeance_(song)" target="_blank" rel="noopener">Wikipedia「Viva Las Vengeance」</a></li>
+              </ul>
+            </div>
+          </article>
+
+<!-- 11 -->
+<article class="card">
+<div class="card-head">
+<span class="num">11</span>
+<div class="who">
+<p class="artist">Rammstein</p>
+<p class="album">『Zeit』</p>
+</div>
+<span class="dur">4:04</span>
+</div>
+<h3 class="track">Zick Zack</h3>
+<div class="badges">
+<span class="badge">シングル（2nd）</span>
+<span class="badge sub">ドイツ No.1 シングル</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>『Zeit』の第2シングル。ドイツで No.1 シングルとなった。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>ドイツ No.1 シングルとして選出。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>タイトル曲「Zeit」はバラード調のため不採用とし、本曲を選んだ。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Zick_Zack" target="_blank" rel="noopener">Wikipedia「Zick Zack」</a></li>
+</ul>
+</div>
+</article>
+
+<!-- 12 -->
+<article class="card">
+<div class="card-head">
+<span class="num">12</span>
+<div class="who">
+<p class="artist">Arctic Monkeys</p>
+<p class="album">『The Car』</p>
+</div>
+<span class="dur">4:25</span>
+</div>
+<h3 class="track">There'd Better Be a Mirrorball</h3>
+<div class="badges">
+<span class="badge">リードシングル</span>
+<span class="badge sub">グラミーノミネート</span>
+<span class="badge warn">バラード例外</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>『The Car』のリードシングル。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>グラミー賞にノミネートされたリードシングルとして選出（バラード例外。下記備考参照）。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>スローなバラード調の曲だが、リードシングルであることとグラミーノミネートの歴史的重要性から、バラード原則不採用の例外として採用した。代替候補は「I Ain't Quite Where I Think I Am」。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/There%27d_Better_Be_a_Mirrorball" target="_blank" rel="noopener">Wikipedia「There'd Better Be a Mirrorball」</a></li>
+</ul>
+</div>
+</article>
+
+<!-- 13 -->
+<article class="card">
+<div class="card-head">
+<span class="num">13</span>
+<div class="who">
+<p class="artist">Red Hot Chili Peppers</p>
+<p class="album">『Unlimited Love』</p>
+</div>
+<span class="dur">3:52</span>
+</div>
+<h3 class="track">Black Summer</h3>
+<div class="badges">
+<span class="badge">リードシングル</span>
+<span class="badge sub">Alternative Songs 14曲目の No.1</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>『Unlimited Love』のリードシングル。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>Alternative Songs チャートでバンドとして14曲目の No.1 となったリードシングルとして選出。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>特記事項なし。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Black_Summer_(song)" target="_blank" rel="noopener">Wikipedia「Black Summer」</a></li>
+</ul>
+</div>
+</article>
+
+<!-- 14 -->
+<article class="card">
+<div class="card-head">
+<span class="num">14</span>
+<div class="who">
+<p class="artist">Fontaines D.C.</p>
+<p class="album">『Skinty Fia』</p>
+</div>
+<span class="dur">5:05</span>
+</div>
+<h3 class="track">I Love You</h3>
+<div class="badges">
+<span class="badge">シングル（2nd）</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>『Skinty Fia』の第2シングル。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>本作を代表する第2シングルとして選出。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>本曲について言及される Last.fm のリスナー数は第三者集計であり、公式の再生回数ではない。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Skinty_Fia" target="_blank" rel="noopener">Wikipedia『Skinty Fia』</a></li>
+</ul>
+</div>
+</article>
+
+<!-- 15 -->
+<article class="card">
+<div class="card-head">
+<span class="num">15</span>
+<div class="who">
+<p class="artist">The Smile</p>
+<p class="album">『A Light for Attracting Attention』</p>
+</div>
+<span class="dur">2:48</span>
+</div>
+<h3 class="track">You Will Never Work in Television Again</h3>
+<div class="badges">
+<span class="badge">デビューシングル</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>The Smile のデビューシングル。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>バンドの出発点となったデビューシングルとして選出。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>特記事項なし。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/You_Will_Never_Work_in_Television_Again" target="_blank" rel="noopener">Wikipedia「You Will Never Work in Television Again」</a></li>
+</ul>
+</div>
+</article>
+
+<!-- 16 -->
+<article class="card">
+<div class="card-head">
+<span class="num">16</span>
+<div class="who">
+<p class="artist">The 1975</p>
+<p class="album">『Being Funny in a Foreign Language』</p>
+</div>
+<span class="dur">5:26</span>
+</div>
+<h3 class="track">About You</h3>
+<div class="badges">
+<span class="badge">シングル（5th）</span>
+<span class="badge sub">UK Platinum / US Gold</span>
+<span class="badge warn">バラード例外</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>『Being Funny in a Foreign Language』の第5シングル。UK Platinum / US Gold 認定を受けている。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>本作の象徴曲として選出（バラード例外。下記備考参照）。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>バラードだが、本作の象徴曲としてバラード原則不採用の例外として採用した。代替候補は「Happiness」。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/About_You_(The_1975_song)" target="_blank" rel="noopener">Wikipedia「About You」</a></li>
+</ul>
+</div>
+</article>
+
+<!-- 17 -->
+<article class="card">
+<div class="card-head">
+<span class="num">17</span>
+<div class="who">
+<p class="artist">Tears for Fears</p>
+<p class="album">『The Tipping Point』</p>
+</div>
+<span class="dur">4:13</span>
+</div>
+<h3 class="track">The Tipping Point</h3>
+<div class="badges">
+<span class="badge">リードシングル</span>
+<span class="badge sub">タイトル曲</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>『The Tipping Point』のリードシングルで、アルバムのタイトル曲。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>タイトル曲かつリードシングルとして選出。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>特記事項なし。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/The_Tipping_Point_%28Tears_for_Fears_album%29" target="_blank" rel="noopener">Wikipedia『The Tipping Point』</a></li>
+</ul>
+</div>
+</article>
+
+<!-- 18 -->
+<article class="card">
+<div class="card-head">
+<span class="num">18</span>
+<div class="who">
+<p class="artist">Jack White</p>
+<p class="album">『Fear of the Dawn』</p>
+</div>
+<span class="dur">3:59</span>
+</div>
+<h3 class="track">Taking Me Back</h3>
+<div class="badges">
+<span class="badge">リードシングル</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>『Fear of the Dawn』のリードシングル。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>本作のリードシングルとして選出。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>「Hi-De-Ho」はラップ参加曲のため、指定どおり選出していない（「落選候補について」参照）。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Fear_of_the_Dawn" target="_blank" rel="noopener">Wikipedia『Fear of the Dawn』</a></li>
+</ul>
+</div>
+</article>
+
+<!-- 19 -->
+<article class="card">
+<div class="card-head">
+<span class="num">19</span>
+<div class="who">
+<p class="artist">Arcade Fire</p>
+<p class="album">『WE』</p>
+</div>
+<span class="dur">2:34</span>
+</div>
+<h3 class="track">The Lightning II</h3>
+<div class="badges">
+<span class="badge">リードシングル（後半）</span>
+<span class="badge sub">「The Lightning I, II」の後半</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>リードシングル「The Lightning I, II」の後半部分。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>リードシングルの後半として選出。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>デジタル盤では「The Lightning I」と「The Lightning II」に分割して収録されている。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/We_(Arcade_Fire_album)" target="_blank" rel="noopener">Wikipedia『WE』</a></li>
+</ul>
+</div>
+</article>
+
+<!-- 20 -->
+<article class="card">
+<div class="card-head">
+<span class="num">20</span>
+<div class="who">
+<p class="artist">Eddie Vedder</p>
+<p class="album">『Earthling』</p>
+</div>
+<span class="dur">4:22</span>
+</div>
+<h3 class="track">Brother the Cloud</h3>
+<div class="badges">
+<span class="badge">シングル（3rd）</span>
+</div>
+<div class="field">
+<span class="label">シングル情報</span>
+<p>『Earthling』の第3シングル。</p>
+</div>
+<div class="field">
+<span class="label">選出理由</span>
+<p>本作を代表する第3シングルとして選出。</p>
+</div>
+<div class="field">
+<span class="label">備考</span>
+<p>特記事項なし。</p>
+</div>
+<div class="links">
+<span class="label">出典</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Earthling_(Eddie_Vedder_album)" target="_blank" rel="noopener">Wikipedia『Earthling』</a></li>
+</ul>
+</div>
+</article>
+
+</div>
+</section>
+
+<section aria-labelledby="rej-h">
+<h2 id="rej-h"><span class="en">NOT SELECTED</span>落選候補について</h2>
+<p class="sec-note">選出にあたって検討され、理由つきで見送られた主な候補です。理由は大きく、バラード（原則不採用）、2分以下のため除外、ラップ参加曲のため選出禁止、の3つと、より強い曲を優先したケースです。バラード例外で採用した2曲については、代替候補もあわせて記しています。</p>
+
+<details class="rej">
+<summary>Muse『Will of the People』</summary>
+<div class="body">
+<p>「Ghosts (How Can I Move On)」「Verona」はバラードのため、原則不採用に従い選外。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>Ozzy Osbourne『Patient Number 9』</summary>
+<div class="body">
+<p>タイトル曲「Patient Number 9」も候補だったが、グラミー Best Metal Performance 受賞曲「Degradation Rules」を優先した。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>Megadeth『The Sick, the Dying... and the Dead!』</summary>
+<div class="body">
+<p>「Psychopathy」（1:20）は2分以下のため除外。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>Porcupine Tree『Closure/Continuation』</summary>
+<div class="body">
+<p>「Of the New Day」はバラード寄りのため選外。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>Panic! at the Disco『Viva Las Vengeance』</summary>
+<div class="body">
+<p>「Don't Let the Light Go Out」はバラードのため、原則不採用に従い選外。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>Rammstein『Zeit』</summary>
+<div class="body">
+<p>タイトル曲「Zeit」はバラード調のため不採用とし、第2シングル「Zick Zack」を選んだ。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>Arctic Monkeys『The Car』</summary>
+<div class="body">
+<p>代替候補は「I Ain't Quite Where I Think I Am」。採用曲「There'd Better Be a Mirrorball」はバラード調だが、リードシングル＋グラミーノミネートの歴史的重要性により例外採用としたため、この代替候補は見送られた。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>The Smile『A Light for Attracting Attention』</summary>
+<div class="body">
+<p>「Free in the Knowledge」はバラード調のため選外。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>The 1975『Being Funny in a Foreign Language』</summary>
+<div class="body">
+<p>代替候補は「Happiness」。採用曲「About You」はバラードだが、本作の象徴曲として例外採用としたため、この代替候補は見送られた。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>Tears for Fears『The Tipping Point』</summary>
+<div class="body">
+<p>「Please Be Happy」はバラードのため、原則不採用に従い選外。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>Jack White『Fear of the Dawn』</summary>
+<div class="body">
+<p>「Dusk」（0:30）は2分以下のため除外。</p>
+<p>「Hi-De-Ho」はラップ参加曲のため選出禁止とし、指定どおり選出していない。</p>
+</div>
+</details>
+
+<details class="rej">
+<summary>Arcade Fire『WE』</summary>
+<div class="body">
+<p>「Prelude」（0:30）は2分以下のため除外。</p>
+</div>
+</details>
+</section>
+
+<section aria-labelledby="tsv-h">
+<h2 id="tsv-h"><span class="en">FINAL TRACKLIST TSV</span>最終楽曲TSV</h2>
+<p class="sec-note">最終提出形式（GENRE／ARTIST／ALBUM／TRACK、1行1曲・全20曲）です。検索フィルターで曲名・アーティスト・アルバムを絞り込めます。コピー／ダウンロードはフィルターに関係なく全20曲分が出力されます。</p>
+<div class="tsv-tools">
+<input type="search" id="tsvFilter" placeholder="曲名・アーティスト・アルバムで検索" aria-label="TSV検索フィルター" />
+<button type="button" class="btn" id="copyBtn">TSVをコピー</button>
+<button type="button" class="btn ghost" id="dlBtn">.tsv をダウンロード</button>
+</div>
+<p class="copy-msg" id="copyMsg" role="status" aria-live="polite"></p>
+<p class="sec-note" id="hitCount" style="margin:0 0 10px;"></p>
+<div class="table-scroll">
+<table id="tsvTable">
+<thead>
+<tr><th>GENRE</th><th>ARTIST</th><th>ALBUM</th><th>TRACK</th></tr>
+</thead>
+<tbody id="tsvBody"></tbody>
+</table>
+</div>
+<details class="raw">
+<summary>TSVの原文（タブ区切りテキスト）を表示</summary>
+<pre class="tsv" id="tsvRaw"></pre>
+</details>
+</section>
+
+<footer>
+<p>2022年 YEARLY MASTERPIECES &amp; HITS 楽曲選出の記録ページ。掲載情報は選出時に確認した出典に基づきます。再生回数・リスナー数の数字は第三者集計・告知側の表示値であり、公式の再生回数ではありません。</p>
+</footer>
+</div>
+
+<script>
+(function () {
+var GENRE = "YEARLY MASTERPIECES & HITS";
+var rows = [
+["Muse", "Will of the People", "Kill or Be Killed"],
+["Ozzy Osbourne", "Patient Number 9", "Degradation Rules"],
+["Bad Omens", "The Death of Peace of Mind", "Just Pretend"],
+["Megadeth", "The Sick, the Dying... and the Dead!", "We'll Be Back"],
+["Porcupine Tree", "Closure/Continuation", "Harridan"],
+["The Black Keys", "Dropout Boogie", "Wild Child"],
+["Architects", "The Classic Symptoms of a Broken Spirit", "When We Were Young"],
+["Placebo", "Never Let Me Go", "Beautiful James"],
+["Marcus King", "Young Blood", "Hard Working Man"],
+["Panic! at the Disco", "Viva Las Vengeance", "Viva Las Vengeance"],
+["Rammstein", "Zeit", "Zick Zack"],
+["Arctic Monkeys", "The Car", "There'd Better Be a Mirrorball"],
+["Red Hot Chili Peppers", "Unlimited Love", "Black Summer"],
+["Fontaines D.C.", "Skinty Fia", "I Love You"],
+["The Smile", "A Light for Attracting Attention", "You Will Never Work in Television Again"],
+["The 1975", "Being Funny in a Foreign Language", "About You"],
+["Tears for Fears", "The Tipping Point", "The Tipping Point"],
+["Jack White", "Fear of the Dawn", "Taking Me Back"],
+["Arcade Fire", "WE", "The Lightning II"],
+["Eddie Vedder", "Earthling", "Brother the Cloud"]
+];
+var lines = ["GENRE\tARTIST\tALBUM\tTRACK"];
+rows.forEach(function (r) { lines.push(GENRE + "\t" + r[0] + "\t" + r[1] + "\t" + r[2]);});
+var tsvText = lines.join("\n");
+
+document.getElementById("tsvRaw").textContent = tsvText;
+
+var tbody = document.getElementById("tsvBody");
+var hitCount = document.getElementById("hitCount");
+function render(filter) {
+var q = (filter || "").trim().toLowerCase();
+tbody.innerHTML = "";
+var shown = 0;
+rows.forEach(function (r) {
+var hay = (r[0] + " " + r[1] + " " + r[2]).toLowerCase();
+if (q && hay.indexOf(q) === -1) { return;}
+shown++;
+var tr = document.createElement("tr");
+[GENRE, r[0], r[1], r[2]].forEach(function (cell, i) {
+var td = document.createElement("td");
+if (i === 0) { td.className = "genre";}
+td.textContent = cell;
+tr.appendChild(td);
+});
+tbody.appendChild(tr);
+});
+if (shown === 0) {
+var tr = document.createElement("tr");
+tr.className = "no-hit";
+var td = document.createElement("td");
+td.colSpan = 4;
+td.textContent = "該当する曲がありません。";
+tr.appendChild(td);
+tbody.appendChild(tr);
+}
+hitCount.textContent = q? ("検索結果：" + shown + "曲 / 全20曲"): "全20曲を表示中";
+}
+render("");
+
+var filterInput = document.getElementById("tsvFilter");
+filterInput.addEventListener("input", function () { render(filterInput.value);});
+
+var copyMsg = document.getElementById("copyMsg");
+document.getElementById("copyBtn").addEventListener("click", function () {
+function done() { copyMsg.textContent = "TSV（全20曲）をコピーしました。";}
+function fail() { copyMsg.textContent = "コピーできませんでした。「TSVの原文」から手動でコピーしてください。";}
+if (navigator.clipboard && navigator.clipboard.writeText) {
+navigator.clipboard.writeText(tsvText).then(done, function () { legacy();});
+} else { legacy();}
+function legacy() {
+var ta = document.createElement("textarea");
+ta.value = tsvText;
+ta.style.position = "fixed"; ta.style.opacity = "0";
+document.body.appendChild(ta);
+ta.select();
+try { document.execCommand("copy"); done();} catch (e) { fail();}
+document.body.removeChild(ta);
+}
+});
+
+document.getElementById("dlBtn").addEventListener("click", function () {
+var blob = new Blob([tsvText], { type: "text/tab-separated-values;charset=utf-8"});
+var url = URL.createObjectURL(blob);
+var a = document.createElement("a");
+a.href = url;
+a.download = "2022-yearly-masterpieces-hits-songs-final.tsv";
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+setTimeout(function () { URL.revokeObjectURL(url);}, 1000);
+copyMsg.textContent = "TSVファイル（全20曲）をダウンロードしました。";
+});
+})();
+</script>
+</body>
+</html>

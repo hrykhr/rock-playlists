@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2022 YEARLY MASTERPIECES &amp; HITS 候補一覧</title>
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #f6f3ef;
+        --surface: #ffffff;
+        --surface-2: #efe9e2;
+        --ink: #211c18;
+        --ink-soft: #5c554d;
+        --line: #ddd3c7;
+        --accent: #9c1f2e;
+        --accent-ink: #ffffff;
+        --gold: #8a6414;
+        --gold-bg: #f7ecd2;
+        --ok: #1e6b3a;
+        --ok-bg: #e2f1e6;
+        --dup: #7a4a12;
+        --dup-bg: #f6e8d3;
+        --ng: #9c1f2e;
+        --ng-bg: #f9e3e5;
+        --out: #5c554d;
+        --out-bg: #ece7e0;
+        --chip-s: #9c1f2e;
+        --chip-a: #8a6414;
+        --chip-b: #4c5a68;
+        --shadow: 0 1px 3px rgba(33, 28, 24, .08), 0 6px 18px rgba(33, 28, 24, .06);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #17130f;
+          --surface: #221c17;
+          --surface-2: #2a231d;
+          --ink: #f0e9e0;
+          --ink-soft: #b8ab9c;
+          --line: #41372c;
+          --accent: #e0586a;
+          --accent-ink: #1c0d10;
+          --gold: #d9ab4e;
+          --gold-bg: #3a2f16;
+          --ok: #7fc793;
+          --ok-bg: #1d3325;
+          --dup: #e0aa6b;
+          --dup-bg: #3a2b17;
+          --ng: #f08b97;
+          --ng-bg: #3d1e23;
+          --out: #b8ab9c;
+          --out-bg: #2c2620;
+          --chip-s: #e0586a;
+          --chip-a: #d9ab4e;
+          --chip-b: #9db2c4;
+          --shadow: 0 1px 3px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.3);
+        }
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+        line-height: 1.65;
+        font-size: 16px;
+      }
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 72px; }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      header.hero { padding: 44px 0 8px; }
+      .hero .genre-line {
+        font-size: .82rem; letter-spacing: .14em; font-weight: 700; color: var(--accent);
+        text-transform: uppercase; margin: 0 0 10px;
+      }
+      h1 {
+        font-family: Georgia, "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: clamp(1.7rem, 5.2vw, 2.7rem); line-height: 1.25; margin: 0 0 14px; font-weight: 700;
+      }
+      .hero p.lead { color: var(--ink-soft); max-width: 46em; margin: 0 0 20px; }
+      .stats { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 8px; }
+      .stat {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        padding: 10px 16px; min-width: 118px; box-shadow: var(--shadow);
+      }
+      .stat b { display: block; font-size: 1.45rem; line-height: 1.2; font-family: Georgia, serif; }
+      .stat span { font-size: .8rem; color: var(--ink-soft); }
+
+      nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 6px; }
+      nav.toc a {
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+        border-radius: 999px; padding: 8px 16px; font-size: .9rem; min-height: 2.25rem;
+        display: inline-flex; align-items: center;
+      }
+      nav.toc a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+      section { margin-top: 52px; }
+      h2 {
+        font-family: Georgia, "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: clamp(1.35rem, 3.6vw, 1.8rem); margin: 0 0 6px; line-height: 1.3;
+      }
+      h2 .num { color: var(--accent); margin-right: .35em; }
+      .sec-lead { color: var(--ink-soft); margin: 0 0 22px; max-width: 48em; }
+
+      .final-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+      .card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px;
+      }
+      .card .order {
+        font-family: Georgia, serif; font-size: .85rem; color: var(--accent); font-weight: 700; letter-spacing: .08em;
+      }
+      .card h3 { margin: 0; font-size: 1.18rem; line-height: 1.35; }
+      .card h3 .album { font-style: italic; }
+      .meta-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+      .date-badge {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px;
+        padding: 2px 10px; font-size: .85rem; font-variant-numeric: tabular-nums; font-weight: 600;
+      }
+      .route-badge { border-radius: 6px; padding: 2px 10px; font-size: .8rem; font-weight: 700; }
+      .route-s { background: var(--ok-bg); color: var(--ok); }
+      .route-up { background: var(--gold-bg); color: var(--gold); }
+      .flag-badge {
+        background: var(--ng-bg); color: var(--ng); border-radius: 6px; padding: 2px 10px;
+        font-size: .8rem; font-weight: 700;
+      }
+      .card dl { margin: 0; display: grid; gap: 8px; }
+      .card dt { font-size: .78rem; font-weight: 700; letter-spacing: .06em; color: var(--ink-soft); }
+      .card dd { margin: 2px 0 0; font-size: .93rem; }
+      .sources { margin-top: auto; padding-top: 8px; border-top: 1px dashed var(--line); }
+      .sources span { font-size: .78rem; font-weight: 700; letter-spacing: .06em; color: var(--ink-soft); display: block; margin-bottom: 4px; }
+      .sources ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 3px; }
+      .sources a { font-size: .85rem; word-break: break-all; }
+
+      /* controls */
+      .controls {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 16px; box-shadow: var(--shadow); display: grid; gap: 12px; margin-bottom: 18px;
+      }
+      .controls .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+      .controls .lbl { font-size: .85rem; font-weight: 700; color: var(--ink-soft); }
+      .rank-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+      .rank-btns button {
+        border: 1px solid var(--line); background: var(--surface-2); color: var(--ink);
+        border-radius: 999px; padding: 6px 18px; font-size: .92rem; font-weight: 700; cursor: pointer;
+      }
+      .rank-btns button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+      .controls input[type="search"], .controls select {
+        border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+        border-radius: 8px; padding: 8px 12px; font-size: .95rem;
+      }
+      .controls input[type="search"] { flex: 1 1 220px; }
+      .count-line { font-size: .9rem; color: var(--ink-soft); margin: 0 0 12px; }
+
+      .cand-list { display: grid; gap: 10px; }
+      .cand {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 14px 16px; box-shadow: var(--shadow);
+        display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: start;
+      }
+      .rank-chip {
+        grid-row: span 3; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+        font-family: Georgia, serif; font-weight: 700; font-size: 1.15rem; color: #fff;
+      }
+      .rank-S { background: var(--chip-s); } .rank-A { background: var(--chip-a); } .rank-B { background: var(--chip-b); }
+      @media (prefers-color-scheme: dark) { .rank-chip { color: #17130f; } }
+      .cand .head { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+      .cand .head b { font-size: 1.05rem; }
+      .cand .head .album { font-style: italic; }
+      .cand .head time { color: var(--ink-soft); font-size: .88rem; font-variant-numeric: tabular-nums; }
+      .status { border-radius: 999px; padding: 1px 11px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+      .st-selected { background: var(--ok-bg); color: var(--ok); }
+      .st-promoted { background: var(--gold-bg); color: var(--gold); }
+      .st-rejected { background: var(--ng-bg); color: var(--ng); }
+      .st-out { background: var(--out-bg); color: var(--out); }
+      .cand p.memo { margin: 0; font-size: .9rem; color: var(--ink-soft); }
+      .cand .src { font-size: .83rem; word-break: break-all; }
+      .empty-note { color: var(--ink-soft); padding: 24px; text-align: center; border: 1px dashed var(--line); border-radius: 12px; }
+
+      .verify-box {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px;
+      }
+      .verify-box h3 { margin: 0 0 8px; font-size: 1.1rem; }
+      .verify-box p { margin: 0 0 10px; }
+      .verify-box p:last-child { margin-bottom: 0; }
+      .verify-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+      .verify-list li {
+        display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline;
+        border-bottom: 1px dashed var(--line); padding: 7px 0;
+      }
+      .verify-list li:last-child { border-bottom: none; }
+      .verdict { font-weight: 700; font-size: .85rem; border-radius: 6px; padding: 1px 10px; }
+      .v-s { background: var(--ok-bg); color: var(--ok); }
+      .v-a { background: var(--gold-bg); color: var(--gold); }
+      .v-ng { background: var(--ng-bg); color: var(--ng); }
+      .flag-box { border-color: var(--gold); }
+      .flag-box h3 { color: var(--gold); }
+
+      .dup-list { display: grid; gap: 12px; }
+      .dup-item {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 16px 18px; box-shadow: var(--shadow);
+      }
+      .dup-item h3 { margin: 0 0 4px; font-size: 1.05rem; }
+      .dup-item h3 .album { font-style: italic; }
+      .dup-item p { margin: 0; color: var(--ink-soft); font-size: .93rem; }
+      .dup-item .meta-row { margin-bottom: 6px; }
+      .dup-item.ng-item { border-color: var(--ng); }
+      .dup-item.ng-item h3 { color: var(--ng); }
+
+      .final-table-box {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 18px; box-shadow: var(--shadow);
+      }
+      table.final-table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+      table.final-table th, table.final-table td { padding: 8px 10px; text-align: left; vertical-align: top; }
+      table.final-table thead th { font-size: .8rem; letter-spacing: .05em; color: var(--ink-soft); border-bottom: 2px solid var(--line); }
+      table.final-table tbody tr { border-bottom: 1px dashed var(--line); }
+      table.final-table tbody tr:last-child { border-bottom: none; }
+      table.final-table td.no { font-family: Georgia, serif; font-weight: 700; color: var(--accent); white-space: nowrap; }
+      table.final-table td.date { font-variant-numeric: tabular-nums; white-space: nowrap; }
+      table.final-table .album { font-style: italic; }
+      .route-tag { border-radius: 999px; padding: 1px 10px; font-size: .76rem; font-weight: 700; white-space: nowrap; }
+      @media (max-width: 640px) {
+        table.final-table thead { display: none; }
+        table.final-table, table.final-table tbody, table.final-table tr, table.final-table td { display: block; }
+        table.final-table tbody tr { padding: 10px 2px; }
+        table.final-table td { padding: 2px 4px; border: none; }
+        table.final-table td.date { display: inline-block; }
+        table.final-table td.route { display: inline-block; }
+      }
+
+      .tsv-box {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 18px; box-shadow: var(--shadow);
+      }
+      .tsv-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+      pre.tsv {
+        margin: 0; padding: 14px 16px; font-size: .82rem; line-height: 1.7;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; white-space: pre;
+      }
+      .tsv-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; align-items: center; }
+      .tsv-actions button {
+        border-radius: 10px; padding: 9px 20px; font-size: .95rem; font-weight: 700; cursor: pointer;
+        border: 1px solid var(--accent);
+      }
+      #copyBtn { background: var(--accent); color: var(--accent-ink); }
+      #dlBtn { background: transparent; color: var(--accent); }
+      .copy-msg { font-size: .88rem; color: var(--ok); font-weight: 700; }
+
+      footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: .85rem; }
+      @media (max-width: 560px) {
+        .wrap { padding: 0 14px 56px; }
+        .final-grid { grid-template-columns: 1fr; }
+        .cand { grid-template-columns: auto 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero">
+        <p class="genre-line">2022 · YEARLY MASTERPIECES &amp; HITS</p>
+        <h1>2022 YEARLY MASTERPIECES &amp; HITS 候補一覧</h1>
+        <p class="lead">2022年を代表するロック／メタルの名盤・ヒット作について、候補26枚の収集からSランク検証、A／Bランクからの昇格検証を経て最終選出20枚に至るまでのエビデンスをまとめたページです。YEARLY MASTERPIECES &amp; HITSは通常ジャンル（5〜10枚）と違い20枚必須の特別枠で、他のジャンルと重複しないアルバムから選出します。各アルバムからは1曲ずつ選ぶ形式です。</p>
+        <div class="stats">
+          <div class="stat"><b>26枚</b><span>候補の総数（S 11／A 11／B 4）</span></div>
+          <div class="stat"><b>10枚</b><span>Sランク検証で確定</span></div>
+          <div class="stat"><b>10枚</b><span>A／B検証で昇格</span></div>
+          <div class="stat"><b>20枚</b><span>最終選出</span></div>
+          <div class="stat"><b>0枚</b><span>重複除外</span></div>
+        </div>
+        <nav class="toc" aria-label="目次">
+          <a href="#s-final">S確定10枚</a>
+          <a href="#promoted">昇格10枚</a>
+          <a href="#candidates">候補一覧26枚</a>
+          <a href="#verify">検証の経緯</a>
+          <a href="#not-promoted">昇格しなかった6枚</a>
+          <a href="#final20">最終20枚一覧</a>
+          <a href="#tsv">最終アルバムTSV</a>
+        </nav>
+      </header>
+
+      <section id="s-final">
+        <h2><span class="num">1</span>S確定10枚</h2>
+        <p class="sec-lead">Sランク候補11件の検証でS判定となった10枚です。Red Hot Chili Peppers『Unlimited Love』は検証でAランクへ降格しました（その後、昇格検証で昇格3位として最終選出に入っています）。並び順は最終アルバムTSVの順序と同一です。</p>
+        <div class="final-grid">
+
+          <article class="card">
+            <span class="order">No. 1</span>
+            <h3>Muse<br><span class="album">『Will of the People』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-08-26</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Alternative rock, glam rock, synth-pop, arena rock, hard rock, progressive metal。AllMusicでも9作目の新作としてレビューされ、ロック中核を確認。</dd></div>
+              <div><dt>備考</dt><dd>9作目オリジナル・スタジオ盤。synth-pop／electropop要素を含むが、トランス／エレクトロニカ盤ではなくロックが中核のため絶対除外には当たらない（境界として明記）。ラップ／ニューメタル要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Will_of_the_People_(album)" target="_blank" rel="noopener">Wikipedia — Will of the People (album)</a></li>
+              <li><a href="http://www.allmusic.com/album/will-of-the-people-mw0003693082" target="_blank" rel="noopener">AllMusic — Will of the People</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 2</span>
+            <h3>Ozzy Osbourne<br><span class="album">『Patient Number 9』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-09-09</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Heavy metal, hard rock。Blabbermouthでも13作目ソロ・スタジオ盤として2022-09-09発売を報道。第65回グラミー賞 Best Rock Album受賞。</dd></div>
+              <div><dt>備考</dt><dd>13作目（ソロ通算）オリジナル・スタジオ盤。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Patient_Number_9" target="_blank" rel="noopener">Wikipedia — Patient Number 9</a></li>
+              <li><a href="https://blabbermouth.net/news/ozzy-osbourne-releases-music-video-for-one-of-those-days-featuring-eric-clapton" target="_blank" rel="noopener">Blabbermouth — Ozzy Osbourne新曲報道</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 3</span>
+            <h3>Bad Omens<br><span class="album">『The Death of Peace of Mind』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-02-25</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Metalcore, alternative metal, alternative rock（3作目スタジオ盤、Sumerian）。Metal EpidemicもMetalcore／Post-Hardcoreとして同日付を確認。救済枠モダンメタル／メタルコアに該当。</dd></div>
+              <div><dt>備考</dt><dd>Wikipedia本文がR&amp;B／pop／electronicとの混合を明記するが、トランス／エレクトロニカ盤ではなくmetalcore／alt metalが中核のため絶対除外には当たらない（電子要素・R&amp;B／pop混在は境界として明記）。ラップ／ニューメタル分類なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/The_Death_of_Peace_of_Mind" target="_blank" rel="noopener">Wikipedia — The Death of Peace of Mind</a></li>
+              <li><a href="https://www.metalepidemic.com/bad-omens-the-death-of-peace-of-mind/" target="_blank" rel="noopener">Metal Epidemic — The Death of Peace of Mind</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 4</span>
+            <h3>Megadeth<br><span class="album">『The Sick, the Dying... and the Dead!』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-09-02</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Thrash metal（16作目スタジオ盤）。Kerrang!も16th studio album／thrash metal legendsとして同日発売を確認。</dd></div>
+              <div><dt>備考</dt><dd>16作目オリジナル・スタジオ盤。収録曲「Night Stalkers」にIce-Tがゲスト参加するが語り／掛け声的なもので、アルバム自体はthrash metalでありラップ／ヒップホップ盤ではない（ゲスト要素として明記）。絶対除外には当たらない。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/The_Sick,_the_Dying..._and_the_Dead!" target="_blank" rel="noopener">Wikipedia — The Sick, the Dying... and the Dead!</a></li>
+              <li><a href="https://www.kerrang.com/megadeth-announce-new-album-the-sick-the-dying-and-the-dead" target="_blank" rel="noopener">Kerrang! — Megadeth新作告知</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 5</span>
+            <h3>Porcupine Tree<br><span class="album">『Closure/Continuation』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-06-24</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Progressive rock（11作目スタジオ盤）。Sonic PerspectivesもProgressive Rock／2022-06-24発売を確認。</dd></div>
+              <div><dt>備考</dt><dd>11作目オリジナル・スタジオ盤、2009年以来の復活作。標準盤は7曲のみだが長尺曲中心で総時間は短盤扱いにはならない（曲数が少ない点は明記）。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Closure/Continuation" target="_blank" rel="noopener">Wikipedia — Closure/Continuation</a></li>
+              <li><a href="https://www.sonicperspectives.com/album-reviews/porcupine-tree-closure-continuation/" target="_blank" rel="noopener">Sonic Perspectives — Closure/Continuation レビュー</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 6</span>
+            <h3>The Black Keys<br><span class="album">『Dropout Boogie』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-05-13</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Blues rock, garage rock（11作目スタジオ盤）。レーベルNonesuch公式も11th studio album／2022-05-13発売とblues rock回帰を明記。救済枠ブルースロックに該当。</dd></div>
+              <div><dt>備考</dt><dd>11作目オリジナル・スタジオ盤（前作『Delta Kream』のカバー集とは異なりオリジナル曲中心）。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/The_Black_Keys" target="_blank" rel="noopener">Wikipedia — The Black Keys</a></li>
+              <li><a href="https://www.nonesuch.com/albums/dropout-boogie" target="_blank" rel="noopener">Nonesuch Records — Dropout Boogie</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 7</span>
+            <h3>Architects<br><span class="album">『The Classic Symptoms of a Broken Spirit』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-10-21</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Alternative metal, industrial metal, metalcore（10作目スタジオ盤、Epitaph）。Discogsも2022-10-21／Metalcore, Industrialを確認。救済枠モダンメタル／メタルコアに該当。</dd></div>
+              <div><dt>備考</dt><dd>industrial／electronic志向を強めた作風で、一部レビューが一部曲のnu-metal的ニュアンスに触れるが、公式ジャンル分類はalt metal／industrial metal／metalcoreでニューメタル／ミクスチャー盤ではなく、ラップ要素もないため絶対除外には当たらない（境界として明記）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/The_Classic_Symptoms_of_a_Broken_Spirit" target="_blank" rel="noopener">Wikipedia — The Classic Symptoms of a Broken Spirit</a></li>
+              <li><a href="https://www.discogs.com/release/25091716-Architects-The-Classic-Symptoms-Of-A-Broken-Spirit" target="_blank" rel="noopener">Discogs — The Classic Symptoms Of A Broken Spirit</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 8</span>
+            <h3>Placebo<br><span class="album">『Never Let Me Go』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-03-25</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Alternative rock（8作目スタジオ盤）。Metacriticも8th full-length studio release／2022-03-25／Alternative Rock系として確認。</dd></div>
+              <div><dt>備考</dt><dd>8作目オリジナル・スタジオ盤、9年ぶりの新作。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Never_Let_Me_Go_(Placebo_album)" target="_blank" rel="noopener">Wikipedia — Never Let Me Go (Placebo album)</a></li>
+              <li><a href="https://www.qobuz.com/gb-en/album/never-let-me-go-placebo/tnu1xsfmn6vxa" target="_blank" rel="noopener">Qobuz — Never Let Me Go</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 9</span>
+            <h3>Marcus King<br><span class="album">『Young Blood』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-08-26</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Blues rock（ソロ2作目スタジオ盤）。プロデュースはDan Auerbach（The Black Keys）。救済枠ブルースロックに該当。</dd></div>
+              <div><dt>備考</dt><dd>第1シングル「Hard Working Man」はBillboard Adult Alternative Airplay 25位。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="http://en.wikipedia.org/wiki/Young_Blood_(Marcus_King_album)" target="_blank" rel="noopener">Wikipedia — Young Blood (Marcus King album)</a></li>
+              <li><a href="https://www.spinmagazine.com/2022/04/marcus-king-young-blood-dan-auerbach/" target="_blank" rel="noopener">SPIN — Marcus King『Young Blood』</a></li>
+              <li><a href="https://www.discogs.com/release/24369269-Marcus-King-Young-Blood" target="_blank" rel="noopener">Discogs — Young Blood</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">No. 10</span>
+            <h3>Panic! at the Disco<br><span class="album">『Viva Las Vengeance』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-08-19</span><span class="route-badge route-s">S確定</span></div>
+            <dl>
+              <div><dt>ジャンル根拠</dt><dd>Wikipedia: Pop rock, glam rock, power pop系（7作目スタジオ盤）。S判定11枚の中で最もポップ寄りの1枚で、YEARLYの「HITS」面を担う位置づけとしてS確定に残した。</dd></div>
+              <div><dt>備考</dt><dd>実質的にBrendon Urieのソロ作であり、バンドの最終作。評価が割れる点とポップ寄りの度合いは境界として明記。絶対除外要素なし。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Viva_Las_Vengeance" target="_blank" rel="noopener">Wikipedia — Viva Las Vengeance</a></li>
+              <li><a href="https://music.apple.com/cr/album/viva-las-vengeance/1626561623" target="_blank" rel="noopener">Apple Music — Viva Las Vengeance</a></li>
+            </ul></div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="promoted">
+        <h2><span class="num">2</span>昇格10枚</h2>
+        <p class="sec-lead">YEARLYは20枚必須のため、S確定10枚では10枚不足しました。Hiroの指示でA／Bランク16枚（A 11枚＋B 4枚＋S検証でAへ降格した1枚）を検証し、昇格可15枚・不可1枚の中から、YEARLYの根拠（チャート・受賞・年間ベスト・話題性）の強い順に10枚を昇格させました。並びは昇格順位順で、最終アルバムTSVでもこの順序（No. 11〜20）になっています。</p>
+        <div class="final-grid">
+
+          <article class="card">
+            <span class="order">昇格 1位 · No. 11</span>
+            <h3>Rammstein<br><span class="album">『Zeit』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-04-29</span><span class="route-badge route-up">Aから昇格</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>ドイツ・オーストリア・フランス等多数の国で1位、ドイツ年間チャート1位・2×Platinum、UK3位、US Top Hard Rock Albums 1位。Metal Hammer年間ベスト5位、Loudwire／Revolverの年間リスト入り、Metacritic 81。2022年のメタル／ハードロック最大の世界的ヒット作。</dd></div>
+              <div><dt>境界メモ</dt><dd>主ジャンルはNeue Deutsche Härte／industrial metalで電子要素を含むクロスオーバーだが、ラップ／ヒップホップ、ニューメタル／ミクスチャー、トランス／エレクトロニカ盤と分類する出典はなく、絶対除外には非該当と検証で明示。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Zeit_(Rammstein_album)" target="_blank" rel="noopener">Wikipedia — Zeit (Rammstein album)</a></li>
+              <li><a href="https://www.discogs.com/release/23031311-Rammstein-Zeit" target="_blank" rel="noopener">Discogs — Zeit</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Rammstein_discography" target="_blank" rel="noopener">Wikipedia — Rammstein discography</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">昇格 2位 · No. 12</span>
+            <h3>Arctic Monkeys<br><span class="album">『The Car』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-10-21</span><span class="route-badge route-up">Aから昇格</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>NME年間ベスト1位、Time Out 1位、Mojo 5位、Guardian 6位。UK2位（初週119,016 units、2022年UKで3番目に売れたvinyl）、US Billboard 200 6位、Metacritic 82。Mercury Prize shortlist、グラミー賞 Best Alternative Music Albumノミネート。批評・商業の両面で2022年を代表する1枚。</dd></div>
+              <div><dt>境界メモ</dt><dd>なし（ジャンルはart rock／orchestral rock等。electronic musicの影響への言及はあるがジャンル分類ではなく絶対除外に非該当）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/The_Car_(album)" target="_blank" rel="noopener">Wikipedia — The Car (album)</a></li>
+              <li><a href="https://www.nme.com/big-reads/the-50-best-albums-of-2022-3363070" target="_blank" rel="noopener">NME — The 50 best albums of 2022</a></li>
+              <li><a href="https://www.metacritic.com/music/the-car/arctic-monkeys/?recent-sort=userscore" target="_blank" rel="noopener">Metacritic — The Car</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">昇格 3位 · No. 13</span>
+            <h3>Red Hot Chili Peppers<br><span class="album">『Unlimited Love』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-04-01</span><span class="route-badge route-up">S→A降格後に昇格</span><span class="flag-badge">境界フラグあり</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>John Frusciante復帰作（『Stadium Arcadium』以来）という2022年最大級の話題性。16か国で初登場1位、US Billboard 200・UKとも1位、先行曲「Black Summer」はAlternative Songs通算14曲目の1位。Metacritic 71、Rolling Stone 4/5、Clash 9/10。</dd></div>
+              <div><dt>境界フラグ</dt><dd>バンド単位ではWikipediaのGenresにrap rockが含まれhip-hop要素への言及もあるが、本作自体の分類はWikipedia infobox・Discogs・AllMusicともfunk rock／alternative rock系統のみで、ラップ／ヒップホップ盤・ミクスチャー／ニューメタル盤と分類する主要ソースはない。Kiedisのラップ的デリバリーは一部楽曲のボーカル技法にとどまり歌唱主体のため、アルバム単位では絶対除外に非該当と判定して昇格。ただしバンド単位の分類まで対象とする厳格解釈では不可に転じる境界事例であり、この判定はHiroに明示した上で承認を得た（詳細は「検証の経緯」）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Unlimited_Love" target="_blank" rel="noopener">Wikipedia — Unlimited Love</a></li>
+              <li><a href="https://www.allmusic.com/album/unlimited-love-mw0003664801" target="_blank" rel="noopener">AllMusic — Unlimited Love</a></li>
+              <li><a href="https://www.discogs.com/release/22720877-Red-Hot-Chili-Peppers-Unlimited-Love" target="_blank" rel="noopener">Discogs — Unlimited Love</a></li>
+              <li><a href="https://www.metacritic.com/music/unlimited-love/red-hot-chili-peppers/critic-reviews/?dist=neutral" target="_blank" rel="noopener">Metacritic — Unlimited Love</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">昇格 4位 · No. 14</span>
+            <h3>Fontaines D.C.<br><span class="album">『Skinty Fia』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-04-22</span><span class="route-badge route-up">Aから昇格</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>UK・Irish Albums Chart初の1位、Metacritic 85、NME年間ベスト4位・Guardian 9位、NME 5つ星、The Line of Best Fit 10/10。Choice Music Prize Album of the Yearノミネート、Ivor Novello Best Albumノミネート。2022年の批評的ピークを代表する作。</dd></div>
+              <div><dt>境界メモ</dt><dd>なし（ジャンルはpost-punk。制作手法に関するelectronica的表現への言及はあるがジャンル分類ではなく絶対除外に非該当）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Skinty_Fia" target="_blank" rel="noopener">Wikipedia — Skinty Fia</a></li>
+              <li><a href="https://www.allmusic.com/album/MW0003654072" target="_blank" rel="noopener">AllMusic — Skinty Fia</a></li>
+              <li><a href="https://www.metacritic.com/music/skinty-fia/fontaines-dc/" target="_blank" rel="noopener">Metacritic — Skinty Fia</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">昇格 5位 · No. 15</span>
+            <h3>The Smile<br><span class="album">『A Light for Attracting Attention』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-05-13</span><span class="route-badge route-up">Bから昇格</span><span class="flag-badge">境界フラグあり</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>Metacritic 86（候補中最高）、Pitchfork 8.6でBest New Music、Uncut年間1位、Rough Trade US年間1位／UK 2位。UK5位、US Billboard 200 19位。RadioheadのYorke／Greenwoodによる結成自体が2022年の大きな話題。デビュー盤。</dd></div>
+              <div><dt>境界フラグ</dt><dd>Wikipediaのジャンル欄にelectronicaが含まれ電子音要素があるためトランス／エレクトロニカ除外との境界に当たるが、本体はart rock／post-punk／progressive rockでエレクトロニカ専門盤ではなく、絶対除外には非該当と判定。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/A_Light_for_Attracting_Attention" target="_blank" rel="noopener">Wikipedia — A Light for Attracting Attention</a></li>
+              <li><a href="https://thesmile.bandcamp.com/album/a-light-for-attracting-attention?from=footer-cc-a3170545340" target="_blank" rel="noopener">Bandcamp — A Light for Attracting Attention</a></li>
+              <li><a href="https://exclaim.ca/music/article/best_albums_of_2022" target="_blank" rel="noopener">Exclaim! — Best Albums of 2022</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">昇格 6位 · No. 16</span>
+            <h3>The 1975<br><span class="album">『Being Funny in a Foreign Language』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-10-14</span><span class="route-badge route-up">Aから昇格</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>UK Albums Chart 1位（5作連続）、US Billboard 200 7位、Metacritic 82。2023 Brit Awards Album of the Yearノミネート。Billboard年間16位、NME 10位、Variety 9位、Pitchfork 33位など年間ベスト多数。</dd></div>
+              <div><dt>境界メモ</dt><dd>実質なし（WikipediaジャンルにSynthwaveの併記があるがシンセ質感の要素であり、トランス／エレクトロニカ盤ではなく絶対除外に非該当と検証で明示）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Being_Funny_in_a_Foreign_Language" target="_blank" rel="noopener">Wikipedia — Being Funny in a Foreign Language</a></li>
+              <li><a href="https://www.officialcharts.com/chart-news/the-1975s-being-funny-in-a-foreign-language-album-and-part-of-the-band-single-lyrics-artwork-release-date-album-tracklisting-tour-dates-and-more__36726/" target="_blank" rel="noopener">Official Charts — The 1975</a></li>
+              <li><a href="https://www.nme.com/big-reads/the-50-best-albums-of-2022-3363070" target="_blank" rel="noopener">NME — The 50 best albums of 2022</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">昇格 7位 · No. 17</span>
+            <h3>Tears for Fears<br><span class="album">『The Tipping Point』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-02-25</span><span class="route-badge route-up">Aから昇格</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>約18年ぶりのスタジオ復帰作。UK2位（30年ぶり最高位）、US Billboard 200 8位（1989年以来のTop 10）、Billboard Top Album Sales／Top Alternative／Top Rock各1位、Metacritic 83。復帰作としての話題性と実績の両方を持つ。</dd></div>
+              <div><dt>境界メモ</dt><dd>なし（ジャンルはpop rock／electropop／art pop。electropop表記はあるがトランス／エレクトロニカ作品ではなく絶対除外に非該当）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/The_Tipping_Point_%28Tears_for_Fears_album%29" target="_blank" rel="noopener">Wikipedia — The Tipping Point (Tears for Fears album)</a></li>
+              <li><a href="https://www.allmusic.com/album/mw0003603910" target="_blank" rel="noopener">AllMusic — The Tipping Point</a></li>
+              <li><a href="https://www.officialcharts.com/albums/tears-for-fears-the-tipping-point/" target="_blank" rel="noopener">Official Charts — The Tipping Point</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">昇格 8位 · No. 18</span>
+            <h3>Jack White<br><span class="album">『Fear of the Dawn』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-04-08</span><span class="route-badge route-up">Bから昇格</span><span class="flag-badge">境界フラグあり</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>Billboard 200 4位、Top Album Sales／Top Rock／Top Alternative／Vinyl等9チャートで1位、UK3位、Metacritic 75、AllMusic 4/5。2022年を代表するギター・ロックのヒット作としてチャートと批評の裏付けがある。</dd></div>
+              <div><dt>境界フラグ</dt><dd>アルバム全体はBlues rock／Progressive rock／Hard rock／Garage rockで絶対除外に非該当。ただし収録曲「Hi-De-Ho」はQ-Tipのラップ参加曲で単曲分類がRap rock／Experimental hip hopとされるため、楽曲選出ではこの曲を回避する。救済枠ブルースロックにも該当するが、S確定側にブルースロック2枚が既にいるため、救済枠としてではなくYEARLY本体の実績で昇格。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Fear_of_the_Dawn" target="_blank" rel="noopener">Wikipedia — Fear of the Dawn</a></li>
+              <li><a href="https://thirdmanrecords.com/blogs/news/jack-white-s-fear-of-the-dawn-scores-nine-1-s-including-billboard-s-top-album-sales-chart" target="_blank" rel="noopener">Third Man Records — Fear of the Dawn 9チャート1位</a></li>
+              <li><a href="https://www.metacritic.com/music/fear-of-the-dawn/jack-white/" target="_blank" rel="noopener">Metacritic — Fear of the Dawn</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Hi-De-Ho_(Jack_White_song)" target="_blank" rel="noopener">Wikipedia — Hi-De-Ho (Jack White song)</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">昇格 9位 · No. 19</span>
+            <h3>Arcade Fire<br><span class="album">『WE』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-05-06</span><span class="route-badge route-up">Aから昇格</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>Billboard 200初登場6位、その週のトップセラー（純売上26,500）、Top Album Sales／Top Rock／Top Alternative／Vinyl各1位、UK・アイルランド等で1位。第65回グラミー賞 Best Alternative Music Albumノミネート、Polaris Music Prizeロングリスト入り。</dd></div>
+              <div><dt>境界メモ</dt><dd>軽微な境界メモのみ（Wikipediaジャンルにdance-popの併記があるが、トランス／エレクトロニカ盤ではなく絶対除外要素は確認されず）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/We_(Arcade_Fire_album)" target="_blank" rel="noopener">Wikipedia — We (Arcade Fire album)</a></li>
+              <li><a href="https://www.discogs.com/release/23120582-Arcade-Fire-We" target="_blank" rel="noopener">Discogs — WE</a></li>
+              <li><a href="https://www.grammy.com/artists/arcade-fire/8113" target="_blank" rel="noopener">GRAMMY.com — Arcade Fire</a></li>
+            </ul></div>
+          </article>
+
+          <article class="card">
+            <span class="order">昇格 10位 · No. 20</span>
+            <h3>Eddie Vedder<br><span class="album">『Earthling』</span></h3>
+            <div class="meta-row"><span class="date-badge">発売日 2022-02-11</span><span class="route-badge route-up">Aから昇格</span></div>
+            <dl>
+              <div><dt>昇格理由</dt><dd>Billboard Top Rock Albums／Top Album Sales／Top Current Album Salesでソロ初の1位、Metacritic 79。Albumism 100 Best、Esquire 25 Best、Loudwire 50 Best Rock + Metal、Ultimate Classic Rock Top 30、Classic Rock 50 Best等、年間ベスト入りが多数。Elton John、Ringo Starr、Stevie Wonder参加の話題性も高い。</dd></div>
+              <div><dt>境界メモ</dt><dd>なし（ジャンルはRock／Alternative Rock、境界要素なし）。</dd></div>
+            </dl>
+            <div class="sources"><span>出典</span><ul>
+              <li><a href="https://en.wikipedia.org/wiki/Earthling_(Eddie_Vedder_album)" target="_blank" rel="noopener">Wikipedia — Earthling (Eddie Vedder album)</a></li>
+              <li><a href="https://www.discogs.com/release/22115467-Eddie-Vedder-Earthling" target="_blank" rel="noopener">Discogs — Earthling</a></li>
+              <li><a href="https://www.albumlists.com/album/eddie-vedder-earthling/" target="_blank" rel="noopener">Album Lists — Earthling</a></li>
+            </ul></div>
+          </article>
+
+        </div>
+      </section>
+
+<section id="candidates">
+<h2><span class="num">3</span>候補一覧26枚</h2>
+<p class="sec-lead">収集した候補26枚（Sランク11枚／Aランク11枚／Bランク4枚）の一覧です。ランクは候補収集時のもので、Red Hot Chili Peppers『Unlimited Love』は収集時はSランクでしたが、S検証でAへ降格し、その後の昇格検証で昇格しています。ランクで絞り込み、アーティスト・アルバム名で検索、発売日で並べ替えができます。ステータスは「最終選出（S確定）」「昇格で選出」「検証で不適合」「昇格せず」のいずれかを表示します。</p>
+<div class="controls">
+<div class="row">
+<span class="lbl" id="rankLbl">ランクで絞り込み</span>
+<div class="rank-btns" role="group" aria-labelledby="rankLbl">
+<button type="button" data-rank="all" aria-pressed="true">すべて</button>
+<button type="button" data-rank="S" aria-pressed="false">S</button>
+<button type="button" data-rank="A" aria-pressed="false">A</button>
+<button type="button" data-rank="B" aria-pressed="false">B</button>
+</div>
+</div>
+<div class="row">
+<label class="lbl" for="searchBox">検索</label>
+<input type="search" id="searchBox" placeholder="アーティスト名・アルバム名で検索" autocomplete="off">
+<label class="lbl" for="sortSel">並べ替え</label>
+<select id="sortSel">
+<option value="default">既定（ランク順）</option>
+<option value="date-asc">発売日 昇順</option>
+<option value="date-desc">発売日 降順</option>
+</select>
+</div>
+</div>
+<p class="count-line" id="countLine" aria-live="polite"></p>
+<div class="cand-list" id="candList"></div>
+</section>
+
+<section id="verify">
+<h2><span class="num">4</span>検証の経緯</h2>
+<p class="sec-lead">Sランク検証の結果と、20枚必須のYEARLYで不足分をA／Bランクから昇格させた経緯です。昇格検証では16枚すべてについて、2022年発売のオリジナル・スタジオ盤であることを2ソース以上（Wikipedia＋Discogs／AllMusic／公式等）で確認し、発売日の不一致や未確認項目はありませんでした。</p>
+<div class="verify-box">
+<h3>Sランク検証の結果（11件中10件がS判定）</h3>
+<ul class="verify-list">
+<li><span class="verdict v-s">S判定</span><span><b>Muse</b>『Will of the People』</span></li>
+<li><span class="verdict v-s">S判定</span><span><b>Ozzy Osbourne</b>『Patient Number 9』</span></li>
+<li><span class="verdict v-s">S判定</span><span><b>Bad Omens</b>『The Death of Peace of Mind』</span></li>
+<li><span class="verdict v-s">S判定</span><span><b>Megadeth</b>『The Sick, the Dying... and the Dead!』</span></li>
+<li><span class="verdict v-s">S判定</span><span><b>Porcupine Tree</b>『Closure/Continuation』</span></li>
+<li><span class="verdict v-s">S判定</span><span><b>The Black Keys</b>『Dropout Boogie』</span></li>
+<li><span class="verdict v-s">S判定</span><span><b>Architects</b>『The Classic Symptoms of a Broken Spirit』</span></li>
+<li><span class="verdict v-s">S判定</span><span><b>Placebo</b>『Never Let Me Go』</span></li>
+<li><span class="verdict v-s">S判定</span><span><b>Marcus King</b>『Young Blood』</span></li>
+<li><span class="verdict v-s">S判定</span><span><b>Panic! at the Disco</b>『Viva Las Vengeance』</span></li>
+<li><span class="verdict v-a">A判定</span><span><b>Red Hot Chili Peppers</b>『Unlimited Love』— ラップ調デリバリーと絶対除外ルールの抵触懸念によりAへ降格</span></li>
+</ul>
+</div>
+<div class="verify-box">
+<h3>20枚必須のためA／Bランクを検証して10枚を昇格</h3>
+<p>YEARLY MASTERPIECES &amp; HITSは他のジャンルと重複しない20枚で構成する特別枠で、最終枠は20枚ちょうどです。S検証の確定が10枚にとどまったため、この時点でワークフローは停止しました。通常ジャンルであれば10枚で確定するところですが、YEARLYは20枚必須のため、Hiroが「AとBを検証して10枚昇格させる」と指示しました。</p>
+<p>これを受けて、Aランク11枚とBランク4枚に、S検証でAへ降格した『Unlimited Love』を加えた16枚を検証しました。結果は昇格可15枚・昇格不可1枚（Disturbed『Divisive』のみ絶対除外に抵触）で、残り15枚からYEARLYの根拠（チャート・受賞・年間ベスト・話題性）の強い順に10枚を昇格させ、最終20枚が確定しました。</p>
+<p>救済枠の配分メモ：S確定側にモダンメタル／メタルコア2枚（Bad Omens、Architects）とブルースロック2枚（The Black Keys、Marcus King）が既にいるため、この2カテゴリからの追加は見送りました（Parkway Driveはそのため昇格せず。Jack Whiteは救済枠ではなく本体実績で昇格）。</p>
+</div>
+<div class="verify-box flag-box">
+<h3>境界フラグ — Red Hot Chili Peppers『Unlimited Love』の扱い</h3>
+<p>『Unlimited Love』は、アルバム自体の分類がfunk rock／alternative rock系統で、ラップ的デリバリーは一部楽曲のボーカル技法にとどまるため、「アルバム単位では絶対除外に当たらない」と判定しました。一方で、バンド単位の分類（rap rockを含む）まで厳格に見る場合は外れる境界ケースです。</p>
+<p>この境界フラグは最終確定前にHiroへ明示し、Hiroが「この20枚で確定して進めて」と承認したため、昇格3位として最終20枚に含めています。</p>
+</div>
+</section>
+
+<section id="not-promoted">
+<h2><span class="num">5</span>昇格しなかった6枚</h2>
+<p class="sec-lead">A／Bランク検証の対象16枚のうち、昇格に至らなかった6枚とその理由です。Disturbed『Divisive』のみ絶対除外により昇格不可で、残り5枚は検証自体は昇格可でしたが、枠の配分や根拠の強さで見送りました。</p>
+<div class="dup-list">
+<div class="dup-item ng-item">
+<h3>Disturbed <span class="album">『Divisive』</span></h3>
+<div class="meta-row"><span class="date-badge">発売日 2022-11-18</span><span class="route-badge route-up">Bランク候補</span></div>
+<p>AllMusicが本作のStylesにNü Metal／Rap-Metalを挙げ、Discogs盤のStyleにもNu Metalが含まれ、Louder評も初期ニューメタル起源のrapid-fire deliveryと90s nu metalとの合成を記述。本作単位でニューメタル／ミクスチャー要素を付す出典が複数あるため、絶対除外ルールの下では可側に倒せない。US Top Hard Rock／Alternative Albums 1位などHITS面の根拠はあるが、Metacritic 59と批評面も弱い。</p>
+</div>
+<div class="dup-item">
+<h3>Parkway Drive <span class="album">『Darker Still』</span></h3>
+<div class="meta-row"><span class="date-badge">発売日 2022-09-09</span><span class="route-badge route-up">Aランク候補</span></div>
+<p>検証自体は昇格可（豪ARIA 1位、Kerrang!年間18位、Metal Hammer年間40位）。ただし救済枠モダンメタル／メタルコアはS確定側にBad OmensとArchitectsの2枚が既におり、枠の目安1〜2枚を満たしているため追加を見送った。一部レビューが「Glitch」のnu-metal vibeと「If a God Can Bleed」のhalf-rappingを指摘する境界要素もある。</p>
+</div>
+<div class="dup-item">
+<h3>Red Hot Chili Peppers <span class="album">『Return of the Dream Canteen』</span></h3>
+<div class="meta-row"><span class="date-badge">発売日 2022-10-14</span><span class="route-badge route-up">Aランク候補</span></div>
+<p>『Unlimited Love』と同一セッション録音の姉妹作で、名盤性はUnlimited Loveより弱い（Metacritic 69対71、Billboard 200も3位対1位）。YEARLYの20枠はその年の幅広い代表作に充てるべきであり、同一アーティストはより強い1枚に絞るのが妥当と判断。チャート実績自体（6か国1位）は本物で、入れ替え可能な次点筆頭。</p>
+</div>
+<div class="dup-item">
+<h3>Liam Gallagher <span class="album">『C'mon You Know』</span></h3>
+<div class="meta-row"><span class="date-badge">発売日 2022-05-27</span><span class="route-badge route-up">Aランク候補</span></div>
+<p>検証は昇格可（UK初登場1位、BPI Gold）。ただし年間ベストの裏付けがNME 49位程度と薄く、Metacritic 74。UKでの商業的成功は大きいが、YEARLYの「その年の名盤」としての批評的裏付けが昇格10枚に比べて一段弱い。</p>
+</div>
+<div class="dup-item">
+<h3>Bryan Adams <span class="album">『So Happy It Hurts』</span></h3>
+<div class="meta-row"><span class="date-badge">発売日 2022-03-11</span><span class="route-badge route-up">Aランク候補</span></div>
+<p>検証は昇格可（UK3位、ドイツ2位、タイトル曲がグラミー賞 Best Rock Performanceノミネート）。ただし年間ベストリスト入りの裏付けがClassic Rock系の回顧リスト中心で少なく、集計スコアも確認範囲では弱い。ベテランの堅実なヒット作だが、代表作としての強さで昇格組に劣る。</p>
+</div>
+<div class="dup-item">
+<h3>Kasabian <span class="album">『The Alchemist's Euphoria』</span></h3>
+<div class="meta-row"><span class="date-badge">発売日 2022-08-12</span><span class="route-badge route-up">Bランク候補</span></div>
+<p>検証は昇格可（UK1位、通算6作目、再始動の話題性）。ただし候補中で境界フラグが最も強い部類で、Wikipediaジャンルにtechnoが併記され、rave synths、trap beats、rap-likeなヴァースへの指摘が複数ある。Metacritic 74・NME 4つ星と批評面も昇格組ほど強くなく、境界リスクと根拠の弱さの両面で見送った。</p>
+</div>
+</div>
+</section>
+
+<section id="final20">
+<h2><span class="num">6</span>最終20枚一覧</h2>
+<p class="sec-lead">最終選出20枚の一覧です。No. 1〜10がS確定、No. 11〜20が昇格分（昇格順位順）で、並び順は最終アルバムTSVと同一です。</p>
+<div class="final-table-box">
+<table class="final-table">
+<thead>
+<tr><th scope="col">No.</th><th scope="col">アーティスト</th><th scope="col">アルバム</th><th scope="col">発売日</th><th scope="col">区分</th></tr>
+</thead>
+<tbody id="finalTableBody"></tbody>
+</table>
+</div>
+</section>
+
+<section id="tsv">
+<h2><span class="num">7</span>最終アルバムTSV</h2>
+<p class="sec-lead">最終選出20枚のアルバムTSV（GENRE／ARTIST／ALBUM／YEAR）です。そのままコピー、または.tsv ファイルとしてダウンロードできます。</p>
+<div class="tsv-box">
+<div class="tsv-scroll"><pre class="tsv" id="tsvPre"></pre></div>
+<div class="tsv-actions">
+<button type="button" id="copyBtn">TSVをコピー</button>
+<button type="button" id="dlBtn">.tsv をダウンロード</button>
+<span class="copy-msg" id="copyMsg" role="status"></span>
+</div>
+</div>
+</section>
+
+<footer>
+<p>2022年 YEARLY MASTERPIECES &amp; HITS アルバム選出エビデンスページ。掲載内容は選出時に確認した出典に基づきます。</p>
+</footer>
+</div>
+
+<script>
+var FINAL20 = [
+{ no: 1, artist: "Muse", album: "Will of the People", date: "2022-08-26", route: "S確定", cls: "route-s"},
+{ no: 2, artist: "Ozzy Osbourne", album: "Patient Number 9", date: "2022-09-09", route: "S確定", cls: "route-s"},
+{ no: 3, artist: "Bad Omens", album: "The Death of Peace of Mind", date: "2022-02-25", route: "S確定", cls: "route-s"},
+{ no: 4, artist: "Megadeth", album: "The Sick, the Dying... and the Dead!", date: "2022-09-02", route: "S確定", cls: "route-s"},
+{ no: 5, artist: "Porcupine Tree", album: "Closure/Continuation", date: "2022-06-24", route: "S確定", cls: "route-s"},
+{ no: 6, artist: "The Black Keys", album: "Dropout Boogie", date: "2022-05-13", route: "S確定", cls: "route-s"},
+{ no: 7, artist: "Architects", album: "The Classic Symptoms of a Broken Spirit", date: "2022-10-21", route: "S確定", cls: "route-s"},
+{ no: 8, artist: "Placebo", album: "Never Let Me Go", date: "2022-03-25", route: "S確定", cls: "route-s"},
+{ no: 9, artist: "Marcus King", album: "Young Blood", date: "2022-08-26", route: "S確定", cls: "route-s"},
+{ no: 10, artist: "Panic! at the Disco", album: "Viva Las Vengeance", date: "2022-08-19", route: "S確定", cls: "route-s"},
+{ no: 11, artist: "Rammstein", album: "Zeit", date: "2022-04-29", route: "昇格 1位", cls: "route-up"},
+{ no: 12, artist: "Arctic Monkeys", album: "The Car", date: "2022-10-21", route: "昇格 2位", cls: "route-up"},
+{ no: 13, artist: "Red Hot Chili Peppers", album: "Unlimited Love", date: "2022-04-01", route: "昇格 3位", cls: "route-up"},
+{ no: 14, artist: "Fontaines D.C.", album: "Skinty Fia", date: "2022-04-22", route: "昇格 4位", cls: "route-up"},
+{ no: 15, artist: "The Smile", album: "A Light for Attracting Attention", date: "2022-05-13", route: "昇格 5位", cls: "route-up"},
+{ no: 16, artist: "The 1975", album: "Being Funny in a Foreign Language", date: "2022-10-14", route: "昇格 6位", cls: "route-up"},
+{ no: 17, artist: "Tears for Fears", album: "The Tipping Point", date: "2022-02-25", route: "昇格 7位", cls: "route-up"},
+{ no: 18, artist: "Jack White", album: "Fear of the Dawn", date: "2022-04-08", route: "昇格 8位", cls: "route-up"},
+{ no: 19, artist: "Arcade Fire", album: "WE", date: "2022-05-06", route: "昇格 9位", cls: "route-up"},
+{ no: 20, artist: "Eddie Vedder", album: "Earthling", date: "2022-02-11", route: "昇格 10位", cls: "route-up"}
+];
+
+function esc(s) {
+return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+var tbody = document.getElementById("finalTableBody");
+var rowsHtml = "";
+FINAL20.forEach(function (f) {
+rowsHtml += '<tr><td class="no">' + f.no + '</td>' +
+'<td><b>' + esc(f.artist) + '</b></td>' +
+'<td><span class="album">『' + esc(f.album) + '』</span></td>' +
+'<td class="date">' + f.date + '</td>' +
+'<td class="route"><span class="route-tag ' + f.cls + '">' + f.route + '</span></td></tr>';
+});
+tbody.innerHTML = rowsHtml;
+
+var TSV_TEXT = "GENRE\tARTIST\tALBUM\tYEAR\n" +
+"YEARLY MASTERPIECES & HITS\tMuse\tWill of the People\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tOzzy Osbourne\tPatient Number 9\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tBad Omens\tThe Death of Peace of Mind\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tMegadeth\tThe Sick, the Dying... and the Dead!\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tPorcupine Tree\tClosure/Continuation\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tThe Black Keys\tDropout Boogie\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tArchitects\tThe Classic Symptoms of a Broken Spirit\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tPlacebo\tNever Let Me Go\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tMarcus King\tYoung Blood\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tPanic! at the Disco\tViva Las Vengeance\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tRammstein\tZeit\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tArctic Monkeys\tThe Car\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tRed Hot Chili Peppers\tUnlimited Love\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tFontaines D.C.\tSkinty Fia\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tThe Smile\tA Light for Attracting Attention\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tThe 1975\tBeing Funny in a Foreign Language\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tTears for Fears\tThe Tipping Point\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tJack White\tFear of the Dawn\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tArcade Fire\tWE\t2022\n" +
+"YEARLY MASTERPIECES & HITS\tEddie Vedder\tEarthling\t2022";
+
+document.getElementById("tsvPre").textContent = TSV_TEXT;
+
+document.getElementById("copyBtn").addEventListener("click", function () {
+var msg = document.getElementById("copyMsg");
+function done() { msg.textContent = "コピーしました";}
+function fallback() {
+var ta = document.createElement("textarea");
+ta.value = TSV_TEXT;
+ta.style.position = "fixed"; ta.style.opacity = "0";
+document.body.appendChild(ta);
+ta.select();
+try { document.execCommand("copy"); done();}
+catch (e) { msg.textContent = "コピーできませんでした";}
+document.body.removeChild(ta);
+}
+if (navigator.clipboard && navigator.clipboard.writeText) {
+navigator.clipboard.writeText(TSV_TEXT).then(done, fallback);
+} else { fallback();}
+});
+
+document.getElementById("dlBtn").addEventListener("click", function () {
+var blob = new Blob([TSV_TEXT], { type: "text/tab-separated-values;charset=utf-8"});
+var url = URL.createObjectURL(blob);
+var a = document.createElement("a");
+a.href = url;
+a.download = "2022-yearly-masterpieces-hits-final.tsv";
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+setTimeout(function () { URL.revokeObjectURL(url);}, 1000);
+});
+
+var CANDIDATES = [
+{ rank: "S", artist: "Muse", album: "Will of the People", date: "2022-08-26", status: "selected",
+memo: "Wikipedia: Alternative rock, glam rock, synth-pop, arena rock, hard rock, progressive metal（9作目）。synth-pop要素は境界として明記",
+url: "https://en.wikipedia.org/wiki/Will_of_the_People_(album)"},
+{ rank: "S", artist: "Ozzy Osbourne", album: "Patient Number 9", date: "2022-09-09", status: "selected",
+memo: "Wikipedia: Heavy metal, hard rock（13作目ソロ盤）。第65回グラミー賞 Best Rock Album受賞",
+url: "https://en.wikipedia.org/wiki/Patient_Number_9"},
+{ rank: "S", artist: "Bad Omens", album: "The Death of Peace of Mind", date: "2022-02-25", status: "selected",
+memo: "Wikipedia: Metalcore, alternative metal, alternative rock（3作目）。救済枠モダンメタル／メタルコア。R&B／pop混在は境界として明記",
+url: "https://en.wikipedia.org/wiki/The_Death_of_Peace_of_Mind"},
+{ rank: "S", artist: "Megadeth", album: "The Sick, the Dying... and the Dead!", date: "2022-09-02", status: "selected",
+memo: "Wikipedia: Thrash metal（16作目）。Ice-Tのゲスト参加は語り／掛け声的で絶対除外に非該当",
+url: "https://en.wikipedia.org/wiki/The_Sick,_the_Dying..._and_the_Dead!"},
+{ rank: "S", artist: "Porcupine Tree", album: "Closure/Continuation", date: "2022-06-24", status: "selected",
+memo: "Wikipedia: Progressive rock（11作目）。2009年以来の復活作、標準盤7曲・長尺曲中心",
+url: "https://en.wikipedia.org/wiki/Closure/Continuation"},
+{ rank: "S", artist: "The Black Keys", album: "Dropout Boogie", date: "2022-05-13", status: "selected",
+memo: "Wikipedia: Blues rock, garage rock（11作目）。救済枠ブルースロック。Nonesuch公式もblues rock回帰を明記",
+url: "https://www.nonesuch.com/albums/dropout-boogie"},
+{ rank: "S", artist: "Architects", album: "The Classic Symptoms of a Broken Spirit", date: "2022-10-21", status: "selected",
+memo: "Wikipedia: Alternative metal, industrial metal, metalcore（10作目）。インダストリアル／ニューメタルニュアンスは境界として明記",
+url: "https://en.wikipedia.org/wiki/The_Classic_Symptoms_of_a_Broken_Spirit"},
+{ rank: "S", artist: "Placebo", album: "Never Let Me Go", date: "2022-03-25", status: "selected",
+memo: "Wikipedia: Alternative rock（8作目）。9年ぶりの新作",
+url: "https://en.wikipedia.org/wiki/Never_Let_Me_Go_(Placebo_album)"},
+{ rank: "S", artist: "Marcus King", album: "Young Blood", date: "2022-08-26", status: "selected",
+memo: "Wikipedia: Blues rock（ソロ2作目）。Dan Auerbachプロデュース。救済枠ブルースロック",
+url: "http://en.wikipedia.org/wiki/Young_Blood_(Marcus_King_album)"},
+{ rank: "S", artist: "Panic! at the Disco", album: "Viva Las Vengeance", date: "2022-08-19", status: "selected",
+memo: "Wikipedia: Pop rock, glam rock, power pop系（7作目）。S 11枚中で最もポップ寄り。実質ソロ作・最終作",
+url: "https://en.wikipedia.org/wiki/Viva_Las_Vengeance"},
+{ rank: "S", artist: "Red Hot Chili Peppers", album: "Unlimited Love", date: "2022-04-01", status: "promoted",
+memo: "収集時はSランク。S検証でラップ調デリバリーの境界フラグによりAへ降格 → 昇格検証で昇格3位（16か国1位、Frusciante復帰作）。境界フラグはHiroに明示し承認済み",
+url: "https://en.wikipedia.org/wiki/Unlimited_Love"},
+{ rank: "A", artist: "Rammstein", album: "Zeit", date: "2022-04-29", status: "promoted",
+memo: "各国1位、ドイツ年間チャート1位。Metal Hammer年間ベスト5位、Metacritic 81｜昇格1位",
+url: "https://en.wikipedia.org/wiki/Zeit_(Rammstein_album)"},
+{ rank: "A", artist: "Arctic Monkeys", album: "The Car", date: "2022-10-21", status: "promoted",
+memo: "NME年間ベスト1位、UK2位、Metacritic 82。グラミー賞 Best Alternative Music Albumノミネート｜昇格2位",
+url: "https://en.wikipedia.org/wiki/The_Car_(album)"},
+{ rank: "A", artist: "Fontaines D.C.", album: "Skinty Fia", date: "2022-04-22", status: "promoted",
+memo: "UK・Irish初の1位、Metacritic 85。NME年間ベスト4位｜昇格4位",
+url: "https://en.wikipedia.org/wiki/Skinty_Fia"},
+{ rank: "A", artist: "The 1975", album: "Being Funny in a Foreign Language", date: "2022-10-14", status: "promoted",
+memo: "UK1位（5作連続）、Metacritic 82。Brit Awards Album of the Yearノミネート｜昇格6位",
+url: "https://en.wikipedia.org/wiki/Being_Funny_in_a_Foreign_Language"},
+{ rank: "A", artist: "Tears for Fears", album: "The Tipping Point", date: "2022-02-25", status: "promoted",
+memo: "約18年ぶりの復帰作、UK2位、Metacritic 83｜昇格7位",
+url: "https://en.wikipedia.org/wiki/The_Tipping_Point_%28Tears_for_Fears_album%29"},
+{ rank: "A", artist: "Arcade Fire", album: "WE", date: "2022-05-06", status: "promoted",
+memo: "Top Rock／Top Alternative等各1位。第65回グラミー賞 Best Alternative Music Albumノミネート｜昇格9位",
+url: "https://en.wikipedia.org/wiki/We_(Arcade_Fire_album)"},
+{ rank: "A", artist: "Eddie Vedder", album: "Earthling", date: "2022-02-11", status: "promoted",
+memo: "Top Rock Albums 1位（ソロ初）、Metacritic 79。年間ベスト入り多数｜昇格10位",
+url: "https://en.wikipedia.org/wiki/Earthling_(Eddie_Vedder_album)"},
+{ rank: "A", artist: "Parkway Drive", album: "Darker Still", date: "2022-09-09", status: "out",
+memo: "検証は昇格可（豪ARIA 1位）。救済枠メタルコアがS側2枚で充足したため見送り",
+url: ""},
+{ rank: "A", artist: "Red Hot Chili Peppers", album: "Return of the Dream Canteen", date: "2022-10-14", status: "out",
+memo: "『Unlimited Love』の姉妹作（6か国1位）。同一アーティスト2枚を避け次点筆頭",
+url: ""},
+{ rank: "A", artist: "Liam Gallagher", album: "C'mon You Know", date: "2022-05-27", status: "out",
+memo: "UK初登場1位。年間ベストの裏付けがNME 49位程度と弱く見送り",
+url: ""},
+{ rank: "A", artist: "Bryan Adams", album: "So Happy It Hurts", date: "2022-03-11", status: "out",
+memo: "UK3位、タイトル曲がグラミー賞ノミネート。年間ベストの裏付けが弱く見送り",
+url: ""},
+{ rank: "B", artist: "The Smile", album: "A Light for Attracting Attention", date: "2022-05-13", status: "promoted",
+memo: "Metacritic 86（候補中最高）、Uncut年間1位。ジャンル欄のelectronica併記は境界として明記｜昇格5位",
+url: "https://en.wikipedia.org/wiki/A_Light_for_Attracting_Attention"},
+{ rank: "B", artist: "Jack White", album: "Fear of the Dawn", date: "2022-04-08", status: "promoted",
+memo: "9チャートで1位、Metacritic 75。収録曲「Hi-De-Ho」はラップ参加曲のため楽曲選出で回避｜昇格8位",
+url: "https://en.wikipedia.org/wiki/Fear_of_the_Dawn"},
+{ rank: "B", artist: "Disturbed", album: "Divisive", date: "2022-11-18", status: "rejected",
+memo: "AllMusic／Discogsにニューメタル表記があり絶対除外に抵触｜検証で昇格不可",
+url: ""},
+{ rank: "B", artist: "Kasabian", album: "The Alchemist's Euphoria", date: "2022-08-12", status: "out",
+memo: "UK1位（通算6作目）。techno併記・trap beats等の境界フラグが強く見送り",
+url: ""}
+];
+
+var STATUS_LABEL = {
+selected: "最終選出（S確定）",
+promoted: "昇格で選出",
+rejected: "検証で不適合",
+out: "昇格せず"
+};
+
+var state = { rank: "all", query: "", sort: "default"};
+var listEl = document.getElementById("candList");
+var countEl = document.getElementById("countLine");
+
+function hostOf(url) {
+return url.replace(/^https?:\/\//, "").split("/")[0];
+}
+
+function render() {
+var items = CANDIDATES.filter(function (c) {
+if (state.rank!== "all" && c.rank!== state.rank) return false;
+if (state.query) {
+var hay = (c.artist + " " + c.album).toLowerCase();
+if (hay.indexOf(state.query.toLowerCase()) === -1) return false;
+}
+return true;
+});
+if (state.sort === "date-asc" || state.sort === "date-desc") {
+var dir = state.sort === "date-asc"? 1: -1;
+items = items.slice().sort(function (a, b) {
+if (a.date < b.date) return -1 * dir;
+if (a.date > b.date) return 1 * dir;
+return 0;
+});
+}
+countEl.textContent = "表示 " + items.length + " 件 / 全 " + CANDIDATES.length + " 件";
+if (items.length === 0) {
+listEl.innerHTML = '<div class="empty-note">条件に合う候補がありません。</div>';
+return;
+}
+var html = "";
+items.forEach(function (c) {
+html += '<article class="cand">' +
+'<span class="rank-chip rank-' + c.rank + '">' + c.rank + '</span>' +
+'<div class="head"><b>' + esc(c.artist) + '</b><span class="album">『' + esc(c.album) + '』</span>' +
+'<time datetime="' + c.date + '">' + c.date + '</time>' +
+'<span class="status st-' + c.status + '">' + STATUS_LABEL[c.status] + '</span></div>' +
+'<p class="memo">' + esc(c.memo) + '</p>' +
+(c.url? '<span class="src">出典：<a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(hostOf(c.url)) + '</a></span>': '') +
+'</article>';
+});
+listEl.innerHTML = html;
+}
+
+var rankBtns = document.querySelectorAll(".rank-btns button");
+rankBtns.forEach(function (btn) {
+btn.addEventListener("click", function () {
+state.rank = btn.getAttribute("data-rank");
+rankBtns.forEach(function (b) { b.setAttribute("aria-pressed", b === btn? "true": "false");});
+render();
+});
+});
+document.getElementById("searchBox").addEventListener("input", function (e) {
+state.query = e.target.value.trim();
+render();
+});
+document.getElementById("sortSel").addEventListener("change", function (e) {
+state.sort = e.target.value;
+render();
+});
+
+render();
+</script>
+</body>
+</html>

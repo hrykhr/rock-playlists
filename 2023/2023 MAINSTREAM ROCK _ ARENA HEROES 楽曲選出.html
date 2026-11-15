@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2023 MAINSTREAM ROCK / ARENA HEROES 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f4f1ec; --surface:#fffdf9; --surface2:#ece7dd; --ink:#1c1a17; --muted:#5d574e;
+    --line:#d8d1c2; --accent:#b3231b; --accent-ink:#fff; --gold:#8a6d1f; --chip:#efe9db;
+    --ok:#2e6b34;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#141210; --surface:#1e1b17; --surface2:#28241e; --ink:#f0eadf; --muted:#b3aa9a;
+      --line:#3a352c; --accent:#e2483d; --accent-ink:#fff; --gold:#d9b45c; --chip:#2b2721;
+      --ok:#7fc98a;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    line-height:1.65;font-size:15.5px}
+  .wrap{max-width:1060px;margin:0 auto;padding:28px 18px 64px}
+  .kicker{font-family:"Archivo",sans-serif;font-weight:800;letter-spacing:.14em;font-size:12px;color:var(--accent);text-transform:uppercase}
+  h1{font-family:"Archivo","Zen Kaku Gothic New",sans-serif;font-weight:900;font-size:clamp(26px,5.4vw,44px);line-height:1.12;margin:8px 0 6px;letter-spacing:.01em}
+  h1 .jp{display:block;font-size:.52em;font-weight:900;margin-top:8px;letter-spacing:.06em}
+  .lede{color:var(--muted);max-width:46em;margin:10px 0 0}
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;min-width:118px}
+  .stat b{font-family:"Archivo",sans-serif;font-size:24px;font-weight:900;display:block;line-height:1.1}
+  .stat span{font-size:12.5px;color:var(--muted)}
+  .rules{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:8px;padding:14px 18px;margin:18px 0 8px}
+  .rules h2{font-size:15px;margin:0 0 6px;font-weight:900}
+  .rules ul{margin:0;padding-left:1.2em;color:var(--muted);font-size:14px}
+  .toolbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 0 10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .toolbar input[type=search]{flex:1 1 220px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:14.5px}
+  button{font:inherit;font-weight:700;font-size:14px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);padding:10px 16px;cursor:pointer}
+  button.ghost{background:transparent;color:var(--accent)}
+  button:active{transform:translateY(1px)}
+  .toast{font-size:13.5px;color:var(--ok);font-weight:700;min-height:1.4em}
+  .album{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 20px 14px;margin:16px 0}
+  .album-head{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:10px}
+  .album-head .no{font-family:"Archivo",sans-serif;font-weight:900;color:var(--accent);font-size:20px}
+  .album-head h2{font-family:"Archivo","Zen Kaku Gothic New",sans-serif;font-size:21px;font-weight:900;margin:0}
+  .album-head .meta{color:var(--muted);font-size:13px;margin-left:auto}
+  .track{display:grid;grid-template-columns:1fr;gap:4px;padding:14px 0;border-bottom:1px dashed var(--line)}
+  .track:last-of-type{border-bottom:none}
+  .track-title{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+  .track-title h3{font-size:17.5px;margin:0;font-weight:900}
+  .len{font-family:"Archivo",sans-serif;font-weight:700;color:var(--muted);font-size:14px}
+  .badge{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:1px 10px;font-size:12px;font-weight:700}
+  .badge.single{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .track p{margin:2px 0;font-size:14px}
+  .track .label{font-weight:900;font-size:12.5px;color:var(--gold);letter-spacing:.05em;margin-right:6px}
+  .srcs{font-size:13px}
+  .srcs a{color:var(--accent);word-break:break-all}
+  details{margin:8px 0 6px;background:var(--surface2);border-radius:8px;padding:10px 14px}
+  summary{cursor:pointer;font-weight:700;font-size:14px}
+  details ul{margin:6px 0 4px;padding-left:1.2em;font-size:13.5px;color:var(--muted)}
+  details li{margin:3px 0}
+  section.plain{margin:34px 0 0}
+  section.plain h2{font-size:20px;font-weight:900;border-bottom:2px solid var(--ink);padding-bottom:6px}
+  pre.tsv{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font-size:12.5px;line-height:1.7;white-space:pre}
+  .caveats li{margin:6px 0}
+  .caveats{color:var(--muted);font-size:14.5px;padding-left:1.2em}
+  footer{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+  .hidden{display:none!important}
+  @media (max-width:560px){
+    .album{padding:16px 14px 10px}
+    .album-head .meta{margin-left:0}
+    .stat{min-width:calc(50% - 6px)}
+  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">2023 · Mainstream Rock / Arena Heroes</div>
+    <h1>Song Selection<span class="jp">楽曲選出 ― 最終10枚 × 各2曲 ＝ 全20曲</span></h1>
+    <p class="lede">確定済みの最終10枚から、楽曲選定マニュアルに沿って各アルバム2曲ずつ選出した結果です。収録確認はWikipediaを優先し、2サイト以上でクロスチェックしています。再生回数は出典が実際に示した数値だけを載せ、推測の数値は入れていません。</p>
+    <div class="stats">
+      <div class="stat"><b>10</b><span>対象アルバム</span></div>
+      <div class="stat"><b>20</b><span>選出曲（各2曲）</span></div>
+      <div class="stat"><b>20 / 20</b><span>シングル曲</span></div>
+      <div class="stat"><b>0</b><span>バラード例外の適用</span></div>
+    </div>
+    <div class="rules">
+      <h2>適用したマニュアルのルール</h2>
+      <ul>
+        <li>各アルバムから2曲。シングル曲・再生回数の多い曲・ファン人気の高い曲を優先し、原則2つ以上の基準を満たす曲を選出</li>
+        <li>収録曲は最低2サイトでクロスチェック（Wikipedia優先、次にApple Music／Spotify等）。エビデンスのURLを必ず明記</li>
+        <li>2分以下の曲は除外</li>
+        <li>バラードは原則不採用。歴史的・バンド的・その年における重要性がある場合のみ例外 ― 今回は例外適用なし</li>
+        <li>確認できないものは「確認できない」と明示し、記憶や推測で埋めない</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="アーティスト・アルバム・曲名で絞り込み" aria-label="絞り込み検索" />
+    <button id="copyBtn" type="button">TSVをコピー</button>
+    <button id="dlBtn" type="button" class="ghost">TSVをダウンロード</button>
+    <span class="toast" id="toast" role="status"></span>
+  </div>
+
+  <main id="albums"></main>
+
+  <section class="plain">
+    <h2>最終TSV（ジャンル／アーティスト／アルバム／曲名）</h2>
+    <p style="color:var(--muted);font-size:14px">1行1曲、全20行のタブ区切りです。上のボタンからコピー／ダウンロードできます。</p>
+    <pre class="tsv" id="tsvBlock"></pre>
+  </section>
+
+  <section class="plain">
+    <h2>確認できなかったこと・注記</h2>
+    <ul class="caveats">
+      <li><strong>Wikipediaで確認できない（2枚）：</strong>Rival Sons『Lightbringer』とEclipse『Megalomanium』にはWikipediaのアルバム記事が見つからなかったため、収録確認はBlabbermouth＋Qobuz（Lightbringer）、Sonic Perspectives＋Qobuz／Deezer（Megalomanium）で行いました。アルバム収録自体はこの2ソースで確認済みです。</li>
+      <li><strong>Apple Musicで確認できない（4枚）：</strong>The Struts『Pretty Vicious』、Rival Sons『Lightbringer』、Eclipse『Megalomanium』、Winger『Seven』は検索でApple MusicのアルバムURLが返ってこなかったため、第2ソースはBlabbermouth／Qobuz／Shazam等です。</li>
+      <li><strong>再生回数の正確な現在値：</strong>SpotifyやYouTubeの正確な再生回数は、検索可能なテキストで出典が示していないため確認できませんでした。人気の根拠は、シングルの有無とチャート順位、出典が示した初期値（「Sweet Life」のSpotify 37.6万回超、「Rise」の動画公開1週間で100万再生超）、Last.fmのリスナー数など、出典のあるものだけを使っています。</li>
+      <li><strong>人気の確度：</strong>収録・曲の長さ・シングルの有無は2ソース一致で確度高。一方、Last.fmリスナー数や初期のSpotify数値しか得られなかった曲については、相対的な人気の確度は中程度です。数値は取得時点のものをそのまま引用しています。</li>
+      <li><strong>細かな食い違い（未解決のまま明記）：</strong>曲の長さに1秒差の表記ゆれ（『Hackney Diamonds』『Lightbringer』『Megalomanium』。本ページはWikipedia／Qobuzの値を採用）。Greta Van Fleet「Sacred the Thread」はシングル／プロモーション・シングルの表記と、5月18日／19日の日付がページにより異なります。Mammoth WVH「Like a Pastime」もシングル／プロモーション・シングルの分類が分かれます。Rival Sons「Rapture」は一部出典でラジオ・シングル扱いですが、Wikipediaの『Darkfighter』シングル一覧には載っていません。</li>
+    </ul>
+  </section>
+
+  <footer>
+    リサーチ実施：2026年11月10日（Web検索によるエビデンス確認）。ジャンルは全曲 MAINSTREAM ROCK / ARENA HEROES、対象年は2023年です。
+  </footer>
+</div>
+
+<script>
+var GENRE = "MAINSTREAM ROCK / ARENA HEROES";
+var ALBUMS = [
+{ n:1, artist:"Foo Fighters", album:"But Here We Are", meta:"2023年6月2日発売 · 全10曲 · 48:08",
+  tracks:[
+   { title:"Rescued", len:"4:18", single:"第1弾シングル · 2023年4月19日",
+     pop:"リードシングル。Wikipediaによれば Hot Hard Rock Songs チャートで1位。",
+     reason:"カムバックのリードシングルでチャート首位。アルバムを代表する1曲目。",
+     srcs:[["Wikipedia — But Here We Are","https://en.wikipedia.org/wiki/But_Here_We_Are"],["Apple Music — But Here We Are","https://music.apple.com/us/album/but-here-we-are/1682993466"]]},
+   { title:"Under You", len:"3:39", single:"第2弾シングル · 2023年5月17日",
+     pop:"第2弾シングル。Wikipediaは「メロディック・パンク」と評し、バラードではない。",
+     reason:"リードに続く即時のフォローアップ・シングルで、最もプッシュされた2曲のひとつ。",
+     srcs:[["Wikipedia — But Here We Are","https://en.wikipedia.org/wiki/But_Here_We_Are"],["Apple Music — But Here We Are","https://music.apple.com/us/album/but-here-we-are/1682993466"]]}
+  ],
+  rejected:[
+   ["Show Me How","シングルだが、Violet Grohlとのデュエットでスローなバラード寄り。アリーナ向けのテンポではないため不採用"],
+   ["The Teacher","シングルだが10:04のプログレッシブな大曲で、2曲枠のアリーナ選出には不向き"],
+   ["The Glass","シングル化は2023年12月29日とアルバム発売後かなり遅いため不採用"]
+  ]},
+{ n:2, artist:"Greta Van Fleet", album:"Starcatcher", meta:"2023年7月21日発売 · 全10曲 · 42:47",
+  tracks:[
+   { title:"Meeting the Master", len:"5:12", single:"リードシングル · 2023年4月7日",
+     pop:"米 Hot Hard Rock Songs 4位、米 Mainstream Rock 12位、米 Hot Rock & Alternative 33位（Wikipedia「Meeting the Master」）。",
+     reason:"明確なリードシングルで、アルバムでチャート実績のある中心曲。",
+     srcs:[["Wikipedia — Starcatcher","https://en.wikipedia.org/wiki/Starcatcher_(album)"],["Apple Music — Starcatcher","https://music.apple.com/ca/album/starcatcher/1680068243"]]},
+   { title:"Sacred the Thread", len:"5:21", single:"第2弾シングル · 2023年5月19日（曲単独ページではプロモーション・シングル表記・5月18日と表記が分かれる）",
+     pop:"米 Hot Hard Rock Songs にチャートイン（ディスコグラフィでは最高25位、Hard Rock Digital Song Sales 20位と報告）。",
+     reason:"最初の2枚のシングルのうちの1曲で、アルバムでチャートインした2曲のひとつ。",
+     srcs:[["Wikipedia — Starcatcher","https://en.wikipedia.org/wiki/Starcatcher_(album)"],["Apple Music — Starcatcher","https://music.apple.com/ca/album/starcatcher/1680068243"]]}
+  ],
+  rejected:[
+   ["Runway Blues","1:17のため、2分以下除外ルールにより不採用"],
+   ["Farewell for Now","第3弾シングルだが、確認した出典ではチャート順位が見つからなかった"],
+   ["The Falling Sky","第4弾シングルのため優先度で劣後"]
+  ]},
+{ n:3, artist:"The Rolling Stones", album:"Hackney Diamonds", meta:"2023年10月20日発売 · 全12曲 · 48:23",
+  tracks:[
+   { title:"Angry", len:"3:46", single:"リードシングル · 2023年9月6日",
+     pop:"英34位、Billboard Hot Rock & Alternative 32位、Billboard AAA 6位（American Songwriter）。",
+     reason:"リードシングルで、アップテンポなロック・シングルの筆頭。",
+     srcs:[["Wikipedia — Hackney Diamonds","https://en.wikipedia.org/wiki/Hackney_Diamonds"],["Apple Music — Hackney Diamonds","https://music.apple.com/us/album/hackney-diamonds/1704373695"]]},
+   { title:"Mess It Up", len:"4:03", single:"シングル · 2023年10月20日",
+     pop:"Billboard AAA で最高15位（American Songwriter）。故Charlie Wattsがドラムで参加し、2024年のHackney Diamondsツアーでライブ初披露。",
+     reason:"チャート実績とWatts参加というバンド史上の意味を持つ、2曲目のアップテンポ・シングル。",
+     srcs:[["Wikipedia — Hackney Diamonds","https://en.wikipedia.org/wiki/Hackney_Diamonds"],["Apple Music — Hackney Diamonds","https://music.apple.com/us/album/hackney-diamonds/1704373695"]]}
+  ],
+  rejected:[
+   ["Sweet Sounds of Heaven","シングルだが、Apple Musicが「感動的な7分のゴスペル大曲」、別出典が「ゴスペル風バラード」と評するバラードのため不採用。例外は適用しなかった（Lady Gaga／Stevie Wonder参加にもかかわらず）"],
+   ["Bite My Head Off","Apple Musicが注目曲として挙げ、Paul McCartneyがベース参加しているが、シングルではないため不採用"],
+   ["Depending on You","Apple Musicが「苦い恋愛バラード」と評するバラード寄りのため不採用"],
+   ["（注記）","曲の長さに1秒差の表記ゆれあり（RiffologyではAngry 3:47、Mess It Up 4:04）。本ページはWikipediaの値を採用"]
+  ]},
+{ n:4, artist:"Mammoth WVH", album:"Mammoth II", meta:"2023年8月4日発売 · 全10曲 · 48:07",
+  tracks:[
+   { title:"Another Celebration at the End of the World", len:"4:35", single:"リードシングル · 2023年3月22日",
+     pop:"Billboard Mainstream Rock Airplay 7位、Rock & Alternative Airplay 10位。Gordy De St. Jeor監督のミュージックビデオあり。",
+     reason:"アルバム唯一のMainstream Rockトップ10シングルで、リードシングル。",
+     srcs:[["Wikipedia — Mammoth II","https://en.wikipedia.org/wiki/Mammoth_II"],["Apple Music — Mammoth II","https://music.apple.com/us/album/mammoth-ii/1675369110"]]},
+   { title:"Like a Pastime", len:"3:45", single:"第2弾シングル · 2023年5月8日（ディスコグラフィではプロモーション・シングル分類。アルバムページ＋Blabbermouthで「第2弾シングル」）",
+     pop:"第2弾シングル。Apple Musicもシングルとして挙げ、Meshuggah影響のポリリズム／7拍子で知られる。",
+     reason:"最初の2枚のシングルの2曲目。",
+     srcs:[["Wikipedia — Mammoth II","https://en.wikipedia.org/wiki/Mammoth_II"],["Apple Music — Mammoth II","https://music.apple.com/us/album/mammoth-ii/1675369110"]]}
+  ],
+  rejected:[
+   ["Take a Bow","シングルで最長曲（6:54）。90秒の「Frankenstrat」ソロを持つ有力候補だが、「最初の2シングル」ルールで次点"],
+   ["I'm Alright","シングル（8月1日）でディスコグラフィ表ではMainstream Rock最高5位と有力だが、同様の理由で次点"]
+  ]},
+{ n:5, artist:"The Struts", album:"Pretty Vicious", meta:"2023年11月3日発売 · 全11曲 · 44:42",
+  tracks:[
+   { title:"Too Good At Raising Hell", len:"3:49", single:"リードシングル · 2023年6月30日",
+     pop:"リードシングル。発表時の報道で「大西洋の両側でラジオを席巻」と紹介。Apple Musicの「Rock Hits: 2023」プレイリストに収録。",
+     reason:"リードシングルで、アルバムの顔となる1曲。",
+     srcs:[["Wikipedia — Pretty Vicious","https://en.wikipedia.org/wiki/Pretty_Vicious_(album)"],["Blabbermouth — アルバム発表／シングル記事","https://blabbermouth.net/news/the-struts-announce-pretty-vicious-album-share-too-good-at-raising-hell-single"]]},
+   { title:"Rockstar", len:"3:28", single:"シングル · 2023年9月8日",
+     pop:"シングルでYouTubeリリックビデオあり。Luke Spiller自身が「アルバムで最もエネルギッシュな曲のひとつ」と発言（Stereoboard）。",
+     reason:"最初の2シングルの2曲目で、バンド自身が太鼓判を押す高エネルギー曲。",
+     srcs:[["Wikipedia — Pretty Vicious","https://en.wikipedia.org/wiki/Pretty_Vicious_(album)"],["Stereoboard — Rockstar記事","https://www.stereoboard.com/content/view/241046/9"]]}
+  ],
+  rejected:[
+   ["Pretty Vicious","タイトル曲で第3弾シングル（10月19日、5:10）だが、最初の2シングルを優先したため次点"],
+   ["Remember The Name","ツアー名の由来だが、シングルではないため不採用"],
+   ["（注記）","このアルバムは検索でApple Musicの直接URLが返ってこなかったため、検証はWikipedia＋Blabbermouth／Stereoboardで行った"]
+  ]},
+{ n:6, artist:"Rival Sons", album:"Darkfighter", meta:"2023年6月2日発売 · 全8曲 · 39:35",
+  tracks:[
+   { title:"Nobody Wants to Die", len:"3:42", single:"リードシングル · 2022年10月14日",
+     pop:"リードシングル。Eli Sokhn監督のミュージックビデオあり。アルバムCDのステッカーにも「INCLUDING NOBODY WANTS TO DIE」と明記。",
+     reason:"議論の余地のないリードシングル。",
+     srcs:[["Wikipedia — Darkfighter","https://en.wikipedia.org/wiki/Darkfighter"],["Apple Music — Darkfighter","https://music.apple.com/us/album/darkfighter/1649426782"]]},
+   { title:"Bird in the Hand", len:"4:28", single:"シングル · 2023年3月10日",
+     pop:"シングル。Metal Injection（Wikipedia経由）はアルバムについて「『Bird in the Hand』のようなラジオ向けのキラーチューンが多数」と評した。",
+     reason:"Wikipediaが挙げるアルバムの2枚のシングルのうちの1曲。",
+     srcs:[["Wikipedia — Darkfighter","https://en.wikipedia.org/wiki/Darkfighter"],["Apple Music — Darkfighter","https://music.apple.com/us/album/darkfighter/1649426782"]]}
+  ],
+  rejected:[
+   ["Rapture","2023年1月に新曲／シングルとして公開され、一部出典ではロック・ラジオ向けシングルとされるが、Wikipediaのシングル一覧には2曲しか載っていないため、それらを優先した"],
+   ["Mirrors","オープニング曲だがシングルではないため不採用"]
+  ]},
+{ n:7, artist:"Rival Sons", album:"Lightbringer", meta:"2023年10月20日発売 · 全6曲 · 約33:33",
+  tracks:[
+   { title:"Sweet Life", len:"3:33", single:"リードシングル · 2023年8月18日",
+     pop:"リードシングル。レーベル発表（Backstage Axxess経由）によれば「公開直後からSpotifyで37.6万回超のストリーミングを記録」。American Songwriterは「エネルギッシュな逃避感のあるグルーヴィーな曲」と評価。",
+     reason:"アルバム唯一の2シングルの1曲目で、出典のある初期再生数も確認できる。",
+     srcs:[["Blabbermouth — Lightbringer発表記事","https://blabbermouth.net/news/rival-sons-announce-new-album-lightbringer"],["Qobuz — Lightbringer","https://www.qobuz.com/nl-nl/album/lightbringer-rival-sons/rsj0pzb6tilxa"]]},
+   { title:"Mercy", len:"4:26", single:"シングル · 2023年9月22日",
+     pop:"シングル。Stereoboardは「エネルギーとグルーヴに爆発し、巨大なリフとパワフルでソウルフルなボーカルを見せる」と評し、バラードではない。",
+     reason:"アルバム唯一の2シングルの2曲目で、高エネルギー曲として出典でも確認できる。",
+     srcs:[["Blabbermouth — Mercy記事","https://blabbermouth.net/news/rival-sons-share-new-song-mercy-from-upcoming-lightbringer-album"],["Qobuz — Lightbringer","https://www.qobuz.com/nl-nl/album/lightbringer-rival-sons/rsj0pzb6tilxa"]]}
+  ],
+  rejected:[
+   ["Darkfighter（タイトル曲）","8:58の大曲オープナーでファン／レビューの評価は高いが、シングルではなく約9分と長いため不採用"],
+   ["Redemption","内省的でアルバムの穏やかなバラード寄りの曲と評されるため不採用"],
+   ["（注記）","Wikipediaのアルバム記事は確認できない。検証はBlabbermouth＋Qobuz。曲の長さはQobuzとアナログ盤表記で1秒差のゆれがあり、Qobuzの値を採用"]
+  ]},
+{ n:8, artist:"Extreme", album:"Six", meta:"2023年6月9日発売 · 全12曲 · 52:35",
+  tracks:[
+   { title:"Rise", len:"4:35", single:"第1弾シングル · 2023年3月1日",
+     pop:"ミュージックビデオが公開1週間で100万再生超（Wikipedia）。Nuno BettencourtのソロがTotal Guitar読者投票（2023年）で「21世紀のベストソロ」3位。Classic Rockチャート最高3位。",
+     reason:"アルバムのブレイクスルーとなった最初のシングル。",
+     srcs:[["Wikipedia — Six (Extreme album)","https://en.wikipedia.org/wiki/Six_(Extreme_album)"],["Apple Music — Six","https://music.apple.com/us/album/six/1670753921"]]},
+   { title:"Banshee", len:"3:34", single:"両A面シングル（#Rebelと同時） · 2023年4月19日",
+     pop:"「Banshee」と「#Rebel」の2曲が新シングルとして同時発売され、それぞれミュージックビデオあり（MusicPlayers、2023年4月19日）。",
+     reason:"第1弾に続く両A面シングルの先行トラック。",
+     srcs:[["Wikipedia — Six (Extreme album)","https://en.wikipedia.org/wiki/Six_(Extreme_album)"],["Apple Music — Six","https://music.apple.com/us/album/six/1670753921"]]}
+  ],
+  rejected:[
+   ["#Rebel","Bansheeと同じ両A面リリースで実質同点。同一リリースの重複を避けるため次点"],
+   ["Other Side of the Rainbow","シングル（5月31日）だが、発売時報道でアルバムの「親密で内省的なバラード群」の一部と評されるバラード寄りのため不採用"],
+   ["The Mask / Hurricane","2023年の後発シングルだが、同等の再生数エビデンスが見つからなかった"]
+  ]},
+{ n:9, artist:"Eclipse", album:"Megalomanium", meta:"2023年9月1日発売 · 全11曲 · 38:00",
+  tracks:[
+   { title:"The Hardest Part Is Losing You", len:"3:24", single:"第1弾シングル · 2023年5月（Top Chartsでは5月26日）",
+     pop:"ビデオ付きリードシングル。Last.fmでは本作で最も聴かれている曲（3,603リスナー、Anthemの3,351を上回る）。ファンのお気に入りとしてAOR／アナログ盤レビューでも言及。iTunes 33位（Top Charts）。",
+     reason:"リードシングルで、Last.fmでもアルバム最多リスナーの曲。",
+     srcs:[["Sonic Perspectives — Megalomanium発表記事","https://www.sonicperspectives.com/news/eclipse-announce-new-album-megalomanium/"],["Qobuz — Megalomanium","https://www.qobuz.com/gb-en/album/megalomanium-eclipse/yagc2mn5deuib"]]},
+   { title:"Got It!", len:"3:28", single:"シングル · 2023年7月28日",
+     pop:"ビデオ付き新シングル（MyGlobalMind、2023年7月28日）。Last.fm 2,889リスナー。",
+     reason:"シングルでビデオとLast.fmの支持もある。シングル発売順ではHearts Collide（6月30日）が先だが、本曲はトラック2／発表報道で第2弾シングルとして扱われ、Rockpitのレビューも第2弾シングルと明記しているため選出（Hearts Collideが最も僅差の対抗馬）。",
+     srcs:[["Sonic Perspectives — Megalomanium発表記事","https://www.sonicperspectives.com/news/eclipse-announce-new-album-megalomanium/"],["Qobuz — Megalomanium","https://www.qobuz.com/gb-en/album/megalomanium-eclipse/yagc2mn5deuib"]]}
+  ],
+  rejected:[
+   ["Hearts Collide","シングル（2023年6月30日）でビデオあり、Last.fm 2,467リスナー。最も僅差の対抗馬で、どちらも成立しうる"],
+   ["Anthem","Last.fm 3,351リスナーでアルバム2位、後にビデオも出た（2023年9月）が、先行シングルではないため次点"],
+   ["（注記）","Wikipediaのアルバム記事は確認できない。検証はSonic Perspectives＋Qobuz／Deezer。曲の長さはHardest Part 3:24／Discogs 3:25、Got It! 3:28／3:29と1秒差のゆれあり"]
+  ]},
+{ n:10, artist:"Winger", album:"Seven", meta:"2023年5月5日発売 · 全12曲 · 56:22",
+  tracks:[
+   { title:"Proud Desperado", len:"3:50", single:"リードシングル · 2023年3月10日",
+     pop:"リードシングルで公式ミュージックビデオあり（YouTube、Frontiers）。Last.fm 2,801リスナー。",
+     reason:"公式ビデオ付きのリードシングル。",
+     srcs:[["Wikipedia — Seven (Winger album)","https://en.wikipedia.org/wiki/Seven_(Winger_album)"],["Shazam — Seven","https://www.shazam.com/album/1669789756"]]},
+   { title:"Tears of Blood", len:"5:04", single:"シングル（アルバムの3シングル／3ビデオのひとつ。Proud Desperado、It All Comes Back Aroundと並ぶ。AeschTunesが3本のビデオを確認、Instagramのキャプションが3シングルを列挙）",
+     pop:"公式ビデオあり。Last.fmではアルバム曲中最多の2,847リスナー（Proud Desperado 2,801、Resurrect Me 1,560を上回る）。レビューでは「エッジの効いたリフ」「Hells Bells風の幕開け」と評される。",
+     reason:"リード以外のバラードでないシングルで、Last.fmではアルバム最多リスナーの曲。",
+     srcs:[["Wikipedia — Seven (Winger album)","https://en.wikipedia.org/wiki/Seven_(Winger_album)"],["Shazam — Seven","https://www.shazam.com/album/1669789756"]]}
+  ],
+  rejected:[
+   ["It All Comes Back Around","シングル＋ビデオだが、Sleaze Roxxの見出しが「新バラード」と明記するバラードのため不採用。例外は適用しなかった"],
+   ["Resurrect Me","Sea of Tranquilityが「アルバムで最も印象的なシンガロングのひとつ」、Junkyardが「なぜシングルでないのか」と評す有力候補だが、Last.fmが1,560リスナーとTears of Blood（2,847）に再生面で劣るため次点"]
+  ]}
+];
+
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function render(){
+  var host=document.getElementById("albums");
+  var html="";
+  ALBUMS.forEach(function(a){
+    html+='<article class="album" data-search="'+esc((a.artist+" "+a.album+" "+a.tracks.map(function(t){return t.title;}).join(" ")).toLowerCase())+'">';
+    html+='<div class="album-head"><span class="no">'+String(a.n).padStart(2,"0")+'</span><h2>'+esc(a.artist)+' — 『'+esc(a.album)+'』</h2><span class="meta">'+esc(a.meta)+'</span></div>';
+    a.tracks.forEach(function(t){
+      html+='<div class="track"><div class="track-title"><h3>'+esc(t.title)+'</h3><span class="len">'+esc(t.len)+'</span><span class="badge single">シングル</span></div>';
+      html+='<p><span class="label">シングル</span>'+esc(t.single)+'</p>';
+      html+='<p><span class="label">人気の根拠</span>'+esc(t.pop)+'</p>';
+      html+='<p><span class="label">選出理由</span>'+esc(t.reason)+'</p>';
+      html+='<p class="srcs"><span class="label">検証ソース（2サイト）</span>'+t.srcs.map(function(s){return '<a href="'+s[1]+'" target="_blank" rel="noopener">'+esc(s[0])+'</a>';}).join(' ／ ')+'</p></div>';
+    });
+    if(a.rejected && a.rejected.length){
+      html+='<details><summary>検討して外した候補と理由（'+a.rejected.length+'件）</summary><ul>';
+      a.rejected.forEach(function(r){ html+='<li><strong>'+esc(r[0])+'</strong> ― '+esc(r[1])+'</li>'; });
+      html+='</ul></details>';
+    }
+    html+='</article>';
+  });
+  host.innerHTML=html;
+}
+function tsvText(){
+  var rows=[];
+  ALBUMS.forEach(function(a){ a.tracks.forEach(function(t){ rows.push([GENRE,a.artist,a.album,t.title].join("\t")); }); });
+  return rows.join("\n");
+}
+render();
+document.getElementById("tsvBlock").textContent=tsvText();
+
+var toast=document.getElementById("toast");
+function showToast(msg){ toast.textContent=msg; setTimeout(function(){toast.textContent="";},2600); }
+document.getElementById("copyBtn").addEventListener("click",function(){
+  var text=tsvText();
+  function done(){ showToast("TSV（20行）をコピーしました"); }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done,function(){ fallback(); });
+  } else { fallback(); }
+  function fallback(){
+    var ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); done(); }catch(e){ showToast("コピーできませんでした。下のTSV欄から選択してください"); }
+    document.body.removeChild(ta);
+  }
+});
+document.getElementById("dlBtn").addEventListener("click",function(){
+  var blob=new Blob([tsvText()],{type:"text/tab-separated-values;charset=utf-8"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url; a.download="2023-mainstream-rock-arena-heroes-tracks.tsv";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  showToast("TSVファイルをダウンロードしました");
+});
+document.getElementById("q").addEventListener("input",function(e){
+  var q=e.target.value.trim().toLowerCase();
+  document.querySelectorAll(".album").forEach(function(el){
+    el.classList.toggle("hidden", q!=="" && el.getAttribute("data-search").indexOf(q)===-1);
+  });
+});
+</script>
+</body>
+</html>

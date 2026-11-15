@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2023 AAA (Adult Alternative) 候補一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, a.btn { min-height: 2.25rem; }
+      :root{
+        --bg:#fbfbf8; --surface:#ffffff; --surface2:#f1f3ee;
+        --ink:#1d2420; --ink2:#49534c; --ink3:#6d786f;
+        --line:#dde2d8; --line2:#c9d2c4;
+        --accent:#2e5c43; --accent-ink:#ffffff; --accent-soft:#e3efe6;
+        --rust:#a34d24; --rust-soft:#f8e9df;
+        --gold:#8a6d1f; --gold-soft:#f4ecd2;
+        --rose:#9c3d54; --rose-soft:#f7e3e8;
+        --spotify:#177245;
+        --shadow:0 1px 2px rgba(29,36,32,.05),0 10px 26px -20px rgba(29,36,32,.4);
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#121613; --surface:#1a1f1b; --surface2:#212822;
+          --ink:#edf1ec; --ink2:#bcc6bc; --ink3:#93a194;
+          --line:#2e382f; --line2:#3d4a3e;
+          --accent:#7fb894; --accent-ink:#0f2016; --accent-soft:#22392a;
+          --rust:#e09a6d; --rust-soft:#3a2a1e;
+          --gold:#d9bc6a; --gold-soft:#38311c;
+          --rose:#e59cae; --rose-soft:#3a232b;
+          --spotify:#4cc983;
+          --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px -20px rgba(0,0,0,.8);
+        }
+      }
+      *{ box-sizing:border-box; }
+      html{ scroll-behavior:smooth; }
+      body{
+        margin:0; background:var(--bg); color:var(--ink);
+        font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+        font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+      }
+      .wrap{ max-width:1060px; margin:0 auto; padding:0 20px 72px; }
+      a{ color:var(--accent); }
+      a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+      /* ---------- header ---------- */
+      header{ padding:52px 0 8px; }
+      .genre-line{
+        display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+        font-size:.82rem; font-weight:700; letter-spacing:.14em; color:var(--ink3);
+      }
+      .status{
+        letter-spacing:.02em; color:var(--accent); background:var(--accent-soft);
+        border:1px solid var(--line2); border-radius:999px; padding:3px 12px; font-size:.8rem;
+      }
+      h1{
+        font-family:"Shippori Mincho",serif; font-weight:800;
+        font-size:clamp(1.9rem,5.4vw,3rem); line-height:1.3; margin:14px 0 6px; letter-spacing:.01em;
+      }
+      .en-sub{ font-family:"Shippori Mincho",serif; font-size:1rem; font-weight:600; color:var(--ink2); letter-spacing:.05em; margin:2px 0 0; }
+      .lede{ color:var(--ink2); max-width:46em; margin:10px 0 0; }
+      .stats{
+        display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:28px 0 18px;
+      }
+      .stat{
+        background:var(--surface); border:1px solid var(--line); border-radius:10px;
+        padding:14px 16px 10px; box-shadow:var(--shadow);
+      }
+      .stat b{ display:block; font-family:"Shippori Mincho",serif; font-size:1.9rem; line-height:1.1; font-weight:800; }
+      .stat span{ font-size:.8rem; color:var(--ink2); font-weight:500; }
+      .stat.warn b{ color:var(--rust); }
+      .btn{
+        display:inline-flex; align-items:center; gap:9px; text-decoration:none;
+        background:var(--spotify); color:#fff; font-weight:700; border-radius:999px;
+        padding:9px 20px; font-size:.95rem;
+      }
+      @media (prefers-color-scheme: dark){ .btn{ color:#0d2013; } }
+      .btn svg{ flex:none; }
+      .btn:hover{ filter:brightness(1.08); }
+
+      /* ---------- sections ---------- */
+      section{ margin-top:52px; }
+      .sec-head{ display:flex; align-items:baseline; gap:14px; border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:20px; }
+      .sec-head .no{ font-family:"Shippori Mincho",serif; font-weight:800; color:var(--accent); font-size:1.05rem; }
+      h2{ font-family:"Shippori Mincho",serif; font-size:1.5rem; font-weight:800; margin:0; line-height:1.4; }
+      .sec-head p{ margin:0 0 2px auto; color:var(--ink3); font-size:.85rem; text-align:right; }
+      h3{ font-size:1.05rem; font-weight:900; margin:30px 0 10px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+      p.note{ color:var(--ink2); }
+
+      /* ---------- timeline ---------- */
+      .timeline{ list-style:none; margin:0; padding:0; position:relative; }
+      .timeline::before{ content:""; position:absolute; left:17px; top:10px; bottom:10px; width:2px; background:var(--line2); }
+      .timeline li{ position:relative; padding:0 0 22px 52px; }
+      .timeline li:last-child{ padding-bottom:2px; }
+      .dot{
+        position:absolute; left:0; top:2px; width:36px; height:36px; border-radius:50%;
+        background:var(--surface); border:2px solid var(--accent); color:var(--accent);
+        display:flex; align-items:center; justify-content:center;
+        font-family:"Shippori Mincho",serif; font-weight:800; font-size:.95rem; z-index:1;
+      }
+      .timeline li.stop .dot{ border-color:var(--rust); color:var(--rust); }
+      .timeline li.decide .dot{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+      .timeline h4{ margin:0 0 2px; font-size:1rem; font-weight:900; }
+      .timeline p{ margin:0; color:var(--ink2); max-width:52em; }
+      .timeline .tag{
+        display:inline-block; font-size:.72rem; font-weight:700; border-radius:4px; padding:0 7px; margin-left:8px; vertical-align:2px;
+      }
+      .tag-stop{ background:var(--rust-soft); color:var(--rust); }
+      .tag-decide{ background:var(--accent-soft); color:var(--accent); }
+
+      .callout{
+        border:1px solid var(--line2); border-left:5px solid var(--rust);
+        background:var(--surface); border-radius:8px; padding:16px 20px; margin-top:6px; box-shadow:var(--shadow);
+      }
+      .callout h4{ margin:0 0 4px; font-size:.98rem; font-weight:900; color:var(--rust); }
+      .callout p{ margin:0; color:var(--ink2); }
+      .callout strong{ color:var(--ink); }
+
+      /* ---------- tables ---------- */
+      .tablebox{ background:var(--surface); border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); }
+      table{ width:100%; border-collapse:collapse; font-size:.92rem; }
+      thead th{
+        text-align:left; background:var(--surface2); color:var(--ink2);
+        font-size:.76rem; font-weight:700; letter-spacing:.08em;
+        padding:10px 14px; border-bottom:1px solid var(--line2); white-space:nowrap;
+      }
+      tbody td{ padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+      tbody tr:last-child td{ border-bottom:none; }
+      td.album-cell{ min-width:210px; }
+      .artist{ font-weight:900; }
+      .album{ font-family:"Shippori Mincho",serif; font-weight:700; font-size:1.02rem; }
+      .date{ white-space:nowrap; color:var(--ink2); font-variant-numeric:tabular-nums; }
+      .evidence{ color:var(--ink2); font-size:.88rem; line-height:1.65; }
+      .evidence .sub{ display:block; margin-top:5px; font-size:.82rem; color:var(--ink3); }
+      .srcs{ display:flex; flex-wrap:wrap; gap:6px; }
+      .srcs a{
+        display:inline-flex; align-items:center; min-height:2rem; padding:2px 10px;
+        border:1px solid var(--line2); border-radius:999px; text-decoration:none;
+        font-size:.78rem; font-weight:700; color:var(--accent); background:var(--surface);
+      }
+      .srcs a:hover{ background:var(--accent-soft); }
+      .badge{
+        display:inline-block; font-size:.7rem; font-weight:900; letter-spacing:.05em;
+        border-radius:4px; padding:1px 7px; vertical-align:2px; white-space:nowrap;
+      }
+      .badge-f{ background:var(--rose-soft); color:var(--rose); margin-left:7px; }
+      .badge-final{ background:var(--accent); color:var(--accent-ink); margin-left:7px; }
+      .badge-demote{ background:var(--rust-soft); color:var(--rust); margin-left:7px; }
+      .rank{
+        display:inline-flex; align-items:center; justify-content:center;
+        width:30px; height:30px; border-radius:8px; font-family:"Shippori Mincho",serif; font-weight:800; font-size:1rem;
+      }
+      .rank-s{ background:var(--accent); color:var(--accent-ink); }
+      .rank-a{ background:var(--gold-soft); color:var(--gold); border:1px solid var(--line2); }
+      .rank-b{ background:var(--surface2); color:var(--ink3); border:1px solid var(--line); }
+
+      /* ---------- demotion ---------- */
+      .demote{
+        background:var(--surface); border:1px solid var(--line2); border-top:5px solid var(--rust);
+        border-radius:12px; padding:22px 24px; box-shadow:var(--shadow);
+      }
+      .demote .head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; }
+      .demote .head .album{ font-size:1.25rem; }
+      .demote .flow{ font-weight:900; color:var(--rust); font-size:.9rem; }
+      .demote p{ color:var(--ink2); margin:10px 0 0; }
+      .demote .srcs{ margin-top:14px; }
+
+      /* ---------- filter ---------- */
+      .filters{ display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 6px; }
+      .filters button{
+        font:inherit; font-size:.88rem; font-weight:700; cursor:pointer;
+        border:1px solid var(--line2); background:var(--surface); color:var(--ink2);
+        border-radius:999px; padding:6px 18px;
+      }
+      .filters button[aria-pressed="true"]{ background:var(--ink); color:var(--bg); border-color:var(--ink); }
+      .group-head{ display:flex; align-items:center; gap:10px; margin:28px 0 10px; }
+      .group-head h3{ margin:0; }
+      .group-head .count{ color:var(--ink3); font-size:.85rem; }
+      .group-head .rule{ flex:1; height:1px; background:var(--line); }
+
+      footer{
+        margin-top:60px; border-top:1px solid var(--line2); padding-top:20px;
+        color:var(--ink2); font-size:.87rem;
+      }
+      footer h2{ font-size:1.05rem; margin-bottom:8px; }
+      footer ul{ margin:8px 0; padding-left:1.3em; }
+      footer li{ margin:3px 0; }
+
+      /* ---------- mobile table reflow ---------- */
+      @media (max-width:760px){
+        .stats{ grid-template-columns:repeat(2,1fr); }
+        .sec-head{ flex-wrap:wrap; }
+        .sec-head p{ margin:0; text-align:left; }
+        table, thead, tbody, tr, td{ display:block; width:100%; }
+        thead{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+        tbody tr{ padding:14px 16px; border-bottom:1px solid var(--line); }
+        tbody tr:last-child{ border-bottom:none; }
+        tbody td{ border:none; padding:3px 0; }
+        td.album-cell{ min-width:0; }
+        td.rank-cell{ padding-bottom:6px; }
+        .date::before{ content:"発売日 "; color:var(--ink3); font-size:.8rem; }
+        .evidence{ margin-top:4px; }
+        .srcs{ margin-top:6px; }
+        .timeline li{ padding-left:48px; }
+      }
+      @media (prefers-reduced-motion: reduce){
+        html{ scroll-behavior:auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="genre-line"><span>2023年 ・ ジャンル別選出</span><span class="status">選出完了（最終4枚）</span></div>
+        <h1>2023 AAA (Adult Alternative) 候補一覧</h1>
+        <p class="en-sub">Candidates &amp; S-Rank Verification — 2023</p>
+        <p class="lede">2023年発売の AAA（アダルト・オルタナティブ）作品から収集した候補30枚と、Sランク検証の結果、および最終選出4枚の記録。S確定が下限の5枚に届かずワークフローが停止し、Hiro の判断で S の4枚のまま確定した経緯を含む。</p>
+        <div class="stats">
+          <div class="stat"><b>30</b><span>収集した候補（枚）</span></div>
+          <div class="stat"><b>0</b><span>重複除外（枚）</span></div>
+          <div class="stat warn"><b>5 → 4</b><span>収集段階 S → S検証後の確定</span></div>
+          <div class="stat"><b>4</b><span>最終選出（枚）／ 楽曲 8曲</span></div>
+        </div>
+        <a class="btn" href="https://open.spotify.com/playlist/0nbOK6C5UyoosdROlo1X0S" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5.1 15.9a.75.75 0 0 1-1 .25c-2.9-1.77-6.54-2.17-10.83-1.19a.75.75 0 1 1-.34-1.46c4.7-1.07 8.72-.61 11.94 1.36.34.21.44.7.23 1.04zm1.47-3.55a.94.94 0 0 1-1.29.31c-3.32-2.04-8.38-2.63-12.3-1.45a.94.94 0 0 1-.54-1.8c4.48-1.36 10.05-.7 13.82 1.63.43.26.56.87.31 1.31zm.13-3.68C14.72 7.33 8.27 7.16 4.6 8.27a1.13 1.13 0 1 1-.65-2.16c4.22-1.28 11.3-1.08 15.6 1.47a1.13 1.13 0 0 1-1.15 1.94z"/></svg>
+          Spotifyプレイリスト「2023年AAA (Adult Alternative)」
+        </a>
+      </header>
+
+      <section aria-labelledby="sec-history">
+        <div class="sec-head"><span class="no">01</span><h2 id="sec-history">選出の経緯</h2><p>ワークフロー「album-selection」実行記録（2026-11-14）</p></div>
+        <ol class="timeline">
+          <li>
+            <span class="dot">1</span>
+            <h4>候補30枚を収集</h4>
+            <p>2023年発売の AAA 作品を収集。収集段階の適合ランクは S 5枚／A 20枚／B 5枚。</p>
+          </li>
+          <li>
+            <span class="dot">2</span>
+            <h4>重複排除：0枚</h4>
+            <p>既出アルバムの累積リストと照合した結果、重複するアルバムはなく、除外は0枚だった。</p>
+          </li>
+          <li>
+            <span class="dot">3</span>
+            <h4>収集段階の S は5枚</h4>
+            <p>Hozier、Dave Matthews Band、Natalie Merchant、Semisonic、Barenaked Ladies の5枚が S 候補として S検証へ進んだ。</p>
+          </li>
+          <li class="stop">
+            <span class="dot">4</span>
+            <h4>S検証で Semisonic が A に降格し、ワークフロー停止<span class="tag tag-stop">S不足で停止</span></h4>
+            <p>Semisonic『Little Bit of Sun』は S基準（Adult Alternative Pop/Rock の明記）を確認できず A に降格。S確定は4枚となり、最終枚数の下限5枚に届かなかったため、ワークフローのルールに従って選出を停止した。</p>
+          </li>
+          <li>
+            <span class="dot">5</span>
+            <h4>昇格推薦（10枚案）が提示された</h4>
+            <p>A から boygenius、Mitski、Lana Del Rey、Allison Russell（いずれも女性）と Sufjan Stevens、Peter Gabriel を昇格させ、S 4枚と合わせて10枚・女性5枚とする案が提示された（各昇格は2ソース再検証が前提）。</p>
+          </li>
+          <li class="decide">
+            <span class="dot">6</span>
+            <h4>Hiro の決定：S確定4枚のまま最終とする<span class="tag tag-decide">決定</span></h4>
+            <p>昇格は行わず、S検証を通過した4枚をそのまま最終選出とした。以後、この4枚から各2曲・計8曲が選出され、Spotifyプレイリストが作成された。</p>
+          </li>
+        </ol>
+        <div class="callout">
+          <h4>厳格ルール（女性が半数以上）についての例外承認</h4>
+          <p>AAA には女性アーティストが半数以上必要という厳格ルールがあるが、最終4枚のうち女性は <strong>Natalie Merchant 1枚のみ</strong>で、このルールには届かない。Hiro は「無理に選出するより質を大事にする」として、<strong>今回限りの例外</strong>としてこの4枚での確定を承認した。これは <strong>2022年 AAA の例外判断と同じ扱い</strong>である。</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="sec-final">
+        <div class="sec-head"><span class="no">02</span><h2 id="sec-final">最終選出 — S検証済み4枚</h2><p>全枚とも2つ以上の独立したソースで検証済み</p></div>
+        <div class="tablebox">
+          <table>
+            <thead><tr><th scope="col">アーティスト ／ アルバム</th><th scope="col">発売日</th><th scope="col">適合の根拠（S検証）</th><th scope="col">出典</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><span class="artist">Hozier</span><br /><span class="album">『Unreal Unearth』</span><span class="badge badge-final">最終選出</span></td>
+                <td class="date">2023-08-18</td>
+                <td class="evidence">AllMusicのアーティスト表記でStylesにAdult Alternative Pop/Rock（AAAのS基準に完全一致）を明記。AllMusicアルバム評もroots-music／art-rocker、folk／soul／blues基盤と説明し、Wikipediaもfolk／R&amp;B／blues影響を記す。
+                  <span class="sub">3rd studio album、16曲・62:22。R&amp;B／soul要素はあるが歌唱主体で、絶対除外要素なし。</span></td>
+                <td><div class="srcs">
+                  <a href="https://en.wikipedia.org/wiki/Unreal_Unearth" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.allmusic.com/album/unreal-unearth-mw0004003614" target="_blank" rel="noopener">AllMusic（アルバム）</a>
+                  <a href="https://www.allmusic.com/artist/hozier-mn0003144637" target="_blank" rel="noopener">AllMusic（アーティスト）</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="album-cell"><span class="artist">Dave Matthews Band</span><br /><span class="album">『Walk Around the Moon』</span><span class="badge badge-final">最終選出</span></td>
+                <td class="date">2023-05-19</td>
+                <td class="evidence">WikipediaはGenre: Rock、DiscogsはAlternative Rock／Folk Rock。AllMusicのアーティストStylesにAdult Alternative Pop/Rock（S基準に完全一致）を明記し、adult alternative rock chartsの常連と説明。
+                  <span class="sub">10th studio album、12曲・42:42（バンド史上最短だが通常のフルアルバム尺）。Jam Bands／jazz／worldbeat影響はあるが絶対除外要素なし。</span></td>
+                <td><div class="srcs">
+                  <a href="https://en.wikipedia.org/wiki/Walk_Around_the_Moon" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://shorefire.com/releases/entry/dave-matthews-bandwalk-around-the-moonout-today-on-rca-records" target="_blank" rel="noopener">Shore Fire（PR）</a>
+                  <a href="https://www.allmusic.com/artist/mn0000961234" target="_blank" rel="noopener">AllMusic（アーティスト）</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="album-cell"><span class="artist">Natalie Merchant</span><span class="badge badge-f">女性</span><br /><span class="album">『Keep Your Courage』</span><span class="badge badge-final">最終選出</span></td>
+                <td class="date">2023-04-14</td>
+                <td class="evidence">AllMusicのアーティストStylesにAdult Alternative Pop/Rock（S基準に完全一致）とContemporary Singer/Songwriterを明記。アーティストの中核分類とAAAの重視するアコースティック／シンガーソングライター要素でSと判定。
+                  <span class="sub">注記：アルバム単体ではWikipediaがAmericana／baroque popとしており、境界要素がある。10曲・54:38（9曲がオリジナル＋1曲が解釈曲で、カバー盤ではない）。通算枚数の表記は出典により異なる（8th／9th／10th solo）。</span></td>
+                <td><div class="srcs">
+                  <a href="https://en.wikipedia.org/wiki/Keep_Your_Courage" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.nonesuch.com/albums/keep-your-courage" target="_blank" rel="noopener">Nonesuch</a>
+                  <a href="https://www.allmusic.com/artist/natalie-merchant-mn0000372322" target="_blank" rel="noopener">AllMusic（アーティスト）</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="album-cell"><span class="artist">Barenaked Ladies</span><br /><span class="album">『In Flight』</span><span class="badge badge-final">最終選出</span></td>
+                <td class="date">2023-09-15</td>
+                <td class="evidence">WikipediaはGenre: Pop rock。AllMusicのアーティストStylesの筆頭にAdult Alternative Pop/Rock（S基準に完全一致）を明記し、Alternative Pop/Rock／Alternative/Indie Rockも併記。アコースティックとエレクトリックの混成とハーモニーがAAA概要に合う。
+                  <span class="sub">14曲・50:22で短尺問題なし。通算枚数の表記は出典により異なる（14th／18th）。絶対除外要素なし。</span></td>
+                <td><div class="srcs">
+                  <a href="https://en.wikipedia.org/wiki/In_Flight_(Barenaked_Ladies_album)" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://exclaim.ca/music/article/barenaked_ladies_announce_in_flight_lp_share_new_single_one_night" target="_blank" rel="noopener">Exclaim!</a>
+                  <a href="https://www.allmusic.com/artist/the-barenaked-ladies-mn0000139089" target="_blank" rel="noopener">AllMusic（アーティスト）</a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="sec-demote">
+        <div class="sec-head"><span class="no">03</span><h2 id="sec-demote">S検証で A に降格した1枚</h2></div>
+        <div class="demote">
+          <div class="head">
+            <span class="artist">Semisonic</span>
+            <span class="album">『Little Bit of Sun』</span>
+            <span class="date">2023-11-03</span>
+            <span class="flow">収集段階 S → S検証で A</span>
+          </div>
+          <p>WikipediaのアルバムGenreはPop rock／power popのみ。AllMusicの現在のアーティストStylesはAlternative Pop/Rock、Alternative/Indie Rock、Indie Rock、Post-Grunge、Power Popで、S基準のAdult Alternative／Adult Alternative Pop/Rockの明記がアーティスト／アルバム単位で確認できない。Alternative Pop/RockはA基準のAdult Pop/Rockに近く十分適合に留まるため、Aへ降格した。</p>
+          <p>S候補5枚の中でジャンル証拠が最も弱い1枚だった。なお本作は4th full-length studio album（12曲・39:58）で、前作『All About Chemistry』以来22年ぶりのフルアルバムであることはWikipediaとAllMusicで一致している。絶対除外要素はない。</p>
+          <div class="srcs">
+            <a href="https://en.wikipedia.org/wiki/Little_Bit_of_Sun" target="_blank" rel="noopener">Wikipedia</a>
+            <a href="https://www.allmusic.com/album/little-bit-of-sun-mw0004106333" target="_blank" rel="noopener">AllMusic（アルバム）</a>
+            <a href="https://www.allmusic.com/artist/semisonic-mn0000006310" target="_blank" rel="noopener">AllMusic（アーティスト）</a>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="sec-candidates">
+        <div class="sec-head"><span class="no">04</span><h2 id="sec-candidates">候補一覧（収集段階・全30枚）</h2><p>ランクは収集時点の判定。根拠は出典の表記に基づく</p></div>
+        <div class="filters" role="group" aria-label="ランクで絞り込み">
+          <button type="button" data-filter="all" aria-pressed="true">すべて（30枚）</button>
+          <button type="button" data-filter="s" aria-pressed="false">S（5枚）</button>
+          <button type="button" data-filter="a" aria-pressed="false">A（20枚）</button>
+          <button type="button" data-filter="b" aria-pressed="false">B（5枚）</button>
+        </div>
+
+        <div class="rank-group" data-group="s">
+          <div class="group-head"><span class="rank rank-s">S</span><h3>収集段階 S</h3><span class="count">5枚 — このうち4枚がS検証を通過し最終選出、1枚（Semisonic）がAに降格</span><span class="rule"></span></div>
+          <div class="tablebox">
+            <table>
+              <thead><tr><th scope="col">アーティスト ／ アルバム</th><th scope="col">発売日</th><th scope="col">適合の根拠（収集段階）</th><th scope="col">出典</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="album-cell"><span class="artist">Hozier</span><br /><span class="album">『Unreal Unearth』</span><span class="badge badge-final">最終選出</span></td>
+                  <td class="date">2023-08-18</td>
+                  <td class="evidence">Metacritic: Pop/Rock, Alternative/Indie Rock, Irish singer-songwriter; folk/rock/blues/soul with anthemic pop, guest Brandi Carlile — core AAA profile.</td>
+                  <td><div class="srcs"><a href="https://www.metacritic.com/music/unreal-unearth/hozier" target="_blank" rel="noopener">Metacritic</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Dave Matthews Band</span><br /><span class="album">『Walk Around the Moon』</span><span class="badge badge-final">最終選出</span></td>
+                  <td class="date">2023-05-19</td>
+                  <td class="evidence">Wikipedia: 10th studio album by American rock band; DMB is a core Adult Alternative radio-format act with acoustic/jam singer-songwriter rock.</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Walk_Around_the_Moon" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Natalie Merchant</span><span class="badge badge-f">女性</span><br /><span class="album">『Keep Your Courage』</span><span class="badge badge-final">最終選出</span></td>
+                  <td class="date">2023-04-14</td>
+                  <td class="evidence">Wikipedia/Nonesuch: American singer-songwriter, first album of new material since 2014; Horizons: Folk/Americana — classic Adult Alternative artist profile.</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Keep_Your_Courage" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.nonesuch.com/albums/keep-your-courage" target="_blank" rel="noopener">Nonesuch</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Semisonic</span><br /><span class="album">『Little Bit of Sun』</span><span class="badge badge-demote">S検証でA降格</span></td>
+                  <td class="date">2023-11-03</td>
+                  <td class="evidence">Wikipedia: fourth studio album by American alternative rock band; Dan Wilson-led melodic pop-rock, classic Adult Alternative Pop/Rock act profile (Closing Time era).
+                    <span class="sub">収集段階ではSだったが、S検証で根拠不足と判定されAに降格した（03参照）。22年ぶりのフルアルバム。</span></td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Little_Bit_of_Sun" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Barenaked Ladies</span><br /><span class="album">『In Flight』</span><span class="badge badge-final">最終選出</span></td>
+                  <td class="date">2023-09-15</td>
+                  <td class="evidence">AllMusic Genre Pop/Rock, Styles explicitly: Adult Alternative Pop/Rock, Alternative Pop/Rock — exactly S criteria. Wikipedia: Pop rock with folk and acoustic elements.</td>
+                  <td><div class="srcs"><a href="https://www.allmusic.com/album/in-flight-mw0004063101" target="_blank" rel="noopener">AllMusic</a><a href="https://en.wikipedia.org/wiki/In_Flight_(Barenaked_Ladies_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="rank-group" data-group="a">
+          <div class="group-head"><span class="rank rank-a">A</span><h3>収集段階 A</h3><span class="count">20枚 — Hiro の決定により昇格は行われず、いずれも最終選出には入らなかった</span><span class="rule"></span></div>
+          <div class="tablebox">
+            <table>
+              <thead><tr><th scope="col">アーティスト ／ アルバム</th><th scope="col">発売日</th><th scope="col">適合の根拠（収集段階）</th><th scope="col">出典</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="album-cell"><span class="artist">boygenius</span><span class="badge badge-f">女性</span><br /><span class="album">『The Record』</span></td>
+                  <td class="date">2023-03-31</td>
+                  <td class="evidence">Wikipedia: Indie rock, indie folk; Metacritic: Singer/Songwriter, Pop/Rock, Alternative/Indie Rock. Female trio (Baker/Bridgers/Dacus), singer-songwriter based.
+                    <span class="sub">昇格推薦（10枚案）に含まれていた1枚。</span></td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/The_Record_(Boygenius_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.metacritic.com/music/the-record/boygenius" target="_blank" rel="noopener">Metacritic</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">The National</span><br /><span class="album">『First Two Pages of Frankenstein』</span></td>
+                  <td class="date">2023-04-28</td>
+                  <td class="evidence">Wikipedia/Discogs: Rock, Indie Rock; evocative melodies, guests Taylor Swift, Phoebe Bridgers, Sufjan Stevens — adult-oriented indie rock close to AAA benchmarks.</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/First_Two_Pages_of_Frankenstein" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Matchbox Twenty</span><br /><span class="album">『Where the Light Goes』</span></td>
+                  <td class="date">2023-05-26</td>
+                  <td class="evidence">Wikipedia: Pop rock; Discogs: Alternative Rock, Pop Rock — Adult Pop/Rock per A criteria, Rob Thomas singer-songwriter fronted. 11年ぶりの5th studio album。</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Where_the_Light_Goes" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Lana Del Rey</span><span class="badge badge-f">女性</span><br /><span class="album">『Did You Know That There's a Tunnel Under Ocean Blvd』</span></td>
+                  <td class="date">2023-03-24</td>
+                  <td class="evidence">Wikipedia: Alt-pop, Americana, singer-songwriter; Discogs: Baroque Pop, Indie Rock/Pop. Acoustic piano-led adult pop close to Folklore-era benchmark.
+                    <span class="sub">境界フラグ：Wikipediaの作曲面の記述に一部楽曲での hip-hop/trap 影響への言及あり（絶対除外との照合が必要とされた）。昇格推薦（10枚案）に含まれていた1枚。</span></td>
+                  <td><div class="srcs"><a href="https://www.discogs.com/release/26525447-Lana-Del-Rey-Did-You-Know-That-Theres-A-Tunnel-Under-Ocean-Blvd" target="_blank" rel="noopener">Discogs</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Ed Sheeran</span><br /><span class="album">『- (Subtract)』</span></td>
+                  <td class="date">2023-05-05</td>
+                  <td class="evidence">Wikipedia: Folk-pop, mostly acoustic album, English singer-songwriter, produced by Aaron Dessner — Singer-Songwriter A criteria.</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/%E2%88%92_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Sufjan Stevens</span><br /><span class="album">『Javelin』</span></td>
+                  <td class="date">2023-10-06</td>
+                  <td class="evidence">Wikipedia: Indie folk; NME: return to full singer-songwriter mode, lush intimate indie-folk — Singer-Songwriter A criteria.
+                    <span class="sub">昇格推薦（10枚案）に含まれていた1枚。</span></td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Javelin_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Peter Gabriel</span><br /><span class="album">『i/o』</span></td>
+                  <td class="date">2023-12-01</td>
+                  <td class="evidence">Wikipedia: Art rock, art pop; Discogs style explicitly includes AOR, Pop Rock — sophisticated adult pop-rock, singer-songwriter.
+                    <span class="sub">オリジナル素材のアルバムとしては2002年以来。Discogsはフォーマットのジャンルに Electronic も挙げるが、作品自体は art-rock／AOR とされた。昇格推薦（10枚案）に含まれていた1枚。</span></td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/I/O_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Wilco</span><br /><span class="album">『Cousin』</span></td>
+                  <td class="date">2023-09-29</td>
+                  <td class="evidence">Discogs: Indie Rock, Alternative Rock, Art Rock; Jeff Tweedy singer-songwriter led, long-standing adult-alternative act. Cate Le Bon プロデュースの13th studio album。</td>
+                  <td><div class="srcs"><a href="https://www.discogs.com/release/28425070" target="_blank" rel="noopener">Discogs</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Gracie Abrams</span><span class="badge badge-f">女性</span><br /><span class="album">『Good Riddance』</span></td>
+                  <td class="date">2023-02-24</td>
+                  <td class="evidence">Wikipedia: Pop with indie rock influence, American singer-songwriter, produced by Aaron Dessner; Discogs: Indie Pop, Acoustic, Ballad — Singer-Songwriter A criteria. デビュー・アルバム。</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Good_Riddance_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Mitski</span><span class="badge badge-f">女性</span><br /><span class="album">『The Land Is Inhospitable and So Are We』</span></td>
+                  <td class="date">2023-09-15</td>
+                  <td class="evidence">Wikipedia: Americana, country, folk, orchestral pop; American singer-songwriter, stripped-down emotional songwriting — Singer-Songwriter A criteria.
+                    <span class="sub">Country／Americana要素があり STADIUM COUNTRY との重なりも検討対象とされたが、ここではAAAのシンガーソングライター面が主とされた。昇格推薦（10枚案）に含まれていた1枚。</span></td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/The_Land_Is_Inhospitable_and_So_Are_We" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Feist</span><span class="badge badge-f">女性</span><br /><span class="album">『Multitudes』</span></td>
+                  <td class="date">2023-04-14</td>
+                  <td class="evidence">Wax Trax: Folk &amp; Indie Folk; Canadian singer-songwriter, mostly acoustic intimate songs (Stereogum) — Singer-Songwriter A criteria.
+                    <span class="sub">検索結果では専用のWikipediaアルバムページが見つからず、レーベル／販売店ソースで確認した（Wikipediaでは確認できない）。</span></td>
+                  <td><div class="srcs"><a href="https://www.waxtraxrecords.com/feist-multitudes-lp-clear-vinyl.html" target="_blank" rel="noopener">Wax Trax</a><a href="https://www.horizonsmusic.co.uk/products/feist-multitudes-transparent-lp" target="_blank" rel="noopener">Horizons</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Lucinda Williams</span><span class="badge badge-f">女性</span><br /><span class="album">『Stories from a Rock n Roll Heart』</span></td>
+                  <td class="date">2023-06-30</td>
+                  <td class="evidence">Wikipedia: 15th studio album by American singer-songwriter; Americana/rock melodic offering — Singer-Songwriter A criteria. ロック色が強めのため S ではなく A とされた。</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Stories_from_a_Rock_n_Roll_Heart" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Allison Russell</span><span class="badge badge-f">女性</span><br /><span class="album">『The Returner』</span></td>
+                  <td class="date">2023-09-08</td>
+                  <td class="evidence">AllMusic styles: Contemporary Singer/Songwriter, Alternative/Indie Rock, Americana, Contemporary Folk; Genre Pop/Rock, Folk — exactly A criteria (Singer-Songwriter).
+                    <span class="sub">ゲストに Brandi Carlile と Hozier。昇格推薦（10枚案）に含まれていた1枚。</span></td>
+                  <td><div class="srcs"><a href="https://www.allmusic.com/album/the-returner-mw0004018369" target="_blank" rel="noopener">AllMusic</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Jenny Lewis</span><span class="badge badge-f">女性</span><br /><span class="album">『Joy'All』</span></td>
+                  <td class="date">2023-06-09</td>
+                  <td class="evidence">Discogs: Indie Rock, Country Rock / Acoustic, Indie Rock; Horizons: Indie Folk, celebrated singer-songwriter — Singer-Songwriter A criteria. 5th solo studio album。</td>
+                  <td><div class="srcs"><a href="https://www.discogs.com/release/27334053-Jenny-Lewis-JoyAll" target="_blank" rel="noopener">Discogs</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Gregory Alan Isakov</span><br /><span class="album">『Appaloosa Bones』</span></td>
+                  <td class="date">2023-08-18</td>
+                  <td class="evidence">Discogs: Folk; indie/folk singer-songwriter with guitar/banjo acoustic instrumentation. Release coverage explicitly notes support from AAA radio stations for lead track 'The Fall' — AAAラジオの支持という直接の証拠が出典にある。</td>
+                  <td><div class="srcs"><a href="https://www.discogs.com/release/28013265-Gregory-Alan-Isakov-Appaloosa-Bones" target="_blank" rel="noopener">Discogs</a><a href="https://yonlander.com/gregory-alan-isakovs-new-song-appaloosa-bones-debuts-today/" target="_blank" rel="noopener">Yonlander</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Ben Harper</span><br /><span class="album">『Wide Open Light』</span></td>
+                  <td class="date">2023-06-02</td>
+                  <td class="evidence">Wikipedia: 17th studio album by American singer-songwriter, mainly stripped-back acoustic songs; Horizons genre: Acoustic, Singer/Songwriter, Folk — A criteria.</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Wide_Open_Light" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Paul Simon</span><br /><span class="album">『Seven Psalms』</span></td>
+                  <td class="date">2023-05-19</td>
+                  <td class="evidence">Discogs: Folk, World, &amp; Country / Pop, Folk; acoustic singer-songwriter suite by a benchmark-era AOR/AAA songwriter.
+                    <span class="sub">7つの部分からなる約33分の連続スイートとして発表された作品。</span></td>
+                  <td><div class="srcs"><a href="https://www.discogs.com/release/27126678-Paul-Simon-Seven-Psalms" target="_blank" rel="noopener">Discogs</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Niall Horan</span><br /><span class="album">『The Show』</span></td>
+                  <td class="date">2023-06-09</td>
+                  <td class="evidence">Metacritic genres: Pop, Pop/Rock, Contemporary Singer/Songwriter; AllMusic Genre Pop/Rock — A criteria (Adult Pop/Rock / Singer-Songwriter), Laurel Canyon-inspired harmonies. Wikipediaはシンセポップ要素にも言及するが、クラブ系エレクトロニカではないとされた。</td>
+                  <td><div class="srcs"><a href="https://www.allmusic.com/album/mw0003931943" target="_blank" rel="noopener">AllMusic</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Samia</span><span class="badge badge-f">女性</span><br /><span class="album">『Honey』</span></td>
+                  <td class="date">2023-01-27</td>
+                  <td class="evidence">Discogs: Indie Pop; AOTY/Paste listing: Indie Pop, Singer-Songwriter, Indie Folk, Alt-Pop — Singer-Songwriter A criteria. 2nd studio album。</td>
+                  <td><div class="srcs"><a href="https://www.discogs.com/release/25917850-Samia-Honey" target="_blank" rel="noopener">Discogs</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Lewis Capaldi</span><br /><span class="album">『Broken by Desire to Be Heavenly Sent』</span></td>
+                  <td class="date">2023-05-19</td>
+                  <td class="evidence">Wikipedia: second studio album by Scottish singer-songwriter; piano-led adult pop balladry — Singer-Songwriter / Adult Pop/Rock A criteria. バラード中心の作品。</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Broken_by_Desire_to_Be_Heavenly_Sent" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="rank-group" data-group="b">
+          <div class="group-head"><span class="rank rank-b">B</span><h3>収集段階 B</h3><span class="count">5枚 — 条件付き候補。いずれも最終選出には入らなかった</span><span class="rule"></span></div>
+          <div class="tablebox">
+            <table>
+              <thead><tr><th scope="col">アーティスト ／ アルバム</th><th scope="col">発売日</th><th scope="col">適合の根拠（収集段階）</th><th scope="col">出典</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="album-cell"><span class="artist">Birdy</span><span class="badge badge-f">女性</span><br /><span class="album">『Portraits』</span></td>
+                  <td class="date">2023-08-18</td>
+                  <td class="evidence">Wikipedia: Pop, synth-pop, alternative album; English singer-songwriter — B criteria via Alt-Pop/Adult Top 40 proximity.
+                    <span class="sub">境界フラグ：初期のフォークポップからシンセポップ方向への転換作で、過度なエレクトロニカの除外に触れないかの確認が必要とされた。</span></td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Portraits_(Birdy_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Jason Mraz</span><br /><span class="album">『Mystical Magical Rhythmical Radical Ride』</span></td>
+                  <td class="date">2023-06-23</td>
+                  <td class="evidence">Wikipedia: Pop, disco; Discogs: Pop Rock — singer-songwriter historically in AAA/Adult Pop, this album is pop-return so B (Adult Top 40 / Soft Rock proximity).
+                    <span class="sub">境界フラグ：Wikipediaはダンス／ディスコ影響を記すが、出典上はトランス／クラブ系エレクトロニカではないとされた。8th studio album。</span></td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Mystical_Magical_Rhythmical_Radical_Ride" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Kelly Clarkson</span><span class="badge badge-f">女性</span><br /><span class="album">『Chemistry』</span></td>
+                  <td class="date">2023-06-23</td>
+                  <td class="evidence">Wikipedia: Pop, pop rock; Metacritic: Pop/Rock with soft rock elements noted — B criteria (Adult Top 40 / Soft Rock). 10th studio album。レビューではエレクトロポップ／R&amp;Bの要素への言及もあった。</td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Chemistry_(Kelly_Clarkson_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Laufey</span><span class="badge badge-f">女性</span><br /><span class="album">『Bewitched』</span></td>
+                  <td class="date">2023-09-08</td>
+                  <td class="evidence">Wikipedia: Jazz pop, modern classical; Icelandic singer-songwriter, jazz-pop ballads, traditional pop — sophisticated adult pop close to AOR spirit, B as conditional (outside core rock-based styles).
+                    <span class="sub">2nd studio album。グラミー賞 Best Traditional Pop Vocal Album 受賞作。ジャズ寄りの境界候補。</span></td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/Bewitched_(Laufey_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+                <tr>
+                  <td class="album-cell"><span class="artist">Maisie Peters</span><span class="badge badge-f">女性</span><br /><span class="album">『The Good Witch』</span></td>
+                  <td class="date">2023-06-23</td>
+                  <td class="evidence">Wikipedia: Dance-pop, pop rock; Qobuz: singer-songwriter merging earlier folk-imbued sound with contemporary pop, Genre Pop/Rock Pop — B criteria.
+                    <span class="sub">境界フラグ：Wikipediaの dance-pop 表記について、ギター／ポップロック基盤のソングライティングであってクラブ系エレクトロニカではないかの確認が必要とされた。2nd studio album。</span></td>
+                  <td><div class="srcs"><a href="https://en.wikipedia.org/wiki/The_Good_Witch_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="sec-dedup">
+        <div class="sec-head"><span class="no">05</span><h2 id="sec-dedup">重複排除</h2></div>
+        <p class="note">収集した候補30枚を、過去の選出で確定した既出アルバムの累積リストと照合した。重複するアルバムは1枚もなく、<strong>除外は0枚</strong>だった。そのため候補30枚すべてがランク判定の対象となり、収集段階の内訳は S 5枚／A 20枚／B 5枚のまま確定した。</p>
+      </section>
+
+      <footer>
+        <h2>検証方法について</h2>
+        <ul>
+          <li>発売年とジャンル適合性は、記憶ではなく <strong>2つ以上の独立したソース</strong>（Wikipedia、AllMusic、Metacritic、Discogs、レーベル公式など）で確認している。</li>
+          <li>すべての判定に出典URLを記載している。確認できない項目は推測で埋めず、「確認できない」と明示する（例：Feist『Multitudes』には専用のWikipediaアルバムページが確認できなかった）。</li>
+          <li>候補収集時のランク（S／A／B）と、S検証後の判定は別物として記録している。Semisonic『Little Bit of Sun』のように判定が変わった場合は、その理由とともに両方を残している。</li>
+          <li><strong>絶対除外</strong>（全ジャンル共通）：ラップ／ヒップホップ、ミクスチャー／ニューメタル系、トランス／エレクトロニカ。これらに該当する要素が出典で確認された作品は候補に残さない。</li>
+          <li>アーティストの国籍・活動拠点は問わず、海外・国内を区別せず選出対象としている。</li>
+        </ul>
+        <p>2023年 AAA (Adult Alternative) 選出記録 ／ 最終4枚・楽曲8曲 ／ Spotifyプレイリスト「2023年AAA (Adult Alternative)」に収録。</p>
+      </footer>
+    </div>
+    <script>
+      (function () {
+        var buttons = document.querySelectorAll('.filters button');
+        var groups = document.querySelectorAll('.rank-group');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var f = btn.getAttribute('data-filter');
+            buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+            groups.forEach(function (g) {
+              g.style.display = (f === 'all' || g.getAttribute('data-group') === f) ? '' : 'none';
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

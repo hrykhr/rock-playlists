@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2023 STADIUM COUNTRY &amp; SOUTHERN ROCK 候補一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f2f0ea;
+        --surface: #ffffff;
+        --surface-2: #e9e6dd;
+        --ink: #201b14;
+        --ink-2: #5b554b;
+        --line: #d8d2c4;
+        --accent: #9c4a10;
+        --accent-ink: #83400c;
+        --accent-soft: #f9ead9;
+        --gold: #8a6410;
+        --gold-soft: #f7ecd2;
+        --blue: #2f5d8a;
+        --blue-soft: #e2ecf6;
+        --red: #a02c22;
+        --red-soft: #f9e6e3;
+        --green: #2e6b34;
+        --green-soft: #e3efe0;
+        --shadow: 0 1px 2px rgba(32,27,20,.06), 0 8px 24px rgba(32,27,20,.05);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #171410;
+          --surface: #221e17;
+          --surface-2: #2b261d;
+          --ink: #f0eadf;
+          --ink-2: #b3aa9c;
+          --line: #3e382c;
+          --accent: #f09a52;
+          --accent-ink: #f5b57e;
+          --accent-soft: #3a2513;
+          --gold: #e3b959;
+          --gold-soft: #3a2f14;
+          --blue: #8db8dd;
+          --blue-soft: #22374d;
+          --red: #f0937f;
+          --red-soft: #42231e;
+          --green: #9ccb8f;
+          --green-soft: #243a20;
+          --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0; background: var(--bg); color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+        font-size: 15px; line-height: 1.75; -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); }
+      button, input { min-height: 2.25rem; }
+      .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px 72px; }
+
+      header.page-head { padding: 40px 0 4px; }
+      .head-kicker {
+        font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: .2em;
+        font-size: 12px; color: var(--accent); text-transform: uppercase; margin: 0 0 10px;
+      }
+      h1 { font-size: clamp(27px, 5vw, 46px); line-height: 1.25; margin: 0 0 8px; font-weight: 900; }
+      h1 .latin { font-family: "Archivo", sans-serif; font-weight: 800; }
+      .head-sub { color: var(--ink-2); margin: 0; max-width: 48em; }
+
+      .status-box {
+        margin-top: 22px; border: 1.5px solid var(--red); border-radius: 10px;
+        background: var(--red-soft); padding: 16px 20px;
+      }
+      .status-box .sb-title { font-weight: 900; color: var(--red); margin: 0 0 4px; font-size: 16px; }
+      .status-box p { margin: 0; }
+      .status-box.done { border-color: var(--green); background: var(--green-soft); }
+      .status-box.done .sb-title { color: var(--green); }
+      .spotify-link {
+        display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
+        background: #1db954; color: #0f2417; font-weight: 900; text-decoration: none;
+        padding: 10px 18px; border-radius: 999px; font-size: 14.5px; line-height: 1.2;
+      }
+      .spotify-link:hover { filter: brightness(1.06); }
+
+      /* final result */
+      .final-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
+      .final-table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 640px; }
+      .final-table th, .final-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      .final-table th { background: var(--surface-2); font-size: 12.5px; color: var(--ink-2); }
+      .final-table tr:last-child td { border-bottom: none; }
+      .final-table .fno { font-family: "Archivo", sans-serif; font-weight: 800; color: var(--ink-2); width: 36px; }
+      .final-table .falbum { font-weight: 700; color: var(--accent-ink); white-space: nowrap; }
+      .promo { display: inline-block; font-size: 11.5px; font-weight: 700; background: var(--green-soft); color: var(--green); border-radius: 999px; padding: 2px 9px; margin-left: 6px; vertical-align: 2px; white-space: nowrap; }
+      .note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+      .note-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; box-shadow: var(--shadow); }
+      .note-card h3 { margin: 0 0 6px; font-size: 15px; font-weight: 900; }
+      .note-card p { margin: 0; font-size: 14px; }
+      .note-card.warn { border-color: var(--gold); }
+      @media (max-width: 760px) { .note-grid { grid-template-columns: 1fr; } .final-table { min-width: 0; } .final-table .falbum { white-space: normal; } }
+
+      /* timeline */
+      .timeline { list-style: none; margin: 0; padding: 0; }
+      .timeline li { position: relative; padding: 0 0 18px 34px; }
+      .timeline li::before { content: ""; position: absolute; left: 9px; top: 26px; bottom: 0; width: 2px; background: var(--line); }
+      .timeline li:last-child::before { display: none; }
+      .timeline .dot { position: absolute; left: 0; top: 4px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: #fff; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 11px; display: flex; align-items: center; justify-content: center; }
+      @media (prefers-color-scheme: dark) { .timeline .dot { color: #1c130a; } }
+      .timeline .dot.final { background: var(--green); color: #fff; }
+      .timeline h3 { margin: 0 0 2px; font-size: 15.5px; font-weight: 900; }
+      .timeline p { margin: 0; font-size: 14px; color: var(--ink-2); max-width: 58em; }
+      .timeline p strong { color: var(--ink); }
+
+      .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 16px; }
+      .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 13px 15px 11px; box-shadow: var(--shadow); }
+      .stat .num { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 29px; line-height: 1.1; }
+      .stat .num small { font-size: 14px; font-weight: 700; color: var(--ink-2); }
+      .stat .lbl { color: var(--ink-2); font-size: 12.5px; margin-top: 2px; line-height: 1.5; }
+      .stat.hot .num { color: var(--red); }
+
+      .toolbar { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 14px 0 10px; margin-top: 8px; }
+      .nav-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+      .nav-chips a {
+        display: inline-flex; align-items: center; min-height: 36px; padding: 6px 14px;
+        border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+        color: var(--ink); text-decoration: none; font-size: 13.5px; font-weight: 700;
+      }
+      .nav-chips a:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+      section { margin-top: 52px; scroll-margin-top: 110px; }
+      .sec-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
+      .sec-no { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 14px; color: var(--accent); letter-spacing: .14em; }
+      h2 { font-size: clamp(21px, 3.4vw, 28px); font-weight: 900; margin: 0; line-height: 1.35; }
+      .sec-count { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 13px; background: var(--surface-2); border-radius: 999px; padding: 3px 12px; color: var(--ink-2); }
+      .sec-lead { color: var(--ink-2); max-width: 52em; margin: 6px 0 18px; }
+
+      /* strict rule */
+      .rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .rule-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); }
+      .rule-card h3 { margin: 0 0 8px; font-size: 16px; font-weight: 900; }
+      .rule-card p { margin: 0 0 8px; }
+      .rule-card p:last-child { margin-bottom: 0; }
+      .meter { display: flex; gap: 5px; margin: 12px 0 8px; }
+      .meter i { flex: 1; height: 14px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--line); }
+      .meter i.on { background: var(--accent); border-color: var(--accent); }
+      .meter-lbl { font-size: 13px; color: var(--ink-2); }
+      .meter-lbl strong { color: var(--red); font-size: 15px; }
+      .swap-table { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 14px; }
+      .swap-table th, .swap-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      .swap-table th { font-size: 12.5px; color: var(--ink-2); font-weight: 700; }
+      .swap-out { color: var(--red); font-weight: 700; white-space: nowrap; }
+      .swap-in { color: var(--green); font-weight: 700; white-space: nowrap; }
+      .mini { font-size: 13px; color: var(--ink-2); }
+
+      /* verified cards */
+      .vgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .vcard { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); }
+      .vcard.is-a { border-color: var(--gold); background: linear-gradient(var(--gold-soft), var(--gold-soft)) padding-box, var(--surface); }
+      .vcard-top { display: flex; align-items: center; gap: 8px; }
+      .verdict { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: .08em; padding: 3px 11px; border-radius: 999px; }
+      .v-s { background: var(--accent); color: #fff; }
+      @media (prefers-color-scheme: dark) { .v-s { color: #1c130a; } }
+      .v-a { background: var(--gold-soft); color: var(--gold); border: 1px solid var(--gold); }
+      .vdate { margin-left: auto; font-family: "Archivo", sans-serif; font-size: 13px; color: var(--ink-2); }
+      .vartist { margin: 10px 0 0; font-size: 19px; font-weight: 900; line-height: 1.4; }
+      .valbum { margin: 0 0 10px; font-size: 16px; font-weight: 700; color: var(--accent-ink); }
+      .vevi { margin: 0 0 8px; font-size: 14px; }
+      .vnote { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); }
+      .vsrc, .csrc { margin: 0; font-size: 12.5px; color: var(--ink-2); }
+      .srcs a { margin-right: 2px; }
+      .fem { display: inline-block; font-size: 11.5px; font-weight: 700; background: var(--blue-soft); color: var(--blue); border-radius: 999px; padding: 2px 9px; vertical-align: 2px; margin-left: 6px; }
+      .flag { display: inline-block; font-size: 11.5px; font-weight: 700; background: var(--red-soft); color: var(--red); border-radius: 999px; padding: 2px 9px; vertical-align: 2px; margin-left: 6px; }
+
+      /* demotion */
+      .demote { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .dcard { border: 1.5px solid var(--gold); border-radius: 12px; background: var(--surface); padding: 20px 22px; box-shadow: var(--shadow); }
+      .dcard h3 { margin: 0 0 2px; font-size: 18px; font-weight: 900; }
+      .dcard .dalbum { margin: 0 0 12px; font-weight: 700; color: var(--gold); font-size: 16px; }
+      .dcard .reason-tag { display: inline-block; font-weight: 900; font-size: 13px; background: var(--gold-soft); color: var(--gold); border-radius: 6px; padding: 4px 10px; margin-bottom: 10px; }
+      .dcard p { margin: 0 0 8px; font-size: 14px; }
+      .dcard .mini { margin-top: 4px; }
+
+      /* candidates */
+      .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+      .fbtn {
+        min-height: 38px; padding: 6px 15px; border-radius: 999px; border: 1px solid var(--line);
+        background: var(--surface); color: var(--ink); font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer;
+      }
+      .fbtn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+      @media (prefers-color-scheme: dark) { .fbtn[aria-pressed="true"] { color: #1c130a; } }
+      .filters input[type="search"] {
+        flex: 1 1 220px; min-height: 40px; padding: 8px 14px; font: inherit; font-size: 14.5px;
+        border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink);
+      }
+      .hits { font-size: 13px; color: var(--ink-2); }
+      .clist { display: flex; flex-direction: column; gap: 10px; }
+      .crow { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; box-shadow: var(--shadow); }
+      .crow-main { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+      .cnum { font-family: "Archivo", sans-serif; font-weight: 800; color: var(--ink-2); font-size: 14px; }
+      .cwho { flex: 1 1 260px; min-width: 0; }
+      .cartist { margin: 0; font-weight: 900; font-size: 16px; line-height: 1.45; }
+      .calbum { margin: 0; font-weight: 700; color: var(--accent-ink); }
+      .cdate { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 12.5px; color: var(--ink-2); margin-left: 6px; }
+      .fit { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 14px; width: 30px; height: 30px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+      .fit-s { background: var(--accent); color: #fff; }
+      @media (prefers-color-scheme: dark) { .fit-s { color: #1c130a; } }
+      .fit-a { background: var(--gold-soft); color: var(--gold); border: 1px solid var(--gold); }
+      .fit-b { background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); }
+      .status { font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 3px 11px; flex: none; }
+      .st-s { background: var(--green-soft); color: var(--green); }
+      .st-down { background: var(--gold-soft); color: var(--gold); }
+      .st-none { background: var(--surface-2); color: var(--ink-2); }
+      .cevi { margin: 8px 0 0; font-size: 13.5px; }
+      .cnote { margin: 6px 0 0; font-size: 13px; color: var(--ink-2); }
+      .csrc { margin-top: 6px; }
+      .crow[hidden] { display: none; }
+
+      .weak-box { border: 1px solid var(--line); border-left: 5px solid var(--accent); background: var(--surface); border-radius: 10px; padding: 18px 22px; box-shadow: var(--shadow); }
+      .weak-box p { margin: 0; }
+      footer { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 18px; color: var(--ink-2); font-size: 13px; }
+      footer p { margin: 0 0 6px; }
+
+      @media (max-width: 760px) {
+        .stats { grid-template-columns: repeat(2, 1fr); }
+        .stats .stat:last-child { grid-column: span 2; }
+        .rule-grid, .vgrid, .demote { grid-template-columns: 1fr; }
+        .wrap { padding: 0 14px 56px; }
+        .swap-table th, .swap-table td { padding: 7px 6px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="page-head">
+        <p class="head-kicker">2023 · Genre 3 — Candidates &amp; Verification</p>
+        <h1><span class="latin">2023 STADIUM COUNTRY<br />&amp; SOUTHERN ROCK</span> 候補一覧</h1>
+        <p class="head-sub">候補30枚の収集結果、S検証（12枚）の判定と根拠、A降格2枚の理由、厳格ルール（女性5枚必須）で停止した経緯と、Hiroの入れ替え決定・昇格検証を経て確定した最終10枚をまとめたページ。重複除外は0枚。</p>
+        <div class="status-box done">
+          <p class="sb-title">✓ 選出完了 — 最終10枚確定</p>
+          <p>厳格ルールで一度停止した後、Hiroがミュー案の入れ替えを採用し、昇格検証と4枚目の枠の判断を経て最終10枚が確定した。女性は <strong>5枚／10枚</strong>となり、厳格ルール（10枚中5枚）を充足。楽曲20曲のSpotifyプレイリストも作成済み。</p>
+          <a class="spotify-link" href="https://open.spotify.com/playlist/4jzPcOzeVCEu0iBC3LQ1u4" target="_blank" rel="noopener">▶ Spotifyで聴く — 2023年STADIUM COUNTRY &amp; SOUTHERN ROCK（20曲）</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="num">30<small>枚</small></div><div class="lbl">候補収集（除外 0枚）</div></div>
+          <div class="stat"><div class="num">12<small>枚</small></div><div class="lbl">S検証を実施</div></div>
+          <div class="stat"><div class="num">10<small>枚</small></div><div class="lbl">S確定</div></div>
+          <div class="stat"><div class="num">2<small>枚</small></div><div class="lbl">S検証でAに降格</div></div>
+          <div class="stat"><div class="num" style="color:var(--green)">5<small> / 5枚</small></div><div class="lbl">女性アーティスト（最終10枚・厳格ルール充足）</div></div>
+        </div>
+      </header>
+
+      <div class="toolbar">
+        <nav class="nav-chips">
+          <a href="#final">最終結果（10枚）</a>
+          <a href="#history">経緯タイムライン</a>
+          <a href="#strict">厳格ルールと入れ替え</a>
+          <a href="#verified">S検証結果（12枚）</a>
+          <a href="#demoted">A降格の理由（2枚）</a>
+          <a href="#candidates">候補一覧（30枚）</a>
+          <a href="#weakest">最弱候補の指摘</a>
+        </nav>
+      </div>
+
+      <section id="final">
+        <div class="sec-head"><span class="sec-no">01</span><h2>最終結果 — 確定10枚</h2><span class="sec-count">女性 5 / 10枚 ・ 厳格ルール充足</span></div>
+        <p class="sec-lead">当初のS確定6枚に、昇格検証を経た女性4枚を加えた最終10枚。女性アーティストは Ashley McBryde、Elle King、Megan Moroney、Morgan Wade、Caitlyn Smith の<strong>5枚</strong>で、このジャンルの厳格ルール（最終10枚のうち5枚を女性）を満たした。</p>
+        <div class="final-table-wrap">
+          <table class="final-table">
+            <tr><th>#</th><th>アーティスト</th><th>アルバム</th><th>区分</th></tr>
+            <tr><td class="fno">1</td><td><strong>Chris Stapleton</strong></td><td class="falbum">『Higher』</td><td>S確定</td></tr>
+            <tr><td class="fno">2</td><td><strong>Zach Bryan</strong></td><td class="falbum">『Zach Bryan』</td><td>S確定</td></tr>
+            <tr><td class="fno">3</td><td><strong>Ashley McBryde</strong><span class="fem">女性</span></td><td class="falbum">『The Devil I Know』</td><td>S確定</td></tr>
+            <tr><td class="fno">4</td><td><strong>The Cadillac Three</strong></td><td class="falbum">『The Years Go Fast』</td><td>S確定</td></tr>
+            <tr><td class="fno">5</td><td><strong>Gov&#x27;t Mule</strong></td><td class="falbum">『Peace... Like a River』</td><td>S確定</td></tr>
+            <tr><td class="fno">6</td><td><strong>Bailey Zimmerman</strong></td><td class="falbum">『Religiously. The Album.』</td><td>S確定</td></tr>
+            <tr><td class="fno">7</td><td><strong>Elle King</strong><span class="fem">女性</span></td><td class="falbum">『Come Get Your Wife』</td><td>昇格<span class="promo">検証 S</span></td></tr>
+            <tr><td class="fno">8</td><td><strong>Megan Moroney</strong><span class="fem">女性</span></td><td class="falbum">『Lucky』</td><td>昇格<span class="promo">検証 A</span></td></tr>
+            <tr><td class="fno">9</td><td><strong>Morgan Wade</strong><span class="fem">女性</span></td><td class="falbum">『Psychopath』</td><td>昇格<span class="promo">検証 S</span></td></tr>
+            <tr><td class="fno">10</td><td><strong>Caitlyn Smith</strong><span class="fem">女性</span></td><td class="falbum">『High &amp; Low』</td><td>昇格<span class="promo">検証 A</span></td></tr>
+          </table>
+        </div>
+        <div class="note-grid">
+          <div class="note-card">
+            <h3>Morgan Wade について — 重複ではない</h3>
+            <p>累積リストには Morgan Wade『Reckless』（2021）が既にあるが、今回の『Psychopath』（2023-08-25）は別アルバムのため<strong>重複ではない</strong>。昇格検証ではロック要素が昇格候補5枚の中で最も明確とされ、判定は S。</p>
+          </div>
+          <div class="note-card warn">
+            <h3>Caitlyn Smith について — 境界を明示して採用</h3>
+            <p>『High &amp; Low』（2023-04-14、14曲）のうち<strong>8曲は2022年のEP『High』収録曲</strong>で、2023年に6曲を追加してアルバム化した形式上の境界がある。この点を明示したうえで、Hiroが採用を決定した。昇格検証の判定は A（Brandy Clark より適合は上）。</p>
+          </div>
+        </div>
+        <p style="margin-top:16px;"><a class="spotify-link" href="https://open.spotify.com/playlist/4jzPcOzeVCEu0iBC3LQ1u4" target="_blank" rel="noopener">▶ Spotifyプレイリスト — 2023年STADIUM COUNTRY &amp; SOUTHERN ROCK（20曲）</a></p>
+      </section>
+
+      <section id="history">
+        <div class="sec-head"><span class="sec-no">02</span><h2>経緯タイムライン</h2></div>
+        <p class="sec-lead">厳格ルールでの停止から、最終10枚の確定までの流れ。</p>
+        <ol class="timeline">
+          <li><span class="dot">1</span><h3>ワークフローが厳格ルールで停止</h3><p>S検証12枚 → S確定10枚、A降格2枚。だが女性は <strong>Ashley McBryde の1枚のみ</strong>で、ルール（10枚中5枚）に4枚不足し不合格。Hiroの判断待ちとなった。</p></li>
+          <li><span class="dot">2</span><h3>Hiroが候補一覧を見て判断</h3><p>Hiroは「候補一覧を見てから決める」とし、この候補一覧ページを確認。知らないアーティストが多いため、外れる4組と繰り上がる女性アーティストの力関係についてミューの意見を求めた。</p></li>
+          <li><span class="dot">3</span><h3>ミュー案を採用（Hiro決定）</h3><p><strong>OUT：</strong> Robert Jon &amp; The Wreck、Duane Betts、Warren Zeiders、Brothers Osborne ／ <strong>IN：</strong> Elle King、Megan Moroney、Morgan Wade、Brandy Clark（検証で最終判断）。検証担当の当初推薦から Caitlyn Smith を外し、代替候補だった Morgan Wade を昇格させる案。</p></li>
+          <li><span class="dot">4</span><h3>昇格検証の結果</h3><p><strong>Elle King＝S</strong>（ロック由来のリズムが明確）、<strong>Morgan Wade＝S</strong>（ロック要素が最も明確）、<strong>Megan Moroney＝A</strong>（ポップカントリー寄りだが2023年の代表作）、<strong>Brandy Clark＝B（弱い）</strong>。Brandy Clark は質は高いがアメリカーナ中心で「スタジアム感」が薄く、このジャンルには寄れていなかった。</p></li>
+          <li><span class="dot">5</span><h3>代替候補 Caitlyn Smith の検証</h3><p>Caitlyn Smith『High &amp; Low』は判定 <strong>A</strong> で Brandy Clark より適合は上。ただし14曲中8曲が2022年EP『High』収録曲という、「指定年厳守」の観点での境界点があった。</p></li>
+          <li><span class="dot final">6</span><h3>Hiroが Caitlyn Smith 採用を決定 — 選出完了</h3><p>境界を承知のうえで Caitlyn Smith を4枚目に採用し、Brandy Clark は不採用。最終10枚が確定し、<strong>女性5枚／10枚で厳格ルールを充足</strong>した。その後、各アルバム2曲ずつ計20曲の楽曲選出とSpotifyプレイリスト作成まで完了した。</p></li>
+        </ol>
+      </section>
+
+      <section id="strict">
+        <div class="sec-head"><span class="sec-no">03</span><h2>厳格ルールと入れ替え</h2></div>
+        <p class="sec-lead">STADIUM COUNTRY &amp; SOUTHERN ROCK には女性アーティストの厳格ルールがある：最終10枚のうち<strong>5枚を女性</strong>とすること（10枚未満の場合は半数以上）。当初、S確定10枚の女性は Ashley McBryde『The Devil I Know』の1枚のみでルールを満たさなかったが、下記の入れ替えと昇格検証を経て<strong>女性5枚／10枚で充足</strong>した。</p>
+        <div class="rule-grid">
+          <div class="rule-card">
+            <h3>最終結果：女性 5 / 5枚（充足）</h3>
+            <div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+            <p class="meter-lbl">当初は <strong style="color:var(--red)">1枚で4枚不足</strong> → 入れ替え後に <strong style="color:var(--green)">5枚で充足</strong></p>
+            <p>当初のS確定10枚のうち女性は Ashley McBryde 1枚だった。入れ替えで Elle King、Megan Moroney、Morgan Wade、Caitlyn Smith の4枚が加わり、最終10枚の女性は5枚となった。</p>
+            <p class="mini">※ Samantha Fish &amp; Jesse Dayton『Death Wish Blues』は女性共同フロントだが、候補段階 B で最終選出には入っていない。</p>
+          </div>
+          <div class="rule-card">
+            <h3>実施した入れ替え（ミュー案・Hiro採用）</h3>
+            <p>弱めの男性4枚を外し、女性4枚を昇格検証のうえ入れた。Brandy Clark は検証で B（弱い・アメリカーナ寄り）となり不採用、その枠は Caitlyn Smith（検証 A、境界明示のうえ Hiro が採用）で埋めた。</p>
+            <table class="swap-table">
+              <tr><th>区分</th><th>アーティスト『アルバム』</th><th>補足</th></tr>
+              <tr><td class="swap-out">外した</td><td>Robert Jon &amp; The Wreck『Ride Into the Light』</td><td>8曲中4曲が再収録、S内最弱</td></tr>
+              <tr><td class="swap-out">外した</td><td>Duane Betts『Wild &amp; Precious Life』</td><td>ソロデビュー作</td></tr>
+              <tr><td class="swap-out">外した</td><td>Warren Zeiders『Pretty Little Poison』</td><td>—</td></tr>
+              <tr><td class="swap-out">外した</td><td>Brothers Osborne『Brothers Osborne』</td><td>11曲・34分台と短め</td></tr>
+              <tr><td class="swap-in">入れた</td><td>Elle King『Come Get Your Wife』</td><td>昇格検証 S</td></tr>
+              <tr><td class="swap-in">入れた</td><td>Megan Moroney『Lucky』</td><td>昇格検証 A</td></tr>
+              <tr><td class="swap-in">入れた</td><td>Morgan Wade『Psychopath』</td><td>昇格検証 S（候補30枚には未収録だった）</td></tr>
+              <tr><td class="swap-in">入れた</td><td>Caitlyn Smith『High &amp; Low』</td><td>昇格検証 A（境界明示で採用）</td></tr>
+            </table>
+            <p class="mini" style="margin-top:10px;">検証のみで不採用：Brandy Clark『Brandy Clark』＝ B（弱い、アメリカーナ寄り）。当初の検証担当推薦にあった組み合わせ（Megan Moroney／Elle King／Brandy Clark／Caitlyn Smith）から、ミュー案で Brandy Clark を検証待ちとし Morgan Wade を加えた経緯はタイムライン参照。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="verified">
+        <div class="sec-head"><span class="sec-no">04</span><h2>S検証結果</h2><span class="sec-count">12枚検証 → S確定10 / A降格2</span></div>
+        <p class="sec-lead">候補段階で S とされた12枚を、発売年・ジャンル適合・絶対除外要素（ラップ／ヒップホップ、ミクスチャー／ニューメタル、トランス／エレクトロニカ）について出典付きで検証した結果。</p>
+        <div class="vgrid">
+
+    <article class="vcard is-s" data-search="Chris Stapleton Higher">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span>
+        <span class="vdate">2023-11-10</span>
+      </div>
+      <h3 class="vartist">Chris Stapleton</h3>
+      <p class="valbum">『Higher』</p>
+      <p class="vevi">Wikipedia: Genre Country, blues rock. Metacritic: Country, &#x27;mainstream country rock&#x27;. STADIUM COUNTRY &amp; SOUTHERN ROCKに直接適合。</p>
+      <p class="vnote">5th studio album、14曲。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Higher_(Chris_Stapleton_album)" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.metacritic.com/music/higher-2023/chris-stapleton/" target="_blank" rel="noopener">metacritic.com</a></span></p>
+    </article>
+
+    <article class="vcard is-s" data-search="Zach Bryan Zach Bryan">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span>
+        <span class="vdate">2023-08-25</span>
+      </div>
+      <h3 class="vartist">Zach Bryan</h3>
+      <p class="valbum">『Zach Bryan』</p>
+      <p class="vevi">Wikipedia: Genre Country rock、4th studio album。Country Chord等もcountry作品として報道。カントリー＋ロックで対象ジャンルに適合。</p>
+      <p class="vnote">オリジナル発売は2023-08-25（16曲、54分台）。Tower等の2023-10-13表記はLP盤の発売日で、オリジナル発売日とは別。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Zach_Bryan_(album)" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://unewsonline.com/2023/09/zach-bryans-vulnerable-chill-inducing-self-titled-album/" target="_blank" rel="noopener">unewsonline.com</a></span></p>
+    </article>
+
+    <article class="vcard is-s" data-search="Ashley McBryde The Devil I Know">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span> <span class="fem">女性</span>
+        <span class="vdate">2023-09-08</span>
+      </div>
+      <h3 class="vartist">Ashley McBryde</h3>
+      <p class="valbum">『The Devil I Know』</p>
+      <p class="vevi">Wikipedia: Genre Country、studio album。Country Now: traditional country rootsにrock edge。対象ジャンルのカントリー側に適合。女性アーティスト（厳格ルールの女性枠カウント対象）。</p>
+      <p class="vnote">4th studio albumとされる。11曲・37:59とやや短め。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/The_Devil_I_Know" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://countrynow.com/ashley-mcbryde-shares-new-track-learned-to-lie-unveils-release-date-for-new-album-the-devil-i-know/" target="_blank" rel="noopener">countrynow.com</a></span></p>
+    </article>
+
+    <article class="vcard is-s" data-search="Brothers Osborne Brothers Osborne">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span>
+        <span class="vdate">2023-09-15</span>
+      </div>
+      <h3 class="vartist">Brothers Osborne</h3>
+      <p class="valbum">『Brothers Osborne』</p>
+      <p class="vevi">Wikipediaアルバムページ: Genre Country rock、4th studio album。公式サイト: guitar-led country rock、classic Southern rockとmodern countryの融合と明記。対象ジャンルに直接適合。</p>
+      <p class="vnote">11曲・34:45と短めのアルバムである点を明記。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Brothers_Osborne" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.brothersosborne.com/blogs/news/grammy-award-winning-duo-brothers-osborne-announce-self-titled-fourth-studio-album-brothers-osborne-out-september-15th" target="_blank" rel="noopener">brothersosborne.com</a> · <a href="https://tasteofcountry.com/brothers-osborne-fourth-studio-album-self-titled/" target="_blank" rel="noopener">tasteofcountry.com</a></span></p>
+    </article>
+
+    <article class="vcard is-s" data-search="The Cadillac Three The Years Go Fast">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span>
+        <span class="vdate">2023-10-27</span>
+      </div>
+      <h3 class="vartist">The Cadillac Three</h3>
+      <p class="valbum">『The Years Go Fast』</p>
+      <p class="vevi">Wikipedia: Genres Southern rock, country rock、6th studio album。Qobuz: Genre Country。サザンロック側の代表格として対象ジャンルに最も直接適合。</p>
+      <p class="vnote">12曲・40:24。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/The_Years_Go_Fast" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.qobuz.com/lu-fr/album/the-years-go-fast-the-cadillac-three/r0eg3s3y4h2nb" target="_blank" rel="noopener">qobuz.com</a></span></p>
+    </article>
+
+    <article class="vcard is-a" data-search="Jason Isbell and the 400 Unit Weathervanes">
+      <div class="vcard-top">
+        <span class="verdict v-a">A降格</span>
+        <span class="vdate">2023-06-09</span>
+      </div>
+      <h3 class="vartist">Jason Isbell and the 400 Unit</h3>
+      <p class="valbum">『Weathervanes』</p>
+      <p class="vevi">境界事例：Wikipediaはstudio albumと確認し、グラミー賞Best Americana Album受賞が主分類。アーティストのジャンルにはSouthern rockも含まれるが、本作の支配的分類はAmericanaであり、STADIUM COUNTRY &amp; SOUTHERN ROCKのS基準よりAAA寄り。DiscogsのStyleにもSouthern Rock/Country RockとIndie Rockが併記され混在。</p>
+      <p class="vnote">通算の数え方に違いあり：Isbell通算9th studio album、400 Unit参加作としては6th。60:30。Americana寄りのためSではなくAと判定。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Weathervanes_(Jason_Isbell_and_the_400_Unit_album)" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.discogs.com/release/27326364-Jason-Isbell-And-The-400-Unit-Weathervanes" target="_blank" rel="noopener">discogs.com</a></span></p>
+    </article>
+
+    <article class="vcard is-s" data-search="Gov&#x27;t Mule Peace... Like a River">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span>
+        <span class="vdate">2023-06-16</span>
+      </div>
+      <h3 class="vartist">Gov&#x27;t Mule</h3>
+      <p class="valbum">『Peace... Like a River』</p>
+      <p class="vevi">Sonic Perspectives/Discogs: Genre Blues Rock / Southern Rock、Style Southern Rock, Blues Rock。カントリー要素は薄いが、対象ジャンルのSOUTHERN ROCK側に直接適合。</p>
+      <p class="vnote">通算枚数の数え方に食い違いあり：Wikipediaアルバムページは13th studio album、レーベル/公式系プレスリリースは12th studio albumと表記。12曲。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Peace..._Like_a_River" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.sonicperspectives.com/album-reviews/govt-mule-peace-like-a-river/" target="_blank" rel="noopener">sonicperspectives.com</a> · <a href="https://govtmule.bandcamp.com/album/peace-like-a-river" target="_blank" rel="noopener">govtmule.bandcamp.com</a></span></p>
+    </article>
+
+    <article class="vcard is-a" data-search="Jelly Roll Whitsitt Chapel">
+      <div class="vcard-top">
+        <span class="verdict v-a">A降格</span>
+        <span class="vdate">2023-06-02</span>
+      </div>
+      <h3 class="vartist">Jelly Roll</h3>
+      <p class="valbum">『Whitsitt Chapel』</p>
+      <p class="vevi">境界・フラグ事例：Wikipedia: Genre Country, country rock、9th studio album、本人のfirst country album。ただし絶対除外要素の境界フラグあり：アーティストの出自はhip-hop/rapで、CountrySwag評は本作がpure countryからbeat-laden hip-hop and rapまでdabbleするとし、GRAMMY.comもcountry-trap beatsに言及。本作全体はカントリー盤だが、ラップ／ヒップホップ絶対除外ルールとの境界判定が必須のためS確定は保留しAとする。</p>
+      <p class="vnote">13曲。通算では9th studio albumだが、カントリー盤としてはデビュー作という数え方の違いあり。Hiroの境界判断が必要な最優先フラグ案件。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Whitsitt_Chapel" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.bbrmusicgroup.com/jelly-roll-releases-debut-country-album-project-whitsitt-chapel-today-6-2/" target="_blank" rel="noopener">bbrmusicgroup.com</a> · <a href="https://countryswag.com/jelly-roll-whitsitt-chapel-debut-album/" target="_blank" rel="noopener">countryswag.com</a></span></p>
+    </article>
+
+    <article class="vcard is-s" data-search="Bailey Zimmerman Religiously. The Album.">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span>
+        <span class="vdate">2023-05-12</span>
+      </div>
+      <h3 class="vartist">Bailey Zimmerman</h3>
+      <p class="valbum">『Religiously. The Album.』</p>
+      <p class="vevi">Wikipedia: Genre Country、debut studio album。Country Now: biggest streaming country debut。モダンなstadium countryとして対象ジャンルのカントリー側に適合。</p>
+      <p class="vnote">16曲・52:43。絶対除外要素なし。南部ロック色は薄くポップカントリー寄りだが、STADIUM COUNTRY枠として適合。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Religiously._The_Album." target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://countrynow.com/bailey-zimmerman-earns-biggest-country-streaming-debut-of-all-time-with-religiously-the-album/" target="_blank" rel="noopener">countrynow.com</a></span></p>
+    </article>
+
+    <article class="vcard is-s" data-search="Warren Zeiders Pretty Little Poison">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span>
+        <span class="vdate">2023-08-18</span>
+      </div>
+      <h3 class="vartist">Warren Zeiders</h3>
+      <p class="valbum">『Pretty Little Poison』</p>
+      <p class="vevi">Discogs: Style Country, Country Rock。Shore Fire公式PR: southern rock anthemsやoutlaw countryを含むcountry作と説明。対象ジャンルに適合。</p>
+      <p class="vnote">Wikipediaでは確認できない：アルバム単独ページはなく、アーティストページのディスコグラフィ表で確認（Released: August 18, 2023）。日付の食い違いあり：同ページ本文はAugust 10、初期PRコピーにはAugust 25表記もあるが、公式リリース日告知・Discogs・ディスコグラフィ表が一致するAugust 18を採用。数え方の違いあり：Warnerでのdebut LPと称される一方、Acoustic Covers/717 Tapesを含めると3rd studio albumと数えられる。14曲。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Warren_Zeiders" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://shorefire.com/releases/entry/warren-zeiders-announces-debut-album-pretty-little-poison" target="_blank" rel="noopener">shorefire.com</a> · <a href="https://www.discogs.com/release/28044168-Warren-Zeiders-Pretty-Little-Poison" target="_blank" rel="noopener">discogs.com</a></span></p>
+    </article>
+
+    <article class="vcard is-s" data-search="Robert Jon &amp; The Wreck Ride Into the Light">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span>
+        <span class="vdate">2023-08-04</span>
+      </div>
+      <h3 class="vartist">Robert Jon &amp; The Wreck</h3>
+      <p class="valbum">『Ride Into the Light』</p>
+      <p class="vevi">Rock&#x27;N&#x27;Load/Grande Rock: Blistering Blues Southern Rock、7th studio album、Allman Brothers/Lynyrd Skynyrd系のsouthern rockと明記。対象ジャンルのSOUTHERN ROCK側に直接適合。</p>
+      <p class="vnote">Wikipediaでは確認できない：アルバム単独ページはなく、バンドページのディスコグラフィでReleased: August 4, 2023を確認。短いアルバム：僅か8曲のみで、そのうち4曲は先行EP『One of a Kind』収録曲の再収録である点が弱点。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Robert_Jon_%26_the_Wreck" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://grande-rock.com/news/robert-jon-and-the-wreck-to-release-new-studio-album-ride-into-the-light-on-august-4th-2023/" target="_blank" rel="noopener">grande-rock.com</a> · <a href="https://rocknloadmag.com/robert-jon-the-wreck-deliver-blistering-blues-southern-rock-on-their-upcoming-new-album-ride-into-the-light-out-8-4-via-journeyman-records/" target="_blank" rel="noopener">rocknloadmag.com</a></span></p>
+    </article>
+
+    <article class="vcard is-s" data-search="Duane Betts Wild &amp; Precious Life">
+      <div class="vcard-top">
+        <span class="verdict v-s">S確定</span>
+        <span class="vdate">2023-07-14</span>
+      </div>
+      <h3 class="vartist">Duane Betts</h3>
+      <p class="valbum">『Wild &amp; Precious Life』</p>
+      <p class="vevi">Discogs: Style Southern Rock。Shore Fire/Grateful Web: fresh perspective to southern rock、swampy southern soulとcosmic countryの融合、debut solo album。対象ジャンルのSOUTHERN ROCK側に適合。</p>
+      <p class="vnote">Wikipediaでは確認できない：アルバム単独ページはなく、アーティストページでJuly 14, 2023発売を確認。タイトル表記は『Wild &amp; Precious Life』が正式で、一部出典は『Wild and Precious Life』と表記。ソロデビュー作。絶対除外要素なし。</p>
+      <p class="vsrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Duane_Betts" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.discogs.com/release/28384837-Duane-Betts-Wild-Precious-Life-" target="_blank" rel="noopener">discogs.com</a> · <a href="https://shorefire.com/releases/entry/duane-betts-long-solo-album-wild-precious-life-out-today-royal-potato-family" target="_blank" rel="noopener">shorefire.com</a></span></p>
+    </article>
+        </div>
+      </section>
+
+      <section id="demoted">
+        <div class="sec-head"><span class="sec-no">05</span><h2>A降格2枚の理由</h2><span class="sec-count">S検証で降格</span></div>
+        <p class="sec-lead">候補段階では S だったが、検証で境界判定となり A に降格した2枚。どちらも「質が低いから」ではなく、ジャンル境界と絶対除外ルールとの兼ね合いによる降格。</p>
+        <div class="demote">
+          <div class="dcard">
+            <h3>Jason Isbell and the 400 Unit</h3>
+            <p class="dalbum">『Weathervanes』（2023-06-09）</p>
+            <span class="reason-tag">理由：Americana寄りで AAA との境界</span>
+            <p>アーティストのジャンルには Southern rock も含まれるが、本作の支配的分類は Americana。グラミー賞 Best Americana Album を受賞しており、Discogs の Style にも Southern Rock / Country Rock と Indie Rock が併記される混在ぶり。STADIUM COUNTRY &amp; SOUTHERN ROCK の S基準より AAA 寄りと判定した。</p>
+            <p>13曲・60:30。絶対除外要素はなし。Isbell 通算9作目、400 Unit 参加作としては6作目。</p>
+            <p class="mini">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Weathervanes_(Jason_Isbell_and_the_400_Unit_album)" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.discogs.com/release/27326364-Jason-Isbell-And-The-400-Unit-Weathervanes" target="_blank" rel="noopener">discogs.com</a></span></p>
+          </div>
+          <div class="dcard">
+            <h3>Jelly Roll</h3>
+            <p class="dalbum">『Whitsitt Chapel』（2023-06-02）</p>
+            <span class="reason-tag">理由：ラップ／ヒップホップ（絶対除外）との境界フラグ</span>
+            <p>Wikipedia のジャンルは Country, country rock で、本人の初のカントリー・アルバム（通算9作目）。ただしアーティストの出自は hip-hop / rap で、CountrySwag の評は本作が pure country から beat-laden hip-hop and rap まで手を出すと指摘し、GRAMMY.com も country-trap beats に言及している。</p>
+            <p>本作全体はカントリー盤だが、絶対除外ルールとの境界判定が必須のため S確定は保留し A とした。<strong>Hiro の境界判断が必要な最優先フラグ案件。</strong></p>
+            <p class="mini">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Whitsitt_Chapel" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.bbrmusicgroup.com/jelly-roll-releases-debut-country-album-project-whitsitt-chapel-today-6-2/" target="_blank" rel="noopener">bbrmusicgroup.com</a> · <a href="https://countryswag.com/jelly-roll-whitsitt-chapel-debut-album/" target="_blank" rel="noopener">countryswag.com</a></span></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="candidates">
+        <div class="sec-head"><span class="sec-no">06</span><h2>候補一覧</h2><span class="sec-count">30枚</span></div>
+        <p class="sec-lead">候補段階の適合度（S＝完全適合 / A＝十分適合 / B＝条件付き適合）と、S検証の結果を表示。適合度の高い順、同格は発売日順。ジャンル根拠は検証時の出典に基づく。</p>
+        <div class="filters" role="group" aria-label="候補の絞り込み">
+          <button class="fbtn" data-filter="all" aria-pressed="true">すべて</button>
+          <button class="fbtn" data-filter="S確定" aria-pressed="false">S確定のみ</button>
+          <button class="fbtn" data-filter="A降格" aria-pressed="false">A降格のみ</button>
+          <button class="fbtn" data-filter="female" aria-pressed="false">女性のみ</button>
+          <input type="search" id="q" placeholder="アーティスト / アルバムで検索" aria-label="候補を検索" />
+          <span class="hits" id="hits"></span>
+        </div>
+        <div class="clist" id="clist">
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="0" data-search="bailey zimmerman religiously. the album.">
+      <div class="crow-main">
+        <span class="cnum">01</span>
+        <div class="cwho">
+          <p class="cartist">Bailey Zimmerman</p>
+          <p class="calbum">『Religiously. The Album.』 <span class="cdate">2023-05-12</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Artist genres on Wikipedia: Country, country rock, Southern rock; label copy describes a sweet spot between timeless country, rafter-rattling arena rock and storytelling.</p>
+      
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Religiously._The_Album." target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="A降格" data-female="0" data-search="jelly roll whitsitt chapel">
+      <div class="crow-main">
+        <span class="cnum">02</span>
+        <div class="cwho">
+          <p class="cartist">Jelly Roll<span class="flag">境界フラグ</span></p>
+          <p class="calbum">『Whitsitt Chapel』 <span class="cdate">2023-06-02</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-down">A降格</span>
+      </div>
+      <p class="cevi">Wikipedia genres: Country, country rock (S: Country Rock); arena-ready rock anthems noted in reviews.</p>
+      <p class="cnote">BOUNDARY FLAG: artist background is hip-hop/rap and one review notes dabbling in beat-laden hip-hop/rap on the album. Absolute-exclusion verification is mandatory at the next stage, although Wikipedia&#x27;s album genre is Country / country rock.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Whitsitt_Chapel" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="A降格" data-female="0" data-search="jason isbell and the 400 unit weathervanes">
+      <div class="crow-main">
+        <span class="cnum">03</span>
+        <div class="cwho">
+          <p class="cartist">Jason Isbell and the 400 Unit</p>
+          <p class="calbum">『Weathervanes』 <span class="cdate">2023-06-09</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-down">A降格</span>
+      </div>
+      <p class="cevi">Artist genres include Southern rock; Americana Highways review calls Weathervanes the Southern rock record of his career, AllMusic calls it American roots rock; Grammy Best Americana Album.</p>
+      
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Weathervanes_(Jason_Isbell_and_the_400_Unit_album)" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="0" data-search="gov&#x27;t mule peace... like a river">
+      <div class="crow-main">
+        <span class="cnum">04</span>
+        <div class="cwho">
+          <p class="cartist">Gov&#x27;t Mule</p>
+          <p class="calbum">『Peace... Like a River』 <span class="cdate">2023-06-16</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Discogs style: Southern Rock, Blues Rock, Jazz-Rock; Sonic Perspectives lists genre as Blues Rock / Southern Rock (S: Southern Rock).</p>
+      <p class="cnote">Album title punctuation is &#x27;Peace... Like a River&#x27; per label/Discogs.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://www.discogs.com/release/27401742-Govt-Mule-PeaceLike-A-River" target="_blank" rel="noopener">discogs.com</a> · <a href="https://www.sonicperspectives.com/album-reviews/govt-mule-peace-like-a-river/" target="_blank" rel="noopener">sonicperspectives.com</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="0" data-search="duane betts wild &amp; precious life">
+      <div class="crow-main">
+        <span class="cnum">05</span>
+        <div class="cwho">
+          <p class="cartist">Duane Betts</p>
+          <p class="calbum">『Wild &amp; Precious Life』 <span class="cdate">2023-07-14</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Discogs style: Southern Rock; Shore Fire/No Depression: &#x27;secures Betts&#x27; place in the pantheon of great Southern rockers&#x27;, a fresh perspective to southern rock with swampy southern soul and cosmic country.</p>
+      <p class="cnote">Album title rendered &#x27;Wild &amp; Precious Life&#x27; on Discogs/Bandcamp and &#x27;Wild and Precious Life&#x27; on the artist Wikipedia page. No standalone album Wikipedia page; verified via Discogs, Shore Fire and the artist page.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://www.discogs.com/release/28384837-Duane-Betts-Wild-Precious-Life-" target="_blank" rel="noopener">discogs.com</a> · <a href="https://en.wikipedia.org/wiki/Duane_Betts" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="0" data-search="robert jon &amp; the wreck ride into the light">
+      <div class="crow-main">
+        <span class="cnum">06</span>
+        <div class="cwho">
+          <p class="cartist">Robert Jon &amp; The Wreck</p>
+          <p class="calbum">『Ride Into the Light』 <span class="cdate">2023-08-04</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Wikipedia describes the band as a blues rock and Southern rock band; official shop copy calls the album blistering blues Southern rock, reviews stress timeless Southern rock in the Allman Brothers / Lynyrd Skynyrd lineage.</p>
+      <p class="cnote">No standalone album Wikipedia page; release date verified on the band&#x27;s Wikipedia discography (August 4, 2023) and Qobuz (Aug 4, 2023). Note: 4 tracks previously appeared on the One of a Kind EP - reissue/EP-overlap point to check at next stage. Vinyl street date was Sep 22, 2023.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Robert_Jon_%26_the_Wreck" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.qobuz.com/us-en/label/journeyman-records-robert-jon--the-wreck/download-streaming-albums/4129789" target="_blank" rel="noopener">qobuz.com</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="0" data-search="warren zeiders pretty little poison">
+      <div class="crow-main">
+        <span class="cnum">07</span>
+        <div class="cwho">
+          <p class="cartist">Warren Zeiders</p>
+          <p class="calbum">『Pretty Little Poison』 <span class="cdate">2023-08-18</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Discogs style: Country, Country Rock; Shore Fire (label PR) calls tracks &#x27;God Only Knows&#x27; and &#x27;Comin&#x27; Down High&#x27; southern rock anthems and describes his muscular brand of country music.</p>
+      <p class="cnote">Wikipediaでは確認できない as a standalone album page in this search; verified via Discogs and Shore Fire label PR.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://www.discogs.com/release/28044168-Warren-Zeiders-Pretty-Little-Poison" target="_blank" rel="noopener">discogs.com</a> · <a href="https://shorefire.com/releases/entry/warren-zeiders-announces-debut-album-pretty-little-poison" target="_blank" rel="noopener">shorefire.com</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="0" data-search="zach bryan zach bryan">
+      <div class="crow-main">
+        <span class="cnum">08</span>
+        <div class="cwho">
+          <p class="cartist">Zach Bryan</p>
+          <p class="calbum">『Zach Bryan』 <span class="cdate">2023-08-25</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country rock; described as a country rock album incorporating indie rock, folk and country, Billboard 200 No.1.</p>
+      
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Zach_Bryan_(album)" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="1" data-search="ashley mcbryde the devil i know">
+      <div class="crow-main">
+        <span class="cnum">09</span>
+        <div class="cwho">
+          <p class="cartist">Ashley McBryde<span class="fem">女性</span></p>
+          <p class="calbum">『The Devil I Know』 <span class="cdate">2023-09-08</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country; reviews describe a big Southern-rock chorus with distorted riffage (Stereogum on title track), guitar-heavy rock vibe (American Songwriter), rock-tinged roots and biker-bar riffs.</p>
+      <p class="cnote">Female artist - counts toward the strict 5-female rule.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/The_Devil_I_Know" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="0" data-search="brothers osborne brothers osborne">
+      <div class="crow-main">
+        <span class="cnum">10</span>
+        <div class="cwho">
+          <p class="cartist">Brothers Osborne</p>
+          <p class="calbum">『Brothers Osborne』 <span class="cdate">2023-09-15</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Label (MCA) quoting American Songwriter: builds on the duo&#x27;s trademark meld of classic Southern rock and polished modern country; Billboard describes guitar-led country rock.</p>
+      
+      <p class="csrc">出典 <span class="srcs"><a href="https://www.mca.com/grammy-award-winning-duo-brothers-osborne-release-fourth-studio-album-brothers-osborne/" target="_blank" rel="noopener">mca.com</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="0" data-search="the cadillac three the years go fast">
+      <div class="crow-main">
+        <span class="cnum">11</span>
+        <div class="cwho">
+          <p class="cartist">The Cadillac Three</p>
+          <p class="calbum">『The Years Go Fast』 <span class="cdate">2023-10-27</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Wikipedia genres: Southern rock, country rock (S: Southern Rock / Country Rock, exactly on definition).</p>
+      
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/The_Years_Go_Fast" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="S" data-status="S確定" data-female="0" data-search="chris stapleton higher">
+      <div class="crow-main">
+        <span class="cnum">12</span>
+        <div class="cwho">
+          <p class="cartist">Chris Stapleton</p>
+          <p class="calbum">『Higher』 <span class="cdate">2023-11-10</span></p>
+        </div>
+        <span class="fit fit-s">S</span>
+        <span class="status st-s">S確定</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country, blues rock. Benchmark artist; heavy single &#x27;White Horse&#x27; exemplifies thick hard-rock riffing on a country base.</p>
+      <p class="cnote">Benchmark artist (Chris Stapleton).</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Higher_(Chris_Stapleton_album)" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="1" data-search="margo price strays">
+      <div class="crow-main">
+        <span class="cnum">13</span>
+        <div class="cwho">
+          <p class="cartist">Margo Price<span class="fem">女性</span></p>
+          <p class="calbum">『Strays』 <span class="cdate">2023-01-13</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Discogs style: Country Rock, Folk Rock; Slant describes a classic rock-inspired / roots rock direction, NPR notes expansive rock and roll alongside indie country.</p>
+      <p class="cnote">Female artist - counts toward the strict 5-female rule.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Strays_(Margo_Price_album)" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://www.discogs.com/release/25737328-Margo-Price-Strays" target="_blank" rel="noopener">discogs.com</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="1" data-search="elle king come get your wife">
+      <div class="crow-main">
+        <span class="cnum">14</span>
+        <div class="cwho">
+          <p class="cartist">Elle King<span class="fem">女性</span></p>
+          <p class="calbum">『Come Get Your Wife』 <span class="cdate">2023-01-27</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country; artist genres are Alternative country, blues rock, and Billboard described the album as bringing her roots-rock swagger to her first full country album.</p>
+      <p class="cnote">Female artist - counts toward the strict 5-female rule.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Come_Get_Your_Wife" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="1" data-search="shania twain queen of me">
+      <div class="crow-main">
+        <span class="cnum">15</span>
+        <div class="cwho">
+          <p class="cartist">Shania Twain<span class="fem">女性</span></p>
+          <p class="calbum">『Queen of Me』 <span class="cdate">2023-02-03</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genres: Country, pop; Consequence review frames it as country-pop (A: Country Pop).</p>
+      <p class="cnote">Female artist - counts toward the strict 5-female rule. Pop-leaning; rock-dynamic production is weaker than S candidates, check at next stage.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Queen_of_Me" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="0" data-search="jordan davis bluebird days">
+      <div class="crow-main">
+        <span class="cnum">16</span>
+        <div class="cwho">
+          <p class="cartist">Jordan Davis</p>
+          <p class="calbum">『Bluebird Days』 <span class="cdate">2023-02-17</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country; artist genres Country, country pop, AllMusic describes him as a country-pop singer (A: Contemporary Country / Country Pop).</p>
+      
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Bluebird_Days" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="0" data-search="dierks bentley gravel &amp; gold">
+      <div class="crow-main">
+        <span class="cnum">17</span>
+        <div class="cwho">
+          <p class="cartist">Dierks Bentley</p>
+          <p class="calbum">『Gravel &amp; Gold』 <span class="cdate">2023-02-24</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country; review notes mixing traditional country instrumentation with hints of Southern rock, contemporary commercial country side included.</p>
+      <p class="cnote">Contains bluegrass/traditional elements alongside contemporary country; rock-dynamic share to check at next stage (pure traditional country is out of scope).</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Gravel_%26_Gold" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="0" data-search="morgan wallen one thing at a time">
+      <div class="crow-main">
+        <span class="cnum">18</span>
+        <div class="cwho">
+          <p class="cartist">Morgan Wallen<span class="flag">境界フラグ</span></p>
+          <p class="calbum">『One Thing at a Time』 <span class="cdate">2023-03-03</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country pop (A: Country Pop / arena-scale Contemporary Country); Billboard 200 No.1 for 19 weeks, the defining stadium-country hit album of 2023.</p>
+      <p class="cnote">BOUNDARY FLAG: Wikipedia/search sources state the album incorporates hip-hop elements (e.g. Young Thug sample interpolation on &#x27;180 (Lifestyle)&#x27;). Absolute-exclusion (rap/hip-hop) verification is mandatory at the S-verification stage.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/One_Thing_at_a_Time" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="0" data-search="luke combs gettin&#x27; old">
+      <div class="crow-main">
+        <span class="cnum">19</span>
+        <div class="cwho">
+          <p class="cartist">Luke Combs</p>
+          <p class="calbum">『Gettin&#x27; Old』 <span class="cdate">2023-03-24</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country. Artist is a named benchmark for this genre; stadium-scale contemporary country with modern production.</p>
+      <p class="cnote">Benchmark artist (Luke Combs). Album genre on Wikipedia is Country only, so rock-dynamic production needs track-level check at next stage.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Gettin%27_Old" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="1" data-search="caitlyn smith high &amp; low">
+      <div class="crow-main">
+        <span class="cnum">20</span>
+        <div class="cwho">
+          <p class="cartist">Caitlyn Smith<span class="fem">女性</span></p>
+          <p class="calbum">『High &amp; Low』 <span class="cdate">2023-04-14</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country pop (A: Country Pop).</p>
+      <p class="cnote">Female artist - counts toward the strict 5-female rule.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/High_%26_Low_(album)" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="1" data-search="megan moroney lucky">
+      <div class="crow-main">
+        <span class="cnum">21</span>
+        <div class="cwho">
+          <p class="cartist">Megan Moroney<span class="fem">女性</span></p>
+          <p class="calbum">『Lucky』 <span class="cdate">2023-05-05</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country; Sony Music Nashville release describes the album as a collision of Country, Folk and Southern Rock.</p>
+      <p class="cnote">Female artist - counts toward the strict 5-female rule.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Lucky_(Megan_Moroney_album)" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="0" data-search="parker mccollum never enough">
+      <div class="crow-main">
+        <span class="cnum">22</span>
+        <div class="cwho">
+          <p class="cartist">Parker McCollum</p>
+          <p class="calbum">『Never Enough』 <span class="cdate">2023-05-12</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country; label/press copy states the album pairs equal parts rock guitar and country songwriting; iMusic tags Contemporary Country / Country Rock / Americana.</p>
+      
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Never_Enough_(Parker_McCollum_album)" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="A" data-status="未検証" data-female="0" data-search="tim mcgraw standing room only">
+      <div class="crow-main">
+        <span class="cnum">23</span>
+        <div class="cwho">
+          <p class="cartist">Tim McGraw</p>
+          <p class="calbum">『Standing Room Only』 <span class="cdate">2023-08-25</span></p>
+        </div>
+        <span class="fit fit-a">A</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country; long-running stadium-headline contemporary country artist with modern arena production (A: Contemporary Country).</p>
+      
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Standing_Room_Only_(Tim_McGraw_album)" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="B" data-status="未検証" data-female="0" data-search="hardy the mockingbird &amp; the crow">
+      <div class="crow-main">
+        <span class="cnum">24</span>
+        <div class="cwho">
+          <p class="cartist">HARDY<span class="flag">境界フラグ</span></p>
+          <p class="calbum">『the mockingbird &amp; THE CROW』 <span class="cdate">2023-01-20</span></p>
+        </div>
+        <span class="fit fit-b">B</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Label (Big Loud) describes it as marrying country and rock in a two-part release, &#x27;keeping the spirit of classic heavy Southern rock alive&#x27;; half country / half hard rock.</p>
+      <p class="cnote">BOUNDARY FLAG - HIGH RISK: Wikipedia lists genres as Country, nu metal. Nu metal is under the absolute-exclusion (mixture/nu-metal) rule, so this candidate will likely be excluded at verification; included here only for candidate-stage completeness with the flag explicit.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/The_Mockingbird_%26_the_Crow" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://bigloud.com/hardy-is-the-mockingbird-the-crow-2/" target="_blank" rel="noopener">bigloud.com</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="B" data-status="未検証" data-female="0" data-search="muscadine bloodline teenage dixie">
+      <div class="crow-main">
+        <span class="cnum">25</span>
+        <div class="cwho">
+          <p class="cartist">Muscadine Bloodline</p>
+          <p class="calbum">『Teenage Dixie』 <span class="cdate">2023-02-24</span></p>
+        </div>
+        <span class="fit fit-b">B</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Tower genre: Country, release 2023-02-24; coverage describes Southern (Alabama) country duo with foot-stomping electric/acoustic guitar, harmonica and Southern small-town themes - Southern-leaning country rock side.</p>
+      <p class="cnote">Wikipediaでは確認できない (no album Wikipedia page found; verified via Tower Records and Top40-Charts/MusicRow announcements).</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://tower.com/products/muscadine-bloodline-teenage-dixie" target="_blank" rel="noopener">tower.com</a> · <a href="https://top40-charts.com/news.php?nid=178642" target="_blank" rel="noopener">top40-charts.com</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="B" data-status="未検証" data-female="1" data-search="brandy clark brandy clark">
+      <div class="crow-main">
+        <span class="cnum">26</span>
+        <div class="cwho">
+          <p class="cartist">Brandy Clark<span class="fem">女性</span></p>
+          <p class="calbum">『Brandy Clark』 <span class="cdate">2023-05-19</span></p>
+        </div>
+        <span class="fit fit-b">B</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genres: Americana, country (B: Americana); coverage notes folk-rock and references to Tom Petty / 90s Americana rock songwriting.</p>
+      <p class="cnote">Female artist - counts toward the strict 5-female rule. Intimate production; stadium/rock dynamics are a borderline point for next stage.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Brandy_Clark_(album)" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="B" data-status="未検証" data-female="1" data-search="samantha fish &amp; jesse dayton death wish blues">
+      <div class="crow-main">
+        <span class="cnum">27</span>
+        <div class="cwho">
+          <p class="cartist">Samantha Fish &amp; Jesse Dayton<span class="fem">女性</span></p>
+          <p class="calbum">『Death Wish Blues』 <span class="cdate">2023-05-19</span></p>
+        </div>
+        <span class="fit fit-b">B</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Discogs style: Blues Rock (B: Hard Blues / Blues Rock); Qobuz review calls it contemporary blues-rock, Fish delivering an unbridled form of blues-rock.</p>
+      <p class="cnote">Wikipediaでは確認できない (no album Wikipedia page found; verified via Discogs and Qobuz). Female co-front (Samantha Fish) - female-front status to confirm for the strict rule at next stage.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://www.discogs.com/release/27131109-Samantha-Fish-Jesse-Dayton-Death-Wish-Blues" target="_blank" rel="noopener">discogs.com</a> · <a href="https://www.qobuz.com/us-en/album/death-wish-blues-jesse-dayton-samantha-fish/j8uib6d1ix0ec" target="_blank" rel="noopener">qobuz.com</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="B" data-status="未検証" data-female="1" data-search="tanya tucker sweet western sound">
+      <div class="crow-main">
+        <span class="cnum">28</span>
+        <div class="cwho">
+          <p class="cartist">Tanya Tucker<span class="fem">女性</span></p>
+          <p class="calbum">『Sweet Western Sound』 <span class="cdate">2023-06-02</span></p>
+        </div>
+        <span class="fit fit-b">B</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genre: Country, UK Americana chart entry; label copy describes a more muscular framework evoking vintage West Coast country-rock productions.</p>
+      <p class="cnote">Female artist - counts toward the strict 5-female rule. Ballad-heavy per reviews; borderline on rock dynamics.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Sweet_Western_Sound" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="B" data-status="未検証" data-female="1" data-search="lucinda williams stories from a rock n roll heart">
+      <div class="crow-main">
+        <span class="cnum">29</span>
+        <div class="cwho">
+          <p class="cartist">Lucinda Williams<span class="fem">女性</span></p>
+          <p class="calbum">『Stories from a Rock n Roll Heart』 <span class="cdate">2023-06-30</span></p>
+        </div>
+        <span class="fit fit-b">B</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genres: Rock, Americana (B: Americana, rock-leaning and melancholic); Discogs style includes Blues Rock.</p>
+      <p class="cnote">Female artist - counts toward the strict 5-female rule.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/Stories_from_a_Rock_n_Roll_Heart" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+
+    <article class="crow" data-fit="B" data-status="未検証" data-female="0" data-search="turnpike troubadours a cat in the rain">
+      <div class="crow-main">
+        <span class="cnum">30</span>
+        <div class="cwho">
+          <p class="cartist">Turnpike Troubadours</p>
+          <p class="calbum">『A Cat in the Rain』 <span class="cdate">2023-08-25</span></p>
+        </div>
+        <span class="fit fit-b">B</span>
+        <span class="status st-none">未検証</span>
+      </div>
+      <p class="cevi">Wikipedia genres: Red Dirt, Americana, country (B: Americana); AllMusic describes the band as a country-leaning roots rock band, Holler calls them a country-rock group.</p>
+      <p class="cnote">Americana side is strong; stadium-scale rock production is a borderline point for next stage.</p>
+      <p class="csrc">出典 <span class="srcs"><a href="https://en.wikipedia.org/wiki/A_Cat_in_the_Rain" target="_blank" rel="noopener">en.wikipedia.org</a></span></p>
+    </article>
+        </div>
+      </section>
+
+      <section id="weakest">
+        <div class="sec-head"><span class="sec-no">07</span><h2>最弱候補の指摘</h2></div>
+        <p class="sec-lead">S判定10枚の中で、さらに落とす必要がある場合の優先順位（検証担当の見解）。</p>
+        <div class="weak-box">
+          <p>最弱候補は <strong>Robert Jon &amp; The Wreck『Ride Into the Light』</strong>。S の中では唯一の8曲のみの短いアルバムで、4曲が先行EP『One of a Kind』収録曲の再収録であり、アルバムとしての厚み・新規性が最も弱い。次点は Duane Betts『Wild &amp; Precious Life』（ソロデビュー作で stadium 規模の実績が相対的に弱い）。</p>
+        </div>
+      </section>
+
+      <footer>
+        <p>検証メモ：Warren Zeiders『Pretty Little Poison』、Robert Jon &amp; The Wreck『Ride Into the Light』、Duane Betts『Wild &amp; Precious Life』は Wikipedia にアルバム単独ページがなく、Discogs / レーベルPR / アーティストページ等で確認した（各カードの出典参照）。</p>
+        <p>2023年 STADIUM COUNTRY &amp; SOUTHERN ROCK 選出ワークフロー：候補収集 → 重複排除（0枚）→ S検証（12枚）→ 厳格ルール確認で停止 → Hiroの入れ替え決定（ミュー案採用）→ 昇格検証 → Caitlyn Smith採用で最終10枚確定・選出完了（2026-11-13）。Spotifyプレイリスト：<a href="https://open.spotify.com/playlist/4jzPcOzeVCEu0iBC3LQ1u4" target="_blank" rel="noopener">open.spotify.com/playlist/4jzPcOzeVCEu0iBC3LQ1u4</a></p>
+      </footer>
+    </div>
+    <script>
+      (function () {
+        var rows = Array.prototype.slice.call(document.querySelectorAll('.crow'));
+        var btns = Array.prototype.slice.call(document.querySelectorAll('.fbtn'));
+        var q = document.getElementById('q');
+        var hits = document.getElementById('hits');
+        var filter = 'all';
+        function apply() {
+          var term = q.value.trim().toLowerCase();
+          var shown = 0;
+          rows.forEach(function (r) {
+            var okF = filter === 'all' ? true
+              : filter === 'female' ? r.dataset.female === '1'
+              : r.dataset.status === filter;
+            var okQ = !term || r.dataset.search.indexOf(term) !== -1;
+            var show = okF && okQ;
+            r.hidden = !show;
+            if (show) shown++;
+          });
+          hits.textContent = shown + ' / ' + rows.length + ' 枚';
+        }
+        btns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            btns.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+            b.setAttribute('aria-pressed', 'true');
+            filter = b.dataset.filter;
+            apply();
+          });
+        });
+        q.addEventListener('input', apply);
+        apply();
+      })();
+    </script>
+  </body>
+</html>

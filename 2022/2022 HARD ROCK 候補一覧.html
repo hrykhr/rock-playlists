@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2022 HARD ROCK 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#f3f3f1;--surface:#fff;--surface-2:#ececea;--ink:#1b1815;--muted:#5d574f;--line:#d9d6d0;--accent:#c9330f;--accent-ink:#fff;--flag-bg:#fdf0e4;--flag-ink:#7c3a08;--flag-line:#ecc9a3;--hero-bg:#171310;--hero-ink:#f5f0e9;--hero-muted:#b9afa2;--hero-line:#3a332c;--chip-bg:#fff;--chip-on-bg:#1b1815;--chip-on-ink:#fff;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--bg:#121110;--surface:#1d1b19;--surface-2:#262320;--ink:#f2ede7;--muted:#b3aa9f;--line:#35312c;--accent:#ff6a45;--accent-ink:#1b100b;--flag-bg:#33240f;--flag-ink:#f3c98d;--flag-line:#5d4420;--chip-bg:#1d1b19;--chip-on-bg:#f2ede7;--chip-on-ink:#1b1815}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;line-height:1.7;font-size:15px}
+a{color:var(--accent)}
+.hero{background:var(--hero-bg);color:var(--hero-ink);padding:40px 20px 30px}
+.hero-inner{max-width:1120px;margin:0 auto}
+.hero-kicker{font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:.14em;font-size:12px;color:var(--accent);margin:0 0 10px}
+@media(prefers-color-scheme:dark){.hero-kicker{color:#ff6a45}}
+.hero h1{font-family:"Archivo","Noto Sans JP",sans-serif;font-weight:900;font-size:clamp(30px,6vw,58px);line-height:1.08;margin:0 0 6px}
+.hero .sub{font-size:clamp(17px,3vw,24px);font-weight:700;margin:0 0 14px}
+.hero .lead{color:var(--hero-muted);max-width:800px;margin:0 0 22px;font-size:14.5px}
+.hero .lead strong{color:var(--hero-ink)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hero-line);border:1px solid var(--hero-line);max-width:820px}
+.stat{background:var(--hero-bg);padding:12px 14px}
+.stat .n{font-family:"Archivo",sans-serif;font-weight:800;font-size:26px;line-height:1.1;display:block}
+.stat .l{font-size:12px;color:var(--hero-muted)}
+.hero-note{margin:16px 0 0;font-size:13px;color:var(--hero-muted);max-width:800px}
+.hero-note strong{color:#f3c98d}
+main{max-width:1120px;margin:0 auto;padding:0 20px 56px}
+section{margin-top:44px}
+h2{font-size:20px;font-weight:900;margin:0 0 6px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h2 .en{font-family:"Archivo",sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--accent)}
+.section-lead{color:var(--muted);margin:0 0 16px;font-size:14px;max-width:840px}
+.badge{display:inline-flex;align-items:center;justify-content:center;font-family:"Archivo",sans-serif;font-weight:800;font-size:13px;min-height:26px;padding:2px 8px;border-radius:6px;letter-spacing:.04em;white-space:nowrap}
+.badge-s{background:var(--accent);color:var(--accent-ink)}
+.badge-a{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.badge-b{background:transparent;color:var(--muted);border:1px dashed var(--muted)}
+.badge-final{background:#1f6b3a;color:#fff}
+@media(prefers-color-scheme:dark){.badge-final{background:#2f9e5f;color:#0d1a10}}
+.badge-out{background:#5a5148;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.grid-final{grid-template-columns:1fr}
+@media(min-width:820px){.grid-final{grid-template-columns:repeat(2,1fr)}.grid-final .card:first-child{grid-column:1/-1}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 14px;display:flex;flex-direction:column}
+.card-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.num{font-family:"Archivo",sans-serif;font-weight:800;font-size:20px;color:var(--muted);line-height:1}
+.card-top time{margin-left:auto;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.artist{font-family:"Archivo","Noto Sans JP",sans-serif;font-weight:800;font-size:19px;line-height:1.3;margin:0}
+.album{font-size:17px;font-weight:700;margin:2px 0 8px;line-height:1.4}
+.album em{font-style:italic}
+.note{margin:0 0 10px;font-size:14px}
+.flag{margin:0 0 10px;background:var(--flag-bg);color:var(--flag-ink);border:1px solid var(--flag-line);border-radius:8px;padding:8px 12px;font-size:13px}
+.flag strong{font-weight:900}
+.source{margin:auto 0 0;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.source a{font-weight:700;text-decoration:none}.source a:hover{text-decoration:underline}
+.toolbar{position:sticky;top:0;z-index:20;background:var(--bg);padding:14px 0 12px;border-bottom:1px solid var(--line)}
+.toolbar-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{appearance:none;border:1px solid var(--line);background:var(--chip-bg);color:var(--ink);font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;cursor:pointer;min-height:36px}
+.chip[aria-pressed="true"]{background:var(--chip-on-bg);color:var(--chip-on-ink);border-color:var(--chip-on-bg)}
+.chip:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.search{flex:1 1 200px;min-width:160px}
+.search input{width:100%;font:inherit;font-size:14px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-height:38px}
+.toolbar-meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.count{font-size:13px;color:var(--muted);font-weight:700}
+.spacer{flex:1}
+.btn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:700;padding:7px 14px;border-radius:8px;cursor:pointer;min-height:36px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.copy-status{font-size:13px;color:var(--accent);font-weight:700;min-height:1em;margin:6px 0 0}
+.empty{display:none;text-align:center;color:var(--muted);padding:36px 0;font-weight:700}
+.plain-list{list-style:none;margin:0;padding:0}
+.plain-list li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.plain-list .head{font-weight:700;font-size:15px}
+.plain-list .head .date{color:var(--muted);font-size:13px;font-weight:500;margin-left:8px;white-space:nowrap}
+.plain-list p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.tsv-wrap{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto}
+pre.tsv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.9;margin:0;white-space:pre;color:var(--ink)}
+.tsv-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;align-items:center}
+footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer p{margin:0 0 6px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.hero{padding:30px 16px 24px}main{padding:0 16px 44px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-kicker">2022 · ALBUM SELECTION · CANDIDATES 27</p>
+    <h1>HARD ROCK</h1>
+    <p class="sub">2022年 候補一覧 — 最終10枚までの全体像</p>
+    <p class="lead">2022年発売の候補<strong>27枚（S 12枚／A 12枚／B 3枚）</strong>を集め、累積リスト（完全版）と照合した結果、<strong>重複5枚を除外</strong>して22枚（S 10枚／A 9枚／B 3枚）が残りました。重複排除後のSがちょうど10枚で、最終枠（5〜10枚）に収まるため、その10枚が最終選出です。このページは最終10枚だけでなく、候補27枚と重複除外の経緯まで見られる記録です。</p>
+    <div class="stats" role="group" aria-label="選出の内訳">
+      <div class="stat"><span class="n">27</span><span class="l">候補（S 12／A 12／B 3）</span></div>
+      <div class="stat"><span class="n">5</span><span class="l">重複で除外</span></div>
+      <div class="stat"><span class="n">22</span><span class="l">重複排除後の残り（S 10／A 9／B 3）</span></div>
+      <div class="stat"><span class="n">10</span><span class="l">最終選出</span></div>
+    </div>
+    <p class="hero-note">最終10枚は <strong>Def Leppard／Ghost／H.E.A.T／Treat／The Dead Daisies／Perfect Plan／Chez Kane／Black Swan／Thundermother／House Of Lords</strong>。検証日：2026年11月10日。</p>
+  </div>
+</header>
+
+<main>
+  <!-- FINAL 10 -->
+  <section aria-labelledby="final-h">
+    <h2 id="final-h">最終選出 10枚 <span class="en">FINAL 10</span></h2>
+    <p class="section-lead">確定順に掲載しています。各カードに確認済みの発売日、ジャンル根拠、出典リンクを記載しています。Wikipediaのアルバム単独ページがないものは、その旨を明記しています。</p>
+    <div class="grid grid-final">
+      <article class="card">
+        <div class="card-top"><span class="num">01</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-05-27">2022年5月27日</time></div>
+        <h3 class="artist">Def Leppard</h3>
+        <p class="album"><em>Diamond Star Halos</em></p>
+        <p class="note">Wikipediaのジャンルは Glam rock。Discogsでは Hard Rock, Arena Rock, Glam, Pop Rock。通算12枚目のオリジナル・スタジオ盤、15曲・61:27。一部カントリー寄りの曲があるとの評もあるが、アルバム全体はハード・ロック／グラム系で適合。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Diamond_Star_Halos" target="_blank" rel="noopener">Wikipedia — Diamond Star Halos</a>／<a href="https://flyctory.com/2022/05/25/def-leppard-diamond-star-halos/" target="_blank" rel="noopener">Flyctory レビュー</a></p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">02</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-03-11">2022年3月11日</time></div>
+        <h3 class="artist">Ghost</h3>
+        <p class="album"><em>Impera</em></p>
+        <p class="note">Wikipediaのジャンルは Hard rock, arena rock, glam metal, heavy metal, pop rock。通算5枚目のオリジナル・スタジオ盤。ジャンル欄に arena rock が明記されている。ポップ・ロック要素を含むが、中心はハード・ロック／アリーナ・ロック。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Impera" target="_blank" rel="noopener">Wikipedia — Impera</a>／<a href="https://www.discogs.com/release/22457728-Ghost-Impera" target="_blank" rel="noopener">Discogs — Impera</a></p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">03</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-08-05">2022年8月5日</time></div>
+        <h3 class="artist">H.E.A.T</h3>
+        <p class="album"><em>Force Majeure</em></p>
+        <p class="note">Wikipediaのジャンルは Hard rock, arena rock。通算7枚目のオリジナル・スタジオ盤、11曲・42:05。オリジナル・ボーカリスト Kenny Leckremo 復帰後の初作。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Force_Majeure_(H.E.A.T_album)" target="_blank" rel="noopener">Wikipedia — Force Majeure (H.E.A.T album)</a>／<a href="http://www.metalunderground.com/news/details.cfm?newsid=152943" target="_blank" rel="noopener">Metal Underground</a></p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">04</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-04-08">2022年4月8日</time></div>
+        <h3 class="artist">Treat</h3>
+        <p class="album"><em>The Endgame</em></p>
+        <p class="note">Frontiers発表では Swedish melodic rock band。通算9枚目のオリジナル・スタジオ盤、12曲。</p>
+        <p class="flag"><strong>確認方法：</strong>Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。バンドページのディスコグラフィーと Frontiers 発表で確認。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Treat_(band)" target="_blank" rel="noopener">Wikipedia — Treat (band)</a>／<a href="https://highwiredaze.com/2022/02/01/treatnews1/" target="_blank" rel="noopener">HighWire Daze — Treat 発表</a></p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">05</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-09-30">2022年9月30日</time></div>
+        <h3 class="artist">The Dead Daisies</h3>
+        <p class="album"><em>Radiance</em></p>
+        <p class="note">Blabbermouth では 6th studio album、10曲。Glenn Hughes 参加のハード・ロック・スーパーグループ。</p>
+        <p class="flag"><strong>確認方法：</strong>Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。ディスコグラフィーと Blabbermouth 記事で確認。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/The_Dead_Daisies_discography" target="_blank" rel="noopener">Wikipedia — The Dead Daisies discography</a>／<a href="https://blabbermouth.net/news/the-dead-daisies-to-release-new-album-radiance-in-september" target="_blank" rel="noopener">Blabbermouth — Radiance 発表</a></p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">06</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-10-14">2022年10月14日</time></div>
+        <h3 class="artist">Perfect Plan</h3>
+        <p class="album"><em>Brace For Impact</em></p>
+        <p class="note">Frontiers発表では 3rd studio album。MyGlobalMind のジャンルは Melodic Hard Rock。</p>
+        <p class="flag"><strong>確認方法：</strong>Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。Frontiers 系発表とレビューで確認。</p>
+        <p class="source">出典：<a href="https://highwiredaze.com/2022/08/23/perfectplannews1/" target="_blank" rel="noopener">HighWire Daze — Perfect Plan 発表</a>／<a href="https://myglobalmind.com/2022/10/18/perfect-plan-brace-for-impact-review/" target="_blank" rel="noopener">MyGlobalMind レビュー</a></p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">07</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-10-21">2022年10月21日</time></div>
+        <h3 class="artist">Chez Kane</h3>
+        <p class="album"><em>Powerzone</em></p>
+        <p class="note">Sonic Perspectives／Frontiers発表では 2nd studio album、10曲・約50分。MyGlobalMind のジャンルは Melodic Rock。女性ヴォーカル。</p>
+        <p class="flag"><strong>確認方法：</strong>Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。Sonic Perspectives の発表と Discogs で確認。</p>
+        <p class="source">出典：<a href="https://www.sonicperspectives.com/news/chez-kane-announces-new-studio-album-powerzone/" target="_blank" rel="noopener">Sonic Perspectives — Powerzone 発表</a>／<a href="https://www.discogs.com/release/24871844-Chez-Kane-Powerzone" target="_blank" rel="noopener">Discogs — Powerzone</a></p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">08</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-04-08">2022年4月8日</time></div>
+        <h3 class="artist">Black Swan</h3>
+        <p class="album"><em>Generation Mind</em></p>
+        <p class="note">Sonic Perspectives のジャンルは Melodic Hard Rock、12曲・約1時間。Qobuz では Hard Rock。Robin McAuley／Reb Beach／Jeff Pilson／Matt Starr のスーパーグループ 2nd。</p>
+        <p class="flag"><strong>確認方法：</strong>Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。<strong>日付の注意：</strong>Qobuz に 2022-02-04 の日付も見えるがシングル分と思われ、アルバム発売日は 2022-04-08 で複数ソースが一致。</p>
+        <p class="source">出典：<a href="https://www.sonicperspectives.com/album-reviews/black-swan-generation-mind/" target="_blank" rel="noopener">Sonic Perspectives レビュー</a>／<a href="https://www.qobuz.com/au-en/composer/black-swan/1137453" target="_blank" rel="noopener">Qobuz — Black Swan</a></p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">09</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-08-19">2022年8月19日</time></div>
+        <h3 class="artist">Thundermother</h3>
+        <p class="album"><em>Black And Gold</em></p>
+        <p class="note">Wikipedia バンドページのジャンルは Hard rock。AFM 発表では 12曲。通算5枚目のオリジナル・スタジオ盤、12曲・43分。スウェーデンの女性ハード・ロック・バンド。</p>
+        <p class="flag"><strong>確認方法：</strong>Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。<strong>注意：</strong>同名の4曲入りEPが2022年4月に先行発売されているが、本作は12曲入りのフル・アルバムで別物。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Thundermother" target="_blank" rel="noopener">Wikipedia — Thundermother</a>／<a href="https://guitargirlmag.com/news/music-news/swedish-heavy-rock-ladies-thundermother-announce-new-album-tour-dates-with-scorpions-whitesnake-premiere-brand-new-music-video/" target="_blank" rel="noopener">Guitar Girl Magazine — 発表</a></p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">10</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-09-16">2022年9月16日</time></div>
+        <h3 class="artist">House Of Lords</h3>
+        <p class="album"><em>Saints And Sinners</em></p>
+        <p class="note">Frontiers 公式では 11th studio album。MyGlobalMind のジャンルは Melodic Rock。Get Ready to ROCK! では aggressive melodic rock, arena rock と評されている。</p>
+        <p class="flag"><strong>確認方法：</strong>Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。Frontiers 公式と Discogs で確認。</p>
+        <p class="source">出典：<a href="https://www.frontiers.it/news/11429" target="_blank" rel="noopener">Frontiers Records — Saints And Sinners</a>／<a href="https://www.discogs.com/release/24565811-House-Of-Lords-Saints-And-Sinners" target="_blank" rel="noopener">Discogs — Saints And Sinners</a></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ALL CANDIDATES -->
+  <section aria-labelledby="list-h">
+    <h2 id="list-h">候補27枚 一覧 <span class="en">ALL 27 CANDIDATES</span></h2>
+    <p class="section-lead">ランク（S／A／B）で絞り込み、アーティスト名・アルバム名で検索し、発売日順に並べ替えできます。「最終」は最終選出10枚、「除外」は重複で外れた5枚を示します。発売日は2022年内のリリース日です。</p>
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <div class="chips" role="group" aria-label="ランクで絞り込み">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">すべて（27枚）</button>
+          <button type="button" class="chip" data-filter="S" aria-pressed="false">Sのみ</button>
+          <button type="button" class="chip" data-filter="A" aria-pressed="false">Aのみ</button>
+          <button type="button" class="chip" data-filter="B" aria-pressed="false">Bのみ</button>
+          <button type="button" class="chip" data-filter="final" aria-pressed="false">最終10枚</button>
+          <button type="button" class="chip" data-filter="out" aria-pressed="false">重複除外5枚</button>
+        </div>
+        <label class="search"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">アーティスト名・アルバム名で検索</span><input type="search" id="search" placeholder="アーティスト名・アルバム名で検索" autocomplete="off" /></label>
+      </div>
+      <div class="toolbar-meta">
+        <span class="count" id="count">27件を表示中</span>
+        <span class="spacer"></span>
+        <button type="button" class="btn" id="sort-btn" aria-pressed="false">発売日順に並べ替え</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty">条件に合うアルバムはありません。絞り込みを変えてみてください。</p>
+  </section>
+
+  <!-- EXCLUDED -->
+  <section aria-labelledby="out-h">
+    <h2 id="out-h">重複で除外された5枚 <span class="en">DUPLICATES REMOVED</span></h2>
+    <p class="section-lead">いずれも累積リスト（完全版）に 2022年 MAINSTREAM ROCK / ARENA HEROES で既出（行163〜167）のため除外しました。重複除外後の残りは22枚（S 10枚／A 9枚／B 3枚）でした。</p>
+    <ul class="plain-list">
+      <li><span class="head">Scorpions — <em>Rock Believer</em> <span class="badge badge-s">S</span><span class="date">2022年2月25日</span></span><p>除外理由：2022年 MAINSTREAM ROCK / ARENA HEROES で既採用のため。</p></li>
+      <li><span class="head">Slash featuring Myles Kennedy and the Conspirators — <em>4</em> <span class="badge badge-s">S</span><span class="date">2022年2月11日</span></span><p>除外理由：2022年 MAINSTREAM ROCK / ARENA HEROES で既採用のため。</p></li>
+      <li><span class="head">Halestorm — <em>Back From The Dead</em> <span class="badge badge-a">A</span><span class="date">2022年5月6日</span></span><p>除外理由：2022年 MAINSTREAM ROCK / ARENA HEROES で既採用のため。</p></li>
+      <li><span class="head">Skid Row — <em>The Gang's All Here</em> <span class="badge badge-a">A</span><span class="date">2022年10月14日</span></span><p>除外理由：2022年 MAINSTREAM ROCK / ARENA HEROES で既採用のため。</p></li>
+      <li><span class="head">Alter Bridge — <em>Pawns &amp; Kings</em> <span class="badge badge-a">A</span><span class="date">2022年10月14日</span></span><p>除外理由：2022年 MAINSTREAM ROCK / ARENA HEROES で既採用のため。</p></li>
+    </ul>
+  </section>
+
+  <!-- TSV -->
+  <section aria-labelledby="tsv-h">
+    <h2 id="tsv-h">最終10枚 TSV <span class="en">FINAL TSV</span></h2>
+    <p class="section-lead">ジャンル／アーティスト／アルバム／年のタブ区切り形式です。コピーとダウンロードの両方に対応しています。</p>
+    <div class="tsv-wrap"><pre class="tsv" id="tsv-pre"></pre></div>
+    <div class="tsv-actions">
+      <button type="button" class="btn" id="copy-btn">TSVをコピー</button>
+      <button type="button" class="btn primary" id="dl-btn">TSVをダウンロード</button>
+      <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <footer>
+    <p>ジャンル：HARD ROCK（2022年）／ 候補27枚から重複5枚を除き、最終10枚を選出。</p>
+    <p>最終10枚の出典は各カード内に記載。検証日：2026年11月10日。</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var CANDIDATES=[
+    {rank:"S",artist:"Def Leppard",album:"Diamond Star Halos",date:"2022-05-27",memo:"Wikipedia: Glam rock。Discogs: Hard Rock, Arena Rock, Glam, Pop Rock。通算12作目、15曲・61:27。一部カントリー寄りの評もあるが全体はハード・ロック／グラム系で適合。",status:"final",sources:[["Wikipedia — Diamond Star Halos","https://en.wikipedia.org/wiki/Diamond_Star_Halos"],["Flyctory レビュー","https://flyctory.com/2022/05/25/def-leppard-diamond-star-halos/"]]},
+    {rank:"S",artist:"Ghost",album:"Impera",date:"2022-03-11",memo:"Wikipedia: Hard rock, arena rock, glam metal, heavy metal, pop rock。通算5作目。ジャンル欄に arena rock が明記。ポップ要素を含むが中心はハード・ロック／アリーナ・ロック。",status:"final",sources:[["Wikipedia — Impera","https://en.wikipedia.org/wiki/Impera"],["Discogs — Impera","https://www.discogs.com/release/22457728-Ghost-Impera"]]},
+    {rank:"S",artist:"H.E.A.T",album:"Force Majeure",date:"2022-08-05",memo:"Wikipedia: Hard rock, arena rock。通算7作目、11曲・42:05。オリジナル・ボーカリスト Kenny Leckremo 復帰後の初作。",status:"final",sources:[["Wikipedia — Force Majeure","https://en.wikipedia.org/wiki/Force_Majeure_(H.E.A.T_album)"],["Metal Underground","http://www.metalunderground.com/news/details.cfm?newsid=152943"]]},
+    {rank:"S",artist:"Treat",album:"The Endgame",date:"2022-04-08",memo:"Frontiers: Swedish melodic rock band。通算9作目、12曲。Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）— バンドページと Frontiers 発表で確認。",status:"final",sources:[["Wikipedia — Treat (band)","https://en.wikipedia.org/wiki/Treat_(band)"],["HighWire Daze — Treat 発表","https://highwiredaze.com/2022/02/01/treatnews1/"]]},
+    {rank:"S",artist:"The Dead Daisies",album:"Radiance",date:"2022-09-30",memo:"Blabbermouth: 6th studio album、10曲。Glenn Hughes 参加のハード・ロック・スーパーグループ。Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。",status:"final",sources:[["Wikipedia — Discography","https://en.wikipedia.org/wiki/The_Dead_Daisies_discography"],["Blabbermouth — Radiance 発表","https://blabbermouth.net/news/the-dead-daisies-to-release-new-album-radiance-in-september"]]},
+    {rank:"S",artist:"Perfect Plan",album:"Brace For Impact",date:"2022-10-14",memo:"Frontiers: 3rd studio album。MyGlobalMind: Genre Melodic Hard Rock。Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。",status:"final",sources:[["HighWire Daze — Perfect Plan 発表","https://highwiredaze.com/2022/08/23/perfectplannews1/"],["MyGlobalMind レビュー","https://myglobalmind.com/2022/10/18/perfect-plan-brace-for-impact-review/"]]},
+    {rank:"S",artist:"Chez Kane",album:"Powerzone",date:"2022-10-21",memo:"Sonic Perspectives／Frontiers: 2nd studio album、10曲・約50分。MyGlobalMind: Genre Melodic Rock。女性ヴォーカル。Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。",status:"final",sources:[["Sonic Perspectives — Powerzone 発表","https://www.sonicperspectives.com/news/chez-kane-announces-new-studio-album-powerzone/"],["Discogs — Powerzone","https://www.discogs.com/release/24871844-Chez-Kane-Powerzone"]]},
+    {rank:"S",artist:"Black Swan",album:"Generation Mind",date:"2022-04-08",memo:"Sonic Perspectives: Genre Melodic Hard Rock、12曲・約1時間。Qobuz: Hard Rock。Robin McAuley／Reb Beach／Jeff Pilson／Matt Starr のスーパーグループ 2nd。Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。Qobuz の 2022-02-04 はシングル分と思われ、アルバム発売日は 2022-04-08 で一致。",status:"final",sources:[["Sonic Perspectives レビュー","https://www.sonicperspectives.com/album-reviews/black-swan-generation-mind/"],["Qobuz — Black Swan","https://www.qobuz.com/au-en/composer/black-swan/1137453"]]},
+    {rank:"S",artist:"Thundermother",album:"Black And Gold",date:"2022-08-19",memo:"Wikipedia バンドページ: Genre Hard rock。AFM: 12曲。通算5作目、12曲・43分。スウェーデンの女性ハード・ロック・バンド。Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。同名4曲EP（2022年4月）とは別物のフル・アルバム。",status:"final",sources:[["Wikipedia — Thundermother","https://en.wikipedia.org/wiki/Thundermother"],["Guitar Girl Magazine — 発表","https://guitargirlmag.com/news/music-news/swedish-heavy-rock-ladies-thundermother-announce-new-album-tour-dates-with-scorpions-whitesnake-premiere-brand-new-music-video/"]]},
+    {rank:"S",artist:"House Of Lords",album:"Saints And Sinners",date:"2022-09-16",memo:"Frontiers 公式: 11th studio album。MyGlobalMind: Genre Melodic Rock。Get Ready to ROCK!: aggressive melodic rock, arena rock。Wikipediaのアルバム単独ページはなし（Wikipediaでは確認できない）。",status:"final",sources:[["Frontiers Records","https://www.frontiers.it/news/11429"],["Discogs — Saints And Sinners","https://www.discogs.com/release/24565811-House-Of-Lords-Saints-And-Sinners"]]},
+    {rank:"S",artist:"Scorpions",album:"Rock Believer",date:"2022-02-25",memo:"Sonic Perspectives: Genre Hard Rock。19th studio album。英国では 2022-02-22、他地域では 2022-02-25 発売 — 世界発売日の 2022-02-25 を採用。2022年 MAINSTREAM で既採用のため重複除外。",status:"out",sources:[["Wikipedia — Rock Believer","https://en.wikipedia.org/wiki/Rock_Believer"],["Sonic Perspectives レビュー","https://www.sonicperspectives.com/album-reviews/scorpions-rock-believer/"]]},
+    {rank:"S",artist:"Slash featuring Myles Kennedy and the Conspirators",album:"4",date:"2022-02-11",memo:"Wikipedia: 4th studio album。オーソドックスなハードロック。2022年 MAINSTREAM で既採用のため重複除外。",status:"out",sources:[["Wikipedia — 4 (Slash album)","https://en.wikipedia.org/wiki/4_(Slash_album)"],["Slash Online — 発表","https://www.slashonline.com/news/slash-ft-myles-kennedy-the-conspirators-release-new-album-4-first-ever-release-by-gibson-records/"]]},
+    {rank:"A",artist:"Skid Row",album:"The Gang's All Here",date:"2022-10-14",memo:"Sleaze Rock／Glam Metal 系の復活作。ヴォーカル Erik Grönwall 加入後初作。2022年 MAINSTREAM で既採用のため重複除外。",status:"out",sources:[["Wikipedia — The Gang's All Here","https://en.wikipedia.org/wiki/The_Gang%27s_All_Here_(Skid_Row_album)"],["The Rockpit — Best of 2022","https://www.therockpit.net/2023/the-rockpit-the-best-music-of-2022/"]]},
+    {rank:"A",artist:"Halestorm",album:"Back From The Dead",date:"2022-05-06",memo:"Grammy-winning hard rock band、5th studio album。モダン・ハードロック。2022年 MAINSTREAM で既採用のため重複除外。",status:"out",sources:[["Wikipedia — Back from the Dead","https://en.wikipedia.org/wiki/Back_from_the_Dead_(Halestorm_album)"],["The Rockpit — 発表","https://www.therockpit.net/2022/halestorm-announces-new-album-back-from-the-dead-set-for-may-6-release/"]]},
+    {rank:"A",artist:"Alter Bridge",album:"Pawns & Kings",date:"2022-10-14",memo:"Sonic Perspectives: Genre Symphonic Hard Rock / Heavy Metal。7th studio album。ハードロック寄りだがヘヴィ寄りの側面もあり A 判定。2022年 MAINSTREAM で既採用のため重複除外。",status:"out",sources:[["Wikipedia — Pawns & Kings","https://en.wikipedia.org/wiki/Pawns_%26_Kings"],["Sonic Perspectives レビュー","https://www.sonicperspectives.com/album-reviews/alter-bridge-pawns-and-kings/"]]},
+    {rank:"A",artist:"Thunder",album:"Dopamine",date:"2022-04-29",memo:"Discogs: Classic Rock, Blues Rock, Hard Rock。14th スタジオ・アルバム（ダブル・アルバム）。",status:"",sources:[["Wikipedia — Thunder discography","https://en.wikipedia.org/wiki/Thunder_discography"],["MetalTalk レビュー","https://www.metaltalk.net/album-of-the-week-thunder-ooze-hard-rock-class-on-the-epic-dopamine.php"]]},
+    {rank:"A",artist:"Hardcore Superstar",album:"Abrakadabra",date:"2022-03-25",memo:"Sleaze Rock／Street Metal 系。Wikipedia の専用アルバムページはなく、バンドページと Sleaze Roxx 等で確認。",status:"",sources:[["Wikipedia — Hardcore Superstar","https://en.wikipedia.org/wiki/Hardcore_Superstar"],["Sleaze Roxx レビュー","https://sleazeroxx.com/reviews/hardcore-superstar-abrakadabra/"]]},
+    {rank:"A",artist:"Crashdïet",album:"Automaton",date:"2022-04-29",memo:"Swedish Glam Metal／Sleaze Rock。Wikipedia の専用アルバムページはなく、バンドページ・ディスコグラフィーと Discogs で確認。",status:"",sources:[["Wikipedia — Crashdïet discography","https://en.wikipedia.org/wiki/Crashd%C3%AFet_discography"],["Sleaze Roxx レビュー","https://sleazeroxx.com/reviews/crashdiet-automaton/"]]},
+    {rank:"A",artist:"Shinedown",album:"Planet Zero",date:"2022-07-01",memo:"Discogs: Alternative Rock, Hard Rock。Billboard Top Hard Rock Albums 1位。7th studio album。モダン・ハードロック寄りのため A 判定。当初 2022-04-22 予定が延期され 2022-07-01 発売。",status:"",sources:[["Wikipedia — Planet Zero","https://en.m.wikipedia.org/wiki/Planet_Zero"],["Discogs — Planet Zero","https://www.discogs.com/release/23717192-Shinedown-Planet-Zero"]]},
+    {rank:"A",artist:"Clutch",album:"Sunrise on Slaughter Beach",date:"2022-09-16",memo:"Wikipedia: 13th studio album。ブルージー／クラシック・ハードロック。",status:"",sources:[["Wikipedia — Sunrise on Slaughter Beach","https://en.wikipedia.org/wiki/Sunrise_on_Slaughter_Beach"],["Consequence — 発表","https://consequence.net/2022/07/clutch-sunrise-on-slaughter-beach/"]]},
+    {rank:"A",artist:"Kissin' Dynamite",album:"Not The End Of The Road",date:"2022-01-21",memo:"Sleaze Rock／Glam Metal 系。Wikipedia では確認できない。Napalm Records と Sleaze Roxx・Discogs で確認。",status:"",sources:[["Sleaze Roxx レビュー","https://sleazeroxx.com/reviews/kissin-dynamite-not-the-end-of-the-road/"],["Napalm Records","https://napalmrecords.com/english/music/kissin-dynamite-not-the-end-of-the-road-black-vinyl.html"]]},
+    {rank:"A",artist:"Michael Monroe",album:"I Live Too Fast To Die Young",date:"2022-06-10",memo:"スリーズ／ハードロック。Wikipedia では確認できない。Discogs と Silver Lining 発表系メディアで確認。タイトルに感嘆符付き表記もある。",status:"",sources:[["Discogs — I Live Too Fast To Die Young","https://www.discogs.com/release/23529335-Michael-Monroe-I-Live-Too-Fast-To-Die-Young"],["Metal Planet Music — シングル発表","https://metalplanetmusic.com/2022/04/michael-monroe-releases-new-single-cant-stop-falling-apart/"]]},
+    {rank:"A",artist:"Reckless Love",album:"Turborider",date:"2022-03-25",memo:"Wikipedia: 5th album。Finnish sleaze rock / hair metal。シンセウェイヴ／80s ポップ寄りの要素もあり A 判定。当初 2022-02-25 予定が延期され 2022-03-25 発売。",status:"",sources:[["Wikipedia — Turborider","https://en.wikipedia.org/wiki/Turborider"],["Tuonela Magazine レビュー","https://tuonelamagazine.com/review-reckless-love-turborider/"]]},
+    {rank:"A",artist:"The New Roses",album:"Sweet Poison",date:"2022-10-21",memo:"MyGlobalMind: Genre Hard Rock。Napalm Records: 5th studio album。Wikipedia では確認できない。",status:"",sources:[["Napalm Records — Sweet Poison","https://napalmrecords.com/english/the-new-roses-sweet-poison-digipak-cd.html"],["MyGlobalMind レビュー","https://myglobalmind.com/2022/10/17/the-new-roses-sweet-poison-review/"]]},
+    {rank:"B",artist:"Ozzy Osbourne",album:"Patient Number 9",date:"2022-09-09",memo:"Wikipedia: 13th studio album。ヘヴィ・メタル分類のため B 判定。",status:"",sources:[["Wikipedia — Patient Number 9","https://en.wikipedia.org/wiki/Patient_Number_9"],["Metal Archives","https://www.metal-archives.com/albums/Ozzy_Osbourne/Patient_Number_9/1055946"]]},
+    {rank:"B",artist:"FM",album:"Thirteen",date:"2022-03-18",memo:"Wikipedia バンドページ: Genres Hard rock。13th studio album。メロディック・ハードロック／AOR 寄りのため B 判定。Wikipedia の専用アルバムページはなく、バンドページと Frontiers 発表で確認。",status:"",sources:[["Wikipedia — FM (British band)","https://en.wikipedia.org/wiki/FM_(British_band)"],["Sonic Perspectives — 発表","https://www.sonicperspectives.com/news/melodic-rockers-fm-announce-new-studio-album-thirteen/"]]},
+    {rank:"B",artist:"Dare",album:"Road to Eden",date:"2022-04-01",memo:"Apocalypse Later: Style Melodic Rock。Grande Rock: 10th studio album。AOR 寄りのため B 判定。Wikipedia の専用アルバムページはなく、Darren Wharton のページと Grande Rock で確認。",status:"",sources:[["Grande Rock — 発表","https://grande-rock.com/news/dare-to-release-new-studio-album-road-to-eden-on-april-1st-2022/"],["Wikipedia — Darren Wharton","https://en.wikipedia.org/wiki/Darren_Wharton"]]}
+  ];
+  var grid=document.getElementById('grid');
+  function fmtDate(d){var p=d.split('-');return p[0]+'年'+parseInt(p[1],10)+'月'+parseInt(p[2],10)+'日';}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  CANDIDATES.forEach(function(c,i){
+    var art=document.createElement('article');
+    art.className='card';
+    art.setAttribute('data-rank',c.rank);
+    art.setAttribute('data-date',c.date);
+    art.setAttribute('data-status',c.status||'none');
+    art.setAttribute('data-search',(c.artist+' '+c.album).toLowerCase());
+    art.setAttribute('data-idx',i);
+    var badgeCls=c.rank==='S'?'badge-s':(c.rank==='A'?'badge-a':'badge-b');
+    var extra='';
+    if(c.status==='final')extra+=' <span class="badge badge-final">最終選出</span>';
+    if(c.status==='out')extra+=' <span class="badge badge-out">重複除外</span>';
+    var src='';
+    if(c.sources&&c.sources.length){
+      var links=c.sources.map(function(s){return '<a href="'+s[1]+'" target="_blank" rel="noopener">'+esc(s[0])+'</a>';}).join('／');
+      src='<p class="source">出典：'+links+'</p>';
+    }
+    art.innerHTML='<div class="card-top"><span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="badge '+badgeCls+'">'+c.rank+'</span>'+extra+'<time datetime="'+c.date+'">'+fmtDate(c.date)+'</time></div>'
+      +'<h3 class="artist">'+esc(c.artist)+'</h3><p class="album"><em>'+esc(c.album)+'</em></p>'
+      +'<p class="note">'+esc(c.memo)+'</p>'+src;
+    grid.appendChild(art);
+  });
+  var cards=Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var searchInput=document.getElementById('search');
+  var countEl=document.getElementById('count');
+  var emptyEl=document.getElementById('empty');
+  var sortBtn=document.getElementById('sort-btn');
+  var activeFilter='all', sortedByDate=false;
+  function apply(){
+    var q=searchInput.value.trim().toLowerCase(), shown=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(activeFilter==='S'||activeFilter==='A'||activeFilter==='B')ok=c.getAttribute('data-rank')===activeFilter;
+      else if(activeFilter==='final')ok=c.getAttribute('data-status')==='final';
+      else if(activeFilter==='out')ok=c.getAttribute('data-status')==='out';
+      var okS=!q||c.getAttribute('data-search').indexOf(q)!==-1;
+      var show=ok&&okS;
+      c.style.display=show?'':'none';
+      if(show)shown++;
+    });
+    countEl.textContent=shown+'件を表示中';
+    emptyEl.style.display=shown===0?'block':'none';
+  }
+  chips.forEach(function(chip){chip.addEventListener('click',function(){
+    activeFilter=chip.getAttribute('data-filter');
+    chips.forEach(function(x){x.setAttribute('aria-pressed',x===chip?'true':'false');});
+    apply();
+  });});
+  searchInput.addEventListener('input',apply);
+  sortBtn.addEventListener('click',function(){
+    sortedByDate=!sortedByDate;
+    sortBtn.setAttribute('aria-pressed',sortedByDate?'true':'false');
+    sortBtn.textContent=sortedByDate?'候補順に戻す':'発売日順に並べ替え';
+    var ordered=cards.slice().sort(function(a,b){
+      if(sortedByDate){var d=a.getAttribute('data-date').localeCompare(b.getAttribute('data-date'));if(d!==0)return d;}
+      return parseInt(a.getAttribute('data-idx'),10)-parseInt(b.getAttribute('data-idx'),10);
+    });
+    ordered.forEach(function(c){grid.appendChild(c);});
+  });
+  apply();
+
+  var TSV=['GENRE\tARTIST\tALBUM\tYEAR',
+  'HARD ROCK\tDef Leppard\tDiamond Star Halos\t2022',
+  'HARD ROCK\tGhost\tImpera\t2022',
+  'HARD ROCK\tH.E.A.T\tForce Majeure\t2022',
+  'HARD ROCK\tTreat\tThe Endgame\t2022',
+  'HARD ROCK\tThe Dead Daisies\tRadiance\t2022',
+  'HARD ROCK\tPerfect Plan\tBrace For Impact\t2022',
+  'HARD ROCK\tChez Kane\tPowerzone\t2022',
+  'HARD ROCK\tBlack Swan\tGeneration Mind\t2022',
+  'HARD ROCK\tThundermother\tBlack And Gold\t2022',
+  'HARD ROCK\tHouse Of Lords\tSaints And Sinners\t2022'].join('\n');
+  document.getElementById('tsv-pre').textContent=TSV;
+  var statusEl=document.getElementById('copy-status');
+  document.getElementById('copy-btn').addEventListener('click',function(){
+    function done(){statusEl.textContent='TSVをコピーしました（10件）。';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(TSV).then(done,function(){fallback();});}else{fallback();}
+    function fallback(){var ta=document.createElement('textarea');ta.value=TSV;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){statusEl.textContent='コピーできませんでした。ダウンロードをお使いください。';}document.body.removeChild(ta);}
+  });
+  document.getElementById('dl-btn').addEventListener('click',function(){
+    var blob=new Blob([TSV],{type:'text/tab-separated-values;charset=utf-8'});
+    var url=URL.createObjectURL(blob);var a=document.createElement('a');
+    a.href=url;a.download='2022-hard-rock-final.tsv';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},1000);
+    statusEl.textContent='TSVをダウンロードしました（10件）。';
+  });
+})();
+</script>
+</body>
+</html>

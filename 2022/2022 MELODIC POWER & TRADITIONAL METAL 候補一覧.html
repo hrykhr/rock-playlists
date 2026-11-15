@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:,">
+<title>2022 MELODIC POWER &amp; TRADITIONAL METAL 候補一覧</title>
+<style>
+  :root{--bg:#101014;--panel:#1a1a22;--panel2:#22222e;--ink:#f2f0ea;--muted:#b9b4a8;--accent:#e8b33c;--accent2:#7fb069;--line:#343442;--s:#e8b33c;--a:#7fb6d9;--b:#b08fd9}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  header{padding:2rem 1rem 1.2rem;text-align:center;border-bottom:2px solid var(--accent)}
+  h1{font-size:1.55rem;margin:.2rem 0}
+  .sub{color:var(--muted);font-size:.95rem}
+  main{max-width:1080px;margin:0 auto;padding:1rem}
+  section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem;margin:1rem 0}
+  h2{font-size:1.2rem;border-left:5px solid var(--accent);padding-left:.6rem;margin:.2rem 0 1rem}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th,td{border-bottom:1px solid var(--line);padding:.5rem .6rem;text-align:left;vertical-align:top}
+  th{color:var(--accent);white-space:nowrap}
+  .final-card{border:1px solid var(--accent);background:var(--panel2);border-radius:10px;padding:.8rem 1rem;margin:.6rem 0}
+  .final-card .ttl{font-size:1.05rem;font-weight:700}
+  .num{display:inline-block;background:var(--accent);color:#141310;border-radius:50%;width:1.7em;height:1.7em;line-height:1.7em;text-align:center;font-weight:700;margin-right:.5rem}
+  .meta{color:var(--muted);font-size:.9rem}
+  .warn{color:#ff9d7a;font-weight:700}
+  .ok{color:var(--accent2);font-weight:700}
+  .badge{display:inline-block;border-radius:999px;padding:.05rem .6rem;font-size:.8rem;font-weight:700;color:#141310}
+  .badge.S{background:var(--s)} .badge.A{background:var(--a)} .badge.B{background:var(--b)}
+  .badge.final{background:var(--accent2);color:#0f150c;margin-left:.4rem}
+  .badge.down{background:#ff9d7a;margin-left:.4rem}
+  .controls{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.8rem}
+  .controls button,.controls select,.controls input{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.45rem .8rem;font-size:.9rem;cursor:pointer;min-height:2.25rem}
+  .controls button.active{border-color:var(--accent);color:var(--accent)}
+  .controls input{cursor:text;min-width:220px}
+  pre{background:#0b0b0f;border:1px solid var(--line);border-radius:8px;padding:1rem;overflow-x:auto;font-size:.85rem;white-space:pre}
+  .btn{background:var(--accent);color:#141310;border:none;border-radius:8px;padding:.55rem 1.1rem;font-weight:700;cursor:pointer;margin-right:.5rem;min-height:2.25rem}
+  .btn.sub2{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+  ul{margin:.4rem 0 .4rem 1.1rem;padding:0}
+  li{margin:.35rem 0}
+  .count{color:var(--muted);font-size:.9rem}
+  footer{color:var(--muted);text-align:center;padding:1.5rem 1rem;font-size:.85rem}
+  @media (max-width:640px){
+    h1{font-size:1.25rem}
+    section{padding:1rem .9rem}
+    .controls input{min-width:0;width:100%}
+    table,thead,tbody,tr,td{display:block;width:100%}
+    thead{display:none}
+    tr{border:1px solid var(--line);border-radius:10px;background:var(--panel2);padding:.4rem .2rem;margin:0 0 .6rem}
+    td{border-bottom:none;padding:.25rem .6rem}
+    td.date{color:var(--muted);font-size:.88rem}
+    td.note:empty{display:none}
+    pre{font-size:.72rem}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>2022 MELODIC POWER &amp; TRADITIONAL METAL 候補一覧</h1>
+  <div class="sub">2022年 × MELODIC POWER &amp; TRADITIONAL METAL｜候補30枚（S 22／A 6／B 2）から最終10枚を選出</div>
+</header>
+<main>
+
+<section>
+  <h2>最終10枚（確定）</h2>
+  <div id="final-list"></div>
+</section>
+
+<section>
+  <h2>候補一覧（全30枚）</h2>
+  <div class="controls">
+    <button data-rank="ALL" class="active">すべて</button>
+    <button data-rank="S">S</button>
+    <button data-rank="A">A</button>
+    <button data-rank="B">B</button>
+    <input id="q" type="search" placeholder="アーティスト／アルバムで検索">
+    <button id="sortBtn">発売日ソート：昇順</button>
+    <span class="count" id="count"></span>
+  </div>
+  <table>
+    <thead><tr><th>ランク</th><th>アーティスト</th><th>アルバム</th><th>発売日</th><th>備考</th></tr></thead>
+    <tbody id="cand-body"></tbody>
+  </table>
+</section>
+
+<section>
+  <h2>S検証での降格（3枚）</h2>
+  <p>以下の3枚は、当初のS判定から、S検証の結果Aに降格しました。</p>
+  <ul>
+    <li><strong>Michael Romeo</strong>『War of the Worlds, Pt. 2』（2022-03-25）― S → A に降格</li>
+    <li><strong>Sanhedrin</strong>『Lights On』（2022-03-04）― S → A に降格</li>
+    <li><strong>Bridear</strong>『Aegis of Athena』（2022-04-20 ※発売日は情報源により4/20と5/13の表記差あり）― S → A に降格</li>
+  </ul>
+</section>
+
+<section>
+  <h2>重複除外</h2>
+  <p><strong>0枚</strong> ― 累積リストとの重複はありませんでした。</p>
+</section>
+
+<section>
+  <h2>S過多による停止と判断経緯</h2>
+  <p>S検証後もSが<strong>19枚</strong>残り、最終枠（5〜10枚）を超えたため、選出をいったん停止しました。その後、検証側の推薦を Hiro が承認し（2026-11-12「推薦どおりコア10枚で進めて」）、コア10枚で確定しました。</p>
+  <h3>落とした9枚と理由</h3>
+  <ul>
+    <li><strong>Sumerlands</strong>『Dreamkiller』― 8曲34:58、ドゥーム／AOR寄りで最弱</li>
+    <li><strong>Krilloan</strong>『Emperor Rising』― 9曲36:55、短いデビュー盤</li>
+    <li><strong>Iron Kingdom</strong>『The Blood of Creation』― 8曲、1:13イントロ含む、自主制作で低プロファイル</li>
+    <li><strong>Skull Fist</strong>『Paid in Full』― 8曲のみ</li>
+    <li><strong>Riot City</strong>『Electric Elite』― 8曲</li>
+    <li><strong>Power Paladin</strong>『With the Magic of Windfyre Steel』― 9曲デビュー</li>
+    <li><strong>Fellowship</strong>『The Saberlight Chronicles』― EP収録曲の再利用3曲</li>
+    <li><strong>Wolf</strong>『Shadowland』／<strong>Civil War</strong>『Invaders』― 堅実だがコアのベテラン勢より優先度が低い</li>
+  </ul>
+</section>
+
+<section>
+  <h2>最終アルバムTSV</h2>
+  <p>
+    <button class="btn" id="copyBtn">TSVをコピー</button>
+    <button class="btn sub2" id="dlBtn">TSVをダウンロード</button>
+    <span class="count" id="copyMsg"></span>
+  </p>
+  <pre id="tsv"></pre>
+</section>
+
+</main>
+<footer>2022 MELODIC POWER &amp; TRADITIONAL METAL 候補一覧</footer>
+
+<script>
+const GENRE = "MELODIC POWER & TRADITIONAL METAL";
+
+// 最終10枚（確定順）
+const FINALS = [
+  {artist:"Battle Beast", album:"Circus of Doom", date:"2022-01-21", genre:"Wikipediaバンドページ heavy metal/power metal", wiki:false},
+  {artist:"Sabaton", album:"The War to End All Wars", date:"2022-03-04", genre:"Wikipedia: Power metal", wiki:true},
+  {artist:"HammerFall", album:"Hammer of Dawn", date:"2022-02-25", genre:"Wikipedia: Power metal, heavy metal", wiki:true},
+  {artist:"Blind Guardian", album:"The God Machine", date:"2022-09-02", genre:"Wikipedia: Power metal, speed metal", wiki:true},
+  {artist:"Stratovarius", album:"Survive", date:"2022-09-23", genre:"Wikipedia: power metal、Metal Hammer 2022年パワーメタル年間リスト入り", wiki:true},
+  {artist:"Dynazty", album:"Final Advent", date:"2022-08-26", genre:"Wikipedia: Power metal, heavy metal, hard rock", wiki:false},
+  {artist:"Wind Rose", album:"Warfront", date:"2022-06-10", genre:"folk/power metal", wiki:false},
+  {artist:"Satan", album:"Earth Infernal", date:"2022-04-01", genre:"NWOTHM", wiki:false},
+  {artist:"Ashes of Ares", album:"Emperors and Fools", date:"2022-01-21", genre:"power metal", wiki:false},
+  {artist:"Judicator", album:"The Majesty of Decay", date:"2022-11-25", genre:"power metal", wiki:false}
+];
+
+// 候補30枚
+const CANDS = [
+  // S 22枚（最終10枚を含む）
+  ...FINALS.map(f => ({rank:"S", artist:f.artist, album:f.album, date:f.date, note:"最終確定"})),
+  {rank:"S", artist:"Fellowship", album:"The Saberlight Chronicles", date:"2022-07-15", note:""},
+  {rank:"S", artist:"Power Paladin", album:"With the Magic of Windfyre Steel", date:"2022-01-07", note:""},
+  {rank:"S", artist:"Riot City", album:"Electric Elite", date:"2022-10-14", note:""},
+  {rank:"S", artist:"Skull Fist", album:"Paid in Full", date:"2022-04-22", note:""},
+  {rank:"S", artist:"Sumerlands", album:"Dreamkiller", date:"2022-09-16", note:""},
+  {rank:"S", artist:"Michael Romeo", album:"War of the Worlds, Pt. 2", date:"2022-03-25", note:"S検証でAに降格"},
+  {rank:"S", artist:"Civil War", album:"Invaders", date:"2022-06-17", note:""},
+  {rank:"S", artist:"Wolf", album:"Shadowland", date:"2022-04-01", note:""},
+  {rank:"S", artist:"Krilloan", album:"Emperor Rising", date:"2022-12-09", note:""},
+  {rank:"S", artist:"Sanhedrin", album:"Lights On", date:"2022-03-04", note:"S検証でAに降格"},
+  {rank:"S", artist:"Bridear", album:"Aegis of Athena", date:"2022-04-20", note:"S検証でAに降格／発売日は情報源により4/20と5/13の表記差あり"},
+  {rank:"S", artist:"Iron Kingdom", album:"The Blood of Creation", date:"2022-11-04", note:""},
+  // A 6枚
+  {rank:"A", artist:"Avantasia", album:"A Paranormal Evening with the Moonflower Society", date:"2022-10-21", note:""},
+  {rank:"A", artist:"Evergrey", album:"A Heartless Portrait (The Orphean Testament)", date:"2022-05-20", note:""},
+  {rank:"A", artist:"Dragonland", album:"The Power of the Nightstar", date:"2022-10-14", note:""},
+  {rank:"A", artist:"Evil Invaders", album:"Shattering Reflection", date:"2022-04-01", note:""},
+  {rank:"A", artist:"Queensrÿche", album:"Digital Noise Alliance", date:"2022-10-07", note:""},
+  {rank:"A", artist:"Phantom Spell", album:"Immortal's Requiem", date:"2022-08-19", note:""},
+  // B 2枚
+  {rank:"B", artist:"Tony Martin", album:"Thorns", date:"2022-01-14", note:""},
+  {rank:"B", artist:"Kissin' Dynamite", album:"Not the End of the Road", date:"2022-01-21", note:""}
+];
+
+// 最終10枚の描画
+const fl = document.getElementById('final-list');
+FINALS.forEach((f,i)=>{
+  const d=document.createElement('div'); d.className='final-card';
+  d.innerHTML = '<div class="ttl"><span class="num">'+(i+1)+'</span>'+f.artist+'『'+f.album+'』</div>'
+    + '<div class="meta">発売日: '+f.date+'</div>'
+    + '<div class="meta">ジャンル根拠: '+f.genre+'</div>'
+    + '<div class="meta">Wikipedia専用アルバムページ: '+(f.wiki
+        ? '<span class="ok">あり</span>'
+        : '<span class="warn">なし ― Wikipediaでは確認できない</span>')+'</div>';
+  fl.appendChild(d);
+});
+
+// 候補一覧の描画（絞り込み・検索・発売日ソート）
+let rankFilter='ALL', query='', sortAsc=true;
+const body=document.getElementById('cand-body'), count=document.getElementById('count');
+function render(){
+  let rows=CANDS.filter(c=>(rankFilter==='ALL'||c.rank===rankFilter)
+    && (query==='' || (c.artist+' '+c.album).toLowerCase().includes(query)));
+  rows=rows.slice().sort((a,b)=> sortAsc ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date));
+  body.innerHTML='';
+  rows.forEach(c=>{
+    const tr=document.createElement('tr');
+    let badges='<span class="badge '+c.rank+'">'+c.rank+'</span>';
+    if(c.note==='最終確定') badges+='<span class="badge final">最終確定</span>';
+    if(c.note.includes('降格')) badges+='<span class="badge down">降格</span>';
+    tr.innerHTML='<td>'+badges+'</td><td>'+c.artist+'</td><td>『'+c.album+'』</td><td class="date">'+c.date+'</td><td class="note">'+c.note+'</td>';
+    body.appendChild(tr);
+  });
+  count.textContent = rows.length+'件表示';
+}
+document.querySelectorAll('[data-rank]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-rank]').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); rankFilter=b.dataset.rank; render();
+}));
+document.getElementById('q').addEventListener('input',e=>{query=e.target.value.trim().toLowerCase(); render();});
+document.getElementById('sortBtn').addEventListener('click',e=>{
+  sortAsc=!sortAsc; e.target.textContent='発売日ソート：'+(sortAsc?'昇順':'降順'); render();
+});
+render();
+
+// 最終アルバムTSV
+const tsvText = ["GENRE\tARTIST\tALBUM\tYEAR"]
+  .concat(FINALS.map(f=>[GENRE,f.artist,f.album,"2022"].join("\t"))).join("\n");
+document.getElementById('tsv').textContent = tsvText;
+document.getElementById('copyBtn').addEventListener('click',async()=>{
+  try{ await navigator.clipboard.writeText(tsvText); document.getElementById('copyMsg').textContent='コピーしました'; }
+  catch(e){ document.getElementById('copyMsg').textContent='コピーに失敗しました'; }
+});
+document.getElementById('dlBtn').addEventListener('click',()=>{
+  const blob=new Blob([tsvText],{type:'text/tab-separated-values'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='2022-melodic-power-traditional-metal-final.tsv'; a.click();
+  URL.revokeObjectURL(a.href);
+});
+</script>
+</body>
+</html>

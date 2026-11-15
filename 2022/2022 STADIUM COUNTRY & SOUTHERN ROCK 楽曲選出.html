@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2022 STADIUM COUNTRY &amp; SOUTHERN ROCK 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f4f1ec; --surface:#fffdf9; --surface2:#ece7dd; --ink:#1c1a17; --muted:#5d574e;
+    --line:#d8d1c2; --accent:#b3231b; --accent-ink:#fff; --gold:#8a6d1f; --chip:#efe9db;
+    --ok:#2e6b34;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#141210; --surface:#1e1b17; --surface2:#28241e; --ink:#f0eadf; --muted:#b3aa9a;
+      --line:#3a352c; --accent:#e2483d; --accent-ink:#fff; --gold:#d9b45c; --chip:#2b2721;
+      --ok:#7fc98a;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    line-height:1.65;font-size:15.5px}
+  .wrap{max-width:1060px;margin:0 auto;padding:28px 18px 64px}
+  .kicker{font-family:"Archivo",sans-serif;font-weight:800;letter-spacing:.14em;font-size:12px;color:var(--accent);text-transform:uppercase}
+  h1{font-family:"Archivo","Zen Kaku Gothic New",sans-serif;font-weight:900;font-size:clamp(26px,5.4vw,44px);line-height:1.12;margin:8px 0 6px;letter-spacing:.01em}
+  h1 .jp{display:block;font-size:.52em;font-weight:900;margin-top:8px;letter-spacing:.06em}
+  .lede{color:var(--muted);max-width:46em;margin:10px 0 0}
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;min-width:118px}
+  .stat b{font-family:"Archivo",sans-serif;font-size:24px;font-weight:900;display:block;line-height:1.1}
+  .stat span{font-size:12.5px;color:var(--muted)}
+  .rules{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:8px;padding:14px 18px;margin:18px 0 8px}
+  .rules h2{font-size:15px;margin:0 0 6px;font-weight:900}
+  .rules ul{margin:0;padding-left:1.2em;color:var(--muted);font-size:14px}
+  .toolbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 0 10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .toolbar input[type=search]{flex:1 1 220px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:14.5px}
+  button{font:inherit;font-weight:700;font-size:14px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);padding:10px 16px;cursor:pointer;min-height:44px}
+  button.ghost{background:transparent;color:var(--accent)}
+  button:active{transform:translateY(1px)}
+  .toast{font-size:13.5px;color:var(--ok);font-weight:700;min-height:1.4em}
+  .album{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 20px 14px;margin:16px 0}
+  .album-head{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:10px}
+  .album-head .no{font-family:"Archivo",sans-serif;font-weight:900;color:var(--accent);font-size:20px}
+  .album-head h2{font-family:"Archivo","Zen Kaku Gothic New",sans-serif;font-size:21px;font-weight:900;margin:0}
+  .album-head .meta{color:var(--muted);font-size:13px;margin-left:auto}
+  .track{display:grid;grid-template-columns:1fr;gap:4px;padding:14px 0;border-bottom:1px dashed var(--line)}
+  .track:last-of-type{border-bottom:none}
+  .track-title{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+  .track-title h3{font-size:17.5px;margin:0;font-weight:900}
+  .len{font-family:"Archivo",sans-serif;font-weight:700;color:var(--muted);font-size:14px}
+  .badge{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:1px 10px;font-size:12px;font-weight:700}
+  .badge.single{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .badge.unconfirmed{background:transparent;border-color:var(--gold);color:var(--gold)}
+  .track p{margin:2px 0;font-size:14px}
+  .track .label{font-weight:900;font-size:12.5px;color:var(--gold);letter-spacing:.05em;margin-right:6px}
+  .srcs{font-size:13px}
+  .srcs a{color:var(--accent);word-break:break-all}
+  details{margin:8px 0 6px;background:var(--surface2);border-radius:8px;padding:10px 14px}
+  summary{cursor:pointer;font-weight:700;font-size:14px;min-height:36px;display:flex;align-items:center}
+  details p{margin:6px 0 4px;font-size:13.5px;color:var(--muted)}
+  section.plain{margin:34px 0 0}
+  section.plain h2{font-size:20px;font-weight:900;border-bottom:2px solid var(--ink);padding-bottom:6px}
+  pre.tsv{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font-size:12.5px;line-height:1.7;white-space:pre}
+  .caveats li{margin:6px 0}
+  .caveats{color:var(--muted);font-size:14.5px;padding-left:1.2em}
+  footer{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+  .hidden{display:none!important}
+  @media (max-width:560px){
+    .album{padding:16px 14px 10px}
+    .album-head .meta{margin-left:0}
+    .stat{min-width:calc(50% - 6px)}
+  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">2022 · Stadium Country &amp; Southern Rock</div>
+    <h1>Song Selection<span class="jp">楽曲選出 ― 最終5枚 × 各2曲 ＝ 全10曲</span></h1>
+    <p class="lede">確定済みの最終5枚から、楽曲選定マニュアルに沿って各アルバム2曲ずつ選出した結果です。収録曲は2サイト以上でクロスチェックし、各曲に曲の長さ、シングル情報、人気の根拠、選出理由と検証リンクを付けています。再生回数は出典が実際に示した情報だけを使い、確認できないものは「確認できない」と明示しています。</p>
+    <div class="stats">
+      <div class="stat"><b>5</b><span>対象アルバム</span></div>
+      <div class="stat"><b>10</b><span>選出曲（各2曲）</span></div>
+      <div class="stat"><b>10 / 10</b><span>シングル確認済み</span></div>
+      <div class="stat"><b>3 / 5</b><span>女性アーティスト</span></div>
+    </div>
+    <div class="rules">
+      <h2>適用したマニュアルのルール</h2>
+      <ul>
+        <li>各アルバムから2曲。シングルカット曲・再生回数の多い曲・ファン人気の高い曲を基本に選出</li>
+        <li>収録曲は最低2サイトでクロスチェックし、エビデンスのURLを必ず明記</li>
+        <li>2分以下の曲は除外</li>
+        <li>バラードは原則不採用 ― 今回の選出10曲はいずれもバラードではありません</li>
+        <li>確認できないものは「確認できない」と明示し、記憶や推測で埋めない</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="アーティスト・アルバム・曲名で絞り込み" aria-label="絞り込み検索" />
+    <button id="copyBtn" type="button">TSVをコピー</button>
+    <button id="dlBtn" type="button" class="ghost">TSVをダウンロード</button>
+    <span class="toast" id="toast" role="status"></span>
+  </div>
+
+  <main id="albums"></main>
+
+  <section class="plain">
+    <h2>最終TSV（ジャンル／アーティスト／アルバム／曲名）</h2>
+    <p style="color:var(--muted);font-size:14px">ヘッダー＋1行1曲・全10行のタブ区切りです。上のボタンからコピー／ダウンロードできます。</p>
+    <pre class="tsv" id="tsvBlock"></pre>
+  </section>
+
+  <section class="plain">
+    <h2>確認できなかったこと・注記</h2>
+    <ul class="caveats">
+      <li><strong>再生回数の正確な現在値：</strong>全10曲について、正確な現在のSpotify／YouTube再生回数は確認できていません（公式の数値としては未確認）。本ページでは、出典に書かれている数字・情報のみを使用しています。Luke Combsの2曲についてはLast.fmのリスナー数を「検索時点の表示値」として載せています。</li>
+      <li><strong>曲の長さの表記ゆれ：</strong>「Doin' This」（Luke Combs）はWikipediaで4:14、Last.fmで4:09。「The Kind of Love We Make」はWikipediaで3:44、Last.fmで3:38と食い違いがあり、いずれもWikipediaの値を採用しています。</li>
+      <li><strong>「Heart Like a Truck」のトラック位置：</strong>版によって異なり、16曲版では9曲目、オリジナル14曲版では8曲目です。</li>
+      <li><strong>「Watermelon Moonshine」のシングル経緯：</strong>2022年8月にプロモーションシングルとして先行配信され、その後2023年5月30日に2ndシングルとして発売された、2段階の経緯があります。</li>
+    </ul>
+  </section>
+
+  <footer>
+    リサーチ実施：2026年11月11日（Web検索によるエビデンス確認）。ジャンルは全曲 STADIUM COUNTRY &amp; SOUTHERN ROCK、対象年は2022年です。
+  </footer>
+</div>
+
+<script>
+var GENRE = "STADIUM COUNTRY & SOUTHERN ROCK";
+var NO_CANDIDATES_NOTE = "ワークフロー記録に外した候補のリストが残っていないため、ここには掲載していません";
+var ALBUMS = [
+{ n:1, artist:"Carrie Underwood", album:"Denim & Rhinestones", meta:"Wikipedia＋MCA公式発表で確認",
+  candidates:null,
+  tracks:[
+   { title:"Ghost Story", len:"3:01", single:"リードシングル · 2022-03-18", isSingle:true,
+     pop:"US Country Airplay 6位、Underwoodの30曲目のトップ10ヒット。Wikipediaのトラックリスト3曲目で、MCAの公式発表でも収録曲として確認しています。",
+     reason:"リードシングルでチャート実績のある曲。バラードではありません。",
+     srcs:[["Wikipedia — Denim & Rhinestones","https://en.wikipedia.org/wiki/Denim_%26_Rhinestones"],["MCA公式発表 — Denim & Rhinestones","https://www.mca.com/carrie-underwood-to-release-new-album-denim-rhinestones-june-10/"]]},
+   { title:"Hate My Heart", len:"3:03", single:"シングル · 2022-10-31にカントリーラジオへ", isSingle:true,
+     pop:"US Country Airplay 20位。Wikipediaのトラックリスト4曲目で、MCAの公式発表でも収録曲として確認しています。",
+     reason:"シングル曲。アップテンポでバラードではありません。",
+     srcs:[["Wikipedia — Denim & Rhinestones","https://en.wikipedia.org/wiki/Denim_%26_Rhinestones"],["MCA公式発表 — Denim & Rhinestones","https://www.mca.com/carrie-underwood-to-release-new-album-denim-rhinestones-june-10/"]]}
+  ]},
+{ n:2, artist:"Lainey Wilson", album:"Bell Bottom Country", meta:"Wikipedia＋Qobuzで確認",
+  candidates:null,
+  tracks:[
+   { title:"Heart Like a Truck", len:"3:19", single:"シングル · 2022-05-20発売（アルバムに先行）", isSingle:true,
+     pop:"アルバムはグラミー最優秀カントリー・アルバム受賞作。Wikipediaのトラックリスト9曲目（16曲版。オリジナル14曲版では8曲目）で、Qobuzでも収録曲として確認しています。",
+     reason:"アルバムに先行したシングル。アップテンポでバラードではありません。",
+     srcs:[["Wikipedia — Bell Bottom Country","https://en.wikipedia.org/wiki/Bell_Bottom_Country"],["Qobuz — Bell Bottom Country","https://www.qobuz.com/nz-en/album/bell-bottom-country-lainey-wilson/f62t33ataulsu"]]},
+   { title:"Watermelon Moonshine", len:"3:28", single:"2ndシングル · 2023-05-30発売（2022年8月にプロモーションシングルとしても先行配信）", isSingle:true,
+     pop:"Wikipediaのトラックリスト4曲目。Qobuzでも3:28で収録曲として確認しています。",
+     reason:"2ndシングル。ノスタルジックなミッドテンポでバラードではありません。",
+     srcs:[["Wikipedia — Bell Bottom Country","https://en.wikipedia.org/wiki/Bell_Bottom_Country"],["Qobuz — Bell Bottom Country","https://www.qobuz.com/nz-en/album/bell-bottom-country-lainey-wilson/f62t33ataulsu"]]}
+  ]},
+{ n:3, artist:"Luke Combs", album:"Growin' Up", meta:"Wikipedia＋Last.fmで確認",
+  candidates:null,
+  tracks:[
+   { title:"Doin' This", len:"4:14", single:"リードシングル · 2021-11-10発売", isSingle:true,
+     pop:"Billboard Country Airplay 1位。Last.fmでは47,034リスナーと表示されています（検索時点の表示値）。Wikipediaのトラックリスト1曲目。Last.fmのトラックリストでも収録曲と表示されますが、長さはLast.fmの4:09ではなくWikipediaの4:14を採用しています。",
+     reason:"リードシングルでチャート1位の実績のある曲。バラードではありません。",
+     srcs:[["Wikipedia — Growin' Up (Luke Combs album)","https://en.wikipedia.org/wiki/Growin%27_Up_(Luke_Combs_album)"],["Last.fm — Growin' Up","https://www.last.fm/music/Luke+Combs/Growin%27+Up"]]},
+   { title:"The Kind of Love We Make", len:"3:44", single:"2ndシングル · 2022-06-17発売", isSingle:true,
+     pop:"Country Airplay 2位となり、Combs初の同チャート1位を逃したシングルと記載。Last.fmでは196,302リスナーと表示され、アルバム内で最もリスナー数が多い曲です（検索時点の表示値）。Wikipediaのトラックリスト3曲目。長さはLast.fmの3:38ではなくWikipediaの3:44を採用しています。",
+     reason:"2ndシングルで、アルバム内最多のリスナー数。アップテンポでバラードではありません。",
+     srcs:[["Wikipedia — Growin' Up (Luke Combs album)","https://en.wikipedia.org/wiki/Growin%27_Up_(Luke_Combs_album)"],["Last.fm — Growin' Up","https://www.last.fm/music/Luke+Combs/Growin%27+Up"]]}
+  ]},
+{ n:4, artist:"Miranda Lambert", album:"Palomino", meta:"Wikipedia＋Building Our Own Nashvilleで確認",
+  candidates:null,
+  tracks:[
+   { title:"If I Was a Cowboy", len:"3:14", single:"シングル · 2021-10-15発売（アルバムに先行）", isSingle:true,
+     pop:"アルバム発売前にTop 20まで上昇したと報じられています。Wikipediaのトラックリスト12曲目。Building Our Own Nashvilleのレビューでも収録曲として確認しています。",
+     reason:"アルバムに先行したシングル。ミッドテンポでバラードではありません。",
+     srcs:[["Wikipedia — Palomino (Miranda Lambert album)","https://en.wikipedia.org/wiki/Palomino_(Miranda_Lambert_album)"],["Building Our Own Nashville — Palomino album review","https://buildingourownnashville.com/2022/04/29/miranda-lambert-palomino-album-review/"]]},
+   { title:"Strange", len:"3:31", single:"2ndシングル · 2022-07-18発売", isSingle:true,
+     pop:"アルバム発売前にプロモーションシングルとしても配信されています。Wikipediaのトラックリスト7曲目。Building Our Own Nashvilleのレビューでも収録曲として確認しています。",
+     reason:"2ndシングル。ブルージーなミッドテンポでバラードではありません。",
+     srcs:[["Wikipedia — Palomino (Miranda Lambert album)","https://en.wikipedia.org/wiki/Palomino_(Miranda_Lambert_album)"],["Building Our Own Nashville — Palomino album review","https://buildingourownnashville.com/2022/04/29/miranda-lambert-palomino-album-review/"]]}
+  ]},
+{ n:5, artist:"Whiskey Myers", album:"Tornillo", meta:"Wikipedia＋Music Wavesで確認",
+  candidates:"「Tornillo」（アルバムのタイトル曲）は0:47のインストゥルメンタルで、2分以下のため除外しました（2分以下除外ルール）。記録に残っている外した候補はこの1件のみです。",
+  tracks:[
+   { title:"John Wayne", len:"4:55", single:"リードシングル · 2022-02-18発売", isSingle:true,
+     pop:"アルバム発表と同時に先行公開された曲。Wikipediaのトラックリスト2曲目。Music Wavesのレビューでも4:55で収録曲として確認しています。",
+     reason:"リードシングル。サザンロックのアップテンポ曲でバラードではありません。",
+     srcs:[["Wikipedia — Tornillo (album)","https://en.wikipedia.org/wiki/Tornillo_(album)"],["Music Waves — Tornillo review","https://www.musicwaves.org/frmReview.aspx?ID=20595&REF=WHISKEY-MYERS_Tornillo&LINK=1"]]},
+   { title:"The Wolf", len:"5:37", single:"シングル · 2022-12-06発売", isSingle:true,
+     pop:"アルバム発売前にも先行曲として公開されています。Wikipediaのトラックリスト7曲目。Music Wavesのレビューでも5:37で収録曲として確認しています。",
+     reason:"シングル曲。ロック曲でバラードではありません。",
+     srcs:[["Wikipedia — Tornillo (album)","https://en.wikipedia.org/wiki/Tornillo_(album)"],["Music Waves — Tornillo review","https://www.musicwaves.org/frmReview.aspx?ID=20595&REF=WHISKEY-MYERS_Tornillo&LINK=1"]]}
+  ]}
+];
+
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function render(){
+  var host=document.getElementById("albums");
+  var html="";
+  ALBUMS.forEach(function(a){
+    html+='<article class="album" data-search="'+esc((a.artist+" "+a.album+" "+a.tracks.map(function(t){return t.title;}).join(" ")).toLowerCase())+'">';
+    html+='<div class="album-head"><span class="no">'+String(a.n).padStart(2,"0")+'</span><h2>'+esc(a.artist)+' — 『'+esc(a.album)+'』</h2><span class="meta">'+esc(a.meta)+'</span></div>';
+    a.tracks.forEach(function(t){
+      var badge = t.isSingle ? '<span class="badge single">シングル</span>' : '<span class="badge unconfirmed">シングル未確認</span>';
+      html+='<div class="track"><div class="track-title"><h3>'+esc(t.title)+'</h3><span class="len">'+esc(t.len)+'</span>'+badge+'</div>';
+      html+='<p><span class="label">シングル</span>'+esc(t.single)+'</p>';
+      html+='<p><span class="label">人気の根拠</span>'+esc(t.pop)+'</p>';
+      html+='<p><span class="label">選出理由</span>'+esc(t.reason)+'</p>';
+      html+='<p class="srcs"><span class="label">検証ソース</span>'+t.srcs.map(function(s){return '<a href="'+s[1]+'" target="_blank" rel="noopener">'+esc(s[0])+'</a>';}).join(' ／ ')+'</p></div>';
+    });
+    html+='<details><summary>検討して外した候補と理由</summary><p>'+esc(a.candidates ? a.candidates : NO_CANDIDATES_NOTE)+'</p></details>';
+    html+='</article>';
+  });
+  host.innerHTML=html;
+}
+function tsvText(){
+  var rows=["GENRE\tARTIST\tALBUM\tTRACK"];
+  ALBUMS.forEach(function(a){ a.tracks.forEach(function(t){ rows.push([GENRE,a.artist,a.album,t.title].join("\t")); }); });
+  return rows.join("\n");
+}
+render();
+document.getElementById("tsvBlock").textContent=tsvText();
+
+var toast=document.getElementById("toast");
+function showToast(msg){ toast.textContent=msg; setTimeout(function(){toast.textContent="";},2600); }
+document.getElementById("copyBtn").addEventListener("click",function(){
+  var text=tsvText();
+  function done(){ showToast("TSV（ヘッダー＋10行）をコピーしました"); }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done,function(){ fallback(); });
+  } else { fallback(); }
+  function fallback(){
+    var ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); done(); }catch(e){ showToast("コピーできませんでした。下のTSV欄から選択してください"); }
+    document.body.removeChild(ta);
+  }
+});
+document.getElementById("dlBtn").addEventListener("click",function(){
+  var blob=new Blob([tsvText()],{type:"text/tab-separated-values;charset=utf-8"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url; a.download="2022-stadium-country-southern-rock-tracks.tsv";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  showToast("TSVファイルをダウンロードしました");
+});
+document.getElementById("q").addEventListener("input",function(e){
+  var q=e.target.value.trim().toLowerCase();
+  document.querySelectorAll(".album").forEach(function(el){
+    el.classList.toggle("hidden", q!=="" && el.getAttribute("data-search").indexOf(q)===-1);
+  });
+});
+</script>
+</body>
+</html>

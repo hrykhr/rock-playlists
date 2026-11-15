@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2023 HARD ROCK 候補一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f2f1ed;
+        --surface: #ffffff;
+        --surface-2: #e9e7e1;
+        --ink: #1d1a16;
+        --ink-2: #55504a;
+        --line: #d8d3ca;
+        --accent: #b34a12;
+        --accent-ink: #8f3808;
+        --accent-soft: #fbeadd;
+        --gold: #8a6410;
+        --gold-soft: #f7ecd2;
+        --blue: #2f5d8a;
+        --blue-soft: #e2ecf6;
+        --gray-badge: #5d564d;
+        --gray-soft: #e8e4dc;
+        --red: #a02c22;
+        --red-soft: #f9e6e3;
+        --green: #2e6b34;
+        --green-soft: #e3efe0;
+        --mark: #f3dfae;
+        --shadow: 0 1px 2px rgba(29, 26, 22, 0.06), 0 8px 24px rgba(29, 26, 22, 0.05);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #16140f;
+          --surface: #211e18;
+          --surface-2: #2a261e;
+          --ink: #f0eadf;
+          --ink-2: #b3aa9c;
+          --line: #3d382e;
+          --accent: #f08b4c;
+          --accent-ink: #f5a66d;
+          --accent-soft: #3a2415;
+          --gold: #e3b959;
+          --gold-soft: #3a2f14;
+          --blue: #8db8dd;
+          --blue-soft: #22374d;
+          --gray-badge: #c9c0b2;
+          --gray-soft: #332e26;
+          --red: #f0937f;
+          --red-soft: #42231e;
+          --green: #9ccb8f;
+          --green-soft: #243a20;
+          --mark: #57451a;
+          --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+        font-size: 15px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); }
+      .wrap { max-width: 1280px; margin: 0 auto; padding: 0 20px 72px; }
+
+      /* ---------- Header ---------- */
+      header.page-head { padding: 40px 0 8px; }
+      .head-kicker {
+        font-family: "Archivo", "Noto Sans JP", sans-serif;
+        font-weight: 800; letter-spacing: 0.22em; font-size: 12px;
+        color: var(--accent); text-transform: uppercase; margin: 0 0 10px;
+      }
+      h1 {
+        font-size: clamp(30px, 5.4vw, 52px); line-height: 1.2; margin: 0 0 6px;
+        font-weight: 900; letter-spacing: 0.01em;
+      }
+      h1 .latin { font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: 0.02em; }
+      .head-sub { color: var(--ink-2); margin: 0; font-size: 15px; max-width: 46em; }
+
+      .status-box {
+        margin-top: 22px; border: 1.5px solid var(--accent); border-radius: 10px;
+        background: var(--accent-soft); padding: 16px 20px;
+        display: flex; gap: 14px; align-items: flex-start;
+      }
+      .status-box .dot {
+        flex: none; width: 12px; height: 12px; border-radius: 50%;
+        background: var(--accent); margin-top: 8px;
+      }
+      .status-box p { margin: 0; }
+      .status-box strong { font-weight: 900; }
+
+      .stats {
+        display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 18px;
+      }
+      .stat {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        padding: 14px 16px 12px; box-shadow: var(--shadow);
+      }
+      .stat .num { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1; }
+      .stat .num small { font-size: 15px; font-weight: 700; }
+      .stat .lbl { color: var(--ink-2); font-size: 12.5px; margin-top: 2px; line-height: 1.5; }
+      .stat.hot .num { color: var(--accent); }
+
+      /* ---------- Nav + search ---------- */
+      .toolbar {
+        position: sticky; top: 0; z-index: 20;
+        background: var(--bg); padding: 14px 0 10px; margin-top: 10px;
+      }
+      .nav-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+      .nav-chips a {
+        display: inline-flex; align-items: center; min-height: 36px;
+        padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
+        background: var(--surface); color: var(--ink); text-decoration: none;
+        font-size: 13.5px; font-weight: 700;
+      }
+      .nav-chips a:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .search-row { margin-top: 10px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+      .search-row input[type="search"] {
+        flex: 1 1 260px; min-height: 44px; padding: 10px 14px; font-size: 15px;
+        border: 1px solid var(--line); border-radius: 8px;
+        background: var(--surface); color: var(--ink); font-family: inherit;
+      }
+      .search-row .hits { color: var(--ink-2); font-size: 13px; }
+
+      /* ---------- Sections ---------- */
+      section { margin-top: 48px; scroll-margin-top: 120px; }
+      .sec-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+      .sec-no {
+        font-family: "Archivo", sans-serif; font-weight: 800; font-size: 14px;
+        color: var(--accent); letter-spacing: 0.14em;
+      }
+      h2 { font-size: clamp(21px, 3.4vw, 28px); font-weight: 900; margin: 0; line-height: 1.35; }
+      .sec-count {
+        font-family: "Archivo", sans-serif; font-weight: 700; font-size: 13px;
+        background: var(--surface-2); border-radius: 999px; padding: 3px 12px; color: var(--ink-2);
+      }
+      .sec-lead { color: var(--ink-2); max-width: 62em; margin: 4px 0 18px; }
+      .sec-lead strong { color: var(--ink); }
+
+      /* ---------- Tables ---------- */
+      .table-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); overflow: hidden;
+      }
+      table { border-collapse: collapse; width: 100%; }
+      thead th {
+        background: var(--surface-2); text-align: left; font-size: 12.5px; font-weight: 700;
+        color: var(--ink-2); padding: 10px 14px; border-bottom: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      tbody td {
+        padding: 14px; border-bottom: 1px solid var(--line);
+        vertical-align: top; font-size: 13.5px; line-height: 1.7;
+      }
+      tbody tr:last-child td { border-bottom: none; }
+      td.artist { font-weight: 700; font-size: 14.5px; white-space: nowrap; }
+      td.album { font-weight: 700; }
+      td.date { font-family: "Archivo", sans-serif; font-weight: 700; white-space: nowrap; font-size: 13px; }
+      td.notes, td.basis { color: var(--ink); }
+      .wn {
+        background: var(--mark); border-radius: 3px; padding: 0 4px; font-weight: 700;
+        white-space: nowrap;
+      }
+      .src-list { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+      .src-link {
+        display: inline-flex; align-items: center; gap: 4px; min-height: 32px;
+        padding: 4px 10px; border: 1px solid var(--line); border-radius: 6px;
+        background: var(--surface); font-size: 12.5px; font-weight: 700;
+        text-decoration: none; line-height: 1.3; word-break: break-all;
+      }
+      .src-link:hover { border-color: var(--accent); }
+      .src-link .arr { font-family: "Archivo", sans-serif; }
+
+      .badge {
+        display: inline-block; font-family: "Archivo", sans-serif; font-weight: 800;
+        font-size: 13px; line-height: 1; padding: 6px 10px; border-radius: 6px; white-space: nowrap;
+      }
+      .badge-s { background: var(--gold-soft); color: var(--gold); border: 1px solid var(--gold); }
+      .badge-a { background: var(--blue-soft); color: var(--blue); border: 1px solid var(--blue); }
+      .badge-b { background: var(--gray-soft); color: var(--gray-badge); border: 1px solid var(--gray-badge); }
+
+      /* ---------- Final 10 ---------- */
+      .status-box.done { border-color: var(--green); background: var(--green-soft); }
+      .status-box.done .dot { background: var(--green); }
+      .final-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .final-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start;
+      }
+      .final-card.promoted { border: 1.5px solid var(--green); background: var(--green-soft); }
+      .final-num {
+        font-family: "Archivo", sans-serif; font-weight: 800; font-size: 18px;
+        width: 36px; height: 36px; border-radius: 50%; flex: none;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: var(--ink); color: var(--bg);
+      }
+      .final-card.promoted .final-num { background: var(--green); color: #fff; }
+      @media (prefers-color-scheme: dark) { .final-card.promoted .final-num { color: #16140f; } }
+      .final-card h3 { margin: 0; font-size: 16.5px; line-height: 1.45; }
+      .final-card h3 .alb { display: block; font-size: 14.5px; color: var(--ink-2); font-weight: 700; }
+      .final-card .fmeta { margin: 4px 0 0; font-size: 12.5px; color: var(--ink-2); font-family: "Archivo", "Noto Sans JP", sans-serif; font-weight: 700; }
+      .final-card .fnote { margin: 6px 0 0; font-size: 13px; color: var(--ink); }
+      .outcome {
+        display: inline-block; font-size: 12px; font-weight: 900; line-height: 1.5;
+        border-radius: 999px; padding: 2px 10px; margin: 6px 0 2px; white-space: normal;
+      }
+      .outcome-out { color: var(--red); background: var(--red-soft); border: 1px solid var(--red); }
+      .outcome-swap { color: var(--accent-ink); background: var(--accent-soft); border: 1px solid var(--accent); }
+      .outcome-in { color: var(--green); background: var(--green-soft); border: 1px solid var(--green); }
+      .outcome-keep { color: var(--green); background: var(--green-soft); border: 1px solid var(--green); }
+      .timeline { display: grid; gap: 0; margin-top: 6px; }
+      .tl-step {
+        display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px dashed var(--line);
+      }
+      .tl-step:last-child { border-bottom: none; }
+      .tl-no {
+        font-family: "Archivo", sans-serif; font-weight: 800; font-size: 13px; flex: none;
+        width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--accent);
+        color: var(--accent-ink); display: inline-flex; align-items: center; justify-content: center; margin-top: 2px;
+      }
+      .tl-step h3 { margin: 0 0 2px; font-size: 15px; }
+      .tl-step p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
+      .tl-step p strong { color: var(--ink); }
+      tr.is-out td { opacity: 0.78; }
+      tr.is-promoted td { background: var(--green-soft); }
+      @media (max-width: 900px) { .final-grid { grid-template-columns: 1fr; } tr.is-promoted td { background: transparent; } tbody tr.is-promoted { background: var(--green-soft); } }
+
+      /* ---------- Drop recommendation ---------- */
+      .drop-lead {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 18px 20px; margin-bottom: 14px;
+      }
+      .drop-lead p { margin: 0; }
+      .drop-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .drop-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 18px;
+      }
+      .drop-card .rank-line { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+      .drop-num {
+        font-family: "Archivo", sans-serif; font-weight: 800; font-size: 20px;
+        width: 38px; height: 38px; border-radius: 50%; flex: none;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: var(--red-soft); color: var(--red); border: 1.5px solid var(--red);
+      }
+      .drop-card h3 { margin: 0; font-size: 16px; line-height: 1.45; }
+      .drop-card h3 .alb { display: block; font-size: 14px; color: var(--ink-2); font-weight: 700; }
+      .drop-card p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
+      .drop-card p strong { color: var(--ink); }
+
+      /* ---------- Duplicates ---------- */
+      .dup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .dup-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 18px; display: flex; flex-direction: column; gap: 10px;
+      }
+      .dup-card .tag {
+        align-self: flex-start; font-size: 12px; font-weight: 900; color: var(--red);
+        background: var(--red-soft); border: 1px solid var(--red); border-radius: 999px; padding: 3px 12px;
+      }
+      .dup-card h3 { margin: 0; font-size: 17px; line-height: 1.45; }
+      .dup-card h3 .alb { display: block; font-size: 14.5px; color: var(--ink-2); }
+      .dup-card dl { margin: 0; font-size: 13.5px; }
+      .dup-card dt { font-weight: 700; color: var(--ink-2); font-size: 12px; margin-top: 8px; }
+      .dup-card dd { margin: 2px 0 0; }
+      .dup-card .src-list { margin-top: auto; padding-top: 6px; flex-direction: row; flex-wrap: wrap; }
+
+      .rank-filter { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
+      .rank-filter button {
+        min-height: 38px; padding: 6px 16px; border-radius: 999px; cursor: pointer;
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+        font-family: inherit; font-size: 13.5px; font-weight: 700;
+      }
+      .rank-filter button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+      .no-hit { display: none; color: var(--ink-2); padding: 8px 2px; }
+
+      footer { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 16px; color: var(--ink-2); font-size: 13px; }
+      footer p { margin: 0; }
+
+      /* ---------- Mobile: tables become stacked cards ---------- */
+      @media (max-width: 900px) {
+        .stats { grid-template-columns: repeat(2, 1fr); }
+        .stats .stat:last-child { grid-column: span 2; }
+        .drop-list, .dup-grid { grid-template-columns: 1fr; }
+        section { scroll-margin-top: 150px; }
+        .table-card { background: transparent; border: none; box-shadow: none; overflow: visible; }
+        table, thead, tbody, tr, td { display: block; width: 100%; }
+        thead { position: absolute; left: -9999px; top: -9999px; }
+        tbody tr {
+          background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+          box-shadow: var(--shadow); padding: 8px 4px; margin-bottom: 12px;
+        }
+        tbody td { border-bottom: none; padding: 6px 16px; white-space: normal; }
+        tbody td.artist { font-size: 16.5px; padding-top: 12px; }
+        tbody td.album { padding-top: 0; font-size: 15px; }
+        tbody td::before {
+          content: attr(data-label); display: block; font-size: 11.5px; font-weight: 700;
+          color: var(--ink-2); letter-spacing: 0.06em; margin-bottom: 2px;
+        }
+        tbody td.artist::before, tbody td.album::before { content: none; }
+        tbody td.date { font-size: 14px; }
+        .src-list { flex-direction: row; flex-wrap: wrap; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="page-head">
+        <p class="head-kicker">Evidence — Album Selection</p>
+        <h1>2023年 <span class="latin">HARD ROCK</span> 候補一覧</h1>
+        <p class="head-sub">2023年リリースのハードロック・アルバム候補について、ジャンル適合性の検証結果と出典をまとめたエビデンスページ。最終10枚（確定）と、除外・差し替えの経緯を含む。</p>
+
+        <div class="status-box done" role="status">
+          <span class="dot" aria-hidden="true"></span>
+          <p><strong>選出確定 — 最終10枚が決まりました。</strong>S検証済み12枚から Hiro の決定で2枚を除外し、当初確定後に Vandenberg『Sin』を Spotify カタログ未掲載のため差し替え、A候補の Heaven's Edge『Get It Right』を昇格して最終10枚としました（2026-11-13）。</p>
+        </div>
+
+        <div class="stats" aria-label="集計">
+          <div class="stat"><div class="num">27<small> 枚</small></div><div class="lbl">候補の総数</div></div>
+          <div class="stat"><div class="num">12<small> 枚</small></div><div class="lbl">S検証済み</div></div>
+          <div class="stat"><div class="num">12<small> 枚</small></div><div class="lbl">A/B候補（A 10枚・B 2枚）</div></div>
+          <div class="stat"><div class="num">3<small> 枚</small></div><div class="lbl">重複除外（他ジャンルで採用済み）</div></div>
+          <div class="stat hot"><div class="num">10<small> 枚</small></div><div class="lbl">最終確定（下記「最終10枚」参照）</div></div>
+        </div>
+      </header>
+
+      <div class="toolbar">
+        <nav class="nav-chips" aria-label="セクション">
+          <a href="#final">最終10枚（確定）</a>
+          <a href="#overview">概要・経緯</a>
+          <a href="#s-list">S検証済み 12枚</a>
+          <a href="#drop">落とす推薦と決定</a>
+          <a href="#ab-list">A/B候補 12枚</a>
+          <a href="#dup">重複除外 3枚</a>
+        </nav>
+        <div class="search-row">
+          <input type="search" id="q" placeholder="アーティスト名・アルバム名で絞り込み" aria-label="アーティスト名・アルバム名で絞り込み" />
+          <span class="hits" id="hits" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <!-- 1. 最終10枚 -->
+      <section id="final">
+        <div class="sec-head"><span class="sec-no">01</span><h2>最終10枚（確定）</h2><span class="sec-count">FINAL 10</span></div>
+        <p class="sec-lead">2023年 HARD ROCK の最終選出は以下の<strong>10枚で確定</strong>。番号は最終一覧の順序を示す。8番の Heaven's Edge は当初確定には入っておらず、差し替えで加わった1枚（詳細は次の「概要・経緯」参照）。</p>
+        <div class="final-grid">
+          <article class="final-card" data-item><span class="final-num">1</span><div><h3>Alice Cooper<span class="alb">『Road』</span></h3><p class="fmeta">2023-08-25</p></div></article>
+          <article class="final-card" data-item><span class="final-num">2</span><div><h3>Black Star Riders<span class="alb">『Wrong Side of Paradise』</span></h3><p class="fmeta">2023-01-20</p></div></article>
+          <article class="final-card" data-item><span class="final-num">3</span><div><h3>Black Stone Cherry<span class="alb">『Screamin' at the Sky』</span></h3><p class="fmeta">2023-09-29</p></div></article>
+          <article class="final-card" data-item><span class="final-num">4</span><div><h3>The Winery Dogs<span class="alb">『III』</span></h3><p class="fmeta">2023-02-03</p></div></article>
+          <article class="final-card" data-item><span class="final-num">5</span><div><h3>Midnite City<span class="alb">『In at the Deep End』</span></h3><p class="fmeta">2023-06-23</p><p class="fnote">検証担当の「落とす推薦」では2位だったが、Hiro の決定で残留。</p></div></article>
+          <article class="final-card" data-item><span class="final-num">6</span><div><h3>Crowne<span class="alb">『Operation Phoenix』</span></h3><p class="fmeta">2023-01-27</p></div></article>
+          <article class="final-card" data-item><span class="final-num">7</span><div><h3>Temple Balls<span class="alb">『Avalanche』</span></h3><p class="fmeta">2023-11-10</p></div></article>
+          <article class="final-card promoted" data-item><span class="final-num">8</span><div><h3>Heaven's Edge<span class="alb">『Get It Right』</span></h3><p class="fmeta">2023-05-12 ・ Frontiers</p><span class="outcome outcome-in">A候補から昇格 ・ 差し替えで採用</span><p class="fnote">昇格検証済み（Wikipedia・Tower Records・Grande Rock・Dangerdog で確認）。Glam metal / hard rock / AOR 系のメロディック・ハードロック。</p><div class="src-list" style="margin-top:8px"><a class="src-link" href="https://en.wikipedia.org/wiki/Heavens_Edge" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a><a class="src-link" href="https://grande-rock.com/news/heavens-edge-to-release-new-studio-album-get-it-right-on-may-12th-2023/" target="_blank" rel="noopener">Grande Rock <span class="arr">↗</span></a></div></div></article>
+          <article class="final-card" data-item><span class="final-num">9</span><div><h3>Shakra<span class="alb">『Invincible』</span></h3><p class="fmeta">2023-06-09</p></div></article>
+          <article class="final-card" data-item><span class="final-num">10</span><div><h3>Lynch Mob<span class="alb">『Babylon』</span></h3><p class="fmeta">2023-10-20</p></div></article>
+        </div>
+        <p class="sec-lead" style="margin-top:16px">この最終10枚に<strong>入らなかった</strong>もの：<strong>Heroes and Monsters『Heroes and Monsters』</strong>と <strong>Nitrate『Feel the Heat』</strong>は Hiro の決定で除外。<strong>Vandenberg『Sin』</strong>は当初確定に入っていたが、Spotify カタログ未掲載のため Hiro の決定で差し替え（外れた）。</p>
+      </section>
+
+      <!-- 2. 概要・経緯 -->
+      <section id="overview">
+        <div class="sec-head"><span class="sec-no">02</span><h2>概要・確定までの経緯</h2></div>
+        <p class="sec-lead">2023年 HARD ROCK の候補は<strong>27枚</strong>。うち<strong>重複除外は3枚</strong>（Extreme『Six』、Winger『Seven』、Eclipse『Megalomanium』— いずれも2023年 MAINSTREAM ROCK / ARENA HEROES で採用済み）。S検証では<strong>Sが12枚</strong>となり、最終枠（5〜10枚）を2枚超過した。</p>
+        <div class="timeline">
+          <div class="tl-step"><span class="tl-no">1</span><div><h3>落とす推薦（検証担当）</h3><p>順序は <strong>1 Heroes and Monsters『Heroes and Monsters』、2 Midnite City『In at the Deep End』、3 Nitrate『Feel the Heat』</strong>。この順で2枚落とせば10枚になる、という推薦だった。</p></div></div>
+          <div class="tl-step"><span class="tl-no">2</span><div><h3>Hiro の決定による絞り込み（2026-11-13）</h3><p>Hiro は「<strong>1と3を落とそう</strong>」と判断。<strong>Heroes and Monsters と Nitrate を除外</strong>し、推薦2位だった <strong>Midnite City は残した</strong>。これで S 10枚が当初確定となった（この時点では Vandenberg『Sin』を含む）。</p></div></div>
+          <div class="tl-step"><span class="tl-no">3</span><div><h3>Vandenberg『Sin』の Spotify 未掲載が判明</h3><p>楽曲選出と Spotify プレイリスト作成の段階で、<strong>Vandenberg『Sin』の収録曲が Spotify カタログで見つからない</strong>ことが判明した。CLI検索・Web検索の両方でアルバム自体が表示されず、プレイリストに追加できなかった。</p></div></div>
+          <div class="tl-step"><span class="tl-no">4</span><div><h3>差し替えで最終確定</h3><p>Hiro の決定により <strong>Vandenberg を外し</strong>、代わりに A候補だった <strong>Heaven's Edge『Get It Right』</strong>（2023-05-12発売、Frontiers）を入れた。昇格検証済みで、この10枚をもって最終確定とした。</p></div></div>
+        </div>
+      </section>
+
+      <!-- 2. S検証済み12枚 -->
+      <section id="s-list">
+        <div class="sec-head"><span class="sec-no">03</span><h2>S検証済み</h2><span class="sec-count">12 ALBUMS</span></div>
+        <p class="sec-lead">ジャンル適合性を出典で確認し、Sと判定した12枚。備考欄で<span class="wn">Wikipediaでは確認できない</span>と記したものは、Wikipediaに専用ページがなく（またはバンドページ等で確認）、他ソースで検証したもの。<strong>最終結果との関係</strong>は各行の注記で示す：Heroes and Monsters と Nitrate は Hiro の決定で除外、Vandenberg は当初確定後に差し替えで外れ、残る9枚は最終10枚に残った（残り1枚は A/B候補から昇格した Heaven's Edge）。</p>
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr><th scope="col">アーティスト</th><th scope="col">アルバム</th><th scope="col">発売日</th><th scope="col">ジャンル根拠</th><th scope="col">備考</th><th scope="col">出典</th></tr>
+            </thead>
+            <tbody id="s-body">
+              <tr data-item>
+                <td class="artist">Alice Cooper</td>
+                <td class="album">『Road』</td>
+                <td class="date" data-label="発売日">2023-08-25</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia infobox: Genre Hard rock, heavy metal。Discogsでも Style: Hard Rock。ハードロック中核としてS適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考">オリジナル・スタジオ盤。通算の数え方に注意：ソロとして22作目、バンド時代を含めると通算29作目とWikipediaが明記。13曲・約48分で短尺問題なし。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Road_(Alice_Cooper_album)" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://blabbermouth.net/news/alice-cooper-releases-new-single-white-line-frankenstein-announces-october-2023-u-s-tour-dates" target="_blank" rel="noopener">Blabbermouth <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://www.discogs.com/release/28064817-Alice-Cooper-Road" target="_blank" rel="noopener">Discogs <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item>
+                <td class="artist">Black Star Riders</td>
+                <td class="album">『Wrong Side of Paradise』</td>
+                <td class="date" data-label="発売日">2023-01-20</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia: 5th studio album by hard rock band、Genre Hard rock。BlabbermouthもEarache発ハードロック作として告知。S適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考">オリジナル・スタジオ盤（5作目、11曲・41:06）。創設メンバーScott Gorhamが録音前に脱退し不参加だが、作品の適格性に影響なし。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Wrong_Side_of_Paradise" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://blabbermouth.net/news/black-star-riders-announce-wrong-side-of-paradise-album-share-better-than-saturday-night-music-video" target="_blank" rel="noopener">Blabbermouth <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item>
+                <td class="artist">Black Stone Cherry</td>
+                <td class="album">『Screamin' at the Sky』</td>
+                <td class="date" data-label="発売日">2023-09-29</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia: eighth studio album by American hard rock band。Qobuz紹介でも rootsy hard rock / heavy metal。サザン寄りのハードロックとしてS適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考">オリジナル・スタジオ盤（8作目、39:51とやや短めだが12曲構成で短尺盤には当たらない）。新ベーシストSteve Jewell Jr.初参加。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Screamin%27_at_the_Sky" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://myglobalmind.com/2023/05/10/black-stone-cherry-and-mascot-records-announce-release-of-screamin-at-the-sky-on-september-29/" target="_blank" rel="noopener">MyGlobalMind <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item>
+                <td class="artist">The Winery Dogs</td>
+                <td class="album">『III』</td>
+                <td class="date" data-label="発売日">2023-02-03</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipediaバンドページ: American hard rock supergroup、3rd album III を2023-02-03発売と記載。Blabbermouthも同日発売を告知。S適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span>（専用アルバムページはなく、バンドページのディスコグラフィで確認）。オリジナル・スタジオ盤（3作目、10曲）。約7年ぶりのスタジオ作。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/The_Winery_Dogs" target="_blank" rel="noopener">Wikipedia（バンド） <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://blabbermouth.net/news/the-winery-dogs-announce-iii-album-early-2023-tour" target="_blank" rel="noopener">Blabbermouth <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item>
+                <td class="artist">Midnite City</td>
+                <td class="album">『In at the Deep End』</td>
+                <td class="date" data-label="発売日">2023-06-23</td>
+                <td class="basis" data-label="ジャンル根拠">Pride &amp; Joy発、複数レビューが melodic hard rock / late 80s style hair metal と分類。Music Wavesは GENRE: MELODIC HARD ROCK。HARD ROCK圏内としてS適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span>（バンド／アルバムのWikipediaページなし。Rockposer、iMusic等で確認）。オリジナル・スタジオ盤（4作目、11曲、冒頭はイントロ曲）。メロディック／ヘアメタル寄りで12枚中ではジャンル純度がやや弱い。<br /><span class="outcome outcome-keep">落とす推薦2位 → Hiro の決定で残留 ・ 最終10枚入り</span></td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://rockposer.com/2023/05/09/review-midnite-city-in-at-the-deep-end/" target="_blank" rel="noopener">Rockposer <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://imusic.co/music/4260432913453/midnite-city-2023-in-at-the-deep-end-cd?srsltid=AfmBOooQvEpiLZ7BrgQ9WiY9Lg1-k8anD-gfMIbN3XpO-0WN7U3Exrle" target="_blank" rel="noopener">iMusic <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://www.musicwaves.org/mobile.frmEvent.aspx?ID=18172&amp;REF=MIDNITE-CITY-NOUVEL-ALBUM-EN-JUIN" target="_blank" rel="noopener">Music Waves <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item>
+                <td class="artist">Crowne</td>
+                <td class="album">『Operation Phoenix』</td>
+                <td class="date" data-label="発売日">2023-01-27</td>
+                <td class="basis" data-label="ジャンル根拠">Frontiers公式ショップ: GENRE Melodic Rock、melodic hard rock with hints of metal。Sonic Perspectives／Tuonelaも melodic hard rock と明記。S適合。絶対除外要素なし（メタル要素は power metal 風味の曲が一部ある程度でMELODIC POWER側への振り分け注意）。</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span>（アルバム専用ページなし。Frontiers公式および複数メディアで確認）。オリジナル・スタジオ盤（2作目）。Europe／H.E.A.T／Art Nation等のスーパーグループ。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://www.sonicperspectives.com/news/crowne-announce-new-album-operation-phoenix-watch-music-video-for-champions/" target="_blank" rel="noopener">Sonic Perspectives <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://frontiers-us.shop/products/crowne-operation-phoenix-cd" target="_blank" rel="noopener">Frontiers公式 <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://tuonelamagazine.com/review-crowne-operation-phoenix/" target="_blank" rel="noopener">Tuonela <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item>
+                <td class="artist">Temple Balls</td>
+                <td class="album">『Avalanche』</td>
+                <td class="date" data-label="発売日">2023-11-10</td>
+                <td class="basis" data-label="ジャンル根拠">Qobuz: Hard Rock、Frontiers発 2023-11-10。Discogs: Style Hard Rock。Tuonela: Finnish hard rockers、melodic hard rock。S適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span>（アルバム専用ページなし。Qobuz・Discogs等で確認）。オリジナル・スタジオ盤（4作目、11曲）。Deluxe Editionも同日発売だが通常盤で検証。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://www.qobuz.com:443/se-en/interpreter/temple-balls/2773936" target="_blank" rel="noopener">Qobuz <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://www.discogs.com/release/28870939-Temple-Balls-Avalanche" target="_blank" rel="noopener">Discogs <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://tuonelamagazine.com/review-temple-balls-avalanche/" target="_blank" rel="noopener">Tuonela <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item class="is-out">
+                <td class="artist">Vandenberg</td>
+                <td class="album">『Sin』</td>
+                <td class="date" data-label="発売日">2023-08-25</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipediaバンドページ: Genres Hard rock、2023年8月にSin発売。Mascot告知も anthemic hard rock and airtight metal、5th full-length。S適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span>（専用アルバムページはなく、バンドページおよびQobuz／AllMusic系紹介で確認）。オリジナル・スタジオ盤（5作目）。9曲のみと曲数は少なめ（ただし各曲が長めで短尺盤扱いにはしない）。新ボーカルMats Levénのスタジオ初参加。<br /><span class="outcome outcome-swap">当初確定後に差し替えで除外</span><br />当初は S 10枚に含まれ確定していたが、楽曲選出・Spotify プレイリスト作成の段階で収録曲が Spotify カタログで見つからず（CLI検索・Web検索の両方でアルバム自体が表示されず追加不可）、Hiro の決定で外し、Heaven's Edge『Get It Right』と差し替えた。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Vandenberg_(band)" target="_blank" rel="noopener">Wikipedia（バンド） <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://60minuteswith.co.uk/news/vandenberg-announces-new-album-sin/" target="_blank" rel="noopener">60 Minutes With <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://tuonelamagazine.com/review-vandenberg-sin/" target="_blank" rel="noopener">Tuonela <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item>
+                <td class="artist">Shakra</td>
+                <td class="album">『Invincible』</td>
+                <td class="date" data-label="発売日">2023-06-09</td>
+                <td class="basis" data-label="ジャンル根拠">MyGlobalMind: Genre Hard Rock、AFM発。Grande Rock: Swiss hard rock act。Metal Kingdom: Studio full-length、Genres Hard Rock。S適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span>（アルバム専用ページなし。AFM系告知・レビュー複数で確認）。オリジナル・スタジオ盤。通算枚数の数え方に食い違いあり：大半のソースは13作目とするが、一部レビューは15作目と数える。12曲・52:36。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://myglobalmind.com/2023/06/07/shakra-invincible-review/" target="_blank" rel="noopener">MyGlobalMind <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://grande-rock.com/news/shakra-to-release-new-studio-album-invincible-on-june-9th-2023/" target="_blank" rel="noopener">Grande Rock <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://www.metalkingdom.net/album/shakra-invincible-163045" target="_blank" rel="noopener">Metal Kingdom <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item class="is-out">
+                <td class="artist">Heroes and Monsters</td>
+                <td class="album">『Heroes and Monsters』</td>
+                <td class="date" data-label="発売日">2023-01-20</td>
+                <td class="basis" data-label="ジャンル根拠">Frontiers公式ショップ: GENRE Hard Rock、self-titled debut album 2023-01-20発売。Discogs: Style Hard Rock。S適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span>（バンド／アルバムのWikipediaページなし。Frontiers公式・Discogsで確認）。オリジナル・スタジオ盤（デビュー作、10曲）。Todd Kerns／Stef Burns／Will Huntによる新トリオの単発プロジェクト色が強く、12枚中では実績面が最も薄い。<br /><span class="outcome outcome-out">Hiro の決定で除外（落とす推薦1位 → 除外）</span></td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://frontiers-us.shop/products/heroes-monsters-heroes-monsters-cd" target="_blank" rel="noopener">Frontiers公式 <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://www.discogs.com/release/25867633-Heroes-And-Monsters-Heroes-And-Monsters" target="_blank" rel="noopener">Discogs <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item class="is-out">
+                <td class="artist">Nitrate</td>
+                <td class="album">『Feel the Heat』</td>
+                <td class="date" data-label="発売日">2023-10-13</td>
+                <td class="basis" data-label="ジャンル根拠">Frontiers発、複数ソースが UK melodic/hard rockers、fourth studio album と明記。MyGlobalMind分類は Melodic Rock。HARD ROCK圏内としてS適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span>（アルバム専用ページなし。Frontiers系告知・レビューで確認）。オリジナル・スタジオ盤（4作目、11曲）。AOR／メロディック寄りで、ハードロックとしての重みは12枚中では弱め。2024年にDeluxe Editionが出ているが対象は2023年通常盤。<br /><span class="outcome outcome-out">Hiro の決定で除外（落とす推薦3位 → 除外）</span></td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://rocknloadmag.com/nitrate-feel-the-heat-new-album-by-uk-melodic-hard-rockers-out-13-10-23-via-frontiers/" target="_blank" rel="noopener">Rock'N'Load <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://myglobalmind.com/2023/09/29/nitrate-feel-the-heat-review/" target="_blank" rel="noopener">MyGlobalMind <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://www.bravewords.com/news/nitrate-release-new-single-and-lyric-video-live-fast-die-young-feel-the-heat-deluxe-edition-out-now" target="_blank" rel="noopener">BraveWords <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item>
+                <td class="artist">Lynch Mob</td>
+                <td class="album">『Babylon』</td>
+                <td class="date" data-label="発売日">2023-10-20</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipediaバンドページ: Genres Hard rock, heavy metal, glam metal、Babylon Released: October 20, 2023, Label: Frontiers。Frontiers告知も high energy hard rock。Discogs: Style Hard Rock。S適合。絶対除外要素なし。</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span>（専用アルバムページはなく、バンドページのディスコグラフィで確認）。オリジナル・スタジオ盤（8作目、10曲・約50分、2017年以来）。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Lynch_Mob_(band)" target="_blank" rel="noopener">Wikipedia（バンド） <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://www.discogs.com/release/28676197-Lynch-Mob-Babylon" target="_blank" rel="noopener">Discogs <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://guitarinteractivemagazine.com/news/lynch-mob-announce-new-album-babylon-out-on-20th-october-2023/" target="_blank" rel="noopener">Guitar Interactive <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="no-hit" data-nohit-for="s-body">該当するアルバムがありません。</p>
+      </section>
+
+      <!-- 3. 落とす推薦 -->
+      <section id="drop">
+        <div class="sec-head"><span class="sec-no">04</span><h2>落とす推薦（検証担当）と Hiro の決定</h2><span class="sec-count">DROP ORDER → DECISION</span></div>
+        <div class="drop-lead">
+          <p>S判定が12枚で上限10枚を超えるため、落とす候補としてまず <strong>Heroes and Monsters『Heroes and Monsters』</strong>を推薦する。理由：検証上はS適合だが、デビュー作かつ単発プロジェクト色が強く、Wikipediaページもなく知名度・キャリア上の重みが12枚中で最も薄い。次点は Midnite City『In at the Deep End』（ヘアメタル／メロディック寄りでジャンル純度がやや弱い）と Nitrate『Feel the Heat』（AOR寄り）。<strong>10枚に絞る場合はこの順で外すのが妥当。</strong></p>
+          <p style="margin-top:10px"><strong>Hiro の決定（2026-11-13）：推薦どおりの1・2ではなく、「1と3を落とす」。</strong>Heroes and Monsters（推薦1位）と Nitrate（推薦3位）を除外し、Midnite City（推薦2位）は残した。各カードに決定結果を明記する。</p>
+        </div>
+        <div class="drop-list">
+          <article class="drop-card" data-item>
+            <div class="rank-line"><span class="drop-num">1</span><h3>Heroes and Monsters<span class="alb">『Heroes and Monsters』</span></h3></div>
+            <p>検証上はS適合だが、<strong>デビュー作かつ単発プロジェクト色が強く</strong>、Wikipediaページもなく<strong>知名度・キャリア上の重みが12枚中で最も薄い</strong>。最初に落とす候補。</p>
+            <span class="outcome outcome-out">Hiro の決定で除外</span>
+          </article>
+          <article class="drop-card" data-item>
+            <div class="rank-line"><span class="drop-num">2</span><h3>Midnite City<span class="alb">『In at the Deep End』</span></h3></div>
+            <p>次点。<strong>ヘアメタル／メロディック寄りでジャンル純度がやや弱い</strong>。</p>
+            <span class="outcome outcome-keep">Hiro の決定で残留 ・ 最終10枚入り</span>
+          </article>
+          <article class="drop-card" data-item>
+            <div class="rank-line"><span class="drop-num">3</span><h3>Nitrate<span class="alb">『Feel the Heat』</span></h3></div>
+            <p>次点。<strong>AOR寄り</strong>で、ハードロックとしての重みは弱め。</p>
+            <span class="outcome outcome-out">Hiro の決定で除外</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. A/B候補 -->
+      <section id="ab-list">
+        <div class="sec-head"><span class="sec-no">05</span><h2>A/B候補</h2><span class="sec-count">12 ALBUMS — S検証対象外</span></div>
+        <p class="sec-lead">候補収集段階でAまたはBとランク付けされた12枚。今回のS検証の対象外。ただし <strong>Heaven's Edge『Get It Right』</strong>は、Vandenberg 差し替えに伴い昇格検証のうえ最終10枚に採用された（該当行に注記）。</p>
+        <div class="rank-filter" role="group" aria-label="ランクで絞り込み">
+          <button type="button" data-rank="all" aria-pressed="true">すべて（12枚）</button>
+          <button type="button" data-rank="A" aria-pressed="false">A のみ（10枚）</button>
+          <button type="button" data-rank="B" aria-pressed="false">B のみ（2枚）</button>
+        </div>
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr><th scope="col">ランク</th><th scope="col">アーティスト</th><th scope="col">アルバム</th><th scope="col">発売日</th><th scope="col">ジャンル根拠</th><th scope="col">備考</th><th scope="col">出典</th></tr>
+            </thead>
+            <tbody id="ab-body">
+              <tr data-item data-rank="A">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">Godsmack</td>
+                <td class="album">『Lighting Up the Sky』</td>
+                <td class="date" data-label="発売日">2023-02-24</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia lists Genres: Hard rock, alternative metal; Erna described it as a true hard rock record</td>
+                <td class="notes" data-label="備考">Alternative metal tag makes it A rather than pure S; no rap/nu-metal content on this album per sources</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Lighting_Up_the_Sky" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="A">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">Dirty Honey</td>
+                <td class="album">『Can't Find the Brakes』</td>
+                <td class="date" data-label="発売日">2023-11-03</td>
+                <td class="basis" data-label="ジャンル根拠">BraveWords describes Los Angeles-based blues rockers; Rockpit #1 hard rock album of 2023; bluesy / classic-rock hard edge fits A criterion Bluesy Hard Rock / Classic Rock</td>
+                <td class="notes" data-label="備考"><span class="wn">Wikipediaでは確認できない</span> - no Wikipedia album page in search results; verified via BraveWords</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://bravewords.com/news/dirty-honey-new-album-can-t-find-the-brakes-set-for-november-release/" target="_blank" rel="noopener">BraveWords <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="A">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">Dokken</td>
+                <td class="album">『Heaven Comes Down』</td>
+                <td class="date" data-label="発売日">2023-10-27</td>
+                <td class="basis" data-label="ジャンル根拠">Sonic Perspectives lists Genre: Hard Rock / Glam Metal, Release Oct 27 2023; Dokken genres glam metal, heavy metal, hard rock</td>
+                <td class="notes" data-label="備考">Sleaze/Glam Metal A criterion</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://www.sonicperspectives.com/wp-json/wp/v2/posts/104610" target="_blank" rel="noopener">Sonic Perspectives <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Dokken" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="A">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">L.A. Guns</td>
+                <td class="album">『Black Diamonds』</td>
+                <td class="date" data-label="発売日">2023-04-14</td>
+                <td class="basis" data-label="ジャンル根拠">Wikimetal lists For fans of: Glam metal, April 14; Loaded Radio confirms release April 14</td>
+                <td class="notes" data-label="備考">Sleaze Rock / Glam Metal A criterion. One secondary listing showed Apr 13, majority sources Apr 14 adopted</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://loadedradio.com/l-a-guns-releasing-new-studio-album-black-diamonds-in-april/" target="_blank" rel="noopener">Loaded Radio <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://www.wikimetal.com.br/en/rock-and-metal-albums-2023-release-calendar/" target="_blank" rel="noopener">Wikimetal <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="A">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">Buckcherry</td>
+                <td class="album">『Vol. 10』</td>
+                <td class="date" data-label="発売日">2023-06-02</td>
+                <td class="basis" data-label="ジャンル根拠">Metal Forces: Los Angeles hard rock band, tenth studio album June 2 2023; review Style: Hard Rock, sleaze edge</td>
+                <td class="notes" data-label="備考">Sleaze-tinged hard rock</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://www.metalforcesmagazine.com/site/2023/06/page/5/" target="_blank" rel="noopener">Metal Forces <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://www.apocalypselatermusic.com/2023/07/buckcherry-vol-10-2023.html" target="_blank" rel="noopener">Apocalypse Later <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="A">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">Steel Panther</td>
+                <td class="album">『On the Prowl』</td>
+                <td class="date" data-label="発売日">2023-02-24</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia lists Genres: Glam metal, comedy rock; review lists Glam Metal, Heavy Metal, Hard Rock</td>
+                <td class="notes" data-label="備考">Sleaze/Glam Metal A criterion; comedy element noted for later stage</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/On_the_Prowl_(Steel_Panther_album)" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="A">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">Uriah Heep</td>
+                <td class="album">『Chaos &amp; Colour』</td>
+                <td class="date" data-label="発売日">2023-01-27</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia lists Genre: Hard rock; MetalTalk calls it classic hard rock with hard edge</td>
+                <td class="notes" data-label="備考">Classic Rock with hard edge A criterion; veteran band, 25th studio album</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Chaos_%26_Colour" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="A" class="is-promoted">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">Heaven's Edge</td>
+                <td class="album">『Get It Right』</td>
+                <td class="date" data-label="発売日">2023-05-12</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia band genres: Glam metal, hard rock, AOR; Frontiers release May 12 2023 from Philadelphia hard rockers Heavens Edge。昇格検証では Glam metal / hard rock / AOR 系のメロディック・ハードロックとして確認（Wikipedia・Tower Records・Grande Rock・Dangerdog）。</td>
+                <td class="notes" data-label="備考">Artist name appears as Heavens Edge / Heaven's Edge in sources; A via Glam Metal / AOR<br /><span class="outcome outcome-in">A候補から昇格 ・ 差し替えで採用 — 最終10枚入り（8番）</span><br />Vandenberg『Sin』の Spotify カタログ未掲載に伴う差し替えで採用。発売日 2023-05-12、Frontiers レーベル。</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Heavens_Edge" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://grande-rock.com/news/heavens-edge-to-release-new-studio-album-get-it-right-on-may-12th-2023/" target="_blank" rel="noopener">Grande Rock <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="A">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">Those Damn Crows</td>
+                <td class="album">『Inhale/Exhale』</td>
+                <td class="date" data-label="発売日">2023-02-17</td>
+                <td class="basis" data-label="ジャンル根拠">Earache / Grande Rock describe atmospheric hard rock, out Feb 17 2023; Qobuz review: melodic hard rock quintet</td>
+                <td class="notes" data-label="備考">Modern hard rock, arena-leaning; A rather than orthodox S</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://grande-rock.com/news/those-damn-crows-to-release-new-studio-album-inhale-exhale-on-february-17th-2023/" target="_blank" rel="noopener">Grande Rock <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="A">
+                <td data-label="ランク"><span class="badge badge-a">A</span></td>
+                <td class="artist">The Answer</td>
+                <td class="album">『Sundowners』</td>
+                <td class="date" data-label="発売日">2023-03-17</td>
+                <td class="basis" data-label="ジャンル根拠">ToneDeaf: Northern Irish hard rockers, seventh studio album released Mar 17 2023; sources describe hard bluesy rock blending Led Zeppelin/Free/AC/DC</td>
+                <td class="notes" data-label="備考">A criterion: Bluesy Hard Rock</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://tonedeaf.thebrag.com/the-answer-sundowners-track-by-track/" target="_blank" rel="noopener">ToneDeaf <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://norwayrock.net/the-answer-sundowners/" target="_blank" rel="noopener">Norway Rock <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="B">
+                <td data-label="ランク"><span class="badge badge-b">B</span></td>
+                <td class="artist">Last in Line</td>
+                <td class="album">『Jericho』</td>
+                <td class="date" data-label="発売日">2023-03-31</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia genres Hard rock, heavy metal; MyGlobalMind review Genre: Hard Rock, Release March 31 2023</td>
+                <td class="notes" data-label="備考">B criterion: veteran heavy metal / hard rock supergroup (ex-Dio, Def Leppard members) with hard-rock-leaning heavy work</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://en.wikipedia.org/wiki/Last_in_Line" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://myglobalmind.com/2023/03/31/last-in-line-jericho-review/" target="_blank" rel="noopener">MyGlobalMind <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+              <tr data-item data-rank="B">
+                <td data-label="ランク"><span class="badge badge-b">B</span></td>
+                <td class="artist">Angel</td>
+                <td class="album">『Once Upon a Time』</td>
+                <td class="date" data-label="発売日">2023-04-21</td>
+                <td class="basis" data-label="ジャンル根拠">Discogs Style: Hard Rock, Released Apr 21 2023; quoted review: AOR and melodic hard rock</td>
+                <td class="notes" data-label="備考">B criterion: AOR-leaning veteran melodic hard rock. <span class="wn">Wikipediaでは確認できない</span> - no Wikipedia album page in search</td>
+                <td data-label="出典"><div class="src-list">
+                  <a class="src-link" href="https://www.discogs.com/release/26430179-Angel-Once-Upon-A-Time" target="_blank" rel="noopener">Discogs <span class="arr">↗</span></a>
+                  <a class="src-link" href="https://blabbermouth.net/news/angel-announces-new-album-once-upon-a-time-shares-its-alright-single" target="_blank" rel="noopener">Blabbermouth <span class="arr">↗</span></a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="no-hit" data-nohit-for="ab-body">該当するアルバムがありません。</p>
+      </section>
+
+      <!-- 5. 重複除外 -->
+      <section id="dup">
+        <div class="sec-head"><span class="sec-no">06</span><h2>重複除外</h2><span class="sec-count">3 ALBUMS</span></div>
+        <p class="sec-lead">いずれも候補ランクはSだったが、既出アルバム累積リスト（完全版）に既出で、<strong>2023年 MAINSTREAM ROCK / ARENA HEROES で既採用</strong>のため、重複として除外した。</p>
+        <div class="dup-grid">
+          <article class="dup-card" data-item>
+            <span class="tag">重複除外 ・ 候補ランク S</span>
+            <h3>Extreme<span class="alb">『Six』</span></h3>
+            <dl>
+              <dt>発売日</dt><dd>2023-06-09</dd>
+              <dt>除外理由</dt><dd>既出アルバム累積リスト（完全版）に既出：MAINSTREAM ROCK / ARENA HEROES、2023年で既採用（他ジャンルで既採用のため重複）</dd>
+              <dt>ジャンル根拠</dt><dd>Wikipedia lists Genre: Hard rock; sixth studio album by American hard rock band Extreme</dd>
+              <dt>備考</dt><dd>Benchmark artist named in manual; first studio album in 15 years</dd>
+            </dl>
+            <div class="src-list">
+              <a class="src-link" href="https://en.wikipedia.org/wiki/Six_(Extreme_album)" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+            </div>
+          </article>
+          <article class="dup-card" data-item>
+            <span class="tag">重複除外 ・ 候補ランク S</span>
+            <h3>Winger<span class="alb">『Seven』</span></h3>
+            <dl>
+              <dt>発売日</dt><dd>2023-05-05</dd>
+              <dt>除外理由</dt><dd>既出アルバム累積リスト（完全版）に既出：MAINSTREAM ROCK / ARENA HEROES、2023年で既採用（他ジャンルで既採用のため重複）</dd>
+              <dt>ジャンル根拠</dt><dd>Wikipedia lists Genre: Hard rock; seventh studio album</dd>
+              <dt>備考</dt><dd>Melodic hard rock, Frontiers release</dd>
+            </dl>
+            <div class="src-list">
+              <a class="src-link" href="https://en.wikipedia.org/wiki/Seven_(Winger_album)" target="_blank" rel="noopener">Wikipedia <span class="arr">↗</span></a>
+            </div>
+          </article>
+          <article class="dup-card" data-item>
+            <span class="tag">重複除外 ・ 候補ランク S</span>
+            <h3>Eclipse<span class="alb">『Megalomanium』</span></h3>
+            <dl>
+              <dt>発売日</dt><dd>2023-09-01</dd>
+              <dt>除外理由</dt><dd>既出アルバム累積リスト（完全版）に既出：MAINSTREAM ROCK / ARENA HEROES、2023年で既採用（他ジャンルで既採用のため重複）</dd>
+              <dt>ジャンル根拠</dt><dd>Heavy Harmonies category: Melodic Hard Rock, Year 2023; Grande Rock describes 80s-influenced Melodic Hard Rock</dd>
+              <dt>備考</dt><dd><span class="wn">Wikipediaでは確認できない</span> - no Wikipedia album page found in search; verified via Grande Rock / Heavy Harmonies. Benchmark artist</dd>
+            </dl>
+            <div class="src-list">
+              <a class="src-link" href="https://grande-rock.com/news/eclipse-to-release-new-studio-album-megalomanium-on-september-1st-2023/" target="_blank" rel="noopener">Grande Rock <span class="arr">↗</span></a>
+              <a class="src-link" href="https://heavyharmonies.com/cgi-bin/glamcd.cgi?BandNum=2435&amp;CDName=Megalomanium" target="_blank" rel="noopener">Heavy Harmonies <span class="arr">↗</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <p>2023年 HARD ROCK 候補一覧 — S検証済み12枚／A・B候補12枚／重複除外3枚、計27枚。各項目の根拠は「出典」リンク先による。最終結果：Hiro の決定で Heroes and Monsters と Nitrate を除外し、当初確定後に Vandenberg『Sin』を Spotify カタログ未掲載のため差し替え、Heaven's Edge『Get It Right』を A候補から昇格して最終10枚で確定（2026-11-13）。</p>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var q = document.getElementById('q');
+        var hits = document.getElementById('hits');
+        var items = Array.prototype.slice.call(document.querySelectorAll('[data-item]'));
+        var rankButtons = Array.prototype.slice.call(document.querySelectorAll('.rank-filter button'));
+        var currentRank = 'all';
+
+        function applyFilters() {
+          var needle = (q.value || '').trim().toLowerCase();
+          var visible = 0;
+          items.forEach(function (el) {
+            var textOk = !needle || el.textContent.toLowerCase().indexOf(needle) !== -1;
+            var rankOk = true;
+            if (el.hasAttribute('data-rank') && currentRank !== 'all') {
+              rankOk = el.getAttribute('data-rank') === currentRank;
+            }
+            var show = textOk && rankOk;
+            el.style.display = show ? '' : 'none';
+            if (show) visible++;
+          });
+          hits.textContent = (needle || currentRank !== 'all') ? visible + ' 件が該当' : '';
+          document.querySelectorAll('[data-nohit-for]').forEach(function (note) {
+            var body = document.getElementById(note.getAttribute('data-nohit-for'));
+            var anyVisible = false;
+            if (body) {
+              Array.prototype.forEach.call(body.querySelectorAll('[data-item]'), function (row) {
+                if (row.style.display !== 'none') anyVisible = true;
+              });
+            }
+            note.style.display = anyVisible ? 'none' : 'block';
+          });
+        }
+
+        q.addEventListener('input', applyFilters);
+        rankButtons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            currentRank = btn.getAttribute('data-rank');
+            rankButtons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+            applyFilters();
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

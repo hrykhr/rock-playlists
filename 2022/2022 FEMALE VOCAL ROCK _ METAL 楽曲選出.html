@@ -1,0 +1,1105 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2022 FEMALE VOCAL ROCK / METAL 楽曲選出</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      :root {
+        --bg: #f4f1ec;
+        --surface: #fffdf9;
+        --surface-2: #ece7dd;
+        --ink: #1d1a16;
+        --ink-soft: #57504a;
+        --line: #d8d0c2;
+        --accent: #9a3b1e;
+        --accent-ink: #7e2d14;
+        --gold: #8a6d1f;
+        --warn-bg: #fbf3d9;
+        --warn-line: #d9bd55;
+        --warn-ink: #5c4a08;
+        --chip-bg: #efe6d8;
+        --link: #8c2f12;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #14120f;
+          --surface: #1e1b17;
+          --surface-2: #26221c;
+          --ink: #f0e9dd;
+          --ink-soft: #b3a893;
+          --line: #3a342a;
+          --accent: #e0784a;
+          --accent-ink: #f0956c;
+          --gold: #d3ab4a;
+          --warn-bg: #2e2712;
+          --warn-line: #8a6f22;
+          --warn-ink: #ecd28a;
+          --chip-bg: #2c271e;
+          --link: #f0956c;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 16px;
+        line-height: 1.75;
+      }
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 72px; }
+      a { color: var(--link); }
+      a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {
+        outline: 2px solid var(--accent); outline-offset: 2px;
+      }
+
+      /* ---------- header ---------- */
+      header.hero { padding: 44px 0 8px; border-bottom: 3px solid var(--ink); }
+      .hero .year {
+        font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: .14em;
+        color: var(--accent); font-size: 15px; margin: 0 0 6px;
+      }
+      h1 {
+        font-family: "Archivo", "Zen Kaku Gothic New", sans-serif;
+        font-size: clamp(26px, 5.4vw, 44px); line-height: 1.25; font-weight: 800;
+        margin: 0 0 10px; overflow-wrap: break-word;
+      }
+      h1 .jp { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; }
+      .hero p.lede { color: var(--ink-soft); margin: 0 0 18px; max-width: 46em; }
+      .stats { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 20px; padding: 0; list-style: none; }
+      .stats li {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+        padding: 8px 14px; font-size: 14px;
+      }
+      .stats b { font-family: "Archivo", sans-serif; font-size: 18px; margin-right: 4px; }
+      .spotify-btn {
+        display: inline-flex; align-items: center; gap: 10px;
+        background: #1db954; color: #0c2416; font-weight: 900; text-decoration: none;
+        padding: 10px 20px; border-radius: 999px; min-height: 48px; font-size: 15px;
+      }
+      .spotify-btn svg { flex: none; }
+      .spotify-note { font-size: 13px; color: var(--ink-soft); margin: 8px 0 22px; }
+
+      /* ---------- sections ---------- */
+      section { margin-top: 48px; }
+      h2 {
+        font-size: clamp(20px, 3.6vw, 26px); font-weight: 900; line-height: 1.4;
+        margin: 0 0 6px; padding-bottom: 8px; border-bottom: 2px solid var(--ink);
+      }
+      h2 .en { font-family: "Archivo", sans-serif; font-weight: 700; font-size: .62em; letter-spacing: .1em; color: var(--accent); display: block; }
+      .sec-note { color: var(--ink-soft); margin: 10px 0 20px; max-width: 48em; }
+
+      .caution {
+        background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 8px;
+        padding: 16px 20px; margin-top: 28px; color: var(--warn-ink);
+      }
+      .caution h2 { border: none; padding: 0; margin: 0 0 6px; font-size: 17px; color: var(--warn-ink); }
+      .caution p { margin: 0 0 8px; }
+      .caution p:last-child { margin-bottom: 0; }
+
+      /* ---------- track cards ---------- */
+      .cards { display: grid; grid-template-columns: 1fr; gap: 18px; }
+      @media (min-width: 820px) { .cards { grid-template-columns: 1fr 1fr; } }
+      .card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        padding: 20px 22px 18px; display: flex; flex-direction: column;
+      }
+      .card-head { display: flex; align-items: baseline; gap: 12px; }
+      .num {
+        font-family: "Archivo", sans-serif; font-weight: 800; font-size: 22px;
+        color: var(--accent); line-height: 1;
+      }
+      .card-head .who { flex: 1; min-width: 0; }
+      .artist { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 15px; margin: 0; }
+      .album { margin: 0; font-size: 13.5px; color: var(--ink-soft); overflow-wrap: break-word; }
+      .dur {
+        font-family: "Archivo", sans-serif; font-weight: 700; font-size: 15px;
+        background: var(--chip-bg); border-radius: 5px; padding: 2px 10px; white-space: nowrap;
+      }
+      .track {
+        font-family: "Archivo", "Zen Kaku Gothic New", sans-serif;
+        font-size: 23px; font-weight: 800; line-height: 1.3; margin: 12px 0 10px; overflow-wrap: break-word;
+      }
+      .badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+      .badge {
+        font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 3px 11px;
+        background: var(--accent); color: #fff;
+      }
+      @media (prefers-color-scheme: dark) { .badge { color: #221105; background: var(--accent); } }
+      .badge.sub { background: var(--chip-bg); color: var(--ink); border: 1px solid var(--line); }
+      .badge.warn { background: transparent; color: var(--accent-ink); border: 1.5px dashed var(--accent); }
+      .field { margin: 0 0 10px; font-size: 14.5px; }
+      .field .label {
+        display: block; font-size: 12px; font-weight: 900; letter-spacing: .08em;
+        color: var(--gold); margin-bottom: 2px;
+      }
+      .field p { margin: 0; }
+      .unknown { font-weight: 700; }
+      .links { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); }
+      .links .label { display: block; font-size: 12px; font-weight: 900; letter-spacing: .08em; color: var(--gold); margin-bottom: 4px; }
+      .links ul { margin: 0; padding: 0; list-style: none; }
+      .links li { margin: 2px 0; }
+      .links a { font-size: 14px; display: inline-block; padding: 4px 0; overflow-wrap: anywhere; }
+
+      /* ---------- rejected ---------- */
+      details.rej {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+        margin: 0 0 10px; padding: 0 18px;
+      }
+      details.rej summary {
+        cursor: pointer; font-weight: 700; padding: 12px 0; min-height: 48px;
+        display: flex; align-items: center; gap: 8px; list-style: none;
+      }
+      details.rej summary::-webkit-details-marker { display: none; }
+      details.rej summary::before { content: "＋"; color: var(--accent); font-weight: 900; }
+      details.rej[open ] summary::before { content: "－"; }
+      details.rej .body { padding: 0 0 16px; font-size: 14.5px; }
+      details.rej .body p { margin: 0 0 8px; }
+      details.rej .body p:last-child { margin-bottom: 0; }
+      .none-record { font-weight: 700; }
+
+      /* ---------- TSV ---------- */
+      .tsv-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0 14px; }
+      .tsv-tools input[type="search"] {
+        flex: 1 1 240px; padding: 9px 14px; font-size: 15px; border-radius: 6px;
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+        font-family: inherit; min-height: 44px;
+      }
+      .btn {
+        font-family: inherit; font-size: 14.5px; font-weight: 700; cursor: pointer;
+        border-radius: 6px; padding: 9px 18px; min-height: 44px;
+        border: 1px solid var(--ink); background: var(--ink); color: var(--bg);
+      }
+      .btn.ghost { background: transparent; color: var(--ink); }
+      .copy-msg { font-size: 13.5px; color: var(--accent-ink); font-weight: 700; min-height: 1.4em; }
+      .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+      table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 560px; }
+      th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      th { font-family: "Archivo", sans-serif; font-size: 12px; letter-spacing: .06em; background: var(--surface-2); white-space: nowrap; }
+      td.genre { white-space: nowrap; font-size: 12.5px; }
+      @media (max-width: 640px) {
+        table { min-width: 0; font-size: 12.5px; }
+        th, td { padding: 7px 8px; overflow-wrap: break-word; }
+        td.genre { white-space: normal; }
+      }
+      tr:last-child td { border-bottom: none; }
+      .no-hit td { text-align: center; color: var(--ink-soft); padding: 20px; }
+      details.raw { margin-top: 14px; }
+      details.raw summary { cursor: pointer; font-weight: 700; padding: 8px 0; }
+      pre.tsv {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;
+        padding: 14px 16px; font-size: 11.5px; line-height: 1.6; overflow-x: auto;
+        font-family: ui-monospace, "SF Mono", Menlo, monospace; white-space: pre;
+      }
+      footer { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 16px; color: var(--ink-soft); font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero">
+        <p class="year">2022 ・ GENRE 6 / FEMALE VOCAL ROCK / METAL</p>
+        <h1>2022 FEMALE VOCAL ROCK / METAL <span class="jp">楽曲選出</span></h1>
+        <p class="lede">2022年発売の女性ヴォーカル・ロック／メタル9アルバムから、各2曲・計18曲を選出した記録です。各曲について、シングルであることの出典、収録曲であることのクロスチェック、選出理由を、確認したリンクとあわせて残しています。<strong>選出した18曲は全曲シングル</strong>（うち2曲は公式MVのあるビデオ・シングルとして扱ったもの）です。</p>
+        <ul class="stats">
+          <li><b>9</b>アルバム</li>
+          <li><b>18</b>曲（各アルバム2曲）</li>
+          <li><b>18 / 18</b>全曲シングル</li>
+        </ul>
+        <a class="spotify-btn" href="https://open.spotify.com/playlist/7pfXLLkIROjiJ6L2qcJmbt" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5.1 15.9a.75.75 0 0 1-1 .25c-2.9-1.77-6.5-2.17-10.7-1.19a.75.75 0 1 1-.34-1.46c4.6-1.05 8.55-.6 11.8 1.37.34.2.45.68.24 1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.3-2.03-8.34-2.62-12.25-1.44a.94.94 0 0 1-.54-1.8c4.45-1.35 10-0.7 13.77 1.64.43.26.57.86.31 1.29zm.13-3.4C14.75 7.9 8.2 7.68 4.5 9a1.13 1.13 0 1 1-.78-2.12c4.24-1.55 11.4-1.3 15.9 1.37a1.13 1.13 0 0 1-1.15 1.94z"/></svg>
+          Spotifyプレイリスト「2022年FEMALE VOCAL ROCK / METAL」を開く
+        </a>
+        <p class="spotify-note">プレイリストには選出18曲が同順で入っていることを確認済みです。</p>
+      </header>
+
+      <div class="caution" role="note">
+        <h2>数字の扱いについての注意</h2>
+        <p>このページに出てくる再生回数・リスナー数などの数字は、Last.fm 等の第三者集計や、レーベル・告知側の表示値であり、<strong>公式の再生回数ではありません</strong>。数字が確認できた曲は出典とあわせてそのまま記し、<strong>確認できなかった曲は「確認できない」と正直に表示</strong>しています。数字のないことをもって人気がないと判断したわけではなく、選出はシングル実績・レビュー・チャート実績などの確認できた根拠に基づいています。</p>
+        <p>また、一部のアルバムは Wikipedia に個別ページがなく確認に使えなかったため、その旨を各曲に明記し、Bandcamp・Metal Archives・Qobuz・レーベル系告知など信頼できる別サイトで確認しています。</p>
+      </div>
+
+      <section aria-labelledby="tracks-h">
+        <h2 id="tracks-h"><span class="en">SELECTED TRACKS</span>選出18曲（全曲シングル）</h2>
+        <p class="sec-note">並びは最終楽曲TSVの順番どおりです。各カードに、長さ、シングル情報、人気の根拠と選出理由、確認リンク（2つ以上）を載せています。</p>
+        <div class="cards">
+
+          <!-- 1 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">01</span>
+              <div class="who">
+                <p class="artist">Visions of Atlantis</p>
+                <p class="album">『Pirates』</p>
+              </div>
+              <span class="dur">4:35</span>
+            </div>
+            <h3 class="track">Legion of the Seas</h3>
+            <div class="badges">
+              <span class="badge">シングル（1st）</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『Pirates』の first single。Blabbermouth が first single と明記して公式MVを紹介し、Tuonela も first single と記載。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数の正確な数字は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Wikipedia と Blabbermouth のトラックリストでクロスチェック。バラードではなく、epic／fast-paced な power metal 曲であるため選出。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Pirates_(Visions_of_Atlantis_album)" target="_blank" rel="noopener">Wikipedia『Pirates』</a></li>
+                <li><a href="https://blabbermouth.net/news/visions-of-atlantis-announces-new-album-pirates" target="_blank" rel="noopener">Blabbermouth（アルバム告知）</a></li>
+                <li><a href="https://progressiverockcentral.com/2022/05/06/visions-of-atlantis-pirates/" target="_blank" rel="noopener">Progressive Rock Central（レビュー）</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">02</span>
+              <div class="who">
+                <p class="artist">Visions of Atlantis</p>
+                <p class="album">『Pirates』</p>
+              </div>
+              <span class="dur">3:55</span>
+            </div>
+            <h3 class="track">Melancholy Angel</h3>
+            <div class="badges">
+              <span class="badge">シングル（2nd）</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>『Pirates』の second single。Tuonela のレビューが second single と明記。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数の正確な数字は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>タイトルからバラードと誤解しそうだが、Tuonela レビューは実際は catchy で energetic な曲と明記しており、バラード不採用ルールに抵触しない。収録曲であることを Wikipedia（3:55）と Bandcamp（03:55）でクロスチェック。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Pirates_(Visions_of_Atlantis_album)" target="_blank" rel="noopener">Wikipedia『Pirates』</a></li>
+                <li><a href="https://tuonelamagazine.com/review-visions-of-atlantis-pirates/" target="_blank" rel="noopener">Tuonela Magazine（レビュー）</a></li>
+                <li><a href="https://visionsofatlantis.bandcamp.com/album/pirates?from=footer-cc-a3129615199" target="_blank" rel="noopener">Bandcamp『Pirates』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">03</span>
+              <div class="who">
+                <p class="artist">Edenbridge</p>
+                <p class="album">『Shangri-La』</p>
+              </div>
+              <span class="dur">3:49</span>
+            </div>
+            <h3 class="track">The Call Of Eden</h3>
+            <div class="badges">
+              <span class="badge">シングル（main single）</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>本作の main single。AFM系の告知で main single と明記され、Tuonela も new single として公式MVを紹介。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数の正確な数字は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Wikipedia（3:49）とAFM告知のトラックリストでクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Shangri-La_(Edenbridge_album)" target="_blank" rel="noopener">Wikipedia『Shangri-La』</a></li>
+                <li><a href="https://petesrocknewsandviews.com/edenbridge/" target="_blank" rel="noopener">Pete's Rock News and Views（AFM系告知）</a></li>
+                <li><a href="https://tuonelamagazine.com/edenbridge-shares-new-single-music-video-the-call-of-eden-from-upcoming-shangri-la-album/" target="_blank" rel="noopener">Tuonela Magazine（シングル紹介）</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">04</span>
+              <div class="who">
+                <p class="artist">Edenbridge</p>
+                <p class="album">『Shangri-La』</p>
+              </div>
+              <span class="dur">4:27</span>
+            </div>
+            <h3 class="track">Somewhere Else But Here</h3>
+            <div class="badges">
+              <span class="badge">シングル（1st）</span>
+              <span class="badge sub">長さは他サイトに4:26表記もあり（Wikipedia表記を優先）</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>本作に伴う3シングルの1つで、最初に lyric video で公開された first single。AFM系の告知で明記。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Wikipedia（4:27）と告知のトラックリストでクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Shangri-La_(Edenbridge_album)" target="_blank" rel="noopener">Wikipedia『Shangri-La』</a></li>
+                <li><a href="https://petesrocknewsandviews.com/edenbridge/" target="_blank" rel="noopener">Pete's Rock News and Views（AFM系告知）</a></li>
+                <li><a href="https://thegallery.gr/en/edenbridge-presents-first-single-somewhere-else-but-here-from-upcoming-album-shangri-la/" target="_blank" rel="noopener">The Gallery（first single 紹介）</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">05</span>
+              <div class="who">
+                <p class="artist">Nocturna</p>
+                <p class="album">『Daughters of the Night』</p>
+              </div>
+              <span class="dur">4:25</span>
+            </div>
+            <h3 class="track">New Evil</h3>
+            <div class="badges">
+              <span class="badge">シングル（1st）</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>first streaming single。ProgRockJournal が first streaming single と明記して公式ビデオを紹介し、Kronos Mortus も first single と列挙。Wikipedia では確認できないため、Bandcamp 等の信頼できる別サイトで確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Bandcamp（04:25）と同記事のトラックリストでクロスチェック。バラードではない。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://progrockjournal.com/news-nocturna-publish-the-official-video-for-new-evil-from-upcoming-album/" target="_blank" rel="noopener">ProgRockJournal（New Evil 紹介）</a></li>
+                <li><a href="https://kronosmortusnews.com/2023/10/17/nocturna-releases-blood-of-heaven-video/" target="_blank" rel="noopener">Kronos Mortus News</a></li>
+                <li><a href="https://scarletrecords.bandcamp.com/album/daughters-of-the-night?from=footer-cc-a1378821099" target="_blank" rel="noopener">Bandcamp（Scarlet Records）『Daughters of the Night』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">06</span>
+              <div class="who">
+                <p class="artist">Nocturna</p>
+                <p class="album">『Daughters of the Night』</p>
+              </div>
+              <span class="dur">3:55</span>
+            </div>
+            <h3 class="track">Daughters of the Night</h3>
+            <div class="badges">
+              <span class="badge">シングル（2nd）</span>
+              <span class="badge sub">タイトル曲</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>second single（タイトル曲）。Kronos Mortus が second single と明記。Wikipedia では確認できないため、Bandcamp 等で確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Bandcamp（03:55）と Metal Daze のトラックリスト（03:55）でクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://kronosmortusnews.com/2023/10/17/nocturna-releases-blood-of-heaven-video/" target="_blank" rel="noopener">Kronos Mortus News</a></li>
+                <li><a href="https://scarletrecords.bandcamp.com/album/daughters-of-the-night?from=footer-cc-a1378821099" target="_blank" rel="noopener">Bandcamp（Scarlet Records）『Daughters of the Night』</a></li>
+                <li><a href="https://www.metaldaze.eu/2023/10/nocturna-blood-of-heaven-official-music.html" target="_blank" rel="noopener">Metal Daze</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 7 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">07</span>
+              <div class="who">
+                <p class="artist">SheWolf</p>
+                <p class="album">『SheWolf』</p>
+              </div>
+              <span class="dur">5:09</span>
+            </div>
+            <h3 class="track">Lone Wolf</h3>
+            <div class="badges">
+              <span class="badge">シングル（1st）</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>first single and music video。Frontiers系の複数告知が明記。Wikipedia では確認できないため、Qobuz・Metal Archives 等で確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Qobuz（00:05:09）と Metal Archives（05:09）のトラックリストでクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://folknrock.com/news/shewolf-announces-debut-album" target="_blank" rel="noopener">Folk N Rock（デビュー作告知）</a></li>
+                <li><a href="https://www.qobuz.com:443/nz-en/album/shewolf-shewolf/dsv1eixz6ns1a" target="_blank" rel="noopener">Qobuz『SheWolf』</a></li>
+                <li><a href="https://www.metal-archives.com/albums/SheWolf/SheWolf/1026662" target="_blank" rel="noopener">Metal Archives『SheWolf』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 8 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">08</span>
+              <div class="who">
+                <p class="artist">SheWolf</p>
+                <p class="album">『SheWolf』</p>
+              </div>
+              <span class="dur">3:37</span>
+            </div>
+            <h3 class="track">Home</h3>
+            <div class="badges">
+              <span class="badge">ビデオ・シングル（公式MVあり）</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+              <span class="badge sub">シングル表記の有無は出典により異なり未確定</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>公式MVのあるビデオ・シングルとして扱う。Metal Archives が Lone Wolf と Home を本作の Official music video として列挙し、BraveWords系記事も Home のMV公開を告知している。ただし「シングル」と明記するかは出典により異なるため、その点は未確定として明記する。Wikipedia では確認できないため、Metal Archives 等で確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Metal Archives（03:37）と Frontiers系トラックリストでクロスチェック。バラードと明記した出典は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://www.metal-archives.com/albums/SheWolf/SheWolf/1026662" target="_blank" rel="noopener">Metal Archives『SheWolf』</a></li>
+                <li><a href="https://metal.radio.fm/news/2022-02-25_01-00_shewolf-debut-home-music-video-self-titled-album-available-in-march" target="_blank" rel="noopener">Metal Radio FM（Home MV告知）</a></li>
+                <li><a href="https://grande-rock.com/news/shewolf-to-release-self-titled-debut-album-on-march-18th-2022/" target="_blank" rel="noopener">Grande Rock（デビュー作告知）</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 9 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">09</span>
+              <div class="who">
+                <p class="artist">Fortis Ventus</p>
+                <p class="album">『Vertalia』</p>
+              </div>
+              <span class="dur">4:49</span>
+            </div>
+            <h3 class="track">My Death Is My Devotion</h3>
+            <div class="badges">
+              <span class="badge">シングル（1st）</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>first single。Rockshots系の複数告知が明記。Wikipedia では確認できないため、Bandcamp 等で確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Bandcamp（04:49）と告知のトラックリスト（4:49）でクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://grande-rock.com/news/fortis-ventus-to-release-debut-album-vertalia-on-june-3rd-2022/" target="_blank" rel="noopener">Grande Rock（Vertalia 告知）</a></li>
+                <li><a href="https://fortisventus.bandcamp.com/album/vertalia" target="_blank" rel="noopener">Bandcamp『Vertalia』</a></li>
+                <li><a href="https://infraredmag.com/rockshots-records-fortis-ventuss-new-music-video-invites-you-to-enter-their-cave-of-glass-debut-album-vertalia-out-june-2022/" target="_blank" rel="noopener">Infrared Magazine（Rockshots系告知）</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 10 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">10</span>
+              <div class="who">
+                <p class="artist">Fortis Ventus</p>
+                <p class="album">『Vertalia』</p>
+              </div>
+              <span class="dur">4:25</span>
+            </div>
+            <h3 class="track">Cave of Glass</h3>
+            <div class="badges">
+              <span class="badge">シングル（2nd）</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>second single。Rockshots 告知が second single として新MVを紹介。Wikipedia では確認できないため、Bandcamp 等で確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Bandcamp（04:25）と同告知のトラックリスト（4:25）でクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://infraredmag.com/rockshots-records-fortis-ventuss-new-music-video-invites-you-to-enter-their-cave-of-glass-debut-album-vertalia-out-june-2022/" target="_blank" rel="noopener">Infrared Magazine（Cave of Glass 告知）</a></li>
+                <li><a href="https://fortisventus.bandcamp.com/album/vertalia" target="_blank" rel="noopener">Bandcamp『Vertalia』</a></li>
+                <li><a href="https://frontview-magazine.be/en/article/fortis-ventuss-new-music-video-invites-you-to-enter-their-cave-of-glass" target="_blank" rel="noopener">Frontview Magazine</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 11 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">11</span>
+              <div class="who">
+                <p class="artist">Crystal Gates</p>
+                <p class="album">『Torment &amp; Wonder: The Ways Of The Lonely Ones』</p>
+              </div>
+              <span class="dur">4:09</span>
+            </div>
+            <h3 class="track">My Glorious Fall</h3>
+            <div class="badges">
+              <span class="badge">シングル（1st）</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>first single &amp; video。Music Trespass と Kronos Mortus が明記。Wikipedia では確認できないため、Bandcamp・Metal Archives で確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Bandcamp（04:09）と Metal Archives（04:09）でクロスチェック。レビューでは upbeat で energised な曲とされており、バラードではない。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="http://www.musictrespass.com/content/crystal-gates-release-new-single-my-glorious-fall" target="_blank" rel="noopener">Music Trespass（My Glorious Fall 紹介）</a></li>
+                <li><a href="https://crystalgatesuy.bandcamp.com/album/torment-wonder-the-ways-of-the-lonely-ones?action=embed" target="_blank" rel="noopener">Bandcamp『Torment &amp; Wonder』</a></li>
+                <li><a href="https://www.metal-archives.com/albums/Crystal_Gates/Torment_%26_Wonder%3A_The_Ways_of_the_Lonely_Ones/1170546" target="_blank" rel="noopener">Metal Archives『Torment &amp; Wonder』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 12 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">12</span>
+              <div class="who">
+                <p class="artist">Crystal Gates</p>
+                <p class="album">『Torment &amp; Wonder: The Ways Of The Lonely Ones』</p>
+              </div>
+              <span class="dur">4:38</span>
+            </div>
+            <h3 class="track">Moonshine &amp; Sorrow</h3>
+            <div class="badges">
+              <span class="badge">ビデオ・シングル（公式MVあり）</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>公式MVのあるビデオ・シングルとして扱う。Metal Archives が Moonshine &amp; Sorrow を本作の Official music video として列挙し、レビューは本作に4本の video singles があると記載。Wikipedia では確認できないため、Bandcamp・Metal Archives で確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Bandcamp（04:38）と Metal Archives（04:38）でクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://www.metal-archives.com/albums/Crystal_Gates/Torment_%26_Wonder%3A_The_Ways_of_the_Lonely_Ones/1170546" target="_blank" rel="noopener">Metal Archives『Torment &amp; Wonder』</a></li>
+                <li><a href="https://crystalgatesuy.bandcamp.com/album/torment-wonder-the-ways-of-the-lonely-ones?action=embed" target="_blank" rel="noopener">Bandcamp『Torment &amp; Wonder』</a></li>
+                <li><a href="https://grande-rock.com/news/crystal-gates-to-release-debut-full-length-album-torment-wonder-the-ways-of-the-lonely-ones-on-july-29th-2022/" target="_blank" rel="noopener">Grande Rock（デビュー作告知）</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 13 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">13</span>
+              <div class="who">
+                <p class="artist">Eva Under Fire</p>
+                <p class="album">『Love, Drugs &amp; Misery』</p>
+              </div>
+              <span class="dur">2:45</span>
+            </div>
+            <h3 class="track">Blow</h3>
+            <div class="badges">
+              <span class="badge">シングル</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+              <span class="badge sub">正式タイトル：Blow (feat. Spencer Charnas of Ice Nine Kills)</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>シングル。Better Noise系告知が single と紹介。Wikipedia では確認できないため、レーベル系販売ページ等で確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>Better Noise系告知に「over 8M streams」と記載（告知側の表示値であり、公式集計値ではない）。RocknLoad は公式ラジオ・シングルとして Active Rock チャート最高11位と記載。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Bandwear のビニール盤トラックリスト（2:45）と告知のトラックリストでクロスチェック。バラードではない。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://shop.bandwear.com/collections/vinyl/mb-invisible?page=2" target="_blank" rel="noopener">Bandwear（ビニール盤トラックリスト）</a></li>
+                <li><a href="https://www.insaneblog.net/2022/09/eva-under-fire-release-debut-album-love.html" target="_blank" rel="noopener">Insane Blog（デビュー作告知）</a></li>
+                <li><a href="https://rocknloadmag.com/eva-under-fire-release-unstoppable-feat-cory-marks/" target="_blank" rel="noopener">RocknLoad（Unstoppable／Blow 紹介）</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 14 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">14</span>
+              <div class="who">
+                <p class="artist">Eva Under Fire</p>
+                <p class="album">『Love, Drugs &amp; Misery』</p>
+              </div>
+              <span class="dur">3:07</span>
+            </div>
+            <h3 class="track">Unstoppable</h3>
+            <div class="badges">
+              <span class="badge">シングル</span>
+              <span class="badge warn">Wikipediaでは確認できない</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>シングル。複数の告知が new single と明記。Wikipedia では確認できないため、レーベル系販売ページ等で確認した。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>SRO PR は Top 20 Active Rock radio-charting single と記載（Cory Marks 参加のデラックス版バージョンについて）。正確な再生回数の数字そのものは<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Bandwear のトラックリスト（3:07）と告知のトラックリストでクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://shop.bandwear.com/collections/vinyl/mb-invisible?page=2" target="_blank" rel="noopener">Bandwear（トラックリスト）</a></li>
+                <li><a href="https://sropr.com/category/eva-under-fire/" target="_blank" rel="noopener">SRO PR（Eva Under Fire）</a></li>
+                <li><a href="https://starlight.rocks/en/eva-under-fire-love-drugs-and-misery/" target="_blank" rel="noopener">Starlight Rocks『Love, Drugs &amp; Misery』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 15 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">15</span>
+              <div class="who">
+                <p class="artist">Wet Leg</p>
+                <p class="album">『Wet Leg』</p>
+              </div>
+              <span class="dur">3:19</span>
+            </div>
+            <h3 class="track">Chaise Longue</h3>
+            <div class="badges">
+              <span class="badge">シングル（デビュー・シングル）</span>
+              <span class="badge sub">Released: 15 June 2021</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>デビュー・シングル。Wikipedia が「Singles from Wet Leg」の筆頭に Chaise Longue（Released: 15 June 2021）を列挙し、viral hit と記載。長さはアルバム版3:19（シングル版は3:16表記あり）。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>バンドのページは millions of streams and video views を得たと記載。Last.fm のアルバムページでは 406,521 listeners と表示（第三者集計の表示値であり、公式再生回数ではない）。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Wikipedia（3:19）と Bandcamp（03:19）でクロスチェック。バラードではない。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Wet_Leg_(album)" target="_blank" rel="noopener">Wikipedia『Wet Leg』</a></li>
+                <li><a href="https://wetleg.bandcamp.com/album/wet-leg?from=footer-cc-a48187877" target="_blank" rel="noopener">Bandcamp『Wet Leg』</a></li>
+                <li><a href="https://www.last.fm/music/Wet+Leg/Wet+Leg" target="_blank" rel="noopener">Last.fm『Wet Leg』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 16 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">16</span>
+              <div class="who">
+                <p class="artist">Wet Leg</p>
+                <p class="album">『Wet Leg』</p>
+              </div>
+              <span class="dur">3:52</span>
+            </div>
+            <h3 class="track">Angelica</h3>
+            <div class="badges">
+              <span class="badge">シングル</span>
+              <span class="badge sub">Released: 28 February 2022</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>シングル。Wikipedia が「Singles from Wet Leg」に Angelica（Released: 28 February 2022）を列挙。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>正確な再生回数は<span class="unknown">確認できない</span>。Last.fm の長さ表記に食い違いがあったため、リスナー数は採用しない。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Wikipedia（3:52）と Bandcamp（03:52）でクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Wet_Leg_(album)" target="_blank" rel="noopener">Wikipedia『Wet Leg』</a></li>
+                <li><a href="https://wetleg.bandcamp.com/album/wet-leg?from=footer-cc-a48187877" target="_blank" rel="noopener">Bandcamp『Wet Leg』</a></li>
+                <li><a href="https://www.last.fm/music/Wet+Leg/Wet+Leg" target="_blank" rel="noopener">Last.fm『Wet Leg』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 17 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">17</span>
+              <div class="who">
+                <p class="artist">Yeah Yeah Yeahs</p>
+                <p class="album">『Cool It Down』</p>
+              </div>
+              <span class="dur">4:05</span>
+            </div>
+            <h3 class="track">Burning</h3>
+            <div class="badges">
+              <span class="badge">シングル（2nd）</span>
+              <span class="badge sub">Released: August 10, 2022</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>second single。Wikipedia が「Singles from Cool It Down」に Burning（Released: August 10, 2022）を列挙。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Wikipedia と Qobuz（00:04:05）および Amoeba のトラックリスト（04:05）でクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Cool_It_Down" target="_blank" rel="noopener">Wikipedia『Cool It Down』</a></li>
+                <li><a href="https://www.qobuz.com/ca-en/album/cool-it-down-yeah-yeah-yeahs/fafcyg0zizcec" target="_blank" rel="noopener">Qobuz『Cool It Down』</a></li>
+                <li><a href="https://www.amoeba.com/cool-it-down-opaque-yellow-vinyl-yeah-yeah-yeahs/albums/4287337/" target="_blank" rel="noopener">Amoeba Music『Cool It Down』</a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 18 -->
+          <article class="card">
+            <div class="card-head">
+              <span class="num">18</span>
+              <div class="who">
+                <p class="artist">Yeah Yeah Yeahs</p>
+                <p class="album">『Cool It Down』</p>
+              </div>
+              <span class="dur">4:13</span>
+            </div>
+            <h3 class="track">Wolf</h3>
+            <div class="badges">
+              <span class="badge">シングル</span>
+            </div>
+            <div class="field">
+              <span class="label">シングル情報</span>
+              <p>シングル。Wikipedia が「Singles from Cool It Down」に Wolf を列挙。</p>
+            </div>
+            <div class="field">
+              <span class="label">人気の根拠・数字</span>
+              <p>再生回数は<span class="unknown">確認できない</span>。</p>
+            </div>
+            <div class="field">
+              <span class="label">選出理由</span>
+              <p>収録曲であることを Wikipedia（Wolf 4:13）と Qobuz（00:04:13）および Amoeba のトラックリスト（04:13）でクロスチェック。バラードとの記載は確認できなかった。</p>
+            </div>
+            <div class="links">
+              <span class="label">確認リンク</span>
+              <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Cool_It_Down" target="_blank" rel="noopener">Wikipedia『Cool It Down』</a></li>
+                <li><a href="https://www.qobuz.com/ca-en/album/cool-it-down-yeah-yeah-yeahs/fafcyg0zizcec" target="_blank" rel="noopener">Qobuz『Cool It Down』</a></li>
+                <li><a href="https://www.amoeba.com/cool-it-down-opaque-yellow-vinyl-yeah-yeah-yeahs/albums/4287337/" target="_blank" rel="noopener">Amoeba Music『Cool It Down』</a></li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="rej-h">
+        <h2 id="rej-h"><span class="en">NOT SELECTED</span>落選候補について</h2>
+        <p class="sec-note">この選出では、落選候補の一覧は記録として残っていません。そのため、ここでは推測で落選候補を作らず、アルバムごとに「落選候補の記録なし」と正直に記します。例外として、各曲データの備考に理由つきで明記されていた「2分以下のため不採用」「バラードのため選外」の曲だけは、記録にある情報として該当アルバムに記載しています。</p>
+
+        <details class="rej">
+          <summary>Visions of Atlantis『Pirates』</summary>
+          <div class="body">
+            <p class="none-record">落選候補の記録なし。</p>
+            <p>選出記録に落選候補の一覧は残っていないため、推測では記載しません。</p>
+          </div>
+        </details>
+
+        <details class="rej">
+          <summary>Edenbridge『Shangri-La』</summary>
+          <div class="body">
+            <p class="none-record">落選候補の記録なし。</p>
+            <p>選出記録に落選候補の一覧は残っていないため、推測では記載しません。</p>
+          </div>
+        </details>
+
+        <details class="rej">
+          <summary>Nocturna『Daughters of the Night』</summary>
+          <div class="body">
+            <p class="none-record">落選候補の記録なし。</p>
+            <p>ただし記録にある情報として、アルバム冒頭のインスト2曲（1:54、1:12）は、2分以下等の理由で不採用と明記されています（曲名は記録にありません）。</p>
+          </div>
+        </details>
+
+        <details class="rej">
+          <summary>SheWolf『SheWolf』</summary>
+          <div class="body">
+            <p class="none-record">落選候補の記録なし。</p>
+            <p>選出記録に落選候補の一覧は残っていないため、推測では記載しません。</p>
+          </div>
+        </details>
+
+        <details class="rej">
+          <summary>Fortis Ventus『Vertalia』</summary>
+          <div class="body">
+            <p class="none-record">落選候補の記録なし。</p>
+            <p>ただし記録にある情報として、prelude曲「Living Thorns」（1:54）は2分以下のため不採用と明記されています。</p>
+          </div>
+        </details>
+
+        <details class="rej">
+          <summary>Crystal Gates『Torment &amp; Wonder: The Ways Of The Lonely Ones』</summary>
+          <div class="body">
+            <p class="none-record">落選候補の記録なし。</p>
+            <p>ただし記録にある情報として、冒頭曲「The Ways Of The Lonely Ones」（01:19）は2分以下のため不採用と明記されています。</p>
+          </div>
+        </details>
+
+        <details class="rej">
+          <summary>Eva Under Fire『Love, Drugs &amp; Misery』</summary>
+          <div class="body">
+            <p class="none-record">落選候補の記録なし。</p>
+            <p>選出記録に落選候補の一覧は残っていないため、推測では記載しません。</p>
+          </div>
+        </details>
+
+        <details class="rej">
+          <summary>Wet Leg『Wet Leg』</summary>
+          <div class="body">
+            <p class="none-record">落選候補の記録なし。</p>
+            <p>選出記録に落選候補の一覧は残っていないため、推測では記載しません。</p>
+          </div>
+        </details>
+
+        <details class="rej">
+          <summary>Yeah Yeah Yeahs『Cool It Down』</summary>
+          <div class="body">
+            <p class="none-record">落選候補の記録なし。</p>
+            <p>ただし記録にある情報として、リード・シングル「Spitting Off the Edge of the World」は Amoeba で ballad と評されているため、バラード原則不採用に従い選外。また「Mars」（01:55）は2分以下のため不採用と明記されています。</p>
+          </div>
+        </details>
+      </section>
+
+      <section aria-labelledby="tsv-h">
+        <h2 id="tsv-h"><span class="en">FINAL TRACKLIST TSV</span>最終楽曲TSV</h2>
+        <p class="sec-note">最終提出形式（GENRE／ARTIST／ALBUM／TRACK、1行1曲・全18曲）です。検索フィルターで曲名・アーティスト・アルバムを絞り込めます。コピー／ダウンロードはフィルターに関係なく全18曲分が出力されます。</p>
+        <div class="tsv-tools">
+          <input type="search" id="tsvFilter" placeholder="曲名・アーティスト・アルバムで検索" aria-label="TSV検索フィルター" />
+          <button type="button" class="btn" id="copyBtn">TSVをコピー</button>
+          <button type="button" class="btn ghost" id="dlBtn">.tsv をダウンロード</button>
+        </div>
+        <p class="copy-msg" id="copyMsg" role="status" aria-live="polite"></p>
+        <p class="sec-note" id="hitCount" style="margin:0 0 10px;"></p>
+        <div class="table-scroll">
+          <table id="tsvTable">
+            <thead>
+              <tr><th>GENRE</th><th>ARTIST</th><th>ALBUM</th><th>TRACK</th></tr>
+            </thead>
+            <tbody id="tsvBody"></tbody>
+          </table>
+        </div>
+        <details class="raw">
+          <summary>TSVの原文（タブ区切りテキスト）を表示</summary>
+          <pre class="tsv" id="tsvRaw"></pre>
+        </details>
+      </section>
+
+      <footer>
+        <p>2022年 FEMALE VOCAL ROCK / METAL 楽曲選出の記録ページ。掲載情報は選出時に確認した出典に基づきます。再生回数・リスナー数の数字は第三者集計・告知側の表示値であり、公式の再生回数ではありません。</p>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var GENRE = "FEMALE VOCAL ROCK / METAL";
+        var rows = [
+          ["Visions of Atlantis", "Pirates", "Legion of the Seas"],
+          ["Visions of Atlantis", "Pirates", "Melancholy Angel"],
+          ["Edenbridge", "Shangri-La", "The Call Of Eden"],
+          ["Edenbridge", "Shangri-La", "Somewhere Else But Here"],
+          ["Nocturna", "Daughters of the Night", "New Evil"],
+          ["Nocturna", "Daughters of the Night", "Daughters of the Night"],
+          ["SheWolf", "SheWolf", "Lone Wolf"],
+          ["SheWolf", "SheWolf", "Home"],
+          ["Fortis Ventus", "Vertalia", "My Death Is My Devotion"],
+          ["Fortis Ventus", "Vertalia", "Cave of Glass"],
+          ["Crystal Gates", "Torment & Wonder: The Ways Of The Lonely Ones", "My Glorious Fall"],
+          ["Crystal Gates", "Torment & Wonder: The Ways Of The Lonely Ones", "Moonshine & Sorrow"],
+          ["Eva Under Fire", "Love, Drugs & Misery", "Blow"],
+          ["Eva Under Fire", "Love, Drugs & Misery", "Unstoppable"],
+          ["Wet Leg", "Wet Leg", "Chaise Longue"],
+          ["Wet Leg", "Wet Leg", "Angelica"],
+          ["Yeah Yeah Yeahs", "Cool It Down", "Burning"],
+          ["Yeah Yeah Yeahs", "Cool It Down", "Wolf"]
+        ];
+        var lines = ["GENRE\tARTIST\tALBUM\tTRACK"];
+        rows.forEach(function (r) { lines.push(GENRE + "\t" + r[0] + "\t" + r[1] + "\t" + r[2]); });
+        var tsvText = lines.join("\n");
+
+        document.getElementById("tsvRaw").textContent = tsvText;
+
+        var tbody = document.getElementById("tsvBody");
+        var hitCount = document.getElementById("hitCount");
+        function render(filter) {
+          var q = (filter || "").trim().toLowerCase();
+          tbody.innerHTML = "";
+          var shown = 0;
+          rows.forEach(function (r) {
+            var hay = (r[0] + " " + r[1] + " " + r[2]).toLowerCase();
+            if (q && hay.indexOf(q) === -1) { return; }
+            shown++;
+            var tr = document.createElement("tr");
+            [GENRE, r[0], r[1], r[2]].forEach(function (cell, i) {
+              var td = document.createElement("td");
+              if (i === 0) { td.className = "genre"; }
+              td.textContent = cell;
+              tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+          });
+          if (shown === 0) {
+            var tr = document.createElement("tr");
+            tr.className = "no-hit";
+            var td = document.createElement("td");
+            td.colSpan = 4;
+            td.textContent = "該当する曲がありません。";
+            tr.appendChild(td);
+            tbody.appendChild(tr);
+          }
+          hitCount.textContent = q ? ("検索結果：" + shown + "曲 / 全18曲") : "全18曲を表示中";
+        }
+        render("");
+
+        var filterInput = document.getElementById("tsvFilter");
+        filterInput.addEventListener("input", function () { render(filterInput.value); });
+
+        var copyMsg = document.getElementById("copyMsg");
+        document.getElementById("copyBtn").addEventListener("click", function () {
+          function done() { copyMsg.textContent = "TSV（全18曲）をコピーしました。"; }
+          function fail() { copyMsg.textContent = "コピーできませんでした。「TSVの原文」から手動でコピーしてください。"; }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(tsvText).then(done, function () { legacy(); });
+          } else { legacy(); }
+          function legacy() {
+            var ta = document.createElement("textarea");
+            ta.value = tsvText;
+            ta.style.position = "fixed"; ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand("copy"); done(); } catch (e) { fail(); }
+            document.body.removeChild(ta);
+          }
+        });
+
+        document.getElementById("dlBtn").addEventListener("click", function () {
+          var blob = new Blob([tsvText], { type: "text/tab-separated-values;charset=utf-8" });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url;
+          a.download = "2022-female-vocal-rock-metal-songs-final.tsv";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+          copyMsg.textContent = "TSVファイル（全18曲）をダウンロードしました。";
+        });
+      })();
+    </script>
+  </body>
+</html>

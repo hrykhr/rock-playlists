@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2022 STADIUM COUNTRY &amp; SOUTHERN ROCK 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#f3f3f1;--surface:#fff;--surface-2:#ececea;--ink:#1b1815;--muted:#5d574f;--line:#d9d6d0;--accent:#b3540a;--accent-ink:#fff;--flag-bg:#fdf0e4;--flag-ink:#7c3a08;--flag-line:#ecc9a3;--ok-bg:#e7f2e9;--ok-ink:#1f5c33;--ok-line:#bcd9c2;--hero-bg:#171310;--hero-ink:#f5f0e9;--hero-muted:#b9afa2;--hero-line:#3a332c;--chip-bg:#fff;--chip-on-bg:#1b1815;--chip-on-ink:#fff;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--bg:#121110;--surface:#1d1b19;--surface-2:#262320;--ink:#f2ede7;--muted:#b3aa9f;--line:#35312c;--accent:#ff9550;--accent-ink:#1b100b;--flag-bg:#33240f;--flag-ink:#f3c98d;--flag-line:#5d4420;--ok-bg:#14301d;--ok-ink:#9fd8ae;--ok-line:#2c5238;--chip-bg:#1d1b19;--chip-on-bg:#f2ede7;--chip-on-ink:#1b1815}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;line-height:1.7;font-size:15px}
+a{color:var(--accent)}
+.hero{background:var(--hero-bg);color:var(--hero-ink);padding:40px 20px 30px}
+.hero-inner{max-width:1120px;margin:0 auto}
+.hero-kicker{font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:.14em;font-size:12px;color:var(--accent);margin:0 0 10px}
+@media(prefers-color-scheme:dark){.hero-kicker{color:#ff9550}}
+.hero h1{font-family:"Archivo","Noto Sans JP",sans-serif;font-weight:900;font-size:clamp(28px,5.6vw,54px);line-height:1.1;margin:0 0 6px}
+.hero .sub{font-size:clamp(17px,3vw,24px);font-weight:700;margin:0 0 14px}
+.hero .lead{color:var(--hero-muted);max-width:800px;margin:0 0 22px;font-size:14.5px}
+.hero .lead strong{color:var(--hero-ink)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hero-line);border:1px solid var(--hero-line);max-width:820px}
+.stat{background:var(--hero-bg);padding:12px 14px}
+.stat .n{font-family:"Archivo",sans-serif;font-weight:800;font-size:26px;line-height:1.1;display:block}
+.stat .l{font-size:12px;color:var(--hero-muted)}
+.hero-note{margin:16px 0 0;font-size:13px;color:var(--hero-muted);max-width:800px}
+.hero-note strong{color:#f3c98d}
+main{max-width:1120px;margin:0 auto;padding:0 20px 56px}
+section{margin-top:44px}
+h2{font-size:20px;font-weight:900;margin:0 0 6px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h2 .en{font-family:"Archivo",sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--accent)}
+.section-lead{color:var(--muted);margin:0 0 16px;font-size:14px;max-width:840px}
+.badge{display:inline-flex;align-items:center;justify-content:center;font-family:"Archivo",sans-serif;font-weight:800;font-size:13px;min-height:26px;padding:2px 8px;border-radius:6px;letter-spacing:.04em;white-space:nowrap}
+.badge-s{background:var(--accent);color:var(--accent-ink)}
+.badge-a{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.badge-b{background:transparent;color:var(--muted);border:1px dashed var(--muted)}
+.badge-final{background:#1f6b3a;color:#fff}
+@media(prefers-color-scheme:dark){.badge-final{background:#2f9e5f;color:#0d1a10}}
+.badge-demote{background:#5a5148;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.grid-final{grid-template-columns:1fr}
+@media(min-width:820px){.grid-final{grid-template-columns:repeat(2,1fr)}.grid-final .card:first-child{grid-column:1/-1}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 14px;display:flex;flex-direction:column}
+.card-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.num{font-family:"Archivo",sans-serif;font-weight:800;font-size:20px;color:var(--muted);line-height:1}
+.card-top time{margin-left:auto;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.artist{font-family:"Archivo","Noto Sans JP",sans-serif;font-weight:800;font-size:19px;line-height:1.3;margin:0}
+.album{font-size:17px;font-weight:700;margin:2px 0 8px;line-height:1.4}
+.album em{font-style:italic}
+.note{margin:0 0 10px;font-size:14px}
+.flag{margin:0 0 10px;background:var(--flag-bg);color:var(--flag-ink);border:1px solid var(--flag-line);border-radius:8px;padding:8px 12px;font-size:13px}
+.flag strong{font-weight:900}
+.okbox{margin:0;background:var(--ok-bg);color:var(--ok-ink);border:1px solid var(--ok-line);border-radius:12px;padding:18px 20px}
+.okbox h3{margin:0 0 8px;font-size:17px}
+.okbox p{font-size:14px;margin:0 0 8px}
+.okbox p:last-child{margin-bottom:0}
+.okbox .big{font-family:"Archivo",sans-serif;font-weight:800;font-size:22px}
+.source{margin:auto 0 0;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.source a{font-weight:700;text-decoration:none}.source a:hover{text-decoration:underline}
+.toolbar{position:sticky;top:0;z-index:20;background:var(--bg);padding:14px 0 12px;border-bottom:1px solid var(--line)}
+.toolbar-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{appearance:none;border:1px solid var(--line);background:var(--chip-bg);color:var(--ink);font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;cursor:pointer;min-height:36px}
+.chip[aria-pressed="true"]{background:var(--chip-on-bg);color:var(--chip-on-ink);border-color:var(--chip-on-bg)}
+.chip:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.search{flex:1 1 200px;min-width:160px}
+.search input{width:100%;font:inherit;font-size:14px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-height:38px}
+.toolbar-meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.count{font-size:13px;color:var(--muted);font-weight:700}
+.spacer{flex:1}
+.btn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:700;padding:7px 14px;border-radius:8px;cursor:pointer;min-height:36px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.copy-status{font-size:13px;color:var(--accent);font-weight:700;min-height:1em;margin:6px 0 0}
+.empty{display:none;text-align:center;color:var(--muted);padding:36px 0;font-weight:700}
+.demote{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:14px}
+.demote h3{margin:0 0 4px;font-size:17px}
+.demote h3 .date{color:var(--muted);font-size:13px;font-weight:500;margin-left:8px;white-space:nowrap}
+.demote p{font-size:14px;margin:0 0 10px}
+.demote .source{border-top:none;padding-top:0}
+.tsv-wrap{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto}
+pre.tsv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.9;margin:0;white-space:pre;color:var(--ink)}
+.tsv-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;align-items:center}
+footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer p{margin:0 0 6px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.hero{padding:30px 16px 24px}main{padding:0 16px 44px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-kicker">2022 · ALBUM SELECTION · CANDIDATES 26</p>
+    <h1>STADIUM COUNTRY<br>&amp; SOUTHERN ROCK</h1>
+    <p class="sub">2022年 候補一覧 — 最終5枚までの全体像</p>
+    <p class="lead">2022年発売の候補<strong>26枚（S 7枚／A 13枚／B 6枚）</strong>を集め、累積リストと照合した結果、<strong>重複除外は0枚</strong>で26枚すべてが残りました。S 7枚のうち2枚（Jason Aldean『Georgia』、Koe Wetzel『Hell Paso』）は境界線の理由でAに降格し、<strong>最終5枚</strong>が確定しました。このページは最終5枚だけでなく、候補26枚と降格の理由まで見られる記録です。</p>
+    <div class="stats" role="group" aria-label="選出の内訳">
+      <div class="stat"><span class="n">26</span><span class="l">候補（S 7／A 13／B 6）</span></div>
+      <div class="stat"><span class="n">0</span><span class="l">重複で除外</span></div>
+      <div class="stat"><span class="n">2</span><span class="l">S → A に降格</span></div>
+      <div class="stat"><span class="n">5</span><span class="l">最終選出</span></div>
+    </div>
+    <p class="hero-note">最終5枚は <strong>Carrie Underwood／Lainey Wilson／Luke Combs／Miranda Lambert／Whiskey Myers</strong>。女性アーティストは3枚で、厳格ルール（少なくとも半数が女性）を満たしています。検証日：2026年11月11日。</p>
+  </div>
+</header>
+
+<main>
+  <!-- FINAL 5 -->
+  <section aria-labelledby="final-h">
+    <h2 id="final-h">最終選出 5枚 <span class="en">FINAL 5</span></h2>
+    <p class="section-lead">確定順に掲載しています。各カードに確認済みの発売日、ジャンル適合の根拠、出典リンクを記載しています。</p>
+    <div class="grid grid-final">
+      <article class="card">
+        <div class="card-top"><span class="num">01</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-06-10">2022年6月10日</time></div>
+        <h3 class="artist">Carrie Underwood</h3>
+        <p class="album"><em>Denim &amp; Rhinestones</em></p>
+        <p class="note">Wikipediaのジャンルは Country, country-pop。第9作スタジオ・アルバムで、Qobuzは「pure country pop」と評する。Billboard Top Country Albums 2位、12曲。</p>
+        <p class="flag"><strong>境界線：</strong>80sポップ／ロック風味の要素あり。country-pop としての位置づけを根拠にSと判定。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Denim_%26_Rhinestones" target="_blank" rel="noopener">Wikipedia — Denim &amp; Rhinestones</a>（発売日・ジャンル・チャート）／ <a href="https://www.qobuz.com/se-en/album/denim-rhinestones-carrie-underwood/el52u9uk9oghb" target="_blank" rel="noopener">Qobuz</a>（ジャンル評）</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">02</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-10-28">2022年10月28日</time></div>
+        <h3 class="artist">Lainey Wilson</h3>
+        <p class="album"><em>Bell Bottom Country</em></p>
+        <p class="note">Wikipediaのジャンルは Country。第4作スタジオ・アルバム、14曲（16曲版あり）、56:02。グラミー賞 最優秀カントリー・アルバムを受賞した1枚。</p>
+        <p class="flag"><strong>数え方の注意：</strong>通算4枚目。メジャー2作目と呼ぶ報道もあり、作品数の数え方には注意。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Bell_Bottom_Country" target="_blank" rel="noopener">Wikipedia — Bell Bottom Country</a>（発売日・ジャンル・受賞）／ <a href="https://www.bbrmusicgroup.com/lainey-wilson-announces-new-album-bell-bottom-country-due-october-28/" target="_blank" rel="noopener">BBR Music Group</a>（発売日）</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">03</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-06-24">2022年6月24日</time></div>
+        <h3 class="artist">Luke Combs</h3>
+        <p class="album"><em>Growin' Up</em></p>
+        <p class="note">Wikipediaのジャンルは Country。第3作スタジオ・アルバム、41:23、12曲。Billboard Top Country Albums 1位。グラミー賞 最優秀カントリー・アルバムにノミネート。Miranda Lambertとのデュエット「Outrunnin' Your Memory」を収録。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Growin%27_Up_(Luke_Combs_album)" target="_blank" rel="noopener">Wikipedia — Growin' Up (Luke Combs album)</a>（発売日・ジャンル・チャート）／ <a href="https://countrynow.com/luke-combs-unveils-track-list-for-new-album-growin-up-including-a-miranda-lambert-duet/" target="_blank" rel="noopener">Country Now</a>（収録曲・デュエット）</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">04</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-04-29">2022年4月29日</time></div>
+        <h3 class="artist">Miranda Lambert</h3>
+        <p class="album"><em>Palomino</em></p>
+        <p class="note">Wikipediaのジャンルは Country。第8作ソロ・スタジオ・アルバム、15曲。『The Marfa Tapes』（2021）からの再録3曲（Geraldene／In His Arms／Waxahachie）を含む。</p>
+        <p class="flag"><strong>数え方の注意：</strong>Wikipediaはソロ第8作。一部二次情報は「9th solo」と記すが、Wikipediaの表記を採用。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Palomino_(Miranda_Lambert_album)" target="_blank" rel="noopener">Wikipedia — Palomino (Miranda Lambert album)</a>（発売日・ジャンル・収録曲）／ <a href="https://theboot.com/miranda-lambert-palomino-new-album-2022-details/" target="_blank" rel="noopener">The Boot</a>（アルバム詳細）</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">05</span><span class="badge badge-s">S</span><span class="badge badge-final">最終選出</span><time datetime="2022-07-29">2022年7月29日</time></div>
+        <h3 class="artist">Whiskey Myers</h3>
+        <p class="album"><em>Tornillo</em></p>
+        <p class="note">Wikipediaのジャンルは Southern rock。第6作スタジオ・アルバム、12曲。バンド自体のジャンルも Southern rock／country rock／hard rock／country とされ、ジャンル名そのものが Southern rock で、本ジャンルに最も直結する1枚。</p>
+        <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Tornillo_(album)" target="_blank" rel="noopener">Wikipedia — Tornillo (album)</a>（発売日・ジャンル）／ <a href="https://musicrow.com/2022/02/whiskey-myers-shares-plans-for-a-busy-2022-with-new-album-tour/" target="_blank" rel="noopener">MusicRow</a>（発売告知）</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- STRICT RULE -->
+  <section aria-labelledby="rule-h">
+    <h2 id="rule-h">厳格ルール：女性アーティスト <span class="en">STRICT RULE — PASS</span></h2>
+    <div class="okbox">
+      <h3>判定：合格 <span class="big">3 / 5</span></h3>
+      <p>このジャンルの厳格ルールは、最終選出が10枚の場合は女性アーティスト5枚必須。今回は最終5枚（10枚未満）のため、「少なくとも半数が女性」という基準が適用されます。</p>
+      <p>女性アーティストは <strong>Carrie Underwood／Lainey Wilson／Miranda Lambert</strong> の3枚で、5枚中の半数以上（3/5）を満たします。</p>
+    </div>
+  </section>
+
+  <!-- DEMOTED -->
+  <section aria-labelledby="demote-h">
+    <h2 id="demote-h">S → A に降格した2枚 <span class="en">DEMOTED FROM S</span></h2>
+    <p class="section-lead">当初Sランクだった2枚が、検証の結果Aに降格し、最終5枚から外れました。理由と出典を明記します。</p>
+    <div class="demote">
+      <h3>Jason Aldean — <em>Georgia</em><span class="date">2022年4月22日</span> <span class="badge badge-demote">S → A 降格</span></h3>
+      <p>ダブル・アルバム『Macon, Georgia』の後半で、単独のスタジオ・アルバムではない。15曲の内訳は新曲スタジオ10曲＋旧曲ライブ5曲（Take a Little Ride／Burnin' It Down／Any Ol' Barstool／Rearview Town／Blame It On You）。ジャンル適合は良好だが、形式上の境界線のためAに降格。</p>
+      <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Macon,_Georgia_(album)" target="_blank" rel="noopener">Wikipedia — Macon, Georgia (album)</a>（構成・収録曲）／ <a href="https://musicrow.com/2021/12/jason-aldean-to-drop-second-half-of-double-album-in-april/" target="_blank" rel="noopener">MusicRow</a>（ダブル・アルバム後半の告知）</p>
+    </div>
+    <div class="demote">
+      <h3>Koe Wetzel — <em>Hell Paso</em><span class="date">2022年9月16日</span> <span class="badge badge-demote">S → A 降格</span></h3>
+      <p><strong>Wikipediaでは確認できない</strong>（アルバム単独ページなし。アーティストページのディスコグラフィに Hell Paso、2022-09-16、Columbia と記載）。Apple Music／Shazam では fourth solo studio album、rock-heavy alt-country。Radio Texas Live は本人発言として「not a country album、more alternative, southern rock, heavier rock」と伝え、Apple Music は「メタル・フェスティバルの方が似合う」と評するなど、カントリー色は部分的。13曲・38分で、うち3曲はスキットとのレビューもあり実質フル曲は10曲。デジタル発売は2022-09-16、フィジカルは2023年2月。</p>
+      <p class="source">出典：<a href="https://en.wikipedia.org/wiki/Koe_Wetzel" target="_blank" rel="noopener">Wikipedia — Koe Wetzel</a>（ディスコグラフィ）／ <a href="https://music.apple.com/us/album/hell-paso/1641951717" target="_blank" rel="noopener">Apple Music — Hell Paso</a>（ジャンル評）／ <a href="https://radiotexaslive.com/this-new-koe-wetzel-album-hell-paso-is-definitely-not-for-everyone/" target="_blank" rel="noopener">Radio Texas Live</a>（本人発言）</p>
+    </div>
+  </section>
+
+  <!-- ALL CANDIDATES -->
+  <section aria-labelledby="list-h">
+    <h2 id="list-h">候補26枚 一覧 <span class="en">ALL 26 CANDIDATES</span></h2>
+    <p class="section-lead">ランク（S／A／B）で絞り込み、アーティスト名・アルバム名で検索し、発売日順に並べ替えできます。「最終」は最終選出5枚、「降格」はSからAに降格した2枚を示します。発売日は2022年内のリリース日です。</p>
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <div class="chips" role="group" aria-label="ランクで絞り込み">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">すべて（26枚）</button>
+          <button type="button" class="chip" data-filter="S" aria-pressed="false">Sのみ</button>
+          <button type="button" class="chip" data-filter="A" aria-pressed="false">Aのみ</button>
+          <button type="button" class="chip" data-filter="B" aria-pressed="false">Bのみ</button>
+          <button type="button" class="chip" data-filter="final" aria-pressed="false">最終5枚</button>
+        </div>
+        <label class="search"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">アーティスト名・アルバム名で検索</span><input type="search" id="search" placeholder="アーティスト名・アルバム名で検索" autocomplete="off" /></label>
+      </div>
+      <div class="toolbar-meta">
+        <span class="count" id="count">26件を表示中</span>
+        <span class="spacer"></span>
+        <button type="button" class="btn" id="sort-btn" aria-pressed="false">発売日順に並べ替え</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty">条件に合うアルバムはありません。絞り込みを変えてみてください。</p>
+  </section>
+
+  <!-- DUPLICATES -->
+  <section aria-labelledby="dup-h">
+    <h2 id="dup-h">重複除外 <span class="en">DUPLICATES REMOVED</span></h2>
+    <p class="section-lead">累積リストと照合した結果、重複は<strong>0枚</strong>でした。候補26枚すべてが残り、S 7枚から降格2枚を除いて最終5枚が確定しました。</p>
+  </section>
+
+  <!-- TSV -->
+  <section aria-labelledby="tsv-h">
+    <h2 id="tsv-h">最終5枚 TSV <span class="en">FINAL TSV</span></h2>
+    <p class="section-lead">ジャンル／アーティスト／アルバム／年のタブ区切り形式です。コピーとダウンロードの両方に対応しています。</p>
+    <div class="tsv-wrap"><pre class="tsv" id="tsv-pre"></pre></div>
+    <div class="tsv-actions">
+      <button type="button" class="btn" id="copy-btn">TSVをコピー</button>
+      <button type="button" class="btn primary" id="dl-btn">TSVをダウンロード</button>
+      <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <footer>
+    <p>ジャンル：STADIUM COUNTRY &amp; SOUTHERN ROCK（2022年）／ 候補26枚、重複除外0枚、S→A降格2枚を経て最終5枚を選出。女性アーティスト3/5で厳格ルール合格。</p>
+    <p>最終5枚と降格2枚の出典は各カード内に記載。検証日：2026年11月11日。</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var CANDIDATES=[
+    {rank:"S",artist:"Carrie Underwood",album:"Denim & Rhinestones",date:"2022-06-10",memo:"Wikipedia: Country, country-pop。ベンチマークアーティスト本人。女性。9thスタジオ・アルバム。",status:"final",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Denim_%26_Rhinestones"]]},
+    {rank:"S",artist:"Lainey Wilson",album:"Bell Bottom Country",date:"2022-10-28",memo:"Wikipedia: Country。ベンチマーク。グラミー最優秀カントリー・アルバム受賞。女性。4thスタジオ・アルバム。",status:"final",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Bell_Bottom_Country"]]},
+    {rank:"S",artist:"Luke Combs",album:"Growin' Up",date:"2022-06-24",memo:"Wikipedia: Country。ベンチマーク。Billboard Top Country Albums 1位。3rdスタジオ・アルバム。",status:"final",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Growin%27_Up_(Luke_Combs_album)"]]},
+    {rank:"S",artist:"Miranda Lambert",album:"Palomino",date:"2022-04-29",memo:"ベンチマーク。カントリー・ロック／ルーツ・ロック寄り。女性。8thソロ・スタジオ・アルバム。",status:"final",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Palomino_(Miranda_Lambert_album)"]]},
+    {rank:"S",artist:"Whiskey Myers",album:"Tornillo",date:"2022-07-29",memo:"Wikipedia: Southern rock。USA Today評「Allman BrothersとLed Zeppelinに例えられる、リフの重いサザン・ロックとgrittyなカントリーの融合」。6thスタジオ・アルバム。",status:"final",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Tornillo_(album)"]]},
+    {rank:"S",artist:"Jason Aldean",album:"Georgia",date:"2022-04-22",memo:"Country Rock／Stadium Country。ダブル・アルバム『Macon, Georgia』の後半のためAに降格（詳細は上の降格枠）。",status:"demoted",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Macon,_Georgia_(album)"]]},
+    {rank:"S",artist:"Koe Wetzel",album:"Hell Paso",date:"2022-09-16",memo:"Country rock、alternative country、hard rock。Wikipediaでは確認できない。カントリー色は部分的でAに降格（詳細は上の降格枠）。",status:"demoted",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Koe_Wetzel"]]},
+    {rank:"A",artist:"Zach Bryan",album:"American Heartbreak",date:"2022-05-20",memo:"Country／Americana。トリプル・アルバム34曲。Billboard Country Albums 1位。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/American_Heartbreak"]]},
+    {rank:"A",artist:"Maren Morris",album:"Humble Quest",date:"2022-03-25",memo:"Contemporary Country／Country Pop。女性。3rdスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Humble_Quest"]]},
+    {rank:"A",artist:"Kelsea Ballerini",album:"Subject to Change",date:"2022-09-23",memo:"Country Pop。女性。4thスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Subject_to_Change_(Kelsea_Ballerini_album)"]]},
+    {rank:"A",artist:"Ashley McBryde",album:"Lindeville",date:"2022-09-30",memo:"Country。コンセプト・アルバム13曲。女性。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Lindeville"]]},
+    {rank:"A",artist:"Kane Brown",album:"Different Man",date:"2022-09-09",memo:"Contemporary Country／Country Pop。3rdスタジオ・アルバム。",status:"",urls:[["Sony Music Nashville","https://www.sonymusicnashville.com/kane-brown-releases-third-studio-album-different-man-today/"]]},
+    {rank:"A",artist:"Jon Pardi",album:"Mr. Saturday Night",date:"2022-09-02",memo:"neotraditional country。4thスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Mr._Saturday_Night_(album)"]]},
+    {rank:"A",artist:"Thomas Rhett",album:"Where We Started",date:"2022-04-01",memo:"Country。6thスタジオ・アルバム、15曲。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Where_We_Started"]]},
+    {rank:"A",artist:"Midland",album:"The Last Resort: Greetings From",date:"2022-05-06",memo:"Country／Country Rock。2021年EPを拡張したフルレングス。3rdスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/The_Last_Resort:_Greetings_From"]]},
+    {rank:"A",artist:"Little Big Town",album:"Mr. Sun",date:"2022-09-16",memo:"Country／Country Pop。女性2名がフロントの男女混声4人組。10thスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Mr._Sun"]]},
+    {rank:"A",artist:"Hailey Whitters",album:"Raised",date:"2022-03-18",memo:"Country。ルーツ・ロック寄り。女性。3rdスタジオ・アルバム、17曲。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Raised"]]},
+    {rank:"A",artist:"Ingrid Andress",album:"Good Person",date:"2022-08-26",memo:"Country／Country Pop。女性。2ndスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Good_Person"]]},
+    {rank:"A",artist:"Chris Janson",album:"All In",date:"2022-04-29",memo:"Country。4thスタジオ・アルバム、16曲。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Chris_Janson_discography"]]},
+    {rank:"A",artist:"Russell Dickerson",album:"Russell Dickerson",date:"2022-11-04",memo:"Country。セルフタイトル3rdスタジオ・アルバム、15曲。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Russell_Dickerson_(album)"]]},
+    {rank:"B",artist:"Tyler Childers",album:"Can I Take My Hounds to Heaven?",date:"2022-09-30",memo:"Country。ゴスペル／アメリカーナ色が強く、同じ8曲を3ヴァージョンで収録したトリプル・アルバム。5thスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Can_I_Take_My_Hounds_to_Heaven%3F"]]},
+    {rank:"B",artist:"Marcus King",album:"Young Blood",date:"2022-08-26",memo:"Blues Rock／Southern rock。Wikipediaでは確認できない。アーティストのWikipedia頁とDiscogsで発売日を確認。2ndソロ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Marcus_King"],["Discogs","https://www.discogs.com/pt_BR/release/24326318-Marcus-King-Young-Blood"]]},
+    {rank:"B",artist:"Larkin Poe",album:"Blood Harmony",date:"2022-11-11",memo:"roots rock。女性デュオ。6thスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Blood_Harmony_(album)"]]},
+    {rank:"B",artist:"Tedeschi Trucks Band",album:"I Am the Moon",date:"2022-09-09",memo:"blues rock。Susan Tedeschi（女性ヴォーカル／ギター）とDerek Trucks率いる12人編成。4部作の完結版。5thスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/I_Am_the_Moon"]]},
+    {rank:"B",artist:"Dolly Parton",album:"Run, Rose, Run",date:"2022-03-04",memo:"Country／Bluegrass。同名小説のコンパニオン・アルバム。女性。48thスタジオ・アルバム。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Run,_Rose,_Run"]]},
+    {rank:"B",artist:"Joanne Shaw Taylor",album:"Nobody's Fool",date:"2022-10-28",memo:"Blues rock。女性。8thスタジオ・アルバム。デジタル発売2022-10-28。",status:"",urls:[["Wikipedia","https://en.wikipedia.org/wiki/Joanne_Shaw_Taylor_discography"]]}
+  ];
+  var grid=document.getElementById('grid');
+  function fmtDate(d){var p=d.split('-');return p[0]+'年'+parseInt(p[1],10)+'月'+parseInt(p[2],10)+'日';}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  CANDIDATES.forEach(function(c,i){
+    var art=document.createElement('article');
+    art.className='card';
+    art.setAttribute('data-rank',c.rank);
+    art.setAttribute('data-date',c.date);
+    art.setAttribute('data-status',c.status||'none');
+    art.setAttribute('data-search',(c.artist+' '+c.album).toLowerCase());
+    art.setAttribute('data-idx',i);
+    var badgeCls=c.rank==='S'?'badge-s':(c.rank==='A'?'badge-a':'badge-b');
+    var badgeTxt=c.status==='demoted'?'S → A 降格':c.rank;
+    var extra='';
+    if(c.status==='final')extra+=' <span class="badge badge-final">最終選出</span>';
+    var src='';
+    if(c.urls&&c.urls.length){
+      var links=c.urls.map(function(u){return '<a href="'+u[1]+'" target="_blank" rel="noopener">'+esc(u[0])+'</a>';}).join(' ／ ');
+      src='<p class="source">出典：'+links+'</p>';
+    }
+    art.innerHTML='<div class="card-top"><span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="badge '+badgeCls+'">'+badgeTxt+'</span>'+extra+'<time datetime="'+c.date+'">'+fmtDate(c.date)+'</time></div>'
+      +'<h3 class="artist">'+esc(c.artist)+'</h3><p class="album"><em>'+esc(c.album)+'</em></p>'
+      +'<p class="note">'+esc(c.memo)+'</p>'+src;
+    grid.appendChild(art);
+  });
+  var cards=Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var searchInput=document.getElementById('search');
+  var countEl=document.getElementById('count');
+  var emptyEl=document.getElementById('empty');
+  var sortBtn=document.getElementById('sort-btn');
+  var activeFilter='all', sortedByDate=false;
+  function apply(){
+    var q=searchInput.value.trim().toLowerCase(), shown=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(activeFilter==='S'||activeFilter==='A'||activeFilter==='B')ok=c.getAttribute('data-rank')===activeFilter;
+      else if(activeFilter==='final')ok=c.getAttribute('data-status')==='final';
+      var okS=!q||c.getAttribute('data-search').indexOf(q)!==-1;
+      var show=ok&&okS;
+      c.style.display=show?'':'none';
+      if(show)shown++;
+    });
+    countEl.textContent=shown+'件を表示中';
+    emptyEl.style.display=shown===0?'block':'none';
+  }
+  chips.forEach(function(chip){chip.addEventListener('click',function(){
+    activeFilter=chip.getAttribute('data-filter');
+    chips.forEach(function(x){x.setAttribute('aria-pressed',x===chip?'true':'false');});
+    apply();
+  });});
+  searchInput.addEventListener('input',apply);
+  sortBtn.addEventListener('click',function(){
+    sortedByDate=!sortedByDate;
+    sortBtn.setAttribute('aria-pressed',sortedByDate?'true':'false');
+    sortBtn.textContent=sortedByDate?'候補順に戻す':'発売日順に並べ替え';
+    var ordered=cards.slice().sort(function(a,b){
+      if(sortedByDate){var d=a.getAttribute('data-date').localeCompare(b.getAttribute('data-date'));if(d!==0)return d;}
+      return parseInt(a.getAttribute('data-idx'),10)-parseInt(b.getAttribute('data-idx'),10);
+    });
+    ordered.forEach(function(c){grid.appendChild(c);});
+  });
+  apply();
+
+  var TSV=['GENRE\tARTIST\tALBUM\tYEAR',
+  'STADIUM COUNTRY & SOUTHERN ROCK\tCarrie Underwood\tDenim & Rhinestones\t2022',
+  'STADIUM COUNTRY & SOUTHERN ROCK\tLainey Wilson\tBell Bottom Country\t2022',
+  "STADIUM COUNTRY & SOUTHERN ROCK\tLuke Combs\tGrowin' Up\t2022",
+  'STADIUM COUNTRY & SOUTHERN ROCK\tMiranda Lambert\tPalomino\t2022',
+  'STADIUM COUNTRY & SOUTHERN ROCK\tWhiskey Myers\tTornillo\t2022'].join('\n');
+  document.getElementById('tsv-pre').textContent=TSV;
+  var statusEl=document.getElementById('copy-status');
+  document.getElementById('copy-btn').addEventListener('click',function(){
+    function done(){statusEl.textContent='TSVをコピーしました（5件）。';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(TSV).then(done,function(){fallback();});}else{fallback();}
+    function fallback(){var ta=document.createElement('textarea');ta.value=TSV;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){statusEl.textContent='コピーできませんでした。ダウンロードをお使いください。';}document.body.removeChild(ta);}
+  });
+  document.getElementById('dl-btn').addEventListener('click',function(){
+    var blob=new Blob([TSV],{type:'text/tab-separated-values;charset=utf-8'});
+    var url=URL.createObjectURL(blob);var a=document.createElement('a');
+    a.href=url;a.download='2022-stadium-country-southern-rock-final.tsv';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},1000);
+    statusEl.textContent='TSVをダウンロードしました（5件）。';
+  });
+})();
+</script>
+</body>
+</html>

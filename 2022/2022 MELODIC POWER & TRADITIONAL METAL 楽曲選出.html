@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>2022 MELODIC POWER &amp; TRADITIONAL METAL 楽曲選出</title>
+<style>
+  :root{
+    --bg:#f6f5f2; --surface:#ffffff; --surface-2:#efede8; --track:#faf9f7;
+    --text:#1c1917; --body:#292524; --muted:#68635e; --border:#ddd9d2;
+    --accent:#9a3412; --accent-strong:#7c2d12; --accent-soft:#fff1e6;
+    --spotify-bg:#e9f7ee; --spotify-border:#86c79a; --spotify-text:#14532d;
+    --code-bg:#1c1917; --code-text:#f5f5f4;
+    --shadow:0 1px 3px rgba(28,25,23,.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0c0a09; --surface:#1c1917; --surface-2:#292524; --track:#141210;
+      --text:#fafaf9; --body:#e7e5e4; --muted:#a8a29e; --border:#44403c;
+      --accent:#fbbf24; --accent-strong:#fde68a; --accent-soft:#292524;
+      --spotify-bg:#052e16; --spotify-border:#166534; --spotify-text:#bbf7d0;
+      --code-bg:#030712; --code-text:#e5e7eb;
+      --shadow:none;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--body);
+    font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI",sans-serif;
+    line-height:1.75;font-size:16px}
+  button,summary{min-height:44px}
+  a{color:var(--accent);text-underline-offset:2px;overflow-wrap:anywhere}
+  @media (prefers-color-scheme: light){ a{color:#1d4ed8} }
+  header{background:var(--surface);border-bottom:3px solid var(--accent);padding:28px 0 24px}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+  header .wrap{padding-bottom:0}
+  h1{font-size:1.65rem;line-height:1.35;margin:0 0 10px;color:var(--text);letter-spacing:.01em}
+  .sub{color:var(--muted);font-size:.95rem;margin:0}
+  h2{margin:38px 0 14px;color:var(--text);font-size:1.3rem;line-height:1.4;
+    border-left:5px solid var(--accent);padding-left:11px}
+  .note{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:6px 20px 10px 20px;margin:14px 0;box-shadow:var(--shadow)}
+  .note ul{margin:10px 0;padding-left:1.3em}
+  .note li{margin:4px 0}
+  .spotify{background:var(--spotify-bg);border:1px solid var(--spotify-border);
+    border-radius:10px;padding:16px 18px;margin:14px 0;color:var(--spotify-text)}
+  .spotify a{color:inherit;font-weight:600}
+  .album{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:18px;margin:16px 0;box-shadow:var(--shadow)}
+  .album h3{margin:0 0 6px;color:var(--text);font-size:1.12rem;line-height:1.5}
+  .album h3 .artist{color:var(--accent)}
+  .album .meta{color:var(--muted);font-size:.9rem;margin-bottom:12px;line-height:1.7}
+  .track{background:var(--track);border:1px solid var(--border);border-radius:8px;
+    padding:12px 14px;margin:10px 0}
+  .track b{color:var(--text)}
+  .track .num{display:inline-block;min-width:2em;color:var(--accent);font-weight:700}
+  .track .detail{font-size:.93rem;margin-top:2px}
+  .track .detail span{display:block}
+  .track .detail .lbl{color:var(--muted)}
+  details{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;
+    padding:2px 14px;margin:12px 0 2px}
+  summary{cursor:pointer;font-weight:700;color:var(--text);display:flex;align-items:center;padding:6px 0}
+  details p{margin:6px 0 12px;font-size:.95rem}
+  .tsv-actions{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+  button{background:var(--accent);color:#fff;border:none;border-radius:8px;
+    padding:10px 18px;font-weight:700;cursor:pointer;font-size:.95rem;font-family:inherit}
+  @media (prefers-color-scheme: dark){ button{color:#1c1917} }
+  button.secondary{background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+  button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  #copyStatus{font-size:.9rem;color:var(--muted);align-self:center;min-height:1.4em}
+  pre{background:var(--code-bg);color:var(--code-text);border-radius:8px;padding:14px;
+    overflow-x:auto;font-size:.78rem;line-height:1.6;white-space:pre;max-width:100%;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .fineprint{color:var(--muted);font-size:.88rem}
+  footer{margin:40px 0 8px;padding-top:16px;border-top:1px solid var(--border)}
+  @media (max-width:560px){
+    h1{font-size:1.35rem}
+    .album{padding:14px}
+    .note{padding:4px 14px 8px}
+    pre{font-size:.68rem}
+  }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>2022 MELODIC POWER &amp; TRADITIONAL METAL 楽曲選出</h1>
+<p class="sub">最終10枚のアルバムから各2曲、計20曲の選出記録。順番は最終TSVどおりです。各曲に長さ・シングル情報・人気の根拠・選出理由を表示しています。データにない情報は追加していません。</p>
+</div></header>
+<main class="wrap">
+<h2>注意点</h2>
+<div class="note"><ul>
+<li>再生回数はすべてKworb等の第三者集計で、公式値ではない。</li>
+<li>SatanとJudicatorの選出曲は再生回数の出典が確認できない。</li>
+<li>6枚のアルバム（Circus of Doom、Final Advent、Warfront、Earth Infernal、Emperors and Fools、The Majesty of Decay）はWikipediaに専用アルバムページがない。</li>
+<li>Judicatorの2曲は情報源間で1秒の長さ表記差あり。</li>
+<li>Ashes of Aresの2曲はSpotify上で explicit 扱い。</li>
+</ul></div>
+<div class="spotify"><strong>Spotifyプレイリスト：</strong>「2022年MELODIC POWER &amp; TRADITIONAL METAL」（20曲、確認済み）<br>
+<a href="https://open.spotify.com/playlist/4sXpcPJNzVcYQP4ZpCYCqv" target="_blank" rel="noopener">https://open.spotify.com/playlist/4sXpcPJNzVcYQP4ZpCYCqv</a></div>
+
+<h2>最終20曲</h2>
+
+<div class="album"><h3><span class="num">1–2.</span> <span class="artist">Battle Beast</span> — 『Circus of Doom』</h3><div class="meta">Wikipediaでは確認できない（専用アルバムページなし）／ バンドページ: <a href="https://en.wikipedia.org/wiki/Battle_Beast_(band)" target="_blank" rel="noopener">Battle Beast (band) - Wikipedia</a></div>
+<div class="track"><b><span class="num">1.</span> Master of Illusion</b><div class="detail"><span><span class="lbl">長さ:</span> 4:08 ／ 1stシングル</span><span><span class="lbl">人気の根拠:</span> Kworb 19,692,527で最多</span><span><span class="lbl">選出理由:</span> 1stシングルであり、Kworb集計でアルバム内最多のため選出。</span></div></div>
+<div class="track"><b><span class="num">2.</span> Eye of the Storm</b><div class="detail"><span><span class="lbl">長さ:</span> 4:26 ／ 2ndシングル</span><span><span class="lbl">人気の根拠:</span> Kworb 14,679,575</span><span><span class="lbl">選出理由:</span> 2ndシングルであり、Kworb集計の根拠に基づき選出。</span></div></div>
+<details><summary>落選候補</summary><p>「Wings of Light」（4thシングル、Kworb 14,564,691と僅差）</p></details></div>
+
+<div class="album"><h3><span class="num">3–4.</span> <span class="artist">Sabaton</span> — 『The War to End All Wars』</h3><div class="meta">確認リンク: <a href="https://en.wikipedia.org/wiki/The_War_to_End_All_Wars_(album)" target="_blank" rel="noopener">The War to End All Wars (album) - Wikipedia</a> ／ <a href="https://en.wikipedia.org/wiki/Sabaton_(band)" target="_blank" rel="noopener">Sabaton (band) - Wikipedia</a></div>
+<div class="track"><b><span class="num">3.</span> Stormtroopers</b><div class="detail"><span><span class="lbl">長さ:</span> 3:56 ／ 5thシングル</span><span><span class="lbl">人気の根拠:</span> Kworb 86,870,948で最多</span><span><span class="lbl">選出理由:</span> 5thシングルであり、Kworb集計でアルバム内最多のため選出。</span></div></div>
+<div class="track"><b><span class="num">4.</span> Soldier of Heaven</b><div class="detail"><span><span class="lbl">長さ:</span> 3:38 ／ 2ndシングル</span><span><span class="lbl">人気の根拠:</span> Kworb 82,552,137</span><span><span class="lbl">選出理由:</span> 2ndシングルであり、Kworb集計の根拠に基づき選出。</span></div></div>
+<details><summary>落選候補</summary><p>「Christmas Truce」（バラードのため不採用）、「The Unkillable Soldier」（3rdシングル、次点）</p></details></div>
+
+<div class="album"><h3><span class="num">5–6.</span> <span class="artist">HammerFall</span> — 『Hammer of Dawn』</h3><div class="meta">確認リンク: <a href="https://en.wikipedia.org/wiki/Hammer_of_Dawn_(album)" target="_blank" rel="noopener">Hammer of Dawn (album) - Wikipedia</a> ／ <a href="https://en.wikipedia.org/wiki/HammerFall" target="_blank" rel="noopener">HammerFall - Wikipedia</a></div>
+<div class="track"><b><span class="num">5.</span> Hammer of Dawn</b><div class="detail"><span><span class="lbl">長さ:</span> 4:02 ／ 1stシングル・タイトル曲</span><span><span class="lbl">人気の根拠:</span> Kworb 4,174,244で2位</span><span><span class="lbl">選出理由:</span> 1stシングル・タイトル曲であり、Kworbで2位のため選出。</span></div></div>
+<div class="track"><b><span class="num">6.</span> Venerate Me</b><div class="detail"><span><span class="lbl">長さ:</span> 4:43 ／ 2ndシングル、King Diamond参加</span><span><span class="lbl">人気の根拠:</span> Kworb 6,845,009で最多</span><span><span class="lbl">選出理由:</span> 2ndシングルであり、Kworb集計でアルバム内最多のため選出。</span></div></div>
+<details><summary>落選候補</summary><p>「Brotherhood」（3rdシングルだが再生回数で下回る）、「Not Today」（バラード）</p></details></div>
+
+<div class="album"><h3><span class="num">7–8.</span> <span class="artist">Blind Guardian</span> — 『The God Machine』</h3><div class="meta">確認リンク: <a href="https://en.wikipedia.org/wiki/The_God_Machine_(Blind_Guardian_album)" target="_blank" rel="noopener">The God Machine (Blind Guardian album) - Wikipedia</a> ／ <a href="https://en.wikipedia.org/wiki/Blind_Guardian" target="_blank" rel="noopener">Blind Guardian - Wikipedia</a></div>
+<div class="track"><b><span class="num">7.</span> Violent Shadows</b><div class="detail"><span><span class="lbl">長さ:</span> 4:18 ／ 4thシングル</span><span><span class="lbl">人気の根拠:</span> setlist.fmライブ演奏162回で最多。曲単位の再生回数は確認できない</span><span><span class="lbl">選出理由:</span> 4thシングルであり、setlist.fmのライブ演奏回数が最多のため選出。</span></div></div>
+<div class="track"><b><span class="num">8.</span> Blood of the Elves</b><div class="detail"><span><span class="lbl">長さ:</span> 4:38 ／ 3rdシングル</span><span><span class="lbl">人気の根拠:</span> setlist.fm 142回で2位</span><span><span class="lbl">選出理由:</span> 3rdシングルであり、setlist.fmで2位のため選出。</span></div></div>
+<details><summary>落選候補</summary><p>「Secrets of the American Gods」（2ndシングル、ライブ演奏72回で次点）、「Let It Be No More」（バラード）</p></details></div>
+
+<div class="album"><h3><span class="num">9–10.</span> <span class="artist">Stratovarius</span> — 『Survive』</h3><div class="meta">確認リンク: <a href="https://en.wikipedia.org/wiki/Survive_(Stratovarius_album)" target="_blank" rel="noopener">Survive (Stratovarius album) - Wikipedia</a> ／ <a href="https://en.wikipedia.org/wiki/Stratovarius" target="_blank" rel="noopener">Stratovarius - Wikipedia</a></div>
+<div class="track"><b><span class="num">9.</span> World on Fire</b><div class="detail"><span><span class="lbl">長さ:</span> 4:26 ／ 2ndシングル</span><span><span class="lbl">人気の根拠:</span> Kworb 5,921,983で最多</span><span><span class="lbl">選出理由:</span> 2ndシングルであり、Kworb集計でアルバム内最多のため選出。</span></div></div>
+<div class="track"><b><span class="num">10.</span> Survive</b><div class="detail"><span><span class="lbl">長さ:</span> 4:39 ／ 1stシングル・タイトル曲</span><span><span class="lbl">人気の根拠:</span> Kworb 3,187,459で2位</span><span><span class="lbl">選出理由:</span> 1stシングル・タイトル曲であり、Kworbで2位のため選出。</span></div></div>
+<details><summary>落選候補</summary><p>「Firefly」（3rdシングル、次点）、「Frozen in Time」（4thシングル）</p></details></div>
+
+<div class="album"><h3><span class="num">11–12.</span> <span class="artist">Dynazty</span> — 『Final Advent』</h3><div class="meta">Wikipediaでは確認できない（専用アルバムページなし）／ バンドページ: <a href="https://en.wikipedia.org/wiki/Dynazty" target="_blank" rel="noopener">Dynazty - Wikipedia</a></div>
+<div class="track"><b><span class="num">11.</span> Natural Born Killer</b><div class="detail"><span><span class="lbl">長さ:</span> 3:25 ／ シングル</span><span><span class="lbl">人気の根拠:</span> Kworb 16,434,436で最多</span><span><span class="lbl">選出理由:</span> シングルであり、Kworb集計でアルバム内最多のため選出。</span></div></div>
+<div class="track"><b><span class="num">12.</span> Power of Will</b><div class="detail"><span><span class="lbl">長さ:</span> 3:53 ／ 2ndシングル</span><span><span class="lbl">人気の根拠:</span> Kworb 7,310,019で2位。Spotify上は3:55版を採用</span><span><span class="lbl">選出理由:</span> 2ndシングルであり、Kworbで2位のため選出。</span></div></div>
+<details><summary>落選候補</summary><p>「Yours」（3rdシングルだがバラード）、「Advent」（1stシングルだが再生回数で下回る）</p></details></div>
+
+<div class="album"><h3><span class="num">13–14.</span> <span class="artist">Wind Rose</span> — 『Warfront』</h3><div class="meta">Wikipediaでは確認できない（専用アルバムページなし）／ バンドページ: <a href="https://en.wikipedia.org/wiki/Wind_Rose_(band)" target="_blank" rel="noopener">Wind Rose (band) - Wikipedia</a></div>
+<div class="track"><b><span class="num">13.</span> Fellows of the Hammer</b><div class="detail"><span><span class="lbl">長さ:</span> 6:15 ／ 3rdシングル</span><span><span class="lbl">人気の根拠:</span> Last.fm 28,185 listenersで最多、Napalm報道でSpotify約500万回</span><span><span class="lbl">選出理由:</span> 3rdシングルであり、Last.fm listenersが最多のため選出。</span></div></div>
+<div class="track"><b><span class="num">14.</span> Together We Rise</b><div class="detail"><span><span class="lbl">長さ:</span> 5:02 ／ 2ndシングル</span><span><span class="lbl">人気の根拠:</span> Last.fm 26,201 listenersで2位</span><span><span class="lbl">選出理由:</span> 2ndシングルであり、Last.fm listenersで2位のため選出。</span></div></div>
+<details><summary>落選候補</summary><p>「Gates of Ekrund」（1stシングル、次点）、「Of War and Sorrow」（2:00で除外）</p></details></div>
+
+<div class="album"><h3><span class="num">15–16.</span> <span class="artist">Satan</span> — 『Earth Infernal』</h3><div class="meta">Wikipediaでは確認できない（専用アルバムページなし）／ バンドページ: <a href="https://en.wikipedia.org/wiki/Satan_(band)" target="_blank" rel="noopener">Satan (band) - Wikipedia</a></div>
+<div class="track"><b><span class="num">15.</span> Burning Portrait</b><div class="detail"><span><span class="lbl">長さ:</span> 5:48 ／ 1stシングル</span><span><span class="lbl">人気の根拠:</span> 再生回数の具体的数字は確認できない。Spotify上は5:51</span><span><span class="lbl">選出理由:</span> 1stシングルのため選出。再生回数の出典が確認できない点に注意。</span></div></div>
+<div class="track"><b><span class="num">16.</span> From Second Sight</b><div class="detail"><span><span class="lbl">長さ:</span> 3:40 ／ 2ndシングル</span><span><span class="lbl">人気の根拠:</span> 再生回数は確認できない。Spotify上は3:42</span><span><span class="lbl">選出理由:</span> 2ndシングルのため選出。再生回数の出典が確認できない点に注意。</span></div></div>
+<details><summary>落選候補</summary><p>「The Blood Ran Deep」（公式ビデオはあるがシングルと確認できず次点）</p></details></div>
+
+<div class="album"><h3><span class="num">17–18.</span> <span class="artist">Ashes of Ares</span> — 『Emperors and Fools』</h3><div class="meta">Wikipediaでは確認できない（専用アルバムページなし）。2曲ともSpotify上で explicit 扱い。</div>
+<div class="track"><b><span class="num">17.</span> By My Blade</b><div class="detail"><span><span class="lbl">長さ:</span> 5:24 ／ 1stシングル</span><span><span class="lbl">人気の根拠:</span> Last.fm 1,202 listeners</span><span><span class="lbl">選出理由:</span> 1stシングルのため選出。</span></div></div>
+<div class="track"><b><span class="num">18.</span> I Am the Night</b><div class="detail"><span><span class="lbl">長さ:</span> 3:42 ／ シングルではない</span><span><span class="lbl">人気の根拠:</span> Last.fm 1,981 listenersでアルバム内最多</span><span><span class="lbl">選出理由:</span> シングルではないが、Last.fm listenersがアルバム内最多のため選出。</span></div></div>
+<details><summary>落選候補</summary><p>「Gone」「Emperors and Fools」（バラードのため不採用）、「A City in Decay (intro)」（1:27で除外）</p></details></div>
+
+<div class="album"><h3><span class="num">19–20.</span> <span class="artist">Judicator</span> — 『The Majesty of Decay』</h3><div class="meta">Wikipediaでは確認できない（専用アルバムページなし）。2曲は情報源間で1秒の長さ表記差あり。再生回数の出典が確認できない。</div>
+<div class="track"><b><span class="num">19.</span> The High Priestess</b><div class="detail"><span><span class="lbl">長さ:</span> 5:25 ／ リードシングル</span><span><span class="lbl">人気の根拠:</span> 再生回数は確認できない</span><span><span class="lbl">選出理由:</span> リードシングルのため選出。</span></div></div>
+<div class="track"><b><span class="num">20.</span> Ursa Major</b><div class="detail"><span><span class="lbl">長さ:</span> 5:38 ／ 2ndシングル</span><span><span class="lbl">人気の根拠:</span> 再生回数は確認できない</span><span><span class="lbl">選出理由:</span> 2ndシングルのため選出。</span></div></div>
+<details><summary>落選候補</summary><p>「The Black Elk」（3rdシングル、最も惜しい落選）</p></details></div>
+
+<h2>最終楽曲TSV</h2>
+<p>ヘッダー「GENRE　ARTIST　ALBUM　TRACK」（タブ区切り）、20行、全行 GENRE=MELODIC POWER &amp; TRADITIONAL METAL、順番は上記20曲どおりです。</p>
+<div class="tsv-actions">
+<button type="button" id="copyBtn">TSVをコピー</button>
+<button type="button" class="secondary" id="dlBtn">TSVをダウンロード</button>
+<span id="copyStatus" role="status" aria-live="polite"></span>
+</div>
+<pre id="tsv">GENRE	ARTIST	ALBUM	TRACK
+MELODIC POWER &amp; TRADITIONAL METAL	Battle Beast	Circus of Doom	Master of Illusion
+MELODIC POWER &amp; TRADITIONAL METAL	Battle Beast	Circus of Doom	Eye of the Storm
+MELODIC POWER &amp; TRADITIONAL METAL	Sabaton	The War to End All Wars	Stormtroopers
+MELODIC POWER &amp; TRADITIONAL METAL	Sabaton	The War to End All Wars	Soldier of Heaven
+MELODIC POWER &amp; TRADITIONAL METAL	HammerFall	Hammer of Dawn	Hammer of Dawn
+MELODIC POWER &amp; TRADITIONAL METAL	HammerFall	Hammer of Dawn	Venerate Me
+MELODIC POWER &amp; TRADITIONAL METAL	Blind Guardian	The God Machine	Violent Shadows
+MELODIC POWER &amp; TRADITIONAL METAL	Blind Guardian	The God Machine	Blood of the Elves
+MELODIC POWER &amp; TRADITIONAL METAL	Stratovarius	Survive	World on Fire
+MELODIC POWER &amp; TRADITIONAL METAL	Stratovarius	Survive	Survive
+MELODIC POWER &amp; TRADITIONAL METAL	Dynazty	Final Advent	Natural Born Killer
+MELODIC POWER &amp; TRADITIONAL METAL	Dynazty	Final Advent	Power of Will
+MELODIC POWER &amp; TRADITIONAL METAL	Wind Rose	Warfront	Fellows of the Hammer
+MELODIC POWER &amp; TRADITIONAL METAL	Wind Rose	Warfront	Together We Rise
+MELODIC POWER &amp; TRADITIONAL METAL	Satan	Earth Infernal	Burning Portrait
+MELODIC POWER &amp; TRADITIONAL METAL	Satan	Earth Infernal	From Second Sight
+MELODIC POWER &amp; TRADITIONAL METAL	Ashes of Ares	Emperors and Fools	By My Blade
+MELODIC POWER &amp; TRADITIONAL METAL	Ashes of Ares	Emperors and Fools	I Am the Night
+MELODIC POWER &amp; TRADITIONAL METAL	Judicator	The Majesty of Decay	The High Priestess
+MELODIC POWER &amp; TRADITIONAL METAL	Judicator	The Majesty of Decay	Ursa Major</pre>
+<footer>
+<p class="fineprint">確認リンクについて: Kworb・Last.fm・setlist.fmへの個別曲リンクはURLが渡されていないため作成していません（根拠テキストとしてのみ表示）。Wikipediaリンクは、専用ページがある4枚についてはアルバムページ、ない6枚については「Wikipediaでは確認できない」と明記し、実在が確実なバンドページのみを併記しています。</p>
+</footer>
+</main>
+<script>
+(function(){
+  var pre = document.getElementById('tsv');
+  var status = document.getElementById('copyStatus');
+  function tsvText(){ return pre.textContent.replace(/\n$/, '') + '\n'; }
+  function setStatus(msg){ status.textContent = msg; }
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var text = tsvText();
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); setStatus('TSVをコピーしました'); }
+      catch(e){ setStatus('コピーできませんでした。TSVの範囲を選択してコピーしてください'); }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){ setStatus('TSVをコピーしました'); }, fallback);
+    } else { fallback(); }
+  });
+  document.getElementById('dlBtn').addEventListener('click', function(){
+    var blob = new Blob([tsvText()], {type:'text/tab-separated-values;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = '2022-melodic-power-traditional-metal-songs-final.tsv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    setStatus('TSVをダウンロードしました');
+  });
+})();
+</script>
+</body>
+</html>
