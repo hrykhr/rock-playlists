@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:,">
+<title>2024 STADIUM COUNTRY &amp; SOUTHERN ROCK 候補一覧</title>
+<style>
+  :root{
+    --bg:#14100c;
+    --bg2:#1c1712;
+    --card:#211a14;
+    --card2:#262019;
+    --line:#3a2f24;
+    --line2:#4a3c2d;
+    --text:#f2e9dc;
+    --muted:#c9b8a3;
+    --faint:#9a8872;
+    --amber:#e0a44a;
+    --amber2:#f0c178;
+    --rust:#d97a4e;
+    --green:#8fb573;
+    --red:#e07a6a;
+    --blue:#8fb8c9;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:var(--amber2);text-decoration-color:rgba(240,193,120,.4);text-underline-offset:3px;word-break:break-all}
+  a:hover{color:#ffd9a0}
+  .wrap{max-width:920px;margin:0 auto;padding:0 18px 64px}
+  /* header */
+  header{padding:36px 0 8px}
+  .kicker{font-size:.78rem;letter-spacing:.14em;color:var(--amber);font-weight:700;text-transform:uppercase}
+  h1{font-size:clamp(1.55rem,5.2vw,2.35rem);line-height:1.3;margin:.35em 0 .3em;font-weight:800;letter-spacing:.01em}
+  h1 .genre{display:block;font-size:.52em;color:var(--muted);letter-spacing:.06em;font-weight:700;margin-top:.35em}
+  .lede{color:var(--muted);font-size:.98rem;max-width:44em}
+  .lede strong{color:var(--text)}
+  /* flow */
+  .flow{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px;align-items:stretch}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1 1 140px;min-width:130px}
+  .step .n{font-size:1.25rem;font-weight:800;color:var(--amber2);line-height:1.2}
+  .step .l{font-size:.8rem;color:var(--muted);line-height:1.5}
+  .step.warn{border-color:#6b3a2e;background:#2a1a14}
+  .step.warn .n{color:var(--red)}
+  .step.final{border-color:#5a4a22;background:#26200f}
+  .step.final .n{color:var(--amber2)}
+  .arrow{align-self:center;color:var(--faint);font-size:1rem;flex:0 0 auto}
+  @media(max-width:640px){.arrow{display:none}}
+  /* sections */
+  section{margin-top:40px}
+  h2{font-size:1.3rem;font-weight:800;margin:0 0 6px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  h2 .tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--bg);background:var(--amber);border-radius:999px;padding:2px 10px}
+  h2 .tag.gray{background:var(--faint)}
+  h2 .tag.red{background:var(--red)}
+  h2 .tag.green{background:var(--green)}
+  .sec-lede{color:var(--muted);font-size:.93rem;margin:0 0 16px;max-width:46em}
+  /* album list */
+  .albums{display:grid;gap:10px}
+  .album{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;align-items:flex-start}
+  .album .num{font-size:1.35rem;font-weight:800;color:var(--amber);min-width:1.6em;text-align:right;line-height:1.3;font-variant-numeric:tabular-nums}
+  .album .body{flex:1;min-width:0}
+  .album .artist{font-weight:700;font-size:1.02rem}
+  .album .title{font-style:italic;color:var(--amber2)}
+  .album .meta{font-size:.83rem;color:var(--faint);margin-top:2px}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+  .badge{font-size:.72rem;font-weight:700;border-radius:999px;padding:2px 9px;border:1px solid var(--line2);color:var(--muted);white-space:nowrap}
+  .badge.s{background:#3a2c10;border-color:#7a5c1e;color:var(--amber2)}
+  .badge.up{background:#23301c;border-color:#4a6338;color:#b9d69a}
+  .badge.user{background:#1e2c33;border-color:#3a5a6b;color:#a8d2e2}
+  .badge.f{background:#33202a;border-color:#6b3a4e;color:#e8a8c0}
+  /* evidence cards */
+  .cards{display:grid;gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .card h3{margin:0 0 4px;font-size:1.02rem}
+  .card h3 .ttl{font-style:italic;color:var(--amber2);font-weight:600}
+  .card p{margin:6px 0;color:var(--muted);font-size:.93rem}
+  .card p strong{color:var(--text)}
+  .card .src{font-size:.8rem;margin-top:8px;color:var(--faint)}
+  .card .src a{font-size:.8rem}
+  .verdict{display:inline-block;font-size:.74rem;font-weight:800;border-radius:6px;padding:1px 8px;margin-left:8px;vertical-align:middle;letter-spacing:.03em}
+  .verdict.s{background:#3a2c10;color:var(--amber2);border:1px solid #7a5c1e}
+  .verdict.a{background:#2c2418;color:var(--muted);border:1px solid var(--line2)}
+  .verdict.down{background:#3a1e18;color:#f0a294;border:1px solid #7a3a2e}
+  .card.demoted{border-color:#6b3a2e;background:#241612}
+  .card.gate{border-color:#5a4a22}
+  /* callout */
+  .callout{background:var(--card2);border:1px solid var(--line2);border-radius:var(--radius);padding:16px 18px}
+  .callout p{margin:6px 0;color:var(--muted);font-size:.94rem}
+  .callout p strong{color:var(--text)}
+  .plans{display:grid;gap:10px;margin-top:12px}
+  @media(min-width:700px){.plans{grid-template-columns:1fr 1fr 1fr}}
+  .plan{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg2)}
+  .plan h4{margin:0 0 4px;font-size:.95rem}
+  .plan p{font-size:.86rem;color:var(--muted);margin:0}
+  .plan.chosen{border-color:var(--amber);background:#2a2110;box-shadow:0 0 0 1px var(--amber) inset}
+  .plan .chosen-label{font-size:.72rem;font-weight:800;color:var(--amber2);letter-spacing:.06em}
+  /* candidate lists */
+  .cand{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .cand h3{margin:0 0 8px;font-size:.95rem;color:var(--amber2)}
+  .cand ul{margin:0;padding-left:1.2em;color:var(--muted);font-size:.92rem}
+  .cand li{margin:3px 0}
+  .cand li b{color:var(--text);font-weight:600}
+  .cand li .ttl{font-style:italic}
+  .cand-grid{display:grid;gap:12px}
+  @media(min-width:700px){.cand-grid{grid-template-columns:1fr 1fr}}
+  /* TSV */
+  .tsv-box{background:#0d0a07;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .tsv-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--card)}
+  .tsv-head span{font-size:.82rem;color:var(--muted);font-weight:700;letter-spacing:.04em}
+  #copyBtn{background:var(--amber);color:#1a1206;border:none;border-radius:8px;font-weight:800;font-size:.85rem;padding:9px 18px;cursor:pointer;min-height:40px;font-family:inherit}
+  #copyBtn:hover{background:var(--amber2)}
+  #copyBtn.copied{background:var(--green);color:#101a0a}
+  .tsv-scroll{overflow-x:auto}
+  pre.tsv{margin:0;padding:14px 16px;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.76rem;line-height:1.7;color:#e8dcc8;white-space:pre;min-width:640px}
+  .note{font-size:.82rem;color:var(--faint);margin-top:10px}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--faint);font-size:.82rem}
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .toc a{display:inline-flex;align-items:center;min-height:36px;padding:4px 13px;border:1px solid var(--line2);border-radius:999px;font-size:.83rem;color:var(--muted);text-decoration:none;background:var(--card)}
+  .toc a:hover{color:var(--amber2);border-color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">2024 Album Selection — Evidence</div>
+  <h1>2024年 候補一覧<span class="genre">3. STADIUM COUNTRY &amp; SOUTHERN ROCK</span></h1>
+  <p class="lede">候補28枚から選出を進めた記録。S検証で7枚が確定したものの、厳格ルール（女性アーティスト半数以上）のゲートで一度停止し、女性候補の追加検証を経て<strong>案B＝10枚構成（女性5／男性5）</strong>で確定した。すべての判定に出典リンクを付けている。</p>
+  <nav class="toc" aria-label="目次">
+    <a href="#final">最終10枚</a>
+    <a href="#s-check">S検証の要点</a>
+    <a href="#demote">A降格</a>
+    <a href="#gate">ゲートと追加検証</a>
+    <a href="#decision">ユーザーの決定</a>
+    <a href="#others">その他の候補</a>
+    <a href="#tsv">最終TSV</a>
+  </nav>
+</header>
+
+<div class="flow" aria-label="選出フロー">
+  <div class="step"><div class="n">28枚</div><div class="l">候補収集</div></div>
+  <div class="arrow">→</div>
+  <div class="step"><div class="n">0枚</div><div class="l">重複排除（既出リストと照合）</div></div>
+  <div class="arrow">→</div>
+  <div class="step"><div class="n">8枚</div><div class="l">S検証：S確定7枚＋A降格1枚</div></div>
+  <div class="arrow">→</div>
+  <div class="step warn"><div class="n">停止</div><div class="l">厳格ルールゲート：女性2/7で不合格</div></div>
+  <div class="arrow">→</div>
+  <div class="step"><div class="n">+4枚</div><div class="l">女性A候補を追加検証</div></div>
+  <div class="arrow">→</div>
+  <div class="step final"><div class="n">10枚</div><div class="l">案Bで確定（女性5／男性5）</div></div>
+</div>
+
+<section id="final">
+  <h2>最終アルバム 10枚 <span class="tag">確定</span></h2>
+  <p class="sec-lede">S確定7枚に、追加検証でS昇格した Ella Langley と、ユーザーの判断でAから昇格した Megan Moroney／Kelsea Ballerini を加えた10枚。女性5枚・男性5枚で厳格ルールを達成。</p>
+  <div class="albums">
+    <div class="album"><div class="num">1</div><div class="body"><span class="artist">Lainey Wilson</span> <span class="title">『Whirlwind』</span><div class="meta">発売：2024-08-23</div><div class="badges"><span class="badge s">S</span><span class="badge f">女性</span></div></div></div>
+    <div class="album"><div class="num">2</div><div class="body"><span class="artist">Miranda Lambert</span> <span class="title">『Postcards from Texas』</span><div class="meta">発売：2024-09-13</div><div class="badges"><span class="badge s">S</span><span class="badge f">女性</span></div></div></div>
+    <div class="album"><div class="num">3</div><div class="body"><span class="artist">Blackberry Smoke</span> <span class="title">『Be Right Here』</span><div class="meta">発売：2024-02-16</div><div class="badges"><span class="badge s">S</span></div></div></div>
+    <div class="album"><div class="num">4</div><div class="body"><span class="artist">The Red Clay Strays</span> <span class="title">『Made by These Moments』</span><div class="meta">発売：2024-07-26</div><div class="badges"><span class="badge s">S</span></div></div></div>
+    <div class="album"><div class="num">5</div><div class="body"><span class="artist">Cody Jinks</span> <span class="title">『Change the Game』</span><div class="meta">発売：2024-03-22</div><div class="badges"><span class="badge s">S</span></div></div></div>
+    <div class="album"><div class="num">6</div><div class="body"><span class="artist">49 Winchester</span> <span class="title">『Leavin' This Holler』</span><div class="meta">発売：2024-08-02</div><div class="badges"><span class="badge s">S</span></div></div></div>
+    <div class="album"><div class="num">7</div><div class="body"><span class="artist">Robert Jon &amp; The Wreck</span> <span class="title">『Red Moon Rising』</span><div class="meta">発売：2024-06-28</div><div class="badges"><span class="badge s">S</span></div></div></div>
+    <div class="album"><div class="num">8</div><div class="body"><span class="artist">Ella Langley</span> <span class="title">『Hungover』</span><div class="meta">発売：2024-08-02</div><div class="badges"><span class="badge up">S（追加検証で昇格）</span><span class="badge f">女性</span></div></div></div>
+    <div class="album"><div class="num">9</div><div class="body"><span class="artist">Megan Moroney</span> <span class="title">『Am I Okay?』</span><div class="meta">発売：2024-07-12</div><div class="badges"><span class="badge user">A→昇格（ユーザーの判断）</span><span class="badge f">女性</span></div></div></div>
+    <div class="album"><div class="num">10</div><div class="body"><span class="artist">Kelsea Ballerini</span> <span class="title">『Patterns』</span><div class="meta">発売：2024-10-25</div><div class="badges"><span class="badge user">A→昇格（ユーザーの判断）</span><span class="badge f">女性</span></div></div></div>
+  </div>
+</section>
+
+<section id="s-check">
+  <h2>S検証の要点 <span class="tag green">S確定 7枚</span></h2>
+  <p class="sec-lede">発売年・ジャンル適合性を出典で確認し、Sランクと判定した7枚。各カード末尾が出典。</p>
+  <div class="cards">
+    <div class="card">
+      <h3>Lainey Wilson <span class="ttl">『Whirlwind』</span><span class="verdict s">S</span></h3>
+      <p>ジャンル欄は <strong>Country／country rock</strong>。Billboard「2024年のベスト・カントリー・アルバム」<strong>第2位</strong>、グラミー賞最優秀カントリー・アルバム候補。規模・評価ともに文句なしの筆頭。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/Whirlwind_(Lainey_Wilson_album)" target="_blank" rel="noopener">Wikipedia — Whirlwind (Lainey Wilson album)</a></div>
+    </div>
+    <div class="card">
+      <h3>Miranda Lambert <span class="ttl">『Postcards from Texas』</span><span class="verdict s">S</span></h3>
+      <p>ジャンル欄は <strong>Country</strong>。「テキサスへのラブレター」と位置づけられた作品。なお通算枚数の表記には揺れがある（9th solo／10th）。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/Postcards_from_Texas" target="_blank" rel="noopener">Wikipedia — Postcards from Texas</a></div>
+    </div>
+    <div class="card">
+      <h3>Blackberry Smoke <span class="ttl">『Be Right Here』</span><span class="verdict s">S</span></h3>
+      <p>ジャンル欄がそのまま <strong>「Southern rock」</strong> で、本ジャンルへの最も直接的な適合。ドラマー <strong>Brit Turner の遺作</strong>となったアルバムでもある。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/Be_Right_Here_(album)" target="_blank" rel="noopener">Wikipedia — Be Right Here (album)</a></div>
+    </div>
+    <div class="card">
+      <h3>The Red Clay Strays <span class="ttl">『Made by These Moments』</span><span class="verdict s">S</span></h3>
+      <p>ジャンル欄は <strong>Country rock</strong>。プロデューサーは <strong>Dave Cobb</strong>。サザンなルーツ感とバンドの勢いが同居する1枚。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/Made_by_These_Moments" target="_blank" rel="noopener">Wikipedia — Made by These Moments</a></div>
+    </div>
+    <div class="card">
+      <h3>Cody Jinks <span class="ttl">『Change the Game』</span><span class="verdict s">S</span></h3>
+      <p><strong>Wikipediaでは確認できない</strong>（アルバム単独ページなし。アーティストページのディスコグラフィ＋AllMusicで検証）。Faith No More の新録カバーを1曲含むが、カバー集ではない。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/Cody_Jinks" target="_blank" rel="noopener">Wikipedia — Cody Jinks</a></div>
+    </div>
+    <div class="card">
+      <h3>49 Winchester <span class="ttl">『Leavin' This Holler』</span><span class="verdict s">S</span></h3>
+      <p>ジャンル欄は <strong>Alt-country／Americana／country rock</strong>。Sの7枚の中では適合根拠が最も間接的であることを、検証の段階で明記した。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/Leavin%27_This_Holler" target="_blank" rel="noopener">Wikipedia — Leavin' This Holler</a></div>
+    </div>
+    <div class="card">
+      <h3>Robert Jon &amp; The Wreck <span class="ttl">『Red Moon Rising』</span><span class="verdict s">S</span></h3>
+      <p>Wikipediaにアルバム単独ページはなく、アーティストページ＋専門メディアで検証。ブルース／サザン・ソウルの厚いバンドサウンドが持ち味。</p>
+      <div class="src">出典：<a href="https://grande-rock.com/news/robert-jon-the-wreck-to-release-new-studio-album-red-moon-rising-on-june-28th-2024/" target="_blank" rel="noopener">Grande Rock — Robert Jon &amp; The Wreck『Red Moon Rising』発売告知</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="demote">
+  <h2>Aへ降格 <span class="tag red">絶対除外フラグ</span></h2>
+  <div class="cards">
+    <div class="card demoted">
+      <h3>Koe Wetzel <span class="ttl">『9 Lives』</span><span class="verdict down">S検証 → A降格</span></h3>
+      <p>ジャンル欄は Country／country rock／grunge でカントリーの核はある。しかしレーベルの公式バイオが一貫して <strong>「mixing country with rock, hip-hop, and grunge」</strong> と明記し、ラッパー <strong>XXXTentacion のカバー</strong>も収録している。全ジャンル共通の絶対除外（ラップ／ヒップホップ）の境界に直接触れるため、A降格とした。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/9_Lives_(Koe_Wetzel_album)" target="_blank" rel="noopener">Wikipedia — 9 Lives (Koe Wetzel album)</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="gate">
+  <h2>ゲートと女性候補の追加検証 <span class="tag gray">厳格ルール</span></h2>
+  <div class="callout">
+    <p><strong>厳格ルール：</strong>STADIUM COUNTRY &amp; SOUTHERN ROCK は、女性／女性フロントが10枚中5枚。10枚未満の構成なら半数以上が必要。</p>
+    <p>S確定7枚のうち女性は Lainey Wilson と Miranda Lambert の<strong>2枚のみ</strong>で、ルールを満たさず<strong>ゲートで停止</strong>。そこで女性のA候補4枚を追加でS検証した。</p>
+  </div>
+  <div class="cards" style="margin-top:12px">
+    <div class="card gate">
+      <h3>Ella Langley <span class="ttl">『Hungover』</span><span class="verdict s">→ S</span></h3>
+      <p>AllMusic が彼女のサウンドを <strong>「rootsy Southern rock に浸されたもの」</strong> と規定しており、追加検証4枚の中でサザンロックの中核に届く唯一の1枚。<strong>RIAAプラチナム</strong>、Top Country Albums <strong>4位</strong>。</p>
+      <p><strong>境界フラグ：</strong>発売時点のツアー規模はクラブ〜小規模シアター級で、「STADIUM」の規模感には届かない。Sの根拠は規模ではなく音の適合である。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/Hungover_(album)" target="_blank" rel="noopener">Wikipedia — Hungover (album)</a> ／ <a href="https://www.allmusic.com/album/hungover-mw0004305706" target="_blank" rel="noopener">AllMusic — Hungover</a></div>
+    </div>
+    <div class="card gate">
+      <h3>Megan Moroney <span class="ttl">『Am I Okay?』</span><span class="verdict a">→ A</span></h3>
+      <p>商業スケールはS級（<strong>Billboard 200 初登場9位、RIAAプラチナム</strong>）だが、音はカントリー・ポップの中核で、ロック要素の根拠は薄い。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/Am_I_Okay%3F" target="_blank" rel="noopener">Wikipedia — Am I Okay?</a></div>
+    </div>
+    <div class="card gate">
+      <h3>Kelsea Ballerini <span class="ttl">『Patterns』</span><span class="verdict a">→ A</span></h3>
+      <p><strong>Billboard 200 で4位</strong>、初の<strong>アリーナツアー</strong>と規模はS級。しかしジャンル表記は <strong>「Country pop」</strong> で、ロック要素の証拠は見つからなかった。</p>
+      <div class="src">出典：<a href="https://en.wikipedia.org/wiki/Patterns_(Kelsea_Ballerini_album)" target="_blank" rel="noopener">Wikipedia — Patterns (Kelsea Ballerini album)</a></div>
+    </div>
+    <div class="card gate">
+      <h3>Gabby Barrett <span class="ttl">『Chapter &amp; Verse』</span><span class="verdict a">→ A</span></h3>
+      <p>Top Country Albums 最高<strong>39位</strong>どまりで、追加検証4枚の中では最も弱い。昇格対象にはならなかった。</p>
+      <div class="src">出典：<a href="https://en.m.wikipedia.org/wiki/Chapter_%26_Verse_(Gabby_Barrett_album)" target="_blank" rel="noopener">Wikipedia — Chapter &amp; Verse (Gabby Barrett album)</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="decision">
+  <h2>ユーザーの決定 <span class="tag">2026-11-17</span></h2>
+  <p class="sec-lede">追加検証の結果を踏まえ、3案を提示。ユーザーは<strong>案B（10枚構成）</strong>を選択した。</p>
+  <div class="plans">
+    <div class="plan">
+      <h4>案A：6枚構成</h4>
+      <p>49 Winchester と Robert Jon &amp; The Wreck を外し、Ella Langley を加える。女性3／男性3で半数を満たす最小構成。</p>
+    </div>
+    <div class="plan chosen">
+      <div class="chosen-label">✓ 採用</div>
+      <h4>案B：10枚構成</h4>
+      <p>S 7枚に Ella Langley＋Megan Moroney＋Kelsea Ballerini を加える。女性5／男性5でルール達成。</p>
+    </div>
+    <div class="plan">
+      <h4>案C：例外として7枚のまま</h4>
+      <p>厳格ルールを今回だけ例外扱いにし、S確定7枚（女性2枚）で確定する。</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:12px">
+    <p>Moroney と Ballerini の昇格は、<strong>「スケールはS級・音はポップ中核」</strong>という開示をした上でのユーザーの判断であり、<strong>今回限りの扱い</strong>として記録する。次回以降の選出で前例とはしない。</p>
+  </div>
+</section>
+
+<section id="others">
+  <h2>その他の候補 <span class="tag gray">不採用</span></h2>
+  <p class="sec-lede">S検証・昇格の対象にならなかった A／B 候補。境界に触れるものは理由を明記した。</p>
+  <div class="cand-grid">
+    <div class="cand">
+      <h3>A候補（不採用）</h3>
+      <ul>
+        <li><b>Beyoncé</b> <span class="ttl">『Cowboy Carter』</span> — ジャンル欄に hip-hop／R&B も併記される境界盤のため、昇格対象外</li>
+        <li><b>Post Malone</b> <span class="ttl">『F-1 Trillion』</span> — 出自はヒップホップだが本作は Country 分類。境界を明示した上で不採用</li>
+        <li><b>Luke Combs</b> <span class="ttl">『Fathers &amp; Sons』</span></li>
+        <li><b>Zach Bryan</b> <span class="ttl">『The Great American Bar Scene』</span></li>
+        <li><b>Keith Urban</b> <span class="ttl">『High』</span></li>
+        <li><b>Thomas Rhett</b> <span class="ttl">『About a Woman』</span></li>
+        <li><b>Johnny Blue Skies</b> <span class="ttl">『Passage du Desir』</span></li>
+        <li><b>Muscadine Bloodline</b> <span class="ttl">『The Coastal Plain』</span></li>
+        <li><b>Riley Green</b> <span class="ttl">『Don't Mind If I Do』</span></li>
+        <li><b>Kenny Chesney</b> <span class="ttl">『Born』</span></li>
+      </ul>
+    </div>
+    <div class="cand">
+      <h3>B候補（不採用）</h3>
+      <ul>
+        <li><b>Kacey Musgraves</b> <span class="ttl">『Deeper Well』</span></li>
+        <li><b>Carly Pearce</b> <span class="ttl">『Hummingbird』</span></li>
+        <li><b>Marcus King</b> <span class="ttl">『Mood Swings』</span></li>
+        <li><b>Sierra Ferrell</b> <span class="ttl">『Trail of Flowers』</span></li>
+        <li><b>Waxahatchee</b> <span class="ttl">『Tigers Blood』</span></li>
+        <li><b>Charley Crockett</b> <span class="ttl">『$10 Cowboy』</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="tsv">
+  <h2>最終アルバムTSV</h2>
+  <p class="sec-lede">確定した10枚の最終提出形式（GENRE／ARTIST／ALBUM／YEAR）。</p>
+  <div class="tsv-box">
+    <div class="tsv-head"><span>FINAL ALBUMS — TSV</span><button id="copyBtn" type="button">TSVをコピー</button></div>
+    <div class="tsv-scroll"><pre class="tsv" id="tsvText">GENRE	ARTIST	ALBUM	YEAR
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Lainey Wilson	Whirlwind	2024
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Miranda Lambert	Postcards from Texas	2024
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Blackberry Smoke	Be Right Here	2024
+STADIUM COUNTRY &amp; SOUTHERN ROCK	The Red Clay Strays	Made by These Moments	2024
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Cody Jinks	Change the Game	2024
+STADIUM COUNTRY &amp; SOUTHERN ROCK	49 Winchester	Leavin' This Holler	2024
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Robert Jon &amp; The Wreck	Red Moon Rising	2024
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Ella Langley	Hungover	2024
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Megan Moroney	Am I Okay?	2024
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Kelsea Ballerini	Patterns	2024</pre></div>
+  </div>
+  <p class="note">コピーボタンでタブ区切りテキストをそのままコピーできます（スプレッドシートへの貼り付け用）。</p>
+</section>
+
+<footer>
+  2024年 STADIUM COUNTRY &amp; SOUTHERN ROCK 候補一覧 — 候補28枚／重複排除0枚／S検証8枚／追加検証4枚／最終10枚（女性5・男性5）。ユーザーの決定：2026-11-17、案B採用。
+</footer>
+
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('copyBtn');
+  var pre = document.getElementById('tsvText');
+  btn.addEventListener('click', function(){
+    var text = pre.innerText;
+    function done(){
+      btn.textContent = 'コピーしました ✓';
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.textContent = 'TSVをコピー'; btn.classList.remove('copied'); }, 2200);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ fallback(); });
+    } else { fallback(); }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+})();
+</script>
+</body>
+</html>

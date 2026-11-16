@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<link rel="icon" href="data:," />
+<title>2024 STADIUM COUNTRY &amp; SOUTHERN ROCK 楽曲選出</title>
+<style>
+  :root{
+    --bg:#14110d;
+    --bg2:#1a1712;
+    --surface:#211d16;
+    --surface2:#29241b;
+    --line:#3a3325;
+    --line-soft:#2e2a20;
+    --text:#f0eadb;
+    --muted:#b8ad97;
+    --muted2:#8f8672;
+    --accent:#d9a441;
+    --accent2:#c97a3a;
+    --accent-soft:#2e2513;
+    --badge-bg:#2b2417;
+    --badge-ballad:#3a2118;
+    --badge-ballad-text:#f0b48a;
+    --link:#e8bc6a;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--link); text-underline-offset:3px; word-break:break-all}
+  a:hover{color:#f5d48a}
+  .wrap{max-width:920px; margin:0 auto; padding:0 20px 64px}
+
+  /* Header */
+  .hero{padding:36px 0 8px; border-bottom:1px solid var(--line)}
+  .hero-year{font-size:13px; letter-spacing:.14em; color:var(--accent); font-weight:700}
+  .hero h1{font-size:30px; line-height:1.3; margin:10px 0 6px; font-weight:800; letter-spacing:.01em}
+  .hero h1 .en{display:block; font-size:19px; color:var(--muted); font-weight:700; letter-spacing:.04em; margin-top:4px}
+  .hero-lead{color:var(--muted); font-size:15px; margin:14px 0 0; max-width:680px}
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:22px 0 20px}
+  .stat{background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius); padding:14px 14px 10px}
+  .stat b{display:block; font-size:26px; line-height:1.1; color:var(--text)}
+  .stat span{font-size:12.5px; color:var(--muted); line-height:1.5; display:block; margin-top:4px}
+  .playlist-note{
+    background:var(--accent-soft); border:1px solid #4a3a17; border-radius:var(--radius);
+    padding:14px 16px; font-size:14.5px; margin:0 0 6px;
+  }
+  .playlist-note strong{color:var(--accent)}
+  .rules{margin:22px 0 4px; background:var(--bg2); border:1px solid var(--line-soft); border-radius:var(--radius); padding:16px 18px}
+  .rules h2{font-size:15px; margin:0 0 8px}
+  .rules ul{margin:0; padding-left:1.2em; color:var(--muted); font-size:14.5px}
+  .rules li{margin:3px 0}
+  .rules li strong{color:var(--text)}
+
+  /* Nav */
+  .nav{margin:26px 0 6px}
+  .nav h2{font-size:13px; letter-spacing:.12em; color:var(--muted2); margin:0 0 10px; font-weight:700}
+  .nav ol{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:8px}
+  .nav a{
+    display:flex; gap:10px; align-items:baseline; text-decoration:none; color:var(--text);
+    background:var(--surface); border:1px solid var(--line-soft); border-radius:10px; padding:10px 12px; min-height:44px;
+  }
+  .nav a:hover{border-color:var(--accent)}
+  .nav .n{color:var(--accent); font-weight:800; font-size:13px; flex:none}
+  .nav .t{font-size:14px; line-height:1.45}
+  .nav .t small{display:block; color:var(--muted); font-size:12.5px}
+
+  /* Album sections */
+  .album{margin-top:38px; scroll-margin-top:16px}
+  .album-head{display:flex; gap:14px; align-items:flex-start; border-bottom:2px solid var(--accent2); padding-bottom:10px}
+  .album-num{
+    flex:none; width:40px; height:40px; border-radius:50%; background:var(--accent2); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:17px; margin-top:2px;
+  }
+  .album-head h2{font-size:21px; margin:0; line-height:1.35}
+  .album-head h2 .album-title{color:var(--muted); font-weight:600}
+  .album-head p{margin:2px 0 0; color:var(--muted2); font-size:13px}
+
+  .track{
+    background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius);
+    padding:18px 18px 14px; margin-top:14px;
+  }
+  .track-top{display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 12px}
+  .track-no{color:var(--accent); font-weight:800; font-size:14px}
+  .track h3{font-size:18px; margin:0; line-height:1.4}
+  .track .dur{color:var(--muted); font-size:14px; font-variant-numeric:tabular-nums}
+  .badges{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 2px}
+  .badge{
+    font-size:12px; font-weight:700; line-height:1; padding:6px 9px; border-radius:999px;
+    background:var(--badge-bg); color:var(--accent); border:1px solid #4a3a17;
+  }
+  .badge.ballad{background:var(--badge-ballad); color:var(--badge-ballad-text); border-color:#5c3423}
+  .badge.plain{background:var(--surface2); color:var(--muted); border-color:var(--line)}
+  .track p{font-size:14.5px; color:#ddd5c2; margin:8px 0 0}
+  .track p.sub{color:var(--muted); font-size:13.5px}
+  .yt{
+    margin-top:10px; font-size:13.5px; color:var(--muted);
+    background:var(--bg2); border:1px solid var(--line-soft); border-radius:10px; padding:9px 12px;
+  }
+  .yt strong{color:var(--text); font-weight:700}
+  .src{margin-top:10px; font-size:13px; color:var(--muted2)}
+  .src a{font-size:13px}
+
+  /* TSV */
+  .tsv-section{margin-top:48px}
+  .tsv-section h2{font-size:21px; margin:0 0 6px}
+  .tsv-section>p{color:var(--muted); font-size:14.5px; margin:0 0 14px}
+  .tsv-box{background:#0d0b08; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+  .tsv-bar{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; padding:10px 12px 10px 16px; border-bottom:1px solid var(--line-soft); background:var(--surface)}
+  .tsv-bar span{font-size:13px; color:var(--muted); font-weight:700; letter-spacing:.06em; white-space:normal}
+  #copyBtn{
+    appearance:none; border:1px solid var(--accent); background:var(--accent); color:#1a1405;
+    font-weight:800; font-size:14px; border-radius:9px; padding:10px 18px; min-height:44px; cursor:pointer; font-family:inherit;
+  }
+  #copyBtn:active{transform:translateY(1px)}
+  #copyBtn.copied{background:#3f7a3a; border-color:#3f7a3a; color:#fff}
+  .tsv-box pre{
+    margin:0; padding:16px; font-size:12.5px; line-height:1.65; color:#d8d0ba;
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    white-space:pre-wrap; word-break:break-all; overflow-wrap:anywhere;
+  }
+  footer{margin-top:44px; border-top:1px solid var(--line); padding-top:18px; color:var(--muted2); font-size:13px}
+
+  @media (max-width:640px){
+    .hero h1{font-size:25px}
+    .hero h1 .en{font-size:16px}
+    .stats{grid-template-columns:1fr 1fr}
+    .nav ol{grid-template-columns:1fr}
+    .track{padding:16px 14px 12px}
+    .wrap{padding:0 16px 52px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-year">2024 ・ ジャンル 3</div>
+    <h1>2024年 楽曲選出<span class="en">STADIUM COUNTRY &amp; SOUTHERN ROCK</span></h1>
+    <p class="hero-lead">最終選出アルバム10枚から各2曲、計20曲を選出。各曲のシングル実績・選出理由・再生回数の出典を、確認できた範囲で記録したエビデンスページです。</p>
+
+    <div class="stats">
+      <div class="stat"><b>10枚</b><span>最終アルバム（女性5／男性5）</span></div>
+      <div class="stat"><b>20曲</b><span>各アルバム2曲・TSV順</span></div>
+      <div class="stat"><b>20曲</b><span>全曲シングル／プロモーショナル・シングル</span></div>
+      <div class="stat"><b>5曲</b><span>バラード例外（理由を各曲に明示）</span></div>
+    </div>
+
+    <div class="playlist-note">
+      <strong>プレイリスト：</strong>「2024年STADIUM COUNTRY &amp; SOUTHERN ROCK」（20曲・TSV順）を作成済み。曲数と順番を確認済みです。
+    </div>
+
+    <div class="rules">
+      <h2>選出の前提</h2>
+      <ul>
+        <li><strong>全曲2分超</strong>（最短は「Baggage」2:32）。2分以下の曲は対象外。</li>
+        <li><strong>バラードは原則不採用。</strong>例外は5曲のみで、いずれも「アーティスト／バンドにとって重要」「その年に重要」に当たる理由を各曲に明記しています。</li>
+        <li><strong>YouTube再生回数</strong>は、公式値が確認できない場合は「確認できない」と明記。Kworb／vidIQ／SocialCounts.org 等の数字は<strong>「第三者集計」</strong>と明記しています。</li>
+        <li>収録確認は原則 Wikipedia 等で照合。独立したアルバムページがない作品は、Discogs／Qobuz／専門メディア等で確認した旨を各曲に記しています。</li>
+      </ul>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="アルバム一覧">
+    <h2>アルバム一覧</h2>
+    <ol>
+      <li><a href="#a1"><span class="n">1</span><span class="t">Lainey Wilson<small>『Whirlwind』</small></span></a></li>
+      <li><a href="#a2"><span class="n">2</span><span class="t">Miranda Lambert<small>『Postcards from Texas』</small></span></a></li>
+      <li><a href="#a3"><span class="n">3</span><span class="t">Blackberry Smoke<small>『Be Right Here』</small></span></a></li>
+      <li><a href="#a4"><span class="n">4</span><span class="t">The Red Clay Strays<small>『Made by These Moments』</small></span></a></li>
+      <li><a href="#a5"><span class="n">5</span><span class="t">Cody Jinks<small>『Change the Game』</small></span></a></li>
+      <li><a href="#a6"><span class="n">6</span><span class="t">49 Winchester<small>『Leavin' This Holler』</small></span></a></li>
+      <li><a href="#a7"><span class="n">7</span><span class="t">Robert Jon &amp; The Wreck<small>『Red Moon Rising』</small></span></a></li>
+      <li><a href="#a8"><span class="n">8</span><span class="t">Ella Langley<small>『Hungover』</small></span></a></li>
+      <li><a href="#a9"><span class="n">9</span><span class="t">Megan Moroney<small>『Am I Okay?』</small></span></a></li>
+      <li><a href="#a10"><span class="n">10</span><span class="t">Kelsea Ballerini<small>『Patterns』</small></span></a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section class="album" id="a1">
+    <div class="album-head">
+      <div class="album-num">1</div>
+      <div>
+        <h2>Lainey Wilson <span class="album-title">『Whirlwind』</span></h2>
+        <p>収録曲 1–2</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 1</span><h3>Hang Tight Honey</h3><span class="dur">3:09</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">リードシングル（2024-05-20）</span></div>
+      <p>リードシングル。Wikipedia アルバム頁の Singles 欄筆頭に掲載。</p>
+      <div class="yt"><strong>YouTube再生回数：</strong>公式MVの正確な現在値は確認できない。</div>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Whirlwind_(Lainey_Wilson_album)" target="_blank" rel="noopener">Wikipedia — Whirlwind (Lainey Wilson album)</a> ／ <a href="https://en.wikipedia.org/wiki/Hang_Tight_Honey" target="_blank" rel="noopener">Wikipedia — Hang Tight Honey</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 2</span><h3>4x4xU</h3><span class="dur">3:59</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge ballad">バラード例外</span></div>
+      <p>本作最大のヒット。カントリー・ラジオで自身8曲目の No.1、RIAA 2× Platinum。「アーティストにとって重要」に当たるため、バラード例外として採用しました。代替候補は「Country's Cool Again」。</p>
+      <div class="yt"><strong>YouTube再生回数：</strong>第三者集計（vidIQ）で公式MV 28.14M views。</div>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/4x4xU" target="_blank" rel="noopener">Wikipedia — 4x4xU</a></p>
+    </article>
+  </section>
+
+  <!-- 2 -->
+  <section class="album" id="a2">
+    <div class="album-head">
+      <div class="album-num">2</div>
+      <div>
+        <h2>Miranda Lambert <span class="album-title">『Postcards from Texas』</span></h2>
+        <p>収録曲 3–4</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 3</span><h3>Wranglers</h3><span class="dur">3:13</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">リードシングル</span></div>
+      <p>リードシングルで、移籍後最初のシングル。</p>
+      <p class="sub">注記：Spotify のアルバム収録版は「Wranglers - Extended」（3:13）という形態で、プレイリストにはこの長さの一致するアルバム版を収録しています。</p>
+      <div class="yt"><strong>YouTube再生回数：</strong>第三者集計（Kworb）で公式 Video 3,333,238 views（アルバム内最多）。</div>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Postcards_from_Texas" target="_blank" rel="noopener">Wikipedia — Postcards from Texas</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 4</span><h3>Run</h3><span class="dur">2:43</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge ballad">バラード例外</span></div>
+      <p>第2シングル。本作で唯一の単独作詞曲で、約10年前に書かれ未発表だった曲をようやく収録した経緯から「アーティストにとって重要」として例外採用。代替候補は「Alimony」。</p>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Run_(Miranda_Lambert_song)" target="_blank" rel="noopener">Wikipedia — Run (Miranda Lambert song)</a></p>
+    </article>
+  </section>
+
+  <!-- 3 -->
+  <section class="album" id="a3">
+    <div class="album-head">
+      <div class="album-num">3</div>
+      <div>
+        <h2>Blackberry Smoke <span class="album-title">『Be Right Here』</span></h2>
+        <p>収録曲 5–6</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 5</span><h3>Dig A Hole</h3><span class="dur">4:12</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">リードシングル</span></div>
+      <p>リードシングル。</p>
+      <div class="yt"><strong>YouTube再生回数：</strong>第三者集計（vidIQ）で公式MV約951K。公式の現在値は確認できない。</div>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Be_Right_Here_(album)" target="_blank" rel="noopener">Wikipedia — Be Right Here (album)</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 6</span><h3>Little Bit Crazy</h3><span class="dur">4:46</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">第2弾シングル</span></div>
+      <p>第2弾シングル。本人談「It's a rock and roll song」。</p>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Be_Right_Here_(album)" target="_blank" rel="noopener">Wikipedia — Be Right Here (album)</a></p>
+    </article>
+  </section>
+
+  <!-- 4 -->
+  <section class="album" id="a4">
+    <div class="album-head">
+      <div class="album-num">4</div>
+      <div>
+        <h2>The Red Clay Strays <span class="album-title">『Made by These Moments』</span></h2>
+        <p>収録曲 7–8</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 7</span><h3>Wanna Be Loved</h3><span class="dur">3:37</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge ballad">バラード例外</span></div>
+      <p>メジャーデビュー作のリードシングル。バンドは本曲でレイトナイトTVデビューを果たし、Hot 100 入り。「バンドにとって重要／その年に重要」として例外採用。非バラードの明確な代替シングルはありません。</p>
+      <div class="yt"><strong>再生指標：</strong>第三者集計（Kworb）では 225,348,442 streams。</div>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Wanna_Be_Loved" target="_blank" rel="noopener">Wikipedia — Wanna Be Loved</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 8</span><h3>Devil In My Ear</h3><span class="dur">3:52</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">2024-06 リリース</span></div>
+      <p>2024年6月リリースのシングル。</p>
+      <div class="yt"><strong>再生指標：</strong>第三者集計（Kworb）で 23,817,062 streams。</div>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Made_by_These_Moments" target="_blank" rel="noopener">Wikipedia — Made by These Moments</a></p>
+    </article>
+  </section>
+
+  <!-- 5 -->
+  <section class="album" id="a5">
+    <div class="album-head">
+      <div class="album-num">5</div>
+      <div>
+        <h2>Cody Jinks <span class="album-title">『Change the Game』</span></h2>
+        <p>収録曲 9–10 ／ Wikipedia に独立したアルバムページがないため、収録確認は Discogs＋Qobuz＋レーベル発表で実施</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 9</span><h3>Outlaws and Mustangs</h3><span class="dur">4:00</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">リードシングル</span></div>
+      <p>リードシングル。</p>
+      <div class="yt"><strong>YouTube再生回数：</strong>公式リリック動画について第三者集計（vidIQ）で約3.46M（アルバム内最多）。</div>
+      <p class="src">出典：<a href="https://themusicuniverse.com/cody-jinks-announces-change-game/" target="_blank" rel="noopener">The Music Universe — Cody Jinks announces Change the Game</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 10</span><h3>Change the Game</h3><span class="dur">3:29</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">タイトル曲</span></div>
+      <p>タイトル曲のシングル。シングル「Sober Thing」はバラードのため除外、カバー曲「Take This Bottle」も除外しました。</p>
+      <p class="src">出典：<a href="https://www.qobuz.com/ie-en/album/change-the-game-cody-jinks/ur4ra3jq0p9kc" target="_blank" rel="noopener">Qobuz — Change the Game / Cody Jinks</a></p>
+    </article>
+  </section>
+
+  <!-- 6 -->
+  <section class="album" id="a6">
+    <div class="album-head">
+      <div class="album-num">6</div>
+      <div>
+        <h2>49 Winchester <span class="album-title">『Leavin' This Holler』</span></h2>
+        <p>収録曲 11–12</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 11</span><h3>Yearnin' For You</h3><span class="dur">3:35</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">リードシングル</span></div>
+      <p>リードシングル。</p>
+      <div class="yt"><strong>YouTube再生回数：</strong>公式MV 223,303回（公式チャンネル動画一覧のスナップショット時点）。</div>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Leavin%27_This_Holler" target="_blank" rel="noopener">Wikipedia — Leavin' This Holler</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 12</span><h3>Make It Count</h3><span class="dur">4:00</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">両A面シングル</span></div>
+      <p>「Hillbilly Happy」との両A面シングル。「Southern Rock anthem」と評される曲です。</p>
+      <p class="sub">なお、タイトル曲は公式MV約132万回と人気が最大ですが、バラードのため除外しました。</p>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Leavin%27_This_Holler" target="_blank" rel="noopener">Wikipedia — Leavin' This Holler</a></p>
+    </article>
+  </section>
+
+  <!-- 7 -->
+  <section class="album" id="a7">
+    <div class="album-head">
+      <div class="album-num">7</div>
+      <div>
+        <h2>Robert Jon &amp; The Wreck <span class="album-title">『Red Moon Rising』</span></h2>
+        <p>収録曲 13–14 ／ Wikipedia に単独アルバムページがないため、収録確認は専門メディア＋Qobuzで照合</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 13</span><h3>Red Moon Rising</h3><span class="dur">4:54</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">リードシングル／タイトル曲</span></div>
+      <p>リードシングルでありタイトル曲。</p>
+      <div class="yt"><strong>YouTube再生回数：</strong>公式MVの正確な現在の再生回数は確認できない。</div>
+      <p class="src">出典：<a href="https://grande-rock.com/news/robert-jon-the-wreck-to-release-new-studio-album-red-moon-rising-on-june-28th-2024/" target="_blank" rel="noopener">Grande Rock — Robert Jon &amp; The Wreck to release Red Moon Rising</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 14</span><h3>Ballad Of A Broken Hearted Man</h3><span class="dur">5:23</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge ballad">バラード例外</span></div>
+      <p>本作で唯一、YouTube 100万回超が記事で確認できる曲で、「crown jewel」と評価されています。「アーティストにとって重要」として例外採用。代替候補は「Stone Cold Killer」。</p>
+      <p class="src">出典：<a href="https://bluesrockreview.com/2024/06/robert-jon-and-the-wreck-red-moon-rising-review.html" target="_blank" rel="noopener">Blues Rock Review — Red Moon Rising review</a></p>
+    </article>
+  </section>
+
+  <!-- 8 -->
+  <section class="album" id="a8">
+    <div class="album-head">
+      <div class="album-num">8</div>
+      <div>
+        <h2>Ella Langley <span class="album-title">『Hungover』</span></h2>
+        <p>収録曲 15–16</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 15</span><h3>You Look Like You Love Me</h3><span class="dur">3:44</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">Riley Green とのデュエット</span></div>
+      <p>本作唯一の公式ラジオ・シングル。本人初の Hot 100 入り（最高30位）、Country Airplay 1位、CMA Musical Event of the Year 受賞、RIAA 4× Platinum。</p>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/You_Look_Like_You_Love_Me" target="_blank" rel="noopener">Wikipedia — You Look Like You Love Me</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 16</span><h3>Nicotine</h3><span class="dur">3:36</span></div>
+      <div class="badges"><span class="badge">プロモーショナル・シングル</span></div>
+      <p>プロモーショナル・シングル。Apple Music のアルバム紹介文が「Fan favorite」と明記するファン人気曲です。</p>
+      <p class="src">出典：<a href="https://music.apple.com/gb/album/hungover/1749121114" target="_blank" rel="noopener">Apple Music — Hungover / Ella Langley</a></p>
+    </article>
+  </section>
+
+  <!-- 9 -->
+  <section class="album" id="a9">
+    <div class="album-head">
+      <div class="album-num">9</div>
+      <div>
+        <h2>Megan Moroney <span class="album-title">『Am I Okay?』</span></h2>
+        <p>収録曲 17–18</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 17</span><h3>Am I Okay?</h3><span class="dur">3:55</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">タイトル曲／リード・ラジオシングル</span></div>
+      <p>タイトル曲かつリード・ラジオシングル。Hot 100 最高34位、RIAA 2× Platinum。</p>
+      <p class="sub">「Hell of a Show」（1:47）は短尺のため除外しました。</p>
+      <div class="yt"><strong>YouTube再生回数：</strong>公式MVについて第三者集計（SocialCounts.org）で 12,009,352 views。</div>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Am_I_Okay%3F" target="_blank" rel="noopener">Wikipedia — Am I Okay?</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 18</span><h3>Indifferent</h3><span class="dur">2:56</span></div>
+      <div class="badges"><span class="badge">プロモーショナル・シングル</span></div>
+      <p>プロモーショナル・シングル。Holler が「uptempo rocker」と明記しています。「No Caller ID」はバラードのため原則不採用とし、本曲を優先しました。</p>
+      <p class="src">出典：<a href="https://holler.country/lyrics/indifferent-by-megan-moroney-lyrics-and-meaning/" target="_blank" rel="noopener">Holler — Indifferent by Megan Moroney: lyrics and meaning</a></p>
+    </article>
+  </section>
+
+  <!-- 10 -->
+  <section class="album" id="a10">
+    <div class="album-head">
+      <div class="album-num">10</div>
+      <div>
+        <h2>Kelsea Ballerini <span class="album-title">『Patterns』</span></h2>
+        <p>収録曲 19–20</p>
+      </div>
+    </div>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 19</span><h3>Cowboys Cry Too</h3><span class="dur">3:51</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge ballad">バラード例外</span><span class="badge plain">Noah Kahan とのデュエット</span></div>
+      <p>Noah Kahan とのデュエットでリードシングル。2025年 Grammy Best Country Duo/Group Performance ノミネート。「アーティストにとって重要／その年に重要」として例外採用。代替候補は「Sorry Mom」。</p>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Patterns_(Kelsea_Ballerini_album)" target="_blank" rel="noopener">Wikipedia — Patterns (Kelsea Ballerini album)</a></p>
+    </article>
+
+    <article class="track">
+      <div class="track-top"><span class="track-no">Track 20</span><h3>Baggage</h3><span class="dur">2:32</span></div>
+      <div class="badges"><span class="badge">シングル</span><span class="badge plain">公式第2弾シングル</span></div>
+      <p>公式第2弾シングル。本アルバムの公式シングルは2曲のみです。</p>
+      <p class="src">出典：<a href="https://en.wikipedia.org/wiki/Patterns_(Kelsea_Ballerini_album)" target="_blank" rel="noopener">Wikipedia — Patterns (Kelsea Ballerini album)</a></p>
+    </article>
+  </section>
+
+  <!-- TSV -->
+  <section class="tsv-section" id="tsv">
+    <h2>最終楽曲TSV</h2>
+    <p>GENRE／ARTIST／ALBUM／TRACK の4列、20曲分です。ボタンでそのままコピーできます。</p>
+    <div class="tsv-box">
+      <div class="tsv-bar">
+        <span>TSV ・ 21行（ヘッダー＋20曲）</span>
+        <button type="button" id="copyBtn">TSVをコピー</button>
+      </div>
+      <pre id="tsvText">GENRE	ARTIST	ALBUM	TRACK
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Lainey Wilson	Whirlwind	Hang Tight Honey
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Lainey Wilson	Whirlwind	4x4xU
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Miranda Lambert	Postcards from Texas	Wranglers
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Miranda Lambert	Postcards from Texas	Run
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Blackberry Smoke	Be Right Here	Dig A Hole
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Blackberry Smoke	Be Right Here	Little Bit Crazy
+STADIUM COUNTRY &amp; SOUTHERN ROCK	The Red Clay Strays	Made by These Moments	Wanna Be Loved
+STADIUM COUNTRY &amp; SOUTHERN ROCK	The Red Clay Strays	Made by These Moments	Devil In My Ear
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Cody Jinks	Change the Game	Outlaws and Mustangs
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Cody Jinks	Change the Game	Change the Game
+STADIUM COUNTRY &amp; SOUTHERN ROCK	49 Winchester	Leavin' This Holler	Yearnin' For You
+STADIUM COUNTRY &amp; SOUTHERN ROCK	49 Winchester	Leavin' This Holler	Make It Count
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Robert Jon &amp; The Wreck	Red Moon Rising	Red Moon Rising
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Robert Jon &amp; The Wreck	Red Moon Rising	Ballad Of A Broken Hearted Man
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Ella Langley	Hungover	You Look Like You Love Me
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Ella Langley	Hungover	Nicotine
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Megan Moroney	Am I Okay?	Am I Okay?
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Megan Moroney	Am I Okay?	Indifferent
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Kelsea Ballerini	Patterns	Cowboys Cry Too
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Kelsea Ballerini	Patterns	Baggage</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p>2024年 STADIUM COUNTRY &amp; SOUTHERN ROCK 楽曲選出エビデンスページ。再生回数などの数値は各出典・集計時点のもので、現在の値とは異なる場合があります。公式値が確認できないものはその旨を明記しています。</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var TSV = [
+    "GENRE\tARTIST\tALBUM\tTRACK",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tLainey Wilson\tWhirlwind\tHang Tight Honey",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tLainey Wilson\tWhirlwind\t4x4xU",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tMiranda Lambert\tPostcards from Texas\tWranglers",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tMiranda Lambert\tPostcards from Texas\tRun",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tBlackberry Smoke\tBe Right Here\tDig A Hole",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tBlackberry Smoke\tBe Right Here\tLittle Bit Crazy",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tThe Red Clay Strays\tMade by These Moments\tWanna Be Loved",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tThe Red Clay Strays\tMade by These Moments\tDevil In My Ear",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tCody Jinks\tChange the Game\tOutlaws and Mustangs",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tCody Jinks\tChange the Game\tChange the Game",
+    "STADIUM COUNTRY & SOUTHERN ROCK\t49 Winchester\tLeavin' This Holler\tYearnin' For You",
+    "STADIUM COUNTRY & SOUTHERN ROCK\t49 Winchester\tLeavin' This Holler\tMake It Count",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tRobert Jon & The Wreck\tRed Moon Rising\tRed Moon Rising",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tRobert Jon & The Wreck\tRed Moon Rising\tBallad Of A Broken Hearted Man",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tElla Langley\tHungover\tYou Look Like You Love Me",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tElla Langley\tHungover\tNicotine",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tMegan Moroney\tAm I Okay?\tAm I Okay?",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tMegan Moroney\tAm I Okay?\tIndifferent",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tKelsea Ballerini\tPatterns\tCowboys Cry Too",
+    "STADIUM COUNTRY & SOUTHERN ROCK\tKelsea Ballerini\tPatterns\tBaggage"
+  ].join("\n");
+
+  var btn = document.getElementById("copyBtn");
+  var original = btn.textContent;
+  var timer = null;
+
+  function done(){
+    btn.textContent = "コピーしました";
+    btn.classList.add("copied");
+    if(timer) clearTimeout(timer);
+    timer = setTimeout(function(){
+      btn.textContent = original;
+      btn.classList.remove("copied");
+    }, 2200);
+  }
+  function fallback(){
+    var ta = document.createElement("textarea");
+    ta.value = TSV;
+    ta.setAttribute("readonly","");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); done(); } catch(e){}
+    document.body.removeChild(ta);
+  }
+  btn.addEventListener("click", function(){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(TSV).then(done, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+</body>
+</html>
