@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2024 MAINSTREAM ROCK / ARENA HEROES 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f3ed;
+    --bg2:#efe9e0;
+    --card:#ffffff;
+    --card2:#fdfaf6;
+    --ink:#171412;
+    --ink2:#4a423c;
+    --muted:#7a6f66;
+    --line:#ddd3c7;
+    --line-strong:#171412;
+    --accent:#c81e1e;
+    --accent-ink:#fff;
+    --gold:#b7791f;
+    --spotify:#1db954;
+    --spotify-dark:#148a3c;
+    --chip:#171412;
+    --chip-ink:#f7f3ed;
+    --warn-bg:#fff7e6;
+    --warn-line:#e6c87a;
+    --warn-ink:#5c4300;
+    --shadow:0 1px 0 rgba(0,0,0,.06), 0 12px 32px rgba(23,20,18,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#121110;
+      --bg2:#1a1816;
+      --card:#1e1b19;
+      --card2:#23201e;
+      --ink:#f2ece6;
+      --ink2:#cbc0b6;
+      --muted:#9a8f85;
+      --line:#37302c;
+      --line-strong:#f2ece6;
+      --accent:#ff3b30;
+      --gold:#e0a83a;
+      --chip:#f2ece6;
+      --chip-ink:#171412;
+      --warn-bg:#2a2210;
+      --warn-line:#6b5518;
+      --warn-ink:#f5d98a;
+      --shadow:0 12px 32px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 64px}
+  /* HERO */
+  .hero{border-bottom:3px solid var(--line-strong);padding:36px 0 28px;margin-bottom:0}
+  .hero-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:22px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-family:Oswald,sans-serif;letter-spacing:.14em;font-weight:600;font-size:13px;text-transform:uppercase}
+  .kicker::before{content:"";width:28px;height:3px;background:var(--accent);display:inline-block}
+  .year-badge{font-family:Oswald,sans-serif;font-weight:700;font-size:13px;letter-spacing:.12em;border:1.5px solid var(--line-strong);padding:6px 12px;border-radius:999px}
+  h1{font-family:Oswald,"Noto Sans JP",sans-serif;font-weight:700;line-height:.95;letter-spacing:.01em;margin:0;text-transform:uppercase}
+  h1 .line1{display:block;font-size:clamp(52px,9vw,96px)}
+  h1 .line2{display:block;font-size:clamp(28px,5.2vw,54px);color:var(--accent);margin-top:6px}
+  .hero-jp{font-weight:900;font-size:clamp(18px,2.6vw,24px);margin:18px 0 6px;letter-spacing:.02em}
+  .hero-lead{color:var(--ink2);max-width:720px;margin:0;font-size:15.5px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1.5px solid var(--line-strong);margin-top:28px;background:var(--card)}
+  .stat{padding:16px 18px 14px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat b{font-family:Oswald,sans-serif;font-size:32px;line-height:1;display:block;font-weight:700}
+  .stat span{font-size:12.5px;color:var(--muted);font-weight:700;letter-spacing:.04em}
+  .spotify-bar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);padding:18px 20px;margin-top:16px}
+  @media (prefers-color-scheme: dark){ .spotify-bar{background:#f2ece6;color:#171412} }
+  .spotify-bar p{margin:0;font-weight:700;font-size:15px;line-height:1.5}
+  .spotify-bar small{display:block;font-weight:400;opacity:.75;font-size:13px;margin-top:2px}
+  .btn-spotify{display:inline-flex;align-items:center;gap:10px;background:var(--spotify);color:#fff !important;text-decoration:none;font-weight:900;font-size:15px;padding:12px 20px;border-radius:999px;min-height:48px;white-space:nowrap;box-shadow:0 4px 14px rgba(29,185,84,.35)}
+  .btn-spotify:hover{background:var(--spotify-dark)}
+  .btn-spotify svg{flex:none}
+  /* NAV */
+  .album-nav{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0 4px}
+  .album-nav a{text-decoration:none;font-weight:700;font-size:13.5px;border:1px solid var(--line);background:var(--card);padding:10px 14px;border-radius:999px;min-height:40px;display:inline-flex;align-items:center}
+  .album-nav a:hover{border-color:var(--line-strong)}
+  .album-nav a i{font-style:normal;font-family:Oswald,sans-serif;color:var(--accent);margin-right:7px}
+  /* OVERVIEW TABLE */
+  .section-head{display:flex;align-items:baseline;gap:14px;margin:40px 0 16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .section-head h2{font-size:20px;font-weight:900;margin:0;letter-spacing:.02em}
+  .section-head span{font-family:Oswald,sans-serif;font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .overview{border:1.5px solid var(--line-strong);background:var(--card);overflow:hidden}
+  .ov-row{display:grid;grid-template-columns:44px 1.15fr 1fr 1.6fr 64px;gap:0;border-bottom:1px solid var(--line)}
+  .ov-row:last-child{border-bottom:none}
+  .ov-row > div{padding:11px 14px;font-size:14px}
+  .ov-row .no{font-family:Oswald,sans-serif;font-weight:700;color:var(--accent);text-align:center;padding-left:6px;padding-right:6px}
+  .ov-row .artist{font-weight:900}
+  .ov-row .album{color:var(--ink2);font-style:italic}
+  .ov-row .track{font-weight:700}
+  .ov-row .time{font-family:Oswald,sans-serif;text-align:right;color:var(--muted)}
+  .ov-head{background:var(--bg2);font-size:11.5px !important;font-weight:900;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .ov-head > div{font-size:11.5px}
+  /* ALBUM SECTIONS */
+  .album{margin-top:48px;scroll-margin-top:16px}
+  .album-head{display:flex;gap:18px;align-items:flex-start;border-top:3px solid var(--line-strong);padding-top:20px}
+  .album-num{font-family:Oswald,sans-serif;font-size:52px;line-height:.9;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--ink);flex:none}
+  @media (prefers-color-scheme: dark){ .album-num{-webkit-text-stroke:1.5px var(--ink)} }
+  .album-head h2{margin:0;font-size:clamp(24px,4vw,34px);font-weight:900;line-height:1.2}
+  .album-head h2 em{font-style:italic;font-weight:700;color:var(--ink2)}
+  .album-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pill{font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 10px;color:var(--ink2)}
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  .track{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:20px 20px 16px;display:flex;flex-direction:column}
+  .track-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .track-no{font-family:Oswald,sans-serif;font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:600}
+  .duration{font-family:Oswald,sans-serif;font-weight:700;font-size:15px;border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 10px;white-space:nowrap}
+  .track h3{font-size:22px;font-weight:900;margin:8px 0 10px;line-height:1.3;overflow-wrap:anywhere}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .badge{font-size:11.5px;font-weight:900;letter-spacing:.03em;padding:4px 9px;border-radius:4px;background:var(--chip);color:var(--chip-ink)}
+  .badge.red{background:var(--accent);color:#fff}
+  .badge.outline{background:transparent;color:var(--ink2);border:1px solid var(--line)}
+  .track p{margin:0 0 10px;font-size:14.5px;color:var(--ink2)}
+  .track p strong{color:var(--ink)}
+  .evidence{margin:4px 0 14px;padding:12px 14px;background:var(--card2);border:1px solid var(--line);font-size:13.5px}
+  .evidence h4{margin:0 0 6px;font-size:12px;letter-spacing:.08em;color:var(--muted)}
+  .evidence ul{margin:0;padding-left:18px;color:var(--ink2)}
+  .evidence li{margin:3px 0}
+  .evidence li strong{color:var(--ink)}
+  .note-box{margin-top:auto;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:13px;padding:10px 12px;margin-bottom:14px;line-height:1.6}
+  .note-box b{font-weight:900}
+  .sources{border-top:1px dashed var(--line);padding-top:12px;margin-top:auto}
+  .sources span{font-size:11.5px;font-weight:900;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:6px}
+  .sources a{display:inline-flex;align-items:center;min-height:36px;font-size:13px;font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:3px;margin-right:16px;padding:4px 0;overflow-wrap:anywhere}
+  /* TSV */
+  .tsv-box{background:var(--card);border:1.5px solid var(--line-strong);padding:20px}
+  .tsv-box p{margin:0 0 12px;color:var(--ink2);font-size:14px}
+  pre.tsv{background:#171412;color:#f2ece6;padding:16px;font-size:12.5px;line-height:1.7;margin:0 0 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}
+  @media (prefers-color-scheme: dark){ pre.tsv{background:#0b0a09;border:1px solid var(--line)} }
+  .copy-btn{appearance:none;border:none;background:var(--ink);color:var(--bg);font:inherit;font-weight:900;font-size:14px;padding:12px 20px;border-radius:999px;min-height:48px;cursor:pointer}
+  .copy-status{font-size:13px;color:var(--muted);margin-left:12px;font-weight:700}
+  /* NOTES */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .rule{background:var(--card);border:1px solid var(--line);padding:18px}
+  .rule b{font-family:Oswald,sans-serif;font-size:28px;display:block;line-height:1;margin-bottom:8px}
+  .rule h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .rule p{margin:0;font-size:13.5px;color:var(--ink2)}
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+  @media (max-width:820px){
+    .stats{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+    .tracks{grid-template-columns:1fr}
+    .rules{grid-template-columns:1fr}
+    .ov-row{grid-template-columns:36px 1fr 56px;grid-template-areas:"no artist time" "no album time" "no track time"}
+    .ov-row .no{grid-area:no}.ov-row .artist{grid-area:artist;padding-bottom:0}
+    .ov-row .album{grid-area:album;padding-top:0;padding-bottom:0}
+    .ov-row .track{grid-area:track;padding-top:0}
+    .ov-row .time{grid-area:time}
+    .ov-head{display:none}
+    .spotify-bar{flex-direction:column;align-items:stretch;text-align:left}
+    .btn-spotify{justify-content:center}
+    .album-num{font-size:40px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-top">
+      <span class="kicker">Track Selection — Evidence</span>
+      <span class="year-badge">2024 ・ GENRE 01</span>
+    </div>
+    <h1>
+      <span class="line1">Mainstream Rock</span>
+      <span class="line2">/ Arena Heroes</span>
+    </h1>
+    <p class="hero-jp">2024年 MAINSTREAM ROCK / ARENA HEROES — 楽曲選出エビデンス</p>
+    <p class="hero-lead">5組のアルバムから各2曲、全10曲を選出。10曲すべてがシングルカット曲で、バラードの採用はありません。各曲の選出根拠と出典を、発売日・チャート実績とあわせて記録します。</p>
+
+    <div class="stats" aria-label="選出概要">
+      <div class="stat"><b>5</b><span>アルバム</span></div>
+      <div class="stat"><b>10</b><span>選出曲（各アルバム2曲）</span></div>
+      <div class="stat"><b>10 / 10</b><span>シングルカット曲</span></div>
+      <div class="stat"><b>0</b><span>バラード採用</span></div>
+    </div>
+
+    <div class="spotify-bar">
+      <p>Spotifyプレイリストで全10曲を聴く<small>「2024年 MAINSTREAM ROCK / ARENA HEROES」— 選出順に収録</small></p>
+      <a class="btn-spotify" href="https://open.spotify.com/playlist/46TIILk4kDtN0OK84qY4m4" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1 .25c-2.9-1.77-6.54-2.17-10.83-1.19a.75.75 0 1 1-.33-1.46c4.7-1.07 8.72-.6 12 1.15.34.2.45.65.16 1zm1.47-3.85a.94.94 0 0 1-1.29.31c-3.31-2.03-8.36-2.62-12.27-1.44a.94.94 0 1 1-.54-1.8c4.47-1.35 10.03-.7 13.8 1.62.42.26.56.87.3 1.31zm.13-4.01C15.15 7.1 8.6 6.88 4.68 8.07a1.13 1.13 0 1 1-.65-2.16c4.66-1.41 12.17-1.14 16.9 1.66a1.13 1.13 0 0 1-1.15 1.94z"/></svg>
+        Spotifyで開く
+      </a>
+    </div>
+
+    <nav class="album-nav" aria-label="アルバムへ移動">
+      <a href="#pearl-jam"><i>01</i>Pearl Jam</a>
+      <a href="#bon-jovi"><i>02</i>Bon Jovi</a>
+      <a href="#the-warning"><i>03</i>The Warning</a>
+      <a href="#skillet"><i>04</i>Skillet</a>
+      <a href="#kissin-dynamite"><i>05</i>Kissin' Dynamite</a>
+    </nav>
+  </header>
+
+  <!-- OVERVIEW -->
+  <div class="section-head"><h2>選出曲一覧</h2><span>All 10 Tracks</span></div>
+  <div class="overview" role="table" aria-label="選出曲一覧">
+    <div class="ov-row ov-head"><div>No.</div><div>Artist</div><div>Album</div><div>Track</div><div style="text-align:right">Time</div></div>
+    <div class="ov-row"><div class="no">1</div><div class="artist">Pearl Jam</div><div class="album">Dark Matter</div><div class="track">Dark Matter</div><div class="time">3:31</div></div>
+    <div class="ov-row"><div class="no">2</div><div class="artist">Pearl Jam</div><div class="album">Dark Matter</div><div class="track">Running</div><div class="time">2:19</div></div>
+    <div class="ov-row"><div class="no">3</div><div class="artist">Bon Jovi</div><div class="album">Forever</div><div class="track">Legendary</div><div class="time">4:05</div></div>
+    <div class="ov-row"><div class="no">4</div><div class="artist">Bon Jovi</div><div class="album">Forever</div><div class="track">Living Proof</div><div class="time">3:39</div></div>
+    <div class="ov-row"><div class="no">5</div><div class="artist">The Warning</div><div class="album">Keep Me Fed</div><div class="track">S!CK</div><div class="time">3:12</div></div>
+    <div class="ov-row"><div class="no">6</div><div class="artist">The Warning</div><div class="album">Keep Me Fed</div><div class="track">Hell You Call a Dream</div><div class="time">2:56</div></div>
+    <div class="ov-row"><div class="no">7</div><div class="artist">Skillet</div><div class="album">Revolution</div><div class="track">Unpopular</div><div class="time">3:05</div></div>
+    <div class="ov-row"><div class="no">8</div><div class="artist">Skillet</div><div class="album">Revolution</div><div class="track">Ash in the Wind</div><div class="time">3:52</div></div>
+    <div class="ov-row"><div class="no">9</div><div class="artist">Kissin' Dynamite</div><div class="album">Back With A Bang</div><div class="track">Raise Your Glass</div><div class="time">3:37</div></div>
+    <div class="ov-row"><div class="no">10</div><div class="artist">Kissin' Dynamite</div><div class="album">Back With A Bang</div><div class="track">My Monster</div><div class="time">4:06</div></div>
+  </div>
+
+  <!-- 01 PEARL JAM -->
+  <section class="album" id="pearl-jam">
+    <div class="album-head">
+      <div class="album-num">01</div>
+      <div>
+        <h2>Pearl Jam <em>『Dark Matter』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">Track 1–2 / 全体 No.1–2</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.1</span><span class="duration">3:31</span></div>
+        <h3>Dark Matter</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第1シングル</span><span class="badge outline">2024-02-13 発売</span></div>
+        <p>アルバムのタイトル曲であり、第1シングル。チャートと賞レースの両面で本作を代表する1曲として選出しました。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li><strong>Billboard Mainstream Rock Airplayで1位</strong>（1998年以来の1位）</li>
+          <li>グラミー賞 <strong>Best Rock Song／Best Rock Performance</strong> ノミネート</li>
+          <li>バラードの「Wreckage」は選出回避</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Dark_Matter_(Pearl_Jam_album)" target="_blank" rel="noopener">Wikipedia — Dark Matter (Pearl Jam album)</a>
+          <a href="https://music.apple.com/us/album/dark-matter/1730087669" target="_blank" rel="noopener">Apple Music — Dark Matter</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.2</span><span class="duration">2:19</span></div>
+        <h3>Running</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge outline">2024-03-22 発売</span></div>
+        <p>高速パンク曲。短い曲ながら、スピード感でアルバムに推進力を与える1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>シングルとして <strong>2024-03-22</strong> 発売</li>
+          <li>高速パンク曲</li>
+        </ul></div>
+        <div class="note-box"><b>尺についての注記：</b>2:19は「2分以下の曲は除外」ルールに<strong>該当しません</strong>（2分超のため）。</div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Dark_Matter_(Pearl_Jam_album)" target="_blank" rel="noopener">Wikipedia — Dark Matter (Pearl Jam album)</a>
+          <a href="https://music.apple.com/us/album/dark-matter/1730087669" target="_blank" rel="noopener">Apple Music — Dark Matter</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 02 BON JOVI -->
+  <section class="album" id="bon-jovi">
+    <div class="album-head">
+      <div class="album-num">02</div>
+      <div>
+        <h2>Bon Jovi <em>『Forever』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.3–4</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.3</span><span class="duration">4:05</span></div>
+        <h3>Legendary</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">リードシングル</span><span class="badge outline">2024-03-14 発売</span></div>
+        <p>リードシングル。アップテンポなpop-rockのアンセムで、アルバムの顔となる1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>リードシングル（<strong>2024-03-14</strong>発売）</li>
+          <li>アップテンポなpop-rockのアンセム</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Forever_(Bon_Jovi_album)" target="_blank" rel="noopener">Wikipedia — Forever (Bon Jovi album)</a>
+          <a href="https://music.apple.com/no/album/forever/1735405553" target="_blank" rel="noopener">Apple Music — Forever</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.4</span><span class="duration">3:39</span></div>
+        <h3>Living Proof</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第2シングル</span><span class="badge outline">2024-05-17 発売</span></div>
+        <p>第2シングル。バンドの代名詞的なサウンドを現代に持ち込んだ1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>第2シングル（<strong>2024-05-17</strong>発売）</li>
+          <li><strong>14年ぶりのトークボックス使用曲</strong>で、Livin' on a Prayerを想起させる</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Forever_(Bon_Jovi_album)" target="_blank" rel="noopener">Wikipedia — Forever (Bon Jovi album)</a>
+          <a href="https://music.apple.com/no/album/forever/1735405553" target="_blank" rel="noopener">Apple Music — Forever</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 03 THE WARNING -->
+  <section class="album" id="the-warning">
+    <div class="album-head">
+      <div class="album-num">03</div>
+      <div>
+        <h2>The Warning <em>『Keep Me Fed』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.5–6</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.5</span><span class="duration">3:12</span></div>
+        <h3>S!CK</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge outline">2024-02-02 発売</span></div>
+        <p>Wikipedia表記は「Sick」ですが、公式表記「S!CK」を採用しています（同一曲）。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>シングル（<strong>2024-02-02</strong>発売）</li>
+          <li><strong>Billboard Mainstream Rock Airplay 8位・20週チャートイン</strong></li>
+          <li><strong>Loudwire Best Rock + Metal Songs of 2024</strong>選出</li>
+          <li>Last.fmリスナー数 <strong>64,704</strong> ※第三者の数字</li>
+        </ul></div>
+        <div class="note-box"><b>表記について：</b>Wikipedia表記は「Sick」、公式表記「S!CK」を採用（同一曲）。Last.fmリスナー数64,704は<strong>第三者の数字</strong>として明記します。</div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Keep_Me_Fed" target="_blank" rel="noopener">Wikipedia — Keep Me Fed</a>
+          <a href="https://music.apple.com/album/1733741692" target="_blank" rel="noopener">Apple Music — Keep Me Fed</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.6</span><span class="duration">2:56</span></div>
+        <h3>Hell You Call a Dream</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">両A面シングル</span><span class="badge outline">2024-03-08 発売</span></div>
+        <p>「Qué Más Quieres」との両A面シングル。ライブ人気が高い1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>「Qué Más Quieres」との両A面（<strong>2024-03-08</strong>発売）</li>
+          <li>Last.fmリスナー数 <strong>96,092</strong>（第三者の数字）でアルバム内最多水準</li>
+          <li>ライブ人気が高い</li>
+        </ul></div>
+        <div class="note-box"><b>数字について：</b>Last.fmリスナー数96,092は<strong>第三者の数字</strong>です。</div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Keep_Me_Fed" target="_blank" rel="noopener">Wikipedia — Keep Me Fed</a>
+          <a href="https://music.apple.com/album/1733741692" target="_blank" rel="noopener">Apple Music — Keep Me Fed</a>
+          <a href="https://www.last.fm/music/The+Warning" target="_blank" rel="noopener">Last.fm — The Warning</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 04 SKILLET -->
+  <section class="album" id="skillet">
+    <div class="album-head">
+      <div class="album-num">04</div>
+      <div>
+        <h2>Skillet <em>『Revolution』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.7–8</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.7</span><span class="duration">3:05</span></div>
+        <h3>Unpopular</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第1シングル</span><span class="badge outline">2024-08-09 発売 ・ MV付き</span></div>
+        <p>第1シングル（MV付き）。アルバムの先行曲として大きな反響を得た1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>第1シングル（<strong>2024-08-09</strong>発売、MV付き）</li>
+          <li>発売時点で <strong>5M streams超・MV 1.5M views超</strong></li>
+        </ul></div>
+        <div class="note-box"><b>数字についての注記：</b>5M streams超・MV 1.5M views超は、出典に記載された<strong>発売時点の当時の数字であり、現在の再生回数ではありません</strong>。</div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Revolution_(Skillet_album)" target="_blank" rel="noopener">Wikipedia — Revolution (Skillet album)</a>
+          <a href="https://music.apple.com/ph/album/revolution/1757701712" target="_blank" rel="noopener">Apple Music — Revolution</a>
+          <a href="https://www.thefrontrowreport.com/skillet-support-hurricane-relief-efforts-share-new-single-ash-in-the-wind/" target="_blank" rel="noopener">The Front Row Report</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.8</span><span class="duration">3:52</span></div>
+        <h3>Ash in the Wind</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第3シングル</span><span class="badge outline">2024-10-18 発売</span></div>
+        <p>第3シングル。本作唯一のバラードは「Happy Wedding Day」であり、本曲はバラードではありません。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>第3シングル（<strong>2024-10-18</strong>発売）</li>
+          <li><strong>iTunes All-Songs chart 1位</strong>デビュー</li>
+          <li>本作唯一のバラードは「Happy Wedding Day」であり本曲はバラードではない</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Revolution_(Skillet_album)" target="_blank" rel="noopener">Wikipedia — Revolution (Skillet album)</a>
+          <a href="https://music.apple.com/ph/album/revolution/1757701712" target="_blank" rel="noopener">Apple Music — Revolution</a>
+          <a href="https://www.thefrontrowreport.com/skillet-support-hurricane-relief-efforts-share-new-single-ash-in-the-wind/" target="_blank" rel="noopener">The Front Row Report</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 05 KISSIN' DYNAMITE -->
+  <section class="album" id="kissin-dynamite">
+    <div class="album-head">
+      <div class="album-num">05</div>
+      <div>
+        <h2>Kissin' Dynamite <em>『Back With A Bang』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.9–10</span><span class="pill">Wikipediaでは確認できない</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.9</span><span class="duration">3:37</span></div>
+        <h3>Raise Your Glass</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第1シングル</span><span class="badge outline">公式MV付き</span></div>
+        <p>第1シングル（公式MV付き）。80年代色の強いスタジアムロック・アンセムです。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>第1シングル（公式MV付き）</li>
+          <li>80年代色の強いスタジアムロック・アンセム</li>
+        </ul></div>
+        <div class="note-box"><b>確認方法について：</b><strong>Wikipediaでは確認できない</strong>（アルバムのWikipediaページがないためDiscogs／Napalm Records／ChaosZineで確認）。</div>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.discogs.com/release/31695704-Kissin-Dynamite-Back-With-A-Bang" target="_blank" rel="noopener">Discogs — Back With A Bang</a>
+          <a href="https://b2b.napalmrecords.com/b2b/kissin-dynamite-back-with-a-bang-cd.html" target="_blank" rel="noopener">Napalm Records — Back With A Bang</a>
+          <a href="https://chaoszine.net/" target="_blank" rel="noopener">ChaosZine</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.10</span><span class="duration">4:06</span></div>
+        <h3>My Monster</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第2シングル</span></div>
+        <p>第2シングル。レーベルがラジオヒットを太鼓判を押した1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>第2シングル</li>
+          <li>Napalm Recordsが <strong>「guaranteed future radio hit」</strong> と紹介</li>
+        </ul></div>
+        <div class="note-box"><b>確認方法について：</b><strong>Wikipediaでは確認できない</strong>（同上）。</div>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.discogs.com/release/31695704-Kissin-Dynamite-Back-With-A-Bang" target="_blank" rel="noopener">Discogs — Back With A Bang</a>
+          <a href="https://b2b.napalmrecords.com/b2b/kissin-dynamite-back-with-a-bang-cd.html" target="_blank" rel="noopener">Napalm Records — Back With A Bang</a>
+          <a href="http://tuonelamagazine.com/" target="_blank" rel="noopener">Tuonela Magazine</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RULES / NOTES -->
+  <div class="section-head"><h2>選出ルールと注記</h2><span>Notes</span></div>
+  <div class="rules">
+    <div class="rule"><b>10 / 10</b><h3>全曲シングル</h3><p>10曲すべてシングルカット曲です。アルバム曲からの選出はありません。</p></div>
+    <div class="rule"><b>0</b><h3>バラード採用なし</h3><p>バラードは採用していません。Pearl Jamの「Wreckage」は選出回避し、Skilletのバラード「Happy Wedding Day」も対象外です。「Ash in the Wind」はバラードではありません。</p></div>
+    <div class="rule"><b>※</b><h3>再生回数・数字の扱い</h3><p>再生回数の参考指標として、第三者集計（Last.fm）は「第三者の数字」と明記しています。発売時点の出典数字（例：Skillet「Unpopular」）は現在の再生回数と混同しないよう注記しています。</p></div>
+  </div>
+
+  <!-- TSV -->
+  <div class="section-head"><h2>最終TSV</h2><span>GENRE / ARTIST / ALBUM / TRACK</span></div>
+  <div class="tsv-box">
+    <p>管理表・プレイリスト作成用に、そのままコピーして使えるTSV形式の一覧です（1行1曲・選出順）。</p>
+    <pre class="tsv" id="tsvText">GENRE	ARTIST	ALBUM	TRACK
+MAINSTREAM ROCK / ARENA HEROES	Pearl Jam	Dark Matter	Dark Matter
+MAINSTREAM ROCK / ARENA HEROES	Pearl Jam	Dark Matter	Running
+MAINSTREAM ROCK / ARENA HEROES	Bon Jovi	Forever	Legendary
+MAINSTREAM ROCK / ARENA HEROES	Bon Jovi	Forever	Living Proof
+MAINSTREAM ROCK / ARENA HEROES	The Warning	Keep Me Fed	S!CK
+MAINSTREAM ROCK / ARENA HEROES	The Warning	Keep Me Fed	Hell You Call a Dream
+MAINSTREAM ROCK / ARENA HEROES	Skillet	Revolution	Unpopular
+MAINSTREAM ROCK / ARENA HEROES	Skillet	Revolution	Ash in the Wind
+MAINSTREAM ROCK / ARENA HEROES	Kissin' Dynamite	Back With A Bang	Raise Your Glass
+MAINSTREAM ROCK / ARENA HEROES	Kissin' Dynamite	Back With A Bang	My Monster</pre>
+    <button class="copy-btn" id="copyBtn" type="button">TSVをコピーする</button><span class="copy-status" id="copyStatus" aria-live="polite"></span>
+  </div>
+
+  <footer>
+    <span>2024年 MAINSTREAM ROCK / ARENA HEROES — 楽曲選出エビデンス</span>
+    <span>5アルバム ・ 10曲 ・ 全曲シングル</span>
+  </footer>
+</div>
+<script>
+  (function(){
+    var btn=document.getElementById('copyBtn');
+    var status=document.getElementById('copyStatus');
+    var pre=document.getElementById('tsvText');
+    if(!btn||!pre) return;
+    btn.addEventListener('click', function(){
+      var text=pre.textContent;
+      function done(){ status.textContent='コピーしました'; setTimeout(function(){status.textContent='';},2600); }
+      function fail(){ status.textContent='コピーできませんでした — TSVを長押し／選択してコピーしてください'; }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else {
+        try{
+          var ta=document.createElement('textarea');
+          ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+          document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta); done();
+        }catch(e){ fail(); }
+      }
+    });
+  })();
+</script>
+</body>
+</html>

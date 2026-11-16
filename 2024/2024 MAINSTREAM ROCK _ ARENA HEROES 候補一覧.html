@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2024 MAINSTREAM ROCK / ARENA HEROES 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2ef;
+    --surface:#ffffff;
+    --surface-2:#eceae6;
+    --ink:#191817;
+    --ink-2:#4b4844;
+    --muted:#76716b;
+    --line:#ddd9d2;
+    --line-strong:#191817;
+    --accent:#b91c1c;
+    --accent-ink:#ffffff;
+    --accent-soft:#fdecec;
+    --gold:#8a6d1b;
+    --gold-bg:#f7ecd0;
+    --silver:#5b5f66;
+    --silver-bg:#e8eaed;
+    --bronze:#7c4a1e;
+    --bronze-bg:#f3e2d3;
+    --warn-bg:#fff7e6;
+    --warn-line:#e3c878;
+    --warn-ink:#5c4a12;
+    --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131211;
+      --surface:#1e1d1b;
+      --surface-2:#262422;
+      --ink:#f0ede8;
+      --ink-2:#c9c4bb;
+      --muted:#9a958c;
+      --line:#35322e;
+      --line-strong:#f0ede8;
+      --accent:#e5484d;
+      --accent-soft:#3a1d1e;
+      --gold:#e3c878;
+      --gold-bg:#332b14;
+      --silver:#c3c8cf;
+      --silver-bg:#2a2d31;
+      --bronze:#e0a878;
+      --bronze-bg:#33241a;
+      --warn-bg:#2e2712;
+      --warn-line:#6b5a22;
+      --warn-ink:#e8d48a;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 64px}
+
+  /* ---------- Header ---------- */
+  header{padding:40px 0 0}
+  .year-line{
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  }
+  .year{
+    font-family:"Oswald",sans-serif;font-weight:700;font-size:64px;line-height:.95;letter-spacing:.01em;
+  }
+  .year-sub{
+    font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  }
+  h1{
+    margin:10px 0 0;font-size:clamp(26px,4.6vw,40px);line-height:1.25;font-weight:900;letter-spacing:.01em;
+  }
+  h1 .en{
+    display:block;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;font-size:.62em;color:var(--ink-2);margin-top:6px;
+  }
+  .lead{margin:16px 0 0;color:var(--ink-2);max-width:46em;font-size:15.5px}
+  .lead strong{color:var(--ink)}
+
+  /* ---------- Flow ---------- */
+  .flow{
+    margin-top:28px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--line-strong);
+    box-shadow:var(--shadow);padding:20px 20px 18px;
+  }
+  .flow h2{margin:0 0 14px;font-size:13px;letter-spacing:.14em;font-weight:900}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .step{padding:0 14px;border-left:1px solid var(--line)}
+  .step:first-child{padding-left:0;border-left:none}
+  .step .num{font-family:"Oswald",sans-serif;font-weight:700;font-size:34px;line-height:1}
+  .step .num small{font-size:16px;color:var(--muted);font-weight:600}
+  .step .label{margin-top:6px;font-weight:700;font-size:13.5px;line-height:1.5}
+  .step .note{margin-top:2px;color:var(--muted);font-size:12.5px;line-height:1.55}
+  .step.final .num{color:var(--accent)}
+  @media (max-width:760px){
+    .flow-steps{grid-template-columns:1fr 1fr}
+    .step{padding:10px 12px 10px 0;border-left:none;border-top:1px solid var(--line)}
+    .step:nth-child(-n+2){border-top:none;padding-top:0}
+    .step:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+  }
+
+  /* ---------- Sections ---------- */
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line-strong);padding-bottom:10px}
+  .sec-no{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.08em}
+  .sec-head h2{margin:0;font-size:clamp(20px,3.4vw,26px);font-weight:900;line-height:1.3}
+  .sec-head .count{margin-left:auto;font-family:"Oswald",sans-serif;font-weight:600;font-size:14px;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
+  .sec-desc{margin:12px 0 0;color:var(--ink-2);max-width:52em}
+  .sec-desc strong{color:var(--ink)}
+
+  /* ---------- Tables ---------- */
+  .table-card{margin-top:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{
+    background:var(--surface-2);text-align:left;font-size:12px;letter-spacing:.1em;font-weight:900;
+    padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--ink-2);
+  }
+  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  .artist{font-weight:900;font-size:15px;line-height:1.4}
+  .album{font-weight:700;font-size:15px;line-height:1.4}
+  .album .formal{display:block;margin-top:4px;font-weight:500;font-size:12.5px;color:var(--muted);line-height:1.55}
+  .date{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.03em;white-space:nowrap;font-size:14.5px}
+  .basis{color:var(--ink-2);line-height:1.7}
+  .basis strong{color:var(--ink)}
+  .sources{display:flex;flex-direction:column;gap:2px;min-width:132px}
+  .sources a{
+    display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:4px 0;
+    font-size:13px;font-weight:700;text-decoration:none;line-height:1.35;
+  }
+  .sources a:hover{text-decoration:underline}
+  .sources a::after{content:"↗";font-size:11px;opacity:.7}
+  .no-cell{font-family:"Oswald",sans-serif;font-weight:700;color:var(--muted);font-size:15px}
+
+  .badge{
+    display:inline-block;font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;
+    padding:2px 10px;border-radius:999px;line-height:1.6;white-space:nowrap;
+  }
+  .badge-s{background:var(--accent);color:var(--accent-ink)}
+  .badge-a{background:var(--gold-bg);color:var(--gold)}
+  .badge-b{background:var(--silver-bg);color:var(--silver)}
+  .badge-down{background:var(--bronze-bg);color:var(--bronze)}
+
+  .flag{
+    display:block;margin-top:8px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);
+    font-size:12.5px;line-height:1.6;padding:7px 10px;border-radius:6px;font-weight:500;
+  }
+  .flag b{font-weight:900}
+
+  /* sub-group label inside A/B table */
+  .group-row td{
+    background:var(--surface-2);font-weight:900;font-size:12.5px;letter-spacing:.1em;padding:8px 14px;color:var(--ink-2);
+  }
+
+  /* Mobile: stack tables into cards */
+  @media (max-width:760px){
+    .year{font-size:48px}
+    header{padding-top:28px}
+    .table-card{border:none;box-shadow:none;background:transparent;overflow:visible}
+    table, thead, tbody, tr, td{display:block;width:100%}
+    thead{display:none}
+    tbody tr{
+      background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);
+      margin-bottom:12px;padding:6px 2px;
+    }
+    tbody td{border-bottom:1px dashed var(--line);padding:10px 14px}
+    tbody td:last-child{border-bottom:none}
+    td::before{
+      content:attr(data-label);display:block;font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--muted);margin-bottom:4px;
+    }
+    td.no-cell::before, td.rank-cell::before{margin-bottom:2px}
+    .no-cell{font-size:13px}
+    .group-row td{margin:18px 0 10px;border:1px solid var(--line);box-shadow:none}
+    .group-row td::before{display:none}
+    .sources{min-width:0}
+    .date{white-space:normal}
+  }
+
+  /* ---------- Boundary notes ---------- */
+  .notes{margin-top:16px;display:grid;gap:12px}
+  .note-card{
+    background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 18px;
+  }
+  .note-card h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .note-card h3 .who{color:var(--accent)}
+  .note-card p{margin:0;color:var(--ink-2)}
+  .note-card p strong{color:var(--ink)}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="year-line">
+      <span class="year">2024</span>
+      <span class="year-sub">Album Selection — Evidence</span>
+    </div>
+    <h1>MAINSTREAM ROCK / ARENA HEROES 候補一覧
+      <span class="en">Genre 1 — Mainstream Rock / Arena Heroes</span>
+    </h1>
+    <p class="lead">2024年の <strong>MAINSTREAM ROCK / ARENA HEROES</strong> におけるアルバム選出のエビデンスページ。候補の収集から重複排除、Sランク検証を経て確定した<strong>最終選出5枚</strong>と、検証で降格した2枚、未採用のA／B候補19枚を、根拠と出典つきで記録する。</p>
+  </header>
+
+  <!-- 概要フロー -->
+  <div class="flow" aria-label="選出の流れ">
+    <h2>選出の流れ — 概要</h2>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="num">26<small> 枚</small></div>
+        <div class="label">候補を収集</div>
+        <div class="note">2024年リリース作から候補を収集</div>
+      </div>
+      <div class="step">
+        <div class="num">0<small> 枚</small></div>
+        <div class="label">重複除外</div>
+        <div class="note">既出アルバム累積リストと照合し、重複は0枚</div>
+      </div>
+      <div class="step">
+        <div class="num">7<small> 枚</small></div>
+        <div class="label">Sランク候補を検証</div>
+        <div class="note">各候補を2ソース以上で検証</div>
+      </div>
+      <div class="step">
+        <div class="num">5<small> ＋ </small>2</div>
+        <div class="label">S確定 5枚・A降格 2枚</div>
+        <div class="note">検証の結果、5枚がS確定、2枚がAへ降格</div>
+      </div>
+      <div class="step final">
+        <div class="num">5<small> 枚</small></div>
+        <div class="label">最終選出</div>
+        <div class="note">品質優先ルールで定める5〜10枚の枠内</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 最終選出 -->
+  <section id="final">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>最終選出 — S確定</h2>
+      <span class="count">5 ALBUMS</span>
+    </div>
+    <p class="sec-desc">Sランク候補7枚を2ソース以上で検証し、Sとして確定した5枚。いずれも本ジャンルの中核——アリーナ級の王道ロック——に位置づけられる作品。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>発売日</th><th>ジャンル根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no-cell" data-label="No.">1</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Pearl Jam</div>
+              <div class="album">Dark Matter</div>
+            </td>
+            <td data-label="発売日"><span class="date">2024-04-19</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル表記は <strong>Alternative rock, hard rock</strong>。通算12作目のスタジオ盤でアリーナ級の王道ロック。</td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/Dark_Matter_(Pearl_Jam_album)" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://blabbermouth.net/news/pearl-jam-announces-new-album-dark-matter-shares-title-track" target="_blank" rel="noopener">Blabbermouth</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">2</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Bon Jovi</div>
+              <div class="album">Forever</div>
+            </td>
+            <td data-label="発売日"><span class="date">2024-06-07</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル表記は <strong>Rock</strong>。Discogsのスタイル表記に <strong>Arena Rock, Hard Rock / Pop Rock</strong>。通算16作目、40周年作。</td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/Forever_(Bon_Jovi_album)" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://ultimateclassicrock.com/bon-jovi-forever-album/" target="_blank" rel="noopener">Ultimate Classic Rock</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">3</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">The Warning</div>
+              <div class="album">Keep Me Fed</div>
+            </td>
+            <td data-label="発売日"><span class="date">2024-06-28</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル表記は <strong>Alternative rock, hard rock, alternative metal, post-grunge</strong>。Universal公式が「stadium-size hooks」と紹介。メキシコの姉妹トリオ、通算4作目。
+              <span class="flag"><b>境界明示：</b>FEMALE VOCAL ROCK / METAL との境界候補として明示した上で、本ジャンルで採用。</span>
+            </td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/Keep_Me_Fed" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://blabbermouth.net/news/the-warning-announces-new-album-keep-me-fed" target="_blank" rel="noopener">Blabbermouth</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">4</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Skillet</div>
+              <div class="album">Revolution</div>
+            </td>
+            <td data-label="発売日"><span class="date">2024-11-01</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル表記は <strong>Hard rock</strong>。通算12作目、初の自主リリース盤。10曲・35:01と短いアルバムである点に注意。</td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/Revolution_(Skillet_album)" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://blabbermouth.net/news/skillet-announces-revolution-album-shares-unpopular-single" target="_blank" rel="noopener">Blabbermouth</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">5</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Kissin' Dynamite</div>
+              <div class="album">Back With A Bang
+                <span class="formal">正式タイトル表記は感嘆符付き『Back With A Bang!』</span>
+              </div>
+            </td>
+            <td data-label="発売日"><span class="date">2024-07-05</span></td>
+            <td class="basis" data-label="ジャンル根拠">Napalm Records公式が「<strong>German stadium rockers</strong>」「<strong>stadium rock anthems</strong>」と明記。
+              <span class="flag"><b>Wikipediaでは確認できない：</b>アルバム単独ページがなく、バンドページのディスコグラフィで確認。</span>
+            </td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://b2b.napalmrecords.com/b2b/kissin-dynamite-back-with-a-bang-digipak-cd.html" target="_blank" rel="noopener">Napalm Records</a>
+              <a href="https://www.sonicperspectives.com/album-reviews/kissin-dynamite-back-with-a-bang/" target="_blank" rel="noopener">Sonic Perspectives</a>
+              <a href="https://en.wikipedia.org/wiki/Kissin'_Dynamite" target="_blank" rel="noopener">Wikipedia（バンド）</a>
+            </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- A降格 -->
+  <section id="demoted">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>S検証でAに降格</h2>
+      <span class="count">2 ALBUMS</span>
+    </div>
+    <p class="sec-desc">Sランク候補として2ソース以上で検証した結果、境界条件や基準到達度の観点からAへ降格した2枚。未採用ではなく、判定理由を記録として残す。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>発売日</th><th>降格理由</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no-cell" data-label="No.">1</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Coldplay</div>
+              <div class="album">Moon Music</div>
+            </td>
+            <td data-label="発売日"><span class="date">2024-10-04</span></td>
+            <td class="basis" data-label="降格理由">収録曲「We Pray」にラッパー（Little Simz等）が客演し、ヒップホップ色の1曲と電子音楽色が明確にあるため、<strong>絶対除外ルール（ラップ／エレクトロニカ）の境界</strong>としてフラグしSからAへ降格。</td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/Moon_Music" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://www.coldplay.com/new-album-moon-music-lands-october-4/" target="_blank" rel="noopener">Coldplay公式</a>
+              <a href="https://en.wikipedia.org/wiki/We_Pray" target="_blank" rel="noopener">Wikipedia「We Pray」</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">2</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Mr. Big</div>
+              <div class="album">Ten</div>
+            </td>
+            <td data-label="発売日"><span class="date">2024-07-12</span></td>
+            <td class="basis" data-label="降格理由">Frontiers／Blabbermouthで検証。レーベル評が「<strong>raw, unadulterated riff rock and blues</strong>」寄りで、S基準には届かないと判定し降格。
+              <span class="flag"><b>Wikipediaでは確認できない：</b>専用アルバムページがなく、ディスコグラフィ／バンドページでの確認。</span>
+            </td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/Mr._Big_discography" target="_blank" rel="noopener">Wikipedia（ディスコグラフィ）</a>
+              <a href="https://www.Frontiers.it/album/5977" target="_blank" rel="noopener">Frontiers</a>
+              <a href="https://blabbermouth.net/news/eric-martin-really-got-to-know-paul-gilbert-during-songwriting-sessions-for-mr-bigs-ten-album" target="_blank" rel="noopener">Blabbermouth</a>
+            </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- A/B候補 -->
+  <section id="candidates">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <h2>A／B候補 — 未採用</h2>
+      <span class="count">19 ALBUMS</span>
+    </div>
+    <p class="sec-desc">候補26枚のうち、S検証の対象にはならなかった19枚。適合ランクは <strong>A（12枚）</strong> と <strong>B（7枚）</strong>。他ジャンルとの境界にあたる作品は、その旨を根拠メモに明示している。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th>アーティスト ／ アルバム</th><th>発売日</th><th>適合ランク</th><th>根拠メモ</th></tr>
+        </thead>
+        <tbody>
+          <tr class="group-row"><td colspan="4">A ランク — 12枚</td></tr>
+
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Green Day</div><div class="album">Saviors</div></td>
+            <td data-label="発売日"><span class="date">2024-01-19</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Punk rock, power pop, pop-punk。スタジアム・アンセム調のAlternative RockとしてA基準適合</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Kings of Leon</div><div class="album">Can We Please Have Fun</div></td>
+            <td data-label="発売日"><span class="date">2024-05-10</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Indie rock, alternative rock。アリーナ常連の第9作</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Cage the Elephant</div><div class="album">Neon Pill</div></td>
+            <td data-label="発売日"><span class="date">2024-05-17</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Alternative Airplay 1位曲を3曲輩出、アンセム調</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Jack White</div><div class="album">No Name</div></td>
+            <td data-label="発売日"><span class="date">2024-08-02</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Garage rock, blues rock。巨大リフ中心の王道ロック回帰作（一般発売日を採用）</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">David Gilmour</div><div class="album">Luck and Strange</div></td>
+            <td data-label="発売日"><span class="date">2024-09-06</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">UK1位。Classic Rock誌2024年間3位</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Deep Purple</div><div class="album">=1</div></td>
+            <td data-label="発売日"><span class="date">2024-07-19</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Hard rock, progressive rock。ジャンル5（メタル寄り）との境界候補</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Lenny Kravitz</div><div class="album">Blue Electric Light</div></td>
+            <td data-label="発売日"><span class="date">2024-05-24</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">R&amp;B, pop, rock。アリーナ級ロック・アイコンの王道作</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">The Smashing Pumpkins</div><div class="album">Aghori Mhori Mei</div></td>
+            <td data-label="発売日"><span class="date">2024-08-02</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Progressive rock, alternative rock。90年代王道への回帰と評された</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">The Cure</div><div class="album">Songs of a Lost World</div></td>
+            <td data-label="発売日"><span class="date">2024-11-01</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Gothic rock。16年ぶりの新作、UK1位（アンセム調とは距離あり、境界明示）</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Snow Patrol</div><div class="album">The Forest Is the Path</div></td>
+            <td data-label="発売日"><span class="date">2024-09-13</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">UK1位、アンセム型オルタナティヴ</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Nick Cave and the Bad Seeds</div><div class="album">Wild God</div></td>
+            <td data-label="発売日"><span class="date">2024-08-30</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Alternative rock。欧州各国トップ10／1位</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Sebastian Bach</div><div class="album">Child Within the Man</div></td>
+            <td data-label="発売日"><span class="date">2024-05-10</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Heavy metal, hard rock。ジャンル5およびジャンル8（ヘアメタル系譜）との境界候補</td>
+          </tr>
+
+          <tr class="group-row"><td colspan="4">B ランク — 7枚</td></tr>
+
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">The Black Crowes</div><div class="album">Happiness Bastards</div></td>
+            <td data-label="発売日"><span class="date">2024-03-15</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Southern rock色。ジャンル3との境界候補。Classic Rock誌2024年間1位</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">The Black Keys</div><div class="album">Ohio Players</div></td>
+            <td data-label="発売日"><span class="date">2024-04-05</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Garage rock, blues rock。本ジャンル周縁</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Sum 41</div><div class="album">Heaven :x: Hell</div></td>
+            <td data-label="発売日"><span class="date">2024-03-29</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">2枚組。Heaven面はポップパンク、Hell面はヘヴィメタルでジャンル5との境界。最終スタジオ盤</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Seether</div><div class="album">The Surface Seems So Far</div></td>
+            <td data-label="発売日"><span class="date">2024-09-20</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Post-grunge。初期作がニューメタルと評された経歴があるが本作自体はpost-grunge表記</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Jerry Cantrell</div><div class="album">I Want Blood</div></td>
+            <td data-label="発売日"><span class="date">2024-10-18</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Grunge, alternative metal。Loudwireの2024年ベスト・ロック2位</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Vampire Weekend</div><div class="album">Only God Was Above Us</div></td>
+            <td data-label="発売日"><span class="date">2024-04-05</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Indie rock, chamber pop。ポップ色が強く本ジャンル周縁</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">St. Vincent</div><div class="album">All Born Screaming</div></td>
+            <td data-label="発売日"><span class="date">2024-04-26</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Art rock。批評でelectronica要素への言及があり絶対除外との境界として明示</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 境界メモ -->
+  <section id="boundary">
+    <div class="sec-head">
+      <span class="sec-no">04</span>
+      <h2>境界メモ</h2>
+      <span class="count">NOTES</span>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <h3><span class="who">Coldplay</span> — 絶対除外ルールとの境界</h3>
+        <p>収録曲「We Pray」へのラッパー客演と電子音楽色により、<strong>絶対除外ルール（ラップ／エレクトロニカ）との境界</strong>としてフラグし、SからAへ降格した。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">The Warning</span> — FEMALE VOCAL との境界</h3>
+        <p><strong>FEMALE VOCAL ROCK / METAL との境界候補</strong>として明示した上で、本ジャンル（MAINSTREAM ROCK / ARENA HEROES）で採用した。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">Kissin' Dynamite / Mr. Big</span> — Wikipediaでは確認できない</h3>
+        <p>両作ともアルバム単独のWikipediaページが存在しないため、<strong>「Wikipediaでは確認できない」</strong>旨を明記した。Kissin' Dynamite はバンドページのディスコグラフィで、Mr. Big はディスコグラフィ／バンドページで確認し、いずれもレーベル公式等の別ソースで検証した。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    2024年 MAINSTREAM ROCK / ARENA HEROES アルバム選出エビデンス — 候補26枚／重複除外0枚／S検証7枚／S確定5枚・A降格2枚／最終選出5枚（品質優先ルール：5〜10枚）。出典リンクは各表の「出典」欄に記載。
+  </footer>
+
+</div>
+</body>
+</html>
