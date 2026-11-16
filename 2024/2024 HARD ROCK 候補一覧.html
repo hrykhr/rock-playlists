@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2024 HARD ROCK 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f7f5; --surface:#ffffff; --surface2:#efefec; --ink:#1a1c1e; --muted:#5c6066; --line:#d9d7d2;
+    --accent:#b63e12; --accent-ink:#ffffff; --s:#8a2a0a; --s-bg:#fdeee6; --a:#7a5a00; --a-bg:#fdf3d0; --b:#3f4a56; --b-bg:#e6ebef;
+    --warn-bg:#fff7e0; --warn-line:#d9a400;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131518; --surface:#1c1f23; --surface2:#24282d; --ink:#eceae6; --muted:#a7adb5; --line:#33383e;
+      --accent:#e86a2e; --s:#ffb08a; --s-bg:#3a2418; --a:#f2d06b; --a-bg:#38300f; --b:#a9c2d8; --b-bg:#232e38;
+      --warn-bg:#2e2a12; --warn-line:#a8871f;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;line-height:1.75;font-size:15.5px}
+  a{color:var(--accent);word-break:break-all}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 64px}
+  /* header */
+  header{padding:36px 0 8px}
+  .kicker{font-family:"Barlow Condensed",sans-serif;letter-spacing:.18em;font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase}
+  h1{font-size:clamp(30px,6vw,46px);line-height:1.2;margin:6px 0 4px;font-weight:900}
+  h1 .en{font-family:"Barlow Condensed",sans-serif;letter-spacing:.02em}
+  .lede{color:var(--muted);max-width:44em;margin:10px 0 0}
+  .lede strong{color:var(--ink)}
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:26px 0 6px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--ink);padding:14px 14px 10px}
+  .stat .num{font-family:"Barlow Condensed",sans-serif;font-size:40px;font-weight:700;line-height:1}
+  .stat .num small{font-size:18px;color:var(--muted)}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5}
+  .stat.hot{border-top-color:var(--accent)}
+  @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:16px 0 0;font-size:13.5px}
+  .flow .step{background:var(--surface2);padding:6px 12px;font-weight:700}
+  .flow .arr{color:var(--muted)}
+  /* controls */
+  .controls{position:sticky;top:0;z-index:20;background:var(--bg);padding:14px 0 10px;border-bottom:1px solid var(--line);margin-top:22px}
+  .controls input[type=search]{width:100%;min-height:44px;padding:10px 14px;font-size:16px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;font-family:inherit}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .filters button{min-height:40px;padding:8px 16px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer}
+  .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .countline{font-size:13px;color:var(--muted);margin-top:8px}
+  /* sections */
+  section{margin-top:40px}
+  h2{font-size:23px;font-weight:900;line-height:1.35;margin:0 0 6px;padding-bottom:8px;border-bottom:3px solid var(--ink)}
+  h2 .en{font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.04em}
+  .secnote{color:var(--muted);font-size:14.5px;margin:8px 0 18px;max-width:46em}
+  /* album cards */
+  .card{background:var(--surface);border:1px solid var(--line);padding:18px 20px;margin-bottom:12px}
+  .card-head{display:flex;gap:12px;align-items:flex-start}
+  .no{font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:700;color:var(--muted);line-height:1.1;min-width:30px}
+  .titles{flex:1;min-width:0}
+  .artist{font-weight:900;font-size:17px;line-height:1.4}
+  .album{font-size:17px;line-height:1.4}
+  .album::before{content:"『"}.album::after{content:"』"}
+  .badge{flex-shrink:0;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em;padding:3px 12px;border-radius:4px;line-height:1.5}
+  .badge.s{background:var(--s-bg);color:var(--s);border:1px solid var(--s)}
+  .badge.a{background:var(--a-bg);color:var(--a);border:1px solid var(--a)}
+  .badge.b{background:var(--b-bg);color:var(--b);border:1px solid var(--b)}
+  .verdict{flex-shrink:0;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--bg);line-height:1.5}
+  .verdict.out{background:transparent;color:var(--muted);border:1px solid var(--line)}
+  .meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0 42px;font-size:13.5px;color:var(--muted)}
+  .meta b{color:var(--ink)}
+  dl{margin:10px 0 0 42px;display:grid;grid-template-columns:86px 1fr;gap:4px 12px;font-size:14.5px}
+  dt{font-weight:700;color:var(--muted);font-size:13px;padding-top:2px}
+  dd{margin:0}
+  .src{margin:10px 0 0 42px;font-size:13px}
+  .src .sl{font-weight:700;color:var(--muted);margin-right:6px}
+  .src a{display:inline-block;padding:6px 2px;min-height:32px}
+  .src li{margin:2px 0}
+  .src ul{margin:4px 0 0;padding-left:18px}
+  @media(max-width:560px){
+    dl{grid-template-columns:1fr;margin-left:0}
+    .meta,.src{margin-left:0}
+    .card{padding:16px}
+    .no{display:none}
+  }
+  .demote{border:2px solid var(--warn-line);background:var(--warn-bg)}
+  .demote .why{margin:10px 0 0 42px;font-size:14.5px}
+  @media(max-width:560px){.demote .why{margin-left:0}}
+  /* compact rows for A/B */
+  .row{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--line);padding:14px 18px;margin-bottom:10px}
+  .row.ra{border-left-color:var(--a)} .row.rb{border-left-color:var(--b)}
+  .row-head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+  .row-head .artist{font-size:16px}
+  .row-head .album{font-size:16px}
+  .row-head .date{margin-left:auto;font-size:13px;color:var(--muted);white-space:nowrap}
+  .row p{margin:6px 0 0;font-size:14px}
+  .row .lab{font-weight:700;color:var(--muted);font-size:12.5px;margin-right:4px}
+  .row .src{margin-left:0}
+  /* notes box */
+  .notes{background:var(--surface);border:1px solid var(--line);padding:6px 22px 14px}
+  .notes li{margin:12px 0}
+  .notes li b{display:block}
+  footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  .hidden{display:none!important}
+  .empty{padding:28px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Evidence Page — Album Selection 2024 / Genre 2</div>
+  <h1>2024年 <span class="en">HARD ROCK</span> 候補一覧</h1>
+  <p class="lede">2024年に発売されたハードロックのスタジオ・アルバムを対象に、候補収集から重複排除、Sランク検証までを行った記録です。<strong>候補は26枚</strong>集まり、既出アルバム累積リストとの<strong>重複は0枚</strong>でした。Sランク検証は11枚に対して実施し、<strong>10枚がS確定</strong>、1枚（Mr. Big『Ten』）がAへ降格しました。このページでは最終選出10枚に加え、非採用となったA／B候補15枚も理由つきで全て記載します。</p>
+
+  <div class="stats">
+    <div class="stat"><div class="num">26<small> 枚</small></div><div class="lbl">収集した候補（2024年発売）</div></div>
+    <div class="stat"><div class="num">0<small> 枚</small></div><div class="lbl">累積リストとの重複で除外</div></div>
+    <div class="stat"><div class="num">11<small> 枚</small></div><div class="lbl">Sランク検証を実施</div></div>
+    <div class="stat hot"><div class="num">10<small> 枚</small></div><div class="lbl">最終選出（S確定）</div></div>
+  </div>
+
+  <div class="flow" aria-label="選出の流れ">
+    <span class="step">候補収集 26枚</span><span class="arr">→</span>
+    <span class="step">重複排除 0枚（全て残存）</span><span class="arr">→</span>
+    <span class="step">S検証 11枚</span><span class="arr">→</span>
+    <span class="step">S確定 10枚</span><span class="arr">＋</span>
+    <span class="step">A降格 1枚</span>
+  </div>
+</header>
+
+<div class="controls">
+  <input type="search" id="q" placeholder="アーティスト名・アルバム名で検索" aria-label="候補を検索">
+  <div class="filters" role="group" aria-label="ランクで絞り込み">
+    <button type="button" data-f="all" aria-pressed="true">すべて（26枚）</button>
+    <button type="button" data-f="final" aria-pressed="false">最終選出のみ</button>
+    <button type="button" data-f="S" aria-pressed="false">S</button>
+    <button type="button" data-f="A" aria-pressed="false">A</button>
+    <button type="button" data-f="B" aria-pressed="false">B</button>
+  </div>
+  <div class="countline" id="countline"></div>
+</div>
+
+<main>
+<!-- ============ FINAL 10 ============ -->
+<section id="final" data-sec>
+  <h2>最終選出 — S確定 <span class="en">10 ALBUMS</span></h2>
+  <p class="secnote">Sランク検証を通過した10枚。発売日順。検証では発売年（2024年）・オリジナル・スタジオ盤であること・ジャンル適合・絶対除外要素（ラップ／ヒップホップ、ミクスチャー／ニューメタル、トランス／エレクトロニカ）の有無を確認しています。全10枚とも絶対除外要素は確認されませんでした。</p>
+
+  <article class="card" data-rank="S" data-status="final" data-text="the gems phoenix ザ ジェムズ フェニックス">
+    <div class="card-head"><div class="no">01</div><div class="titles"><div class="artist">The Gems</div><div class="album">Phoenix</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年1月26日</b></span><span>形態 <b>デビュー・スタジオ盤</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Napalm Records の製品ページで Genre: Hardrock と明記。Cryptic Rock は新進のハードロック・バンドとして、力強いハードロックとヘヴィなギターリフを評しています。HARD ROCK の S 基準「Hard Rock」に直接適合します。</dd>
+      <dt>特記</dt><dd><b>Wikipedia では確認できない</b>（アルバム単独ページもバンドページも検索で確認できず）ため、レーベル公式（Napalm Records）とレビューで検証しました。元 Thundermother メンバー3名による女性フロントのバンドですが、HARD ROCK に女性枠ルールはなく、適合はジャンル自体で判定しています。16曲構成で Interlude と「Like A Phoenix」のアコースティック版を含む長尺盤です。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://b2b.napalmrecords.com/b2b/the-gems-phoenix-digisleeve-cd.html" target="_blank" rel="noopener">Napalm Records — The Gems『Phoenix』製品ページ</a></li>
+      <li><a href="https://www.holdtight.co/news/2024/1/23/swedish-rock-trio-the-gems-stream-fifth-single-fruits-of-my-labor-ahead-of-album-release" target="_blank" rel="noopener">Hold Tight — リリース告知</a></li>
+      <li><a href="https://crypticrock.com/the-gems-phoenix-album-review/" target="_blank" rel="noopener">Cryptic Rock — アルバム・レビュー</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="ace frehley 10000 volts エース フレイリー">
+    <div class="card-head"><div class="no">02</div><div class="titles"><div class="artist">Ace Frehley</div><div class="album">10,000 Volts</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年2月23日</b></span><span>形態 <b>オリジナル・スタジオ盤</b>（カバー集『Origins』シリーズとは別）</span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Wikipedia のジャンル表記は Hard rock, heavy metal。HARD ROCK の S 基準「Hard Rock」に適合します。</dd>
+      <dt>特記</dt><dd><b>通算枚数の数え方に揺れがあります。</b>Wikipedia 本文は「tenth and final studio album」とする一方、別ミラー／集計では「eighth」と表記されます（Frehley's Comet 盤やカバー盤『Origins』の数え方の違いによる）。発売年とオリジナル盤であることに疑義はありません。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/10,000_Volts" target="_blank" rel="noopener">Wikipedia — 10,000 Volts</a></li>
+      <li><a href="https://blabbermouth.net/news/ace-frehley-shares-title-track-of-10000-volts-solo-album%20" target="_blank" rel="noopener">Blabbermouth — タイトル曲公開の告知</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="the end machine quantum phase ジ エンド マシーン">
+    <div class="card-head"><div class="no">03</div><div class="titles"><div class="artist">The End Machine</div><div class="album">The Quantum Phase</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年3月8日</b></span><span>形態 <b>3rd スタジオ盤・全11曲</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Discogs のスタイル表記は Hard Rock。Frontiers の発表／Blabbermouth は George Lynch と Jeff Pilson によるハードロック・スーパーグループの新作として紹介しています。S 基準「Hard Rock」に適合します。</dd>
+      <dt>特記</dt><dd>Wikipedia にアルバム単独ページは確認できません（バンドページのディスコグラフィで「The Quantum Phase (2024)、3rd album」として確認し、Discogs／Frontiers 系告知で検証）。ボーカルが Robert Mason から Girish Pradhan へ交代した初の盤です。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/The_End_Machine" target="_blank" rel="noopener">Wikipedia — The End Machine（バンドページ）</a></li>
+      <li><a href="https://blabbermouth.net/news/the-end-machine-feat-george-lynch-jeff-pilson-the-quantum-phase-album-due-in-march" target="_blank" rel="noopener">Blabbermouth — リリース告知</a></li>
+      <li><a href="https://grande-rock.com/news/the-end-machine-to-release-new-studio-album-the-quantum-phase-on-march-8th-2024/" target="_blank" rel="noopener">Grande Rock — リリース告知</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="the treatment wake up the neighbourhood トリートメント">
+    <div class="card-head"><div class="no">04</div><div class="titles"><div class="artist">The Treatment</div><div class="album">Wake Up the Neighbourhood</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年5月10日</b></span><span>形態 <b>6th スタジオ盤・全11曲</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Discogs のスタイル表記は Hard Rock, Classic Rock, Rock &amp; Roll。Frontiers の発表では Def Leppard／AC/DC／Thin Lizzy の影響を受けたクラシック・ロック・リバイバルとされ、Hard Rock が中核です。S 基準に適合します。</dd>
+      <dt>特記</dt><dd><b>Wikipedia では確認できない</b>（アルバム単独ページは検索で確認できず）ため、Frontiers 系発表と Discogs で検証しました。タイトル表記は「Neighbourhood」が正式で、米盤等で「Neighborhood」と表記が揺れる点に注意が必要です。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://kickassforever.com/the-treatment-hard-rock-uk-announce-new-album-wake-up-the-neighbourhood-out-may-10-2024-via-frontiers-music-new-video-single-lets-wake-up-this-town/" target="_blank" rel="noopener">KickAss Forever — Frontiers 系リリース発表</a></li>
+      <li><a href="https://www.discogs.com/release/30709088-The-Treatment-Wake-Up-The-Neighbourhood?srsltid=AfmBOooapZXfvKHBpy2HpW0w-SX7VUnpgR3_Z-TVTrXUm8xDPaNjAQ2T" target="_blank" rel="noopener">Discogs — Wake Up The Neighbourhood</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="nestor teenage rebel ネスター ティーンエイジ レベル">
+    <div class="card-head"><div class="no">05</div><div class="titles"><div class="artist">Nestor</div><div class="album">Teenage Rebel</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年5月31日</b></span><span>形態 <b>2nd スタジオ盤</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Wikipedia は「Swedish Melodic Hard Rock band」と定義し、Grande Rock／Napalm の発表も80年代ハードロックのアンセムとして紹介。HARD ROCK の S 基準「Melodic Hard Rock（極上の美旋律）」に適合します。Nestor は HARD ROCK のベンチマーク自体でもあります。</dd>
+      <dt>特記</dt><dd><b>境界盤です。</b>ジャンル8「MELODIC HARD ROCK / HAIR METAL」のベンチマークとも重なりますが、HARD ROCK の S 定義にも直接適合するため、本ジャンルで採用しました。Wikipedia にアルバム単独ページは確認できず、バンドページで「second album, released 31 May」と確認しています。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Nestor_(band)" target="_blank" rel="noopener">Wikipedia — Nestor (band)</a></li>
+      <li><a href="https://grande-rock.com/news/nestor-to-release-new-studio-album-teenage-rebel-on-may-31st-2024/" target="_blank" rel="noopener">Grande Rock — リリース告知</a></li>
+      <li><a href="https://www.sonicperspectives.com/album-reviews/nestor-teenage-rebel/" target="_blank" rel="noopener">Sonic Perspectives — アルバム・レビュー（候補収集時）</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="grand slam wheel of fortune グランド スラム">
+    <div class="card-head"><div class="no">06</div><div class="titles"><div class="artist">Grand Slam</div><div class="album">Wheel of Fortune</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年6月7日</b>（国際発売日）</span><span>形態 <b>スタジオ盤・全10曲</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Rock Report は hard rock のスタジオ・アルバムとして掲載し、Defenders of the Faith は Genre: Hard Rock、Thin Lizzy 系のメロディック・ハードロックの伝統と評しています。S 基準「Hard Rock」に適合します。</dd>
+      <dt>特記</dt><dd><b>S群の中では最も弱い1枚です。</b>AllMusic 等の評価は賛否が分かれ、Phil Lynott 時代の未発表曲の新録を含むため、素材の一部が80年代由来で現代盤としての鮮度は他の候補より劣ります。ただし2024年録音の新作スタジオ盤として発売されており、対象年内です。Wikipedia では確認できない（アルバム単独ページなし）ため、レーベル系発表と Discogs／Rock Report で検証しました。日本盤CDは6月26日表記（Discogs）ですが、国際発売日6月7日を採用しています。同時発売の『Hit The Ground – Revised』は再発のため対象外です。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://chaoszine.net/grand-slams-new-album-wheel-of-fortune-out-on-7th-june/" target="_blank" rel="noopener">ChaosZine — リリース告知</a></li>
+      <li><a href="https://www.rockreport.be/albums/grand-slam-uk-wheel-of-fortune" target="_blank" rel="noopener">Rock Report — アルバム情報</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="black country communion v ブラック カントリー コミュニオン">
+    <div class="card-head"><div class="no">07</div><div class="titles"><div class="artist">Black Country Communion</div><div class="album">V</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年6月14日</b></span><span>形態 <b>7年ぶり・5th スタジオ盤（50分36秒）</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Wikipedia のジャンル表記は Hard rock, blues rock で、筆頭が Hard rock。ブルース・ロック要素は A 的な要素ですが、本盤の中核はハードロックであり、S 基準に適合します。</dd>
+      <dt>特記</dt><dd>UKチャート58位でバンド最低の商業成績という指摘が Wikipedia にありますが、これはジャンル適合とは別の問題として切り分け、採用に影響させていません。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/V_(Black_Country_Communion_album)" target="_blank" rel="noopener">Wikipedia — V (Black Country Communion album)</a></li>
+      <li><a href="https://sleazeroxx.com/black-country-communion-to-release-fifth-studio-album-v-on-june-14th/" target="_blank" rel="noopener">Sleaze Roxx — リリース告知</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="deep purple =1 ディープ パープル イコールワン">
+    <div class="card-head"><div class="no">08</div><div class="titles"><div class="artist">Deep Purple</div><div class="album">=1</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年7月19日</b></span><span>形態 <b>23rd スタジオ盤・全13曲（52分06秒）</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Wikipedia のジャンル表記は Hard rock, progressive rock。プログレ要素は併記されていますが除外要素ではなく、S 基準「Hard Rock」に適合します。Simon McBride 加入後初のスタジオ盤です。</dd>
+      <dt>特記</dt><dd><b>発売日に表記ゆれがあります。</b>Wikipedia のディスコグラフィ側は「20 July 2024」と1日ずれる表記ですが、アルバム単独ページと独語版が「19 July 2024」で一致するため、<b>19日を採用</b>しました。なお本作は 2024年 MAINSTREAM ROCK / ARENA HEROES 選出時はジャンル5境界の A 候補でしたが、本ジャンルでは S 検証を通過しています。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/%3D1" target="_blank" rel="noopener">Wikipedia — =1（英語版）</a></li>
+      <li><a href="https://de.wikipedia.org/wiki/%3D1" target="_blank" rel="noopener">Wikipedia — =1（独語版）</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="eclipse megalomanium ii エクリプス メガロマニアム">
+    <div class="card-head"><div class="no">09</div><div class="titles"><div class="artist">Eclipse</div><div class="album">Megalomanium II</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年9月20日</b></span><span>形態 <b>スタジオ盤・全11曲</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Wikipedia は「Swedish hard rock band」と定義し、Discogs のスタイルは Arena Rock, Hard Rock。Frontiers の発表は massive hooks を持つ heavy rock／melodic hard rock と紹介しています。S 基準「Hard Rock / Melodic Hard Rock」に適合し、Eclipse は HARD ROCK のベンチマーク自体でもあります。</dd>
+      <dt>特記</dt><dd><b>Wikipedia では確認できない</b>（アルバム単独ページは確認できず）ため、バンドページのディスコグラフィと Frontiers 公式発表で検証しました。前作『Megalomanium』（2023年）の続編であり別アルバムで、重複ではありません。11th スタジオ盤とするレビューがあります。美旋律が支配的な点でジャンル8との境界でもあることを明示します。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Eclipse_(band)" target="_blank" rel="noopener">Wikipedia — Eclipse (band)</a></li>
+      <li><a href="https://grande-rock.com/news/eclipse-to-release-new-studio-album-megalomanium-ii-on-september-20th-2024/" target="_blank" rel="noopener">Grande Rock — リリース告知</a></li>
+      <li><a href="https://www.discogs.com/release/31788440-Eclipse-Megalomanium-II-%E3%83%A1%E3%82%AC%E3%83%AD%E3%83%9E%E3%82%A2%E3%83%A0II-" target="_blank" rel="noopener">Discogs — Megalomanium II</a></li>
+      <li><a href="https://mhf-mag.com/reviews/eclipse-megalomanium-ii/" target="_blank" rel="noopener">Metal Heads Forever — レビュー（候補収集時）</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="house of lords full tilt overdrive ハウス オブ ローズ">
+    <div class="card-head"><div class="no">10</div><div class="titles"><div class="artist">House of Lords</div><div class="album">Full Tilt Overdrive</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年10月11日</b>（国際発売日）</span><span>形態 <b>スタジオ盤</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Blabbermouth／Grande Rock ともに「Hard Rockers の twelfth studio album」と紹介し、CDJapan は American melodic rock band、Metal Daze は classic hard rock としています。S 基準「Melodic Hard Rock」に適合します。</dd>
+      <dt>特記</dt><dd><b>Wikipedia では確認できない</b>（アルバム単独ページは検索で確認できず）ため、Blabbermouth と Frontiers 系発表／Discogs で検証しました。<b>通算枚数の数え方に揺れがあります</b>（レーベル発表は12th studio album、Dangerdog のレビューは14th long player と数える）。日本盤CDは10月23日発売（CDJapan）ですが、国際発売日10月11日で対象年内です。候補収集時点では AOR／アリーナ色から B 判定の可能性も残されていましたが、検証の結果 S と判定しました。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://blabbermouth.net/news/house-of-lords-announces-new-album-full-tilt-overdrive" target="_blank" rel="noopener">Blabbermouth — リリース告知</a></li>
+      <li><a href="https://grande-rock.com/news/house-of-lords-to-release-new-studio-album-full-tilt-overdrive-on-october-11th-2024/" target="_blank" rel="noopener">Grande Rock — リリース告知</a></li>
+      <li><a href="https://www.discogs.com/release/31975172-House-Of-Lords-Full-Tilt-Overdrive?srsltid=AfmBOorLeK7m1VNdLIvOx9Poo_eI13XIb-JHKarYhwT_3TZu2J7ffYIC" target="_blank" rel="noopener">Discogs — Full Tilt Overdrive</a></li>
+    </ul></div>
+  </article>
+</section>
+
+<!-- ============ DEMOTED ============ -->
+<section id="demoted" data-sec>
+  <h2>S検証で A へ降格 <span class="en">1 ALBUM</span></h2>
+  <p class="secnote">候補収集時点では S と見込まれ、S検証の対象となった11枚のうち、唯一 S に届かなかった1枚です。</p>
+
+  <article class="card demote" data-rank="A" data-status="out" data-text="mr big ten ミスター ビッグ テン">
+    <div class="card-head"><div class="no">—</div><div class="titles"><div class="artist">Mr. Big</div><div class="album">Ten</div></div><span class="badge a">A（降格）</span><span class="verdict out">非採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年7月12日</b></span><span>形態 <b>10th かつ最終スタジオ盤・全11曲</b></span></div>
+    <p class="why"><b>降格理由：</b>発売年・オリジナル・スタジオ盤であることに問題はありません。バンド自体は American hard rock band ですが、本盤固有の証拠は A 寄りです。Real Gone は「rarely sounded as bluesy」と評し、大半を blues rock jam／70年代ブルース系ハードロックとし、Dangerdog はそのサウンドを classic hard rock, AOR, boogie, and blues の混合としています。つまり<b>アルバム単位ではブルージー／ブギー／ファンク色が前面</b>で、S の「Melodic Hard Rock の美旋律・ドライヴが支配的」とは言い切れません。HARD ROCK の A 基準「Bluesy Hard Rock / Classic Rock（ハードなエッジを持つもの）」に該当するため A と判定しました。これは <b>2024年 MAINSTREAM ROCK / ARENA HEROES 検証で A 降格とした判断とも整合</b>します。Mr. Big は両ジャンルで S 候補から A 降格となりました。絶対除外要素はありません。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Mr._Big_%28American_band%29" target="_blank" rel="noopener">Wikipedia — Mr. Big (American band)</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Mr._Big_discography" target="_blank" rel="noopener">Wikipedia — Mr. Big discography</a></li>
+      <li><a href="https://www.realgonerocks.com/2024/07/mr-big-ten/" target="_blank" rel="noopener">Real Gone — 『Ten』レビュー</a></li>
+    </ul></div>
+  </article>
+</section>
+
+<!-- ============ A ============ -->
+<section id="rank-a" data-sec>
+  <h2>非採用 — A候補 <span class="en">7 ALBUMS</span></h2>
+  <p class="secnote">ハードロックの要素はあるものの、ブルース／サザン色、他ジャンル要素、他ジャンルとの境界などの理由で S には届かず、S検証の対象にも入らなかった候補です（上記の Mr. Big を除く）。発売日順。</p>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="blackberry smoke be right here ブラックベリー スモーク">
+    <div class="row-head"><span class="artist">Blackberry Smoke</span><span class="album">Be Right Here</span><span class="badge a">A</span><span class="date">2024年2月16日</span></div>
+    <p><span class="lab">根拠</span>AllMusic のスタイルは Southern Rock, Blues-Rock, Hard Rock、Wikipedia のジャンルは Southern rock, hard rock, blues rock。A 基準「Bluesy Hard Rock」に該当します。</p>
+    <p><span class="lab">非採用理由</span>ジャンル3「STADIUM COUNTRY &amp; SOUTHERN ROCK」との境界作。骨太なサザン／ブルース色が支配的で、HARD ROCK では A として収集するに留めました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://www.allmusic.com/album/MW0004078444" target="_blank" rel="noopener">AllMusic — Be Right Here</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Blackberry_Smoke" target="_blank" rel="noopener">Wikipedia — Blackberry Smoke</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="mick mars the other side of mars ミック マーズ">
+    <div class="row-head"><span class="artist">Mick Mars</span><span class="album">The Other Side of Mars</span><span class="badge a">A</span><span class="date">2024年2月23日</span></div>
+    <p><span class="lab">根拠</span>Wikipedia のジャンルは Grunge, hard rock、Discogs のスタイルは Hard Rock。ソロ・デビュー盤です。</p>
+    <p><span class="lab">非採用理由</span>グランジ要素を含むため、S ではなく A 相当の Hard Rock としました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/The_Other_Side_of_Mars" target="_blank" rel="noopener">Wikipedia — The Other Side of Mars</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="walter trout broken ウォルター トラウト">
+    <div class="row-head"><span class="artist">Walter Trout</span><span class="album">Broken</span><span class="badge a">A</span><span class="date">2024年3月1日</span></div>
+    <p><span class="lab">根拠</span>「Blues-rock icon」と紹介され、新スタジオ盤『Broken』が2024年3月1日発売と明記されています。A 基準「Bluesy Hard Rock」に該当します。</p>
+    <p><span class="lab">非採用理由</span>ブルース寄りのため A。<b>Wikipedia の専用アルバムページでは確認できない</b>ため、信頼メディアの告知で確認しました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://justlistentothis.co.uk/news/walter-trout-announces-new-album/" target="_blank" rel="noopener">Just Listen To This — リリース告知</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="the black crowes happiness bastards ブラック クロウズ">
+    <div class="row-head"><span class="artist">The Black Crowes</span><span class="album">Happiness Bastards</span><span class="badge a">A</span><span class="date">2024年3月15日</span></div>
+    <p><span class="lab">根拠</span>Rock Cellar が blues/rock band の新作として2024年3月15日発売・15年ぶりのオリジナル作と明記し、レビューでは hard rock power にも言及。A 基準「Bluesy Hard Rock / Classic Rock with hard edge」に該当します。</p>
+    <p><span class="lab">非採用理由</span>ブルース／サザン色が強い境界作のため A。候補収集は Wikipedia ではなく Rock Cellar 等で確認しました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://rockcellarmagazine.com/the-black-crowes-new-song-cross-your-fingers-happiness-bastards/" target="_blank" rel="noopener">Rock Cellar Magazine — 新曲・アルバム告知</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="sebastian bach child within the man セバスチャン バック">
+    <div class="row-head"><span class="artist">Sebastian Bach</span><span class="album">Child Within the Man</span><span class="badge a">A</span><span class="date">2024年5月10日</span></div>
+    <p><span class="lab">根拠</span>Wikipedia のジャンルは Heavy metal, hard rock。6th スタジオ盤で、Hard Rock 要素が明記されています。</p>
+    <p><span class="lab">非採用理由</span>A／S 境界の作ですが、Skid Row 系のスリーズ／ヘアメタル系譜も含むため A としました（ジャンル5／ジャンル8との境界でもあります）。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Child_Within_the_Man" target="_blank" rel="noopener">Wikipedia — Child Within the Man</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="babylon a.d. rome wasn't built in a day バビロン">
+    <div class="row-head"><span class="artist">Babylon A.D.</span><span class="album">Rome Wasn't Built in a Day</span><span class="badge a">A</span><span class="date">2024年5月17日</span></div>
+    <p><span class="lab">根拠</span>Grande Rock は2024年5月17日に Perris から発売される新スタジオ盤とし、往年の Babylon A.D. のハードロック・サウンド、北カリフォルニアを代表するオリジナル Hard Rock バンドと紹介。A 基準「Sleaze Rock / Glam Metal 系 Hard Rock」に該当します。</p>
+    <p><span class="lab">非採用理由</span>スリーズ／グラム系譜の A として収集。<b>Wikipedia では確認できない</b>（アルバム単独ページなし）ため Grande Rock／Sleaze Roxx で確認しました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://grande-rock.com/news/babylon-a-d-to-release-new-studio-album-rome-wasnt-built-in-a-day-on-may-17th-2024/" target="_blank" rel="noopener">Grande Rock — リリース告知</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="richie kotzen nomad リッチー コッツェン">
+    <div class="row-head"><span class="artist">Richie Kotzen</span><span class="album">Nomad</span><span class="badge a">A</span><span class="date">2024年9月27日</span></div>
+    <p><span class="lab">根拠</span>Metal Kingdom のジャンルは Hard Rock, Blues Rock, Jazz Fusion。Blabbermouth は hard rock から soul/funk までと説明しています。A 基準「Bluesy Hard Rock」に該当します。</p>
+    <p><span class="lab">非採用理由</span>フュージョン／ファンク要素があるため A。<b>Wikipedia では確認できない</b>（アルバム単独ページなし）ため Metal Kingdom／Blabbermouth で確認しました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://www.metalkingdom.net/album/richie-kotzen-nomad-176915" target="_blank" rel="noopener">Metal Kingdom — Nomad</a></li>
+      <li><a href="http://blabbermouth.net/news/richie-kotzen-announces-nomad-album-shares-on-the-table-single" target="_blank" rel="noopener">Blabbermouth — リリース告知</a></li>
+    </ul></div>
+  </article>
+</section>
+
+<!-- ============ B ============ -->
+<section id="rank-b" data-sec>
+  <h2>非採用 — B候補 <span class="en">8 ALBUMS</span></h2>
+  <p class="secnote">AOR 寄り、あるいはベテラン勢のヘヴィメタル寄りの作品として広く収集した候補です。HARD ROCK の中核からは外れるため、S検証の対象には入りませんでした。発売日順。</p>
+
+  <article class="row rb" data-rank="B" data-status="out" data-text="magnum here comes the rain マグナム">
+    <div class="row-head"><span class="artist">Magnum</span><span class="album">Here Comes the Rain</span><span class="badge b">B</span><span class="date">2024年1月12日</span></div>
+    <p><span class="lab">根拠</span>Wikipedia のジャンルは Hard rock、Discogs のスタイルは AOR, Hard Rock。B 基準「AOR」に該当します。</p>
+    <p><span class="lab">非採用理由</span>ベテラン勢のメロディアスなハードロックですが、AOR 寄りのため B としました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Here_Comes_the_Rain_(album)" target="_blank" rel="noopener">Wikipedia — Here Comes the Rain (album)</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row rb" data-rank="B" data-status="out" data-text="saxon hell fire and damnation サクソン">
+    <div class="row-head"><span class="artist">Saxon</span><span class="album">Hell, Fire and Damnation</span><span class="badge b">B</span><span class="date">2024年1月19日</span></div>
+    <p><span class="lab">根拠</span>Wikipedia のジャンルは Heavy metal。24th スタジオ盤。B 基準「ベテラン勢によるハードロック寄りの Heavy Metal」に該当します。</p>
+    <p><span class="lab">非採用理由</span>NWOBHM のベテランで、Heavy Metal 色が強く B としました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Hell,_Fire_and_Damnation" target="_blank" rel="noopener">Wikipedia — Hell, Fire and Damnation</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row rb" data-rank="B" data-status="out" data-text="bruce dickinson the mandrake project ブルース ディッキンソン">
+    <div class="row-head"><span class="artist">Bruce Dickinson</span><span class="album">The Mandrake Project</span><span class="badge b">B</span><span class="date">2024年3月1日</span></div>
+    <p><span class="lab">根拠</span>Wikipedia のジャンルは Heavy metal, hard rock。7th スタジオ盤。B 基準「ベテラン Heavy Metal のハードロック寄り作品」に該当します。</p>
+    <p><span class="lab">非採用理由</span>Iron Maiden のフロントマンによる約19年ぶりのソロ作ですが、Heavy Metal が主軸のため B としました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/The_Mandrake_Project" target="_blank" rel="noopener">Wikipedia — The Mandrake Project</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row rb" data-rank="B" data-status="out" data-text="judas priest invincible shield ジューダス プリースト">
+    <div class="row-head"><span class="artist">Judas Priest</span><span class="album">Invincible Shield</span><span class="badge b">B</span><span class="date">2024年3月8日</span></div>
+    <p><span class="lab">根拠</span>Discogs のスタイルは Heavy Metal, Hard Rock。19th スタジオ盤。B 基準「ベテラン Heavy Metal」に該当します。</p>
+    <p><span class="lab">非採用理由</span>Heavy Metal が支配的で、ジャンル5（MELODIC POWER &amp; TRADITIONAL METAL）との境界でもあるため B。なお日本盤は3月6日先行との情報もありますが、国際発売日として2024年3月8日を採用しています。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://www.discogs.com/release/30025216-Judas-Priest-Invincible-Shield" target="_blank" rel="noopener">Discogs — Invincible Shield</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row rb" data-rank="B" data-status="out" data-text="accept humanoid アクセプト">
+    <div class="row-head"><span class="artist">Accept</span><span class="album">Humanoid</span><span class="badge b">B</span><span class="date">2024年4月26日</span></div>
+    <p><span class="lab">根拠</span>Wikipedia は「ドイツのヘヴィメタル・バンド Accept の17th スタジオ盤」と定義。B 基準「ベテラン Heavy Metal」に該当します。</p>
+    <p><span class="lab">非採用理由</span>Heavy Metal 色が支配的なため B としました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Humanoid_(Accept_album)" target="_blank" rel="noopener">Wikipedia — Humanoid (Accept album)</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row rb" data-rank="B" data-status="out" data-text="fm old habits die hard エフエム">
+    <div class="row-head"><span class="artist">FM</span><span class="album">Old Habits Die Hard</span><span class="badge b">B</span><span class="date">2024年5月3日</span></div>
+    <p><span class="lab">根拠</span>Grande Rock は「英国の伝説的 AOR ロック・バンド FM の14th スタジオ盤、2024年5月3日に Frontiers から発売」と紹介。B 基準「AOR」に該当します。</p>
+    <p><span class="lab">非採用理由</span>AOR が主軸のため B。<b>Wikipedia では確認できない</b>（アルバム単独ページなし）ため Grande Rock／Frontiers 告知で確認しました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://grande-rock.com/news/fm-to-release-new-studio-album-old-habits-die-hard-on-may-3rd-2024/" target="_blank" rel="noopener">Grande Rock — リリース告知</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row rb" data-rank="B" data-status="out" data-text="riot v mean streets ライオット">
+    <div class="row-head"><span class="artist">Riot V</span><span class="album">Mean Streets</span><span class="badge b">B</span><span class="date">2024年5月10日</span></div>
+    <p><span class="lab">根拠</span>Metal Storm のスタイルは Hard rock, Heavy metal。B 基準「ベテラン Heavy Metal のハードロック寄り作品」に該当します。</p>
+    <p><span class="lab">非採用理由</span>パワーメタル要素もあり、ジャンル5との境界のため B。<b>Wikipedia では確認できない</b>（アルバム単独ページなし）ため Metal Storm／Angry Metal Guy で確認しました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://metalstorm.net/bands/album.php?album_id=178714&page=&message_id=" target="_blank" rel="noopener">Metal Storm — Mean Streets</a></li>
+    </ul></div>
+  </article>
+
+  <article class="row rb" data-rank="B" data-status="out" data-text="stryper when we were kings ストライパー">
+    <div class="row-head"><span class="artist">Stryper</span><span class="album">When We Were Kings</span><span class="badge b">B</span><span class="date">2024年9月13日</span></div>
+    <p><span class="lab">根拠</span>Wikipedia のジャンルは Christian metal, heavy metal, hard rock。16th スタジオ盤。B 基準「ベテラン Heavy Metal / Hard Rock」に該当します。</p>
+    <p><span class="lab">非採用理由</span>グラムメタル系譜も持つベテラン作ですが、Christian metal／Heavy Metal の色が強く B としました。</p>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/When_We_Were_Kings_(Stryper_album)" target="_blank" rel="noopener">Wikipedia — When We Were Kings (Stryper album)</a></li>
+    </ul></div>
+  </article>
+
+  <div class="empty hidden" id="empty">条件に合う候補がありません。検索語や絞り込みを変えてください。</div>
+</section>
+
+<!-- ============ BOUNDARY NOTES ============ -->
+<section id="notes">
+  <h2>境界・特記事項</h2>
+  <p class="secnote">判定の際に迷いや表記ゆれがあった点を、隠さず明記します。確認できなかった項目は推測で埋めず、その旨を書いています。</p>
+  <div class="notes"><ul>
+    <li><b>Nestor『Teenage Rebel』— ジャンル8との境界</b>ジャンル8「MELODIC HARD ROCK / HAIR METAL」のベンチマークと重なる境界盤です。ただし HARD ROCK の S 定義（Melodic Hard Rock）にも直接適合するため、本ジャンルで採用しました。</li>
+    <li><b>Deep Purple『=1』— 発売日の表記ゆれ</b>Wikipedia 内でディスコグラフィ側が「20 July 2024」、アルバム単独ページと独語版が「19 July 2024」とずれています。単独ページと独語版の一致を優先し、19 July を採用しました。</li>
+    <li><b>Grand Slam『Wheel of Fortune』— S群で最も弱い</b>評価は賛否が分かれ、80年代（Phil Lynott 時代）の未発表曲の新録を含みます。ただし2024年録音の新作スタジオ盤として発売されているため、対象として採用しました。</li>
+    <li><b>Wikipedia で確認できない4枚 — 代替ソースで検証</b>The Gems『Phoenix』、The Treatment『Wake Up the Neighbourhood』、Eclipse『Megalomanium II』、House of Lords『Full Tilt Overdrive』は、いずれも Wikipedia にアルバム単独ページがありません（The Gems はバンドページも確認できず）。そのためレーベル公式（Napalm／Frontiers 系発表）、Blabbermouth、Discogs、Grande Rock 等で発売日・形態・ジャンルを検証しました。この点は各カードにも明記しています。</li>
+    <li><b>通算枚数の数え方に揺れがある2枚</b>Ace Frehley『10,000 Volts』は Wikipedia 本文の「10th」と別集計の「8th」が併存します（Frehley's Comet 盤やカバー盤の扱いの違い）。House of Lords『Full Tilt Overdrive』はレーベル発表の「12th」と Dangerdog レビューの「14th」が併存します。いずれも発売年と新作スタジオ盤であることには影響しません。</li>
+    <li><b>Mr. Big『Ten』— 2ジャンルで同じ結論</b>2024年 MAINSTREAM ROCK / ARENA HEROES でも、2024年 HARD ROCK でも、S候補から A へ降格しました。理由も共通で、アルバム単位ではブルージー／ブギー／ファンク色が前面に出るためです。</li>
+    <li><b>日本盤の日付について</b>Grand Slam（日本盤CD 6月26日表記）、House of Lords（日本盤CD 10月23日発売）、Judas Priest（日本盤3月6日先行の情報あり）はいずれも国際発売日を採用し、全て2024年内であることを確認しています。</li>
+    <li><b>重複について</b>候補26枚は既出アルバム累積リストと照合し、重複は0枚でした。Eclipse『Megalomanium II』は2023年採用の前作『Megalomanium』の続編であり、別アルバムのため重複ではありません。Grand Slam と同時発売の再発盤『Hit The Ground – Revised』は新作ではないため候補に入れていません。</li>
+  </ul></div>
+</section>
+
+</main>
+
+<footer>
+  <p>2024年 HARD ROCK 候補一覧（エビデンスページ）／ 候補収集・重複排除・Sランク検証の記録。実行日：2026年11月16日。各候補の発売日・ランク・根拠は出典リンク先の情報に基づきます。出典で確認できなかった項目は「確認できない／Wikipedia では確認できない」と明記し、推測では補っていません。</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-rank]'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-sec]'));
+  var countline = document.getElementById('countline');
+  var empty = document.getElementById('empty');
+  var filter = 'all';
+  function apply(){
+    var term = (q.value || '').trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function(el){
+      var okF = filter==='all' || (filter==='final' ? el.getAttribute('data-status')==='final' : el.getAttribute('data-rank')===filter);
+      var hay = (el.getAttribute('data-text') + ' ' + el.textContent).toLowerCase();
+      var okQ = !term || hay.indexOf(term) !== -1;
+      var vis = okF && okQ;
+      el.classList.toggle('hidden', !vis);
+      if(vis) shown++;
+    });
+    sections.forEach(function(sec){
+      var any = sec.querySelector('[data-rank]:not(.hidden)');
+      sec.classList.toggle('hidden', !any);
+    });
+    if(empty){
+      var bsec = document.getElementById('rank-b');
+      empty.classList.toggle('hidden', shown !== 0);
+      if(bsec && shown===0){ bsec.classList.remove('hidden'); bsec.querySelectorAll('h2,.secnote').forEach(function(n){n.classList.remove('hidden');}); }
+    }
+    countline.textContent = '表示中：' + shown + '枚 / 全26枚';
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      btns.forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+      filter = b.getAttribute('data-f');
+      apply();
+    });
+  });
+  q.addEventListener('input', apply);
+  apply();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2024 HARD ROCK 楽曲選出</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f6f5f2;
+        --surface: #ffffff;
+        --surface-2: #efede8;
+        --ink: #1c1a17;
+        --muted: #5d574e;
+        --line: #d9d4c9;
+        --accent: #b02318;
+        --accent-soft: #f7e3e0;
+        --gold: #8a6d1f;
+        --gold-soft: #f3ecd4;
+        --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        --disp: "Oswald", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        --body: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #131110;
+          --surface: #1d1a17;
+          --surface-2: #26221e;
+          --ink: #ece7df;
+          --muted: #a79d8f;
+          --line: #3a352f;
+          --accent: #e4573d;
+          --accent-soft: #3a211c;
+          --gold: #d3ab4a;
+          --gold-soft: #332b16;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px 72px; }
+
+      /* ---------- header ---------- */
+      header { padding: 44px 0 8px; }
+      .kicker {
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: .14em;
+        color: var(--accent);
+        margin: 0 0 10px;
+      }
+      h1 {
+        font-size: clamp(30px, 6vw, 46px);
+        line-height: 1.25;
+        margin: 0 0 6px;
+        font-weight: 700;
+      }
+      h1 .en {
+        font-family: var(--disp);
+        letter-spacing: .02em;
+        text-transform: uppercase;
+      }
+      .lede { color: var(--muted); margin: 0 0 26px; font-size: 15.5px; }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 2px solid var(--ink);
+        border-bottom: 1px solid var(--line);
+      }
+      .stat { padding: 14px 10px 12px 0; }
+      .stat + .stat { border-left: 1px solid var(--line); padding-left: 14px; }
+      .stat b {
+        display: block;
+        font-family: var(--disp);
+        font-size: clamp(24px, 5vw, 34px);
+        font-weight: 600;
+        line-height: 1.1;
+      }
+      .stat span { font-size: 12.5px; color: var(--muted); }
+
+      /* ---------- summary ---------- */
+      section { margin-top: 44px; }
+      h2 {
+        font-size: 21px;
+        margin: 0 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--ink);
+      }
+      .checks { list-style: none; margin: 0; padding: 0; }
+      .checks li {
+        padding: 12px 0 12px 30px;
+        border-bottom: 1px solid var(--line);
+        position: relative;
+        font-size: 15px;
+      }
+      .checks li::before {
+        content: "";
+        position: absolute; left: 2px; top: 20px;
+        width: 9px; height: 9px;
+        background: var(--accent);
+      }
+      .checks b { font-weight: 700; }
+      .checks .sub { color: var(--muted); font-size: 13.5px; display: block; margin-top: 2px; }
+
+      /* ---------- album index ---------- */
+      .index {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 28px;
+        list-style: none; margin: 0; padding: 0;
+        counter-reset: idx;
+      }
+      .index li { border-bottom: 1px solid var(--line); }
+      .index a {
+        display: flex; align-items: baseline; gap: 10px;
+        padding: 11px 2px;
+        min-height: 44px;
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .index a:hover, .index a:focus-visible { color: var(--accent); }
+      .index .no {
+        font-family: var(--mono); font-size: 12px; color: var(--accent);
+        min-width: 22px;
+      }
+      .index .ar { font-family: var(--disp); font-weight: 600; letter-spacing: .01em; }
+      .index .al { color: var(--muted); font-size: 13.5px; }
+
+      /* ---------- album blocks ---------- */
+      .album {
+        margin-top: 52px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--ink);
+        padding: 26px 26px 8px;
+      }
+      .album-head { margin-bottom: 6px; }
+      .album-no {
+        font-family: var(--mono);
+        font-size: 12.5px;
+        letter-spacing: .12em;
+        color: var(--accent);
+        margin: 0 0 4px;
+      }
+      .album h3 {
+        margin: 0;
+        font-size: clamp(22px, 4.6vw, 30px);
+        line-height: 1.3;
+      }
+      .album h3 .artist { font-family: var(--disp); font-weight: 600; letter-spacing: .015em; }
+      .album h3 .title { font-weight: 700; }
+      .album-meta {
+        display: flex; flex-wrap: wrap; gap: 8px;
+        margin: 12px 0 4px;
+      }
+      .album-note {
+        font-size: 13.5px;
+        color: var(--muted);
+        background: var(--surface-2);
+        padding: 10px 14px;
+        margin: 12px 0 4px;
+      }
+      .album-note b { color: var(--ink); }
+
+      .track {
+        padding: 18px 0 16px;
+        border-top: 1px solid var(--line);
+      }
+      .track-head {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+        margin-bottom: 6px;
+      }
+      .track h4 {
+        margin: 0;
+        font-size: 18.5px;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+      .track h4 .tno {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--muted);
+        margin-right: 8px;
+      }
+      .chip {
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 2px 9px;
+        border: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      .chip.single { background: var(--accent-soft); border-color: transparent; color: var(--accent); font-weight: 600; }
+      .chip.nonsingle { background: var(--gold-soft); border-color: transparent; color: var(--gold); font-weight: 600; }
+      .track p.ev { margin: 0 0 8px; font-size: 14.5px; }
+      .track p.yt { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+      .track p.yt b { color: var(--ink); font-weight: 600; }
+      .src { font-size: 13px; color: var(--muted); margin: 0; }
+      .src .label { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; margin-right: 6px; }
+      .src a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        display: inline-block;
+        padding: 4px 2px;
+        min-height: 32px;
+        line-height: 24px;
+      }
+      .track.spotlight { background: var(--gold-soft); margin: 0 -14px; padding-left: 14px; padding-right: 14px; }
+
+      /* ---------- TSV ---------- */
+      .tsv-box {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        padding: 20px;
+      }
+      .tsv-box pre {
+        font-family: var(--mono);
+        font-size: 12px;
+        line-height: 1.7;
+        overflow-x: auto;
+        white-space: pre;
+        margin: 0 0 16px;
+        padding: 14px;
+        background: var(--surface-2);
+        color: var(--ink);
+      }
+      .copy-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+      button.copy {
+        font-family: var(--body);
+        font-size: 15px; font-weight: 700;
+        background: var(--accent);
+        color: #fff;
+        border: 0;
+        padding: 12px 26px;
+        min-height: 48px;
+        cursor: pointer;
+      }
+      button.copy:hover { filter: brightness(1.08); }
+      button.copy:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+      .copy-status { font-size: 13.5px; color: var(--muted); }
+
+      footer {
+        margin-top: 56px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+        font-size: 13px;
+        color: var(--muted);
+      }
+      footer p { margin: 0 0 6px; }
+
+      @media (max-width: 640px) {
+        .stats { grid-template-columns: repeat(2, 1fr); }
+        .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+        .index { grid-template-columns: 1fr; }
+        .album { padding: 20px 16px 4px; }
+        .track.spotlight { margin: 0 -8px; padding-left: 8px; padding-right: 8px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <header>
+        <p class="kicker">2024 ・ GENRE 2 ・ EVIDENCE</p>
+        <h1>2024年 <span class="en">Hard Rock</span> 楽曲選出</h1>
+        <p class="lede">最終アルバム10枚から各2曲、計20曲を選出した記録。各曲について、長さ・シングルかどうか・選出理由の根拠と、確認に使った出典を残す。</p>
+        <div class="stats">
+          <div class="stat"><b>10</b><span>最終アルバム</span></div>
+          <div class="stat"><b>20</b><span>選出曲（各アルバム2曲）</span></div>
+          <div class="stat"><b>19 + 1</b><span>シングル19曲 ＋ 非シングル1曲</span></div>
+          <div class="stat"><b>2:50</b><span>最短曲（全曲2分超）</span></div>
+        </div>
+      </header>
+
+      <section aria-labelledby="sum-h">
+        <h2 id="sum-h">選出の確認事項</h2>
+        <ul class="checks">
+          <li>
+            <b>非シングルは1曲だけ。</b> House of Lords「Crowded Room」は正式シングルと確認できなかったため、人気ルールで選出した。
+            <span class="sub">根拠は Last.fm のリスナー数563でアルバム内2位、かつアルバム冒頭曲。Last.fm の数値は<b>第三者集計</b>であり、公式の再生回数ではない。</span>
+          </li>
+          <li>
+            <b>バラード例外なし。</b> 各アルバムのバラード曲は回避した（例：The Gems の「Ease Your Pain」、Deep Purple の「If I Were You」は選出していない）。
+          </li>
+          <li>
+            <b>全曲2分超。</b> 最短は Eclipse「The Spark」の2:50。2分以下の曲は含まれていない。
+          </li>
+          <li>
+            <b>YouTube公開再生回数は、大半が「確認できない」。</b> 出典で検証できる数値がなかったものは、その旨を各曲に明記した。数字は作っていない。
+            <span class="sub">House of Lords の2曲のみ、参考指標として Last.fm（第三者集計）のリスナー数を併記した。</span>
+          </li>
+          <li>
+            <b>Wikipediaで確認できないアルバムは、その旨を明記した。</b> 該当する7枚（The Gems、The End Machine、The Treatment、Nestor、Grand Slam、Eclipse、House of Lords）は、レーベル公式・Discogs・Bandcamp・Deezer 等の複数出典でクロスチェックしている。
+          </li>
+          <li>
+            <b>S検証での降格が1枚。</b> Mr. Big『Ten』は、アルバム単位でブルージー／ブギー／ファンク色が前面に出るため A 判定となり、最終10枚には入らなかった。
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="idx-h">
+        <h2 id="idx-h">最終アルバム（10枚）</h2>
+        <ol class="index">
+          <li><a href="#a1"><span class="no">01</span><span class="ar">The Gems</span><span class="al">Phoenix</span></a></li>
+          <li><a href="#a2"><span class="no">02</span><span class="ar">Ace Frehley</span><span class="al">10,000 Volts</span></a></li>
+          <li><a href="#a3"><span class="no">03</span><span class="ar">The End Machine</span><span class="al">The Quantum Phase</span></a></li>
+          <li><a href="#a4"><span class="no">04</span><span class="ar">The Treatment</span><span class="al">Wake Up the Neighbourhood</span></a></li>
+          <li><a href="#a5"><span class="no">05</span><span class="ar">Nestor</span><span class="al">Teenage Rebel</span></a></li>
+          <li><a href="#a6"><span class="no">06</span><span class="ar">Grand Slam</span><span class="al">Wheel of Fortune</span></a></li>
+          <li><a href="#a7"><span class="no">07</span><span class="ar">Black Country Communion</span><span class="al">V</span></a></li>
+          <li><a href="#a8"><span class="no">08</span><span class="ar">Deep Purple</span><span class="al">=1</span></a></li>
+          <li><a href="#a9"><span class="no">09</span><span class="ar">Eclipse</span><span class="al">Megalomanium II</span></a></li>
+          <li><a href="#a10"><span class="no">10</span><span class="ar">House of Lords</span><span class="al">Full Tilt Overdrive</span></a></li>
+        </ol>
+      </section>
+
+      <!-- 01 The Gems -->
+      <article class="album" id="a1">
+        <div class="album-head">
+          <p class="album-no">ALBUM 01 / 10</p>
+          <h3><span class="artist">The Gems</span> — <span class="title">『Phoenix』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-01-26</span></div>
+          <p class="album-note"><b>Wikipediaでは確認できない</b>（アルバム・バンドとも単独ページなし）。Napalm Records 公式ストア、Bandcamp、Qobuz／Discogs の収録曲リストでクロスチェックした。元 Thundermother メンバー3名による女性フロントのデビュー盤。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">1-1</span>Like A Phoenix</h4>
+            <span class="chip">2:55</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">2023年夏にリリースされたデビュー・シングル。Napalm／SnoozeControl によれば、ドイツのロック・ラジオ・エアプレイ・チャートで2位に入った。シングル優先ルール(1)で選出。アンセム的なタイトル曲でバラードではない（アルバムのバラード「Ease Your Pain」は回避）。長さ2:55は Bandcamp による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b>（確認した出典に検証できる数値なし）</p>
+          <p class="src"><span class="label">出典</span><a href="https://napalmrecords.com/english/the-gems-phoenix-black-vinyl.html" target="_blank" rel="noopener">Napalm Records 公式ストア</a>／<a href="https://thegemssweden.bandcamp.com/album/phoenix?t=3" target="_blank" rel="noopener">Bandcamp</a>／<a href="https://www.qobuz.com/ie-en/album/phoenix-the-gems/b96biux4ka38b" target="_blank" rel="noopener">Qobuz</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">1-2</span>Send Me To The Wolves</h4>
+            <span class="chip">3:10</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">第2弾シングル。Darkside／Blabbermouth の告知が「トリオの2ndシングルの公式ミュージックビデオ」と明記している。シングル優先ルール(1)で選出。レビューでアップビートなロック曲とされ、バラードではない。長さ3:10は Bandcamp による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://www.darkside.ru/news/news-item.phtml?id=157741&dlang=en" target="_blank" rel="noopener">Darkside</a>／<a href="https://napalmrecords.com/english/the-gems-phoenix-black-vinyl.html" target="_blank" rel="noopener">Napalm Records 公式ストア</a>／<a href="https://thegemssweden.bandcamp.com/album/phoenix?t=3" target="_blank" rel="noopener">Bandcamp</a></p>
+        </div>
+      </article>
+
+      <!-- 02 Ace Frehley -->
+      <article class="album" id="a2">
+        <div class="album-head">
+          <p class="album-no">ALBUM 02 / 10</p>
+          <h3><span class="artist">Ace Frehley</span> — <span class="title">『10,000 Volts』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-02-23</span><span class="chip">Wikipediaで確認</span></div>
+          <p class="album-note">Wikipedia（優先）で確認し、Blabbermouth／ClassicRockHistory でもクロスチェックした。なお通算枚数の数え方には揺れがある（Wikipedia本文は10th、別集計では8th。Frehley's Comet 盤やカバー盤の扱いの違いによる）。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">2-1</span>10,000 Volts</h4>
+            <span class="chip">3:24</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">タイトル曲のシングル（11月28日リリース、Blabbermouth）。ClassicRockHistory のシングル一覧でも「10,000 Volts」「Walkin' on the Moon」「Cherry Medicine」が挙げられている。シングル優先ルール(1)で選出。バラードではないタイトル・ロッカー。長さ3:24は Wikipedia の収録曲リストによる。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://en.wikipedia.org/wiki/10,000_Volts" target="_blank" rel="noopener">Wikipedia</a>／<a href="https://blabbermouth.net/news/ace-frehley-announces-rare-in-store-signing-session-for-new-album-10000-volts" target="_blank" rel="noopener">Blabbermouth</a>／<a href="https://www.classicrockhistory.com/complete-list-of-ace-frehley-albums-and-discography/" target="_blank" rel="noopener">ClassicRockHistory</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">2-2</span>Cherry Medicine</h4>
+            <span class="chip">3:39</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">ClassicRockHistory がシングルとして掲載し、アナログ盤のハイプステッカーにも「Walkin' On The Moon」「Cherry Medicine」とタイトル曲が記載されている。2024年2月にミュージックビデオが公開された（Blabbermouth 報道）。シングル優先ルール(1)で選出。バラードではない。長さ3:39は Wikipedia による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://en.wikipedia.org/wiki/10,000_Volts" target="_blank" rel="noopener">Wikipedia</a>／<a href="https://www.classicrockhistory.com/complete-list-of-ace-frehley-albums-and-discography/" target="_blank" rel="noopener">ClassicRockHistory</a>／<a href="https://blabbermouth.net/news/ace-frehley-announces-rare-in-store-signing-session-for-new-album-10000-volts" target="_blank" rel="noopener">Blabbermouth</a></p>
+        </div>
+      </article>
+
+      <!-- 03 The End Machine -->
+      <article class="album" id="a3">
+        <div class="album-head">
+          <p class="album-no">ALBUM 03 / 10</p>
+          <h3><span class="artist">The End Machine</span> — <span class="title">『The Quantum Phase』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-03-08</span></div>
+          <p class="album-note"><b>Wikipediaでは確認できない</b>（アルバム単独ページなし）。Discogs、Bandcamp、Blabbermouth の収録曲リストでクロスチェックした。ボーカルが Robert Mason から Girish Pradhan へ交代した初のアルバム。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">3-1</span>Silent Winter</h4>
+            <span class="chip">5:44</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">『The Quantum Phase』からの第1弾シングル（ミュージックビデオあり）。Blabbermouth／Grande Rock／Metal Odyssey が報じている。Metal Temple はキャッチーなヘヴィ／メロディックのハイライトと評した。シングル優先ルール(1)で選出。バラードではない。長さ5:44は Discogs／Bandcamp による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://blabbermouth.net/news/the-end-machine-feat-george-lynch-jeff-pilson-the-quantum-phase-album-due-in-march" target="_blank" rel="noopener">Blabbermouth</a>／<a href="https://www.discogs.com/release/30068923-The-End-Machine-The-Quantum-Phase?redirected=true" target="_blank" rel="noopener">Discogs</a>／<a href="https://theendmachine-thequantumphase.bandcamp.com/album/the-quantum-phase" target="_blank" rel="noopener">Bandcamp</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">3-2</span>Killer of the Night</h4>
+            <span class="chip">4:55</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">Frontiers からシングル／公式ミュージックビデオとしてリリースされた（Kick Ass Forever「Killer of the Night - Official Music Video」）。Metal Temple はハイライト曲に挙げている。シングル／ビデオ優先ルール(1)(3)で選出。バラードではない、よりヘヴィなメロディック・ロッカー。長さは出典により1秒の差がある（Discogs 4:55／Bandcamp 4:54）。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://kickassforever.com/the-end-machine-super-group-hard-rock-usa-release-killer-of-the-night-official-music-video-taken-from-the-album-the-quantum-phase-via-frontiers-music-srl-theendmachine-hardrock/" target="_blank" rel="noopener">Kick Ass Forever</a>／<a href="https://www.discogs.com/release/30068923-The-End-Machine-The-Quantum-Phase?redirected=true" target="_blank" rel="noopener">Discogs</a>／<a href="https://theendmachine-thequantumphase.bandcamp.com/album/the-quantum-phase" target="_blank" rel="noopener">Bandcamp</a></p>
+        </div>
+      </article>
+
+      <!-- 04 The Treatment -->
+      <article class="album" id="a4">
+        <div class="album-head">
+          <p class="album-no">ALBUM 04 / 10</p>
+          <h3><span class="artist">The Treatment</span> — <span class="title">『Wake Up the Neighbourhood』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-05-10</span></div>
+          <p class="album-note"><b>Wikipediaでは確認できない</b>（アルバム単独ページなし）。Deezer、Discogs、Qobuz の収録曲リストでクロスチェックした。タイトル表記は「Neighbourhood」（米盤等で「Neighborhood」の表記揺れあり）。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">4-1</span>Let's Wake Up This Town</h4>
+            <span class="chip">3:07</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">アルバム発表当日に公開された第1弾シングル＆ビデオ。Devil's Gate Music／Frontiers の発表が「新しいシングルとビデオ『Let's Wake Up This Town』は本日公開」と明記している。GetReadyToRock はクラシックなロックンロールのシングルと評した。シングル優先ルール(1)で選出。バラードではない。長さ3:07は Deezer／Discogs／Qobuz による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="http://devilsgatemusic.co.uk/the-treatment-announce-new-album-wake-up-the-neighbourhood/" target="_blank" rel="noopener">Devil's Gate Music</a>／<a href="https://www.deezer.com/en/album/551980462" target="_blank" rel="noopener">Deezer</a>／<a href="https://www.discogs.com/release/30709088-The-Treatment-Wake-Up-The-Neighbourhood?srsltid=AfmBOooapZXfvKHBpy2HpW0w-SX7VUnpgR3_Z-TVTrXUm8xDPaNjAQ2T" target="_blank" rel="noopener">Discogs</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">4-2</span>Back To The 1970's</h4>
+            <span class="chip">3:20</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">SleazeRoxx のレビューが「the single Back To The 1970's」と明記。GetReadyToRock はシングルとして「Let's Wake Up This Town」「Back To The 1970's」「When Thunder And Lightning Strikes」を挙げている。シングル優先ルール(1)で選出。グラム・ロック調のアップビートな曲でバラードではない。長さ3:20は Deezer／Discogs による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://sleazeroxx.com/reviews/the-treatment-wake-up-the-neighbourhood/" target="_blank" rel="noopener">SleazeRoxx</a>／<a href="https://www.deezer.com/en/album/551980462" target="_blank" rel="noopener">Deezer</a>／<a href="https://www.discogs.com/release/30709088-The-Treatment-Wake-Up-The-Neighbourhood?srsltid=AfmBOooapZXfvKHBpy2HpW0w-SX7VUnpgR3_Z-TVTrXUm8xDPaNjAQ2T" target="_blank" rel="noopener">Discogs</a></p>
+        </div>
+      </article>
+
+      <!-- 05 Nestor -->
+      <article class="album" id="a5">
+        <div class="album-head">
+          <p class="album-no">ALBUM 05 / 10</p>
+          <h3><span class="artist">Nestor</span> — <span class="title">『Teenage Rebel』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-05-31</span></div>
+          <p class="album-note"><b>Wikipediaでは確認できない</b>（アルバム単独ページなし）。Grande Rock、Fireworks、Deezer の収録曲リストでクロスチェックした。ジャンル8（MELODIC HARD ROCK / HAIR METAL）のベンチマークと重なる境界盤だが、HARD ROCK の S 定義にも直接適合するとして本ジャンルで採用した。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">5-1</span>Victorious</h4>
+            <span class="chip">3:48</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">アルバム発表時の最新シングル（Grande Rock／Fireworks／BraveWords）。「アンセミックな傑作でファンの人気曲」と紹介され、Flyctory は先行3曲の中で最も人気が高かったと記している。シングル＋人気ルール(1)(3)で選出。バラードではない。長さ3:48は Deezer による（一部リストでは3:49）。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b>（Deezer／AWA では長さのみ確認）</p>
+          <p class="src"><span class="label">出典</span><a href="https://grande-rock.com/news/nestor-to-release-new-studio-album-teenage-rebel-on-may-31st-2024/" target="_blank" rel="noopener">Grande Rock</a>／<a href="https://www.fireworks-magazine.com/post/rising-hard-rock-stars-nestor-strike-back-with-second-album-teenage-rebel-announced-today" target="_blank" rel="noopener">Fireworks Magazine</a>／<a href="https://www.deezer.com/en/artist/250800332" target="_blank" rel="noopener">Deezer</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">5-2</span>Teenage Rebel</h4>
+            <span class="chip">4:32</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">タイトル曲。2024年5月28日にシングルとしてリリースされた（Deezer のシングル一覧。Keysmash も「NESTOR Release New Single Teenage Rebel」と報じた）。シングル優先ルール(1)で選出。バラードではないタイトル曲ロッカー。スローな曲かどうか曖昧さを避けるため「Caroline」ではなくこちらを選んだ。長さ4:32は Deezer／Spirit of Metal による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://grande-rock.com/news/nestor-to-release-new-studio-album-teenage-rebel-on-may-31st-2024/" target="_blank" rel="noopener">Grande Rock</a>／<a href="https://www.deezer.com/en/artist/250800332" target="_blank" rel="noopener">Deezer</a>／<a href="https://keysmash.gr/nestor-release-new-single-teenage-rebel/" target="_blank" rel="noopener">Keysmash</a></p>
+        </div>
+      </article>
+
+      <!-- 06 Grand Slam -->
+      <article class="album" id="a6">
+        <div class="album-head">
+          <p class="album-no">ALBUM 06 / 10</p>
+          <h3><span class="artist">Grand Slam</span> — <span class="title">『Wheel of Fortune』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-06-07</span></div>
+          <p class="album-note"><b>Wikipediaでは確認できない</b>（アルバム単独ページなし）。Discogs、公式 TM ストア、Rock Report の収録曲リストでクロスチェックした。S 群の中では最も弱いと検証で明記された1枚。Phil Lynott 時代の未発表曲の新録を含むが、2024年録音の新作スタジオ盤として発売されている。日本盤CDは6月26日表記。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">6-1</span>There Goes My Heart</h4>
+            <span class="chip">4:56</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">第1弾シングル。Headbanger／BraveWords が「『Wheel Of Fortune』からの最初のシングルとしてリリースされ、ミュージックビデオも公開」と報じている。シングル優先ルール(1)で選出。バラードではない。長さ4:56は Discogs／Muziker による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://headbanger.ru/news/13083?lng=en" target="_blank" rel="noopener">Headbanger</a>／<a href="https://www.discogs.com/release/31112093-Grand-Slam-Wheel-Of-Fortune?srsltid=AfmBOopzBYBhPccOk8aOgObPWBOpyYmcrF7ZU-c6LMvkLKwtaDfgP_EV" target="_blank" rel="noopener">Discogs</a>／<a href="https://grandslam.tmstor.es/product/wheel-of-fortune-hit-the-ground-revised-double-signed?cur=USD&overrideLanguage=en" target="_blank" rel="noopener">公式 TM ストア</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">6-2</span>Spitfire</h4>
+            <span class="chip">4:20</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">第2弾シングル。Metal.Radio.fm が「『Wheel Of Fortune』からの獰猛な第2弾シングル『Spitfire』のビデオを公開」と報じている。シングル優先ルール(1)で選出。バラードではない。長さ4:20は Discogs／Muziker による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://metal.radio.fm/news/2024-04-16_22-09_grand-slam-release-spitfire-single-and-music-video" target="_blank" rel="noopener">Metal.Radio.fm</a>／<a href="https://www.discogs.com/release/31112093-Grand-Slam-Wheel-Of-Fortune?srsltid=AfmBOopzBYBhPccOk8aOgObPWBOpyYmcrF7ZU-c6LMvkLKwtaDfgP_EV" target="_blank" rel="noopener">Discogs</a>／<a href="https://www.rockreport.be/albums/grand-slam-uk-wheel-of-fortune" target="_blank" rel="noopener">Rock Report</a></p>
+        </div>
+      </article>
+
+      <!-- 07 Black Country Communion -->
+      <article class="album" id="a7">
+        <div class="album-head">
+          <p class="album-no">ALBUM 07 / 10</p>
+          <h3><span class="artist">Black Country Communion</span> — <span class="title">『V』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-06-14</span><span class="chip">Wikipediaで確認</span></div>
+          <p class="album-note">Wikipedia（優先）で確認し、ClassicRockHistory／公式プレスリリースでもクロスチェックした。7年ぶりの5thアルバム。UK58位でバンド最低の商業成績という指摘は Wikipedia にあるが、ジャンル適合とは別問題として採用した。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">7-1</span>Stay Free</h4>
+            <span class="chip">4:30</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">2024年3月1日リリースのリード・シングル（Wikipedia のシングル一覧）。GlennHughes.com は「ヘヴィ・ファンクなリード・シングル」「最初のシングル」と紹介している。シングル優先ルール(1)で選出。バラードではないファンク寄りのロッカー。長さ4:30は Wikipedia による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://en.wikipedia.org/wiki/V_(Black_Country_Communion_album)" target="_blank" rel="noopener">Wikipedia</a>／<a href="https://www.classicrockhistory.com/complete-list-of-black-country-communion-albums-and-songs/" target="_blank" rel="noopener">ClassicRockHistory</a>／<a href="https://www.glennhughes.com/ctc/bulletins/tag/black-country-communion/" target="_blank" rel="noopener">GlennHughes.com</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">7-2</span>Enlighten</h4>
+            <span class="chip">5:20</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">2024年5月3日リリースのシングル（Wikipedia のシングル一覧には「Stay Free」「Red Sun」「Enlighten」が並ぶ）。GlennHughes.com も5月3日に「新シングル『Enlighten』のビデオを公開」と投稿している。シングル優先ルール(1)で選出。レビューでヘヴィなリフのオープニング曲とされ、バラードではない。長さ5:20は Wikipedia による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://en.wikipedia.org/wiki/V_(Black_Country_Communion_album)" target="_blank" rel="noopener">Wikipedia</a>／<a href="https://www.classicrockhistory.com/complete-list-of-black-country-communion-albums-and-songs/" target="_blank" rel="noopener">ClassicRockHistory</a>／<a href="https://www.glennhughes.com/ctc/bulletins/tag/black-country-communion/" target="_blank" rel="noopener">GlennHughes.com</a></p>
+        </div>
+      </article>
+
+      <!-- 08 Deep Purple -->
+      <article class="album" id="a8">
+        <div class="album-head">
+          <p class="album-no">ALBUM 08 / 10</p>
+          <h3><span class="artist">Deep Purple</span> — <span class="title">『=1』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-07-19</span><span class="chip">Wikipediaで確認</span></div>
+          <p class="album-note">Wikipedia 英語版（優先）で確認し、独語版／Arrow Lords of Metal でもクロスチェックした。発売日はディスコグラフィ側の「20 July」表記と、単独ページ・独語版の「19 July」がずれており、19日を採用した。MAINSTREAM 選出時はジャンル5境界の A 候補だったが、本ジャンルで S 検証を通過した。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">8-1</span>Portable Door</h4>
+            <span class="chip">3:48</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">2024年4月30日リリースの第1弾シングル（Wikipedia の『=1』シングル一覧）。シングル優先ルール(1)で選出。アップビートな曲でバラードではない（バラード寄りの「If I Were You」は回避）。長さ3:48は Wikipedia（英語版・独語版）による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="http://en.wikipedia.org/wiki/=1" target="_blank" rel="noopener">Wikipedia（英語版）</a>／<a href="https://de.wikipedia.org/wiki/%3D1" target="_blank" rel="noopener">Wikipedia（独語版）</a>／<a href="https://arrowlordsofmetal.nl/deep-purple-single-pictures-of-you/" target="_blank" rel="noopener">Arrow Lords of Metal</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">8-2</span>Pictures of You</h4>
+            <span class="chip">3:51</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">2024年6月5日リリースの第2弾シングル（Wikipedia）。Arrow Lords of Metal も2024年6月6日に「『=1』からの2曲目、『Portable Door』に続く新シングル『Pictures Of You』をリリース」と報じている。シングル優先ルール(1)で選出。バラードではない。長さ3:51は Wikipedia による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="http://en.wikipedia.org/wiki/=1" target="_blank" rel="noopener">Wikipedia（英語版）</a>／<a href="https://de.wikipedia.org/wiki/%3D1" target="_blank" rel="noopener">Wikipedia（独語版）</a>／<a href="https://arrowlordsofmetal.nl/deep-purple-single-pictures-of-you/" target="_blank" rel="noopener">Arrow Lords of Metal</a></p>
+        </div>
+      </article>
+
+      <!-- 09 Eclipse -->
+      <article class="album" id="a9">
+        <div class="album-head">
+          <p class="album-no">ALBUM 09 / 10</p>
+          <h3><span class="artist">Eclipse</span> — <span class="title">『Megalomanium II』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-09-20</span></div>
+          <p class="album-note"><b>Wikipediaでは確認できない</b>（アルバム単独ページなし）。Deezer、SleazeRoxx、Metal Archives の収録曲リストでクロスチェックした。2023年 MAINSTREAM で採用した『Megalomanium』の続編だが、別アルバムであり重複ではない。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">9-1</span>The Spark</h4>
+            <span class="chip">2:50</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">2024年7月3日のアルバム発表と同時に、ミュージックビデオ付きで公開されたリード・シングル（Chaoszine／Grande Rock／Fireworks）。SleazeRoxx のレビュアーは「2024年のベストソング候補」と評した。シングル＋人気ルール(1)(3)で選出。バラードではない高エネルギーのオープニング曲。全20曲中最短だが、2分の基準は超えている。長さ2:50は Deezer／Metal Archives による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="http://chaoszine.net/eclipse-announce-new-studio-album-megalomanium-ii-set-for-release-on-september-20th/" target="_blank" rel="noopener">Chaoszine</a>／<a href="https://www.deezer.com/en/album/593555842" target="_blank" rel="noopener">Deezer</a>／<a href="https://sleazeroxx.com/reviews/eclipse-megalomanium-ii/" target="_blank" rel="noopener">SleazeRoxx</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">9-2</span>Falling To My Knees</h4>
+            <span class="chip">2:58</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">2024年5月29日リリースのシングル（Deezer のシングル一覧）。Chaoszine／Grande Rock はアルバム発表時点で「直近のシングル『Falling To My Knees』」と紹介している。SleazeRoxx は「一緒に歌える素晴らしいアップビート・ロッカー」と評した。シングル優先ルール(1)で選出。バラードではない。長さ2:58は Deezer／Metal Archives による。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://www.deezer.com/en/album/593555842" target="_blank" rel="noopener">Deezer</a>／<a href="http://chaoszine.net/eclipse-announce-new-studio-album-megalomanium-ii-set-for-release-on-september-20th/" target="_blank" rel="noopener">Chaoszine</a>／<a href="https://sleazeroxx.com/reviews/eclipse-megalomanium-ii/" target="_blank" rel="noopener">SleazeRoxx</a></p>
+        </div>
+      </article>
+
+      <!-- 10 House of Lords -->
+      <article class="album" id="a10">
+        <div class="album-head">
+          <p class="album-no">ALBUM 10 / 10</p>
+          <h3><span class="artist">House of Lords</span> — <span class="title">『Full Tilt Overdrive』</span></h3>
+          <div class="album-meta"><span class="chip">発売日 2024-10-11</span></div>
+          <p class="album-note"><b>Wikipediaでは確認できない</b>（アルバム単独ページなし）。Frontiers 公式ショップ、Grande Rock、Last.fm の収録曲リストでクロスチェックした。通算枚数の数え方に揺れがある（レーベル発表では12th、Dangerdog は14th）。日本盤CDは10月23日。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">10-1</span>Bad Karma</h4>
+            <span class="chip">4:11</span><span class="chip single">シングル</span>
+          </div>
+          <p class="ev">リード・シングル。Frontiers の公式説明（公式ショップ／Metal.Radio.fm に転載）が「lead single Bad Karma」と明記している。人気面では Last.fm のリスナー数609でアルバム内1位（<b>第三者集計</b>の数値であり、公式の再生回数ではない）。シングル＋人気ルール(1)(2)で選出。バラードではない。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://frontiers.shop/products/house-of-lords-full-tilt-overdrive-cd?srsltid=AfmBOorgFPAMVPxNnyJXIvDEscoSklMcSAnzi32whKK8pCU0OQfKRONf" target="_blank" rel="noopener">Frontiers 公式ショップ</a>／<a href="https://www.last.fm/music/House+of+Lords/Full+Tilt+Overdrive" target="_blank" rel="noopener">Last.fm</a>／<a href="https://grande-rock.com/news/house-of-lords-to-release-new-studio-album-full-tilt-overdrive-on-october-11th-2024/" target="_blank" rel="noopener">Grande Rock</a></p>
+        </div>
+        <div class="track spotlight">
+          <div class="track-head">
+            <h4><span class="tno">10-2</span>Crowded Room</h4>
+            <span class="chip">4:46</span><span class="chip nonsingle">非シングル（人気ルールで選出）</span>
+          </div>
+          <p class="ev">今回の20曲で唯一の非シングル。Frontiers のビデオは他の収録曲には存在するが、この曲が正式シングルかどうかは<b>確認できなかった</b>ため、非シングルとして扱い、人気ルール(2)で選出した。根拠は、Last.fm のリスナー数563でアルバム内2位（「Bad Karma」に次ぐ）、かつアルバムの冒頭曲であること。長さ4:46。なお Last.fm のリスナー数は<b>第三者集計</b>であり、公式の再生回数ではない。オープニングのロック曲でバラードではない。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://www.last.fm/music/House+of+Lords/Full+Tilt+Overdrive" target="_blank" rel="noopener">Last.fm</a>／<a href="https://frontiers.shop/products/house-of-lords-full-tilt-overdrive-cd?srsltid=AfmBOorgFPAMVPxNnyJXIvDEscoSklMcSAnzi32whKK8pCU0OQfKRONf" target="_blank" rel="noopener">Frontiers 公式ショップ</a>／<a href="https://grande-rock.com/news/house-of-lords-to-release-new-studio-album-full-tilt-overdrive-on-october-11th-2024/" target="_blank" rel="noopener">Grande Rock</a></p>
+        </div>
+      </article>
+
+      <section aria-labelledby="tsv-h">
+        <h2 id="tsv-h">最終TSV（GENRE／ARTIST／ALBUM／TRACK）</h2>
+        <div class="tsv-box">
+          <pre id="tsvText" aria-label="最終TSV 20行"></pre>
+          <div class="copy-row">
+            <button class="copy" id="copyBtn" type="button">TSVをコピー</button>
+            <span class="copy-status" id="copyStatus" role="status"></span>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>実行日：2026-11-16／ワークフロー：album-selection（候補26枚 → S検証11枚 → S確定10枚 → 楽曲20曲）。</p>
+        <p>各曲の長さ・シングルの確認は、記載の出典2サイト以上でクロスチェックした。確認できなかった項目は「確認できない」と明記し、推測で埋めていない。</p>
+      </footer>
+
+    </div>
+
+    <script>
+      var TSV_LINES = [
+        "HARD ROCK\tThe Gems\tPhoenix\tLike A Phoenix",
+        "HARD ROCK\tThe Gems\tPhoenix\tSend Me To The Wolves",
+        "HARD ROCK\tAce Frehley\t10,000 Volts\t10,000 Volts",
+        "HARD ROCK\tAce Frehley\t10,000 Volts\tCherry Medicine",
+        "HARD ROCK\tThe End Machine\tThe Quantum Phase\tSilent Winter",
+        "HARD ROCK\tThe End Machine\tThe Quantum Phase\tKiller of the Night",
+        "HARD ROCK\tThe Treatment\tWake Up the Neighbourhood\tLet's Wake Up This Town",
+        "HARD ROCK\tThe Treatment\tWake Up the Neighbourhood\tBack To The 1970's",
+        "HARD ROCK\tNestor\tTeenage Rebel\tVictorious",
+        "HARD ROCK\tNestor\tTeenage Rebel\tTeenage Rebel",
+        "HARD ROCK\tGrand Slam\tWheel of Fortune\tThere Goes My Heart",
+        "HARD ROCK\tGrand Slam\tWheel of Fortune\tSpitfire",
+        "HARD ROCK\tBlack Country Communion\tV\tStay Free",
+        "HARD ROCK\tBlack Country Communion\tV\tEnlighten",
+        "HARD ROCK\tDeep Purple\t=1\tPortable Door",
+        "HARD ROCK\tDeep Purple\t=1\tPictures of You",
+        "HARD ROCK\tEclipse\tMegalomanium II\tThe Spark",
+        "HARD ROCK\tEclipse\tMegalomanium II\tFalling To My Knees",
+        "HARD ROCK\tHouse of Lords\tFull Tilt Overdrive\tBad Karma",
+        "HARD ROCK\tHouse of Lords\tFull Tilt Overdrive\tCrowded Room"
+      ];
+      var TSV_TEXT = TSV_LINES.join("\n");
+      document.getElementById("tsvText").textContent = TSV_TEXT;
+
+      var btn = document.getElementById("copyBtn");
+      var statusEl = document.getElementById("copyStatus");
+      function done() { statusEl.textContent = "コピーしました（20行・タブ区切り）"; }
+      function failed() { statusEl.textContent = "コピーできませんでした。上のテキストを長押し／選択してコピーしてください。"; }
+      btn.addEventListener("click", function () {
+        statusEl.textContent = "コピーしています…";
+        if (tryExecCopy()) { done(); return; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          try {
+            navigator.clipboard.writeText(TSV_TEXT).then(done, failed);
+          } catch (e) { failed(); }
+        } else {
+          failed();
+        }
+      });
+      function tryExecCopy() {
+        var ta = document.createElement("textarea");
+        ta.value = TSV_TEXT;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        return ok;
+      }
+    </script>
+  </body>
+</html>
