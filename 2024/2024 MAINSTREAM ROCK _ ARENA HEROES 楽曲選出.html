@@ -23,8 +23,6 @@
     --accent:#c81e1e;
     --accent-ink:#fff;
     --gold:#b7791f;
-    --spotify:#1db954;
-    --spotify-dark:#148a3c;
     --chip:#171412;
     --chip-ink:#f7f3ed;
     --warn-bg:#fff7e6;
@@ -75,13 +73,6 @@
   .stat:last-child{border-right:none}
   .stat b{font-family:Oswald,sans-serif;font-size:32px;line-height:1;display:block;font-weight:700}
   .stat span{font-size:12.5px;color:var(--muted);font-weight:700;letter-spacing:.04em}
-  .spotify-bar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);padding:18px 20px;margin-top:16px}
-  @media (prefers-color-scheme: dark){ .spotify-bar{background:#f2ece6;color:#171412} }
-  .spotify-bar p{margin:0;font-weight:700;font-size:15px;line-height:1.5}
-  .spotify-bar small{display:block;font-weight:400;opacity:.75;font-size:13px;margin-top:2px}
-  .btn-spotify{display:inline-flex;align-items:center;gap:10px;background:var(--spotify);color:#fff !important;text-decoration:none;font-weight:900;font-size:15px;padding:12px 20px;border-radius:999px;min-height:48px;white-space:nowrap;box-shadow:0 4px 14px rgba(29,185,84,.35)}
-  .btn-spotify:hover{background:var(--spotify-dark)}
-  .btn-spotify svg{flex:none}
   /* NAV */
   .album-nav{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0 4px}
   .album-nav a{text-decoration:none;font-weight:700;font-size:13.5px;border:1px solid var(--line);background:var(--card);padding:10px 14px;border-radius:999px;min-height:40px;display:inline-flex;align-items:center}
@@ -159,8 +150,6 @@
     .ov-row .track{grid-area:track;padding-top:0}
     .ov-row .time{grid-area:time}
     .ov-head{display:none}
-    .spotify-bar{flex-direction:column;align-items:stretch;text-align:left}
-    .btn-spotify{justify-content:center}
     .album-num{font-size:40px}
   }
 </style>
@@ -185,14 +174,6 @@
       <div class="stat"><b>10</b><span>選出曲（各アルバム2曲）</span></div>
       <div class="stat"><b>10 / 10</b><span>シングルカット曲</span></div>
       <div class="stat"><b>0</b><span>バラード採用</span></div>
-    </div>
-
-    <div class="spotify-bar">
-      <p>Spotifyプレイリストで全10曲を聴く<small>「2024年 MAINSTREAM ROCK / ARENA HEROES」— 選出順に収録</small></p>
-      <a class="btn-spotify" href="https://open.spotify.com/playlist/46TIILk4kDtN0OK84qY4m4" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1 .25c-2.9-1.77-6.54-2.17-10.83-1.19a.75.75 0 1 1-.33-1.46c4.7-1.07 8.72-.6 12 1.15.34.2.45.65.16 1zm1.47-3.85a.94.94 0 0 1-1.29.31c-3.31-2.03-8.36-2.62-12.27-1.44a.94.94 0 1 1-.54-1.8c4.47-1.35 10.03-.7 13.8 1.62.42.26.56.87.3 1.31zm.13-4.01C15.15 7.1 8.6 6.88 4.68 8.07a1.13 1.13 0 1 1-.65-2.16c4.66-1.41 12.17-1.14 16.9 1.66a1.13 1.13 0 0 1-1.15 1.94z"/></svg>
-        Spotifyで開く
-      </a>
     </div>
 
     <nav class="album-nav" aria-label="アルバムへ移動">
