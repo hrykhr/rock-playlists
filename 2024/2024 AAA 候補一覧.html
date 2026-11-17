@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2024 AAA 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f7f5; --surface:#ffffff; --surface2:#efefec; --ink:#1a1c1e; --muted:#5c6066; --line:#d9d7d2;
+    --accent:#b63e12; --accent-ink:#ffffff; --s:#8a2a0a; --s-bg:#fdeee6; --a:#7a5a00; --a-bg:#fdf3d0; --b:#3f4a56; --b-bg:#e6ebef;
+    --warn-bg:#fff7e0; --warn-line:#d9a400;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131518; --surface:#1c1f23; --surface2:#24282d; --ink:#eceae6; --muted:#a7adb5; --line:#33383e;
+      --accent:#e86a2e; --s:#ffb08a; --s-bg:#3a2418; --a:#f2d06b; --a-bg:#38300f; --b:#a9c2d8; --b-bg:#232e38;
+      --warn-bg:#2e2a12; --warn-line:#a8871f;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;line-height:1.75;font-size:15.5px}
+  a{color:var(--accent);word-break:break-all}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 64px}
+  header{padding:36px 0 8px}
+  .kicker{font-family:"Barlow Condensed",sans-serif;letter-spacing:.18em;font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase}
+  h1{font-size:clamp(30px,6vw,46px);line-height:1.2;margin:6px 0 4px;font-weight:900}
+  h1 .en{font-family:"Barlow Condensed",sans-serif;letter-spacing:.02em}
+  .lede{color:var(--muted);max-width:44em;margin:10px 0 0}
+  .lede strong{color:var(--ink)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:26px 0 6px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--ink);padding:14px 14px 10px}
+  .stat .num{font-family:"Barlow Condensed",sans-serif;font-size:40px;font-weight:700;line-height:1}
+  .stat .num small{font-size:18px;color:var(--muted)}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5}
+  .stat.hot{border-top-color:var(--accent)}
+  @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:16px 0 0;font-size:13.5px}
+  .flow .step{background:var(--surface2);padding:6px 12px;font-weight:700}
+  .flow .arr{color:var(--muted)}
+  .controls{position:sticky;top:0;z-index:20;background:var(--bg);padding:14px 0 10px;border-bottom:1px solid var(--line);margin-top:22px}
+  .controls input[type=search]{width:100%;min-height:44px;padding:10px 14px;font-size:16px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;font-family:inherit}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .filters button{min-height:40px;padding:8px 16px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer}
+  .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .countline{font-size:13px;color:var(--muted);margin-top:8px}
+  section{margin-top:40px}
+  h2{font-size:23px;font-weight:900;line-height:1.35;margin:0 0 6px;padding-bottom:8px;border-bottom:3px solid var(--ink)}
+  h2 .en{font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.04em}
+  .secnote{color:var(--muted);font-size:14.5px;margin:8px 0 18px;max-width:46em}
+  .card{background:var(--surface);border:1px solid var(--line);padding:18px 20px;margin-bottom:12px}
+  .card-head{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+  .no{font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:700;color:var(--muted);line-height:1.1;min-width:30px}
+  .titles{flex:1;min-width:0}
+  .artist{font-weight:900;font-size:17px;line-height:1.4}
+  .album{font-size:17px;line-height:1.4}
+  .album::before{content:"『"}.album::after{content:"』"}
+  .badge{flex-shrink:0;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em;padding:3px 12px;border-radius:4px;line-height:1.5}
+  .badge.s{background:var(--s-bg);color:var(--s);border:1px solid var(--s)}
+  .badge.a{background:var(--a-bg);color:var(--a);border:1px solid var(--a)}
+  .badge.b{background:var(--b-bg);color:var(--b);border:1px solid var(--b)}
+  .badge.up{background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+  .verdict{flex-shrink:0;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--bg);line-height:1.5}
+  .verdict.out{background:transparent;color:var(--muted);border:1px solid var(--line)}
+  .meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0 42px;font-size:13.5px;color:var(--muted)}
+  .meta b{color:var(--ink)}
+  dl{margin:10px 0 0 42px;display:grid;grid-template-columns:86px 1fr;gap:4px 12px;font-size:14.5px}
+  dt{font-weight:700;color:var(--muted);font-size:13px;padding-top:2px}
+  dd{margin:0}
+  .src{margin:10px 0 0 42px;font-size:13px}
+  .src .sl{font-weight:700;color:var(--muted);margin-right:6px}
+  .src a{display:inline-block;padding:6px 2px;min-height:32px}
+  .src li{margin:2px 0}
+  .src ul{margin:4px 0 0;padding-left:18px}
+  @media(max-width:560px){
+    dl{grid-template-columns:1fr;margin-left:0}
+    .meta,.src{margin-left:0}
+    .card{padding:16px}
+    .no{display:none}
+  }
+  .demote{border:2px solid var(--warn-line);background:var(--warn-bg)}
+  .demote .why{margin:10px 0 0 42px;font-size:14.5px}
+  @media(max-width:560px){.demote .why{margin-left:0}}
+  .gate{border:2px solid var(--warn-line);background:var(--warn-bg);padding:18px 20px}
+  .gate h3{margin:0 0 6px;font-size:17px;font-weight:900}
+  .gate p{margin:6px 0 0;font-size:14.5px}
+  .row{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--line);padding:14px 18px;margin-bottom:10px}
+  .row.ra{border-left-color:var(--a)} .row.rb{border-left-color:var(--b)} .row.rs{border-left-color:var(--s)}
+  .row-head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+  .row-head .artist{font-size:16px}
+  .row-head .album{font-size:16px}
+  .row-head .date{margin-left:auto;font-size:13px;color:var(--muted);white-space:nowrap}
+  .row p{margin:6px 0 0;font-size:14px}
+  .row .lab{font-weight:700;color:var(--muted);font-size:12.5px;margin-right:4px}
+  .row .src{margin-left:0}
+  .notes{background:var(--surface);border:1px solid var(--line);padding:6px 22px 14px}
+  .notes li{margin:12px 0}
+  .notes li b{display:block}
+  footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  .hidden{display:none!important}
+  .empty{padding:28px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Evidence Page — Album Selection 2024 / Genre 4</div>
+  <h1>2024年 <span class="en">AAA (Adult Alternative)</span> 候補一覧</h1>
+  <p class="lede">2024年に発売された AAA（アダルト・オルタナティブ）のスタジオ・アルバムを対象に、候補収集から重複排除、Sランク検証、厳格ルール確認までを行った記録です。<strong>候補は30枚</strong>集まり、既出アルバム累積リストとの<strong>重複は0枚</strong>でした。Sランク検証で<strong>5枚がS確定</strong>、2枚がAへ降格。厳格ルール（女性アーティスト半数以上）で一度止まり、女性A候補6枚を追加検証したうえで、最終的に Hiro の判断で Maggie Rogers を A から昇格させ、<strong>6枚・女性3/6</strong>で確定しました。</p>
+
+  <div class="stats">
+    <div class="stat"><div class="num">30<small> 枚</small></div><div class="lbl">収集した候補（2024年発売）</div></div>
+    <div class="stat"><div class="num">0<small> 枚</small></div><div class="lbl">累積リストとの重複で除外</div></div>
+    <div class="stat"><div class="num">5<small> 枚</small></div><div class="lbl">Sランク検証で S確定</div></div>
+    <div class="stat hot"><div class="num">6<small> 枚</small></div><div class="lbl">最終選出（女性 3/6）</div></div>
+  </div>
+
+  <div class="flow" aria-label="選出の流れ">
+    <span class="step">候補収集 30枚</span><span class="arr">→</span>
+    <span class="step">重複排除 0枚</span><span class="arr">→</span>
+    <span class="step">S確定 5枚 ＋ A降格 2枚</span><span class="arr">→</span>
+    <span class="step">厳格ルールで停止</span><span class="arr">→</span>
+    <span class="step">女性A候補 6枚を追加検証</span><span class="arr">→</span>
+    <span class="step">最終 6枚・女性3/6</span>
+  </div>
+</header>
+
+<div class="controls">
+  <input type="search" id="q" placeholder="アーティスト名・アルバム名で検索" aria-label="候補を検索">
+  <div class="filters" role="group" aria-label="ランクで絞り込み">
+    <button type="button" data-f="all" aria-pressed="true">すべて（30枚）</button>
+    <button type="button" data-f="final" aria-pressed="false">最終選出のみ</button>
+    <button type="button" data-f="S" aria-pressed="false">S</button>
+    <button type="button" data-f="A" aria-pressed="false">A</button>
+    <button type="button" data-f="B" aria-pressed="false">B</button>
+  </div>
+  <div class="countline" id="countline"></div>
+</div>
+
+<main>
+<!-- ============ FINAL 6 ============ -->
+<section id="final" data-sec>
+  <h2>最終選出 <span class="en">6 ALBUMS</span></h2>
+  <p class="secnote">S確定5枚に、Hiro の判断で A から昇格した Maggie Rogers『Don't Forget Me』を加えた6枚。女性は Sheryl Crow、Beth Gibbons、Maggie Rogers の3枚で、6枚中半数を満たします。発売日順（昇格の1枚は末尾）。</p>
+
+  <article class="card" data-rank="S" data-status="final" data-text="sheryl crow evolution シェリル クロウ エヴォリューション">
+    <div class="card-head"><div class="no">01</div><div class="titles"><div class="artist">Sheryl Crow（女性）</div><div class="album">Evolution</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年3月29日</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>Wikipedia の Genres は Country rock, Americana。AllMusic 系データで Adult Alternative Pop/Rock を含み、S基準に一致します。</dd>
+      <dt>特記</dt><dd>通算枚数に表記差があります（Wikipedia は 12th、一部プレスは 11th）。標準盤は9曲で短めです。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Evolution_(Sheryl_Crow_album)" target="_blank" rel="noopener">Wikipedia — Evolution (Sheryl Crow album)</a></li>
+      <li><a href="https://www.allmusic.com/album/evolution-mw0004135381/corrections" target="_blank" rel="noopener">AllMusic — Evolution</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="beth gibbons lives outgrown ベス ギボンズ">
+    <div class="card-head"><div class="no">02</div><div class="titles"><div class="artist">Beth Gibbons（女性）</div><div class="album">Lives Outgrown</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年5月17日</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>AllMusic Styles は Adult Alternative Pop/Rock, Alternative/Indie Rock, Alternative Folk, Alternative Singer/Songwriter で、S基準に完全一致します。Wikipedia の Genre は Chamber pop です。</dd>
+      <dt>特記</dt><dd>レーベル Domino は debut solo album と表現しています（Wikipedia は second solo）。Mercury Prize 2024 ノミネート作です。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Lives_Outgrown" target="_blank" rel="noopener">Wikipedia — Lives Outgrown</a></li>
+      <li><a href="https://www.allmusic.com/album/MW0004215290" target="_blank" rel="noopener">AllMusic — Lives Outgrown</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="nathaniel rateliff the night sweats south of here ナサニエル レイトリフ">
+    <div class="card-head"><div class="no">03</div><div class="titles"><div class="artist">Nathaniel Rateliff &amp; The Night Sweats</div><div class="album">South of Here</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年6月28日</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>収録曲「Heartless」と「Call Me (Whatever You Like)」が、いずれも Billboard Adult Alternative Airplay で1位を記録しています。</dd>
+      <dt>特記</dt><dd>11曲・36:42と短めの盤です。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/South_of_Here" target="_blank" rel="noopener">Wikipedia — South of Here</a></li>
+      <li><a href="https://www.allmusic.com/album/south-of-here-mw0004264069" target="_blank" rel="noopener">AllMusic — South of Here</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="amos lee transmissions エイモス リー トランスミッションズ">
+    <div class="card-head"><div class="no">04</div><div class="titles"><div class="artist">Amos Lee</div><div class="album">Transmissions</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年8月9日</b></span><span>形態 <b>11th スタジオ盤</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>AllMusic Styles は Adult Alternative Pop/Rock, Contemporary Singer/Songwriter, Neo-Soul, Alternative/Indie Rock で、S基準に一致します。</dd>
+      <dt>特記</dt><dd>曲数に表記差があります（プレス発表は12曲、Wikipedia のトラックリストは11曲）。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Transmissions_(Amos_Lee_album)" target="_blank" rel="noopener">Wikipedia — Transmissions (Amos Lee album)</a></li>
+      <li><a href="https://www.Allmusic.com/album/transmissions-mw0004279574" target="_blank" rel="noopener">AllMusic — Transmissions</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="S" data-status="final" data-text="leon bridges leon リオン ブリッジズ">
+    <div class="card-head"><div class="no">05</div><div class="titles"><div class="artist">Leon Bridges</div><div class="album">Leon</div></div><span class="badge s">S</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年10月4日</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>AllMusic Styles は Retro-Soul, Roots Rock, Adult Alternative Pop/Rock で、S基準に一致します。先行曲「Peaceful Place」は Billboard Adult Alternative Airplay で1位を記録しています。</dd>
+      <dt>特記</dt><dd>収録曲「Teddy's Tune」は0:53のインタールードです。</dd>
+    </dl>
+    <div class="src"><span class="sl">出典</span><ul>
+      <li><a href="https://en.wikipedia.org/wiki/Leon_(Leon_Bridges_album)" target="_blank" rel="noopener">Wikipedia — Leon (Leon Bridges album)</a></li>
+      <li><a href="https://www.allmusic.com/album/leon-mw0004351707" target="_blank" rel="noopener">AllMusic — Leon</a></li>
+    </ul></div>
+  </article>
+
+  <article class="card" data-rank="A" data-status="final" data-text="maggie rogers don't forget me マギー ロジャース ドント フォーゲット ミー">
+    <div class="card-head"><div class="no">06</div><div class="titles"><div class="artist">Maggie Rogers（女性）</div><div class="album">Don't Forget Me</div></div><span class="badge up">A → 昇格</span><span class="verdict">採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年4月12日</b></span><span>区分 <b>Hiro の判断で昇格（今回限り）</b></span></div>
+    <dl>
+      <dt>適合の根拠</dt><dd>AllMusic Styles に Adult Alternative Pop/Rock の表記はないため検証結果は A でした。一方で、タイトル曲「Don't Forget Me」が Billboard Adult Alternative Airplay で1位を記録しています。</dd>
+      <dt>特記</dt><dd>厳格ルール（女性半数以上）を満たすための追加検証を経て、Hiro の判断で今回限り A から昇格し、最終選出に入りました。</dd>
+    </dl>
+  </article>
+</section>
+
+<!-- ============ DEMOTED ============ -->
+<section id="demoted" data-sec>
+  <h2>S検証で A へ降格 <span class="en">2 ALBUMS</span></h2>
+  <p class="secnote">候補段階では S と見込まれましたが、検証の結果 A と判定された2枚です。</p>
+
+  <article class="card demote" data-rank="A" data-status="out" data-text="norah jones visions ノラ ジョーンズ ヴィジョンズ">
+    <div class="card-head"><div class="no">—</div><div class="titles"><div class="artist">Norah Jones（女性）</div><div class="album">Visions</div></div><span class="badge a">A（降格）</span><span class="verdict out">非採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年3月8日</b></span></div>
+    <p class="why"><b>降格理由：</b>マニュアルのベンチマーク・アーティスト本人ですが、本作はジャズ色が支配的です。AllMusic Styles に Adult Alternative Pop/Rock の表記はなく、Contemporary Singer/Songwriter, Contemporary Jazz, Vocal Jazz とされています。単曲「Running」は Adult Alternative Airplay で7位に入りましたが、アルバム単位では境界ケースとして A と判定しました。</p>
+  </article>
+
+  <article class="card demote" data-rank="A" data-status="out" data-text="dean lewis the epilogue ディーン ルイス エピローグ">
+    <div class="card-head"><div class="no">—</div><div class="titles"><div class="artist">Dean Lewis</div><div class="album">The Epilogue</div></div><span class="badge a">A（降格）</span><span class="verdict out">非採用</span></div>
+    <div class="meta"><span>発売日 <b>2024年10月18日</b></span></div>
+    <p class="why"><b>降格理由：</b>候補段階では S と見込まれていましたが、検証の結果 A へ降格しました。</p>
+  </article>
+</section>
+
+<!-- ============ GATE + EXTRA VERIFICATION ============ -->
+<section id="gate">
+  <h2>厳格ルール・ゲートと追加検証</h2>
+  <p class="secnote">AAA には「女性アーティストが半数以上」という厳格ルールがあります。S確定の段階ではこのルールを満たさず、選出は一度止まりました。</p>
+
+  <div class="gate">
+    <h3>ゲートで停止 — S 5枚中、女性は2枚（40%）</h3>
+    <p>S確定5枚のうち女性は Sheryl Crow と Beth Gibbons の2枚（40%）でした。10枚未満の選出では「少なくとも半数が女性」が必要なため、このままでは不合格となり、判断を Hiro に仰ぎました。その結果、女性の A 候補6枚を S 基準で追加検証することになりました。</p>
+  </div>
+
+  <p class="secnote" style="margin-top:18px">追加検証した女性A候補は6枚です。Maggie Rogers『Don't Forget Me』は検証結果 A のまま、Hiro の判断で最終選出へ昇格しました（上記「最終選出」参照）。残る5枚の検証結果は以下のとおりです。</p>
+
+  <article class="row rs" data-rank="S" data-status="out" data-text="lake street dive good together レイク ストリート ダイヴ">
+    <div class="row-head"><span class="artist">Lake Street Dive</span><span class="album">Good Together</span><span class="badge s">S</span><span class="date">2024年6月21日</span></div>
+    <p><span class="lab">検証結果</span>S。AllMusic Styles の実表記は「Alternative/Indie Rock, Adult Alternative Pop/Rock, Retro-Soul」。女性フロント（Rachael Price）で、発売日は4ソースで一致しました。</p>
+    <p><span class="lab">判定</span>境界事項として、音はネオソウル／ポップ寄りであること、36:26と短めであること、グラミー Best Traditional Pop Vocal Album ノミネート作であることがあります。今回は見送りました。</p>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="waxahatchee tigers blood ワクサハッチー タイガース ブラッド">
+    <div class="row-head"><span class="artist">Waxahatchee（女性）</span><span class="album">Tigers Blood</span><span class="badge a">A</span><span class="date">2024年3月22日</span></div>
+    <p><span class="lab">検証結果</span>A。AllMusic Styles の実表記が確認できませんでした。Wikipedia のジャンルは Indie rock, folk rock, alternative country で、STADIUM COUNTRY &amp; SOUTHERN ROCK との境界が強い1枚です。</p>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="adrianne lenker bright future エイドリアン レンカー ブライト フューチャー">
+    <div class="row-head"><span class="artist">Adrianne Lenker（女性）</span><span class="album">Bright Future</span><span class="badge a">A</span><span class="date">2024年3月22日</span></div>
+    <p><span class="lab">検証結果</span>A。フォークが核の作品です。グラミー Best Folk Album ノミネート作です。</p>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="laura marling patterns in repeat ローラ マーリング">
+    <div class="row-head"><span class="artist">Laura Marling（女性）</span><span class="album">Patterns in Repeat</span><span class="badge a">A</span><span class="date">2024年10月25日</span></div>
+    <p><span class="lab">検証結果</span>A。AllMusic Styles は Alternative/Indie Rock のみでした。収録時間は36:20です。</p>
+  </article>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="hurray for the riff raff the past is still alive ハレイ フォー ザ リフ ラフ">
+    <div class="row-head"><span class="artist">Hurray for the Riff Raff</span><span class="album">The Past Is Still Alive</span><span class="badge a">A</span><span class="date">2024年2月23日</span></div>
+    <p><span class="lab">検証結果</span>A。AllMusic Styles は確認できませんでした。アメリカーナ色が強い1枚です。</p>
+  </article>
+</section>
+
+<!-- ============ OTHER A ============ -->
+<section id="rank-a" data-sec>
+  <h2>その他の候補 — A <span class="en">12 ALBUMS</span></h2>
+  <p class="secnote">収集段階で A と判定され、最終選出には入らなかった候補です。</p>
+
+  <article class="row ra" data-rank="A" data-status="out" data-text="crowded house gravity stairs クラウデッド ハウス"><div class="row-head"><span class="artist">Crowded House</span><span class="album">Gravity Stairs</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="lizzy mcalpine older リジー マカルパイン"><div class="row-head"><span class="artist">Lizzy McAlpine</span><span class="album">Older</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="mark knopfler one deep river マーク ノップラー"><div class="row-head"><span class="artist">Mark Knopfler</span><span class="album">One Deep River</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="ray lamontagne long way home レイ ラモンターニュ"><div class="row-head"><span class="artist">Ray LaMontagne</span><span class="album">Long Way Home</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="gillian welch david rawlings woodland ギリアン ウェルチ"><div class="row-head"><span class="artist">Gillian Welch &amp; David Rawlings</span><span class="album">Woodland</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="iron and wine light verse アイアン アンド ワイン"><div class="row-head"><span class="artist">Iron &amp; Wine</span><span class="album">Light Verse</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="sarah jarosz polaroid lovers サラ ジャローズ"><div class="row-head"><span class="artist">Sarah Jarosz</span><span class="album">Polaroid Lovers</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="finneas for cryin out loud フィニアス"><div class="row-head"><span class="artist">Finneas</span><span class="album">For Cryin' Out Loud!</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="gracie abrams the secret of us グレイシー エイブラムス"><div class="row-head"><span class="artist">Gracie Abrams</span><span class="album">The Secret of Us</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="madeleine peyroux let's walk マデリン ペルー"><div class="row-head"><span class="artist">Madeleine Peyroux</span><span class="album">Let's Walk</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="nick cave the bad seeds wild god ニック ケイヴ"><div class="row-head"><span class="artist">Nick Cave &amp; The Bad Seeds</span><span class="album">Wild God</span><span class="badge a">A</span></div></article>
+  <article class="row ra" data-rank="A" data-status="out" data-text="donovan woods things were never good if they're not good now ドノヴァン ウッズ"><div class="row-head"><span class="artist">Donovan Woods</span><span class="album">Things Were Never Good If They're Not Good Now</span><span class="badge a">A</span></div></article>
+</section>
+
+<!-- ============ B ============ -->
+<section id="rank-b" data-sec>
+  <h2>その他の候補 — B <span class="en">5 ALBUMS</span></h2>
+  <p class="secnote">収集段階で B と判定され、最終選出には入らなかった候補です。</p>
+
+  <article class="row rb" data-rank="B" data-status="out" data-text="kacey musgraves deeper well ケイシー マスグレイヴス"><div class="row-head"><span class="artist">Kacey Musgraves</span><span class="album">Deeper Well</span><span class="badge b">B</span></div></article>
+  <article class="row rb" data-rank="B" data-status="out" data-text="clairo charm クレイロ"><div class="row-head"><span class="artist">Clairo</span><span class="album">Charm</span><span class="badge b">B</span></div></article>
+  <article class="row rb" data-rank="B" data-status="out" data-text="snow patrol the forest is the path スノウ パトロール"><div class="row-head"><span class="artist">Snow Patrol</span><span class="album">The Forest Is the Path</span><span class="badge b">B</span></div></article>
+  <article class="row rb" data-rank="B" data-status="out" data-text="david gilmour luck and strange デヴィッド ギルモア"><div class="row-head"><span class="artist">David Gilmour</span><span class="album">Luck and Strange</span><span class="badge b">B</span></div></article>
+  <article class="row rb" data-rank="B" data-status="out" data-text="taylor swift the tortured poets department テイラー スウィフト"><div class="row-head"><span class="artist">Taylor Swift</span><span class="album">The Tortured Poets Department</span><span class="badge b">B</span></div></article>
+
+  <div class="empty hidden" id="empty">条件に合う候補がありません。検索語や絞り込みを変えてください。</div>
+</section>
+
+<!-- ============ NOTES ============ -->
+<section id="notes">
+  <h2>境界・特記事項</h2>
+  <p class="secnote">判定の際に迷いや表記ゆれがあった点を、隠さず明記します。確認できなかった項目は推測で埋めず、その旨を書いています。</p>
+  <div class="notes"><ul>
+    <li><b>厳格ルール（女性半数以上）と今回の確定</b>S確定5枚だけでは女性が2/5（40%）でルールを満たしませんでした。女性A候補6枚の追加検証でも、Sと判定されたのは Lake Street Dive のみで、今回は見送りとなりました。最終的に Hiro の判断で Maggie Rogers を A から昇格させること（今回限り）で、6枚・女性3/6 として確定しました。</li>
+    <li><b>Norah Jones『Visions』— ベンチマーク本人でも降格</b>マニュアルのベンチマーク・アーティスト本人ですが、本作はジャズ色が支配的で、AllMusic Styles に Adult Alternative Pop/Rock の表記がありません。アーティストではなくアルバム単位で判定した結果の降格です。</li>
+    <li><b>Lake Street Dive『Good Together』— S判定でも見送り</b>AllMusic Styles の実表記で S 基準を満たしましたが、ネオソウル／ポップ寄りの音、短めの収録時間（36:26）、グラミー Trad Pop 部門ノミネートという境界事項があり、今回は見送りました。</li>
+    <li><b>Waxahatchee『Tigers Blood』— STADIUM COUNTRY との境界</b>Wikipedia のジャンル（Indie rock, folk rock, alternative country）から、ジャンル3「STADIUM COUNTRY &amp; SOUTHERN ROCK」との境界が強いと判断しました。AllMusic Styles の実表記は確認できていません。</li>
+    <li><b>表記差・未確認を明記した項目</b>Sheryl Crow『Evolution』は通算枚数に表記差（12th／11th）、Amos Lee『Transmissions』は曲数に表記差（12曲／11曲）、Beth Gibbons『Lives Outgrown』はソロ作としての数え方にレーベルと Wikipedia で差があります。Hurray for the Riff Raff『The Past Is Still Alive』は AllMusic Styles が確認できていません。いずれも推測では補っていません。</li>
+    <li><b>重複について</b>候補30枚は既出アルバム累積リストと照合し、重複は0枚でした。</li>
+  </ul></div>
+</section>
+
+</main>
+
+<footer>
+  <p>2024年 AAA (Adult Alternative) 候補一覧（エビデンスページ）／ 候補収集・重複排除・Sランク検証・厳格ルール確認の記録。実行日：2026年11月17日。各候補の発売日・ランク・根拠は出典リンク先の情報に基づきます。出典で確認できなかった項目は「確認できない」と明記し、推測では補っていません。</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-rank]'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-sec]'));
+  var countline = document.getElementById('countline');
+  var empty = document.getElementById('empty');
+  var filter = 'all';
+  function apply(){
+    var term = (q.value || '').trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function(el){
+      var okF = filter==='all' || (filter==='final' ? el.getAttribute('data-status')==='final' : el.getAttribute('data-rank')===filter);
+      var hay = (el.getAttribute('data-text') + ' ' + el.textContent).toLowerCase();
+      var okQ = !term || hay.indexOf(term) !== -1;
+      var vis = okF && okQ;
+      el.classList.toggle('hidden', !vis);
+      if(vis) shown++;
+    });
+    sections.forEach(function(sec){
+      var any = sec.querySelector('[data-rank]:not(.hidden)');
+      sec.classList.toggle('hidden', !any);
+    });
+    if(empty){
+      var bsec = document.getElementById('rank-b');
+      empty.classList.toggle('hidden', shown !== 0);
+      if(bsec && shown===0){ bsec.classList.remove('hidden'); }
+    }
+    countline.textContent = '表示中：' + shown + '枚 / 全30枚';
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      btns.forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+      filter = b.getAttribute('data-f');
+      apply();
+    });
+  });
+  q.addEventListener('input', apply);
+  apply();
+})();
+</script>
+</body>
+</html>

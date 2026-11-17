@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>2024 AAA 楽曲選出</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f6f5f2;
+        --surface: #ffffff;
+        --surface-2: #efede8;
+        --ink: #1c1a17;
+        --muted: #5d574e;
+        --line: #d9d4c9;
+        --accent: #b02318;
+        --accent-soft: #f7e3e0;
+        --gold: #8a6d1f;
+        --gold-soft: #f3ecd4;
+        --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        --disp: "Oswald", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        --body: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #131110;
+          --surface: #1d1a17;
+          --surface-2: #26221e;
+          --ink: #ece7df;
+          --muted: #a79d8f;
+          --line: #3a352f;
+          --accent: #e4573d;
+          --accent-soft: #3a211c;
+          --gold: #d3ab4a;
+          --gold-soft: #332b16;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px 72px; }
+
+      /* ---------- header ---------- */
+      header { padding: 44px 0 8px; }
+      .kicker {
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: .14em;
+        color: var(--accent);
+        margin: 0 0 10px;
+      }
+      h1 {
+        font-size: clamp(30px, 6vw, 46px);
+        line-height: 1.25;
+        margin: 0 0 6px;
+        font-weight: 700;
+      }
+      h1 .en {
+        font-family: var(--disp);
+        letter-spacing: .02em;
+      }
+      .lede { color: var(--muted); margin: 0 0 26px; font-size: 15.5px; }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 2px solid var(--ink);
+        border-bottom: 1px solid var(--line);
+      }
+      .stat { padding: 14px 10px 12px 0; }
+      .stat + .stat { border-left: 1px solid var(--line); padding-left: 14px; }
+      .stat b {
+        display: block;
+        font-family: var(--disp);
+        font-size: clamp(24px, 5vw, 34px);
+        font-weight: 600;
+        line-height: 1.1;
+      }
+      .stat span { font-size: 12.5px; color: var(--muted); }
+
+      /* ---------- summary ---------- */
+      section { margin-top: 44px; }
+      h2 {
+        font-size: 21px;
+        margin: 0 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--ink);
+      }
+      .checks { list-style: none; margin: 0; padding: 0; }
+      .checks li {
+        padding: 12px 0 12px 30px;
+        border-bottom: 1px solid var(--line);
+        position: relative;
+        font-size: 15px;
+      }
+      .checks li::before {
+        content: "";
+        position: absolute; left: 2px; top: 20px;
+        width: 9px; height: 9px;
+        background: var(--accent);
+      }
+      .checks b { font-weight: 700; }
+      .checks .sub { color: var(--muted); font-size: 13.5px; display: block; margin-top: 2px; }
+
+      /* ---------- album index ---------- */
+      .index {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 28px;
+        list-style: none; margin: 0; padding: 0;
+        counter-reset: idx;
+      }
+      .index li { border-bottom: 1px solid var(--line); }
+      .index a {
+        display: flex; align-items: baseline; gap: 10px;
+        padding: 11px 2px;
+        min-height: 44px;
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .index a:hover, .index a:focus-visible { color: var(--accent); }
+      .index .no {
+        font-family: var(--mono); font-size: 12px; color: var(--accent);
+        min-width: 22px;
+      }
+      .index .ar { font-family: var(--disp); font-weight: 600; letter-spacing: .01em; }
+      .index .al { color: var(--muted); font-size: 13.5px; }
+
+      /* ---------- album blocks ---------- */
+      .album {
+        margin-top: 52px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--ink);
+        padding: 26px 26px 8px;
+      }
+      .album-head { margin-bottom: 6px; }
+      .album-no {
+        font-family: var(--mono);
+        font-size: 12.5px;
+        letter-spacing: .12em;
+        color: var(--accent);
+        margin: 0 0 4px;
+      }
+      .album h3 {
+        margin: 0;
+        font-size: clamp(22px, 4.6vw, 30px);
+        line-height: 1.3;
+      }
+      .album h3 .artist { font-family: var(--disp); font-weight: 600; letter-spacing: .015em; }
+      .album h3 .title { font-weight: 700; }
+      .album-meta {
+        display: flex; flex-wrap: wrap; gap: 8px;
+        margin: 12px 0 4px;
+      }
+      .album-note {
+        font-size: 13.5px;
+        color: var(--muted);
+        background: var(--surface-2);
+        padding: 10px 14px;
+        margin: 12px 0 4px;
+      }
+      .album-note b { color: var(--ink); }
+
+      .track {
+        padding: 18px 0 16px;
+        border-top: 1px solid var(--line);
+      }
+      .track-head {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+        margin-bottom: 6px;
+      }
+      .track h4 {
+        margin: 0;
+        font-size: 18.5px;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+      .track h4 .tno {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--muted);
+        margin-right: 8px;
+      }
+      .chip {
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 2px 9px;
+        border: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      .chip.single { background: var(--accent-soft); border-color: transparent; color: var(--accent); font-weight: 600; }
+      .chip.chart { background: var(--gold-soft); border-color: transparent; color: var(--gold); font-weight: 600; }
+      .chip.exception { background: var(--gold-soft); border-color: transparent; color: var(--gold); font-weight: 600; }
+      .track p.ev { margin: 0 0 8px; font-size: 14.5px; }
+      .track p.yt { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+      .track p.yt b { color: var(--ink); font-weight: 600; }
+      .src { font-size: 13px; color: var(--muted); margin: 0; }
+      .src .label { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; margin-right: 6px; }
+      .src a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        display: inline-block;
+        padding: 4px 2px;
+        min-height: 32px;
+        line-height: 24px;
+      }
+      .track.spotlight { background: var(--gold-soft); margin: 0 -14px; padding-left: 14px; padding-right: 14px; }
+
+      /* ---------- TSV ---------- */
+      .tsv-box {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        padding: 20px;
+        overflow-x: hidden;
+      }
+      .tsv-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13.5px;
+        line-height: 1.6;
+        margin: 0 0 16px;
+      }
+      .tsv-table th, .tsv-table td {
+        text-align: left;
+        vertical-align: top;
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--line);
+      }
+      .tsv-table th {
+        font-family: var(--mono);
+        font-size: 11.5px;
+        letter-spacing: .08em;
+        color: var(--muted);
+        border-bottom: 2px solid var(--ink);
+      }
+      .tsv-table td.g { font-family: var(--mono); font-size: 12px; white-space: nowrap; }
+      .copy-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+      button.copy {
+        font-family: var(--body);
+        font-size: 15px; font-weight: 700;
+        background: var(--accent);
+        color: #fff;
+        border: 0;
+        padding: 12px 26px;
+        min-height: 48px;
+        cursor: pointer;
+      }
+      button.copy:hover { filter: brightness(1.08); }
+      button.copy:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+      .copy-status { font-size: 13.5px; color: var(--muted); }
+
+      footer {
+        margin-top: 56px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+        font-size: 13px;
+        color: var(--muted);
+      }
+      footer p { margin: 0 0 6px; }
+
+      @media (max-width: 640px) {
+        .stats { grid-template-columns: repeat(2, 1fr); }
+        .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+        .index { grid-template-columns: 1fr; }
+        .album { padding: 20px 16px 4px; }
+        .track.spotlight { margin: 0 -8px; padding-left: 8px; padding-right: 8px; }
+        .tsv-box { padding: 14px; }
+        .tsv-table thead { display: none; }
+        .tsv-table, .tsv-table tbody, .tsv-table tr, .tsv-table td { display: block; width: 100%; }
+        .tsv-table tr { padding: 8px 0; border-bottom: 1px solid var(--line); }
+        .tsv-table td { border-bottom: 0; padding: 2px 0; }
+        .tsv-table td::before {
+          content: attr(data-label);
+          font-family: var(--mono);
+          font-size: 10.5px;
+          letter-spacing: .08em;
+          color: var(--muted);
+          display: inline-block;
+          min-width: 52px;
+          margin-right: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <header>
+        <p class="kicker">2024 ・ GENRE 4 ・ EVIDENCE</p>
+        <h1>2024年 <span class="en">AAA (Adult Alternative)</span> 楽曲選出</h1>
+        <p class="lede">最終アルバム6枚から各2曲、計12曲を選出した記録。各曲について、長さ・シングルかどうか・選出理由の根拠と、確認に使った出典を残す。</p>
+        <div class="stats">
+          <div class="stat"><b>6</b><span>最終アルバム</span></div>
+          <div class="stat"><b>12</b><span>選出曲（各アルバム2曲）</span></div>
+          <div class="stat"><b>12 / 12</b><span>全曲シングル</span></div>
+          <div class="stat"><b>4</b><span>Adult Alternative Airplay 1位</span></div>
+        </div>
+      </header>
+
+      <section aria-labelledby="sum-h">
+        <h2 id="sum-h">選出の確認事項</h2>
+        <ul class="checks">
+          <li>
+            <b>全曲シングル（12曲すべて）。</b> シングル優先方針で選出し、非シングルは1曲も含まれていない。
+          </li>
+          <li>
+            <b>バラード例外は1件だけ。</b> Beth Gibbons「Floating on a Moment」は、初のソロ作のリードシングルであり、Mercury Prize ショートリスト盤の代表曲（アーティストにとって重要／その年に重要）として例外採用した。
+            <span class="sub">代替の「Lost Changes」も哀歌調でバラード性がより強く、再生回数も劣る（約225K回）ため採らなかった。</span>
+          </li>
+          <li>
+            <b>Adult Alternative Airplay 1位が4曲。</b> Leon Bridges「Peaceful Place」、Nathaniel Rateliff &amp; The Night Sweats「Heartless」「Call Me (Whatever You Like)」、Maggie Rogers「Don't Forget Me」が Billboard の同チャートで1位を記録している。
+          </li>
+          <li>
+            <b>最終6枚は S 5枚＋昇格1枚。</b> 厳格ルール（女性アーティストが半数以上）に対し、S のみでは女性2/5だったため、Maggie Rogers『Don't Forget Me』を A から昇格し、女性3/6で確定した。
+          </li>
+          <li>
+            <b>再生回数は YouTube 公式動画の公開回数を優先して記載した。</b> 確認できない曲（「Heartless」「Call Me (Whatever You Like)」「Don't Forget Me」「So Sick Of Dreaming」）は、その旨を各曲に明記し、数字は作っていない。
+            <span class="sub">Kworb の数値は<b>第三者集計</b>であり、公式の再生回数ではない。該当する曲にはその旨を併記した。</span>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="idx-h">
+        <h2 id="idx-h">最終アルバム（6枚）</h2>
+        <ol class="index">
+          <li><a href="#a1"><span class="no">01</span><span class="ar">Sheryl Crow</span><span class="al">Evolution</span></a></li>
+          <li><a href="#a2"><span class="no">02</span><span class="ar">Beth Gibbons</span><span class="al">Lives Outgrown</span></a></li>
+          <li><a href="#a3"><span class="no">03</span><span class="ar">Amos Lee</span><span class="al">Transmissions</span></a></li>
+          <li><a href="#a4"><span class="no">04</span><span class="ar">Leon Bridges</span><span class="al">Leon</span></a></li>
+          <li><a href="#a5"><span class="no">05</span><span class="ar">Nathaniel Rateliff &amp; The Night Sweats</span><span class="al">South of Here</span></a></li>
+          <li><a href="#a6"><span class="no">06</span><span class="ar">Maggie Rogers</span><span class="al">Don't Forget Me</span></a></li>
+        </ol>
+      </section>
+
+      <!-- 01 Sheryl Crow -->
+      <article class="album" id="a1">
+        <div class="album-head">
+          <p class="album-no">ALBUM 01 / 6</p>
+          <h3><span class="artist">Sheryl Crow</span> — <span class="title">『Evolution』</span></h3>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">1-1</span>Alarm Clock</h4>
+            <span class="chip">2:54</span><span class="chip single">リードシングル</span>
+          </div>
+          <p class="ev">リードシングル。2023-11-03、殿堂入りの当日にリリースされた。アップビートなポップロックでバラードではない。シングル優先ルール(1)で選出。</p>
+          <p class="yt">YouTube公開再生回数：公式MV <b>約504K回</b>（アルバム内トップ）</p>
+          <p class="src"><span class="label">出典</span><a href="https://en.wikipedia.org/wiki/Evolution_(Sheryl_Crow_album)" target="_blank" rel="noopener">Wikipedia</a>／<a href="https://www.youtube.com/watch?v=L8E7RzYWhqs" target="_blank" rel="noopener">YouTube 公式MV</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">1-2</span>Evolution</h4>
+            <span class="chip">4:26</span><span class="chip single">第2弾シングル</span>
+          </div>
+          <p class="ev">第2弾シングル＝タイトル曲。Tom Morello がギター参加。アンセミックなロックでバラードではない。シングル優先ルール(1)で選出。代替候補は第3弾シングル「Do It Again」。なお「Don't Walk Away」はバラード明記のため不採用、「Digging in the Dirt」は Deluxe 限定カバーのため対象外とした。</p>
+          <p class="yt">YouTube公開再生回数：公式リリックビデオ <b>約159K回</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://www.youtube.com/watch?v=44yQtXxkalU" target="_blank" rel="noopener">YouTube 公式リリックビデオ</a>／<a href="https://consequence.net/2024/01/sheryl-crow-evolution-stream/" target="_blank" rel="noopener">Consequence</a></p>
+        </div>
+      </article>
+
+      <!-- 02 Beth Gibbons -->
+      <article class="album" id="a2">
+        <div class="album-head">
+          <p class="album-no">ALBUM 02 / 6</p>
+          <h3><span class="artist">Beth Gibbons</span> — <span class="title">『Lives Outgrown』</span></h3>
+        </div>
+        <div class="track spotlight">
+          <div class="track-head">
+            <h4><span class="tno">2-1</span>Floating on a Moment</h4>
+            <span class="chip">5:26</span><span class="chip single">リードシングル</span><span class="chip exception">バラード例外で採用</span>
+          </div>
+          <p class="ev">リードシングル。今回の12曲で唯一のバラード例外。初のソロ作のリードシングルであり、Mercury Prize ショートリスト盤の代表曲として、アーティストにとって重要／その年に重要な曲に当たると判断して採用した。代替の「Lost Changes」も哀歌調でバラード性がより強く、再生回数も劣る（約225K回）。</p>
+          <p class="yt">YouTube公開再生回数：公式MV <b>約810K回</b>（アルバム内ダントツ）</p>
+          <p class="src"><span class="label">出典</span><a href="https://en.wikipedia.org/wiki/Lives_Outgrown" target="_blank" rel="noopener">Wikipedia</a>／<a href="https://www.amoeba.com/lives-outgrown-lp-beth-gibbons/albums/4369590/" target="_blank" rel="noopener">Amoeba</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">2-2</span>Reaching Out</h4>
+            <span class="chip">4:15</span><span class="chip single">第2シングル</span>
+          </div>
+          <p class="ev">第2シングル。本作で最もアップテンポな曲。シングル優先ルール(1)で選出。</p>
+          <p class="yt">YouTube公開再生回数：公式MV <b>約198K回</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://www.dominomusic.com/news/us/beth-gibbons-releases-new-single-video-reaching-out" target="_blank" rel="noopener">Domino Music</a>／<a href="https://www.youtube.com/watch?v=JJeCBRhoXek" target="_blank" rel="noopener">YouTube 公式MV</a></p>
+        </div>
+      </article>
+
+      <!-- 03 Amos Lee -->
+      <article class="album" id="a3">
+        <div class="album-head">
+          <p class="album-no">ALBUM 03 / 6</p>
+          <h3><span class="artist">Amos Lee</span> — <span class="title">『Transmissions』</span></h3>
+          <p class="album-note">収録曲数には出典により<b>11曲／12曲の差異</b>があるが、選出2曲への影響はない。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">3-1</span>Hold On Tight</h4>
+            <span class="chip">3:13</span><span class="chip single">リードシングル</span>
+          </div>
+          <p class="ev">リードシングル。フォークロックのアンセム。シングル優先ルール(1)で選出。</p>
+          <p class="yt">YouTube公開再生回数：公式MV <b>約130K回</b>（アルバム内突出）</p>
+          <p class="src"><span class="label">出典</span><a href="https://en.wikipedia.org/wiki/Transmissions_(Amos_Lee_album)" target="_blank" rel="noopener">Wikipedia</a>／<a href="https://www.youtube.com/watch?v=NFE5n453eIQ" target="_blank" rel="noopener">YouTube 公式MV</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">3-2</span>Darkest Places</h4>
+            <span class="chip">4:28</span><span class="chip single">第3弾シングル</span>
+          </div>
+          <p class="ev">第3弾シングル。アップテンポな曲。シングル優先ルール(1)で選出。第2弾シングル「Beautiful Day」（約49.7K回）は American Songwriter がバラードと明記したため原則不採用とし、第一代替候補として記録した。</p>
+          <p class="yt">YouTube公開再生回数：公式オーディオ <b>約18K回</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://nodepression.com/album-reviews/album-review-amos-lee-searches-and-finds-on-transmissions/" target="_blank" rel="noopener">No Depression</a>／<a href="https://www.youtube.com/watch?v=oYxyjU43Cr0" target="_blank" rel="noopener">YouTube 公式オーディオ</a></p>
+        </div>
+      </article>
+
+      <!-- 04 Leon Bridges -->
+      <article class="album" id="a4">
+        <div class="album-head">
+          <p class="album-no">ALBUM 04 / 6</p>
+          <h3><span class="artist">Leon Bridges</span> — <span class="title">『Leon』</span></h3>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">4-1</span>Peaceful Place</h4>
+            <span class="chip">4:15</span><span class="chip single">先行シングル</span><span class="chip chart">Adult Alternative Airplay 1位</span>
+          </div>
+          <p class="ev">先行シングル。Billboard Adult Alternative Airplay で1位。グルーヴ曲でバラードではない。シングル優先ルール(1)で選出。</p>
+          <p class="yt">YouTube公開再生回数：公式MV <b>約858K回</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://en.wikipedia.org/wiki/Leon_(Leon_Bridges_album)" target="_blank" rel="noopener">Wikipedia</a>／<a href="https://www.youtube.com/watch?v=LtdrdE6sssg" target="_blank" rel="noopener">YouTube 公式MV</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">4-2</span>Laredo</h4>
+            <span class="chip">3:17</span><span class="chip single">第2弾シングル</span>
+          </div>
+          <p class="ev">第2弾シングル。シングル優先ルール(1)で選出。第3シングル「That's What I Love」は「'70s soul ballad」明記のため不採用。「Teddy's Tune」（0:53）は2分以下のため対象外とした。</p>
+          <p class="yt">YouTube公開再生回数：公式ビジュアライザー <b>約706K回</b>。参考指標：<b>第三者集計（Kworb）</b>の Spotify 再生回数 22.4M回でアルバム内トップ</p>
+          <p class="src"><span class="label">出典</span><a href="https://www.amoeba.com/leon-lp-leon-bridges/albums/4395613/" target="_blank" rel="noopener">Amoeba</a>／<a href="https://www.youtube.com/watch?v=8YklX6sHIeQ" target="_blank" rel="noopener">YouTube 公式ビジュアライザー</a></p>
+        </div>
+      </article>
+
+      <!-- 05 Nathaniel Rateliff & The Night Sweats -->
+      <article class="album" id="a5">
+        <div class="album-head">
+          <p class="album-no">ALBUM 05 / 6</p>
+          <h3><span class="artist">Nathaniel Rateliff &amp; The Night Sweats</span> — <span class="title">『South of Here』</span></h3>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">5-1</span>Heartless</h4>
+            <span class="chip">3:18</span><span class="chip single">リードシングル</span><span class="chip chart">Adult Alternative Airplay 1位</span>
+          </div>
+          <p class="ev">リードシングル。Billboard Adult Alternative Airplay で1位。シングル優先ルール(1)で選出。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b>（公式MVの回数は確認できなかった）。参考指標：<b>第三者集計（Kworb）</b>の Spotify 再生回数 約11.1M回</p>
+          <p class="src"><span class="label">出典</span><a href="https://en.wikipedia.org/wiki/South_of_Here" target="_blank" rel="noopener">Wikipedia</a>／<a href="https://www.youtube.com/watch?v=0e5PIAW20SQ" target="_blank" rel="noopener">YouTube 公式MV</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">5-2</span>Call Me (Whatever You Like)</h4>
+            <span class="chip">3:00</span><span class="chip single">フォローアップ・シングル</span><span class="chip chart">Adult Alternative Airplay 1位</span>
+          </div>
+          <p class="ev">フォローアップ・シングル。Billboard Adult Alternative Airplay で1位（2024-12-07付）。アップテンポな曲。シングル優先ルール(1)で選出。タイトル曲「South of Here」はバラード寄りと判定し原則どおり不採用とした（代替次点は「Get Used to the Night」）。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b></p>
+          <p class="src"><span class="label">出典</span><a href="https://www.ConcordRecords.com/collections/cd/products/south-of-here-cd" target="_blank" rel="noopener">Concord Records</a>／<a href="https://www.youtube.com/watch?v=6tc8LJzkESA" target="_blank" rel="noopener">YouTube 公式動画</a></p>
+        </div>
+      </article>
+
+      <!-- 06 Maggie Rogers -->
+      <article class="album" id="a6">
+        <div class="album-head">
+          <p class="album-no">ALBUM 06 / 6</p>
+          <h3><span class="artist">Maggie Rogers</span> — <span class="title">『Don't Forget Me』</span></h3>
+          <p class="album-note">A ランクから<b>昇格</b>して最終6枚に入った1枚。女性アーティスト3/6となり、厳格ルール（女性半数以上）を満たした（経緯は「選出の確認事項」参照）。</p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">6-1</span>Don't Forget Me</h4>
+            <span class="chip">4:25</span><span class="chip single">リードシングル</span><span class="chip chart">Adult Alternative Airplay 1位</span>
+          </div>
+          <p class="ev">リードシングル＝タイトル曲。Billboard Adult Alternative Airplay で1位。シングル優先ルール(1)で選出。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b>（公式MVの回数は確認できなかった）。参考指標：<b>第三者集計（Kworb）</b>の Spotify 再生回数 38.4M回でアルバム内1位</p>
+          <p class="src"><span class="label">出典</span><a href="https://www.qobuz.com/us-en/album/dont-forget-me-maggie-rogers/joj7vtfv6egyb" target="_blank" rel="noopener">Qobuz</a>／<a href="https://www.youtube.com/watch?v=JHh3w5xgSkc" target="_blank" rel="noopener">YouTube 公式MV</a></p>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <h4><span class="tno">6-2</span>So Sick Of Dreaming</h4>
+            <span class="chip">3:52</span><span class="chip single">第2弾シングル</span>
+          </div>
+          <p class="ev">第2弾シングル。シングル優先ルール(1)で選出。非シングル「The Kill」（同集計で32.5M回）は、シングル優先方針により代替候補として記録した。</p>
+          <p class="yt">YouTube公開再生回数：<b>確認できない</b>。参考指標：<b>第三者集計（Kworb）</b>で 24.0M回</p>
+          <p class="src"><span class="label">出典</span><a href="https://stereogum.com/2256273/maggie-rogers-so-sick-of-dreaming/music" target="_blank" rel="noopener">Stereogum</a>／<a href="https://www.youtube.com/watch?v=0snnv3v_rbo" target="_blank" rel="noopener">YouTube 公式動画</a></p>
+        </div>
+      </article>
+
+      <section aria-labelledby="tsv-h">
+        <h2 id="tsv-h">最終TSV（GENRE／ARTIST／ALBUM／TRACK）</h2>
+        <div class="tsv-box">
+          <table class="tsv-table" aria-label="最終TSV 12行">
+            <thead>
+              <tr><th scope="col">GENRE</th><th scope="col">ARTIST</th><th scope="col">ALBUM</th><th scope="col">TRACK</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Sheryl Crow</td><td data-label="ALBUM">Evolution</td><td data-label="TRACK">Alarm Clock</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Sheryl Crow</td><td data-label="ALBUM">Evolution</td><td data-label="TRACK">Evolution</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Beth Gibbons</td><td data-label="ALBUM">Lives Outgrown</td><td data-label="TRACK">Floating on a Moment</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Beth Gibbons</td><td data-label="ALBUM">Lives Outgrown</td><td data-label="TRACK">Reaching Out</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Amos Lee</td><td data-label="ALBUM">Transmissions</td><td data-label="TRACK">Hold On Tight</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Amos Lee</td><td data-label="ALBUM">Transmissions</td><td data-label="TRACK">Darkest Places</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Leon Bridges</td><td data-label="ALBUM">Leon</td><td data-label="TRACK">Peaceful Place</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Leon Bridges</td><td data-label="ALBUM">Leon</td><td data-label="TRACK">Laredo</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Nathaniel Rateliff &amp; The Night Sweats</td><td data-label="ALBUM">South of Here</td><td data-label="TRACK">Heartless</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Nathaniel Rateliff &amp; The Night Sweats</td><td data-label="ALBUM">South of Here</td><td data-label="TRACK">Call Me (Whatever You Like)</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Maggie Rogers</td><td data-label="ALBUM">Don't Forget Me</td><td data-label="TRACK">Don't Forget Me</td></tr>
+              <tr><td class="g" data-label="GENRE">AAA</td><td data-label="ARTIST">Maggie Rogers</td><td data-label="ALBUM">Don't Forget Me</td><td data-label="TRACK">So Sick Of Dreaming</td></tr>
+            </tbody>
+          </table>
+          <div class="copy-row">
+            <button class="copy" id="copyBtn" type="button">TSVをコピー</button>
+            <span class="copy-status" id="copyStatus" role="status"></span>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>実行日：2026-11-17／ワークフロー：album-selection（S確定5枚＋昇格1枚 → 最終6枚 → 楽曲12曲）。</p>
+        <p>選出12曲は Spotify プレイリスト「2024年AAA」を作成し、TSVの順序どおり・全曲アルバム版で収録した。</p>
+        <p>各曲の長さ・シングルの確認は、記載の出典でクロスチェックした。確認できなかった項目は「確認できない」と明記し、推測で埋めていない。</p>
+      </footer>
+
+    </div>
+
+    <script>
+      var TSV_LINES = [
+        "AAA\tSheryl Crow\tEvolution\tAlarm Clock",
+        "AAA\tSheryl Crow\tEvolution\tEvolution",
+        "AAA\tBeth Gibbons\tLives Outgrown\tFloating on a Moment",
+        "AAA\tBeth Gibbons\tLives Outgrown\tReaching Out",
+        "AAA\tAmos Lee\tTransmissions\tHold On Tight",
+        "AAA\tAmos Lee\tTransmissions\tDarkest Places",
+        "AAA\tLeon Bridges\tLeon\tPeaceful Place",
+        "AAA\tLeon Bridges\tLeon\tLaredo",
+        "AAA\tNathaniel Rateliff & The Night Sweats\tSouth of Here\tHeartless",
+        "AAA\tNathaniel Rateliff & The Night Sweats\tSouth of Here\tCall Me (Whatever You Like)",
+        "AAA\tMaggie Rogers\tDon't Forget Me\tDon't Forget Me",
+        "AAA\tMaggie Rogers\tDon't Forget Me\tSo Sick Of Dreaming"
+      ];
+      var TSV_TEXT = TSV_LINES.join("\n");
+
+      var btn = document.getElementById("copyBtn");
+      var statusEl = document.getElementById("copyStatus");
+      function done() { statusEl.textContent = "コピーしました（12行・タブ区切り）"; }
+      function failed() { statusEl.textContent = "コピーできませんでした。上の表のテキストを選択してコピーしてください。"; }
+      btn.addEventListener("click", function () {
+        statusEl.textContent = "コピーしています…";
+        if (tryExecCopy()) { done(); return; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          try {
+            navigator.clipboard.writeText(TSV_TEXT).then(done, failed);
+          } catch (e) { failed(); }
+        } else {
+          failed();
+        }
+      });
+      function tryExecCopy() {
+        var ta = document.createElement("textarea");
+        ta.value = TSV_TEXT;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        return ok;
+      }
+    </script>
+  </body>
+</html>
