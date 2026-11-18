@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<link rel="icon" href="data:," />
+<title>2024年 MELODIC POWER &amp; TRADITIONAL METAL 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0f12;
+  --bg2:#12151a;
+  --panel:#171b22;
+  --panel2:#1c212a;
+  --line:#2a303c;
+  --line-soft:#232833;
+  --text:#e8e6e1;
+  --muted:#a8adb8;
+  --faint:#7d838f;
+  --gold:#c9a86a;
+  --gold-bright:#e3c88f;
+  --red:#b8543f;
+  --steel:#8fa3b8;
+  --green:#7fa88a;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;font-size:15.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--gold-bright);text-decoration-color:rgba(201,168,106,.45);text-underline-offset:3px}
+a:hover{color:#f0dcae}
+::selection{background:#3d3423;color:#fff}
+
+/* ---------- header ---------- */
+.hero{border-bottom:3px solid var(--gold);background:linear-gradient(180deg,#14171d 0%,var(--bg) 100%);padding:44px 20px 34px}
+.hero-inner{max-width:1020px;margin:0 auto}
+.genre-label{font-family:"Oswald",sans-serif;letter-spacing:.28em;font-size:12px;color:var(--gold);text-transform:uppercase;margin:0 0 14px}
+h1{font-family:"Noto Serif JP",serif;font-weight:900;font-size:clamp(26px,5.2vw,44px);line-height:1.3;margin:0 0 8px;letter-spacing:.01em}
+h1 .year{color:var(--gold-bright)}
+.hero-sub{color:var(--muted);font-size:14.5px;margin:0;max-width:760px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px 18px;min-width:118px}
+.stat b{display:block;font-family:"Oswald",sans-serif;font-size:26px;font-weight:600;line-height:1.15;color:var(--text)}
+.stat span{font-size:12px;color:var(--faint);letter-spacing:.06em}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px 20px}
+section{margin-top:44px}
+h2.sec{font-family:"Noto Serif JP",serif;font-size:22px;font-weight:700;margin:0 0 6px;padding-bottom:10px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:12px}
+h2.sec .no{font-family:"Oswald",sans-serif;color:var(--gold);font-size:15px;letter-spacing:.15em}
+.sec-lead{color:var(--muted);font-size:14.5px;margin:10px 0 0}
+
+/* summary */
+.summary-box{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-top:16px}
+.summary-box p{margin:0 0 12px}
+.summary-box p:last-child{margin-bottom:0}
+.summary-box strong{color:var(--gold-bright);font-weight:700}
+.note-small{font-size:13.5px;color:var(--muted)}
+
+/* toc */
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin-top:16px;padding:0;list-style:none}
+.toc a{display:flex;gap:10px;align-items:baseline;background:var(--panel);border:1px solid var(--line-soft);border-radius:8px;padding:10px 14px;min-height:44px;color:var(--text);text-decoration:none;font-size:14px}
+.toc a:hover{border-color:var(--gold);color:var(--gold-bright)}
+.toc .n{font-family:"Oswald",sans-serif;color:var(--gold);font-size:13px;flex:none}
+.toc .alb{color:var(--muted);font-size:12.5px;display:block;line-height:1.4}
+
+/* search */
+.searchbar{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.searchbar label{font-size:13px;color:var(--faint);letter-spacing:.05em}
+.searchbar input{flex:1;min-width:200px;min-height:44px;background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--text);padding:10px 14px;font-size:15px;font-family:inherit}
+.searchbar input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.search-count{font-size:13px;color:var(--faint)}
+.no-result{display:none;background:var(--panel);border:1px dashed var(--line);border-radius:var(--radius);padding:18px;text-align:center;color:var(--muted);margin-top:16px}
+
+/* album sections */
+.album{margin-top:40px;scroll-margin-top:16px}
+.album-head{display:flex;gap:16px;align-items:flex-start;border-bottom:2px solid var(--line);padding-bottom:12px}
+.album-num{font-family:"Oswald",sans-serif;font-size:30px;font-weight:700;color:var(--gold);line-height:1;padding-top:4px;flex:none;min-width:44px}
+.album-head h3{margin:0;font-size:21px;line-height:1.4}
+.album-head h3 .artist{font-family:"Oswald","Noto Sans JP",sans-serif;letter-spacing:.04em;font-weight:600}
+.album-head h3 .title{font-family:"Noto Serif JP",serif;font-weight:700;color:var(--gold-bright)}
+.album-meta{color:var(--faint);font-size:13px;margin-top:2px}
+.album-note{font-size:13.5px;color:var(--muted);margin:10px 0 0;background:var(--bg2);border:1px solid var(--line-soft);border-radius:8px;padding:10px 14px}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+thead th{background:var(--panel2);color:var(--faint);font-size:12px;letter-spacing:.08em;text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-weight:500;white-space:nowrap}
+tbody td{padding:14px;border-bottom:1px solid var(--line-soft);vertical-align:top;font-size:14.5px}
+tbody tr:last-child td{border-bottom:none}
+td.track{font-weight:700;font-size:15.5px;white-space:nowrap}
+td.track .tname{display:block}
+td.time{font-family:"Oswald",sans-serif;color:var(--muted);white-space:nowrap;font-size:14px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.03em;border:1px solid var(--gold);color:var(--gold-bright);border-radius:999px;padding:2px 9px;white-space:nowrap;line-height:1.6}
+td.metric{color:#cfd3da;font-size:14px}
+td.metric .third{color:var(--faint);font-size:12.5px}
+td.src{color:var(--muted);font-size:13px;white-space:nowrap}
+.yt-link{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:4px 2px;font-size:13px;font-weight:700}
+.yt-link::before{content:"▶";font-size:10px;color:var(--red);border:1px solid var(--red);border-radius:4px;padding:1px 5px;line-height:1.5}
+.unconfirmed{color:var(--faint);font-style:normal}
+
+/* decisions */
+.decision{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-top:16px}
+.decision + .decision{margin-top:12px}
+.decision h3{margin:0 0 8px;font-size:16.5px}
+.decision h3 .song{color:var(--gold-bright)}
+.decision p{margin:0 0 10px;color:#cfd3da;font-size:14.5px}
+.decision p:last-child{margin-bottom:0}
+.verdict{display:inline-block;background:#263026;border:1px solid var(--green);color:#b9d6c0;border-radius:6px;font-size:13px;font-weight:700;padding:3px 10px}
+
+/* dropped */
+.dropped{margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.dropped table{margin-top:0;border:none;border-radius:0}
+.dropped td.artist-cell{font-weight:700;white-space:nowrap;width:170px}
+.dropped td{font-size:14px;color:#cfd3da}
+.dropped td .reason{color:var(--faint);font-size:13px}
+
+footer{margin-top:56px;border-top:1px solid var(--line);padding:22px 20px 40px;text-align:center;color:var(--faint);font-size:13.5px}
+footer .stamp{color:var(--muted);letter-spacing:.05em}
+footer p{margin:4px 0}
+
+@media (max-width:680px){
+  body{font-size:15px}
+  .hero{padding:32px 16px 26px}
+  .wrap{padding:0 14px 14px}
+  .stat{min-width:calc(50% - 5px);flex:1}
+  .album-num{font-size:24px;min-width:34px}
+  .album-head h3{font-size:18.5px}
+  /* tables become stacked cards */
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  tbody tr{padding:12px 14px;border-bottom:1px solid var(--line-soft)}
+  tbody tr:last-child{border-bottom:none}
+  tbody td{border:none;padding:3px 0}
+  td.track{white-space:normal;font-size:16px}
+  td::before{content:attr(data-label);display:block;font-size:11px;color:var(--faint);letter-spacing:.08em;margin-bottom:1px}
+  td.track::before,td.time::before{display:none}
+  td.time{display:inline-block;margin-left:8px}
+  td.src{white-space:normal}
+  .dropped td.artist-cell{width:auto;padding-bottom:6px}
+  .dropped tbody tr{padding:14px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="genre-label">Genre 5 — Melodic Power &amp; Traditional Metal</p>
+    <h1><span class="year">2024年</span> MELODIC POWER &amp;<br>TRADITIONAL METAL 楽曲選出</h1>
+    <p class="hero-sub">最終選出10アルバムから各2曲、計20曲の選出エビデンス。各曲のシングル区分・人気指標・出典を照合した記録です。</p>
+    <div class="stats">
+      <div class="stat"><b>10</b><span>アルバム</span></div>
+      <div class="stat"><b>20</b><span>選出曲</span></div>
+      <div class="stat"><b>20 / 20</b><span>シングルから選出</span></div>
+      <div class="stat"><b>1:45:45</b><span>総演奏時間</span></div>
+      <div class="stat"><b>0</b><span>バラード例外の適用</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===== サマリー ===== -->
+  <section aria-labelledby="summary-h">
+    <h2 class="sec" id="summary-h"><span class="no">SUMMARY</span>選出サマリー</h2>
+    <div class="summary-box">
+      <p>最終選出は<strong>10アルバム × 各2曲 ＝ 20曲</strong>。全曲を<strong>シングル</strong>から選出し、<strong>バラード例外の適用はありません</strong>（判断ポイント2件はいずれも Hiro が現行維持を決定。詳細は下記「判断ポイント」参照）。</p>
+      <p>人気指標は <strong>YouTube 公開再生回数（公式動画）を優先</strong>します。集計サイト経由で得た数字は「第三者の数字」と明記し、確認できない場合はその旨を正直に記しています。</p>
+      <p class="note-small">Spotifyプレイリストは、全曲を選出アルバム自身の収録版で作成済みです（Judas Priest のみ、Spotify上の掲載が Deluxe Edition のみだったため、その通常盤相当部分から取得。収録曲・音源は通常盤と同一で長さも一致）。</p>
+    </div>
+
+    <div class="searchbar">
+      <label for="q">曲・アーティスト検索</label>
+      <input id="q" type="search" placeholder="例：Panic Attack / Galneryus / バラード" autocomplete="off">
+      <span class="search-count" id="searchCount"></span>
+    </div>
+    <div class="no-result" id="noResult">該当する曲がありません。検索語を変えてみてください。</div>
+
+    <ul class="toc" aria-label="アルバム目次">
+      <li><a href="#album-1"><span class="n">01</span><span>Saxon<span class="alb">Hell, Fire and Damnation</span></span></a></li>
+      <li><a href="#album-2"><span class="n">02</span><span>Bruce Dickinson<span class="alb">The Mandrake Project</span></span></a></li>
+      <li><a href="#album-3"><span class="n">03</span><span>Judas Priest<span class="alb">Invincible Shield</span></span></a></li>
+      <li><a href="#album-4"><span class="n">04</span><span>Sonata Arctica<span class="alb">Clear Cold Beyond</span></span></a></li>
+      <li><a href="#album-5"><span class="n">05</span><span>DragonForce<span class="alb">Warp Speed Warriors</span></span></a></li>
+      <li><a href="#album-6"><span class="n">06</span><span>Accept<span class="alb">Humanoid</span></span></a></li>
+      <li><a href="#album-7"><span class="n">07</span><span>Unleash the Archers<span class="alb">Phantoma</span></span></a></li>
+      <li><a href="#album-8"><span class="n">08</span><span>Powerwolf<span class="alb">Wake Up the Wicked</span></span></a></li>
+      <li><a href="#album-9"><span class="n">09</span><span>HammerFall<span class="alb">Avenge the Fallen</span></span></a></li>
+      <li><a href="#album-10"><span class="n">10</span><span>Galneryus<span class="alb">The Stars Will Light the Way</span></span></a></li>
+    </ul>
+  </section>
+
+  <!-- ===== 01 Saxon ===== -->
+  <section class="album" id="album-1">
+    <div class="album-head">
+      <div class="album-num">01</div>
+      <div>
+        <h3><span class="artist">Saxon</span> — <span class="title">『Hell, Fire and Damnation』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 10:56</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Hell, Fire and Damnation</span></td>
+          <td class="time">5:32</td>
+          <td data-label="シングル区分"><span class="badge">1stシングル・タイトル曲</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">YouTube公式動画 <strong>2,060,315回</strong> <span class="third">（第三者の数字：SocialCounts.org集計）</span>。補助指標（第三者）Kworb の Spotify 1,652,364回 ＝ アルバム内1位。<br><a class="yt-link" href="https://www.youtube.com/watch?v=UvJ1T_tGSBc" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">Wikipedia／Discogs</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Madame Guillotine</span></td>
+          <td class="time">5:24</td>
+          <td data-label="シングル区分"><span class="badge">3rdシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">Kworb（第三者）1,225,964回・Last.fm（第三者）7,853人ともアルバム内2位。<span class="unconfirmed">YouTube再生回数は確認できない。</span></td>
+          <td class="src" data-label="出典">Wikipedia／Discogs</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 02 Bruce Dickinson ===== -->
+  <section class="album" id="album-2">
+    <div class="album-head">
+      <div class="album-num">02</div>
+      <div>
+        <h3><span class="artist">Bruce Dickinson</span> — <span class="title">『The Mandrake Project』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 10:50</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Afterglow of Ragnarok</span></td>
+          <td class="time">5:45</td>
+          <td data-label="シングル区分"><span class="badge">1stシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">19年ぶりのソロ復帰を告げたリード曲。<span class="unconfirmed">YouTubeの正確な現在値は確認できない</span>（第三者集計間で不一致のため単一値を採用せず）。<br><a class="yt-link" href="https://www.youtube.com/embed/yulfvacpvTc" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">Wikipedia／Discogs／Revolver</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Rain on the Graves</span></td>
+          <td class="time">5:05</td>
+          <td data-label="シングル区分"><span class="badge">2ndシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">YouTube <strong>630,824回</strong> <span class="third">（第三者の数字：youtubers.me）</span>。setlist.fm集計（第三者）でも本作最多の68回演奏。</td>
+          <td class="src" data-label="出典">Wikipedia／Discogs／Revolver</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 03 Judas Priest ===== -->
+  <section class="album" id="album-3">
+    <div class="album-head">
+      <div class="album-num">03</div>
+      <div>
+        <h3><span class="artist">Judas Priest</span> — <span class="title">『Invincible Shield』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 9:46</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Panic Attack</span></td>
+          <td class="time">5:25</td>
+          <td data-label="シングル区分"><span class="badge">1stシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">Wikipedia単独曲ページに「album's most popular song」と記載。YouTube公式ビデオ <strong>3,642,576回</strong> <span class="third">（第三者の数字：Kworb集計）</span>。<br><a class="yt-link" href="https://www.youtube.com/watch?v=zLPaGqGzdY0" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">Wikipedia／Discogs／Metal Archives</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Trial by Fire</span></td>
+          <td class="time">4:21</td>
+          <td data-label="シングル区分"><span class="badge">2ndシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">YouTube公式ビデオ <strong>6,549,442回</strong> <span class="third">（第三者の数字：Kworb集計）</span>。<br><a class="yt-link" href="https://www.youtube.com/watch?v=2YqZuo1WKk4" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">同上</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 04 Sonata Arctica ===== -->
+  <section class="album" id="album-4">
+    <div class="album-head">
+      <div class="album-num">04</div>
+      <div>
+        <h3><span class="artist">Sonata Arctica</span> — <span class="title">『Clear Cold Beyond』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 11:27</div>
+      </div>
+    </div>
+    <p class="album-note">本作は Wikipedia に単独ページがないため、Metal Archives／AllMusic／公式サイトで照合しました。</p>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">First in Line</span></td>
+          <td class="time">5:22</td>
+          <td data-label="シングル区分"><span class="badge">1stシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">Tony Kakko 本人が「最初に書いたパワーメタル曲」とコメント。AllMusic のハイライト曲。<span class="unconfirmed">YouTube再生回数は確認できない。</span><br><a class="yt-link" href="https://www.youtube.com/watch?v=oVCXqTZ19Kk" target="_blank" rel="noopener">公式オーディオを聴く</a></td>
+          <td class="src" data-label="出典">Metal Archives／AllMusic／公式サイト</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Dark Empath</span></td>
+          <td class="time">6:05</td>
+          <td data-label="シングル区分"><span class="badge">3rdシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">人気曲「Don't Say A Word」の直接の続編（Calebサーガ）でファン重要度が高い。<span class="unconfirmed">YouTube再生回数は確認できない。</span><br><a class="yt-link" href="https://www.youtube.com/watch?v=gxwKBpdin0Y" target="_blank" rel="noopener">公式MVを見る</a></td>
+          <td class="src" data-label="出典">Metal Archives／AllMusic／公式サイト</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 05 DragonForce ===== -->
+  <section class="album" id="album-5">
+    <div class="album-head">
+      <div class="album-num">05</div>
+      <div>
+        <h3><span class="artist">DragonForce</span> — <span class="title">『Warp Speed Warriors』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 9:48</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Power of the Triforce</span></td>
+          <td class="time">3:53</td>
+          <td data-label="シングル区分"><span class="badge">2ndシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">Kworb（第三者）6,158,936 streams ＝ 本作1位。YouTube参考値 <strong>3,248,901 plays</strong> <span class="third">（第三者の数字）</span>。<br><a class="yt-link" href="https://www.youtube.com/watch?v=K_Ln7VpB1c0" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">Wikipedia／Metal Storm</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Burning Heart</span></td>
+          <td class="time">5:55</td>
+          <td data-label="シングル区分"><span class="badge">シングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">Kworb（第三者）3,146,301 streams ＝ 本作2位。YouTube約1.2M views（公式チャンネル一覧表示の概数）。</td>
+          <td class="src" data-label="出典">Wikipedia／Metal Storm</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 06 Accept ===== -->
+  <section class="album" id="album-6">
+    <div class="album-head">
+      <div class="album-num">06</div>
+      <div>
+        <h3><span class="artist">Accept</span> — <span class="title">『Humanoid』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 9:11</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Humanoid</span></td>
+          <td class="time">4:36</td>
+          <td data-label="シングル区分"><span class="badge">1stシングル・タイトル曲</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">Kworb（第三者）949,946 streams ＝ 本作2位。YouTube参考値 <strong>572.2K</strong> <span class="third">（第三者の数字）</span>。<br><a class="yt-link" href="https://www.youtube.com/watch?v=LYPFFZFBBYY" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">Wikipedia／Riffology</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">The Reckoning</span></td>
+          <td class="time">4:35</td>
+          <td data-label="シングル区分"><span class="badge">2ndシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">Kworb（第三者）1,168,892 streams ＝ 本作1位。Wolf Hoffmann 自身が「one of our favorites」と発言。<span class="unconfirmed">YouTube再生回数は確認できない。</span><br><a class="yt-link" href="https://www.youtube.com/watch?v=yV8USmxRzw0" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">Wikipedia／Riffology</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 07 Unleash the Archers ===== -->
+  <section class="album" id="album-7">
+    <div class="album-head">
+      <div class="album-num">07</div>
+      <div>
+        <h3><span class="artist">Unleash the Archers</span> — <span class="title">『Phantoma』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 11:16</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Green &amp; Glass</span></td>
+          <td class="time">5:30</td>
+          <td data-label="シングル区分"><span class="badge">1stシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">バンド自身が「ジャケットの着想源」と発言したリード曲。<span class="unconfirmed">YouTube再生回数は確認できない。</span><br><a class="yt-link" href="https://www.youtube.com/watch?v=eLPMBD7i0IU" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">Wikipedia／Bandcamp（Napalm公式）</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Ghosts in the Mist</span></td>
+          <td class="time">5:46</td>
+          <td data-label="シングル区分"><span class="badge">2ndシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">YouTube公式動画 <strong>1,101,167回</strong>（公式チャンネル一覧のスナップショット値）。<br><a class="yt-link" href="https://www.youtube.com/embed/TYSHuCUegm0" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">同上</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 08 Powerwolf ===== -->
+  <section class="album" id="album-8">
+    <div class="album-head">
+      <div class="album-num">08</div>
+      <div>
+        <h3><span class="artist">Powerwolf</span> — <span class="title">『Wake Up the Wicked』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 7:04</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">1589</span></td>
+          <td class="time">4:04</td>
+          <td data-label="シングル区分"><span class="badge">1stシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">バンド史上最大規模のMVとして報道。YouTube <strong>3,613,410回</strong> <span class="third">（第三者の数字、2025-04時点）</span>。<br><a class="yt-link" href="https://www.youtube.com/watch?v=5S0-oP9JsL0" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">Wikipedia／Metal Archives</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Sinners of the Seven Seas</span></td>
+          <td class="time">3:00</td>
+          <td data-label="シングル区分"><span class="badge">2ndシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">YouTube <strong>4,134,536回</strong> <span class="third">（第三者の数字：SocialCounts.org、2026-11-18取得）</span>。<br><a class="yt-link" href="https://youtu.be/BM0_MJAwlDk" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">同上</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 09 HammerFall ===== -->
+  <section class="album" id="album-9">
+    <div class="album-head">
+      <div class="album-num">09</div>
+      <div>
+        <h3><span class="artist">HammerFall</span> — <span class="title">『Avenge the Fallen』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 9:43</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">Hail to the King</span></td>
+          <td class="time">4:33</td>
+          <td data-label="シングル区分"><span class="badge">1stシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">Kworb（第三者）1,496,021 streams・setlist.fm 107回とも本作1位。YouTube参考値 <strong>627,869回</strong> <span class="third">（第三者の数字）</span>。<br><a class="yt-link" href="https://www.youtube.com/watch?v=N_do7NRfL9c" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">Nuclear Blast公式／Metal Archives／Discogs</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">The End Justifies</span></td>
+          <td class="time">5:10</td>
+          <td data-label="シングル区分"><span class="badge">2ndシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">YouTube参考値 <strong>562,514回</strong> <span class="third">（第三者の数字）</span>。<br><a class="yt-link" href="https://youtu.be/ktA2Ui79mUE" target="_blank" rel="noopener">公式動画を見る</a></td>
+          <td class="src" data-label="出典">同上</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 10 Galneryus ===== -->
+  <section class="album" id="album-10">
+    <div class="album-head">
+      <div class="album-num">10</div>
+      <div>
+        <h3><span class="artist">Galneryus</span> — <span class="title">『The Stars Will Light the Way』</span></h3>
+        <div class="album-meta">選出2曲 ／ 合計 15:44</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>曲名</th><th>長さ</th><th>シングル区分</th><th>人気指標・選出根拠</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">The Reason We Fight</span></td>
+          <td class="time">7:21</td>
+          <td data-label="シングル区分"><span class="badge">リード・シングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">本作唯一の公式MV曲。YouTube参考値 <strong>236K views</strong> <span class="third">（第三者の数字）</span>。<br><a class="yt-link" href="https://www.youtube.com/watch?v=wlstpHM6XnI" target="_blank" rel="noopener">公式MVを見る</a></td>
+          <td class="src" data-label="出典">Wikipedia／Metal Archives／Discogs／Warner Music Japan</td>
+        </tr>
+        <tr class="track-row">
+          <td class="track" data-label="曲名"><span class="tname">In Water's Gaze</span></td>
+          <td class="time">8:23</td>
+          <td data-label="シングル区分"><span class="badge">2ndシングル</span></td>
+          <td class="metric" data-label="人気指標・選出根拠">本作のシングルはこの2曲のみと Metal Archives レビューが明記。<span class="unconfirmed">YouTube再生回数は確認できない。</span><br><a class="yt-link" href="https://www.youtube.com/embed/mjNMf7Rf5og" target="_blank" rel="noopener">公式オーディオを聴く</a></td>
+          <td class="src" data-label="出典">同上</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== 判断ポイント ===== -->
+  <section aria-labelledby="decision-h">
+    <h2 class="sec" id="decision-h"><span class="no">DECISIONS</span>判断ポイントと Hiro の決定（2026-11-18）</h2>
+
+    <div class="decision">
+      <h3>1. Judas Priest <span class="song">「Crown of Horns」</span> — バラード例外を適用するか</h3>
+      <p>パワー・バラードでありながら本作最高人気（YouTube約1,035万回、第三者の数字）で、第67回グラミー賞 Best Metal Performance ノミネート曲。「その年に重要」のバラード例外を適用し、Trial by Fire と入れ替える案を提案しました。</p>
+      <p><span class="verdict">決定：例外を適用せず現行維持</span>　Hiro が決定（この回限りの判断）。Trial by Fire がそのまま選出曲となります。</p>
+    </div>
+
+    <div class="decision">
+      <h3>2. HammerFall タイトル曲 <span class="song">「Avenge the Fallen」</span> — 指標の優先順位</h3>
+      <p>第三者集計（Kworb）の Spotify 再生数では The End Justifies を僅差で上回りますが、人気指標は YouTube 優先という既定ルールにより、現行維持を提案しました。</p>
+      <p><span class="verdict">決定：現行維持</span>　Hiro が決定。The End Justifies がそのまま選出曲となります。</p>
+    </div>
+  </section>
+
+  <!-- ===== 落とした曲 ===== -->
+  <section aria-labelledby="dropped-h">
+    <h2 class="sec" id="dropped-h"><span class="no">NOT SELECTED</span>落とした主な曲と理由</h2>
+    <div class="dropped">
+      <table>
+        <thead><tr><th>アーティスト</th><th>落とした曲と理由</th></tr></thead>
+        <tbody>
+          <tr><td class="artist-cell">Saxon</td><td>There's Something in Roswell <span class="reason">（2ndシングルだが人気3位）</span>／ The Prophecy <span class="reason">（1:24、2分以下）</span>／ Witches of Salem <span class="reason">（シングル中最低人気）</span></td></tr>
+          <tr><td class="artist-cell">Bruce Dickinson</td><td>Resurrection Men <span class="reason">（3rdシングル、人気で劣る）</span>／ Face in the Mirror・Shadow of the Gods <span class="reason">（バラード）</span></td></tr>
+          <tr><td class="artist-cell">Judas Priest</td><td>Crown of Horns <span class="reason">（バラード、上記判断ポイント参照）</span>／ The Serpent and the King <span class="reason">（シングル中最下位）</span>／ Invincible Shield <span class="reason">（非シングル）</span></td></tr>
+          <tr><td class="artist-cell">Sonata Arctica</td><td>The Best Things・Teardrops・Clear Cold Beyond <span class="reason">（バラード）</span>／ A Monster Only You Can't See <span class="reason">（バラード的に始まると評され Dark Empath に劣後）</span></td></tr>
+          <tr><td class="artist-cell">DragonForce</td><td>Kingdom of Steel <span class="reason">（バラード）</span>／ Prelude to Darkness <span class="reason">（0:52、2分以下）</span>／ Doomsday Party・Astro Warrior Anthem <span class="reason">（シングルだが人気で劣る）</span></td></tr>
+          <tr><td class="artist-cell">Accept</td><td>Frankenstein <span class="reason">（3rdシングル、再生数で劣る）</span>／ Ravages of Time <span class="reason">（バラード系）</span>／ Hard Times <span class="reason">（ボーナストラックのカバー）</span></td></tr>
+          <tr><td class="artist-cell">Unleash the Archers</td><td>Seeking Vengeance <span class="reason">（3rdシングル、人気で劣る）</span>／ Give It Up or Give It All <span class="reason">（バラード系）</span></td></tr>
+          <tr><td class="artist-cell">Powerwolf</td><td>We Don't Wanna Be No Saints <span class="reason">（シングルだが人気で劣る）</span>／ Wake Up the Wicked <span class="reason">（非シングル）</span></td></tr>
+          <tr><td class="artist-cell">HammerFall</td><td>Freedom <span class="reason">（3rdシングル、再生数が大幅に低い）</span>／ Hope Springs Eternal <span class="reason">（バラード、レーベル公式明記）</span>／ Avenge the Fallen <span class="reason">（上記判断ポイント参照）</span></td></tr>
+          <tr><td class="artist-cell">Galneryus</td><td>Crying for You <span class="reason">（バラード）</span>／ I Believe <span class="reason">（非シングル、シングル2曲を優先）</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p class="stamp">選出：2026-11-18／エビデンス確認済み</p>
+  <p>2024年 MELODIC POWER &amp; TRADITIONAL METAL — 10アルバム・20曲</p>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('q');
+  var count = document.getElementById('searchCount');
+  var noResult = document.getElementById('noResult');
+  var albums = Array.prototype.slice.call(document.querySelectorAll('.album'));
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.track-row'));
+  // attach searchable text including artist/album from the section heading
+  rows.forEach(function(r){
+    var sec = r.closest('.album');
+    var head = sec ? sec.querySelector('.album-head h3').textContent : '';
+    r.setAttribute('data-search', (head + ' ' + r.textContent).toLowerCase());
+  });
+  function apply(){
+    var q = input.value.trim().toLowerCase();
+    if(!q){ 
+      rows.forEach(function(r){ r.style.display=''; });
+      albums.forEach(function(a){ a.style.display=''; });
+      count.textContent=''; noResult.style.display='none'; return;
+    }
+    var visible = 0;
+    rows.forEach(function(r){
+      var hit = r.getAttribute('data-search').indexOf(q) !== -1;
+      r.style.display = hit ? '' : 'none';
+      if(hit) visible++;
+    });
+    albums.forEach(function(a){
+      var any = Array.prototype.some.call(a.querySelectorAll('.track-row'), function(r){ return r.style.display !== 'none'; });
+      a.style.display = any ? '' : 'none';
+    });
+    count.textContent = visible + ' 曲ヒット';
+    noResult.style.display = visible === 0 ? 'block' : 'none';
+  }
+  input.addEventListener('input', apply);
+})();
+</script>
+</body>
+</html>

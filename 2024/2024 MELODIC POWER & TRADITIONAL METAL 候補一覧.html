@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="data:," />
+    <title>2024年 MELODIC POWER &amp; TRADITIONAL METAL 候補一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Shippori+Mincho+B1:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #121013;
+        --bg-deep: #0c0b0d;
+        --panel: #1a181c;
+        --panel-2: #201d23;
+        --line: #322e38;
+        --line-soft: #26232b;
+        --ink: #ece7dd;
+        --ink-dim: #b7b0a2;
+        --ink-faint: #8d867a;
+        --brass: #c9a24b;
+        --brass-bright: #e3bc63;
+        --steel: #9db4c6;
+        --red: #c96a5a;
+        --radius: 10px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(1100px 480px at 50% -120px, rgba(201,162,75,.10), transparent 60%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+        background-attachment: fixed;
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 15px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--brass-bright); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 64px; }
+
+      /* ---------- Header ---------- */
+      header.page-head { padding: 44px 0 8px; }
+      .genre-line {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+        font-family: "Oswald", sans-serif; letter-spacing: .14em;
+        font-size: 12px; color: var(--ink-faint); text-transform: uppercase;
+      }
+      .genre-line .no {
+        color: #14120e; background: var(--brass); font-weight: 700;
+        padding: 2px 9px; border-radius: 3px; letter-spacing: .08em;
+      }
+      .genre-line .sep { color: var(--line); }
+      h1 {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-weight: 700; font-size: clamp(26px, 5.4vw, 42px);
+        line-height: 1.35; margin: 16px 0 6px; letter-spacing: .01em;
+      }
+      h1 .en {
+        display: block; font-family: "Oswald", sans-serif; font-weight: 600;
+        font-size: clamp(15px, 3vw, 21px); letter-spacing: .18em;
+        color: var(--brass); margin-top: 8px; text-transform: uppercase;
+      }
+      .lead { color: var(--ink-dim); max-width: 46em; margin: 10px 0 0; }
+      .rule { height: 1px; background: linear-gradient(90deg, var(--brass), var(--line) 55%, transparent); margin: 26px 0 0; border: 0; }
+
+      /* ---------- Nav ---------- */
+      nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 4px; }
+      nav.toc a {
+        display: inline-flex; align-items: center; min-height: 38px;
+        padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
+        color: var(--ink-dim); font-size: 13px; background: rgba(26,24,28,.6);
+      }
+      nav.toc a:hover { color: var(--ink); border-color: var(--brass); text-decoration: none; }
+      nav.toc a b { color: var(--brass); font-family: "Oswald", sans-serif; margin-right: 7px; font-weight: 600; }
+
+      /* ---------- Sections ---------- */
+      section { margin-top: 46px; }
+      .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+      .sec-head .num {
+        font-family: "Oswald", sans-serif; font-size: 30px; font-weight: 700;
+        color: transparent; -webkit-text-stroke: 1px var(--brass); line-height: 1;
+      }
+      h2 {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-size: clamp(20px, 3.6vw, 25px); font-weight: 700; margin: 0; line-height: 1.4;
+      }
+      .sec-note { color: var(--ink-dim); margin: 4px 0 18px; max-width: 52em; }
+      .sec-note strong { color: var(--ink); }
+
+      /* ---------- Flow / stats ---------- */
+      .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0; }
+      .stat {
+        background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius);
+        padding: 14px 16px 12px;
+      }
+      .stat .v { font-family: "Oswald", sans-serif; font-size: 30px; font-weight: 700; line-height: 1.1; color: var(--ink); }
+      .stat .v small { font-size: 15px; color: var(--ink-faint); font-weight: 500; margin-left: 2px; }
+      .stat .v .accent { color: var(--brass-bright); }
+      .stat .k { font-size: 12.5px; color: var(--ink-faint); margin-top: 4px; line-height: 1.55; }
+
+      .flow { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+      .flow li {
+        position: relative; padding: 12px 0 12px 46px; border-top: 1px dashed var(--line-soft);
+      }
+      .flow li:first-child { border-top: 0; }
+      .flow li::before {
+        counter-increment: step; content: counter(step);
+        position: absolute; left: 0; top: 13px;
+        width: 30px; height: 30px; border-radius: 50%;
+        border: 1px solid var(--brass); color: var(--brass-bright);
+        font-family: "Oswald", sans-serif; font-size: 14px; font-weight: 600;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(201,162,75,.07);
+      }
+      .flow .t { font-weight: 700; }
+      .flow .d { color: var(--ink-dim); }
+      .flow .gate { color: var(--red); font-weight: 700; }
+
+      /* ---------- Tables ---------- */
+      .table-card {
+        background: var(--panel); border: 1px solid var(--line-soft);
+        border-radius: var(--radius); overflow: hidden;
+      }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      thead th {
+        background: var(--panel-2); color: var(--ink-faint);
+        font-size: 12px; font-weight: 700; letter-spacing: .06em;
+        text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      tbody td { padding: 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+      tbody tr:last-child td { border-bottom: 0; }
+      tbody tr:hover { background: rgba(201,162,75,.035); }
+
+      td.no, th.no { width: 40px; text-align: center; }
+      td.no span {
+        font-family: "Oswald", sans-serif; font-weight: 700; font-size: 16px; color: var(--brass);
+      }
+      .artist { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15.5px; letter-spacing: .02em; line-height: 1.45; }
+      .album { font-family: "Shippori Mincho B1", serif; font-weight: 600; font-size: 15px; color: var(--ink); margin-top: 2px; }
+      td.date { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ink-dim); }
+      td.basis, td.note { color: var(--ink-dim); font-size: 13.5px; }
+      td.basis { min-width: 210px; }
+      td.note { min-width: 230px; }
+      .flag {
+        display: inline-block; font-size: 11.5px; font-weight: 700; color: #14120e;
+        background: var(--brass); border-radius: 3px; padding: 1px 7px; margin-right: 6px;
+        vertical-align: 1px; letter-spacing: .03em;
+      }
+      .flag.warn { background: var(--red); color: #fff5f2; }
+      .src { display: flex; flex-direction: column; gap: 5px; white-space: nowrap; }
+      .src a {
+        display: inline-flex; align-items: center; gap: 6px; min-height: 32px;
+        font-size: 13px; color: var(--steel);
+      }
+      .src a::before { content: "↗"; color: var(--brass); font-size: 12px; }
+      .src a:hover { color: var(--brass-bright); }
+
+      table.plain td.album-cell .artist { font-size: 14.5px; }
+      td.reason { color: var(--ink-dim); font-size: 13.5px; min-width: 260px; }
+
+      /* ---------- Callout (Warlord) ---------- */
+      .callout {
+        background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius);
+        padding: 20px 22px;
+      }
+      .callout .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px; }
+      .callout .badge {
+        font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .1em;
+        color: #fff5f2; background: var(--red); border-radius: 3px; padding: 3px 9px;
+      }
+      .callout p { color: var(--ink-dim); margin: 10px 0 0; }
+      .callout p strong { color: var(--ink); }
+      .callout .src { flex-direction: row; flex-wrap: wrap; gap: 4px 22px; margin-top: 10px; }
+
+      /* ---------- Footer ---------- */
+      footer {
+        margin-top: 56px; border-top: 1px solid var(--line); padding-top: 20px;
+        display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline;
+        color: var(--ink-faint); font-size: 13.5px;
+      }
+      footer .stamp { color: var(--ink-dim); font-weight: 700; }
+      footer .stamp b { color: var(--brass-bright); font-weight: 700; }
+
+      /* ---------- Mobile: tables become stacked records ---------- */
+      @media (max-width: 820px) {
+        .stats { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 680px) {
+        body { font-size: 14.5px; }
+        .wrap { padding: 0 14px 48px; }
+        header.page-head { padding-top: 30px; }
+        .table-card { background: transparent; border: 0; overflow: visible; }
+        table, tbody, tr, td { display: block; width: 100%; }
+        thead { display: none; }
+        tbody tr {
+          background: var(--panel); border: 1px solid var(--line-soft);
+          border-radius: var(--radius); padding: 14px 16px 8px; margin-bottom: 12px;
+        }
+        tbody tr:hover { background: var(--panel); }
+        tbody td { border-bottom: 0; padding: 0 0 10px; }
+        td.no { text-align: left; width: auto; padding-bottom: 2px; }
+        td.no span::after { content: " / 10"; color: var(--ink-faint); font-size: 12px; font-weight: 500; }
+        td.date { padding-bottom: 8px; }
+        td.date::before { content: "発売日　"; color: var(--ink-faint); font-size: 12px; font-weight: 700; }
+        td[data-label]::before {
+          content: attr(data-label); display: block;
+          color: var(--ink-faint); font-size: 12px; font-weight: 700;
+          letter-spacing: .05em; margin-bottom: 2px;
+        }
+        td.basis, td.note, td.reason { min-width: 0; }
+        .src { flex-direction: row; flex-wrap: wrap; gap: 2px 18px; }
+        .callout { padding: 16px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <header class="page-head">
+        <div class="genre-line">
+          <span class="no">Genre 5</span>
+          <span>2024 Selection Evidence</span>
+          <span class="sep">/</span>
+          <span>候補一覧</span>
+        </div>
+        <h1>2024年 MELODIC POWER &amp; TRADITIONAL METAL 候補一覧
+          <span class="en">Melodic Power &amp; Traditional Metal — 2024 Candidates</span>
+        </h1>
+        <p class="lead">2024年リリースのメロディック・パワーメタル／トラディショナル・メタル作品について、候補収集から検証、最終選出までの記録。各アルバムのジャンル適合性は2ソース以上で確認し、出典を併記する。</p>
+        <hr class="rule" />
+      </header>
+
+      <nav class="toc" aria-label="目次">
+        <a href="#flow"><b>01</b>選出の経緯</a>
+        <a href="#final"><b>02</b>最終選出 10枚</a>
+        <a href="#dropped"><b>03</b>S確定後の落選 12枚</a>
+        <a href="#demoted"><b>04</b>検証でA降格</a>
+        <a href="#a-class"><b>05</b>A適合・不採用</a>
+      </nav>
+
+      <!-- 01 経緯 -->
+      <section id="flow">
+        <div class="sec-head"><span class="num">01</span><h2>選出の経緯</h2></div>
+        <p class="sec-note">候補30枚から検証を進めた結果、S適合が枠を大幅に上回ったため一度ゲートで停止し、推薦案を承認する形で最終10枚が確定した。</p>
+
+        <div class="stats">
+          <div class="stat"><div class="v">30<small>枚</small></div><div class="k">候補収集（S適合23／A適合7）</div></div>
+          <div class="stat"><div class="v">0<small>枚</small></div><div class="k">重複排除（累積リスト・2024年他ジャンル既選出との照合）</div></div>
+          <div class="stat"><div class="v"><span class="accent">22</span><small>枚</small></div><div class="k">S確定（2ソース以上で検証）／A降格1枚</div></div>
+          <div class="stat"><div class="v">10<small>枚</small></div><div class="k">最終選出（2026-11-18 承認）</div></div>
+        </div>
+
+        <ol class="flow">
+          <li><span class="t">候補収集</span> <span class="d">— 30枚を収集。内訳はS適合23枚、A適合7枚。</span></li>
+          <li><span class="t">重複排除</span> <span class="d">— 累積リストおよび2024年の他ジャンル既選出分と照合し、重複は0枚。</span></li>
+          <li><span class="t">S検証</span> <span class="d">— 発売年とジャンル適合性を2ソース以上で確認。S確定22枚、Warlord『Free Spirit Soar』は検証でAへ降格（詳細は04）。</span></li>
+          <li><span class="t">ゲート停止</span> <span class="d">— <span class="gate">S確定22枚が枠（5〜10枚）を大幅に超過</span>したため、絞り込みの判断を仰いだ。</span></li>
+          <li><span class="t">最終確定</span> <span class="d">— 2026-11-18、推薦した10枚が承認され、最終選出が確定した。</span></li>
+        </ol>
+      </section>
+
+      <!-- 02 最終選出 -->
+      <section id="final">
+        <div class="sec-head"><span class="num">02</span><h2>最終選出 10枚</h2></div>
+        <p class="sec-note">発売日順。ジャンル根拠は出典ページの表記に基づく。境界に触れる要素がある作品は備考にフラグとして明記した。</p>
+
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr><th class="no">#</th><th>アーティスト／アルバム</th><th>発売日</th><th>ジャンル根拠</th><th>備考</th><th>出典</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="no"><span>1</span></td>
+                <td><div class="artist">Saxon</div><div class="album">『Hell, Fire and Damnation』</div></td>
+                <td class="date">2024-01-19</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia「Genre Heavy metal、24th studio album、NWOBHM leaders」。Sonic Perspectives「British Heavy Metal」。</td>
+                <td class="note" data-label="備考">オリジナル・スタジオ盤。除外要素なし。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Hell,_Fire_and_Damnation" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.sonicperspectives.com/album-reviews/saxon-hell-fire-and-damnation/" target="_blank" rel="noopener">Sonic Perspectives</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>2</span></td>
+                <td><div class="artist">Bruce Dickinson</div><div class="album">『The Mandrake Project』</div></td>
+                <td class="date">2024-03-01</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia「Genre Heavy metal, hard rock、7th studio (solo) album」。</td>
+                <td class="note" data-label="備考">Iron Maiden のボーカリストのソロ作。19年ぶりのソロ・スタジオ盤。ハードロック要素は副次的で、核はトラディショナル・ヘヴィメタル。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/The_Mandrake_Project" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.loudersound.com/news/bruce-dickinson-mandrake-project-tracks-date-artwork" target="_blank" rel="noopener">Louder</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>3</span></td>
+                <td><div class="artist">Judas Priest</div><div class="album">『Invincible Shield』</div></td>
+                <td class="date">2024-03-08</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia「Genre Heavy metal, speed metal、19th studio album」。</td>
+                <td class="note" data-label="備考">日本盤 2024-03-06、世界発売 2024-03-08（世界発売日を採用）。マニュアルのベンチマーク本尊。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Invincible_Shield" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://blabbermouth.net/news/judas-priest-to-release-new-studio-album-invincible-shield-in-march-2024" target="_blank" rel="noopener">Blabbermouth</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>4</span></td>
+                <td><div class="artist">Sonata Arctica</div><div class="album">『Clear Cold Beyond』</div></td>
+                <td class="date">2024-03-08</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipediaディスコグラフィー（2024-03-08、Atomic Fire、11th studio album）。Grande Rock「パワーメタル的楽曲の復活」。</td>
+                <td class="note" data-label="備考"><span class="flag">注記</span>Wikipediaでは単独アルバムページで確認できない（ディスコグラフィーで確認）。アコースティック期を経たパワーメタル回帰作。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Sonata_Arctica_discography" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://grande-rock.com/news/sonata-arctica-to-release-new-studio-album-clear-cold-beyond-on-march-8th-2024/" target="_blank" rel="noopener">Grande Rock</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>5</span></td>
+                <td><div class="artist">DragonForce</div><div class="album">『Warp Speed Warriors』</div></td>
+                <td class="date">2024-03-15</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia「Genre Power metal、9th studio album」。</td>
+                <td class="note" data-label="備考">バンド最短のスタジオ盤（49:07）。一部エディションに Taylor Swift カバーのボーナストラックがあるが、本編はオリジナル・パワーメタル。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Warp_Speed_Warriors" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://grande-rock.com/news/dragonforce-to-release-new-studio-album-warp-speed-warriors-on-march-15th-2024/" target="_blank" rel="noopener">Grande Rock</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>6</span></td>
+                <td><div class="artist">Accept</div><div class="album">『Humanoid』</div></td>
+                <td class="date">2024-04-26</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia「17th studio album by German heavy metal band」。Sonic Perspectives「Genre Heavy Metal、Napalm Records」。</td>
+                <td class="note" data-label="備考">ハードロック的フックの増加が指摘されるが、核はテュートニック・トラディショナル・メタル。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Humanoid_(Accept_album)" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.sonicperspectives.com/album-reviews/accept-humanoid/" target="_blank" rel="noopener">Sonic Perspectives</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>7</span></td>
+                <td><div class="artist">Unleash the Archers</div><div class="album">『Phantoma』</div></td>
+                <td class="date">2024-05-10</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia「Genre Power metal、6th studio album」。</td>
+                <td class="note" data-label="備考"><span class="flag">境界フラグ</span>AIを主人公とするコンセプト盤。エレクトロニック／シンセウェイヴ要素はアクセントのみで、トランス／エレクトロニカの絶対除外には該当しないことを確認済み。女性ボーカル（Brittney Slayes）。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Phantoma_(album)" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://grande-rock.com/news/unleash-the-archers-to-release-new-studio-album-phantoma-on-may-10th-2024/" target="_blank" rel="noopener">Grande Rock</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>8</span></td>
+                <td><div class="artist">Powerwolf</div><div class="album">『Wake Up the Wicked』</div></td>
+                <td class="date">2024-07-26</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia「Genres Power metal, heavy metal、10th studio album、Napalm」。</td>
+                <td class="note" data-label="備考"><span class="flag">フラグ</span>11曲・37:01と短尺であることをフラグ済み。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Wake_Up_the_Wicked" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://en.wikipedia.org/wiki/Powerwolf_discography" target="_blank" rel="noopener">Wikipedia（Discography）</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>9</span></td>
+                <td><div class="artist">HammerFall</div><div class="album">『Avenge the Fallen』</div></td>
+                <td class="date">2024-08-09</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipediaバンドページ／ディスコグラフィー「Genres Power metal, heavy metal、13th studio album、Nuclear Blast」。Qobuz「melodic power metal leaders」。</td>
+                <td class="note" data-label="備考"><span class="flag">注記</span>Wikipediaでは単独アルバムページで確認できない（バンドページ／ディスコグラフィーとQobuzで確認）。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/HammerFall" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.qobuz.com/nz-en/interpreter/hammerfall/551912/page/2" target="_blank" rel="noopener">Qobuz</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>10</span></td>
+                <td><div class="artist">Galneryus</div><div class="album">『The Stars Will Light the Way』</div></td>
+                <td class="date">2024-09-25</td>
+                <td class="basis" data-label="ジャンル根拠">Wikipedia「Genres Power metal, neoclassical metal、Warner Music Japan」。CDJapan「20周年フルアルバム」。</td>
+                <td class="note" data-label="備考"><span class="flag">注記</span>枚数カウントに注記あり（Wikipediaでは15th studio album とされるが、前2作を特別盤とみなすと13作目とも数えられる）。国籍は選出基準に無関係。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/The_Stars_Will_Light_the_Way" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.cdjapan.co.jp/product/WPZL-32162" target="_blank" rel="noopener">CDJapan</a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 03 落選 -->
+      <section id="dropped">
+        <div class="sec-head"><span class="num">03</span><h2>S確定後に落選した 12枚</h2></div>
+        <p class="sec-note">いずれも検証でS確定まで進んだ作品。枠（最大10枚）への絞り込みで落選した理由を記録する。発売日順。</p>
+
+        <div class="table-card">
+          <table class="plain">
+            <thead>
+              <tr><th>アーティスト／アルバム</th><th>発売日</th><th>落選理由</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><div class="artist">Traveler</div><div class="album">『Prequel to Madness』</div></td>
+                <td class="date">2024-02-23</td>
+                <td class="reason" data-label="落選理由">通算3作目、9曲、Wikipediaなし。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Firewind</div><div class="album">『Stand United』</div></td>
+                <td class="date">2024-03-01</td>
+                <td class="reason" data-label="落選理由">堅実だが、今年の顔ぶれでは一段下。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Rage</div><div class="album">『Afterlifelines』</div></td>
+                <td class="date">2024-03-29</td>
+                <td class="reason" data-label="落選理由">二枚組だが話題性で劣る。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Freedom Call</div><div class="album">『Silver Romance』</div></td>
+                <td class="date">2024-05-10</td>
+                <td class="reason" data-label="落選理由">ハッピーメタル枠で軽量。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Riot V</div><div class="album">『Mean Streets』</div></td>
+                <td class="date">2024-05-10</td>
+                <td class="reason" data-label="落選理由">カルト的人気だが代表性で劣る。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Rhapsody of Fire</div><div class="album">『Challenge the Wind』</div></td>
+                <td class="date">2024-05-31</td>
+                <td class="reason" data-label="落選理由">シンフォニック枠。絞り込みで一番の難所だった。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Orden Ogan</div><div class="album">『The Order of Fear』</div></td>
+                <td class="date">2024-07-05</td>
+                <td class="reason" data-label="落選理由">Powerwolf 等と枠が被る。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Dream Evil</div><div class="album">『Metal Gods』</div></td>
+                <td class="date">2024-07-26</td>
+                <td class="reason" data-label="落選理由">ベテラン勢の中で最も軽量。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Wind Rose</div><div class="album">『Trollslayer』</div></td>
+                <td class="date">2024-10-04</td>
+                <td class="reason" data-label="落選理由">フォーク色が境界。2022年に『Warfront』採用済みのバンド。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Frozen Crown</div><div class="album">『War Hearts』</div></td>
+                <td class="date">2024-10-18</td>
+                <td class="reason" data-label="落選理由">実績がこの組では最薄。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Brothers of Metal</div><div class="album">『Fimbulvinter』</div></td>
+                <td class="date">2024-11-01</td>
+                <td class="reason" data-label="落選理由">フォーク／ヴァイキング色が境界。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Fellowship</div><div class="album">『The Skies Above Eternity』</div></td>
+                <td class="date">2024-11-22</td>
+                <td class="reason" data-label="落選理由">検証側の最弱推薦。通算2作目で実績・代表性が最薄、9曲・40:53と短め、Wikipediaで確認できず出典も最弱クラス。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 04 A降格 -->
+      <section id="demoted">
+        <div class="sec-head"><span class="num">04</span><h2>検証でA降格</h2></div>
+        <p class="sec-note">候補段階ではS適合と見たが、検証で「完全な新作」とは言い切れないことが分かり、Aへ降格した1枚。</p>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge">S → A 降格</span>
+            <div>
+              <span class="artist">Warlord</span>
+              <span class="album" style="margin-left:8px;">『Free Spirit Soar』</span>
+            </div>
+            <span style="color:var(--ink-faint); font-variant-numeric: tabular-nums;">2024-05-10</span>
+          </div>
+          <p>故 William J. Tsamis のデモ／Lordian Guard 再構成曲が中心で、完全な新作とは言い切れない（アーカイヴ／トリビュート的性格）。<strong>ジャンル自体は適合</strong>するが、作品の性格を理由に降格した。Wikipediaでは確認できない（Discogs・Cryptic Rock で確認）。</p>
+          <div class="src">
+            <a href="https://www.discogs.com/release/30609217-Warlord-Free-Spirit-Soar" target="_blank" rel="noopener">Discogs</a>
+            <a href="https://crypticrock.com/warlord-free-spirit-soar-album-review/" target="_blank" rel="noopener">Cryptic Rock</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 A適合・不採用 -->
+      <section id="a-class">
+        <div class="sec-head"><span class="num">05</span><h2>A適合のまま不採用（候補段階）</h2></div>
+        <p class="sec-note">候補収集の段階でA適合と判定され、S検証には進まなかった7枚。発売日順。</p>
+
+        <div class="table-card">
+          <table class="plain">
+            <thead>
+              <tr><th>アーティスト／アルバム</th><th>発売日</th><th>補足</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><div class="artist">Myrath</div><div class="album">『Karma』</div></td>
+                <td class="date">2024-03-08</td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Leaves' Eyes</div><div class="album">『Myths of Fate』</div></td>
+                <td class="date">2024-03-22</td>
+                <td class="reason" data-label="補足">シンフォニック寄り。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Evergrey</div><div class="album">『Theories of Emptiness』</div></td>
+                <td class="date">2024-06-07</td>
+                <td class="reason" data-label="補足">プログレッシヴ寄り。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Seven Spires</div><div class="album">『A Fortress Called Home』</div></td>
+                <td class="date">2024-06-21</td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Visions of Atlantis</div><div class="album">『Pirates II – Armada』</div></td>
+                <td class="date">2024-07-05</td>
+                <td class="reason" data-label="補足">シンフォニック寄り。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Simone Simons</div><div class="album">『Vermillion』</div></td>
+                <td class="date">2024-08-23</td>
+                <td class="reason" data-label="補足">ソロ作。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Nightwish</div><div class="album">『Yesterwynde』</div></td>
+                <td class="date">2024-09-20</td>
+                <td class="reason" data-label="補足">シンフォニック寄り。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        <span class="stamp">選出：<b>2026-11-18</b>／エビデンス確認済み</span>
+        <span>2024年 ジャンル別アルバム選出資料 — 5. MELODIC POWER &amp; TRADITIONAL METAL</span>
+      </footer>
+
+    </div>
+  </body>
+</html>
