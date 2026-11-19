@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="data:," />
+    <title>2024年 FEMALE VOCAL ROCK / METAL 候補一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Shippori+Mincho+B1:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #121013;
+        --bg-deep: #0c0b0d;
+        --panel: #1a181c;
+        --panel-2: #201d23;
+        --line: #322e38;
+        --line-soft: #26232b;
+        --ink: #ece7dd;
+        --ink-dim: #b7b0a2;
+        --ink-faint: #8d867a;
+        --brass: #c9a24b;
+        --brass-bright: #e3bc63;
+        --steel: #9db4c6;
+        --red: #c96a5a;
+        --radius: 10px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(1100px 480px at 50% -120px, rgba(201,162,75,.10), transparent 60%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+        background-attachment: fixed;
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 15px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--brass-bright); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 64px; }
+
+      /* ---------- Header ---------- */
+      header.page-head { padding: 44px 0 8px; }
+      .genre-line {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+        font-family: "Oswald", sans-serif; letter-spacing: .14em;
+        font-size: 12px; color: var(--ink-faint); text-transform: uppercase;
+      }
+      .genre-line .no {
+        color: #14120e; background: var(--brass); font-weight: 700;
+        padding: 2px 9px; border-radius: 3px; letter-spacing: .08em;
+      }
+      .genre-line .sep { color: var(--line); }
+      h1 {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-weight: 700; font-size: clamp(26px, 5.4vw, 42px);
+        line-height: 1.35; margin: 16px 0 6px; letter-spacing: .01em;
+      }
+      h1 .en {
+        display: block; font-family: "Oswald", sans-serif; font-weight: 600;
+        font-size: clamp(15px, 3vw, 21px); letter-spacing: .18em;
+        color: var(--brass); margin-top: 8px; text-transform: uppercase;
+      }
+      .lead { color: var(--ink-dim); max-width: 46em; margin: 10px 0 0; }
+      .rule { height: 1px; background: linear-gradient(90deg, var(--brass), var(--line) 55%, transparent); margin: 26px 0 0; border: 0; }
+
+      /* ---------- Nav ---------- */
+      nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 4px; }
+      nav.toc a {
+        display: inline-flex; align-items: center; min-height: 38px;
+        padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
+        color: var(--ink-dim); font-size: 13px; background: rgba(26,24,28,.6);
+      }
+      nav.toc a:hover { color: var(--ink); border-color: var(--brass); text-decoration: none; }
+      nav.toc a b { color: var(--brass); font-family: "Oswald", sans-serif; margin-right: 7px; font-weight: 600; }
+
+      /* ---------- Sections ---------- */
+      section { margin-top: 46px; }
+      .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+      .sec-head .num {
+        font-family: "Oswald", sans-serif; font-size: 30px; font-weight: 700;
+        color: transparent; -webkit-text-stroke: 1px var(--brass); line-height: 1;
+      }
+      h2 {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-size: clamp(20px, 3.6vw, 25px); font-weight: 700; margin: 0; line-height: 1.4;
+      }
+      h3 {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-size: 17px; font-weight: 700; margin: 30px 0 12px; line-height: 1.5;
+      }
+      h3:first-of-type { margin-top: 22px; }
+      .sec-note { color: var(--ink-dim); margin: 4px 0 18px; max-width: 52em; }
+      .sec-note strong { color: var(--ink); }
+
+      /* ---------- Flow / stats ---------- */
+      .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0; }
+      .stat {
+        background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius);
+        padding: 14px 16px 12px;
+      }
+      .stat .v { font-family: "Oswald", sans-serif; font-size: 30px; font-weight: 700; line-height: 1.1; color: var(--ink); }
+      .stat .v small { font-size: 15px; color: var(--ink-faint); font-weight: 500; margin-left: 2px; }
+      .stat .v .accent { color: var(--brass-bright); }
+      .stat .k { font-size: 12.5px; color: var(--ink-faint); margin-top: 4px; line-height: 1.55; }
+
+      .flow { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+      .flow li {
+        position: relative; padding: 12px 0 12px 46px; border-top: 1px dashed var(--line-soft);
+      }
+      .flow li:first-child { border-top: 0; }
+      .flow li::before {
+        counter-increment: step; content: counter(step);
+        position: absolute; left: 0; top: 13px;
+        width: 30px; height: 30px; border-radius: 50%;
+        border: 1px solid var(--brass); color: var(--brass-bright);
+        font-family: "Oswald", sans-serif; font-size: 14px; font-weight: 600;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(201,162,75,.07);
+      }
+      .flow .t { font-weight: 700; }
+      .flow .d { color: var(--ink-dim); }
+      .flow .gate { color: var(--red); font-weight: 700; }
+
+      /* ---------- Tables ---------- */
+      .table-card {
+        background: var(--panel); border: 1px solid var(--line-soft);
+        border-radius: var(--radius); overflow: hidden;
+      }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      thead th {
+        background: var(--panel-2); color: var(--ink-faint);
+        font-size: 12px; font-weight: 700; letter-spacing: .06em;
+        text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      tbody td { padding: 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+      tbody tr:last-child td { border-bottom: 0; }
+      tbody tr:hover { background: rgba(201,162,75,.035); }
+
+      td.no, th.no { width: 40px; text-align: center; }
+      td.no span {
+        font-family: "Oswald", sans-serif; font-weight: 700; font-size: 16px; color: var(--brass);
+      }
+      .artist { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15.5px; letter-spacing: .02em; line-height: 1.45; }
+      .album { font-family: "Shippori Mincho B1", serif; font-weight: 600; font-size: 15px; color: var(--ink); margin-top: 2px; }
+      td.date { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ink-dim); }
+      td.basis, td.note { color: var(--ink-dim); font-size: 13.5px; }
+      td.basis { min-width: 210px; }
+      td.note { min-width: 230px; }
+      .flag {
+        display: inline-block; font-size: 11.5px; font-weight: 700; color: #14120e;
+        background: var(--brass); border-radius: 3px; padding: 1px 7px; margin-right: 6px;
+        vertical-align: 1px; letter-spacing: .03em;
+      }
+      .flag.warn { background: var(--red); color: #fff5f2; }
+      .src { display: flex; flex-direction: column; gap: 5px; white-space: nowrap; }
+      .src a {
+        display: inline-flex; align-items: center; gap: 6px; min-height: 32px;
+        font-size: 13px; color: var(--steel);
+      }
+      .src a::before { content: "↗"; color: var(--brass); font-size: 12px; }
+      .src a:hover { color: var(--brass-bright); }
+
+      table.plain td.album-cell .artist { font-size: 14.5px; }
+      td.reason { color: var(--ink-dim); font-size: 13.5px; min-width: 260px; }
+
+      /* ---------- Callout ---------- */
+      .callout {
+        background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius);
+        padding: 20px 22px;
+      }
+      .callout + .callout { margin-top: 14px; }
+      .callout .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px; }
+      .callout .badge {
+        font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .1em;
+        color: #fff5f2; background: var(--red); border-radius: 3px; padding: 3px 9px;
+      }
+      .callout .badge.gold { background: var(--brass); color: #14120e; }
+      .callout p { color: var(--ink-dim); margin: 10px 0 0; }
+      .callout p strong { color: var(--ink); }
+      .callout ul { color: var(--ink-dim); margin: 10px 0 0; padding-left: 1.3em; }
+      .callout ul li { margin-top: 4px; }
+      .callout ul li strong { color: var(--ink); }
+      .callout .src { flex-direction: row; flex-wrap: wrap; gap: 4px 22px; margin-top: 10px; }
+
+      /* ---------- Footer ---------- */
+      footer {
+        margin-top: 56px; border-top: 1px solid var(--line); padding-top: 20px;
+        display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline;
+        color: var(--ink-faint); font-size: 13.5px;
+      }
+      footer .stamp { color: var(--ink-dim); font-weight: 700; }
+      footer .stamp b { color: var(--brass-bright); font-weight: 700; }
+
+      /* ---------- Mobile: tables become stacked records ---------- */
+      @media (max-width: 820px) {
+        .stats { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 680px) {
+        body { font-size: 14.5px; }
+        .wrap { padding: 0 14px 48px; }
+        header.page-head { padding-top: 30px; }
+        .table-card { background: transparent; border: 0; overflow: visible; }
+        table, tbody, tr, td { display: block; width: 100%; }
+        thead { display: none; }
+        tbody tr {
+          background: var(--panel); border: 1px solid var(--line-soft);
+          border-radius: var(--radius); padding: 14px 16px 8px; margin-bottom: 12px;
+        }
+        tbody tr:hover { background: var(--panel); }
+        tbody td { border-bottom: 0; padding: 0 0 10px; }
+        td.no { text-align: left; width: auto; padding-bottom: 2px; }
+        td.no span::after { content: " / 10"; color: var(--ink-faint); font-size: 12px; font-weight: 500; }
+        td.date { padding-bottom: 8px; }
+        td.date::before { content: "発売日　"; color: var(--ink-faint); font-size: 12px; font-weight: 700; }
+        td[data-label]::before {
+          content: attr(data-label); display: block;
+          color: var(--ink-faint); font-size: 12px; font-weight: 700;
+          letter-spacing: .05em; margin-bottom: 2px;
+        }
+        td.basis, td.note, td.reason { min-width: 0; }
+        .src { flex-direction: row; flex-wrap: wrap; gap: 2px 18px; }
+        .callout { padding: 16px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <header class="page-head">
+        <div class="genre-line">
+          <span class="no">Genre 6</span>
+          <span>2024 Selection Evidence</span>
+          <span class="sep">/</span>
+          <span>候補一覧</span>
+        </div>
+        <h1>2024年 FEMALE VOCAL ROCK / METAL 候補一覧
+          <span class="en">Female Vocal Rock / Metal — 2024 Candidates</span>
+        </h1>
+        <p class="lead">2024年リリースの女性ボーカル・ロック／メタル作品について、候補収集から検証、最終選出までの記録。S判定が枠を1枚超過してゲートで停止し、Hiro の決定により最終10枚が確定した。</p>
+        <hr class="rule" />
+      </header>
+
+      <nav class="toc" aria-label="目次">
+        <a href="#flow"><b>01</b>選出の経緯</a>
+        <a href="#final"><b>02</b>最終選出 10枚</a>
+        <a href="#gate"><b>03</b>ゲートと決定の経緯</a>
+        <a href="#dropped"><b>04</b>落選・不採用</a>
+      </nav>
+
+      <!-- 01 経緯 -->
+      <section id="flow">
+        <div class="sec-head"><span class="num">01</span><h2>選出の経緯</h2></div>
+        <p class="sec-note">候補30枚を収集し、重複排除で1枚を除き、Sランク検証を実施。S判定11枚が最終枠（5〜10枚）を1枚超過したためゲートで停止し、Hiro の決定により最終10枚を確定した。</p>
+
+        <div class="stats">
+          <div class="stat"><div class="v">30<small>枚</small></div><div class="k">候補収集</div></div>
+          <div class="stat"><div class="v">1<small>枚</small></div><div class="k">重複排除（2024年他ジャンル既選出との照合）</div></div>
+          <div class="stat"><div class="v"><span class="accent">11</span><small>枚</small></div><div class="k">S判定（最終枠10枚を1枚超過）</div></div>
+          <div class="stat"><div class="v">10<small>枚</small></div><div class="k">最終選出／楽曲20曲（各アルバム2曲）</div></div>
+        </div>
+
+        <ol class="flow">
+          <li><span class="t">候補収集</span> <span class="d">— 2024年リリースの女性ボーカル・ロック／メタル作品30枚を収集。</span></li>
+          <li><span class="t">重複排除</span> <span class="d">— 累積リストおよび2024年の他ジャンル既選出分と照合し、Unleash the Archers『Phantoma』の1枚を除外。</span></li>
+          <li><span class="t">Sランク検証</span> <span class="d">— 発売年とジャンル適合性を確認。S判定は11枚。</span></li>
+          <li><span class="t">ゲート停止</span> <span class="d">— <span class="gate">S判定11枚が最終枠（5〜10枚）を1枚超過</span>したため、絞り込みの判断を仰いだ。</span></li>
+          <li><span class="t">最終確定</span> <span class="d">— Hiro の決定により、Amaranthe『The Catalyst』をSへ昇格させ、Xeneris『Eternal Rising』と Nocturna『Of Sorcery and Darkness』の2枚を落として10枚で確定。最終結果はアルバム10枚・楽曲20曲。</span></li>
+        </ol>
+      </section>
+
+      <!-- 02 最終選出 -->
+      <section id="final">
+        <div class="sec-head"><span class="num">02</span><h2>最終選出 10枚</h2></div>
+        <p class="sec-note">発売日順。適合根拠は出典ページの表記に基づく。Wikipedia で確認できない作品は、その旨と代替の確認先を備考に明記した。</p>
+
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr><th class="no">#</th><th>アーティスト／アルバム</th><th>発売日</th><th>適合根拠</th><th>備考</th><th>出典</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="no"><span>1</span></td>
+                <td><div class="artist">Illumishade</div><div class="album">『Another Side of You』</div></td>
+                <td class="date">2024-02-16</td>
+                <td class="basis" data-label="適合根拠">女性Vo Fabienne Erni（Eluveitie）中心のスイス産プログレッシヴ／シンフォニックメタル、2nd アルバム。</td>
+                <td class="note" data-label="備考"><span class="flag">注記</span>専用 Wikipedia アルバムページはなく、バンドページ＋Napalm 告知で確認。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Illumishade" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>2</span></td>
+                <td><div class="artist">Amaranthe</div><div class="album">『The Catalyst』</div></td>
+                <td class="date">2024-02-23</td>
+                <td class="basis" data-label="適合根拠">マニュアルで当ジャンルのベンチマークに名指しされるバンドの7th アルバム。</td>
+                <td class="note" data-label="備考"><span class="flag">昇格</span>検証では3ボーカル体制とポップ／エレクトロニック色の強さからA判定となったが、Hiro の決定でSに昇格（今回限りの判断）。詳細は03。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/The_Catalyst_(album)" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>3</span></td>
+                <td><div class="artist">Leaves' Eyes</div><div class="album">『Myths of Fate』</div></td>
+                <td class="date">2024-03-22</td>
+                <td class="basis" data-label="適合根拠">シンフォニックメタル9th、女性Vo Elina Siirala 主役。</td>
+                <td class="note" data-label="備考"><span class="flag">注記</span>発売日は Wikipedia infobox の3/26ではなく、バンド公式・Blabbermouth・AFM系告知が一致する3/22を採用。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Myths_of_Fate" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>4</span></td>
+                <td><div class="artist">Anette Olzon</div><div class="album">『Rapture』</div></td>
+                <td class="date">2024-05-10</td>
+                <td class="basis" data-label="適合根拠">元 Nightwish の女性Voによる3rd ソロ。</td>
+                <td class="note" data-label="備考"><span class="flag">注記</span>Wikipedia では確認できない（専用アルバムページなし）。Qobuz・Metal Archives・Discogs で確認。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.metal-archives.com/albums/Anette_Olzon/Rapture/1222673" target="_blank" rel="noopener">Metal Archives</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>5</span></td>
+                <td><div class="artist">Elvellon</div><div class="album">『Ascending in Synergy』</div></td>
+                <td class="date">2024-05-17</td>
+                <td class="basis" data-label="適合根拠">シンフォニックメタル2nd アルバム。</td>
+                <td class="note" data-label="備考">—</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Ascending_in_Synergy" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>6</span></td>
+                <td><div class="artist">Seven Spires</div><div class="album">『A Fortress Called Home』</div></td>
+                <td class="date">2024-06-21</td>
+                <td class="basis" data-label="適合根拠">シンフォニックメタル4th、女性Vo Adrienne Cowan。</td>
+                <td class="note" data-label="備考">—</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/A_Fortress_Called_Home" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>7</span></td>
+                <td><div class="artist">Visions of Atlantis</div><div class="album">『Pirates II – Armada』</div></td>
+                <td class="date">2024-07-05</td>
+                <td class="basis" data-label="適合根拠">シンフォニック／パワーメタル9th。全作詞を女性Vo Clémentine Delauney が担当。</td>
+                <td class="note" data-label="備考">—</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Pirates_II_%E2%80%93_Armada" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>8</span></td>
+                <td><div class="artist">Simone Simons</div><div class="album">『Vermillion』</div></td>
+                <td class="date">2024-08-23</td>
+                <td class="basis" data-label="適合根拠">Epica の女性Voによるソロデビュー盤（Arjen Lucassen との共作）。</td>
+                <td class="note" data-label="備考">—</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Vermillion_(Simone_Simons_album)" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>9</span></td>
+                <td><div class="artist">Nightwish</div><div class="album">『Yesterwynde』</div></td>
+                <td class="date">2024-09-20</td>
+                <td class="basis" data-label="適合根拠">シンフォニックメタル10th、女性Vo Floor Jansen 中心。</td>
+                <td class="note" data-label="備考">—</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Yesterwynde" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>10</span></td>
+                <td><div class="artist">Charlotte Wessels</div><div class="album">『The Obsession』</div></td>
+                <td class="date">2024-09-20</td>
+                <td class="basis" data-label="適合根拠">元 Delain の女性Voによるソロ作。</td>
+                <td class="note" data-label="備考"><span class="flag">注記</span>専用 Wikipedia アルバムページはなく、アーティストページ＋Napalm で確認。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Charlotte_Wessels" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 03 ゲートと決定 -->
+      <section id="gate">
+        <div class="sec-head"><span class="num">03</span><h2>ゲートと決定の経緯</h2></div>
+        <p class="sec-note">S判定11枚で上限10枚を超過したため選出を停止し、検証側の落選推薦と Amaranthe の境界判定を提示したうえで、Hiro の決定により最終10枚が確定した。</p>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge">ゲート停止</span>
+            <div><span class="artist">S判定 11枚 ／ 枠 10枚</span></div>
+          </div>
+          <p>検証側の落選推薦は次の2枚だった。</p>
+          <ul>
+            <li><strong>Xeneris『Eternal Rising』</strong> — 第一推薦。デビュー作で Wikipedia ページがなく、検証ソースが最も薄い。</li>
+            <li><strong>Nocturna『Of Sorcery and Darkness』</strong> — 次点。36:55 と短い。</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge">A 降格の提示</span>
+            <div>
+              <span class="artist">Amaranthe</span>
+              <span class="album" style="margin-left:8px;">『The Catalyst』</span>
+            </div>
+          </div>
+          <p>検証側が示したA降格の理由は、<strong>3ボーカル体制で女性Voが単独の主役ではない</strong>こと、<strong>ポップ色が強い</strong>こと、<strong>38:33 と短め</strong>であること。ただし全ジャンル共通の<strong>絶対除外には非該当</strong>であり、境界判定として提示された。</p>
+        </div>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge gold">Hiro の決定</span>
+            <div><span class="artist">最終 10枚で確定</span></div>
+          </div>
+          <p>Amaranthe『The Catalyst』を<strong>Sに昇格</strong>し、<strong>Xeneris『Eternal Rising』と Nocturna『Of Sorcery and Darkness』の2枚を落として</strong>、最終10枚で確定した。</p>
+        </div>
+      </section>
+
+      <!-- 04 落選・不採用 -->
+      <section id="dropped">
+        <div class="sec-head"><span class="num">04</span><h2>落選・不採用</h2></div>
+        <p class="sec-note">最終選出に残らなかった作品を、段階と理由ごとに記録する。</p>
+
+        <h3>重複排除</h3>
+        <div class="table-card">
+          <table class="plain">
+            <thead>
+              <tr><th>アーティスト／アルバム</th><th>理由</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><div class="artist">Unleash the Archers</div><div class="album">『Phantoma』</div></td>
+                <td class="reason" data-label="理由">2024 MELODIC POWER &amp; TRADITIONAL METAL で既採用。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>S検証でA降格</h3>
+        <div class="table-card">
+          <table class="plain">
+            <thead>
+              <tr><th>アーティスト／アルバム</th><th>降格理由</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><div class="artist">Ad Infinitum</div><div class="album">『Abyss』</div></td>
+                <td class="reason" data-label="降格理由">ポストハードコア／モダンメタル寄りへ大きく舵を切った。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Future Palace</div><div class="album">『Distortion』</div></td>
+                <td class="reason" data-label="降格理由">核はメタルコア／ポストハードコア。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Oceans of Slumber</div><div class="album">『Where Gods Fear to Speak』</div></td>
+                <td class="reason" data-label="降格理由">プログ／ドゥーム寄りで、カバー曲を収録。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">League of Distortion</div><div class="album">『Galvanize』</div></td>
+                <td class="reason" data-label="降格理由">Wikipedia では確認できない。モダンメタル汎用型。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">April Art</div><div class="album">『Rodeo』</div></td>
+                <td class="reason" data-label="降格理由">一部DBで Nu Metal タグが付く境界ケース。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>不適合</h3>
+        <div class="table-card">
+          <table class="plain">
+            <thead>
+              <tr><th>アーティスト／アルバム</th><th>理由</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><div class="artist">Kittie</div><div class="album">『Fire』</div></td>
+                <td class="reason" data-label="理由">ニューメタル分類により絶対除外。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Exit Eden</div><div class="album">『Femmes Fatales』</div></td>
+                <td class="reason" data-label="理由">収録曲の半数がカバーで、オリジナル盤の要件を満たさない。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>収集段階A/Bで不採用</h3>
+        <div class="table-card">
+          <table class="plain">
+            <thead>
+              <tr><th>アーティスト／アルバム</th><th>補足</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><div class="artist">The Warning</div><div class="album">『Keep Me Fed』</div></td>
+                <td class="reason" data-label="補足">2024 MAINSTREAM ROCK で既採用。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Band-Maid</div><div class="album">『Epic Narratives』</div></td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Nemophila</div><div class="album">『Evolve』</div></td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">New Years Day</div><div class="album">『Half Black Heart』</div></td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Sleater-Kinney</div><div class="album">『Little Rope』</div></td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Mannequin Pussy</div><div class="album">『I Got Heaven』</div></td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Frozen Crown</div><div class="album">『War Hearts』</div></td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Metalite</div><div class="album">『Expedition One』</div></td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Lutharo</div><div class="album">『Chasing Euphoria』</div></td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">The Last Dinner Party</div><div class="album">『Prelude to Ecstasy』</div></td>
+                <td class="reason" data-label="補足">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        <span class="stamp">選出：<b>2026-11-19</b>／エビデンス確認済み</span>
+        <span>2024年 ジャンル別アルバム選出資料 — 6. FEMALE VOCAL ROCK / METAL</span>
+      </footer>
+
+    </div>
+  </body>
+</html>
