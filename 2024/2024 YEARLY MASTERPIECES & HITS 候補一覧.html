@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="data:," />
+    <title>2024年 YEARLY MASTERPIECES &amp; HITS 候補一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Shippori+Mincho+B1:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #121013;
+        --bg-deep: #0c0b0d;
+        --panel: #1a181c;
+        --panel-2: #201d23;
+        --line: #322e38;
+        --line-soft: #26232b;
+        --ink: #ece7dd;
+        --ink-dim: #b7b0a2;
+        --ink-faint: #8d867a;
+        --brass: #c9a24b;
+        --brass-bright: #e3bc63;
+        --steel: #9db4c6;
+        --red: #c96a5a;
+        --radius: 10px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(1100px 480px at 50% -120px, rgba(201,162,75,.10), transparent 60%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+        background-attachment: fixed;
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 15px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--brass-bright); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 64px; }
+
+      /* ---------- Header ---------- */
+      header.page-head { padding: 44px 0 8px; }
+      .genre-line {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+        font-family: "Oswald", sans-serif; letter-spacing: .14em;
+        font-size: 12px; color: var(--ink-faint); text-transform: uppercase;
+      }
+      .genre-line .no {
+        color: #14120e; background: var(--brass); font-weight: 700;
+        padding: 2px 9px; border-radius: 3px; letter-spacing: .08em;
+      }
+      .genre-line .sep { color: var(--line); }
+      h1 {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-weight: 700; font-size: clamp(26px, 5.4vw, 42px);
+        line-height: 1.35; margin: 16px 0 6px; letter-spacing: .01em;
+      }
+      h1 .en {
+        display: block; font-family: "Oswald", sans-serif; font-weight: 600;
+        font-size: clamp(15px, 3vw, 21px); letter-spacing: .18em;
+        color: var(--brass); margin-top: 8px; text-transform: uppercase;
+      }
+      .lead { color: var(--ink-dim); max-width: 46em; margin: 10px 0 0; }
+      .rule { height: 1px; background: linear-gradient(90deg, var(--brass), var(--line) 55%, transparent); margin: 26px 0 0; border: 0; }
+
+      /* ---------- Nav ---------- */
+      nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 4px; }
+      nav.toc a {
+        display: inline-flex; align-items: center; min-height: 38px;
+        padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
+        color: var(--ink-dim); font-size: 13px; background: rgba(26,24,28,.6);
+      }
+      nav.toc a:hover { color: var(--ink); border-color: var(--brass); text-decoration: none; }
+      nav.toc a b { color: var(--brass); font-family: "Oswald", sans-serif; margin-right: 7px; font-weight: 600; }
+
+      /* ---------- Sections ---------- */
+      section { margin-top: 46px; }
+      .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+      .sec-head .num {
+        font-family: "Oswald", sans-serif; font-size: 30px; font-weight: 700;
+        color: transparent; -webkit-text-stroke: 1px var(--brass); line-height: 1;
+      }
+      h2 {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-size: clamp(20px, 3.6vw, 25px); font-weight: 700; margin: 0; line-height: 1.4;
+      }
+      h3 {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+        font-size: 17px; font-weight: 700; margin: 30px 0 12px; line-height: 1.5;
+      }
+      h3:first-of-type { margin-top: 22px; }
+      .sec-note { color: var(--ink-dim); margin: 4px 0 18px; max-width: 52em; }
+      .sec-note strong { color: var(--ink); }
+
+      /* ---------- Flow / stats ---------- */
+      .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0; }
+      .stat {
+        background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius);
+        padding: 14px 16px 12px;
+      }
+      .stat .v { font-family: "Oswald", sans-serif; font-size: 30px; font-weight: 700; line-height: 1.1; color: var(--ink); }
+      .stat .v small { font-size: 15px; color: var(--ink-faint); font-weight: 500; margin-left: 2px; }
+      .stat .v .accent { color: var(--brass-bright); }
+      .stat .k { font-size: 12.5px; color: var(--ink-faint); margin-top: 4px; line-height: 1.55; }
+
+      .flow { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+      .flow li {
+        position: relative; padding: 12px 0 12px 46px; border-top: 1px dashed var(--line-soft);
+      }
+      .flow li:first-child { border-top: 0; }
+      .flow li::before {
+        counter-increment: step; content: counter(step);
+        position: absolute; left: 0; top: 13px;
+        width: 30px; height: 30px; border-radius: 50%;
+        border: 1px solid var(--brass); color: var(--brass-bright);
+        font-family: "Oswald", sans-serif; font-size: 14px; font-weight: 600;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(201,162,75,.07);
+      }
+      .flow .t { font-weight: 700; }
+      .flow .d { color: var(--ink-dim); }
+      .flow .gate { color: var(--red); font-weight: 700; }
+
+      /* ---------- Tables ---------- */
+      .table-card {
+        background: var(--panel); border: 1px solid var(--line-soft);
+        border-radius: var(--radius); overflow: hidden;
+      }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      thead th {
+        background: var(--panel-2); color: var(--ink-faint);
+        font-size: 12px; font-weight: 700; letter-spacing: .06em;
+        text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      tbody td { padding: 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+      tbody tr:last-child td { border-bottom: 0; }
+      tbody tr:hover { background: rgba(201,162,75,.035); }
+
+      td.no, th.no { width: 40px; text-align: center; }
+      td.no span {
+        font-family: "Oswald", sans-serif; font-weight: 700; font-size: 16px; color: var(--brass);
+      }
+      .artist { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15.5px; letter-spacing: .02em; line-height: 1.45; }
+      .album { font-family: "Shippori Mincho B1", serif; font-weight: 600; font-size: 15px; color: var(--ink); margin-top: 2px; }
+      td.date { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ink-dim); }
+      td.basis, td.note { color: var(--ink-dim); font-size: 13.5px; }
+      td.basis { min-width: 210px; }
+      td.note { min-width: 230px; }
+      .flag {
+        display: inline-block; font-size: 11.5px; font-weight: 700; color: #14120e;
+        background: var(--brass); border-radius: 3px; padding: 1px 7px; margin-right: 6px;
+        vertical-align: 1px; letter-spacing: .03em;
+      }
+      .flag.warn { background: var(--red); color: #fff5f2; }
+      .src { display: flex; flex-direction: column; gap: 5px; white-space: nowrap; }
+      .src a {
+        display: inline-flex; align-items: center; gap: 6px; min-height: 32px;
+        font-size: 13px; color: var(--steel);
+      }
+      .src a::before { content: "↗"; color: var(--brass); font-size: 12px; }
+      .src a:hover { color: var(--brass-bright); }
+
+      table.plain td.album-cell .artist { font-size: 14.5px; }
+      td.reason { color: var(--ink-dim); font-size: 13.5px; min-width: 260px; }
+
+      /* ---------- Callout ---------- */
+      .callout {
+        background: var(--panel); border: 1px solid var(--line-soft); border-radius: var(--radius);
+        padding: 20px 22px;
+      }
+      .callout + .callout { margin-top: 14px; }
+      .callout .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px; }
+      .callout .badge {
+        font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .1em;
+        color: #fff5f2; background: var(--red); border-radius: 3px; padding: 3px 9px;
+      }
+      .callout .badge.gold { background: var(--brass); color: #14120e; }
+      .callout p { color: var(--ink-dim); margin: 10px 0 0; }
+      .callout p strong { color: var(--ink); }
+      .callout ul { color: var(--ink-dim); margin: 10px 0 0; padding-left: 1.3em; }
+      .callout ul li { margin-top: 4px; }
+      .callout ul li strong { color: var(--ink); }
+      .callout .src { flex-direction: row; flex-wrap: wrap; gap: 4px 22px; margin-top: 10px; }
+
+      /* ---------- Footer ---------- */
+      footer {
+        margin-top: 56px; border-top: 1px solid var(--line); padding-top: 20px;
+        display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline;
+        color: var(--ink-faint); font-size: 13.5px;
+      }
+      footer .stamp { color: var(--ink-dim); font-weight: 700; }
+      footer .stamp b { color: var(--brass-bright); font-weight: 700; }
+
+      /* ---------- Mobile: tables become stacked records ---------- */
+      @media (max-width: 820px) {
+        .stats { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 680px) {
+        body { font-size: 14.5px; }
+        .wrap { padding: 0 14px 48px; }
+        header.page-head { padding-top: 30px; }
+        .table-card { background: transparent; border: 0; overflow: visible; }
+        table, tbody, tr, td { display: block; width: 100%; }
+        thead { display: none; }
+        tbody tr {
+          background: var(--panel); border: 1px solid var(--line-soft);
+          border-radius: var(--radius); padding: 14px 16px 8px; margin-bottom: 12px;
+        }
+        tbody tr:hover { background: var(--panel); }
+        tbody td { border-bottom: 0; padding: 0 0 10px; }
+        td.no { text-align: left; width: auto; padding-bottom: 2px; }
+        td.no span::after { content: " / 20"; color: var(--ink-faint); font-size: 12px; font-weight: 500; }
+        td.date { padding-bottom: 8px; }
+        td.date::before { content: "発売日　"; color: var(--ink-faint); font-size: 12px; font-weight: 700; }
+        td[data-label]::before {
+          content: attr(data-label); display: block;
+          color: var(--ink-faint); font-size: 12px; font-weight: 700;
+          letter-spacing: .05em; margin-bottom: 2px;
+        }
+        td.basis, td.note, td.reason { min-width: 0; }
+        .src { flex-direction: row; flex-wrap: wrap; gap: 2px 18px; }
+        .callout { padding: 16px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <header class="page-head">
+        <div class="genre-line">
+          <span class="no">Genre 8</span>
+          <span>2024 Selection Evidence</span>
+          <span class="sep">/</span>
+          <span>候補一覧</span>
+        </div>
+        <h1>2024年 YEARLY MASTERPIECES &amp; HITS 候補一覧
+          <span class="en">Yearly Masterpieces &amp; Hits — 2024 Candidates</span>
+        </h1>
+        <p class="lead">2024年に実際に売れた、または世界的に大きな話題となり、その年を象徴するアルバムを選ぶ年間総合枠の記録。候補29枚から重複排除とSランク検証を経て、最終20枚・楽曲20曲（各アルバム1曲）が確定した。厳格な検証で確定したSは6枚にとどまり、残りは Hiro の判断によるA候補の全昇格で構成される。</p>
+        <hr class="rule" />
+      </header>
+
+      <nav class="toc" aria-label="目次">
+        <a href="#flow"><b>01</b>選出の経緯</a>
+        <a href="#final"><b>02</b>最終選出 20枚</a>
+        <a href="#flags"><b>03</b>境界フラグ</a>
+        <a href="#dropped"><b>04</b>落選・不採用</a>
+        <a href="#notes"><b>05</b>特記事項</a>
+      </nav>
+
+      <!-- 01 経緯 -->
+      <section id="flow">
+        <div class="sec-head"><span class="num">01</span><h2>選出の経緯</h2></div>
+        <p class="sec-note">YEARLY は通常ジャンルのようなジャンル適合ではなく、その年の年間チャート・売上・ストリーミング実績、世界的ヒットシングルの有無、主要メディアの年間ベスト等を根拠とする特別枠（20枚・各1曲）。</p>
+
+        <div class="stats">
+          <div class="stat"><div class="v">29<small>枚</small></div><div class="k">候補収集（年間チャート・売上・年末リスト等の根拠付き）</div></div>
+          <div class="stat"><div class="v">1<small>枚</small></div><div class="k">重複排除（Pearl Jam『Dark Matter』、2024年 MAINSTREAM で既採用）</div></div>
+          <div class="stat"><div class="v">6<small>枚</small></div><div class="k">Sランク検証で確定（対象7枚のうち Beyoncé がAへ降格）</div></div>
+          <div class="stat"><div class="v"><span class="accent">20</span><small>枚</small></div><div class="k">最終選出／楽曲20曲（各アルバム1曲）</div></div>
+        </div>
+
+        <ol class="flow">
+          <li><span class="t">候補収集</span> <span class="d">— 2024年に実際に売れた、または世界的に話題になったアルバム29枚を収集。根拠は年間チャート・売上・ストリーミング実績、世界的ヒットシングル、主要メディアの年間ベスト等。</span></li>
+          <li><span class="t">重複排除</span> <span class="d">— 累積リストおよび2024年の他ジャンル既選出分と照合。Pearl Jam『Dark Matter』（MAINSTREAM ROCK / ARENA HEROES で既採用）の1枚を除外し、28枚が残った。</span></li>
+          <li><span class="t">Sランク検証</span> <span class="d">— 収集時にSとされた7枚を2ソース以上で検証し、6枚がS確定。Beyoncé『Cowboy Carter』は実績こそS級だが、Wikipedia・Discogs のジャンル欄に hip-hop の明記があり絶対除外要素に触れるためAへ降格。<span class="gate">ここでゲート停止。</span></span></li>
+          <li><span class="t">Hiro の判断で確定</span> <span class="d">— A候補を全て昇格する案を Hiro が採用。ただしAは Beyoncé を含め15枚あり、S6枚と合わせて21枚となるため1枚を落とす必要があった。推薦に基づき Shakira『Las Mujeres Ya No Lloran』を落選とし、最終20枚が確定した。</span></li>
+        </ol>
+      </section>
+
+      <!-- 02 最終選出 -->
+      <section id="final">
+        <div class="sec-head"><span class="num">02</span><h2>最終選出 20枚</h2></div>
+        <p class="sec-note">発売日順。根拠は出典ページの表記に基づく。区分は、検証で確定した『S確定』と、Hiro の判断で昇格した『A昇格』を示す。</p>
+
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr><th class="no">#</th><th>アーティスト／アルバム</th><th>発売日</th><th>選出根拠</th><th>備考</th><th>出典</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="no"><span>1</span></td>
+                <td><div class="artist">Green Day</div><div class="album">『Saviors』</div></td>
+                <td class="date">2024-01-19</td>
+                <td class="basis" data-label="選出根拠">UK Albums チャート1位（通算5作目のUK1位）。Loudwire の年間ベスト「51 Best Rock+Metal Albums 2024」に選出。</td>
+                <td class="note" data-label="備考"><span class="flag">A昇格</span>通算14作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://metalinsider.net/columns/metal-by-numbers/metal-by-numbers-top-13-chart-topping-debuts-of-2024" target="_blank" rel="noopener">Metal Insider</a>
+                  <a href="https://en.wikipedia.org/wiki/2024_in_rock_music" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>2</span></td>
+                <td><div class="artist">Ariana Grande</div><div class="album">『Eternal Sunshine』</div></td>
+                <td class="date">2024-03-08</td>
+                <td class="basis" data-label="選出根拠">Billboard 200で1位（通算6作目の1位）、他13カ国でも1位。「yes, and?」「we can't be friends」の2曲が Hot 100 で1位デビュー。</td>
+                <td class="note" data-label="備考"><span class="flag">S確定</span>ジャンル欄に Electropop 表記があるが主体はポップ／R&amp;Bであり、トランス／エレクトロニカの絶対除外には当たらないと判定した境界を明記。通算7作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Eternal_Sunshine_(album)" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.officialcharts.com/albums/ariana-grande-eternal-sunshine/" target="_blank" rel="noopener">Official Charts</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>3</span></td>
+                <td><div class="artist">Tyla</div><div class="album">『Tyla』</div></td>
+                <td class="date">2024-03-22</td>
+                <td class="basis" data-label="選出根拠">Billboard 年間ベスト13位、Rolling Stone 年間トップ10。「Water」が世界的ヒットとなり、グラミー Best African Music Performance を受賞。</td>
+                <td class="note" data-label="備考"><span class="flag">A昇格</span>デビュー作。アマピアノのリズムはポップ／R&amp;Bの枠組みであり、トランス／エレクトロニカの絶対除外には当たらないと収集段階で判定。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.yearendlists.com/2024/billboard-best-albums-of-2024" target="_blank" rel="noopener">Year End Lists</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>4</span></td>
+                <td><div class="artist">Beyoncé</div><div class="album">『Cowboy Carter』</div></td>
+                <td class="date">2024-03-29</td>
+                <td class="basis" data-label="選出根拠">Billboard 200／Top Country Albums で1位（初週407,000 units、黒人女性として初の Top Country Albums 1位）。「Texas Hold 'Em」が Hot 100 と Hot Country Songs で1位。グラミー Album of the Year／Best Country Album 受賞。</td>
+                <td class="note" data-label="備考"><span class="flag warn">境界</span>S→A降格→昇格採用。Wikipedia・Discogs のジャンル欄に hip-hop の明記があり絶対除外要素に触れるため検証段階でAへ降格。2023年 Stray Kids と同じ構図であり、Hiro の全昇格判断により採用（この回限りの判断）。通算8作目、27曲。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Cowboy_Carter" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.discogs.com/release/30236687-Beyonc%C3%A9-COWBOY-CARTER" target="_blank" rel="noopener">Discogs</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>5</span></td>
+                <td><div class="artist">Benson Boone</div><div class="album">『Fireworks &amp; Rollerblades』</div></td>
+                <td class="date">2024-04-05</td>
+                <td class="basis" data-label="選出根拠">「Beautiful Things」が IFPI 世界2位のシングル／Billboard Global 200 で1位となり、2024年最大級のヒットに。アルバムは Billboard 200 初登場6位。</td>
+                <td class="note" data-label="備考"><span class="flag">A昇格</span>デビュー作。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Fireworks_%26_Rollerblades" target="_blank" rel="noopener">Wikipedia</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>6</span></td>
+                <td><div class="artist">Taylor Swift</div><div class="album">『The Tortured Poets Department』</div></td>
+                <td class="date">2024-04-19</td>
+                <td class="basis" data-label="選出根拠">IFPI 2024年世界ベストセラー（5.6M枚）。Billboard 200で17週1位、初登場2.61M units。主要ストリーミングサービスで2024年最多再生。</td>
+                <td class="note" data-label="備考"><span class="flag">S確定</span>通算11作目のオリジナル・スタジオ盤（標準盤16曲）。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/?curid=76002826" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.officialcharts.com/chart-news/everything-we-know-about-taylor-swifts-the-tortured-poets-department/" target="_blank" rel="noopener">Official Charts</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>7</span></td>
+                <td><div class="artist">Dua Lipa</div><div class="album">『Radical Optimism』</div></td>
+                <td class="date">2024-05-03</td>
+                <td class="basis" data-label="選出根拠">UK 1位・US 2位デビュー。「Houdini」「Training Season」「Illusion」のヒットシングル3曲。2024年グラストンベリーのヘッドライナー。</td>
+                <td class="note" data-label="備考"><span class="flag">A昇格</span>通算3作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.hellorayo.co.uk/news/music/pop/albums-2024" target="_blank" rel="noopener">Hello Rayo</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>8</span></td>
+                <td><div class="artist">Billie Eilish</div><div class="album">『Hit Me Hard and Soft』</div></td>
+                <td class="date">2024-05-17</td>
+                <td class="basis" data-label="選出根拠">20カ国以上で1位、米 Billboard 200 で2位、全10曲が Hot 100 トップ40入り。「Birds of a Feather」は Billboard Global 200 で1位、IFPI 2024年世界4位の曲。</td>
+                <td class="note" data-label="備考"><span class="flag">S確定</span>通算3作目、10曲43分45秒。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Hit_Me_Hard_and_Soft" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.grammy.com/news/billie-eilish-hit-me-hard-and-soft-album-release" target="_blank" rel="noopener">Grammy.com</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>9</span></td>
+                <td><div class="artist">aespa</div><div class="album">『Armageddon』</div></td>
+                <td class="date">2024-05-27</td>
+                <td class="basis" data-label="選出根拠">IFPI Global Album Sales Chart 2024 で9位。「Supernova」が韓国および世界のチャートで2024年の大ヒットに。</td>
+                <td class="note" data-label="備考"><span class="flag warn">境界</span><span class="flag">A昇格</span>初のフルアルバム。電子寄りのK-POPプロダクションであり、エレクトロニカ除外との境界として明記。Hiro の全昇格判断で採用。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.soompi.com/article/1724057wpp/enhypen-seventeen-stray-kids-ive-nct-dream-aespa-and-txt-make-top-10-of-ifpis-global-album-sales-chart-for-2024" target="_blank" rel="noopener">Soompi</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>10</span></td>
+                <td><div class="artist">Charli xcx</div><div class="album">『Brat』</div></td>
+                <td class="date">2024-06-07</td>
+                <td class="basis" data-label="選出根拠">Rolling Stone／Billboard の年間ベストで1位。「Brat Summer」は2024年を象徴する文化現象となり、「Guess」「360」「Apple」がバイラルヒット。</td>
+                <td class="note" data-label="備考"><span class="flag warn">境界</span><span class="flag">A昇格</span>クラブ／エレクトロニック色が強く、絶対除外のトランス／エレクトロニカに触れる可能性のある境界作品。2024年の象徴性から候補に残し、Hiro の全昇格判断で採用。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://relix.com/news/detail/rolling-stone-ranks-100-best-albums-of-2024" target="_blank" rel="noopener">Relix</a>
+                  <a href="https://www.laois-nationalist.ie/whatson/entertainment/2024-in-music-brat-summer-and-eras-tour-meant-it-was-the-year-of-the-female-popstar_arid-42801.html" target="_blank" rel="noopener">Laois Nationalist</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>11</span></td>
+                <td><div class="artist">Gracie Abrams</div><div class="album">『The Secret of Us』</div></td>
+                <td class="date">2024-06-21</td>
+                <td class="basis" data-label="選出根拠">Billboard 200 初登場2位、Billboard 年間ベスト16位。デラックス盤追加曲「That's So True」が年末に UK 1位／US トップ10の大ヒット。</td>
+                <td class="note" data-label="備考"><span class="flag">A昇格</span>通算2作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.prettygoodmusic.app/collection/billboards-50-best-albums-of-2024-OXfok4" target="_blank" rel="noopener">Pretty Good Music</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>12</span></td>
+                <td><div class="artist">Zach Bryan</div><div class="album">『The Great American Bar Scene』</div></td>
+                <td class="date">2024-07-04</td>
+                <td class="basis" data-label="選出根拠">Billboard の Top Streaming Albums／Top Country／Top Rock &amp; Alternative の各チャートで1位（2024年7月）。Rolling Stone 年間ベスト12位。</td>
+                <td class="note" data-label="備考"><span class="flag">A昇格</span></td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://relix.com/news/detail/rolling-stone-ranks-100-best-albums-of-2024" target="_blank" rel="noopener">Relix</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>13</span></td>
+                <td><div class="artist">ENHYPEN</div><div class="album">『Romance: Untold』</div></td>
+                <td class="date">2024-07-12</td>
+                <td class="basis" data-label="選出根拠">IFPI Global Album Chart 2024 で2位（2024年世界2位の売上、K-POP最高位）。初週2.34M枚、韓国・日本・フランスで1位、Billboard 200 で自己最高2位。</td>
+                <td class="note" data-label="備考"><span class="flag">S確定</span>対象は7月12日発売の原盤（2024-11-11のリイシュー『Romance: Untold -Daydream-』ではない）。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Romance:_Untold" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://koreajoongangdaily.joins.com/news/2024-06-17/entertainment/kpop/Enhypen-to-release-second-studio-album-in-July-continuing-fantastical-storyline/2069974" target="_blank" rel="noopener">Korea JoongAng Daily</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>14</span></td>
+                <td><div class="artist">Jack White</div><div class="album">『No Name』</div></td>
+                <td class="date">2024-08-02</td>
+                <td class="basis" data-label="選出根拠">MOJO 年間ベスト1位、Rolling Stone 年間20位。サプライズ発売が2024年のロックの大きな話題となった。</td>
+                <td class="note" data-label="備考"><span class="flag">A昇格</span>ソロ通算6作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://thirdmanrecords.com/blogs/news/jack-white-officially-announces-no-name" target="_blank" rel="noopener">Third Man Records</a>
+                  <a href="https://relix.com/news/detail/rolling-stone-ranks-100-best-albums-of-2024" target="_blank" rel="noopener">Relix</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>15</span></td>
+                <td><div class="artist">Post Malone</div><div class="album">『F-1 Trillion』</div></td>
+                <td class="date">2024-08-16</td>
+                <td class="basis" data-label="選出根拠">Billboard 200／Top Country Albums で1位。リードシングル「I Had Some Help」（feat. Morgan Wallen）が Hot 100 で6週1位、Billboard Song of the Summer に。Billboard 年間ベスト17位。</td>
+                <td class="note" data-label="備考"><span class="flag">注記</span><span class="flag">A昇格</span>アーティストはヒップホップ出身だが、本作自体はカントリー盤であり、Billboard の分類もカントリー。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.prettygoodmusic.app/collection/billboards-50-best-albums-of-2024-OXfok4" target="_blank" rel="noopener">Pretty Good Music</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>16</span></td>
+                <td><div class="artist">Sabrina Carpenter</div><div class="album">『Short n' Sweet』</div></td>
+                <td class="date">2024-08-23</td>
+                <td class="basis" data-label="選出根拠">18カ国で1位、Billboard 200 で1位（初週362,000 units）。「Espresso」「Please Please Please」が Billboard Global 200 で1位（後者は Hot 100 でも1位）。グラミー Best Pop Vocal Album 受賞。</td>
+                <td class="note" data-label="備考"><span class="flag">S確定</span>通算6作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Short_n%27_Sweet" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.last.fm/music/Sabrina+Carpenter/Short+n%27+Sweet/+wiki" target="_blank" rel="noopener">Last.fm</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>17</span></td>
+                <td><div class="artist">Fontaines D.C.</div><div class="album">『Romance』</div></td>
+                <td class="date">2024-08-23</td>
+                <td class="basis" data-label="選出根拠">UK 2位／アイルランド1位。MOJO 年間7位など年末リスト多数。「Starburster」「Favourite」が年間ベストソングの常連。</td>
+                <td class="note" data-label="備考"><span class="flag">A昇格</span>通算4作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.therevolverclub.com/blogs/the-revolver-club/upcoming-album-release-calendar-2024" target="_blank" rel="noopener">The Revolver Club</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>18</span></td>
+                <td><div class="artist">Nick Cave &amp; The Bad Seeds</div><div class="album">『Wild God』</div></td>
+                <td class="date">2024-08-30</td>
+                <td class="basis" data-label="選出根拠">MOJO 年間ベスト2位、グラミー Best Alternative Album ノミネート。UK 5位など、ベテラン勢として堅調なチャート実績。</td>
+                <td class="note" data-label="備考"><span class="flag">A昇格</span>通算18作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.therevolverclub.com/blogs/the-revolver-club/upcoming-album-release-calendar-2024" target="_blank" rel="noopener">The Revolver Club</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>19</span></td>
+                <td><div class="artist">Coldplay</div><div class="album">『Moon Music』</div></td>
+                <td class="date">2024-10-04</td>
+                <td class="basis" data-label="選出根拠">UK（2022年以降で英国アクト最大の初週）をはじめ多国で1位、Billboard 200 でも1位。ワールドツアーは2024年最高興行。</td>
+                <td class="note" data-label="備考"><span class="flag warn">境界</span><span class="flag">A昇格</span>収録曲「We Pray」にラッパー客演（Little Simz、Burna Boy 等）がある。2024年 MAINSTREAM ROCK 選出ではこの理由でA降格した作品であり、楽曲選出では「We Pray」を選ばない。通算10作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.therevolverclub.com/blogs/the-revolver-club/upcoming-album-release-calendar-2024" target="_blank" rel="noopener">The Revolver Club</a>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="no"><span>20</span></td>
+                <td><div class="artist">The Cure</div><div class="album">『Songs of a Lost World』</div></td>
+                <td class="date">2024-11-01</td>
+                <td class="basis" data-label="選出根拠">16年ぶりの新作として世界的に話題化。英国を含む10カ国以上で1位、Billboard 200 で4位。Metacritic 93、Spin と Vulture で年間1位など年末リスト上位多数。</td>
+                <td class="note" data-label="備考"><span class="flag">S確定</span>通算14作目。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://en.wikipedia.org/wiki/Songs_of_a_Lost_World" target="_blank" rel="noopener">Wikipedia</a>
+                  <a href="https://www.officialcharts.com/albums/cure-songs-of-a-lost-world/" target="_blank" rel="noopener">Official Charts</a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 03 境界フラグ -->
+      <section id="flags">
+        <div class="sec-head"><span class="num">03</span><h2>境界フラグ</h2></div>
+        <p class="sec-note">絶対除外ルール（ラップ／ヒップホップ、ミクスチャー、トランス／エレクトロニカ）に触れる可能性を明示した作品。いずれも Hiro の判断を経て採用されており、その経緯を記録する。</p>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge">境界／絶対除外</span>
+            <div>
+              <span class="artist">Beyoncé</span>
+              <span class="album" style="margin-left:8px;">『Cowboy Carter』</span>
+            </div>
+          </div>
+          <p>実績自体はS級（Billboard 200／Top Country Albums 1位、「Texas Hold 'Em」の Hot 100 1位、グラミー Album of the Year／Best Country Album 受賞）。しかし Wikipedia のジャンル欄に Country 等と並んで hip-hop が明記され、Discogs でも Genre: Hip Hop を含むため、絶対除外要素に触れる。検証段階でSからAへ降格し、2023年 Stray Kids『5-STAR』と同じ構図として Hiro の判断を仰いだ。全昇格の判断により採用（この回限りの判断として記録）。</p>
+          <div class="src">
+            <a href="https://en.wikipedia.org/wiki/Cowboy_Carter" target="_blank" rel="noopener">Wikipedia</a>
+            <a href="https://www.discogs.com/release/30236687-Beyonc%C3%A9-COWBOY-CARTER" target="_blank" rel="noopener">Discogs</a>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge">境界</span>
+            <div>
+              <span class="artist">Charli xcx</span>
+              <span class="album" style="margin-left:8px;">『Brat』</span>
+            </div>
+          </div>
+          <p>「Brat Summer」は2024年を象徴する文化現象で、Rolling Stone／Billboard の年間ベスト1位。一方でクラブ／エレクトロニック色が強く、絶対除外のトランス／エレクトロニカに触れる可能性がある境界作品として、収集段階からフラグが立てられていた。Hiro の全昇格判断で採用。</p>
+        </div>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge">境界</span>
+            <div>
+              <span class="artist">aespa</span>
+              <span class="album" style="margin-left:8px;">『Armageddon』</span>
+            </div>
+          </div>
+          <p>IFPI 世界アルバム売上9位の実績がある一方、電子寄りのK-POPプロダクションであり、エレクトロニカ除外との境界として明記。Hiro の全昇格判断で採用。</p>
+        </div>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge">境界</span>
+            <div>
+              <span class="artist">Coldplay</span>
+              <span class="album" style="margin-left:8px;">『Moon Music』</span>
+            </div>
+          </div>
+          <p>収録曲「We Pray」に Little Simz、Burna Boy 等のラッパーが客演している。2024年 MAINSTREAM ROCK / ARENA HEROES 選出ではこの理由でA降格した作品。YEARLY では Hiro の全昇格判断でアルバムを採用し、楽曲選出では「We Pray」を選ばないことで対応した。</p>
+        </div>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge gold">注記</span>
+            <div>
+              <span class="artist">Post Malone</span>
+              <span class="album" style="margin-left:8px;">『F-1 Trillion』</span>
+            </div>
+          </div>
+          <p>アーティストはヒップホップ出身だが、本作自体はラップ盤ではなくカントリー盤であり、Billboard の分類もカントリー。絶対除外には当たらないとして採用した。</p>
+        </div>
+      </section>
+
+      <!-- 04 落選・不採用 -->
+      <section id="dropped">
+        <div class="sec-head"><span class="num">04</span><h2>落選・不採用</h2></div>
+        <p class="sec-note">最終選出に残らなかった作品を、段階と理由ごとに記録する。</p>
+
+        <h3>重複排除</h3>
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr><th>アーティスト／アルバム</th><th>発売日</th><th>理由</th><th>出典</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><div class="artist">Pearl Jam</div><div class="album">『Dark Matter』</div></td>
+                <td class="date">2024-04-19</td>
+                <td class="reason" data-label="理由">2024年 MAINSTREAM ROCK / ARENA HEROES で既採用のため重複排除。UK／US トップ5デビュー、タイトル曲が Billboard Mainstream Rock で4週1位の実績はあった。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://metalinsider.net/columns/metal-by-numbers/metal-by-numbers-top-13-chart-topping-debuts-of-2024" target="_blank" rel="noopener">Metal Insider</a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>落選（Hiro の判断）</h3>
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr><th>アーティスト／アルバム</th><th>発売日</th><th>理由</th><th>出典</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><div class="artist">Shakira</div><div class="album">『Las Mujeres Ya No Lloran』</div></td>
+                <td class="date">2024-03-22</td>
+                <td class="reason" data-label="理由">A候補15枚から1枚を落とす必要があり、推薦に基づき Hiro が落選を決定。年間ベストでの順位が Billboard 39位と候補内で最も弱く、看板シングル「TQG」（Karol G との共作）が2023年の曲であることが理由。7年ぶりの新作で、ラテンチャート1位の実績はあった。</td>
+                <td data-label="出典"><div class="src">
+                  <a href="https://www.prettygoodmusic.app/collection/billboards-50-best-albums-of-2024-OXfok4" target="_blank" rel="noopener">Pretty Good Music</a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>B候補で不採用</h3>
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr><th>アーティスト／アルバム</th><th>発売日</th><th>補足</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="album-cell"><div class="artist">St. Vincent</div><div class="album">『All Born Screaming』</div></td>
+                <td class="date">2024-04-26</td>
+                <td class="reason" data-label="補足">グラミー Best Alternative Album 受賞、Rolling Stone 年間トップ50、Guardian 年末リスト入り。批評面の実績は強いが、売上・話題性の規模でB。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">MJ Lenderman</div><div class="album">『Manning Fireworks』</div></td>
+                <td class="date">2024-09-06</td>
+                <td class="reason" data-label="補足">Rolling Stone 年間3位、Uproxx Critics Poll 4位など批評家年間ベストの上位。ただし売上規模が小さい。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Clairo</div><div class="album">『Charm』</div></td>
+                <td class="date">2024-07-12</td>
+                <td class="reason" data-label="補足">Guardian 年間4位、Billboard 年間ベスト15位、グラミー Best Alternative Album ノミネート。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Vampire Weekend</div><div class="album">『Only God Was Above Us』</div></td>
+                <td class="date">2024-04-05</td>
+                <td class="reason" data-label="補足">Rolling Stone 年末トップ50入り、Billboard 200 トップ20デビュー。年末リスト入りはあるが売上は中規模。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Kacey Musgraves</div><div class="album">『Deeper Well』</div></td>
+                <td class="date">2024-03-15</td>
+                <td class="reason" data-label="補足">Billboard 年間ベスト12位、グラミー Best Country Album ノミネート、US 初登場トップ3。2024年 STADIUM COUNTRY では未採用のため重複ではない。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Waxahatchee</div><div class="album">『Tigers Blood』</div></td>
+                <td class="date">2024-03-22</td>
+                <td class="reason" data-label="補足">Rolling Stone 年間10位、グラミー Best Americana Album ノミネート。2024年 AAA ではA検証済み（未採用）。</td>
+              </tr>
+              <tr>
+                <td class="album-cell"><div class="artist">Ado</div><div class="album">『残夢』</div></td>
+                <td class="date">2024-07-10</td>
+                <td class="reason" data-label="補足">オリコン年間アルバム29位（152,309枚）。候補収集で拾われた日本勢はこの1枚のみで、B止まり。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 05 特記事項 -->
+      <section id="notes">
+        <div class="sec-head"><span class="num">05</span><h2>特記事項</h2></div>
+        <p class="sec-note">候補収集の範囲についての注記。</p>
+
+        <div class="callout">
+          <div class="head">
+            <span class="badge gold">注記</span>
+            <div>
+              <span class="artist">日本勢について</span>
+            </div>
+          </div>
+          <p>候補収集で拾われた日本のアーティストは Ado『残夢』のみだった。2024年の日本の象徴的な作品として考えられる米津玄師『LOST CORNER』と Official髭男dism『Rejoice』は、候補収集の段階で漏れており、その旨を Hiro に指摘した。しかし Hiro はA候補の全昇格案を選んだため、今回は両作の追加検証は行っていない。</p>
+        </div>
+      </section>
+
+      <footer>
+        <span class="stamp">選出：<b>2026-11-20</b>／エビデンス確認済み</span>
+        <span>2024年 ジャンル別アルバム選出資料 — 8. YEARLY MASTERPIECES &amp; HITS</span>
+      </footer>
+
+    </div>
+  </body>
+</html>
