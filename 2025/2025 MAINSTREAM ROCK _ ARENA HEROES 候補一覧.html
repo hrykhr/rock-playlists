@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 MAINSTREAM ROCK / ARENA HEROES 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2ef;
+    --surface:#ffffff;
+    --surface-2:#eceae6;
+    --ink:#191817;
+    --ink-2:#4b4844;
+    --muted:#76716b;
+    --line:#ddd9d2;
+    --line-strong:#191817;
+    --accent:#b91c1c;
+    --accent-ink:#ffffff;
+    --accent-soft:#fdecec;
+    --gold:#8a6d1b;
+    --gold-bg:#f7ecd0;
+    --silver:#5b5f66;
+    --silver-bg:#e8eaed;
+    --bronze:#7c4a1e;
+    --bronze-bg:#f3e2d3;
+    --warn-bg:#fff7e6;
+    --warn-line:#e3c878;
+    --warn-ink:#5c4a12;
+    --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131211;
+      --surface:#1e1d1b;
+      --surface-2:#262422;
+      --ink:#f0ede8;
+      --ink-2:#c9c4bb;
+      --muted:#9a958c;
+      --line:#35322e;
+      --line-strong:#f0ede8;
+      --accent:#e5484d;
+      --accent-soft:#3a1d1e;
+      --gold:#e3c878;
+      --gold-bg:#332b14;
+      --silver:#c3c8cf;
+      --silver-bg:#2a2d31;
+      --bronze:#e0a878;
+      --bronze-bg:#33241a;
+      --warn-bg:#2e2712;
+      --warn-line:#6b5a22;
+      --warn-ink:#e8d48a;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 64px}
+
+  header{padding:40px 0 0}
+  .year-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .year{font-family:"Oswald",sans-serif;font-weight:700;font-size:64px;line-height:.95;letter-spacing:.01em}
+  .year-sub{font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:10px 0 0;font-size:clamp(26px,4.6vw,40px);line-height:1.25;font-weight:900;letter-spacing:.01em}
+  h1 .en{display:block;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;font-size:.62em;color:var(--ink-2);margin-top:6px}
+  .lead{margin:16px 0 0;color:var(--ink-2);max-width:46em;font-size:15.5px}
+  .lead strong{color:var(--ink)}
+
+  .flow{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--line-strong);box-shadow:var(--shadow);padding:20px 20px 18px}
+  .flow h2{margin:0 0 14px;font-size:13px;letter-spacing:.14em;font-weight:900}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .step{padding:0 14px;border-left:1px solid var(--line)}
+  .step:first-child{padding-left:0;border-left:none}
+  .step .num{font-family:"Oswald",sans-serif;font-weight:700;font-size:34px;line-height:1}
+  .step .num small{font-size:16px;color:var(--muted);font-weight:600}
+  .step .label{margin-top:6px;font-weight:700;font-size:13.5px;line-height:1.5}
+  .step .note{margin-top:2px;color:var(--muted);font-size:12.5px;line-height:1.55}
+  .step.final .num{color:var(--accent)}
+  @media (max-width:760px){
+    .flow-steps{grid-template-columns:1fr 1fr}
+    .step{padding:10px 12px 10px 0;border-left:none;border-top:1px solid var(--line)}
+    .step:nth-child(-n+2){border-top:none;padding-top:0}
+    .step:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+  }
+
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line-strong);padding-bottom:10px}
+  .sec-no{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.08em}
+  .sec-head h2{margin:0;font-size:clamp(20px,3.4vw,26px);font-weight:900;line-height:1.3}
+  .sec-head .count{margin-left:auto;font-family:"Oswald",sans-serif;font-weight:600;font-size:14px;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
+  .sec-desc{margin:12px 0 0;color:var(--ink-2);max-width:52em}
+  .sec-desc strong{color:var(--ink)}
+
+  .table-card{margin-top:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:var(--surface-2);text-align:left;font-size:12px;letter-spacing:.1em;font-weight:900;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--ink-2)}
+  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  .artist{font-weight:900;font-size:15px;line-height:1.4}
+  .album{font-weight:700;font-size:15px;line-height:1.4}
+  .album .formal{display:block;margin-top:4px;font-weight:500;font-size:12.5px;color:var(--muted);line-height:1.55}
+  .date{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.03em;white-space:nowrap;font-size:14.5px}
+  .basis{color:var(--ink-2);line-height:1.7}
+  .basis strong{color:var(--ink)}
+  .sources{display:flex;flex-direction:column;gap:2px;min-width:132px}
+  .sources a{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:4px 0;font-size:13px;font-weight:700;text-decoration:none;line-height:1.35}
+  .sources a:hover{text-decoration:underline}
+  .sources a::after{content:"↗";font-size:11px;opacity:.7}
+  .no-cell{font-family:"Oswald",sans-serif;font-weight:700;color:var(--muted);font-size:15px}
+
+  .badge{display:inline-block;font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;padding:2px 10px;border-radius:999px;line-height:1.6;white-space:nowrap}
+  .badge-s{background:var(--accent);color:var(--accent-ink)}
+  .badge-a{background:var(--gold-bg);color:var(--gold)}
+  .badge-b{background:var(--silver-bg);color:var(--silver)}
+  .badge-down{background:var(--bronze-bg);color:var(--bronze)}
+
+  .flag{display:block;margin-top:8px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:12.5px;line-height:1.6;padding:7px 10px;border-radius:6px;font-weight:500}
+  .flag b{font-weight:900}
+
+  .group-row td{background:var(--surface-2);font-weight:900;font-size:12.5px;letter-spacing:.1em;padding:8px 14px;color:var(--ink-2)}
+
+  @media (max-width:760px){
+    .year{font-size:48px}
+    header{padding-top:28px}
+    .table-card{border:none;box-shadow:none;background:transparent;overflow:visible}
+    table, thead, tbody, tr, td{display:block;width:100%}
+    thead{display:none}
+    tbody tr{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:12px;padding:6px 2px}
+    tbody td{border-bottom:1px dashed var(--line);padding:10px 14px}
+    tbody td:last-child{border-bottom:none}
+    td::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--muted);margin-bottom:4px}
+    td.no-cell::before, td.rank-cell::before{margin-bottom:2px}
+    .no-cell{font-size:13px}
+    .group-row td{margin:18px 0 10px;border:1px solid var(--line);box-shadow:none}
+    .group-row td::before{display:none}
+    .sources{min-width:0}
+    .date{white-space:normal}
+  }
+
+  .notes{margin-top:16px;display:grid;gap:12px}
+  .note-card{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 18px}
+  .note-card h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .note-card h3 .who{color:var(--accent)}
+  .note-card p{margin:0;color:var(--ink-2)}
+  .note-card p strong{color:var(--ink)}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="year-line">
+      <span class="year">2025</span>
+      <span class="year-sub">Album Selection — Evidence</span>
+    </div>
+    <h1>MAINSTREAM ROCK / ARENA HEROES 候補一覧
+      <span class="en">Genre 1 — Mainstream Rock / Arena Heroes</span>
+    </h1>
+    <p class="lead">2025年の <strong>MAINSTREAM ROCK / ARENA HEROES</strong> におけるアルバム選出のエビデンスページ。候補の収集から重複排除、Sランク検証を経て確定した<strong>最終選出6枚</strong>と、未採用のA／B候補19枚を、根拠と出典つきで記録する。S候補6枚はすべてSとして確定し、<strong>降格は0枚</strong>だった。</p>
+  </header>
+
+  <div class="flow" aria-label="選出の流れ">
+    <h2>選出の流れ — 概要</h2>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="num">25<small> 枚</small></div>
+        <div class="label">候補を収集</div>
+        <div class="note">2025年リリース作から候補を収集</div>
+      </div>
+      <div class="step">
+        <div class="num">0<small> 枚</small></div>
+        <div class="label">重複除外</div>
+        <div class="note">既出アルバム累積リストと照合し重複ゼロ、全25枚が残った</div>
+      </div>
+      <div class="step">
+        <div class="num">6<small> 枚</small></div>
+        <div class="label">Sランク候補を検証</div>
+        <div class="note">各候補を2ソース以上で検証</div>
+      </div>
+      <div class="step">
+        <div class="num">6<small> 枚</small></div>
+        <div class="label">S確定 6枚・降格 0枚</div>
+        <div class="note">検証の結果、6枚すべてがS確定、降格なし</div>
+      </div>
+      <div class="step final">
+        <div class="num">6<small> 枚</small></div>
+        <div class="label">最終選出</div>
+        <div class="note">品質優先ルールで定める5〜10枚の枠内</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="final">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>最終選出 — S確定</h2>
+      <span class="count">6 ALBUMS</span>
+    </div>
+    <p class="sec-desc">Sランク候補6枚を2ソース以上で検証し、すべてSとして確定した6枚。いずれも本ジャンルの中核——アリーナ級の王道ロック——に位置づけられる作品で、絶対除外要素には該当しない。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>発売日</th><th>ジャンル根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no-cell" data-label="No.">1</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Ghost</div>
+              <div class="album">Skeletá</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-04-25</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル表記は <strong>Hard rock, arena rock, pop rock, glam metal</strong>。AllMusicのスタイルは <strong>Hard rock, heavy metal, pop-metal</strong>。通算6作目のスタジオ盤で、初のBillboard 200 1位。10曲・46:43。</td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/Skelet%C3%A1" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://www.allmusic.com/album/mw0004480674" target="_blank" rel="noopener">AllMusic</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">2</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Halestorm</div>
+              <div class="album">Everest</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-08-08</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル表記は <strong>Hard rock, heavy metal</strong>。レビューでもバンド典型のハードロック・サウンドと確認された。通算6作目、12曲・48:31。女性フロントだが、本ジャンルに女性枠はない（境界メモ参照）。</td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/Everest_(album)" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://www.premierguitar.com/news/halestorm-everest" target="_blank" rel="noopener">Premier Guitar</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">3</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Volbeat</div>
+              <div class="album">God of Angels Trust</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-06-06</span></td>
+            <td class="basis" data-label="ジャンル根拠">AllMusicは本作を <strong>hard rock／heavy metal</strong> 系と位置づけ、Blabbermouthは「<strong>the heaviest and wildest Volbeat album to date</strong>」と評す。Metacriticのジャンルは Pop/Rock - Hard Rock。通算9作目、10曲・44:10。Rob Caggiano脱退後、トリオ編成での初のスタジオ盤。</td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/God_of_Angels_Trust" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://www.allmusic.com/album/release/god-of-angels-trust-mr0006638081" target="_blank" rel="noopener">AllMusic</a>
+              <a href="https://blabbermouth.net/reviews/god-of-angels-trust" target="_blank" rel="noopener">Blabbermouth</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">4</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Mammoth</div>
+              <div class="album">The End</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-10-24</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaのアルバムページのジャンル表記は <strong>Rock</strong> のみだが、バンドページでは <strong>Hard rock, alternative rock</strong>。AllMusicは「<strong>potent amalgam of hard rock, grunge, and melodic metal</strong>」と評す。通算3作目（Mammoth WVHからMammothへ短縮した名義での初作）、10曲・39:09。
+              <span class="flag"><b>短尺に留意：</b>10曲・39:09とやや短め（30分台後半）。</span>
+            </td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/The_End_(Mammoth_album)" target="_blank" rel="noopener">Wikipedia（アルバム）</a>
+              <a href="https://en.wikipedia.org/wiki/Mammoth_(band)" target="_blank" rel="noopener">Wikipedia（バンド）</a>
+              <a href="https://www.allmusic.com/album/mw0004565247" target="_blank" rel="noopener">AllMusic</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">5</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">The Darkness</div>
+              <div class="album">Dreams on Toast</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-03-28</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル表記は <strong>Hard rock</strong>（単独表記）。英国ハードロック・バンドの中核作。通算8作目、10曲・33:05。
+              <span class="flag"><b>最短の1枚：</b>今回の6枚中で最短（33:05）。標準盤10曲で判定。</span>
+            </td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/Dreams_on_Toast" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://www.allmusic.com/album/release/dreams-on-toast-mr0006511510" target="_blank" rel="noopener">AllMusic</a>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">6</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Alice Cooper</div>
+              <div class="album">The Revenge of Alice Cooper</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-07-25</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル表記は <strong>Hard rock, shock rock, glam rock</strong>。オリジナル・バンドによる初のフル・コラボレーションは1973年『Muscle of Love』以来。バンドAlice Cooperとしての通算8作目（ソロ名義の通算とは数え方が異なる）。標準盤14曲・54:20。</td>
+            <td data-label="出典"><div class="sources">
+              <a href="https://en.wikipedia.org/wiki/The_Revenge_of_Alice_Cooper" target="_blank" rel="noopener">Wikipedia</a>
+              <a href="https://alicecooper.com/back-to-the-beginning-a-review-of-the-alice-cooper-bands-the-revenge-of-alice-cooper-out-july-25-2025/" target="_blank" rel="noopener">Alice Cooper公式</a>
+              <a href="https://www.discogs.com/release/34636333-Alice-Cooper-The-Revenge-Of-Alice-Cooper" target="_blank" rel="noopener">Discogs</a>
+            </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="candidates">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>A／B候補 — 未採用</h2>
+      <span class="count">19 ALBUMS</span>
+    </div>
+    <p class="sec-desc">候補25枚のうち、最終選出には至らなかった19枚。適合ランクは <strong>A（11枚）</strong> と <strong>B（8枚）</strong>。<strong>S枠6枚が確定したため、品質優先で不採用</strong>とした。他ジャンルとの境界や絶対除外ルールとの関係にあたる作品は、その旨を根拠メモに明示している。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th>アーティスト ／ アルバム</th><th>発売日</th><th>適合ランク</th><th>根拠メモ</th></tr>
+        </thead>
+        <tbody>
+          <tr class="group-row"><td colspan="4">A ランク — 11枚</td></tr>
+
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Biffy Clyro</div><div class="album">Futique</div></td>
+            <td data-label="発売日"><span class="date">2025-09-19</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Alternative rock。アリーナ・ヘッドライナー級、通算10作目</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Sam Fender</div><div class="album">People Watching</div></td>
+            <td data-label="発売日"><span class="date">2025-02-21</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Heartland rock, pop。スタジアム級ギター・アンセム</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Yungblud</div><div class="album">Idols</div></td>
+            <td data-label="発売日"><span class="date">2025-06-20</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Rock、グラミー賞 Best Rock Album ノミネート。Discogs: Alternative/Hard Rock, Pop Rock, Britpop</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Bryan Adams</div><div class="album">Roll with the Punches</div></td>
+            <td data-label="発売日"><span class="date">2025-08-29</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">リフ中心のメインストリーム・ロック
+              <span class="flag"><b>Wikipediaでは確認できない：</b>アルバム単独ページがなく、ディスコグラフィとメディアで確認。</span>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Styx</div><div class="album">Circling from Above</div></td>
+            <td data-label="発売日"><span class="date">2025-07-18</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">通算18作目。AORにプログ要素を含む</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Cheap Trick</div><div class="album">All Washed Up</div></td>
+            <td data-label="発売日"><span class="date">2025-11-14</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">通算21作目。クラシック・ロックの手触り</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Tremonti</div><div class="album">The End Will Show Us How</div></td>
+            <td data-label="発売日"><span class="date">2025-01-10</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Alternative metal, hard rock。Alter Bridge／Creedの系譜</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">The Amazons</div><div class="album">21st Century Fiction</div></td>
+            <td data-label="発売日"><span class="date">2025-05-09</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">英国ハードロック、アンセム性のある作品</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Inhaler</div><div class="album">Open Wide</div></td>
+            <td data-label="発売日"><span class="date">2025-02-07</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Indie rock, pop rock。スタジアム志向。一部にエレクトロポップ／ディスコ色の指摘あり</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Manic Street Preachers</div><div class="album">Critical Thinking</div></td>
+            <td data-label="発売日"><span class="date">2025-02-14</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Discogs style Alternative Rock、通算15作目
+              <span class="flag"><b>Wikipediaでは確認できない：</b>アルバムページは取得できず、Discogs／メディアで確認。</span>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Pop Evil</div><div class="album">What Remains</div></td>
+            <td data-label="発売日"><span class="date">2025-03-21</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">アリーナ対応のモダン・ロック
+              <span class="flag"><b>絶対除外の精査：</b>一部レビューで個別曲にニューメタル／エレクトロニカ要素の指摘があり、精査対象として明示。</span>
+            </td>
+          </tr>
+
+          <tr class="group-row"><td colspan="4">B ランク — 8枚</td></tr>
+
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Three Days Grace</div><div class="album">Alienation</div></td>
+            <td data-label="発売日"><span class="date">2025-08-22</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">正典的な post-grunge／alternative metal のためマニュアル上B。Adam Gontier復帰作</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Sleep Token</div><div class="album">Even in Arcadia</div></td>
+            <td data-label="発売日"><span class="date">2025-05-09</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Alternative metal, pop, R&amp;B, djent, progressive metal。Billboard 200 1位
+              <span class="flag"><b>絶対除外との境界：</b>pop rap／trap／hip hop要素の表記があり、ラップ／ヒップホップ絶対除外との境界として明示。</span>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Dorothy</div><div class="album">The Way</div></td>
+            <td data-label="発売日"><span class="date">2025-03-14</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Rock, hard rock, blues rock, Southern rock。モダンな Southern Rock としてB。STADIUM COUNTRYとの境界</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Bush</div><div class="album">I Beat Loneliness</div></td>
+            <td data-label="発売日"><span class="date">2025-07-18</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Post-grungeの系譜のためB</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Chevelle</div><div class="album">Bright as Blasphemy</div></td>
+            <td data-label="発売日"><span class="date">2025-08-15</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Alternative metal, hard rock
+              <span class="flag"><b>絶対除外の精査：</b>Discogsの一部プレスで Nu Metal 表記があり、精査対象として明示。</span>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Franz Ferdinand</div><div class="album">The Human Fear</div></td>
+            <td data-label="発売日"><span class="date">2025-01-10</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Indie rock, dance-rock。ギターベースでエレクトロニカではないが、スタジアム・アンセムの規模感は弱め</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Counting Crows</div><div class="album">Butter Miracle, The Complete Sweets!</div></td>
+            <td data-label="発売日"><span class="date">2025-05-09</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">2021年EPの拡張版（EP4曲＋新曲5曲、一部書き換えあり）。独自性チェックを明示</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Finger Eleven</div><div class="album">Last Night on Earth</div></td>
+            <td data-label="発売日"><span class="date">2025-11-07</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Post-grungeの系譜。10年ぶりのスタジオ盤、スタジアム対応のエネルギー</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="boundary">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <h2>境界メモ</h2>
+      <span class="count">NOTES</span>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <h3><span class="who">Sleep Token</span> — 絶対除外ルールとの境界</h3>
+        <p>『Even in Arcadia』には <strong>pop rap／trap／hip hop</strong> 要素の表記があり、<strong>絶対除外ルール（ラップ／ヒップホップ）との境界</strong>としてフラグした。候補収集の広い段階でのみ保持し、最終選出には進めなかった。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">厳格ルール</span> — 女性枠なし</h3>
+        <p>本ジャンル（MAINSTREAM ROCK / ARENA HEROES）には<strong>女性枠ルールはない</strong>。最終6枚のうち女性フロントは <strong>Halestorm の1枚</strong>で、厳格ルールの確認は<strong>合格（passed）</strong>。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">重複排除</span> — 重複ゼロ</h3>
+        <p>既出アルバム累積リストと照合した結果、<strong>重複は0件</strong>。除外された候補はなく、<strong>全25枚が残った</strong>。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">Bryan Adams / Manic Street Preachers</span> — Wikipediaでは確認できない</h3>
+        <p>両作ともアルバム単独のWikipediaページが存在しない（または取得できない）ため、<strong>「Wikipediaでは確認できない」</strong>旨を明記した。Bryan Adams はディスコグラフィとメディアで、Manic Street Preachers は Discogs／メディアで確認し、いずれも信頼できる別ソースで検証した。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    2025年 MAINSTREAM ROCK / ARENA HEROES アルバム選出エビデンス — 候補25枚／重複除外0枚／S検証6枚／S確定6枚（降格なし）／最終選出6枚（品質優先ルール：5〜10枚）。出典リンクは各表の「出典」欄に記載。
+  </footer>
+
+</div>
+</body>
+</html>

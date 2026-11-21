@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 MAINSTREAM ROCK / ARENA HEROES 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f3ed;
+    --bg2:#efe9e0;
+    --card:#ffffff;
+    --card2:#fdfaf6;
+    --ink:#171412;
+    --ink2:#4a423c;
+    --muted:#7a6f66;
+    --line:#ddd3c7;
+    --line-strong:#171412;
+    --accent:#c81e1e;
+    --accent-ink:#fff;
+    --gold:#b7791f;
+    --chip:#171412;
+    --chip-ink:#f7f3ed;
+    --warn-bg:#fff7e6;
+    --warn-line:#e6c87a;
+    --warn-ink:#5c4300;
+    --shadow:0 1px 0 rgba(0,0,0,.06), 0 12px 32px rgba(23,20,18,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#121110;
+      --bg2:#1a1816;
+      --card:#1e1b19;
+      --card2:#23201e;
+      --ink:#f2ece6;
+      --ink2:#cbc0b6;
+      --muted:#9a8f85;
+      --line:#37302c;
+      --line-strong:#f2ece6;
+      --accent:#ff3b30;
+      --gold:#e0a83a;
+      --chip:#f2ece6;
+      --chip-ink:#171412;
+      --warn-bg:#2a2210;
+      --warn-line:#6b5518;
+      --warn-ink:#f5d98a;
+      --shadow:0 12px 32px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 64px}
+  /* HERO */
+  .hero{border-bottom:3px solid var(--line-strong);padding:36px 0 28px;margin-bottom:0}
+  .hero-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:22px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-family:Oswald,sans-serif;letter-spacing:.14em;font-weight:600;font-size:13px;text-transform:uppercase}
+  .kicker::before{content:"";width:28px;height:3px;background:var(--accent);display:inline-block}
+  .year-badge{font-family:Oswald,sans-serif;font-weight:700;font-size:13px;letter-spacing:.12em;border:1.5px solid var(--line-strong);padding:6px 12px;border-radius:999px}
+  h1{font-family:Oswald,"Noto Sans JP",sans-serif;font-weight:700;line-height:.95;letter-spacing:.01em;margin:0;text-transform:uppercase}
+  h1 .line1{display:block;font-size:clamp(52px,9vw,96px)}
+  h1 .line2{display:block;font-size:clamp(28px,5.2vw,54px);color:var(--accent);margin-top:6px}
+  .hero-jp{font-weight:900;font-size:clamp(18px,2.6vw,24px);margin:18px 0 6px;letter-spacing:.02em}
+  .hero-lead{color:var(--ink2);max-width:720px;margin:0;font-size:15.5px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1.5px solid var(--line-strong);margin-top:28px;background:var(--card)}
+  .stat{padding:16px 18px 14px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat b{font-family:Oswald,sans-serif;font-size:32px;line-height:1;display:block;font-weight:700}
+  .stat span{font-size:12.5px;color:var(--muted);font-weight:700;letter-spacing:.04em}
+  /* NAV */
+  .album-nav{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0 4px}
+  .album-nav a{text-decoration:none;font-weight:700;font-size:13.5px;border:1px solid var(--line);background:var(--card);padding:10px 14px;border-radius:999px;min-height:40px;display:inline-flex;align-items:center}
+  .album-nav a:hover{border-color:var(--line-strong)}
+  .album-nav a i{font-style:normal;font-family:Oswald,sans-serif;color:var(--accent);margin-right:7px}
+  /* OVERVIEW TABLE */
+  .section-head{display:flex;align-items:baseline;gap:14px;margin:40px 0 16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .section-head h2{font-size:20px;font-weight:900;margin:0;letter-spacing:.02em}
+  .section-head span{font-family:Oswald,sans-serif;font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .overview{border:1.5px solid var(--line-strong);background:var(--card);overflow:hidden}
+  .ov-row{display:grid;grid-template-columns:44px 1.15fr 1fr 1.6fr 64px;gap:0;border-bottom:1px solid var(--line)}
+  .ov-row:last-child{border-bottom:none}
+  .ov-row > div{padding:11px 14px;font-size:14px}
+  .ov-row .no{font-family:Oswald,sans-serif;font-weight:700;color:var(--accent);text-align:center;padding-left:6px;padding-right:6px}
+  .ov-row .artist{font-weight:900}
+  .ov-row .album{color:var(--ink2);font-style:italic}
+  .ov-row .track{font-weight:700}
+  .ov-row .time{font-family:Oswald,sans-serif;text-align:right;color:var(--muted)}
+  .ov-head{background:var(--bg2);font-size:11.5px !important;font-weight:900;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .ov-head > div{font-size:11.5px}
+  /* ALBUM SECTIONS */
+  .album{margin-top:48px;scroll-margin-top:16px}
+  .album-head{display:flex;gap:18px;align-items:flex-start;border-top:3px solid var(--line-strong);padding-top:20px}
+  .album-num{font-family:Oswald,sans-serif;font-size:52px;line-height:.9;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--ink);flex:none}
+  @media (prefers-color-scheme: dark){ .album-num{-webkit-text-stroke:1.5px var(--ink)} }
+  .album-head h2{margin:0;font-size:clamp(24px,4vw,34px);font-weight:900;line-height:1.2}
+  .album-head h2 em{font-style:italic;font-weight:700;color:var(--ink2)}
+  .album-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pill{font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 10px;color:var(--ink2)}
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  .track{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:20px 20px 16px;display:flex;flex-direction:column}
+  .track-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .track-no{font-family:Oswald,sans-serif;font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:600}
+  .duration{font-family:Oswald,sans-serif;font-weight:700;font-size:15px;border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 10px;white-space:nowrap}
+  .track h3{font-size:22px;font-weight:900;margin:8px 0 10px;line-height:1.3;overflow-wrap:anywhere}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .badge{font-size:11.5px;font-weight:900;letter-spacing:.03em;padding:4px 9px;border-radius:4px;background:var(--chip);color:var(--chip-ink)}
+  .badge.red{background:var(--accent);color:#fff}
+  .badge.outline{background:transparent;color:var(--ink2);border:1px solid var(--line)}
+  .track p{margin:0 0 10px;font-size:14.5px;color:var(--ink2)}
+  .track p strong{color:var(--ink)}
+  .evidence{margin:4px 0 14px;padding:12px 14px;background:var(--card2);border:1px solid var(--line);font-size:13.5px}
+  .evidence h4{margin:0 0 6px;font-size:12px;letter-spacing:.08em;color:var(--muted)}
+  .evidence ul{margin:0;padding-left:18px;color:var(--ink2)}
+  .evidence li{margin:3px 0}
+  .evidence li strong{color:var(--ink)}
+  .note-box{margin-top:auto;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:13px;padding:10px 12px;margin-bottom:14px;line-height:1.6}
+  .note-box b{font-weight:900}
+  .sources{border-top:1px dashed var(--line);padding-top:12px;margin-top:auto}
+  .sources span{font-size:11.5px;font-weight:900;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:6px}
+  .sources a{display:inline-flex;align-items:center;min-height:36px;font-size:13px;font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:3px;margin-right:16px;padding:4px 0;overflow-wrap:anywhere}
+  /* TSV */
+  .tsv-box{background:var(--card);border:1.5px solid var(--line-strong);padding:20px}
+  .tsv-box p{margin:0 0 12px;color:var(--ink2);font-size:14px}
+  pre.tsv{background:#171412;color:#f2ece6;padding:16px;font-size:12.5px;line-height:1.7;margin:0 0 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}
+  @media (prefers-color-scheme: dark){ pre.tsv{background:#0b0a09;border:1px solid var(--line)} }
+  .copy-btn{appearance:none;border:none;background:var(--ink);color:var(--bg);font:inherit;font-weight:900;font-size:14px;padding:12px 20px;border-radius:999px;min-height:48px;cursor:pointer}
+  .copy-status{font-size:13px;color:var(--muted);margin-left:12px;font-weight:700}
+  /* NOTES */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .rule{background:var(--card);border:1px solid var(--line);padding:18px}
+  .rule b{font-family:Oswald,sans-serif;font-size:28px;display:block;line-height:1;margin-bottom:8px}
+  .rule h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .rule p{margin:0;font-size:13.5px;color:var(--ink2)}
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+  @media (max-width:820px){
+    .stats{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+    .tracks{grid-template-columns:1fr}
+    .rules{grid-template-columns:1fr}
+    .ov-row{grid-template-columns:36px 1fr 56px;grid-template-areas:"no artist time" "no album time" "no track time"}
+    .ov-row .no{grid-area:no}.ov-row .artist{grid-area:artist;padding-bottom:0}
+    .ov-row .album{grid-area:album;padding-top:0;padding-bottom:0}
+    .ov-row .track{grid-area:track;padding-top:0}
+    .ov-row .time{grid-area:time}
+    .ov-head{display:none}
+    .album-num{font-size:40px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-top">
+      <span class="kicker">Track Selection — Evidence</span>
+      <span class="year-badge">2025 ・ GENRE 01</span>
+    </div>
+    <h1>
+      <span class="line1">Mainstream Rock</span>
+      <span class="line2">/ Arena Heroes</span>
+    </h1>
+    <p class="hero-jp">2025年 MAINSTREAM ROCK / ARENA HEROES — 楽曲選出エビデンス</p>
+    <p class="hero-lead">6組のアルバムから各2曲、全12曲を選出。12曲すべてがシングルカット曲で、バラード例外の適用はありません。各曲の選出根拠と出典を記録します。</p>
+
+    <div class="stats" aria-label="選出概要">
+      <div class="stat"><b>6</b><span>アルバム</span></div>
+      <div class="stat"><b>12</b><span>選出曲（各アルバム2曲）</span></div>
+      <div class="stat"><b>12 / 12</b><span>シングルカット曲</span></div>
+      <div class="stat"><b>0</b><span>バラード例外</span></div>
+    </div>
+
+    <nav class="album-nav" aria-label="アルバムへ移動">
+      <a href="#ghost"><i>01</i>Ghost</a>
+      <a href="#halestorm"><i>02</i>Halestorm</a>
+      <a href="#volbeat"><i>03</i>Volbeat</a>
+      <a href="#mammoth"><i>04</i>Mammoth</a>
+      <a href="#the-darkness"><i>05</i>The Darkness</a>
+      <a href="#alice-cooper"><i>06</i>Alice Cooper</a>
+    </nav>
+  </header>
+
+  <!-- OVERVIEW -->
+  <div class="section-head"><h2>選出曲一覧</h2><span>All 12 Tracks</span></div>
+  <div class="overview" role="table" aria-label="選出曲一覧">
+    <div class="ov-row ov-head"><div>No.</div><div>Artist</div><div>Album</div><div>Track</div><div style="text-align:right">Time</div></div>
+    <div class="ov-row"><div class="no">1</div><div class="artist">Ghost</div><div class="album">Skeletá</div><div class="track">Satanized</div><div class="time">3:56</div></div>
+    <div class="ov-row"><div class="no">2</div><div class="artist">Ghost</div><div class="album">Skeletá</div><div class="track">Lachryma</div><div class="time">4:36</div></div>
+    <div class="ov-row"><div class="no">3</div><div class="artist">Halestorm</div><div class="album">Everest</div><div class="track">Rain Your Blood On Me</div><div class="time">4:15</div></div>
+    <div class="ov-row"><div class="no">4</div><div class="artist">Halestorm</div><div class="album">Everest</div><div class="track">Like A Woman Can</div><div class="time">4:22</div></div>
+    <div class="ov-row"><div class="no">5</div><div class="artist">Volbeat</div><div class="album">God of Angels Trust</div><div class="track">By a Monster's Hand</div><div class="time">3:42</div></div>
+    <div class="ov-row"><div class="no">6</div><div class="artist">Volbeat</div><div class="album">God of Angels Trust</div><div class="track">In the Barn of the Goat Giving Birth to Satan's Spawn in a Dying World of Doom</div><div class="time">4:18</div></div>
+    <div class="ov-row"><div class="no">7</div><div class="artist">Mammoth</div><div class="album">The End</div><div class="track">The End</div><div class="time">3:33</div></div>
+    <div class="ov-row"><div class="no">8</div><div class="artist">Mammoth</div><div class="album">The End</div><div class="track">The Spell</div><div class="time">3:29</div></div>
+    <div class="ov-row"><div class="no">9</div><div class="artist">The Darkness</div><div class="album">Dreams on Toast</div><div class="track">Rock and Roll Party Cowboy</div><div class="time">4:27</div></div>
+    <div class="ov-row"><div class="no">10</div><div class="artist">The Darkness</div><div class="album">Dreams on Toast</div><div class="track">I Hate Myself</div><div class="time">3:15</div></div>
+    <div class="ov-row"><div class="no">11</div><div class="artist">Alice Cooper</div><div class="album">The Revenge of Alice Cooper</div><div class="track">Black Mamba</div><div class="time">4:57</div></div>
+    <div class="ov-row"><div class="no">12</div><div class="artist">Alice Cooper</div><div class="album">The Revenge of Alice Cooper</div><div class="track">Wild Ones</div><div class="time">4:17</div></div>
+  </div>
+
+  <!-- 01 GHOST -->
+  <section class="album" id="ghost">
+    <div class="album-head">
+      <div class="album-num">01</div>
+      <div>
+        <h2>Ghost <em>『Skeletá』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.1–2</span><span class="pill">2025-04-25 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.1</span><span class="duration">3:56</span></div>
+        <h3>Satanized</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">リードシングル</span><span class="badge outline">2025-03-05 発売</span></div>
+        <p>リードシングル。新フロントマン <strong>Papa V Perpetua</strong> の初披露曲であり、アルバムの幕開けを担う1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>シングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li>リードシングルで、<strong>Papa V Perpetua初披露曲</strong></li>
+          <li>バラードではなくアップテンポなオカルト・ロック（Blabbermouthで <strong>upbeat, fun track</strong> と説明）</li>
+          <li>収録と長さはWikipediaとMetal Archivesでクロスチェック</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Skelet%C3%A1" target="_blank" rel="noopener">Wikipedia — Skeletá</a>
+          <a href="https://www.metal-archives.com/albums/Ghost/Skelet%C3%A1/1373897" target="_blank" rel="noopener">Metal Archives — Skeletá</a>
+          <a href="http://blabbermouth.net/news/ghost-shares-music-video-for-new-single-lachryma-from-upcoming-skeleta-album" target="_blank" rel="noopener">Blabbermouth — Ghost</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.2</span><span class="duration">4:36</span></div>
+        <h3>Lachryma</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第2シングル</span><span class="badge outline">2025-04-11 発売</span></div>
+        <p>第2シングル（公式MVあり）。現代のロック・アンセムと評される、アルバムを代表する1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>シングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li>第2シングルで<strong>公式MV</strong>あり</li>
+          <li>Blabbermouthは <strong>「modern day rock anthem」</strong> と評する。バラードではない</li>
+          <li>収録と長さはWikipediaとMetal Archivesでクロスチェック</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Skelet%C3%A1" target="_blank" rel="noopener">Wikipedia — Skeletá</a>
+          <a href="https://www.metal-archives.com/albums/Ghost/Skelet%C3%A1/1373897" target="_blank" rel="noopener">Metal Archives — Skeletá</a>
+          <a href="http://blabbermouth.net/news/ghost-shares-music-video-for-new-single-lachryma-from-upcoming-skeleta-album" target="_blank" rel="noopener">Blabbermouth — Ghost</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 02 HALESTORM -->
+  <section class="album" id="halestorm">
+    <div class="album-head">
+      <div class="album-num">02</div>
+      <div>
+        <h2>Halestorm <em>『Everest』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.3–4</span><span class="pill">2025-08-08 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.3</span><span class="duration">4:15</span></div>
+        <h3>Rain Your Blood On Me</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge outline">2025-07-10 発売</span></div>
+        <p>シングル。Lzzy Haleが「女性たちへの賛歌／鬨の声（war cry）」と語る、重厚なサイレン・コールの1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>シングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li>Blabbermouth：<strong>heavy siren call</strong> が thumping dirge beat から erupting する曲</li>
+          <li>Lzzy Haleは <strong>「our ode to women」／war cry</strong> と説明。バラードではない</li>
+          <li>収録と長さはWikipediaとBlabbermouth／Qobuzでクロスチェック</li>
+        </ul></div>
+        <div class="note-box"><b>回避した曲：</b>タイトル曲「Everest」はバラードと評する媒体があるため回避し、上記2曲を選出しました。</div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Everest_(album)" target="_blank" rel="noopener">Wikipedia — Everest (album)</a>
+          <a href="https://blabbermouth.net/news/halestorm-shares-new-song-rain-your-blood-on-me-from-upcoming-everest-album" target="_blank" rel="noopener">Blabbermouth — Halestorm</a>
+          <a href="https://www.qobuz.com/gb-en/album/everest-halestorm/hejf3ig0oyw4a" target="_blank" rel="noopener">Qobuz — Everest</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.4</span><span class="duration">4:22</span></div>
+        <h3>Like A Woman Can</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge outline">2025-08-08 発売</span></div>
+        <p>アルバム発売と同時のシングル。Wikipediaの背景欄でも言及される、公式ビデオ付きの1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>シングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li>Wikipedia背景欄で <strong>bisexualityを扱う曲</strong> として言及され、公式ビデオも公開</li>
+          <li>Qobuzは rhythm'n'blues side と評するが、<strong>バラードとはされていない</strong></li>
+          <li>長さはWikipediaとQobuz／Deezerでクロスチェック（4:22）</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Everest_(album)" target="_blank" rel="noopener">Wikipedia — Everest (album)</a>
+          <a href="https://www.qobuz.com/gb-en/album/everest-halestorm/hejf3ig0oyw4a" target="_blank" rel="noopener">Qobuz — Everest</a>
+          <a href="https://www.deezer.com/en/artist/108493" target="_blank" rel="noopener">Deezer — Halestorm</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 03 VOLBEAT -->
+  <section class="album" id="volbeat">
+    <div class="album-head">
+      <div class="album-num">03</div>
+      <div>
+        <h2>Volbeat <em>『God of Angels Trust』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.5–6</span><span class="pill">2025-06-06 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.5</span><span class="duration">3:42</span></div>
+        <h3>By a Monster's Hand</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">リードシングル</span><span class="badge outline">2025-03-06 発売</span></div>
+        <p>リードシングル。ミドルテンポのリフ主体の曲で、アルバム発表と同時に公開された先行曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>リードシングルであることを <strong>WikipediaのSingles欄とBlabbermouth</strong>で確認</li>
+          <li>Blabbermouthは <strong>「mid-paced riff-fest」</strong> と説明。バラードではない</li>
+          <li>長さはWikipedia／Official ChartsのトラックリストとDiscogs CD盤でクロスチェック（3:42）</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/God_of_Angels_Trust" target="_blank" rel="noopener">Wikipedia — God of Angels Trust</a>
+          <a href="https://blabbermouth.net/news/volbeat-announces-new-album-god-of-angels-trust-shares-by-a-monsters-hand-single" target="_blank" rel="noopener">Blabbermouth — Volbeat</a>
+          <a href="https://www.discogs.com/release/34190239-Volbeat-God-Of-Angels-Trust?srsltid=AfmBOorhHFI2EcNorBj7xI3xi6K8fqXKvRqIlTYxxNdwYbJ3vUV1UoEd" target="_blank" rel="noopener">Discogs — God of Angels Trust</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.6</span><span class="duration">4:18</span></div>
+        <h3>In the Barn of the Goat Giving Birth to Satan's Spawn in a Dying World of Doom</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第2シングル</span><span class="badge outline">2025-04-04 発売</span></div>
+        <p>第2シングル。異様に長い曲名を持つアップテンポな収録曲で、バラードではありません。曲名表記はWikipedia準拠です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>第2シングルであることを <strong>WikipediaのPromotion欄とSingles欄</strong>で確認</li>
+          <li>アップテンポな収録曲で、<strong>バラードとはされていない</strong></li>
+          <li>長さはWikipedia／Official ChartsとDiscogs CD盤でクロスチェック（4:18）</li>
+        </ul></div>
+        <div class="note-box"><b>回避した曲：</b>対抗候補「Time Will Heal」はバラード寄りの懸念があるため回避しました。</div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/God_of_Angels_Trust" target="_blank" rel="noopener">Wikipedia — God of Angels Trust</a>
+          <a href="https://www.officialcharts.com/albums/volbeat-god-of-angels-trust/" target="_blank" rel="noopener">Official Charts — God of Angels Trust</a>
+          <a href="https://www.discogs.com/release/34190239-Volbeat-God-Of-Angels-Trust?srsltid=AfmBOorhHFI2EcNorBj7xI3xi6K8fqXKvRqIlTYxxNdwYbJ3vUV1UoEd" target="_blank" rel="noopener">Discogs — God of Angels Trust</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 04 MAMMOTH -->
+  <section class="album" id="mammoth">
+    <div class="album-head">
+      <div class="album-num">04</div>
+      <div>
+        <h2>Mammoth <em>『The End』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.7–8</span><span class="pill">2025-10-24 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.7</span><span class="duration">3:33</span></div>
+        <h3>The End</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">リードシングル</span><span class="badge outline">2025-05-01 発売</span></div>
+        <p>アルバムのタイトル曲であり、リードシングル。発売後にActive RockラジオでTop 5入りした1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>リードシングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li>発売後、<strong>Active Rock radioでTop 5入り</strong>（Premier Guitar／The Rockpit）</li>
+          <li>バラードではない</li>
+          <li>長さはWikipediaとDeezerでクロスチェック（3:33）</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/The_End_(Mammoth_album)" target="_blank" rel="noopener">Wikipedia — The End (Mammoth album)</a>
+          <a href="https://www.deezer.com/en/artist/112937382" target="_blank" rel="noopener">Deezer — Mammoth</a>
+          <a href="https://www.premierguitar.com/news/wolfgang-van-halens-mammoth-announces-third-album-the-end?share_id=8890371" target="_blank" rel="noopener">Premier Guitar — Mammoth</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.8</span><span class="duration">3:29</span></div>
+        <h3>The Spell</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第2シングル</span><span class="badge outline">2025-07-09 発売</span></div>
+        <p>第2シングル。アルバム発表と同時に公式ビデオが公開された1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>第2シングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li>アルバム発表と同時に<strong>公式ビデオ公開</strong>（The Mosh／The Rockpit）</li>
+          <li>バラードではない</li>
+          <li>長さはWikipediaとDeezerでクロスチェック（3:29）</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/The_End_(Mammoth_album)" target="_blank" rel="noopener">Wikipedia — The End (Mammoth album)</a>
+          <a href="https://www.deezer.com/en/artist/112937382" target="_blank" rel="noopener">Deezer — Mammoth</a>
+          <a href="https://themosh.net/mammoth-the-end-album-announcement/" target="_blank" rel="noopener">The Mosh — Mammoth</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 05 THE DARKNESS -->
+  <section class="album" id="the-darkness">
+    <div class="album-head">
+      <div class="album-num">05</div>
+      <div>
+        <h2>The Darkness <em>『Dreams on Toast』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.9–10</span><span class="pill">2025-03-28 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.9</span><span class="duration">4:27</span></div>
+        <h3>Rock and Roll Party Cowboy</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge outline">2025-01-24 発売</span></div>
+        <p>シングル。灼けるようなハードロックと評される、アルバムの推進力を担う1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>シングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li>Blabbermouthは <strong>「searing hard rock」</strong> と評する</li>
+          <li>アルバムは<strong>UK Albums Chart 2位</strong>デビュー</li>
+          <li>長さはWikipedia／BlabbermouthのトラックリストとDiscogsでクロスチェック（4:27）</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Dreams_on_Toast" target="_blank" rel="noopener">Wikipedia — Dreams on Toast</a>
+          <a href="https://www.discogs.com/master/3794406-The-Darkness-Dreams-On-Toast" target="_blank" rel="noopener">Discogs — Dreams on Toast</a>
+          <a href="https://blabbermouth.net/news/the-darkness-shares-walking-through-fire-single-from-upcoming-dreams-on-toast-album" target="_blank" rel="noopener">Blabbermouth — The Darkness</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.10</span><span class="duration">3:15</span></div>
+        <h3>I Hate Myself</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge outline">2024-12-10 発売</span></div>
+        <p>シングル。自虐的なグラム・パンク・ロックと評され、Justin Hawkins自身が「これまでで一番好きなDarknessの曲」と語る1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>シングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li>Blabbermouthは <strong>「self-deprecating glam punk rock song」</strong> と評する</li>
+          <li>Justin Hawkins自身が <strong>my favorite Darkness song ever</strong> と述べる。バラードではない</li>
+          <li>長さはWikipediaとDiscogsでクロスチェック（3:15）</li>
+        </ul></div>
+        <div class="note-box"><b>回避した曲：</b>バラード寄りと評される「Hot on My Tail」は回避しました。</div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Dreams_on_Toast" target="_blank" rel="noopener">Wikipedia — Dreams on Toast</a>
+          <a href="https://blabbermouth.net/news/the-darkness-shares-music-video-for-latest-single-i-hate-myself" target="_blank" rel="noopener">Blabbermouth — The Darkness: I Hate Myself</a>
+          <a href="https://www.discogs.com/master/3794406-The-Darkness-Dreams-On-Toast" target="_blank" rel="noopener">Discogs — Dreams on Toast</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 06 ALICE COOPER -->
+  <section class="album" id="alice-cooper">
+    <div class="album-head">
+      <div class="album-num">06</div>
+      <div>
+        <h2>Alice Cooper <em>『The Revenge of Alice Cooper』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.11–12</span><span class="pill">2025-07-25 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.11</span><span class="duration">4:57</span></div>
+        <h3>Black Mamba</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">ファーストシングル</span><span class="badge outline">2025-04-23 発売</span></div>
+        <p>ファーストシングル。Robby Krieger参加の、オリジナルバンド51年ぶりの再結成アルバムの先行曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>ファーストシングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li><strong>Robby Krieger参加</strong>。Blabbermouthは「venomous introduction」、classic riffsと評し、バラードではない</li>
+          <li>オリジナルバンド<strong>51年ぶり</strong>再結成アルバムの先行曲として話題性が高い</li>
+          <li>長さはWikipediaとDiscogs日本盤CDでクロスチェック（4:57）</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/The_Revenge_of_Alice_Cooper" target="_blank" rel="noopener">Wikipedia — The Revenge of Alice Cooper</a>
+          <a href="https://www.discogs.com/release/34636333-Alice-Cooper-The-Revenge-Of-Alice-Cooper" target="_blank" rel="noopener">Discogs — The Revenge of Alice Cooper</a>
+          <a href="https://blabbermouth.net/news/original-alice-cooper-band-shares-black-mamba-from-upcoming-the-revenge-of-alice-cooper-album" target="_blank" rel="noopener">Blabbermouth — Alice Cooper</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.12</span><span class="duration">4:17</span></div>
+        <h3>Wild Ones</h3>
+        <div class="badges"><span class="badge red">シングル</span><span class="badge">第2シングル</span><span class="badge outline">2025-06-04 発売</span></div>
+        <p>第2シングル。「反逆の突撃（rebellious charge）」と評されるアップテンポな1曲です。</p>
+        <div class="evidence"><h4>EVIDENCE — 根拠</h4><ul>
+          <li>第2シングルであることを <strong>WikipediaのSingles欄</strong>で確認</li>
+          <li>Blabbermouthは <strong>「rebellious charge」</strong> と評するアップテンポ曲。バラードではない</li>
+          <li>長さはWikipediaのトラックリストとDiscogs日本盤CDでクロスチェック（4:17）</li>
+        </ul></div>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/The_Revenge_of_Alice_Cooper" target="_blank" rel="noopener">Wikipedia — The Revenge of Alice Cooper</a>
+          <a href="https://www.discogs.com/release/34636333-Alice-Cooper-The-Revenge-Of-Alice-Cooper" target="_blank" rel="noopener">Discogs — The Revenge of Alice Cooper</a>
+          <a href="https://blabbermouth.net/news/original-alice-cooper-band-shares-black-mamba-from-upcoming-the-revenge-of-alice-cooper-album" target="_blank" rel="noopener">Blabbermouth — Alice Cooper</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RULES / NOTES -->
+  <div class="section-head"><h2>選出ルールと注記</h2><span>Notes</span></div>
+  <div class="rules">
+    <div class="rule"><b>12 / 12</b><h3>全曲シングル</h3><p>12曲すべてシングルカット曲です。アルバム曲からの選出はありません。</p></div>
+    <div class="rule"><b>0</b><h3>バラード例外なし</h3><p>バラード例外は適用していません。バラード懸念で回避した曲：Halestorm「Everest」（タイトル曲）、Volbeat「Time Will Heal」、The Darkness「Hot on My Tail」。</p></div>
+    <div class="rule"><b>※</b><h3>人気指標について</h3><p>人気の参考指標としてYouTube公式動画の再生回数を確認しましたが、全曲とも正確な現在の再生回数は確認できなかったため、数字は記載していません（推測で作らない）。</p></div>
+  </div>
+
+  <!-- TSV -->
+  <div class="section-head"><h2>最終TSV</h2><span>GENRE / ARTIST / ALBUM / TRACK</span></div>
+  <div class="tsv-box">
+    <p>管理表・プレイリスト作成用に、そのままコピーして使えるTSV形式の一覧です（1行1曲・選出順）。</p>
+    <pre class="tsv" id="tsvText">GENRE	ARTIST	ALBUM	TRACK
+MAINSTREAM ROCK / ARENA HEROES	Ghost	Skeletá	Satanized
+MAINSTREAM ROCK / ARENA HEROES	Ghost	Skeletá	Lachryma
+MAINSTREAM ROCK / ARENA HEROES	Halestorm	Everest	Rain Your Blood On Me
+MAINSTREAM ROCK / ARENA HEROES	Halestorm	Everest	Like A Woman Can
+MAINSTREAM ROCK / ARENA HEROES	Volbeat	God of Angels Trust	By a Monster's Hand
+MAINSTREAM ROCK / ARENA HEROES	Volbeat	God of Angels Trust	In the Barn of the Goat Giving Birth to Satan's Spawn in a Dying World of Doom
+MAINSTREAM ROCK / ARENA HEROES	Mammoth	The End	The End
+MAINSTREAM ROCK / ARENA HEROES	Mammoth	The End	The Spell
+MAINSTREAM ROCK / ARENA HEROES	The Darkness	Dreams on Toast	Rock and Roll Party Cowboy
+MAINSTREAM ROCK / ARENA HEROES	The Darkness	Dreams on Toast	I Hate Myself
+MAINSTREAM ROCK / ARENA HEROES	Alice Cooper	The Revenge of Alice Cooper	Black Mamba
+MAINSTREAM ROCK / ARENA HEROES	Alice Cooper	The Revenge of Alice Cooper	Wild Ones</pre>
+    <button class="copy-btn" id="copyBtn" type="button">TSVをコピーする</button><span class="copy-status" id="copyStatus" aria-live="polite"></span>
+  </div>
+
+  <footer>
+    <span>2025年 MAINSTREAM ROCK / ARENA HEROES — 楽曲選出エビデンス</span>
+    <span>6アルバム ・ 12曲 ・ 全曲シングル ・ バラード例外なし</span>
+  </footer>
+</div>
+<script>
+  (function(){
+    var btn=document.getElementById('copyBtn');
+    var status=document.getElementById('copyStatus');
+    var pre=document.getElementById('tsvText');
+    if(!btn||!pre) return;
+    btn.addEventListener('click', function(){
+      var text=pre.textContent;
+      function done(){ status.textContent='コピーしました'; setTimeout(function(){status.textContent='';},2600); }
+      function fail(){ status.textContent='コピーできませんでした — TSVを長押し／選択してコピーしてください'; }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else {
+        try{
+          var ta=document.createElement('textarea');
+          ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+          document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta); done();
+        }catch(e){ fail(); }
+      }
+    });
+  })();
+</script>
+</body>
+</html>
