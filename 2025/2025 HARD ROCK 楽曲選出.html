@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 HARD ROCK 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f3ed;
+    --bg2:#efe9e0;
+    --card:#ffffff;
+    --card2:#fdfaf6;
+    --ink:#171412;
+    --ink2:#4a423c;
+    --muted:#7a6f66;
+    --line:#ddd3c7;
+    --line-strong:#171412;
+    --accent:#c81e1e;
+    --accent-ink:#fff;
+    --gold:#b7791f;
+    --chip:#171412;
+    --chip-ink:#f7f3ed;
+    --warn-bg:#fff7e6;
+    --warn-line:#e6c87a;
+    --warn-ink:#5c4300;
+    --shadow:0 1px 0 rgba(0,0,0,.06), 0 12px 32px rgba(23,20,18,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#121110;
+      --bg2:#1a1816;
+      --card:#1e1b19;
+      --card2:#23201e;
+      --ink:#f2ece6;
+      --ink2:#cbc0b6;
+      --muted:#9a8f85;
+      --line:#37302c;
+      --line-strong:#f2ece6;
+      --accent:#ff3b30;
+      --gold:#e0a83a;
+      --chip:#f2ece6;
+      --chip-ink:#171412;
+      --warn-bg:#2a2210;
+      --warn-line:#6b5518;
+      --warn-ink:#f5d98a;
+      --shadow:0 12px 32px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 64px}
+  /* HERO */
+  .hero{border-bottom:3px solid var(--line-strong);padding:36px 0 28px;margin-bottom:0}
+  .hero-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:22px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-family:Oswald,sans-serif;letter-spacing:.14em;font-weight:600;font-size:13px;text-transform:uppercase}
+  .kicker::before{content:"";width:28px;height:3px;background:var(--accent);display:inline-block}
+  .year-badge{font-family:Oswald,sans-serif;font-weight:700;font-size:13px;letter-spacing:.12em;border:1.5px solid var(--line-strong);padding:6px 12px;border-radius:999px}
+  h1{font-family:Oswald,"Noto Sans JP",sans-serif;font-weight:700;line-height:.95;letter-spacing:.01em;margin:0;text-transform:uppercase}
+  h1 .line1{display:block;font-size:clamp(52px,9vw,96px)}
+  h1 .line2{display:block;font-size:clamp(28px,5.2vw,54px);color:var(--accent);margin-top:6px}
+  .hero-jp{font-weight:900;font-size:clamp(18px,2.6vw,24px);margin:18px 0 6px;letter-spacing:.02em}
+  .hero-lead{color:var(--ink2);max-width:720px;margin:0;font-size:15.5px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1.5px solid var(--line-strong);margin-top:28px;background:var(--card)}
+  .stat{padding:16px 18px 14px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat b{font-family:Oswald,sans-serif;font-size:32px;line-height:1;display:block;font-weight:700}
+  .stat span{font-size:12.5px;color:var(--muted);font-weight:700;letter-spacing:.04em}
+  /* NAV */
+  .album-nav{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0 4px}
+  .album-nav a{text-decoration:none;font-weight:700;font-size:13.5px;border:1px solid var(--line);background:var(--card);padding:10px 14px;border-radius:999px;min-height:40px;display:inline-flex;align-items:center}
+  .album-nav a:hover{border-color:var(--line-strong)}
+  .album-nav a i{font-style:normal;font-family:Oswald,sans-serif;color:var(--accent);margin-right:7px}
+  /* OVERVIEW TABLE */
+  .section-head{display:flex;align-items:baseline;gap:14px;margin:40px 0 16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .section-head h2{font-size:20px;font-weight:900;margin:0;letter-spacing:.02em}
+  .section-head span{font-family:Oswald,sans-serif;font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .overview{border:1.5px solid var(--line-strong);background:var(--card);overflow:hidden}
+  .ov-row{display:grid;grid-template-columns:44px 1.15fr 1fr 1.6fr 64px;gap:0;border-bottom:1px solid var(--line)}
+  .ov-row:last-child{border-bottom:none}
+  .ov-row > div{padding:11px 14px;font-size:14px}
+  .ov-row .no{font-family:Oswald,sans-serif;font-weight:700;color:var(--accent);text-align:center;padding-left:6px;padding-right:6px}
+  .ov-row .artist{font-weight:900}
+  .ov-row .album{color:var(--ink2);font-style:italic}
+  .ov-row .track{font-weight:700}
+  .ov-row .time{font-family:Oswald,sans-serif;text-align:right;color:var(--muted)}
+  .ov-head{background:var(--bg2);font-size:11.5px !important;font-weight:900;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .ov-head > div{font-size:11.5px}
+  /* ALBUM SECTIONS */
+  .album{margin-top:48px;scroll-margin-top:16px}
+  .album-head{display:flex;gap:18px;align-items:flex-start;border-top:3px solid var(--line-strong);padding-top:20px}
+  .album-num{font-family:Oswald,sans-serif;font-size:52px;line-height:.9;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--ink);flex:none}
+  @media (prefers-color-scheme: dark){ .album-num{-webkit-text-stroke:1.5px var(--ink)} }
+  .album-head h2{margin:0;font-size:clamp(24px,4vw,34px);font-weight:900;line-height:1.2}
+  .album-head h2 em{font-style:italic;font-weight:700;color:var(--ink2)}
+  .album-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pill{font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 10px;color:var(--ink2)}
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  .track{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:20px 20px 16px;display:flex;flex-direction:column}
+  .track-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .track-no{font-family:Oswald,sans-serif;font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:600}
+  .duration{font-family:Oswald,sans-serif;font-weight:700;font-size:15px;border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 10px;white-space:nowrap}
+  .track h3{font-size:22px;font-weight:900;margin:8px 0 10px;line-height:1.3;overflow-wrap:anywhere}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .badge{font-size:11.5px;font-weight:900;letter-spacing:.03em;padding:4px 9px;border-radius:4px;background:var(--chip);color:var(--chip-ink)}
+  .badge.red{background:var(--accent);color:#fff}
+  .badge.outline{background:transparent;color:var(--ink2);border:1px solid var(--line)}
+  .track p{margin:0 0 10px;font-size:14.5px;color:var(--ink2)}
+  .track p strong{color:var(--ink)}
+  .evidence{margin:4px 0 14px;padding:12px 14px;background:var(--card2);border:1px solid var(--line);font-size:13.5px}
+  .evidence h4{margin:0 0 6px;font-size:12px;letter-spacing:.08em;color:var(--muted)}
+  .evidence ul{margin:0;padding-left:18px;color:var(--ink2)}
+  .evidence li{margin:3px 0}
+  .evidence li strong{color:var(--ink)}
+  .note-box{margin-top:auto;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:13px;padding:10px 12px;margin-bottom:14px;line-height:1.6}
+  .note-box b{font-weight:900}
+  .sources{border-top:1px dashed var(--line);padding-top:12px;margin-top:auto}
+  .sources span{font-size:11.5px;font-weight:900;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:6px}
+  .sources a{display:inline-flex;align-items:center;min-height:36px;font-size:13px;font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:3px;margin-right:16px;padding:4px 0;overflow-wrap:anywhere}
+  /* TSV */
+  .tsv-box{background:var(--card);border:1.5px solid var(--line-strong);padding:20px}
+  .tsv-box p{margin:0 0 12px;color:var(--ink2);font-size:14px}
+  pre.tsv{background:#171412;color:#f2ece6;padding:16px;font-size:12.5px;line-height:1.7;margin:0 0 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}
+  @media (prefers-color-scheme: dark){ pre.tsv{background:#0b0a09;border:1px solid var(--line)} }
+  .copy-btn{appearance:none;border:none;background:var(--ink);color:var(--bg);font:inherit;font-weight:900;font-size:14px;padding:12px 20px;border-radius:999px;min-height:48px;cursor:pointer}
+  .copy-status{font-size:13px;color:var(--muted);margin-left:12px;font-weight:700}
+  /* NOTES */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .rule{background:var(--card);border:1px solid var(--line);padding:18px}
+  .rule b{font-family:Oswald,sans-serif;font-size:28px;display:block;line-height:1;margin-bottom:8px}
+  .rule h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .rule p{margin:0;font-size:13.5px;color:var(--ink2)}
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+  @media (max-width:820px){
+    .stats{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+    .tracks{grid-template-columns:1fr}
+    .rules{grid-template-columns:1fr}
+    .ov-row{grid-template-columns:36px 1fr 56px;grid-template-areas:"no artist time" "no album time" "no track time"}
+    .ov-row .no{grid-area:no}.ov-row .artist{grid-area:artist;padding-bottom:0}
+    .ov-row .album{grid-area:album;padding-top:0;padding-bottom:0}
+    .ov-row .track{grid-area:track;padding-top:0}
+    .ov-row .time{grid-area:time}
+    .ov-head{display:none}
+    .album-num{font-size:40px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-top">
+      <span class="kicker">Track Selection — Evidence</span>
+      <span class="year-badge">2025 ・ GENRE 02</span>
+    </div>
+    <h1>
+      <span class="line1">Hard Rock</span>
+    </h1>
+    <p class="hero-jp">2025年 HARD ROCK — 楽曲選出エビデンス</p>
+    <p class="hero-lead">10組のアルバムから各2曲、全20曲を選出。20曲すべてがシングルカット曲で、バラード例外の適用はありません。各曲の選出根拠と出典を記録します。</p>
+
+    <div class="stats" aria-label="選出概要">
+      <div class="stat"><b>10</b><span>アルバム</span></div>
+      <div class="stat"><b>20</b><span>選出曲（各アルバム2曲）</span></div>
+      <div class="stat"><b>20 / 20</b><span>シングルカット曲</span></div>
+      <div class="stat"><b>0</b><span>バラード例外</span></div>
+    </div>
+
+    <nav class="album-nav" aria-label="アルバムへ移動">
+      <a href="#heat"><i>01</i>H.E.A.T</a><a href="#bonfire"><i>02</i>Bonfire</a><a href="#buckcherry"><i>03</i>Buckcherry</a><a href="#wet"><i>04</i>W.E.T.</a><a href="#glenn-hughes"><i>05</i>Glenn Hughes</a><a href="#inglorious"><i>06</i>Inglorious</a><a href="#michael-schenker-group"><i>07</i>Michael Schenker Group</a><a href="#danko-jones"><i>08</i>Danko Jones</a><a href="#treat"><i>09</i>Treat</a><a href="#robin-mcauley"><i>10</i>Robin McAuley</a>
+    </nav>
+  </header>
+
+  <div class="section-head"><h2>選出曲一覧</h2><span>All 20 Tracks</span></div>
+  <div class="overview" role="table" aria-label="選出曲一覧">
+    <div class="ov-row ov-head"><div>No.</div><div>Artist</div><div>Album</div><div>Track</div><div style="text-align:right">Time</div></div>
+    <div class="ov-row"><div class="no">1</div><div class="artist">H.E.A.T</div><div class="album">Welcome to the Future</div><div class="track">Disaster</div><div class="time">3:45</div></div>
+    <div class="ov-row"><div class="no">2</div><div class="artist">H.E.A.T</div><div class="album">Welcome to the Future</div><div class="track">Running to You</div><div class="time">3:03</div></div>
+    <div class="ov-row"><div class="no">3</div><div class="artist">Bonfire</div><div class="album">Higher Ground</div><div class="track">I Will Rise</div><div class="time">4:37</div></div>
+    <div class="ov-row"><div class="no">4</div><div class="artist">Bonfire</div><div class="album">Higher Ground</div><div class="track">Higher Ground</div><div class="time">4:13</div></div>
+    <div class="ov-row"><div class="no">5</div><div class="artist">Buckcherry</div><div class="album">Roar Like Thunder</div><div class="track">Roar Like Thunder</div><div class="time">3:07</div></div>
+    <div class="ov-row"><div class="no">6</div><div class="artist">Buckcherry</div><div class="album">Roar Like Thunder</div><div class="track">Come On</div><div class="time">3:27</div></div>
+    <div class="ov-row"><div class="no">7</div><div class="artist">W.E.T.</div><div class="album">Apex</div><div class="track">This House Is On Fire</div><div class="time">3:05</div></div>
+    <div class="ov-row"><div class="no">8</div><div class="artist">W.E.T.</div><div class="album">Apex</div><div class="track">Where Are The Heroes Now</div><div class="time">5:25</div></div>
+    <div class="ov-row"><div class="no">9</div><div class="artist">Glenn Hughes</div><div class="album">Chosen</div><div class="track">Voice In My Head</div><div class="time">5:19</div></div>
+    <div class="ov-row"><div class="no">10</div><div class="artist">Glenn Hughes</div><div class="album">Chosen</div><div class="track">Chosen</div><div class="time">4:59</div></div>
+    <div class="ov-row"><div class="no">11</div><div class="artist">Inglorious</div><div class="album">V</div><div class="track">Testify</div><div class="time">4:24</div></div>
+    <div class="ov-row"><div class="no">12</div><div class="artist">Inglorious</div><div class="album">V</div><div class="track">Devil Inside</div><div class="time">3:13</div></div>
+    <div class="ov-row"><div class="no">13</div><div class="artist">Michael Schenker Group</div><div class="album">Don&#x27;t Sell Your Soul</div><div class="track">Don&#x27;t Sell Your Soul</div><div class="time">5:03</div></div>
+    <div class="ov-row"><div class="no">14</div><div class="artist">Michael Schenker Group</div><div class="album">Don&#x27;t Sell Your Soul</div><div class="track">I Can&#x27;t Stand Waiting</div><div class="time">3:43</div></div>
+    <div class="ov-row"><div class="no">15</div><div class="artist">Danko Jones</div><div class="album">Leo Rising</div><div class="track">What You Need</div><div class="time">3:34</div></div>
+    <div class="ov-row"><div class="no">16</div><div class="artist">Danko Jones</div><div class="album">Leo Rising</div><div class="track">Diamond In The Rough</div><div class="time">3:36</div></div>
+    <div class="ov-row"><div class="no">17</div><div class="artist">Treat</div><div class="album">The Wild Card</div><div class="track">1985</div><div class="time">4:01</div></div>
+    <div class="ov-row"><div class="no">18</div><div class="artist">Treat</div><div class="album">The Wild Card</div><div class="track">Out With a Bang</div><div class="time">4:08</div></div>
+    <div class="ov-row"><div class="no">19</div><div class="artist">Robin McAuley</div><div class="album">Soulbound</div><div class="track">&#x27;Til I Die</div><div class="time">4:20</div></div>
+    <div class="ov-row"><div class="no">20</div><div class="artist">Robin McAuley</div><div class="album">Soulbound</div><div class="track">The Best of Me</div><div class="time">3:39</div></div>
+    
+  </div>
+
+  <section class="album" id="heat">
+    <div class="album-head">
+      <div class="album-num">01</div>
+      <div>
+        <h2>H.E.A.T <em>『Welcome to the Future』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.1–2</span><span class="pill">2025-04-25 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.1</span><span class="duration">3:45</span></div>
+        <h3>Disaster</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Wikipedia lists singles from album - Disaster released 24 Jan 2025, first single per Blabbermouth. Track listing and length 3:45 confirmed on Wikipedia and AllMusic. Not a ballad: described as riff-heavy sing-along opening track. YouTube exact play count: 確認できない (not used).</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Welcome_to_the_Future_(album)" target="_blank" rel="noopener">Wikipedia — Welcome to the Future</a><a href="https://www.allmusic.com/album/release/welcome-to-the-future-mr0006626737" target="_blank" rel="noopener">AllMusic — Welcome to the Future</a><a href="http://blabbermouth.net/news/h-e-a-t-announces-new-album-welcome-to-the-future" target="_blank" rel="noopener">Blabbermouth — Welcome to the Future</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.2</span><span class="duration">3:03</span></div>
+        <h3>Running to You</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Wikipedia lists Running to You released 2 Apr 2025 as single. Track listing and length 3:03 confirmed on Wikipedia and AllMusic/Deezer. Not a ballad: described as melodic rocker / high-energy blast in reviews. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Welcome_to_the_Future_(album)" target="_blank" rel="noopener">Wikipedia — Welcome to the Future</a><a href="https://www.allmusic.com/album/release/welcome-to-the-future-mr0006626737" target="_blank" rel="noopener">AllMusic — Welcome to the Future</a><a href="https://www.deezer.com/en/artist/274665" target="_blank" rel="noopener">deezer.com — Welcome to the Future</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <section class="album" id="bonfire">
+    <div class="album-head">
+      <div class="album-num">02</div>
+      <div>
+        <h2>Bonfire <em>『Higher Ground』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.3–4</span><span class="pill">2025-01-24 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.3</span><span class="duration">4:37</span></div>
+        <h3>I Will Rise</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Frontiers announcement via BraveWords/HorrorNews calls I Will Rise the new single, story of Hans Ziller. Track listing and length 4:37 confirmed on TIDAL and MetalStorm/Discogs. Not a ballad: described as thunderous riff, high-speed guitar. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://tidal.com/browse/track/394201777" target="_blank" rel="noopener">tidal.com — Higher Ground</a><a href="https://bravewords.com/news/bonfire-to-release-higher-ground-album-in-january-i-will-rise-single-streaming/" target="_blank" rel="noopener">bravewords.com — Higher Ground</a><a href="https://www.discogs.com/release/32969559-Bonfire-Higher-Ground" target="_blank" rel="noopener">Discogs — Higher Ground</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.4</span><span class="duration">4:13</span></div>
+        <h3>Higher Ground</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Metal Shock Finland reports new single, the title track Higher Ground, available on album release, with crunchy riffs / melodic anthem description by Hans Ziller. Track listing and length 4:13 confirmed on TIDAL and MetalStorm. Not a ballad. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://tidal.com/browse/track/394201777" target="_blank" rel="noopener">tidal.com — Higher Ground</a><a href="https://metalshockfinland.com/tag/bonfire/" target="_blank" rel="noopener">metalshockfinland.com — Higher Ground</a><a href="https://metalstorm.com.au/album-review-bonfire-higher-ground/" target="_blank" rel="noopener">metalstorm.com.au — Higher Ground</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <section class="album" id="buckcherry">
+    <div class="album-head">
+      <div class="album-num">03</div>
+      <div>
+        <h2>Buckcherry <em>『Roar Like Thunder』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.5–6</span><span class="pill">2025-06-13 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.5</span><span class="duration">3:07</span></div>
+        <h3>Roar Like Thunder</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Wikipedia lists Roar Like Thunder released 18 Mar 2025, title track and first single with music video. Track listing and length 3:07 confirmed on Wikipedia and MetalKingdom/HMV. Not a ballad: frantic runaway-train rhythm title track per HMV description. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Roar_Like_Thunder" target="_blank" rel="noopener">Wikipedia — Roar Like Thunder</a><a href="https://www.metalkingdom.net/album/buckcherry-roar-like-thunder-190640" target="_blank" rel="noopener">metalkingdom.net — Roar Like Thunder</a><a href="https://hmv.com/store/music/vinyl/roar-like-thunder-coloured-vinyl" target="_blank" rel="noopener">hmv.com — Roar Like Thunder</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.6</span><span class="duration">3:27</span></div>
+        <h3>Come On</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Wikipedia lists Come On released 15 Apr 2025 as second single. Track listing and length 3:27 confirmed on Wikipedia and MetalKingdom/HMV. Not a ballad: described as AC/DC stomp. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Roar_Like_Thunder" target="_blank" rel="noopener">Wikipedia — Roar Like Thunder</a><a href="https://www.metalkingdom.net/album/buckcherry-roar-like-thunder-190640" target="_blank" rel="noopener">metalkingdom.net — Roar Like Thunder</a><a href="https://hmv.com/store/music/vinyl/roar-like-thunder-coloured-vinyl" target="_blank" rel="noopener">hmv.com — Roar Like Thunder</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <section class="album" id="wet">
+    <div class="album-head">
+      <div class="album-num">04</div>
+      <div>
+        <h2>W.E.T. <em>『Apex』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.7–8</span><span class="pill">2025-03-28 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.7</span><span class="duration">3:05</span></div>
+        <h3>This House Is On Fire</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Frontiers/Maximum Volume and MetalPlanet call This House Is On Fire a (monster) single with official video. Track listing confirmed on Blabbermouth and MetalPlanet; length 3:05 on Discogs (Deezer/Qobuz 3:03-3:04, minor pressing variance). Last.fm (third-party) shows 1,316 listeners for this track, highest among early tracks sampled. Not a ballad: melodic rock tour de force / catchiest song per Blabbermouth review. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://blabbermouth.net/news/w-e-t-announces-new-album-apex" target="_blank" rel="noopener">Blabbermouth — Apex</a><a href="https://www.discogs.com/release/33519338-WET-Apex" target="_blank" rel="noopener">Discogs — Apex</a><a href="https://www.qobuz.com/au-en/album/apex-wet/zb6mr2bnldagb" target="_blank" rel="noopener">qobuz.com — Apex</a><a href="https://www.last.fm/music/W.E.T./Apex+%5BExplicit%5D" target="_blank" rel="noopener">last.fm — Apex</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.8</span><span class="duration">5:25</span></div>
+        <h3>Where Are The Heroes Now</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Blabbermouth announcement presents Where Are The Heroes Now as the new track/single with lyric video, Erik Martensson describing it as a true heavy classic. Track listing confirmed on Blabbermouth and MetalPlanet/Rockpit; length 5:25 on Impericon track listing. Not a ballad: heavy, epic solo described. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://blabbermouth.net/news/w-e-t-announces-new-album-apex" target="_blank" rel="noopener">Blabbermouth — Apex</a><a href="https://metalplanetmusic.com/2025/04/album-review-w-e-t-apex/" target="_blank" rel="noopener">metalplanetmusic.com — Apex</a><a href="https://www.impericon.com/pt/products/w-e-t-apex-vinyl" target="_blank" rel="noopener">impericon.com — Apex</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <section class="album" id="glenn-hughes">
+    <div class="album-head">
+      <div class="album-num">05</div>
+      <div>
+        <h2>Glenn Hughes <em>『Chosen』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.9–10</span><span class="pill">2025-09-05 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.9</span><span class="duration">5:19</span></div>
+        <h3>Voice In My Head</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single/video: official Glenn Hughes site lists Voice In My Head among the pre-release tracks with YouTube video, BraveWords discusses it as a single. Track listing and length 5:19 confirmed on Discogs (EU CD; Japanese edition 5:18). Not a ballad: up-tempo rocker with punchy groove per Sonic Perspectives. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.discogs.com/release/35024696-Glenn-Hughes-Chosen" target="_blank" rel="noopener">Discogs — Chosen</a><a href="https://suburban.nl/product/glenn-hughes-chosen-cd/" target="_blank" rel="noopener">suburban.nl — Chosen</a><a href="https://www.glennhughes.com/ctc/bulletins/tag/europe/" target="_blank" rel="noopener">glennhughes.com — Chosen</a><a href="https://bravewords.com/news/glenn-hughes-reflects-on-chosen-probably-my-last-solo-album/" target="_blank" rel="noopener">bravewords.com — Chosen</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.10</span><span class="duration">4:59</span></div>
+        <h3>Chosen</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: title track released in early June 2025 with official music video per Darkside/Blabbermouth-derived report and Glenn Hughes site. Track listing and length 4:59 confirmed on Discogs (Japanese edition 4:58). Not a ballad: title track rocker. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.discogs.com/release/35024696-Glenn-Hughes-Chosen" target="_blank" rel="noopener">Discogs — Chosen</a><a href="https://suburban.nl/product/glenn-hughes-chosen-cd/" target="_blank" rel="noopener">suburban.nl — Chosen</a><a href="https://www.glennhughes.com/ctc/bulletins/tag/europe/" target="_blank" rel="noopener">glennhughes.com — Chosen</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <section class="album" id="inglorious">
+    <div class="album-head">
+      <div class="album-num">06</div>
+      <div>
+        <h2>Inglorious <em>『V』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.11–12</span><span class="pill">2025-06-06 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.11</span><span class="duration">4:24</span></div>
+        <h3>Testify</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Frontiers announcement says following the success of the latest single Testify, and official video exists. Track listing and length 4:24 confirmed on Discogs (CD and vinyl). Not a ballad: opening retro rocker, perfect blend of melodic hooks and hard rock toughness per Metal Express. Note Believe was avoided as it is identified as the album&#x27;s power ballad. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.discogs.com/release/34188952-Inglorious-V" target="_blank" rel="noopener">Discogs — V</a><a href="https://hardrockhellradio.com/2025/04/08/british-rock-sensation-inglorious-announce-new-studio-album-v-out-june-6th-2025/" target="_blank" rel="noopener">hardrockhellradio.com — V</a><a href="https://www.metaltalk.net/inglorious-return-with-v-a-powerful-rock-rebirth-fuelled-by-fire-and-grit.php" target="_blank" rel="noopener">metaltalk.net — V</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.12</span><span class="duration">3:13</span></div>
+        <h3>Devil Inside</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Frontiers announcement shares new single and visualizer Devil Inside following Testify. Track listing and length 3:13 confirmed on Discogs (CD and vinyl). Not a ballad: described as lurching forward with ominous weight, thick riffs. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.discogs.com/release/34188952-Inglorious-V" target="_blank" rel="noopener">Discogs — V</a><a href="https://hardrockhellradio.com/2025/04/08/british-rock-sensation-inglorious-announce-new-studio-album-v-out-june-6th-2025/" target="_blank" rel="noopener">hardrockhellradio.com — V</a><a href="https://www.therockpit.net/2025/album-review-inglorious-v/" target="_blank" rel="noopener">therockpit.net — V</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <section class="album" id="michael-schenker-group">
+    <div class="album-head">
+      <div class="album-num">07</div>
+      <div>
+        <h2>Michael Schenker Group <em>『Don&#x27;t Sell Your Soul』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.13–14</span><span class="pill">2025-10-03 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.13</span><span class="duration">5:03</span></div>
+        <h3>Don&#x27;t Sell Your Soul</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single/title track: Arrow Lords of Metal reports MSG shares title track from new album; Blabbermouth notes title track performed live at Wacken and used to promote album. Track listing and length 5:03 confirmed on Discogs and Heavy Harmonies/MetalKingdom. Vocals by Erik Gronwall. Not a ballad. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.discogs.com/release/35304235-The-Michael-Schenker-Group-Dont-Sell-Your-Soul" target="_blank" rel="noopener">Discogs — Don&#x27;t Sell Your Soul</a><a href="https://heavyharmonies.com/cgi-bin/glamcd.cgi?BandNum=208&amp;CDName=Don%27t%20Sell%20Your%20Soul&amp;Letter=A" target="_blank" rel="noopener">heavyharmonies.com — Don&#x27;t Sell Your Soul</a><a href="https://blabbermouth.net/news/michael-schenker-group-shares-new-single-i-cant-stand-waiting-from-upcoming-dont-sell-your-soul-album" target="_blank" rel="noopener">Blabbermouth — Don&#x27;t Sell Your Soul</a><a href="https://arrowlordsofmetal.nl/michael-schenker-group-track-dont-sell-your-soul/" target="_blank" rel="noopener">arrowlordsofmetal.nl — Don&#x27;t Sell Your Soul</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.14</span><span class="duration">3:43</span></div>
+        <h3>I Can&#x27;t Stand Waiting</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Blabbermouth headline explicitly calls I Can&#x27;t Stand Waiting the LP&#x27;s second single with official lyric video (18 Sep 2025). Track listing and length 3:43 confirmed on Discogs and Heavy Harmonies. Vocals by Michael Voss. Not a ballad. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://blabbermouth.net/news/michael-schenker-group-shares-new-single-i-cant-stand-waiting-from-upcoming-dont-sell-your-soul-album" target="_blank" rel="noopener">Blabbermouth — Don&#x27;t Sell Your Soul</a><a href="https://www.discogs.com/release/35304235-The-Michael-Schenker-Group-Dont-Sell-Your-Soul" target="_blank" rel="noopener">Discogs — Don&#x27;t Sell Your Soul</a><a href="https://heavyharmonies.com/cgi-bin/glamcd.cgi?BandNum=208&amp;CDName=Don%27t%20Sell%20Your%20Soul&amp;Letter=A" target="_blank" rel="noopener">heavyharmonies.com — Don&#x27;t Sell Your Soul</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <section class="album" id="danko-jones">
+    <div class="album-head">
+      <div class="album-num">08</div>
+      <div>
+        <h2>Danko Jones <em>『Leo Rising』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.15–16</span><span class="pill">2025-11-21 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.15</span><span class="duration">3:34</span></div>
+        <h3>What You Need</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Loaded Radio and Blabbermouth list What You Need among the lead/adrenaline-fueled singles. Track listing and length 3:34 confirmed on Bandcamp album page and Blabbermouth track listing. Not a ballad: high-octane punk-infused opener per review. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://leorising.bandcamp.com/album/leo-rising-explicit" target="_blank" rel="noopener">leorising.bandcamp.com — Leo Rising</a><a href="https://blabbermouth.net/news/danko-jones-releases-new-single-diamond-in-the-rough-featuring-marty-friedman" target="_blank" rel="noopener">Blabbermouth — Leo Rising</a><a href="https://loadedradio.com/danko-jones-marty-friedman-kiss-leo-rising-interview/" target="_blank" rel="noopener">loadedradio.com — Leo Rising</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.16</span><span class="duration">3:36</span></div>
+        <h3>Diamond In The Rough</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Blabbermouth reports new single Diamond In The Rough featuring Marty Friedman, homage to KISS. Popularity evidence: Arrow Lords of Metal reports it landed at No.32 on Billboard Canada Mainstream Rock Airplay chart in February (third-party report of chart). Track listing and length 3:36 confirmed on Bandcamp. Not a ballad. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://leorising.bandcamp.com/album/leo-rising-explicit" target="_blank" rel="noopener">leorising.bandcamp.com — Leo Rising</a><a href="https://blabbermouth.net/news/danko-jones-releases-new-single-diamond-in-the-rough-featuring-marty-friedman" target="_blank" rel="noopener">Blabbermouth — Leo Rising</a><a href="https://arrowlordsofmetal.nl/danko-jones-album-will-sound-like-last-one/" target="_blank" rel="noopener">arrowlordsofmetal.nl — Leo Rising</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <section class="album" id="treat">
+    <div class="album-head">
+      <div class="album-num">09</div>
+      <div>
+        <h2>Treat <em>『The Wild Card』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.17–18</span><span class="pill">2025-11-21 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.17</span><span class="duration">4:01</span></div>
+        <h3>1985</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Frontiers shop and Maximum Volume announce new single/video 1985, band wanted to capture what they went through in 1985. Track listing and length 4:01 confirmed on Deezer/Qobuz (Discogs vinyl 4:02). Not a ballad: vibrant melodic rock track in album sequence. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.deezer.com/en/album/801199241" target="_blank" rel="noopener">deezer.com — The Wild Card</a><a href="https://www.qobuz.com/us-en/album/the-wild-card-treat/h3c9qb9ca3faa" target="_blank" rel="noopener">qobuz.com — The Wild Card</a><a href="https://frontiers.shop/products/treat-the-wild-card-purple-sky-blue-corona-vinyl" target="_blank" rel="noopener">frontiers.shop — The Wild Card</a><a href="https://maximumvolumemusic.com/treat-announce-new-album/" target="_blank" rel="noopener">maximumvolumemusic.com — The Wild Card</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.18</span><span class="duration">4:08</span></div>
+        <h3>Out With a Bang</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Fireworks Magazine reports Treat released new single Out With A Bang with official video from The Wild Card. Track listing and length 4:08 confirmed on Heavy Harmonies, Deezer and Qobuz/Discogs. Not a ballad: vibrant rock song with great hooks, album opener per review. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://heavyharmonies.com/cgi-bin/glamcd.cgi?BandNum=439&amp;CDName=The%20Wild%20Card&amp;Letter=A" target="_blank" rel="noopener">heavyharmonies.com — The Wild Card</a><a href="https://www.deezer.com/en/album/801199241" target="_blank" rel="noopener">deezer.com — The Wild Card</a><a href="https://www.qobuz.com/us-en/album/the-wild-card-treat/h3c9qb9ca3faa" target="_blank" rel="noopener">qobuz.com — The Wild Card</a><a href="https://www.fireworks-magazine.com/post/treat-release-new-video-out-with-a-bang-from-upcoming-album-the-wild-card-out-on-november-21st" target="_blank" rel="noopener">fireworks-magazine.com — The Wild Card</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  <section class="album" id="robin-mcauley">
+    <div class="album-head">
+      <div class="album-num">10</div>
+      <div>
+        <h2>Robin McAuley <em>『Soulbound』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.19–20</span><span class="pill">2025-02-28 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.19</span><span class="duration">4:20</span></div>
+        <h3>&#x27;Til I Die</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Single: Blabbermouth and IMM report &#x27;Til I Die as first single/track with music video, heavy drums and biting guitars, race for survival. Track listing and length 4:20 confirmed on Deezer/Qobuz/Discogs. Last.fm (third-party) shows 415 listeners. Not a ballad: opening hard rocker. Title track Soulbound was avoided because Metal Express describes it as more of a hard rock ballad, to respect ballad exclusion. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://blabbermouth.net/news/robin-mcauley-shares-title-track-of-upcoming-soulbound-solo-album" target="_blank" rel="noopener">Blabbermouth — Soulbound</a><a href="https://www.deezer.com/en/artist/267849" target="_blank" rel="noopener">deezer.com — Soulbound</a><a href="https://www.qobuz.com/ie-en/album/soulbound-robin-mcauley/ifie0jxdz65ia" target="_blank" rel="noopener">qobuz.com — Soulbound</a><a href="https://Www.last.fm/music/Robin+McAuley/Soulbound" target="_blank" rel="noopener">Www.last.fm — Soulbound</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.20</span><span class="duration">3:39</span></div>
+        <h3>The Best of Me</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>Promotional single/visualizer: BraveWords reports McAuley sharing new track The Best Of Me with visualizer to celebrate album release, quoting his comment on the song. Track listing and length 3:39 confirmed on Deezer/Qobuz (Discogs 3:40). Rockpit calls it a favorite for clever guitar/heavy riffs. Not a ballad. YouTube exact play count: 確認できない.</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://bravewords.com/news/robin-mcauley-shares-visualizer-video-for-new-song-the-best-of-me-soulbound-album-out-now/" target="_blank" rel="noopener">bravewords.com — Soulbound</a><a href="https://www.deezer.com/en/artist/267849" target="_blank" rel="noopener">deezer.com — Soulbound</a><a href="https://www.qobuz.com/ie-en/album/soulbound-robin-mcauley/ifie0jxdz65ia" target="_blank" rel="noopener">qobuz.com — Soulbound</a><a href="https://www.therockpit.net/2025/album-review-robin-mcauley-soulbound/" target="_blank" rel="noopener">therockpit.net — Soulbound</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+
+  
+  <div class="section-head"><h2>選出ルールと注記</h2><span>Notes</span></div>
+  <div class="rules">
+    <div class="rule"><b>20 / 20</b><h3>全曲シングル</h3><p>20曲すべてシングルカット曲です。アルバム曲からの選出はありません。</p></div>
+    <div class="rule"><b>0</b><h3>バラード例外なし</h3><p>バラード例外は適用していません。</p></div>
+    <div class="rule"><b>※</b><h3>人気指標について</h3><p>人気の参考指標としてYouTube公式動画の再生回数を確認しましたが、正確な現在の再生回数が確認できない曲は数字を記載していません（推測で作らない）。</p></div>
+  </div>
+
+  <div class="section-head"><h2>最終TSV</h2><span>GENRE / ARTIST / ALBUM / TRACK</span></div>
+  <div class="tsv-box">
+    <p>管理表・プレイリスト作成用に、そのままコピーして使えるTSV形式の一覧です（1行1曲・選出順）。</p>
+    <pre class="tsv" id="tsvText">GENRE	ARTIST	ALBUM	TRACK
+HARD ROCK	H.E.A.T	Welcome to the Future	Disaster
+HARD ROCK	H.E.A.T	Welcome to the Future	Running to You
+HARD ROCK	Bonfire	Higher Ground	I Will Rise
+HARD ROCK	Bonfire	Higher Ground	Higher Ground
+HARD ROCK	Buckcherry	Roar Like Thunder	Roar Like Thunder
+HARD ROCK	Buckcherry	Roar Like Thunder	Come On
+HARD ROCK	W.E.T.	Apex	This House Is On Fire
+HARD ROCK	W.E.T.	Apex	Where Are The Heroes Now
+HARD ROCK	Glenn Hughes	Chosen	Voice In My Head
+HARD ROCK	Glenn Hughes	Chosen	Chosen
+HARD ROCK	Inglorious	V	Testify
+HARD ROCK	Inglorious	V	Devil Inside
+HARD ROCK	Michael Schenker Group	Don&#x27;t Sell Your Soul	Don&#x27;t Sell Your Soul
+HARD ROCK	Michael Schenker Group	Don&#x27;t Sell Your Soul	I Can&#x27;t Stand Waiting
+HARD ROCK	Danko Jones	Leo Rising	What You Need
+HARD ROCK	Danko Jones	Leo Rising	Diamond In The Rough
+HARD ROCK	Treat	The Wild Card	1985
+HARD ROCK	Treat	The Wild Card	Out With a Bang
+HARD ROCK	Robin McAuley	Soulbound	&#x27;Til I Die
+HARD ROCK	Robin McAuley	Soulbound	The Best of Me</pre>
+    <button class="copy-btn" id="copyBtn" type="button">TSVをコピーする</button><span class="copy-status" id="copyStatus" aria-live="polite"></span>
+  </div>
+
+  <footer>
+    <span>2025年 HARD ROCK — 楽曲選出エビデンス</span>
+    <span>10アルバム ・ 20曲 ・ 全曲シングル ・ バラード例外なし</span>
+  </footer>
+</div>
+<script>
+  (function(){
+    var btn=document.getElementById('copyBtn');
+    var status=document.getElementById('copyStatus');
+    var pre=document.getElementById('tsvText');
+    if(!btn||!pre) return;
+    btn.addEventListener('click', function(){
+      var text=pre.textContent;
+      function done(){ status.textContent='コピーしました'; setTimeout(function(){status.textContent='';},2600); }
+      function fail(){ status.textContent='コピーできませんでした — TSVを長押し／選択してコピーしてください'; }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else {
+        try{
+          var ta=document.createElement('textarea');
+          ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+          document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta); done();
+        }catch(e){ fail(); }
+      }
+    });
+  })();
+</script>
+</body>
+</html>
+

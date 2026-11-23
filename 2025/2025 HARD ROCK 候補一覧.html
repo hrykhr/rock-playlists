@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 HARD ROCK 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2ef;
+    --surface:#ffffff;
+    --surface-2:#eceae6;
+    --ink:#191817;
+    --ink-2:#4b4844;
+    --muted:#76716b;
+    --line:#ddd9d2;
+    --line-strong:#191817;
+    --accent:#b91c1c;
+    --accent-ink:#ffffff;
+    --accent-soft:#fdecec;
+    --gold:#8a6d1b;
+    --gold-bg:#f7ecd0;
+    --silver:#5b5f66;
+    --silver-bg:#e8eaed;
+    --bronze:#7c4a1e;
+    --bronze-bg:#f3e2d3;
+    --warn-bg:#fff7e6;
+    --warn-line:#e3c878;
+    --warn-ink:#5c4a12;
+    --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131211;
+      --surface:#1e1d1b;
+      --surface-2:#262422;
+      --ink:#f0ede8;
+      --ink-2:#c9c4bb;
+      --muted:#9a958c;
+      --line:#35322e;
+      --line-strong:#f0ede8;
+      --accent:#e5484d;
+      --accent-soft:#3a1d1e;
+      --gold:#e3c878;
+      --gold-bg:#332b14;
+      --silver:#c3c8cf;
+      --silver-bg:#2a2d31;
+      --bronze:#e0a878;
+      --bronze-bg:#33241a;
+      --warn-bg:#2e2712;
+      --warn-line:#6b5a22;
+      --warn-ink:#e8d48a;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 64px}
+
+  header{padding:40px 0 0}
+  .year-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .year{font-family:"Oswald",sans-serif;font-weight:700;font-size:64px;line-height:.95;letter-spacing:.01em}
+  .year-sub{font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:10px 0 0;font-size:clamp(26px,4.6vw,40px);line-height:1.25;font-weight:900;letter-spacing:.01em}
+  h1 .en{display:block;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;font-size:.62em;color:var(--ink-2);margin-top:6px}
+  .lead{margin:16px 0 0;color:var(--ink-2);max-width:46em;font-size:15.5px}
+  .lead strong{color:var(--ink)}
+
+  .flow{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--line-strong);box-shadow:var(--shadow);padding:20px 20px 18px}
+  .flow h2{margin:0 0 14px;font-size:13px;letter-spacing:.14em;font-weight:900}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .step{padding:0 14px;border-left:1px solid var(--line)}
+  .step:first-child{padding-left:0;border-left:none}
+  .step .num{font-family:"Oswald",sans-serif;font-weight:700;font-size:34px;line-height:1}
+  .step .num small{font-size:16px;color:var(--muted);font-weight:600}
+  .step .label{margin-top:6px;font-weight:700;font-size:13.5px;line-height:1.5}
+  .step .note{margin-top:2px;color:var(--muted);font-size:12.5px;line-height:1.55}
+  .step.final .num{color:var(--accent)}
+  @media (max-width:760px){
+    .flow-steps{grid-template-columns:1fr 1fr}
+    .step{padding:10px 12px 10px 0;border-left:none;border-top:1px solid var(--line)}
+    .step:nth-child(-n+2){border-top:none;padding-top:0}
+    .step:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+  }
+
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line-strong);padding-bottom:10px}
+  .sec-no{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.08em}
+  .sec-head h2{margin:0;font-size:clamp(20px,3.4vw,26px);font-weight:900;line-height:1.3}
+  .sec-head .count{margin-left:auto;font-family:"Oswald",sans-serif;font-weight:600;font-size:14px;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
+  .sec-desc{margin:12px 0 0;color:var(--ink-2);max-width:52em}
+  .sec-desc strong{color:var(--ink)}
+
+  .table-card{margin-top:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:var(--surface-2);text-align:left;font-size:12px;letter-spacing:.1em;font-weight:900;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--ink-2)}
+  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  .artist{font-weight:900;font-size:15px;line-height:1.4}
+  .album{font-weight:700;font-size:15px;line-height:1.4}
+  .album .formal{display:block;margin-top:4px;font-weight:500;font-size:12.5px;color:var(--muted);line-height:1.55}
+  .date{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.03em;white-space:nowrap;font-size:14.5px}
+  .basis{color:var(--ink-2);line-height:1.7}
+  .basis strong{color:var(--ink)}
+  .sources{display:flex;flex-direction:column;gap:2px;min-width:132px}
+  .sources a{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:4px 0;font-size:13px;font-weight:700;text-decoration:none;line-height:1.35}
+  .sources a:hover{text-decoration:underline}
+  .sources a::after{content:"↗";font-size:11px;opacity:.7}
+  .no-cell{font-family:"Oswald",sans-serif;font-weight:700;color:var(--muted);font-size:15px}
+
+  .badge{display:inline-block;font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;padding:2px 10px;border-radius:999px;line-height:1.6;white-space:nowrap}
+  .badge-s{background:var(--accent);color:var(--accent-ink)}
+  .badge-a{background:var(--gold-bg);color:var(--gold)}
+  .badge-b{background:var(--silver-bg);color:var(--silver)}
+  .badge-down{background:var(--bronze-bg);color:var(--bronze)}
+
+  .flag{display:block;margin-top:8px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:12.5px;line-height:1.6;padding:7px 10px;border-radius:6px;font-weight:500}
+  .flag b{font-weight:900}
+
+  .group-row td{background:var(--surface-2);font-weight:900;font-size:12.5px;letter-spacing:.1em;padding:8px 14px;color:var(--ink-2)}
+
+  @media (max-width:760px){
+    .year{font-size:48px}
+    header{padding-top:28px}
+    .table-card{border:none;box-shadow:none;background:transparent;overflow:visible}
+    table, thead, tbody, tr, td{display:block;width:100%}
+    thead{display:none}
+    tbody tr{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:12px;padding:6px 2px}
+    tbody td{border-bottom:1px dashed var(--line);padding:10px 14px}
+    tbody td:last-child{border-bottom:none}
+    td::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--muted);margin-bottom:4px}
+    td.no-cell::before, td.rank-cell::before{margin-bottom:2px}
+    .no-cell{font-size:13px}
+    .group-row td{margin:18px 0 10px;border:1px solid var(--line);box-shadow:none}
+    .group-row td::before{display:none}
+    .sources{min-width:0}
+    .date{white-space:normal}
+  }
+
+  .notes{margin-top:16px;display:grid;gap:12px}
+  .note-card{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 18px}
+  .note-card h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .note-card h3 .who{color:var(--accent)}
+  .note-card p{margin:0;color:var(--ink-2)}
+  .note-card p strong{color:var(--ink)}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="year-line">
+      <span class="year">2025</span>
+      <span class="year-sub">Album Selection — Evidence</span>
+    </div>
+    <h1>HARD ROCK 候補一覧
+      <span class="en">Genre 2 — Hard Rock</span>
+    </h1>
+    <p class="lead">2025年の <strong>HARD ROCK</strong> におけるアルバム選出のエビデンスページ。候補の収集から重複排除、Sランク検証を経て確定した<strong>最終選出10枚</strong>と、未採用のA／B候補14枚を、根拠と出典つきで記録する。S候補10枚はすべてSとして確定し、<strong>降格は0枚</strong>だった。</p>
+  </header>
+
+  <div class="flow" aria-label="選出の流れ">
+    <h2>選出の流れ — 概要</h2>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="num">24<small> 枚</small></div>
+        <div class="label">候補を収集</div>
+        <div class="note">2025年リリース作から候補を収集</div>
+      </div>
+      <div class="step">
+        <div class="num">0<small> 枚</small></div>
+        <div class="label">重複除外</div>
+        <div class="note">既出アルバム累積リストと照合し重複ゼロ、全24枚が残った</div>
+      </div>
+      <div class="step">
+        <div class="num">10<small> 枚</small></div>
+        <div class="label">Sランク候補を検証</div>
+        <div class="note">各候補を2ソース以上で検証</div>
+      </div>
+      <div class="step">
+        <div class="num">10<small> 枚</small></div>
+        <div class="label">S確定 10枚・降格 0枚</div>
+        <div class="note">検証の結果、10枚すべてがS確定、降格なし</div>
+      </div>
+      <div class="step final">
+        <div class="num">10<small> 枚</small></div>
+        <div class="label">最終選出</div>
+        <div class="note">品質優先ルールで定める5〜10枚の枠の上限</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="final">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>最終選出 — S確定</h2>
+      <span class="count">10 ALBUMS</span>
+    </div>
+    <p class="sec-desc">Sランク候補10枚を2ソース以上で検証し、すべてSとして確定した10枚。骨太なリフと王道のハードロックを核とし、美旋律型の扱いについては境界メモに明示する。絶対除外要素には該当しない。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>発売日</th><th>ジャンル根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no-cell" data-label="No.">1</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">H.E.A.T</div>
+              <div class="album">Welcome to the Future</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-04-25</span></td>
+            <td class="basis" data-label="ジャンル根拠">WikipediaがSwedish hard rock groupの8th studio albumと明記。HARD ROCKのS基準『Hard Rock／Melodic Hard Rock（極上の美旋律）』に完全適合し、H.E.A.T自体がHARD ROCKのベンチマーク。Blabbermouthも『Swedish hard rockers』の新スタジオ盤と報道。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Welcome_to_the_Future_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="http://blabbermouth.net/news/h-e-a-t-announces-new-album-welcome-to-the-future" target="_blank" rel="noopener">Blabbermouth</a><a href="https://www.allmusic.com/album/release/welcome-to-the-future-mr0006648755" target="_blank" rel="noopener">AllMusic</a></div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">2</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Bonfire</div>
+              <div class="album">Higher Ground</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-01-24</span></td>
+            <td class="basis" data-label="ジャンル根拠">Frontiers発表（BraveWords転載）が『German hard rockers』の新スタジオ盤と明記。AllMusicも2025-01-24発売を確認。太いハードギターとコーラスを掲げる正統ハードロックでS基準に適合。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/higher-ground-mw0004434753" target="_blank" rel="noopener">AllMusic</a><a href="https://bravewords.com/news/bonfire-shares-new-single-video-lost-all-control/" target="_blank" rel="noopener">bravewords.com</a><a href="https://en.wikipedia.org/wiki/Bonfire_(band)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">3</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Buckcherry</div>
+              <div class="album">Roar Like Thunder</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-06-13</span></td>
+            <td class="basis" data-label="ジャンル根拠">WikipediaがAmerican hard rock bandの11th studio albumと明記。全10曲、AC/DC風ストンプ等を評される骨太なハードロックでS基準に完全適合。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Roar_Like_Thunder" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/release/roar-like-thunder-mr0006649734" target="_blank" rel="noopener">AllMusic</a></div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">4</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">W.E.T.</div>
+              <div class="album">Apex</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-03-28</span></td>
+            <td class="basis" data-label="ジャンル根拠">Qobuz（Frontiers公式配信）がジャンルをHard Rockと明記し2025-03-28発売。レーベル発表は5作目のスタジオ盤で『big choruses and hooky melodies』のメロディック・ハードロックとしており、HARD ROCKのS基準（Melodic Hard Rock）に適合。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://www.qobuz.com/us-en/label/frontiers-records-s-r-l/download-streaming-albums/38169/page/3" target="_blank" rel="noopener">qobuz.com</a><a href="https://www.discogs.com/release/33513926-WET-Apex" target="_blank" rel="noopener">Discogs</a><a href="https://100percentrock.com/2025/08/lost-interview-jeff-scott-soto-from-w-e-t-march-2025/" target="_blank" rel="noopener">100percentrock.com</a></div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">5</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Glenn Hughes</div>
+              <div class="album">Chosen</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-09-05</span></td>
+            <td class="basis" data-label="ジャンル根拠">公式サイトが9年ぶりの新スタジオ・ソロ盤として2025-09-05発売を告知し『his most hard rockin’ fashion』と明記。Louderも14作目のソロ盤と確認。ハードロックを核にソウル／ファンク色が乗るのはHughesの個性で、S基準内。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://www.glennhughes.com/ctc/bulletins/glenn-hughes-returns-with-new-solo-album-chosen-out-september-5th-2025/" target="_blank" rel="noopener">glennhughes.com</a><a href="https://www.loudersound.com/bands-artists/glenn-hughes-chosen" target="_blank" rel="noopener">loudersound.com</a></div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">6</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Inglorious</div>
+              <div class="album">V</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-06-06</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaバンドページが2025-06-06発売を確認。Frontiers発表は『Acclaimed British hard rock band』の新スタジオ盤と明記。クラシックなハードロックの王道でS基準に完全適合。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Inglorious" target="_blank" rel="noopener">Wikipedia</a><a href="https://devilsgatemusic.co.uk/inglorious-unveil-new-video-stand-from-upcoming-album-v-out-june-6th/" target="_blank" rel="noopener">devilsgatemusic.co.uk</a><a href="https://www.discogs.com/release/34188952-Inglorious-V" target="_blank" rel="noopener">Discogs</a></div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">7</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Michael Schenker Group</div>
+              <div class="album">Don&#x27;t Sell Your Soul</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-10-03</span></td>
+            <td class="basis" data-label="ジャンル根拠">Premier Guitarが『brand new Michael Schenker Group studio album』として2025-10-03発売（earMUSIC）を報道。AllMusicも同日発売を確認。Schenkerのハードロック／ヘヴィなギター主体の正統派でS基準に適合。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/release/dont-sell-your-soul-mr0006773997" target="_blank" rel="noopener">AllMusic</a><a href="https://www.premierguitar.com/news/new-album-michael-schenker-group?share_id=8972990" target="_blank" rel="noopener">premierguitar.com</a><a href="https://www.discogs.com/release/35350297-Michael-Schenker-Group-Dont-Sell-Your-Soul?srsltid=AfmBOorlWeQR6-wMuUEyQaOSUg1Dr-JEYNpoHYxKr4VftMzm37QPZaVQ" target="_blank" rel="noopener">Discogs</a></div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">8</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Danko Jones</div>
+              <div class="album">Leo Rising</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-11-21</span></td>
+            <td class="basis" data-label="ジャンル根拠">Wikipediaが最新スタジオ盤として2025-11-21発売を明記し『riff-driven hard rock style』と評する。Metal StormもStyle: Hard rock／同日発売。骨太リフ主体でS基準に完全適合。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Danko_Jones_discography" target="_blank" rel="noopener">Wikipedia</a><a href="https://metalstorm.net/bands/album.php?album_id=200430" target="_blank" rel="noopener">metalstorm.net</a><a href="https://www.allmusic.com/album/release/leo-rising-mr0006782656" target="_blank" rel="noopener">AllMusic</a></div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">9</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Treat</div>
+              <div class="album">The Wild Card</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-11-21</span></td>
+            <td class="basis" data-label="ジャンル根拠">Frontiers発表が『Swedish melodic rock band』の10作目のスタジオ盤として2025-11-21発売を告知。QobuzはジャンルをHard Rockと明記。美旋律とコーラスの華やかさを持つMelodic Hard Rockで、HARD ROCKのS基準に適合。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://musicplayers.com/2025/09/treat-announces-new-studio-album-the-wild-card-out-november-21-2025-via-frontiers-music-srl/" target="_blank" rel="noopener">musicplayers.com</a><a href="https://www.qobuz.com/us-en/label/frontiers-records-s-r-l/download-streaming-albums/38169" target="_blank" rel="noopener">qobuz.com</a><a href="https://www.discogs.com/release/35733970-Treat-The-Wild-Card" target="_blank" rel="noopener">Discogs</a></div></td>
+          </tr>
+          <tr>
+            <td class="no-cell" data-label="No.">10</td>
+            <td data-label="アーティスト ／ アルバム">
+              <div class="artist">Robin McAuley</div>
+              <div class="album">Soulbound</div>
+            </td>
+            <td data-label="発売日"><span class="date">2025-02-28</span></td>
+            <td class="basis" data-label="ジャンル根拠">Blabbermouth（Frontiers発表）『more guitar-driven straight hard rock』と明記し2025-02-28発売を告知。AllMusicも同日発売を確認。前作よりエッジの強いストレートなハードロックでS基準に適合。絶対除外要素なし。</td>
+            <td data-label="出典"><div class="sources"><a href="https://blabbermouth.net/news/robin-mcauley-announces-new-solo-album-soulbound" target="_blank" rel="noopener">Blabbermouth</a><a href="https://www.allmusic.com/album/release/soulbound-mr0006597571" target="_blank" rel="noopener">AllMusic</a><a href="https://en.wikipedia.org/wiki/Robin_McAuley" target="_blank" rel="noopener">Wikipedia</a></div></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="candidates">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>A／B候補 — 未採用</h2>
+      <span class="count">14 ALBUMS</span>
+    </div>
+    <p class="sec-desc">候補24枚のうち、最終選出には至らなかった14枚。適合ランクは <strong>A（7枚）</strong> と <strong>B（7枚）</strong>。<strong>S枠10枚が確定したため、品質優先で不採用</strong>とした。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th>アーティスト ／ アルバム</th><th>発売日</th><th>適合ランク</th><th>根拠メモ</th></tr>
+        </thead>
+        <tbody>
+          <tr class="group-row"><td colspan="4">A ランク — 7枚</td></tr>
+<tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Smith/Kotzen</div><div class="album">Black Light/White Noise</div></td>
+            <td data-label="発売日"><span class="date">2025-04-04</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Wikipedia genres Hard rock, blues rock; Sonic Perspectives lists Genre Hard Rock / Blues Rock - fits A Bluesy Hard Rock</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">L.A. Guns</div><div class="album">Leopard Skin</div></td>
+            <td data-label="発売日"><span class="date">2025-04-04</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Wikipedia band genres Hard rock, glam metal; Discogs Style Glam, Hard Rock, Blues Rock - fits A Sleaze Rock/Glam Metal</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Crazy Lixx</div><div class="album">Thrill of the Bite</div></td>
+            <td data-label="発売日"><span class="date">2025-02-14</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Boundary note: benchmark for genre 8; melodic/hair-metal dominance to be judged at boundary stage</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Cheap Trick</div><div class="album">All Washed Up</div></td>
+            <td data-label="発売日"><span class="date">2025-11-14</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Wikipedia: twenty-first studio album by American rock band Cheap Trick; classic rock with hard edge - fits A Classic Rock (hard edge)</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Bryan Adams</div><div class="album">Roll With the Punches</div></td>
+            <td data-label="発売日"><span class="date">2025-08-29</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Wikipediaでは確認できない (album page not used); confirmed via Discogs and Ultimate Classic Rock</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Babylon A.D.</div><div class="album">When The World Stops</div></td>
+            <td data-label="発売日"><span class="date">2025-09-01</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Wikipediaでは確認できない; date discrepancy in sources: CD release Sep 1 2025 (Kivel/Sleaze Roxx), digital Sep 26 2025 (Qobuz/Rock Report). Using CD release Sep 1</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Midnite City</div><div class="album">Bite The Bullet</div></td>
+            <td data-label="発売日"><span class="date">2025-11-21</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+            <td class="basis" data-label="根拠メモ">Wikipediaでは確認できない; confirmed via Qobuz and Fireworks Magazine. Boundary note: hair-metal dominance could place it in genre 8</td>
+          </tr>
+          
+          <tr class="group-row"><td colspan="4">B ランク — 7枚</td></tr>
+<tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Tremonti</div><div class="album">The End Will Show Us How</div></td>
+            <td data-label="発売日"><span class="date">2025-01-10</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Borderline heavy metal; conditional B only</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Harem Scarem</div><div class="album">Chasing Euphoria</div></td>
+            <td data-label="発売日"><span class="date">2025-04-25</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Canadian hard rockers / melodic rock masters, 16th studio album per MetalTalk and reviews - fits B AOR / melodic hard rock conditional</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Bush</div><div class="album">I Beat Loneliness</div></td>
+            <td data-label="発売日"><span class="date">2025-07-18</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Borderline: post-grunge/alternative roots, not orthodox hard rock; B conditional</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">FM</div><div class="album">Brotherhood</div></td>
+            <td data-label="発売日"><span class="date">2025-09-05</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Wikipediaでは確認できない (album page not used); confirmed via Discogs/Frontiers material</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Giant</div><div class="album">Stand and Deliver</div></td>
+            <td data-label="発売日"><span class="date">2025-05-16</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Wikipedia band genre Hard rock, Giant is American melodic hard rock band, follow-up released May 16 2025; Discogs Style Hard Rock, Arena Rock; Qobuz Hard Rock - AOR leaning so B</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Streetlight</div><div class="album">Night Vision</div></td>
+            <td data-label="発売日"><span class="date">2025-03-14</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Wikipediaでは確認できない; confirmed via Dangerdog and Frontiers announcement via Melodic Rock Info. Title listed as Night Vision (some retailers plural Night Visions)</td>
+          </tr>
+          <tr>
+            <td data-label="アーティスト ／ アルバム"><div class="artist">Tokyo Blade</div><div class="album">Time Is the Fire</div></td>
+            <td data-label="発売日"><span class="date">2025-01-17</span></td>
+            <td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+            <td class="basis" data-label="根拠メモ">Borderline heavy metal/NWOBHM; B conditional only</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="boundary">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <h2>境界メモ</h2>
+      <span class="count">NOTES</span>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <h3><span class="who">H.E.A.T／Treat／W.E.T.</span> — ジャンル7との境界</h3>
+        <p>この3枚は <strong>MELODIC HARD ROCK / HAIR METAL（ジャンル7）のベンチマーク系</strong>にあたる美旋律寄りの作品。ただし2020年代マニュアルの HARD ROCK のS基準自体が <strong>「Hard Rock／Melodic Hard Rock（極上の美旋律）」</strong> を含み、H.E.A.T は HARD ROCK 側のベンチマークでもあるため、本選出では <strong>HARD ROCK のSとして採用</strong>した。帰結として、この3枚はジャンル7では使用できない（アルバム重複禁止）。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">Crazy Lixx</span> — ジャンル7で使用可能</h3>
+        <p>ジャンル7のベンチマークである Crazy Lixx『Thrill of the Bite』は本選出では <strong>Aランク・不採用</strong>のため、ジャンル7での選出は妨げられない。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">厳格ルール</span> — 女性枠なし</h3>
+        <p>本ジャンル（HARD ROCK）には<strong>女性枠ルールはない</strong>。厳格ルールの確認は<strong>合格（passed）</strong>。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">重複排除</span> — 重複ゼロ</h3>
+        <p>既出アルバム累積リスト（完全版ほか）と2025年既選出分と照合した結果、<strong>重複は0件</strong>。除外された候補はなく、<strong>全24枚が残った</strong>。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    2025年 HARD ROCK アルバム選出エビデンス — 候補24枚／重複除外0枚／S検証10枚／S確定10枚（降格なし）／最終選出10枚（品質優先ルール：5〜10枚）。出典リンクは各表の「出典」欄に記載。
+  </footer>
+
+</div>
+</body>
+</html>
