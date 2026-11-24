@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 STADIUM COUNTRY &amp; SOUTHERN ROCK 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f3ed;
+    --bg2:#efe9e0;
+    --card:#ffffff;
+    --card2:#fdfaf6;
+    --ink:#171412;
+    --ink2:#4a423c;
+    --muted:#7a6f66;
+    --line:#ddd3c7;
+    --line-strong:#171412;
+    --accent:#c81e1e;
+    --accent-ink:#fff;
+    --gold:#b7791f;
+    --chip:#171412;
+    --chip-ink:#f7f3ed;
+    --warn-bg:#fff7e6;
+    --warn-line:#e6c87a;
+    --warn-ink:#5c4300;
+    --shadow:0 1px 0 rgba(0,0,0,.06), 0 12px 32px rgba(23,20,18,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#121110;
+      --bg2:#1a1816;
+      --card:#1e1b19;
+      --card2:#23201e;
+      --ink:#f2ece6;
+      --ink2:#cbc0b6;
+      --muted:#9a8f85;
+      --line:#37302c;
+      --line-strong:#f2ece6;
+      --accent:#ff3b30;
+      --gold:#e0a83a;
+      --chip:#f2ece6;
+      --chip-ink:#171412;
+      --warn-bg:#2a2210;
+      --warn-line:#6b5518;
+      --warn-ink:#f5d98a;
+      --shadow:0 12px 32px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 64px}
+  /* HERO */
+  .hero{border-bottom:3px solid var(--line-strong);padding:36px 0 28px;margin-bottom:0}
+  .hero-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:22px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-family:Oswald,sans-serif;letter-spacing:.14em;font-weight:600;font-size:13px;text-transform:uppercase}
+  .kicker::before{content:"";width:28px;height:3px;background:var(--accent);display:inline-block}
+  .year-badge{font-family:Oswald,sans-serif;font-weight:700;font-size:13px;letter-spacing:.12em;border:1.5px solid var(--line-strong);padding:6px 12px;border-radius:999px}
+  h1{font-family:Oswald,"Noto Sans JP",sans-serif;font-weight:700;line-height:.95;letter-spacing:.01em;margin:0;text-transform:uppercase}
+  h1 .line1{display:block;font-size:clamp(52px,9vw,96px)}
+  h1 .line2{display:block;font-size:clamp(28px,5.2vw,54px);color:var(--accent);margin-top:6px}
+  .hero-jp{font-weight:900;font-size:clamp(18px,2.6vw,24px);margin:18px 0 6px;letter-spacing:.02em}
+  .hero-lead{color:var(--ink2);max-width:720px;margin:0;font-size:15.5px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1.5px solid var(--line-strong);margin-top:28px;background:var(--card)}
+  .stat{padding:16px 18px 14px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat b{font-family:Oswald,sans-serif;font-size:32px;line-height:1;display:block;font-weight:700}
+  .stat span{font-size:12.5px;color:var(--muted);font-weight:700;letter-spacing:.04em}
+  /* NAV */
+  .album-nav{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0 4px}
+  .album-nav a{text-decoration:none;font-weight:700;font-size:13.5px;border:1px solid var(--line);background:var(--card);padding:10px 14px;border-radius:999px;min-height:40px;display:inline-flex;align-items:center}
+  .album-nav a:hover{border-color:var(--line-strong)}
+  .album-nav a i{font-style:normal;font-family:Oswald,sans-serif;color:var(--accent);margin-right:7px}
+  /* OVERVIEW TABLE */
+  .section-head{display:flex;align-items:baseline;gap:14px;margin:40px 0 16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .section-head h2{font-size:20px;font-weight:900;margin:0;letter-spacing:.02em}
+  .section-head span{font-family:Oswald,sans-serif;font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  .overview{border:1.5px solid var(--line-strong);background:var(--card);overflow:hidden}
+  .ov-row{display:grid;grid-template-columns:44px 1.15fr 1fr 1.6fr 64px;gap:0;border-bottom:1px solid var(--line)}
+  .ov-row:last-child{border-bottom:none}
+  .ov-row > div{padding:11px 14px;font-size:14px}
+  .ov-row .no{font-family:Oswald,sans-serif;font-weight:700;color:var(--accent);text-align:center;padding-left:6px;padding-right:6px}
+  .ov-row .artist{font-weight:900}
+  .ov-row .album{color:var(--ink2);font-style:italic}
+  .ov-row .track{font-weight:700}
+  .ov-row .time{font-family:Oswald,sans-serif;text-align:right;color:var(--muted)}
+  .ov-head{background:var(--bg2);font-size:11.5px !important;font-weight:900;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .ov-head > div{font-size:11.5px}
+  /* ALBUM SECTIONS */
+  .album{margin-top:48px;scroll-margin-top:16px}
+  .album-head{display:flex;gap:18px;align-items:flex-start;border-top:3px solid var(--line-strong);padding-top:20px}
+  .album-num{font-family:Oswald,sans-serif;font-size:52px;line-height:.9;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--ink);flex:none}
+  @media (prefers-color-scheme: dark){ .album-num{-webkit-text-stroke:1.5px var(--ink)} }
+  .album-head h2{margin:0;font-size:clamp(24px,4vw,34px);font-weight:900;line-height:1.2}
+  .album-head h2 em{font-style:italic;font-weight:700;color:var(--ink2)}
+  .album-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pill{font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 10px;color:var(--ink2)}
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  .track{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:20px 20px 16px;display:flex;flex-direction:column}
+  .track-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .track-no{font-family:Oswald,sans-serif;font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:600}
+  .duration{font-family:Oswald,sans-serif;font-weight:700;font-size:15px;border:1.5px solid var(--line-strong);border-radius:999px;padding:2px 10px;white-space:nowrap}
+  .track h3{font-size:22px;font-weight:900;margin:8px 0 10px;line-height:1.3;overflow-wrap:anywhere}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .badge{font-size:11.5px;font-weight:900;letter-spacing:.03em;padding:4px 9px;border-radius:4px;background:var(--chip);color:var(--chip-ink)}
+  .badge.red{background:var(--accent);color:#fff}
+  .badge.outline{background:transparent;color:var(--ink2);border:1px solid var(--line)}
+  .track p{margin:0 0 10px;font-size:14.5px;color:var(--ink2)}
+  .track p strong{color:var(--ink)}
+  .evidence{margin:4px 0 14px;padding:12px 14px;background:var(--card2);border:1px solid var(--line);font-size:13.5px}
+  .evidence h4{margin:0 0 6px;font-size:12px;letter-spacing:.08em;color:var(--muted)}
+  .evidence ul{margin:0;padding-left:18px;color:var(--ink2)}
+  .evidence li{margin:3px 0}
+  .evidence li strong{color:var(--ink)}
+  .note-box{margin-top:auto;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:13px;padding:10px 12px;margin-bottom:14px;line-height:1.6}
+  .note-box b{font-weight:900}
+  .sources{border-top:1px dashed var(--line);padding-top:12px;margin-top:auto}
+  .sources span{font-size:11.5px;font-weight:900;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:6px}
+  .sources a{display:inline-flex;align-items:center;min-height:36px;font-size:13px;font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:3px;margin-right:16px;padding:4px 0;overflow-wrap:anywhere}
+  /* TSV */
+  .tsv-box{background:var(--card);border:1.5px solid var(--line-strong);padding:20px}
+  .tsv-box p{margin:0 0 12px;color:var(--ink2);font-size:14px}
+  pre.tsv{background:#171412;color:#f2ece6;padding:16px;font-size:12.5px;line-height:1.7;margin:0 0 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}
+  @media (prefers-color-scheme: dark){ pre.tsv{background:#0b0a09;border:1px solid var(--line)} }
+  .copy-btn{appearance:none;border:none;background:var(--ink);color:var(--bg);font:inherit;font-weight:900;font-size:14px;padding:12px 20px;border-radius:999px;min-height:48px;cursor:pointer}
+  .copy-status{font-size:13px;color:var(--muted);margin-left:12px;font-weight:700}
+  /* NOTES */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .rule{background:var(--card);border:1px solid var(--line);padding:18px}
+  .rule b{font-family:Oswald,sans-serif;font-size:28px;display:block;line-height:1;margin-bottom:8px}
+  .rule h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .rule p{margin:0;font-size:13.5px;color:var(--ink2)}
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+  @media (max-width:820px){
+    .stats{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+    .tracks{grid-template-columns:1fr}
+    .rules{grid-template-columns:1fr}
+    .ov-row{grid-template-columns:36px 1fr 56px;grid-template-areas:"no artist time" "no album time" "no track time"}
+    .ov-row .no{grid-area:no}.ov-row .artist{grid-area:artist;padding-bottom:0}
+    .ov-row .album{grid-area:album;padding-top:0;padding-bottom:0}
+    .ov-row .track{grid-area:track;padding-top:0}
+    .ov-row .time{grid-area:time}
+    .ov-head{display:none}
+    .album-num{font-size:40px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-top">
+      <span class="kicker">Track Selection — Evidence</span>
+      <span class="year-badge">2025 ・ GENRE 03</span>
+    </div>
+    <h1>
+      <span class="line1">Stadium Country &amp; Southern Rock</span>
+    </h1>
+    <p class="hero-jp">2025年 STADIUM COUNTRY &amp; SOUTHERN ROCK — 楽曲選出エビデンス</p>
+    <p class="hero-lead">8組のアルバムから各2曲、全16曲を選出。全16曲とも収録・曲長を2サイト以上で照合済み、カバー曲はなく、バラード例外はEric Church「Johnny」の1件のみ（Hiro承認）。各曲の選出根拠と出典を記録します。なおSpotifyプレイリストは再接続待ちのため未作成です（末尾の注記参照）。</p>
+
+    <div class="stats" aria-label="選出概要">
+      <div class="stat"><b>8</b><span>アルバム</span></div>
+      <div class="stat"><b>16</b><span>選出曲（各アルバム2曲）</span></div>
+      <div class="stat"><b>1</b><span>バラード例外（Hiro承認）</span></div>
+      <div class="stat"><b>0</b><span>カバー曲</span></div>
+    </div>
+
+    <nav class="album-nav" aria-label="アルバムへ移動">
+      <a href="#eric-church"><i>01</i>Eric Church</a><a href="#whiskey-myers"><i>02</i>Whiskey Myers</a><a href="#hardy"><i>03</i>Hardy</a><a href="#kip-moore"><i>04</i>Kip Moore</a><a href="#ashley-monroe"><i>05</i>Ashley Monroe</a><a href="#hailey-whitters"><i>06</i>Hailey Whitters</a><a href="#trisha-yearwood"><i>07</i>Trisha Yearwood</a><a href="#carter-faith"><i>08</i>Carter Faith</a>
+    </nav>
+  </header>
+
+  <div class="section-head"><h2>選出曲一覧</h2><span>All 16 Tracks</span></div>
+  <div class="overview" role="table" aria-label="選出曲一覧">
+    <div class="ov-row ov-head"><div>No.</div><div>Artist</div><div>Album</div><div>Track</div><div style="text-align:right">Time</div></div>
+    <div class="ov-row"><div class="no">1</div><div class="artist">Eric Church</div><div class="album">Evangeline vs. the Machine</div><div class="track">Hands of Time</div><div class="time">3:32</div></div>
+    <div class="ov-row"><div class="no">2</div><div class="artist">Eric Church</div><div class="album">Evangeline vs. the Machine</div><div class="track">Johnny</div><div class="time">5:03</div></div>
+    <div class="ov-row"><div class="no">3</div><div class="artist">Whiskey Myers</div><div class="album">Whomp Whack Thunder</div><div class="track">Time Bomb</div><div class="time">3:36</div></div>
+    <div class="ov-row"><div class="no">4</div><div class="artist">Whiskey Myers</div><div class="album">Whomp Whack Thunder</div><div class="track">Tailspin</div><div class="time">3:46</div></div>
+    <div class="ov-row"><div class="no">5</div><div class="artist">Hardy</div><div class="album">Country! Country!</div><div class="track">Favorite Country Song</div><div class="time">3:13</div></div>
+    <div class="ov-row"><div class="no">6</div><div class="artist">Hardy</div><div class="album">Country! Country!</div><div class="track">Bro Country</div><div class="time">4:45</div></div>
+    <div class="ov-row"><div class="no">7</div><div class="artist">Kip Moore</div><div class="album">Solitary Tracks</div><div class="track">Live Here to Work</div><div class="time">4:42</div></div>
+    <div class="ov-row"><div class="no">8</div><div class="artist">Kip Moore</div><div class="album">Solitary Tracks</div><div class="track">Around You</div><div class="time">3:54</div></div>
+    <div class="ov-row"><div class="no">9</div><div class="artist">Ashley Monroe</div><div class="album">Tennessee Lightning</div><div class="track">Hot Rod Pipe Dream</div><div class="time">3:45</div></div>
+    <div class="ov-row"><div class="no">10</div><div class="artist">Ashley Monroe</div><div class="album">Tennessee Lightning</div><div class="track">Bitter Swisher Sweet</div><div class="time">3:13</div></div>
+    <div class="ov-row"><div class="no">11</div><div class="artist">Hailey Whitters</div><div class="album">Corn Queen</div><div class="track">High on the Hog</div><div class="time">3:44</div></div>
+    <div class="ov-row"><div class="no">12</div><div class="artist">Hailey Whitters</div><div class="album">Corn Queen</div><div class="track">High on a Heartbreak</div><div class="time">3:44</div></div>
+    <div class="ov-row"><div class="no">13</div><div class="artist">Trisha Yearwood</div><div class="album">The Mirror</div><div class="track">Bringing the Angels</div><div class="time">2:46</div></div>
+    <div class="ov-row"><div class="no">14</div><div class="artist">Trisha Yearwood</div><div class="album">The Mirror</div><div class="track">The Wall or the Way Over</div><div class="time">3:42</div></div>
+    <div class="ov-row"><div class="no">15</div><div class="artist">Carter Faith</div><div class="album">Cherry Valley</div><div class="track">Bar Star</div><div class="time">2:52</div></div>
+    <div class="ov-row"><div class="no">16</div><div class="artist">Carter Faith</div><div class="album">Cherry Valley</div><div class="track">Grudge</div><div class="time">3:15</div></div>
+  </div>
+
+  <section class="album" id="eric-church">
+    <div class="album-head">
+      <div class="album-num">01</div>
+      <div>
+        <h2>Eric Church <em>『Evangeline vs. the Machine』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.1–2</span><span class="pill">2025-05-02 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.1</span><span class="duration">3:32</span></div>
+        <h3>Hands of Time</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>アルバム唯一の公式リードシングル（2025-03-20発売）。Hot 100 #70、Hot Country Songs #20、Country Airplay #14、UK Country Airplay #1。YouTube公式MV 3,240,701回（<strong>第三者集計：Kworb</strong>）。Stereogum評「juicy, fired-up Southern rocker」のアップテンポ。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Evangeline_vs._the_Machine" target="_blank" rel="noopener">Wikipedia — Evangeline vs. the Machine</a><a href="https://en.wikipedia.org/wiki/Hands_of_Time_(song)" target="_blank" rel="noopener">Wikipedia — Hands of Time</a><a href="https://www.youtube.com/watch?v=-UUZykcidqE" target="_blank" rel="noopener">YouTube — 公式MV</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.2</span><span class="duration">5:03</span></div>
+        <h3>Johnny</h3>
+        <div class="badges"><span class="badge outline">プロモーショナル・シングル</span><span class="badge outline">バラード例外（Hiro承認）</span></div>
+        <p>2025-09-12にプロモ・シングルとして単独発売。YouTube公式オーディオ 512,306回（<strong>第三者集計：Kworb</strong>）で盤内2位。Qobuz「Power ballad」、Holler「morose ballad」とバラード寄りだが、2023年Nashville・Covenant School銃撃事件（Churchの息子たちの学校の近隣）を受けて書かれ、Charlie Daniels「The Devil Went Down to Georgia」のJohnnyを現代に呼び戻す曲で、批評家が「キャリアで最もstrikingでambitiousな曲の一つ」と評価。例外条件「アーティストにとって重要／その年に重要」に該当し、<strong>Hiro承認のうえバラード例外として採用</strong>。採用はアルバム版（シングルエディット4:20ではない）。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Johnny_(Eric_Church_song)" target="_blank" rel="noopener">Wikipedia — Johnny</a><a href="https://www.youtube.com/watch?v=QvCD6hVsbIo" target="_blank" rel="noopener">YouTube — 公式オーディオ</a><a href="https://www.whiskeyriff.com/2025/05/06/country-music-fans-sound-off-on-their-favorite-songs-from-eric-churchs-evangeline-vs-the-machine/" target="_blank" rel="noopener">Whiskey Riff — ファンfavorite投票</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="album" id="whiskey-myers">
+    <div class="album-head">
+      <div class="album-num">02</div>
+      <div>
+        <h2>Whiskey Myers <em>『Whomp Whack Thunder』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.3–4</span><span class="pill">2025-09-26 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.3</span><span class="duration">3:36</span></div>
+        <h3>Time Bomb</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>リードシングル（2025-04-23、アルバム発表と同時発売）。US Mainstream Rock #34。Spotify 6,608,340 streams（<strong>第三者集計：Kworb</strong>）。「raw, hard-hitting」なアップテンポ。YouTube公式オーディオの再生回数は確認できない。Wikipediaにアルバム専用ページなし（TIDAL／Discogs／Deezer等で収録確認）。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://musicrow.com/2025/04/whiskey-myers-to-release-new-album-in-september/" target="_blank" rel="noopener">MusicRow — アルバム発表記事</a><a href="https://www.discogs.com/release/35213494-Whiskey-Myers-Whomp-Whack-Thunder" target="_blank" rel="noopener">Discogs — Whomp Whack Thunder</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.4</span><span class="duration">3:46</span></div>
+        <h3>Tailspin</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>第2の先行シングル（2025-06-06）。Spotify 9,573,710 streams（<strong>第三者集計：Kworb</strong>）で盤内1位。YouTube公式オーディオ 271,134回（<strong>第三者集計：speakrj</strong>）。「scorching track」「breakneck energy」のアップテンポ。第3シングル「Midnight Woman」と接戦だったが、<strong>Hiro が現行維持を選択</strong>（注記セクション参照）。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.whiskeyriff.com/2025/06/06/whiskey-myers-does-it-again-with-hypnotizing-new-single-tailspin/" target="_blank" rel="noopener">Whiskey Riff — Tailspin記事</a><a href="https://www.discogs.com/release/35213494-Whiskey-Myers-Whomp-Whack-Thunder" target="_blank" rel="noopener">Discogs — Whomp Whack Thunder</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="album" id="hardy">
+    <div class="album-head">
+      <div class="album-num">03</div>
+      <div>
+        <h2>Hardy <em>『Country! Country!』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.5–6</span><span class="pill">2025-09-26 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.5</span><span class="duration">3:13</span></div>
+        <h3>Favorite Country Song</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>リードシングル（2025-04-11）。MusicRow CountryBreakout Radio Chart 1位。YouTube公式MV約7.14M回（<strong>第三者集計：vidIQ</strong>）。アップビートなカントリー・ロック。先行EP収録曲の再収録だがアルバム版として正式収録。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Country!_Country!" target="_blank" rel="noopener">Wikipedia — Country! Country!</a><a href="https://www.youtube.com/watch?v=2U1Cn4ukKiI" target="_blank" rel="noopener">YouTube — 公式MV</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.6</span><span class="duration">4:45</span></div>
+        <h3>Bro Country (feat. ERNEST)</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>第3シングル（2025-08-29）。発売日にiTunes Top Songs No.1デビューと報道。YouTube公式Lyric Video 260,829回（<strong>第三者集計：SocialCounts.org</strong>）。バラードと分類する出典はなく、ミドルテンポのデュエット曲。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Country!_Country!" target="_blank" rel="noopener">Wikipedia — Country! Country!</a><a href="https://www.youtube.com/watch?v=jP15acdaLio" target="_blank" rel="noopener">YouTube — 公式Lyric Video</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="album" id="kip-moore">
+    <div class="album-head">
+      <div class="album-num">04</div>
+      <div>
+        <h2>Kip Moore <em>『Solitary Tracks』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.7–8</span><span class="pill">2025-02-28 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.7</span><span class="duration">4:42</span></div>
+        <h3>Live Here to Work</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>アルバム先行シングルの筆頭。Billboardが「blistering」と評したギター主体のロック・アンセム、Rolling Stone「Song You Need To Know」選出。YouTube公式MVは存在するが正確な再生回数は確認できない。Wikipediaにアルバム専用ページなし（Apple Music／LPトラックリストで収録確認）。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://music.apple.com/us/album/solitary-tracks/1781928144" target="_blank" rel="noopener">Apple Music — Solitary Tracks</a><a href="https://countrychord.com/kip-moore-releases-first-song-in-nearly-two-years-live-here-to-work-accompanied-with-new-music-video/" target="_blank" rel="noopener">CountryChord — シングル記事</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.8</span><span class="duration">3:54</span></div>
+        <h3>Around You</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>シングル（2025-01-31先行リリース）。The Clash／The Ramones影響を公言するアップテンポ曲（Whiskey Riff「Ramones-Inspired」、CountrySwag「snappy earworm」）。YouTube公式動画 345,605回（<strong>第三者集計：Trari</strong>）。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://music.apple.com/us/album/solitary-tracks/1781928144" target="_blank" rel="noopener">Apple Music — Solitary Tracks</a><a href="https://www.whiskeyriff.com/2025/01/31/kip-moore-fights-desire-with-ramones-inspired-new-song-around-you/" target="_blank" rel="noopener">Whiskey Riff — Around You記事</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="album" id="ashley-monroe">
+    <div class="album-head">
+      <div class="album-num">05</div>
+      <div>
+        <h2>Ashley Monroe <em>『Tennessee Lightning』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.9–10</span><span class="pill">2025-08-08 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.9</span><span class="duration">3:45</span></div>
+        <h3>Hot Rod Pipe Dream</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>シングル（公式動画CMTプレミア）。MusicRow「the revved-up」、Country Lowdown「punchier… fun, playful Summer anthem」、Highway Queens「fun rock song」とアップテンポ／ロック寄り。YouTube公式動画は存在するが正確な再生回数は確認できない。オリジナル曲（Monroe／Brendan Benson作）、カバーではない。Wikipediaにアルバム専用ページなし（Qobuz／ffm.toで収録確認）。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.qobuz.com/us-en/album/tennessee-lightning-ashley-monroe/c70msj2051jwb" target="_blank" rel="noopener">Qobuz — Tennessee Lightning</a><a href="https://musicrow.com/2025/04/ashley-monroe-slates-new-album-for-august-release/" target="_blank" rel="noopener">MusicRow — アルバム発表記事</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.10</span><span class="duration">3:13</span></div>
+        <h3>Bitter Swisher Sweet (feat. Brittney Spencer)</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>シングル（2025-05-31）。Stereogum「cool, swaggering country track」、Highway Queens「soulful, r'n'b vibe」のミドルテンポ・グルーヴ曲。YouTube公式Visualizer約25K回（公式チャンネル一覧表示で確認）。オリジナル曲。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://www.qobuz.com/us-en/album/tennessee-lightning-ashley-monroe/c70msj2051jwb" target="_blank" rel="noopener">Qobuz — Tennessee Lightning</a><a href="https://www.antimusic.com/p/25/0531ashley_monroe_teams_up_with_brittney_spencer_for_bitter_swisher_sweet.shtml" target="_blank" rel="noopener">antiMusic — シングル記事</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="album" id="hailey-whitters">
+    <div class="album-head">
+      <div class="album-num">06</div>
+      <div>
+        <h2>Hailey Whitters <em>『Corn Queen』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.11–12</span><span class="pill">2025-06-06 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.11</span><span class="duration">3:44</span></div>
+        <h3>High on the Hog</h3>
+        <div class="badges"><span class="badge outline">プロモーショナル・シングル</span></div>
+        <p>アルバム先行プロモ・シングル4曲の1つ（Wikipedia／Big Loud公式）。各社共通で「rollicking mission statement」と紹介される冒頭のアップテンポ曲。Saving Country Music「Best Country Singles of 2025 So Far」選出。YouTube公式Lyric Videoは存在するが正確な再生回数は確認できない。オリジナル曲。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Corn_Queen" target="_blank" rel="noopener">Wikipedia — Corn Queen</a><a href="https://bigloud.com/hailey-whitters-releases-new-album-corn-queen/" target="_blank" rel="noopener">Big Loud — アルバム発表</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.12</span><span class="duration">3:44</span></div>
+        <h3>High on a Heartbreak</h3>
+        <div class="badges"><span class="badge outline">プロモーショナル・シングル</span></div>
+        <p>プロモ・シングル（アルバム発表と同時に公式MV付きでリリース、Stereogum／BrooklynVegan）。本人コメント「失恋が気持ちいい歌にしたかった」— ミドル〜アップテンポ。YouTube公式MV約86K回（公式チャンネル一覧表示で確認。<strong>第三者集計Popnableも87.8Kで概ね一致</strong>）。オリジナル曲。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Corn_Queen" target="_blank" rel="noopener">Wikipedia — Corn Queen</a><a href="https://stereogum.com/2303030/hailey-whitters-announces-new-album-corn-queen-hear-high-on-a-heartbreak/music" target="_blank" rel="noopener">Stereogum — 発表記事</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="album" id="trisha-yearwood">
+    <div class="album-head">
+      <div class="album-num">07</div>
+      <div>
+        <h2>Trisha Yearwood <em>『The Mirror』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.13–14</span><span class="pill">2025-07-18 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.13</span><span class="duration">2:46</span></div>
+        <h3>Bringing the Angels</h3>
+        <div class="badges"><span class="badge outline">先行シングル</span></div>
+        <p>2025-05-02に「The Wall or the Way Over」と同時先行リリース。Acoustic Soundsは「two new singles」と明記、iHeartはJimmy Kimmel Liveでの披露を「energetic anthem」と報道。AllMusic評「rocking anthem… roaring guitars and a gospelized backing chorus」。YouTube公式オーディオは存在するが再生回数は確認できない。オリジナル曲。なおWikipediaの公式シングル欄はタイトル曲「The Mirror」のみ掲載で、本曲は「先行シングル／先行配信曲」という位置づけの食い違いあり。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/The_Mirror_(Trisha_Yearwood_album)" target="_blank" rel="noopener">Wikipedia — The Mirror</a><a href="https://www.allmusic.com/album/the-mirror-mw0004520077" target="_blank" rel="noopener">AllMusic — The Mirror</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.14</span><span class="duration">3:42</span></div>
+        <h3>The Wall or the Way Over</h3>
+        <div class="badges"><span class="badge outline">先行配信曲</span></div>
+        <p>2025-05-02にアルバム先行曲としてリリース（Wikipedia）。The Kelly Clarkson Show等で披露されたプロモーション曲。AllMusic評「polished pop-country」で、バラードとは評されておらずミドル〜アップテンポとして採用。YouTube公式オーディオは存在するが再生回数は確認できない。オリジナル曲。本盤は公式シングルがスローなタイトル曲のみのため、先行配信のアップ／ミドルテンポ2曲で構成した。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/The_Mirror_(Trisha_Yearwood_album)" target="_blank" rel="noopener">Wikipedia — The Mirror</a><a href="https://www.allmusic.com/album/the-mirror-mw0004520077" target="_blank" rel="noopener">AllMusic — The Mirror</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="album" id="carter-faith">
+    <div class="album-head">
+      <div class="album-num">08</div>
+      <div>
+        <h2>Carter Faith <em>『Cherry Valley』</em></h2>
+        <div class="album-meta"><span class="pill">選出 2曲</span><span class="pill">全体 No.15–16</span><span class="pill">2025-10-03 発売</span></div>
+      </div>
+    </div>
+    <div class="tracks">
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 01 — No.15</span><span class="duration">2:52</span></div>
+        <h3>Bar Star</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>アルバム第4シングル（2025-07-25）。本人談「a fun song about a lovable honky-tonk man」。公式MVにBilly Bob Thorntonが出演しRolling Stone／Billboard／Entertainment Tonightで話題化、Whiskey Riff「fan favorite tune」。Billboard年間ベスト評でも代表曲として言及。YouTube公式MVは存在するが再生回数は確認できない。オリジナル曲。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Cherry_Valley_(album)" target="_blank" rel="noopener">Wikipedia — Cherry Valley</a><a href="https://www.whiskeyriff.com/2025/08/20/carter-faith-found-her-bar-star-in-new-music-video-featuring-the-legendary-landman-actor-billy-bob-thornton/" target="_blank" rel="noopener">Whiskey Riff — MV記事</a>
+        </div>
+      </article>
+      <article class="track">
+        <div class="track-top"><span class="track-no">TRACK 02 — No.16</span><span class="duration">3:15</span></div>
+        <h3>Grudge</h3>
+        <div class="badges"><span class="badge red">シングル</span></div>
+        <p>アルバム第2シングル（2025-04-11）。本人談「just a silly little song」。Country Lowdown評「insanely catchy, sassy and amusing」。本人のお気に入り3曲の一つ。YouTube公式Visualizerは存在するが再生回数は確認できない。オリジナル曲。</p>
+        <div class="sources"><span>出典</span>
+          <a href="https://en.wikipedia.org/wiki/Cherry_Valley_(album)" target="_blank" rel="noopener">Wikipedia — Cherry Valley</a><a href="https://pressroom.mca.com/news/nashville-breakout-star-carter-faith-debuts-new-song-grudge-audio/" target="_blank" rel="noopener">MCA Pressroom — Grudge記事</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="section-head"><h2>選ばなかった主な楽曲と理由</h2><span>Rejected Tracks</span></div>
+  <div class="tsv-box">
+    <h3>Eric Church</h3>
+    <p>Clap Hands（3:45、Tom Waitsのカバー → 除外）／ Darkest Hour（5:48、スロー／バラード寄り）／ Bleed on Paper（5:39、スローなスワンプ寄り）／ Rocket's White Lincoln（4:03、アップテンポだが非シングル。Johnny の例外を認めない場合の代替候補だった）／ Storm in Their Blood、Evangeline（非シングル、後者はバラード寄り）</p>
+    <h3>Whiskey Myers</h3>
+    <p>Midnight Woman（4:12、第3の先行シングル。2曲目の接戦相手。YouTube公式オーディオの回数ではTailspinを上回る集計もあり接戦 → Hiro が現行維持を選択）／ Monsters（3:59、非シングル・内省的）／ Icarus（4:20、内省的）／ Rowdy Days、Rock N Roll（各5:40、長尺・非シングル）／ Born To Do（アコースティック寄り）</p>
+    <h3>Hardy</h3>
+    <p>Bottomland（3:04、シングルで人気も高いが Holler／Music Mayhem が明記するバラード → 原則不採用。アップテンポのシングル2曲が揃うため例外は発動せず）／ Dog Years（4:16、情感寄りスロー）／ Country Country（3:58、タイトル曲だが非シングル）</p>
+    <h3>Kip Moore</h3>
+    <p>Solitary Tracks（3:59、タイトル曲で再生回数は盤内最高水準だがスロー／バラード分類 → 不採用）／ Bad Spot（3:18、シングルだがピアノ・バラード）／ Flowers in December（3:53、シングルだがバラード）／ Learning As I Go（3:18、シングルで有力な次点。再生回数が確認できずAround Youを優先）／ Wildfire（3:22、スロー）</p>
+    <h3>Ashley Monroe</h3>
+    <p>The Touch（4:51、リード級シングルだがスローなラブソングでバラード抵触のおそれ）／ There You Are（3:56、ピアノ・バラードと明記）／ Risen Road（4:01、スロー寄り）／ Moth（3:28、公式MV 126Kだがシングル確認取れず・スロー評）／ Magnolia（4:06、スロー寄り）／ Blown Away（Jeff Lynne／Tom Petty作）、That's No Way To Say Goodbye（Leonard Cohen作）、Jesus Hold My Hand（ゴスペル）はいずれもカバー → 除外 ／ I'm Gonna Run（3:39、スロー）</p>
+    <h3>Hailey Whitters</h3>
+    <p>Casseroles（3:40、プロモ・シングルで評価・人気は盤内最高クラスだが喪失を歌うテンダーなバラード系 → 原則により見送り）／ Prodigal Daughter（3:26、プロモ・シングルだがテンポの裏付けで選出2曲に劣る）／ I Don't Want You（3:19、デュエット）／ White Limousine（4:07、ドリーミー・非シングル）</p>
+    <h3>Trisha Yearwood</h3>
+    <p>The Mirror（3:15、唯一の公式リード・シングルだが AllMusic が「The slower title track」と評するスローなタイトル曲 → 原則不採用。タイトル曲の重要性から、希望があれば「アーティストにとって重要」によるバラード例外候補として温存）／ Fearless These Days（3:29、AllMusicが「The ballad」と明記）／ Goodnight Cruel World（2:42、バラードと明記）／ Girls Night In（3:33、「shuffling rocker」でテンポ条件を満たす最有力の次点＝差し替え候補）／ When October Settles In（4:01、バラード）／ Drunk Works、Little Lady（シングル実績なし）</p>
+    <h3>Carter Faith</h3>
+    <p>If I Had Never Lost My Mind…（3:11、リード・シングルだが Billboard が明示するバラード → 原則不採用、例外は発動せず）／ Sex, Drugs &amp; Country Music（3:37、第3シングルで強い次点。今回はMVの話題性とキャッチーさで選出2曲を優先）／ Arrows (Die For That Man)（3:51、最終シングルだがアップテンポの確証なし）／ Betty（2:54、アップビートで本人のお気に入りだが非シングル）</p>
+  </div>
+
+  <div class="section-head"><h2>選出ルールと注記</h2><span>Notes</span></div>
+  <div class="rules">
+    <div class="rule"><b>1</b><h3>バラード例外（Hiro承認）</h3><p>Eric Church「Johnny」の1件のみ。Qobuz「Power ballad」とバラード寄りだが、2023年Nashville・Covenant School銃撃事件を受けて書かれたキャリア重要曲で、例外条件「アーティストにとって重要／その年に重要」に該当。Hiro が例外を承認して採用した。認めない場合の代替候補はアップテンポの「Rocket's White Lincoln」だった。</p></div>
+    <div class="rule"><b>※</b><h3>判断記録 — Whiskey Myers の2曲目</h3><p>「Tailspin」を選出。第3シングル「Midnight Woman」と接戦で、YouTube公式オーディオの再生回数（第三者集計）では Midnight Woman が上回る集計もあったが、Hiro が「この16曲で確定する」を選択し、現行の Tailspin を維持した。</p></div>
+    <div class="rule"><b>※</b><h3>人気指標について</h3><p>Spotify公式の曲別再生回数は取得できないため、YouTube公式動画の公開再生回数を優先しました。取得できない場合はKworb等の<strong>第三者集計</strong>と明記し、確認できない曲は「確認できない」と記載して数字を作っていません。</p></div>
+    <div class="rule"><b>!</b><h3>Spotifyプレイリスト — 未作成（再接続待ち）</h3><p>2026-11-24の作成試行時、Spotify のリフレッシュトークンが失効（reauthorization_required）しており検索・作成ができませんでした。プレイリストは未作成です（重複作成なし）。Hiro の再接続後に「2025年STADIUM COUNTRY &amp; SOUTHERN ROCK」（16曲・TSV順・全曲アルバム版、Johnny は5:03のアルバム版）を作成します。</p></div>
+  </div>
+
+  <div class="section-head"><h2>最終TSV</h2><span>GENRE / ARTIST / ALBUM / TRACK</span></div>
+  <div class="tsv-box">
+    <p>管理表・プレイリスト作成用に、そのままコピーして使えるTSV形式の一覧です（1行1曲・選出順）。</p>
+    <pre class="tsv" id="tsvText">GENRE	ARTIST	ALBUM	TRACK
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Eric Church	Evangeline vs. the Machine	Hands of Time
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Eric Church	Evangeline vs. the Machine	Johnny
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Whiskey Myers	Whomp Whack Thunder	Time Bomb
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Whiskey Myers	Whomp Whack Thunder	Tailspin
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Hardy	Country! Country!	Favorite Country Song
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Hardy	Country! Country!	Bro Country
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Kip Moore	Solitary Tracks	Live Here to Work
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Kip Moore	Solitary Tracks	Around You
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Ashley Monroe	Tennessee Lightning	Hot Rod Pipe Dream
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Ashley Monroe	Tennessee Lightning	Bitter Swisher Sweet
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Hailey Whitters	Corn Queen	High on the Hog
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Hailey Whitters	Corn Queen	High on a Heartbreak
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Trisha Yearwood	The Mirror	Bringing the Angels
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Trisha Yearwood	The Mirror	The Wall or the Way Over
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Carter Faith	Cherry Valley	Bar Star
+STADIUM COUNTRY &amp; SOUTHERN ROCK	Carter Faith	Cherry Valley	Grudge</pre>
+    <button class="copy-btn" id="copyBtn" type="button">TSVをコピーする</button><span class="copy-status" id="copyStatus" aria-live="polite"></span>
+  </div>
+
+  <footer>
+    <span>2025年 STADIUM COUNTRY &amp; SOUTHERN ROCK — 楽曲選出エビデンス</span>
+    <span>8アルバム ・ 16曲 ・ バラード例外1件（Hiro承認） ・ Spotifyプレイリストは再接続待ちで未作成</span>
+  </footer>
+</div>
+<script>
+  (function(){
+    var btn=document.getElementById('copyBtn');
+    var status=document.getElementById('copyStatus');
+    var pre=document.getElementById('tsvText');
+    if(!btn||!pre) return;
+    btn.addEventListener('click', function(){
+      var text=pre.textContent;
+      function done(){ status.textContent='コピーしました'; setTimeout(function(){status.textContent='';},2600); }
+      function fail(){ status.textContent='コピーできませんでした — TSVを長押し／選択してコピーしてください'; }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else {
+        try{
+          var ta=document.createElement('textarea');
+          ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+          document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta); done();
+        }catch(e){ fail(); }
+      }
+    });
+  })();
+</script>
+</body>
+</html>

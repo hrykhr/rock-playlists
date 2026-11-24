@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 STADIUM COUNTRY &amp; SOUTHERN ROCK 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2ef;
+    --surface:#ffffff;
+    --surface-2:#eceae6;
+    --ink:#191817;
+    --ink-2:#4b4844;
+    --muted:#76716b;
+    --line:#ddd9d2;
+    --line-strong:#191817;
+    --accent:#b91c1c;
+    --accent-ink:#ffffff;
+    --accent-soft:#fdecec;
+    --gold:#8a6d1b;
+    --gold-bg:#f7ecd0;
+    --silver:#5b5f66;
+    --silver-bg:#e8eaed;
+    --bronze:#7c4a1e;
+    --bronze-bg:#f3e2d3;
+    --warn-bg:#fff7e6;
+    --warn-line:#e3c878;
+    --warn-ink:#5c4a12;
+    --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131211;
+      --surface:#1e1d1b;
+      --surface-2:#262422;
+      --ink:#f0ede8;
+      --ink-2:#c9c4bb;
+      --muted:#9a958c;
+      --line:#35322e;
+      --line-strong:#f0ede8;
+      --accent:#e5484d;
+      --accent-soft:#3a1d1e;
+      --gold:#e3c878;
+      --gold-bg:#332b14;
+      --silver:#c3c8cf;
+      --silver-bg:#2a2d31;
+      --bronze:#e0a878;
+      --bronze-bg:#33241a;
+      --warn-bg:#2e2712;
+      --warn-line:#6b5a22;
+      --warn-ink:#e8d48a;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 64px}
+
+  header{padding:40px 0 0}
+  .year-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .year{font-family:"Oswald",sans-serif;font-weight:700;font-size:64px;line-height:.95;letter-spacing:.01em}
+  .year-sub{font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:10px 0 0;font-size:clamp(26px,4.6vw,40px);line-height:1.25;font-weight:900;letter-spacing:.01em}
+  h1 .en{display:block;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;font-size:.62em;color:var(--ink-2);margin-top:6px}
+  .lead{margin:16px 0 0;color:var(--ink-2);max-width:46em;font-size:15.5px}
+  .lead strong{color:var(--ink)}
+
+  .flow{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--line-strong);box-shadow:var(--shadow);padding:20px 20px 18px}
+  .flow h2{margin:0 0 14px;font-size:13px;letter-spacing:.14em;font-weight:900}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .step{padding:0 14px;border-left:1px solid var(--line)}
+  .step:first-child{padding-left:0;border-left:none}
+  .step .num{font-family:"Oswald",sans-serif;font-weight:700;font-size:34px;line-height:1}
+  .step .num small{font-size:16px;color:var(--muted);font-weight:600}
+  .step .label{margin-top:6px;font-weight:700;font-size:13.5px;line-height:1.5}
+  .step .note{margin-top:2px;color:var(--muted);font-size:12.5px;line-height:1.55}
+  .step.final .num{color:var(--accent)}
+  @media (max-width:760px){
+    .flow-steps{grid-template-columns:1fr 1fr}
+    .step{padding:10px 12px 10px 0;border-left:none;border-top:1px solid var(--line)}
+    .step:nth-child(-n+2){border-top:none;padding-top:0}
+    .step:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+  }
+
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line-strong);padding-bottom:10px}
+  .sec-no{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.08em}
+  .sec-head h2{margin:0;font-size:clamp(20px,3.4vw,26px);font-weight:900;line-height:1.3}
+  .sec-head .count{margin-left:auto;font-family:"Oswald",sans-serif;font-weight:600;font-size:14px;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
+  .sec-desc{margin:12px 0 0;color:var(--ink-2);max-width:52em}
+  .sec-desc strong{color:var(--ink)}
+
+  .table-card{margin-top:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:var(--surface-2);text-align:left;font-size:12px;letter-spacing:.1em;font-weight:900;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--ink-2)}
+  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  .artist{font-weight:900;font-size:15px;line-height:1.4}
+  .album{font-weight:700;font-size:15px;line-height:1.4}
+  .album .formal{display:block;margin-top:4px;font-weight:500;font-size:12.5px;color:var(--muted);line-height:1.55}
+  .date{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.03em;white-space:nowrap;font-size:14.5px}
+  .basis{color:var(--ink-2);line-height:1.7}
+  .basis strong{color:var(--ink)}
+  .sources{display:flex;flex-direction:column;gap:2px;min-width:132px}
+  .sources a{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:4px 0;font-size:13px;font-weight:700;text-decoration:none;line-height:1.35}
+  .sources a:hover{text-decoration:underline}
+  .sources a::after{content:"↗";font-size:11px;opacity:.7}
+  .no-cell{font-family:"Oswald",sans-serif;font-weight:700;color:var(--muted);font-size:15px}
+
+  .badge{display:inline-block;font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;padding:2px 10px;border-radius:999px;line-height:1.6;white-space:nowrap}
+  .badge-s{background:var(--accent);color:var(--accent-ink)}
+  .badge-a{background:var(--gold-bg);color:var(--gold)}
+  .badge-b{background:var(--silver-bg);color:var(--silver)}
+  .badge-down{background:var(--bronze-bg);color:var(--bronze)}
+
+  .flag{display:block;margin-top:8px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:12.5px;line-height:1.6;padding:7px 10px;border-radius:6px;font-weight:500}
+  .flag b{font-weight:900}
+
+  .group-row td{background:var(--surface-2);font-weight:900;font-size:12.5px;letter-spacing:.1em;padding:8px 14px;color:var(--ink-2)}
+
+  @media (max-width:760px){
+    .year{font-size:48px}
+    header{padding-top:28px}
+    .table-card{border:none;box-shadow:none;background:transparent;overflow:visible}
+    table, thead, tbody, tr, td{display:block;width:100%}
+    thead{display:none}
+    tbody tr{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:12px;padding:6px 2px}
+    tbody td{border-bottom:1px dashed var(--line);padding:10px 14px}
+    tbody td:last-child{border-bottom:none}
+    td::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--muted);margin-bottom:4px}
+    td.no-cell::before, td.rank-cell::before{margin-bottom:2px}
+    .no-cell{font-size:13px}
+    .group-row td{margin:18px 0 10px;border:1px solid var(--line);box-shadow:none}
+    .group-row td::before{display:none}
+    .sources{min-width:0}
+    .date{white-space:normal}
+  }
+
+  .notes{margin-top:16px;display:grid;gap:12px}
+  .note-card{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 18px}
+  .note-card h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .note-card h3 .who{color:var(--accent)}
+  .note-card p{margin:0;color:var(--ink-2)}
+  .note-card p strong{color:var(--ink)}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="year-line">
+      <span class="year">2025</span>
+      <span class="year-sub">Album Selection — Evidence</span>
+    </div>
+    <h1>STADIUM COUNTRY &amp; SOUTHERN ROCK 候補一覧
+      <span class="en">Genre 3 — Stadium Country &amp; Southern Rock</span>
+    </h1>
+    <p class="lead">2025年の <strong>STADIUM COUNTRY &amp; SOUTHERN ROCK</strong> におけるアルバム選出のエビデンスページ。候補26枚を収集し重複除外は0件。Sランク検証で8枚がS判定したが<strong>全て男性／男性フロント</strong>で、厳格ルール（女性必須）ゲートで停止した。Hiro が<strong>案A（8枚構成・男性4＋女性4）</strong>を選択し、女性候補8枚を追加検証した結果 S判定は0枚、A判定4枚を <strong>Hiro 承認で昇格</strong>させ、<strong>最終選出8枚（男性S 4枚＋女性A昇格4枚）</strong>が確定した。</p>
+  </header>
+
+  <div class="flow" aria-label="選出の流れ">
+    <h2>選出の流れ — 概要</h2>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="num">26<small> 枚</small></div>
+        <div class="label">候補を収集</div>
+        <div class="note">2025年リリース作から候補26枚を収集</div>
+      </div>
+      <div class="step">
+        <div class="num">0<small> 枚</small></div>
+        <div class="label">重複除外</div>
+        <div class="note">既出アルバム累積リストと照合し重複ゼロ、全26枚が残った</div>
+      </div>
+      <div class="step">
+        <div class="num">8<small> 枚</small></div>
+        <div class="label">Sランク候補を検証</div>
+        <div class="note">S判定8枚は全て男性で、厳格ルール（女性必須）ゲートで停止</div>
+      </div>
+      <div class="step">
+        <div class="num">8<small> 枚</small></div>
+        <div class="label">女性候補を追加検証</div>
+        <div class="note">Hiroが案Aを選択。女性候補8枚を検証し S 0枚・A 4枚</div>
+      </div>
+      <div class="step final">
+        <div class="num">8<small> 枚</small></div>
+        <div class="label">最終選出</div>
+        <div class="note">男性S 4枚＋女性A昇格4枚（Hiro承認）</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="final">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>最終選出 — 男性S 4枚＋女性A昇格 4枚</h2>
+      <span class="count">8 ALBUMS</span>
+    </div>
+    <p class="sec-desc">最終選出8枚。男性はS検証でS確定した4枚（Eric Church／Whiskey Myers／Hardy／Kip Moore）。女性は追加検証でA判定となった4枚を <strong>Hiro の承認により昇格</strong>させたもので、S判定ではないことを明記する。いずれも絶対除外要素には該当しない。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>発売日</th><th>区分</th><th>ジャンル根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr>
+<td class="no-cell" data-label="No.">1</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Eric Church</div><div class="album">Evangeline vs. the Machine</div></td>
+<td data-label="発売日"><span class="date">2025-05-02</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル欄はCountry。第8作スタジオ盤。公式サイトも8曲入りスタジオ盤として紹介し、Rolling Stone／NPRの評価を引用。カントリー中核アーティストとしてSTADIUM COUNTRYのS基準に適合。絶対除外要素なし。メモ：8曲・36:00とChurch史上最短の短いアルバム。最終曲「Clap Hands」はTom Waitsのカバー（原曲1985年『Rain Dogs』）でオリジナルは7曲。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Evangeline_vs._the_Machine" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.ericchurch.com/news/EvangelineVsTheMachineAlbum" target="_blank" rel="noopener">ericchurch.com</a><a href="https://pressroom.mca.com/news/eric-church-leads-the-battle-for-artistry-with-evangeline-vs-the-machine-out-now-audio/" target="_blank" rel="noopener">MCA Pressroom</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">2</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Whiskey Myers</div><div class="album">Whomp Whack Thunder</div></td>
+<td data-label="発売日"><span class="date">2025-09-26</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipediaのアーティスト欄ジャンルはSouthern rock／country rock／hard rock／country。MusicRowが7作目スタジオ盤と明記。Discogsのスタイル表記もSouthern Rock。サザンロック×カントリーロックの本命としてS基準に適合。絶対除外要素なし。<strong>Wikipediaでは確認できない</strong>（専用アルバムページはなく、アーティストページのディスコグラフィで2025-09-26発売を確認）。11曲入り。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Whiskey_Myers" target="_blank" rel="noopener">Wikipedia</a><a href="https://musicrow.com/2025/04/whiskey-myers-to-release-new-album-in-september/" target="_blank" rel="noopener">MusicRow</a><a href="https://www.discogs.com/release/35213494-Whiskey-Myers-Whomp-Whack-Thunder" target="_blank" rel="noopener">Discogs</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">3</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Hardy</div><div class="album">Country! Country!</div></td>
+<td data-label="発売日"><span class="date">2025-09-26</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipediaのジャンル欄はCountry／country rock、第4作スタジオ盤。レーベルBig Loud公式も「カントリーへの回帰作」と位置づけ、前作『Quit!!』のロック路線からの原点回帰を明記。本作自体にラップ／ニューメタル要素はなく、ゲストはERNESTとStephen Wilson Jr.のみ。S基準に適合。メモ：20曲・69:00。アーティストの過去作にロック／ミクスチャー色がある点は境界フラグとして記録するが、本作はカントリー盤として判定。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Country!_Country!" target="_blank" rel="noopener">Wikipedia</a><a href="https://bigloud.com/hardy-unveils-new-album-country-country/" target="_blank" rel="noopener">Big Loud</a><a href="https://www.allmusic.com/album/country%21-country%21-mw0004586395" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">4</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Kip Moore</div><div class="album">Solitary Tracks</div></td>
+<td data-label="発売日"><span class="date">2025-02-28</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Apple MusicのジャンルはCountry。6作目スタジオ盤。23曲がrock／singer-songwriter／folk-rock／classic countryの4部構成と報じられ、カントリーを軸にロック側へ広がる内容でS基準に適合。絶対除外要素なし。<strong>Wikipediaでは確認できない</strong>（専用アルバムページはなく、ディスコグラフィページで2025-02-28発売を確認）。23曲・約85分の大作。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Kip_Moore_discography" target="_blank" rel="noopener">Wikipedia</a><a href="https://redlightmanagement.com/kip-moore-marks-a-new-creative-chapter-with-the-release-of-his-expansive-new-album-solitary-tracks-earning-early-critical-acclaim/" target="_blank" rel="noopener">Red Light Management</a><a href="https://music.apple.com/au/album/solitary-tracks/1781928144" target="_blank" rel="noopener">Apple Music</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">5</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Ashley Monroe</div><div class="album">Tennessee Lightning</div></td>
+<td data-label="発売日"><span class="date">2025-08-08</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A → 昇格</span></td>
+<td class="basis" data-label="ジャンル根拠"><strong>A判定からの昇格（Hiro承認）</strong>。AllMusicが「カントリー、ルーツィーなロック、ポップの祝祭的なミックス」と明記。候補中もっともロック寄りの記述が確認でき、A基準「Roots Rock」に直接合致。候補収集ではB判定だったが追加検証でAに上げた。第6スタジオ盤。<strong>Wikipediaにアルバム専用ページなし</strong>（アーティストページ＋AllMusicで確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Ashley_Monroe" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/tennessee-lightning-mw0004605998" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">6</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Hailey Whitters</div><div class="album">Corn Queen</div></td>
+<td data-label="発売日"><span class="date">2025-06-06</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A → 昇格</span></td>
+<td class="basis" data-label="ジャンル根拠"><strong>A判定からの昇格（Hiro承認）</strong>。Wikipediaのジャンル欄はCountry。BrooklynVeganは「ポップな感覚をホンキートンクのリズム、ブルーグラス、ブルージーなロックに適用」と評する一方、Saving Country Musicは「全体としてはトラディショナル寄り」と指摘。Contemporary Country／Country Pop（A）が妥当で、メインストリーム盤として昇格適性が高い。第4スタジオ盤（Big Loud／Pigasus）。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Corn_Queen" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/release/corn-queen-2-lp--mr0006659504" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">7</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Trisha Yearwood</div><div class="album">The Mirror</div></td>
+<td data-label="発売日"><span class="date">2025-07-18</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A → 昇格</span></td>
+<td class="basis" data-label="ジャンル根拠"><strong>A判定からの昇格（Hiro承認）</strong>。Wikipediaのジャンル欄はCountry。AllMusic（★4）は「ラジオ・フレンドリーなコンテンポラリー・カントリーと、シンガーソングライターのソウルフルなネオトラディショナルなルーツの融合」「プロダクションは予想通り洗練されている」と評した。内省的なSSW作でロック度は低めだがContemporary Country（A）に合致。第16スタジオ盤。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/The_Mirror_(Trisha_Yearwood_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.virginmusic.com/trisha-yearwood-partners-with-virgin-music-group-for-new-music-and-recent-catalog-via-yearwoods-gwendolyn-records-deal-also-brings-yearwood-home-to-music-corporation-of-america-for-historic/" target="_blank" rel="noopener">Virgin Music</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">8</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Carter Faith</div><div class="album">Cherry Valley</div></td>
+<td data-label="発売日"><span class="date">2025-10-03</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A → 昇格</span></td>
+<td class="basis" data-label="ジャンル根拠"><strong>A判定からの昇格（Hiro承認）</strong>。Wikipediaのジャンル欄はCountry。Billboardは「ホンキートンクの grit と滑らかなカントリーポリタン」を併せ持つと評し、グラミーBest Contemporary Country Albumノミネート、Billboard年間ベスト・カントリー・アルバム3位と評価は最高クラス。ただしサウンドはドリーミーなコンテンポラリー／カントリー・ポップで、ロック寄りプロダクションからは最も遠いためA判定。デビュー・スタジオ盤（MCA Nashville）。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Cherry_Valley_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://pressroom.mca.com/news/carter-faith-welcomes-you-to-cherry-valley-highly-anticipated-debut-album-out-now-audio/" target="_blank" rel="noopener">MCA Pressroom</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="gate">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>厳格ルールゲートと女性候補の追加検証</h2>
+      <span class="count">GATE + 8 ALBUMS</span>
+    </div>
+    <p class="sec-desc">本ジャンルの厳格ルールは「10枚中5枚は女性アーティスト（または女性フロント）、最終枚数が10枚未満の場合は少なくとも半数が女性」。S検証の結果と、ゲート停止後の追加検証の記録。</p>
+    <div class="notes">
+      <div class="note-card">
+        <h3><span class="who">厳格ルールゲート</span> — 女性0枚で停止</h3>
+        <p>Sランク検証で8枚がS判定したが、<strong>全て男性／男性フロント</strong>（Eric Church、Whiskey Myers［フロントマンCody Cannon］、Hardy、Kip Moore、38 Special［Don Barnes］、Cody Jinks、Treaty Oak Revival、Preacher Stone）で<strong>女性0枚</strong>。最終8枚では少なくとも半数＝4枚が女性必須のため、選出はゲートで停止した。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">Hiro の判断</span> — 案A（8枚・男性4＋女性4）</h3>
+        <p>Hiro は「<strong>案A：8枚構成（男性4＋女性4）</strong>」を選択（2026-11-24）。男性はエビデンスの強い Eric Church／Whiskey Myers／Hardy／Kip Moore を残し、S判定の 38 Special／Cody Jinks／Treaty Oak Revival／Preacher Stone を構成上除外した（セクション03）。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">女性候補の追加検証</span> — S 0枚・A 4枚を昇格</h3>
+        <p>女性候補8枚を追加検証した結果、<strong>S判定は0枚</strong>。A判定4枚（Ashley Monroe／Hailey Whitters／Trisha Yearwood／Carter Faith）を <strong>Hiro が全て昇格承認</strong>し、最終8枚（男性4＋女性4）が確定した。重複チェック：累積リスト全行と照合し、8枚すべて既出なし。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">総括</span> — 2025年の女性カントリー</h3>
+        <p>2025年の女性カントリーは全体にトラディショナル／ルーツ寄りが多く、S基準（Stadium Country／Country Rock／Southern Rock＝骨太なリフと現代的プロダクション）を厳密に満たすものはなかった。女性4枠はA判定4枚の昇格（Hiro承認）で構成した。</p>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th>アーティスト ／ アルバム</th><th>発売日</th><th>適合ランク</th><th>根拠メモ</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Ashley Monroe</div><div class="album">Tennessee Lightning</div></td>
+<td data-label="発売日"><span class="date">2025-08-08</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">AllMusicが「カントリー、ルーツィーなロック、ポップの祝祭的なミックス」と明記し、A基準「Roots Rock」に直接合致。候補中もっともロック寄り。候補収集時のB判定から追加検証でAに上げ、<strong>Hiro承認で昇格（最終選出）</strong>。客演にBrendan Benson、Butch Walkerらロック系を含む。Wikipediaにアルバム専用ページなし。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Ashley_Monroe" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/tennessee-lightning-mw0004605998" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Hailey Whitters</div><div class="album">Corn Queen</div></td>
+<td data-label="発売日"><span class="date">2025-06-06</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Big Loudのメインストリーム盤。BrooklynVeganはブルージーなロック要素に言及する一方、Saving Country Musicは「全体としてはトラディショナル寄り」と指摘。Contemporary Country／Country Pop（A）。<strong>Hiro承認で昇格（最終選出）</strong>。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Corn_Queen" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/release/corn-queen-2-lp--mr0006659504" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Trisha Yearwood</div><div class="album">The Mirror</div></td>
+<td data-label="発売日"><span class="date">2025-07-18</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">AllMusic（★4）「ラジオ・フレンドリーなコンテンポラリー・カントリーとSSWのルーツの融合」。Contemporary Country（A）。内省的なSSW作でスタジアム級のリフ・ロックではないためSではない。<strong>Hiro承認で昇格（最終選出）</strong>。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/The_Mirror_(Trisha_Yearwood_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.virginmusic.com/trisha-yearwood-partners-with-virgin-music-group-for-new-music-and-recent-catalog-via-yearwoods-gwendolyn-records-deal-also-brings-yearwood-home-to-music-corporation-of-america-for-historic/" target="_blank" rel="noopener">Virgin Music</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Carter Faith</div><div class="album">Cherry Valley</div></td>
+<td data-label="発売日"><span class="date">2025-10-03</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">評価自体は候補中最高クラス（グラミーBest Contemporary Country Albumノミネート、Billboard年間ベスト3位）だが、サウンドはドリーミーなコンテンポラリー・カントリー／カントリー・ポップでA。<strong>Hiro承認で昇格（最終選出）</strong>。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Cherry_Valley_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://pressroom.mca.com/news/carter-faith-welcomes-you-to-cherry-valley-highly-anticipated-debut-album-out-now-audio/" target="_blank" rel="noopener">MCA Pressroom</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Willow Avalon</div><div class="album">Southern Belle Raisin' Hell</div></td>
+<td data-label="発売日"><span class="date">2025-01-17</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="根拠メモ">Cryptic Rockは「Classic CountryとAmericanaの重い手触り」「モダンなポップ・クロスオーバーではなくクラシックなサウンド」と評し、PopMattersは「音楽的な野心を小さく保っている」と指摘。Americana（B）の範囲だが、<strong>伝統カントリー色が強く「ピュア・カントリー不可」との境界上</strong>にあり、ロック寄りプロダクションの要素は薄いため<strong>不採用</strong>。Wikipediaにアルバム専用ページなし。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Willow_Avalon" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/artist/willow-avalon-mn0004453671" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Margo Price</div><div class="album">Hard Headed Woman</div></td>
+<td data-label="発売日"><span class="date">2025-08-29</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-down">不適合</span></td>
+<td class="basis" data-label="根拠メモ">Wikipediaのジャンル欄は「<strong>Neotraditional country</strong>」。本作は「クラシック・カントリーのルーツへの回帰」を意図した作品で、グラミー賞「Best Traditional Country Album」部門ノミネート作。意図的な伝統回帰作であり、「ロック寄りのダイナミックなプロダクション」という条件と「伝統的なピュア・カントリーは不可」に正面から触れるため<strong>不適合</strong>。品質自体は高いがジャンル適合の問題。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Hard_Headed_Woman_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.metacritic.com/music/hard-headed-woman/margo-price/" target="_blank" rel="noopener">Metacritic</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Alison Krauss &amp; Union Station</div><div class="album">Arcadia</div></td>
+<td data-label="発売日"><span class="date">2025-03-28</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-down">不適合</span></td>
+<td class="basis" data-label="根拠メモ"><strong>ブルーグラス・バンドの作品</strong>（Billboard Top Bluegrass Albums 1位）。バンジョー、ドブロ、アップライトベース等のアコースティック編成で、「ピュア・カントリー（伝統音楽）は不可」および「ロック寄りのダイナミックなプロダクション」の要件に抵触するため<strong>不適合</strong>。新メンバーのRussell Moore（男性）が複数曲でリード・ボーカルを取り、純粋な女性フロント作でもない。批評的評価は非常に高い（Metacritic 84）がジャンル不適合。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Arcadia_(Alison_Krauss_%26_Union_Station_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.metacritic.com/music/arcadia/alison-krauss-union-station/" target="_blank" rel="noopener">Metacritic</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sunny Sweeney</div><div class="album">Rhinestone Requiem</div></td>
+<td data-label="発売日"><span class="date">2025-08-01</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-down">不適合</span></td>
+<td class="basis" data-label="根拠メモ">AllMusicは「<strong>原点回帰のハードコアなホンキートンク・アルバム</strong>」と明記し、Saving Country Musicも「これは紛れもなくCOUNTRYレコード」と強調する伝統ホンキートンク作。「伝統的なピュア・カントリーは不可」に正面から抵触し、ロック寄りプロダクションの要素も確認できないため<strong>不適合</strong>。Wikipediaにアルバム専用ページなし。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/artist/sunny-sweeney-mn0000939033" target="_blank" rel="noopener">AllMusic</a><a href="https://musicrow.com/2025/05/sunny-sweeney-blends-sass-soul-on-rhinestone-requiem-due-in-august/" target="_blank" rel="noopener">MusicRow</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="excluded-s">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <h2>S判定だが構成上除外した4枚</h2>
+      <span class="count">4 ALBUMS</span>
+    </div>
+    <p class="sec-desc">いずれもSランク検証でS判定した男性盤。Hiro の案A（男性枠4枚）により構成上除外したもので、ジャンル不適合による落選ではない。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th>アーティスト ／ アルバム</th><th>発売日</th><th>適合ランク</th><th>根拠メモ</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">38 Special</div><div class="album">Milestone</div></td>
+<td data-label="発売日"><span class="date">2025-09-19</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">サザンロックの代表格でS基準に適合（Rock Cellar／American Songwriter「クラシックなaccessible Southern-rockサウンドにモダンロックのアップグレード」）。ただし<strong>エビデンスが相対的に薄い（Wikipediaアルバムページなし）ため優先的に除外</strong>。9曲入りの短めの盤で、21年ぶりのスタジオ盤。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/38_Special_discography" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/release/milestone-mr0006734946" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Cody Jinks</div><div class="album">In My Blood</div></td>
+<td data-label="発売日"><span class="date">2025-07-25</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">11作目スタジオ盤。公式発表文が「伝統的ホンキートンクの物語性とSouthern rockの強度を融合したモダン・アウトロー・カントリー」と明記しS基準に適合。タイトル曲にはBlackberry SmokeのCharlie Starrが参加。<strong>構成上の除外</strong>。Wikipediaでは確認できない（専用アルバムページなし）。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Cody_Jinks" target="_blank" rel="noopener">Wikipedia</a><a href="https://redlightmanagement.com/cody-jinks-announces-new-album-in-my-blood-due-july-25th/" target="_blank" rel="noopener">Red Light Management</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Treaty Oak Revival</div><div class="album">West Texas Degenerate</div></td>
+<td data-label="発売日"><span class="date">2025-11-28</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">3作目スタジオ盤。Billboard 200で21位、Top Rock AlbumsとAmericana/Folk Albumsで1位を獲得したカントリーロック／レッドダートの本命作でS基準に適合。<strong>構成上の除外</strong>。Wikipediaでは確認できない（専用アルバムページなし）。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Treaty_Oak_Revival" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.deezer.com/en/artist/82716032" target="_blank" rel="noopener">Deezer</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Preacher Stone</div><div class="album">By The Horns</div></td>
+<td data-label="発売日"><span class="date">2025-10-17</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">MetalTalkが「Quality Southern Rock」と評し、6作目スタジオ盤と複数ソースが明記。SOUTHERN ROCK側のS基準に適合。ただし9曲・約32〜33分と短く、<strong>8枚中では知名度・チャート実績のエビデンスが最も薄いため優先的に除外</strong>。Wikipediaでは確認できない（バンド／アルバムともページなし）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.metaltalk.net/preacher-stone-new-album-by-the-horns-is-quality-southern-rock-with-swagger.php" target="_blank" rel="noopener">MetalTalk</a><a href="https://rockposer.com/2025/10/16/review-preacher-stone-by-the-horns/" target="_blank" rel="noopener">Rockposer</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="candidates">
+    <div class="sec-head">
+      <span class="sec-no">04</span>
+      <h2>候補一覧 — 全26枚</h2>
+      <span class="count">26 ALBUMS</span>
+    </div>
+    <p class="sec-desc">候補収集26枚（S 8枚／A 12枚／B 6枚）。<strong>重複排除は0件</strong>で、全26枚が累積リスト・2025年既選出と重複しなかった。適合ランクは候補収集時点の判定で、女性候補の最終判定はセクション02の追加検証が正本。</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th>アーティスト ／ アルバム</th><th>発売日</th><th>適合ランク</th><th>根拠メモ</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr class="group-row"><td colspan="5">S ランク — 8枚</td></tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Eric Church</div><div class="album">Evangeline vs. the Machine</div></td>
+<td data-label="発売日"><span class="date">2025-05-02</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia: eighth studio album by American country music singer Eric Church, a benchmark-adjacent stadium country-rock artist; Rolling Stone called it his most ambitious album. Rock-driven country production fits Stadium Country / Country Rock (S). メモ：Short 8-track studio album.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Evangeline_vs._the_Machine" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.ericchurch.com/news/EvangelineVsTheMachineAlbum" target="_blank" rel="noopener">ericchurch.com</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Whiskey Myers</div><div class="album">Whomp Whack Thunder</div></td>
+<td data-label="発売日"><span class="date">2025-09-26</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">Discogs style: Southern Rock, Genre: Rock. AllMusic describes 2025 album as hard-edged return to rock &amp; roll basics and full-on guitar-based country-rock; MetalTalk calls it southern rock gold. Perfect S Southern Rock fit. メモ：Seventh studio album, own Wiggy Thump Records.</td>
+<td data-label="出典"><div class="sources"><a href="https://www.discogs.com/release/35213494-Whiskey-Myers-Whomp-Whack-Thunder" target="_blank" rel="noopener">Discogs</a><a href="https://www.allmusic.com/artist/mn0001002713" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Hardy</div><div class="album">Country! Country!</div></td>
+<td data-label="発売日"><span class="date">2025-09-26</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia: fourth studio album, return to country after exploring rock; Big Loud calls Hardy a country rock superstar. Country-rock with heavy riffs fits S Stadium Country / Country Rock. メモ：Artist stylised HARDY. 20 tracks.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Country!_Country!" target="_blank" rel="noopener">Wikipedia</a><a href="https://bigloud.com/hardys-official-bottomland-music-video-out-now/" target="_blank" rel="noopener">Big Loud</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Kip Moore</div><div class="album">Solitary Tracks</div></td>
+<td data-label="発売日"><span class="date">2025-02-28</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">AllMusic styles: Bro-Country, Contemporary Country, Heartland Rock, Roots Rock, Country-Rock; Genre Pop/Rock, Country. Wikipedia artist genres: Country, country rock. Perfect S/A country-rock fit. メモ：Sixth studio album, 23 tracks.</td>
+<td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/solitary-tracks-mw0004441299" target="_blank" rel="noopener">AllMusic</a><a href="https://en.wikipedia.org/wiki/Kip_Moore" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">38 Special</div><div class="album">Milestone</div></td>
+<td data-label="発売日"><span class="date">2025-09-19</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">Discogs Genre: Rock, Style: Southern Rock. American Songwriter: modern-rock upgrade to classic accessible Southern-rock sound, first album in over 20 years, 50th anniversary. Perfect S Southern Rock with modern 2025 production. メモ：9 original songs.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/38_Special_discography" target="_blank" rel="noopener">Wikipedia</a><a href="https://americansongwriter.com/38-specials-don-barnes-says-the-bands-new-album-milestone-showcases-a-more-evolved-modern-2025-version-of-the-group-exclusive/" target="_blank" rel="noopener">American Songwriter</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Cody Jinks</div><div class="album">In My Blood</div></td>
+<td data-label="発売日"><span class="date">2025-07-25</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">AllMusic styles: Americana, Alt-Country, Country-Rock, Neo-Traditionalist Country, Southern Rock, Red Dirt. Label announcement: blending traditional honky-tonk with intensity of Southern rock, hard-rock-informed Texas country. S fit. メモ：11th studio album.</td>
+<td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/in-my-blood-mw0004526015" target="_blank" rel="noopener">AllMusic</a><a href="https://redlightmanagement.com/cody-jinks-announces-new-album-in-my-blood-due-july-25th/" target="_blank" rel="noopener">Red Light Management</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Treaty Oak Revival</div><div class="album">West Texas Degenerate</div></td>
+<td data-label="発売日"><span class="date">2025-11-28</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">Apple Music: self-described rock band with a country accent, 14 tracks of loose, crunchy Southern rock with Texas bent. Wikipedia: reached No.1 on Billboard Top Rock Albums. S Southern Rock / Country Rock fit. メモ：Third studio album.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Treaty_Oak_Revival" target="_blank" rel="noopener">Wikipedia</a><a href="https://music.apple.com/ca/album/west-texas-degenerate/1850021362" target="_blank" rel="noopener">Apple Music</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Preacher Stone</div><div class="album">By The Horns</div></td>
+<td data-label="発売日"><span class="date">2025-10-17</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="根拠メモ">MetalTalk: Release Date 17 October 2025, quality Southern Rock, Southern boogie; title track barnstorming with killer riff and duelling Southern Rock guitars. Perfect S Southern Rock fit. メモ：<strong>Wikipediaでは確認できない</strong>（MetalTalk／RockPoserで確認、sixth studio album, 17 Oct 2025）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.metaltalk.net/preacher-stone-new-album-by-the-horns-is-quality-southern-rock-with-swagger.php" target="_blank" rel="noopener">MetalTalk</a><a href="https://rockposer.com/2025/10/16/review-preacher-stone-by-the-horns/" target="_blank" rel="noopener">Rockposer</a></div></td>
+</tr>
+<tr class="group-row"><td colspan="5">A ランク — 12枚</td></tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Morgan Wallen</div><div class="album">I'm the Problem</div></td>
+<td data-label="発売日"><span class="date">2025-05-16</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia lists genres as Country, country pop, country rock for this fourth studio album; label press describes country, cross and dirt-rock influences. Arena-scale contemporary country fits A (Contemporary Country / Country Pop). Note: some tracks use hip-hop drum influences per reviews — 絶対除外の観点で要精査だった。メモ：37-track original studio album, Billboard 200 No.1 debut.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/I%27m_the_Problem_(Morgan_Wallen_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Hailey Whitters</div><div class="album">Corn Queen</div></td>
+<td data-label="発売日"><span class="date">2025-06-06</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia: studio album by American country artist Hailey Whitters, released June 6 2025 via Big Loud/Pigasus. Contemporary country with mainstream production fits A. Female artist — 厳格ルール（女性必須）に関係。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Corn_Queen" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Parker McCollum</div><div class="album">Parker McCollum</div></td>
+<td data-label="発売日"><span class="date">2025-06-27</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia album genre: Country; artist page notes music incorporates blues, roots rock, soul and folk rock, primarily country and Americana. Texas roots-rock country fits A (Roots Rock / Contemporary Country). メモ：Fifth studio album, self-titled.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Parker_McCollum_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Turnpike Troubadours</div><div class="album">The Price of Admission</div></td>
+<td data-label="発売日"><span class="date">2025-04-11</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia genre: Red dirt, Americana, country. Red Dirt is Texas/Oklahoma country-rock; Apple Music country listing. Rock-leaning roots fits A (Roots Rock), borderline B Americana. メモ：Sixth studio album, produced by Shooter Jennings.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/The_Price_of_Admission_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Dierks Bentley</div><div class="album">Broken Branches</div></td>
+<td data-label="発売日"><span class="date">2025-06-13</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia genres: Country, bluegrass, alternative; eleventh studio album blending country, bluegrass and grunge-inspired alt-country. Contemporary country fits A, with traditional/bluegrass risk noted. メモ：Features Miranda Lambert on 'Near You'.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Broken_Branches_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Carter Faith</div><div class="album">Cherry Valley</div></td>
+<td data-label="発売日"><span class="date">2025-10-03</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia genre: Country, debut studio album; MCA notes country, folk and rock synergy and bold studio production in best-of-2025 coverage. Contemporary Country / Country Pop fits A. Female artist. メモ：Debut album, 15 tracks.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Cherry_Valley_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Jordan Davis</div><div class="album">Learn the Hard Way</div></td>
+<td data-label="発売日"><span class="date">2025-08-15</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia: third studio album by American country music artist Jordan Davis, MCA Nashville. Apple Music notes split between introspective bent and poppier sound. Arena-scale Contemporary Country fits A.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Learn_the_Hard_Way" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Lukas Nelson</div><div class="album">American Romance</div></td>
+<td data-label="発売日"><span class="date">2025-06-20</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Sony Music Nashville: first solo album, country-blended sound, produced by Shooter Jennings; country/rock fusion background with ragged Americana / twangy roots rock. Fits A Roots Rock. メモ：<strong>Wikipediaでは確認できない</strong>（Discogs／Sony Music Nashvilleで確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.discogs.com/release/34404748-Lukas-Nelson-American-Romance" target="_blank" rel="noopener">Discogs</a><a href="https://www.sonymusic.ca/press_release/lukas-nelsons-first-solo-album-american-romance-out-today" target="_blank" rel="noopener">Sony Music</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Willow Avalon</div><div class="album">Southern Belle Raisin' Hell</div></td>
+<td data-label="発売日"><span class="date">2025-01-17</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia: debut album released January 17 2025; AllMusic album listing same date. Contemporary country singer-songwriter with modern production fits A Country Pop / Contemporary Country. Female artist. メモ：Debut album. ※追加検証ではB判定となり不採用（セクション02参照）。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Willow_Avalon" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/southern-belle-raisin-hell-mw0004447131" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Jon Pardi</div><div class="album">Honkytonk Hollywood</div></td>
+<td data-label="発売日"><span class="date">2025-04-11</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia genre: Country, studio album produced by Jay Joyce; official site describes modernising honky tonk with roaring guitars and soaring tripled guitars / grungy grooves in press coverage. Rock-driven contemporary country fits A, with neotraditional risk noted.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Honkytonk_Hollywood" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Old Dominion</div><div class="album">Barbara</div></td>
+<td data-label="発売日"><span class="date">2025-08-22</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia genre: Country, sixth studio album; band page: contemporary country with rock instrumentation and pop overtones, genres Country, country pop. Fits A Contemporary Country / Country Pop. メモ：Band (male-fronted).</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Barbara_(Old_Dominion_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Bailey Zimmerman</div><div class="album">Different Night Same Rodeo</div></td>
+<td data-label="発売日"><span class="date">2025-08-08</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="根拠メモ">MusicRow August 2025 country album release calendar lists Bailey Zimmerman / Different Night Same Rodeo on August 8 via Atlantic/Warner Music Nashville. Mainstream contemporary country / country-rock arena artist, fits A Contemporary Country. メモ：<strong>Wikipediaでは確認できない</strong>（MusicRow calendarで確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://musicrow.com/2025/08/mark-your-calendar-august-2025/" target="_blank" rel="noopener">MusicRow</a></div></td>
+</tr>
+<tr class="group-row"><td colspan="5">B ランク — 6枚</td></tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Tyler Childers</div><div class="album">Snipe Hunter</div></td>
+<td data-label="発売日"><span class="date">2025-07-25</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia genre: Country, seventh studio album produced by Rick Rubin; artist page notes blend of Appalachian music, experimental rock, psychedelia and gospel. Americana with strong melancholy and rock elements fits B. メモ：Some tracks are re-recordings of long-known fan favourites.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Snipe_Hunter" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">The Marcus King Band</div><div class="album">Darling Blue</div></td>
+<td data-label="発売日"><span class="date">2025-09-26</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="根拠メモ">Discogs styles include Blues Rock (Genre: Rock, Blues, Folk, World, &amp; Country). Relix calls King an acclaimed Southern-rock torchbearer swirling country, psych-rock, electric blues. Fits B Hard Blues / Blues Rock, borderline S Southern Rock. メモ：First full-band album since 2018.</td>
+<td data-label="出典"><div class="sources"><a href="https://www.discogs.com/release/35212945-Marcus-King-Band-Darling-Blue" target="_blank" rel="noopener">Discogs</a><a href="https://relix.com/news/detail/marcus-king-band-announce-darling-blue-first-full-band-album-since-2018" target="_blank" rel="noopener">Relix</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Margo Price</div><div class="album">Hard Headed Woman</div></td>
+<td data-label="発売日"><span class="date">2025-08-29</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia genre: Neotraditional country, fifth studio album; Paste describes return to roots in outlaw country. Americana/outlaw with melancholy fits B, but traditional-country leaning is a risk under the no pure traditional country rule — flag for later verification. Female artist. ※追加検証で<strong>不適合</strong>と確定（セクション02参照）。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Hard_Headed_Woman_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Brandi Carlile</div><div class="album">Returning to Myself</div></td>
+<td data-label="発売日"><span class="date">2025-10-24</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia genres: Synth rock, Americana; eighth studio album. Reviews describe blend of Americana, folk, alternative country and rock with emotive roots sound. Fits B Americana (rock-leaning). Note synth-rock label — sources describe primarily Americana/folk-rock, not club electronica. Female artist.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Returning_to_Myself" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Ashley Monroe</div><div class="album">Tennessee Lightning</div></td>
+<td data-label="発売日"><span class="date">2025-08-08</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="根拠メモ">Wikipedia discography: released August 8 2025; Country Standard Time notes 17-song sixth studio album featuring country, folk, blues, soul and pop, co-produced with Gena Johnson. Americana with melancholy fits B. Female artist. ※追加検証で<strong>Aに上げて昇格（最終選出）</strong>。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Ashley_Monroe_discography" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/tennessee-lightning-mw0004605998" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sunny Sweeney</div><div class="album">Rhinestone Requiem</div></td>
+<td data-label="発売日"><span class="date">2025-08-01</span></td>
+<td class="rank-cell" data-label="適合ランク"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="根拠メモ">Label/media announcement: new album out August 1 2025 via Aunt Daddy/Thirty Tigers; Bluegrass Situation describes featured track as twangy, honky-tonkin', and rocking and rolling. Americana / country-rock leaning fits B, traditional risk noted. Female artist. メモ：<strong>Wikipediaでは確認できない</strong>。※追加検証で<strong>不適合</strong>と確定（セクション02参照）。</td>
+<td data-label="出典"><div class="sources"><a href="https://rocknloadmag.com/sunny-sweeney-announces-new-album-rhinestone-requiem-out-august-1st/" target="_blank" rel="noopener">Rock'N'Load</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="not-adopted">
+    <div class="sec-head">
+      <span class="sec-no">05</span>
+      <h2>A／B判定で不採用（男性）</h2>
+      <span class="count">NOTES</span>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <h3><span class="who">Morgan Wallen</span>『I'm the Problem』 — A・不採用</h3>
+        <p>一部楽曲にヒップホップ系ドラムの影響が指摘されており、絶対除外の観点でも要精査だった。構成上も不採用。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">A判定の男性8組</span> — 構成上の不採用</h3>
+        <p>Parker McCollum『Parker McCollum』／Turnpike Troubadours『The Price of Admission』／Dierks Bentley『Broken Branches』／Jordan Davis『Learn the Hard Way』／Lukas Nelson『American Romance』／Jon Pardi『Honkytonk Hollywood』／Old Dominion『Barbara』／Bailey Zimmerman『Different Night Same Rodeo』は、構成上の不採用。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">B判定</span> — 不採用</h3>
+        <p>Tyler Childers『Snipe Hunter』／The Marcus King Band『Darling Blue』は不採用。Brandi Carlile『Returning to Myself』は <strong>AAA側のベンチマーク・アーティスト</strong>のため不採用とした。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="boundary">
+    <div class="sec-head">
+      <span class="sec-no">06</span>
+      <h2>境界メモ</h2>
+      <span class="count">NOTES</span>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <h3><span class="who">厳格ルール</span> — 女性必須ルールの適用</h3>
+        <p>本ジャンル（STADIUM COUNTRY &amp; SOUTHERN ROCK）には<strong>女性必須の厳格ルール</strong>がある。今回はS検証8枚が全て男性でゲート停止し、Hiro の案A選択とA昇格承認を経て、最終8枚（男性4＋女性4）で半数を満たした。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">重複排除</span> — 重複ゼロ</h3>
+        <p>候補26枚すべてを既出アルバム累積リスト・2025年既選出分と照合し、<strong>重複は0件</strong>。除外された候補はなく全26枚が残った。女性候補8枚も追加検証時に累積リスト全行と照合し、既出なしを確認した。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">Hardy</span> — 過去作の境界フラグ</h3>
+        <p>アーティストの過去作にロック／ミクスチャー色がある点は境界フラグとして記録する。ただし『Country! Country!』本作自体にラップ／ニューメタル要素はなく、ゲストもERNESTとStephen Wilson Jr.のみのため、本作はカントリー盤としてS判定した。</p>
+      </div>
+      <div class="note-card">
+        <h3><span class="who">Wikipediaでは確認できない盤</span> — 他ソースで検証</h3>
+        <p>Whiskey Myers／Kip Moore／38 Special／Cody Jinks／Treaty Oak Revival／Preacher Stone はアルバム専用ページがなく、アーティストページ／ディスコグラフィと MusicRow・Discogs・AllMusic・MetalTalk 等の別サイトで発売日とジャンル適合を確認した。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    2025年 STADIUM COUNTRY &amp; SOUTHERN ROCK アルバム選出エビデンス — 候補26枚／重複除外0枚／S検証8枚（全て男性）／厳格ルールゲートで停止／女性候補追加検証（S 0枚・A 4枚）／最終選出8枚（男性S 4枚＋女性A昇格4枚、Hiro承認）。出典リンクは各表の「出典」欄に記載。
+  </footer>
+
+</div>
+</body>
+</html>
