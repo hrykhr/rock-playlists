@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 AAA 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2ef;
+    --surface:#ffffff;
+    --surface-2:#eceae6;
+    --ink:#191817;
+    --ink-2:#4b4844;
+    --muted:#76716b;
+    --line:#ddd9d2;
+    --line-strong:#191817;
+    --accent:#b91c1c;
+    --accent-ink:#ffffff;
+    --accent-soft:#fdecec;
+    --gold:#8a6d1b;
+    --gold-bg:#f7ecd0;
+    --silver:#5b5f66;
+    --silver-bg:#e8eaed;
+    --bronze:#7c4a1e;
+    --bronze-bg:#f3e2d3;
+    --warn-bg:#fff7e6;
+    --warn-line:#e3c878;
+    --warn-ink:#5c4a12;
+    --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131211;
+      --surface:#1e1d1b;
+      --surface-2:#262422;
+      --ink:#f0ede8;
+      --ink-2:#c9c4bb;
+      --muted:#9a958c;
+      --line:#35322e;
+      --line-strong:#f0ede8;
+      --accent:#e5484d;
+      --accent-soft:#3a1d1e;
+      --gold:#e3c878;
+      --gold-bg:#332b14;
+      --silver:#c3c8cf;
+      --silver-bg:#2a2d31;
+      --bronze:#e0a878;
+      --bronze-bg:#33241a;
+      --warn-bg:#2e2712;
+      --warn-line:#6b5a22;
+      --warn-ink:#e8d48a;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 64px}
+
+  header{padding:40px 0 0}
+  .year-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .year{font-family:"Oswald",sans-serif;font-weight:700;font-size:64px;line-height:.95;letter-spacing:.01em}
+  .year-sub{font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:10px 0 0;font-size:clamp(26px,4.6vw,40px);line-height:1.25;font-weight:900;letter-spacing:.01em}
+  h1 .en{display:block;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;font-size:.62em;color:var(--ink-2);margin-top:6px}
+  .lead{margin:16px 0 0;color:var(--ink-2);max-width:46em;font-size:15.5px}
+  .lead strong{color:var(--ink)}
+
+  .flow{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--line-strong);box-shadow:var(--shadow);padding:20px 20px 18px}
+  .flow h2{margin:0 0 14px;font-size:13px;letter-spacing:.14em;font-weight:900}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .step{padding:0 14px;border-left:1px solid var(--line)}
+  .step:first-child{padding-left:0;border-left:none}
+  .step .num{font-family:"Oswald",sans-serif;font-weight:700;font-size:34px;line-height:1}
+  .step .num small{font-size:16px;color:var(--muted);font-weight:600}
+  .step .label{margin-top:6px;font-weight:700;font-size:13.5px;line-height:1.5}
+  .step .note{margin-top:2px;color:var(--muted);font-size:12.5px;line-height:1.55}
+  .step.final .num{color:var(--accent)}
+  @media (max-width:760px){
+    .flow-steps{grid-template-columns:1fr 1fr}
+    .step{padding:10px 12px 10px 0;border-left:none;border-top:1px solid var(--line)}
+    .step:nth-child(-n+2){border-top:none;padding-top:0}
+    .step:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+  }
+
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line-strong);padding-bottom:10px}
+  .sec-no{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.08em}
+  .sec-head h2{margin:0;font-size:clamp(20px,3.4vw,26px);font-weight:900;line-height:1.3}
+  .sec-head .count{margin-left:auto;font-family:"Oswald",sans-serif;font-weight:600;font-size:14px;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
+  .sec-desc{margin:12px 0 0;color:var(--ink-2);max-width:52em}
+  .sec-desc strong{color:var(--ink)}
+
+  .table-card{margin-top:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:var(--surface-2);text-align:left;font-size:12px;letter-spacing:.1em;font-weight:900;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--ink-2)}
+  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  .artist{font-weight:900;font-size:15px;line-height:1.4}
+  .album{font-weight:700;font-size:15px;line-height:1.4}
+  .album .formal{display:block;margin-top:4px;font-weight:500;font-size:12.5px;color:var(--muted);line-height:1.55}
+  .date{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.03em;white-space:nowrap;font-size:14.5px}
+  .basis{color:var(--ink-2);line-height:1.7}
+  .basis strong{color:var(--ink)}
+  .sources{display:flex;flex-direction:column;gap:2px;min-width:132px}
+  .sources a{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:4px 0;font-size:13px;font-weight:700;text-decoration:none;line-height:1.35}
+  .sources a:hover{text-decoration:underline}
+  .sources a::after{content:"↗";font-size:11px;opacity:.7}
+  .no-cell{font-family:"Oswald",sans-serif;font-weight:700;color:var(--muted);font-size:15px}
+
+  .badge{display:inline-block;font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;padding:2px 10px;border-radius:999px;line-height:1.6;white-space:nowrap}
+  .badge-s{background:var(--accent);color:var(--accent-ink)}
+  .badge-a{background:var(--gold-bg);color:var(--gold)}
+  .badge-b{background:var(--silver-bg);color:var(--silver)}
+  .badge-down{background:var(--bronze-bg);color:var(--bronze)}
+
+  .flag{display:block;margin-top:8px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:12.5px;line-height:1.6;padding:7px 10px;border-radius:6px;font-weight:500}
+  .flag b{font-weight:900}
+
+  .group-row td{background:var(--surface-2);font-weight:900;font-size:12.5px;letter-spacing:.1em;padding:8px 14px;color:var(--ink-2)}
+
+  @media (max-width:760px){
+    .year{font-size:48px}
+    header{padding-top:28px}
+    .table-card{border:none;box-shadow:none;background:transparent;overflow:visible}
+    table, thead, tbody, tr, td{display:block;width:100%}
+    thead{display:none}
+    tbody tr{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:12px;padding:6px 2px}
+    tbody td{border-bottom:1px dashed var(--line);padding:10px 14px}
+    tbody td:last-child{border-bottom:none}
+    td::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--muted);margin-bottom:4px}
+    td.no-cell::before, td.rank-cell::before{margin-bottom:2px}
+    .no-cell{font-size:13px}
+    .group-row td{margin:18px 0 10px;border:1px solid var(--line);box-shadow:none}
+    .group-row td::before{display:none}
+    .sources{min-width:0}
+    .date{white-space:normal}
+  }
+
+  .notes{margin-top:16px;display:grid;gap:12px}
+  .note-card{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 18px}
+  .note-card h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .note-card h3 .who{color:var(--accent)}
+  .note-card p{margin:0;color:var(--ink-2)}
+  .note-card p strong{color:var(--ink)}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="year-line">
+      <span class="year">2025</span>
+      <span class="year-sub">Album Selection — Evidence</span>
+    </div>
+    <h1>AAA (Adult Alternative) 候補一覧
+      <span class="en">Genre 4 — AAA (Adult Alternative)</span>
+    </h1>
+    <p class="lead">2025年の <strong>AAA (Adult Alternative)</strong> におけるアルバム選出のエビデンスページ。候補27枚を収集し重複除外は0件。Sランク検証の結果は <strong>S 4枚</strong>で、最終枠の下限5枚に1枚届かずゲートで停止した。Hiro が <strong>「S4枚のまま確定する」</strong> を選択し、A昇格は行わず <strong>最終選出4枚</strong> が確定した。女性アーティストは4枚中3枚（Brandi Carlile／Sarah McLachlan／HAIM）で、厳格ルール（女性が半数以上）は満たしている。</p>
+  </header>
+
+  <div class="flow" aria-label="選出の流れ">
+    <h2>選出の流れ — 概要</h2>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="num">27<small> 枚</small></div>
+        <div class="label">候補を収集</div>
+        <div class="note">2025年リリース作から候補27枚を収集（S 4／A 10／B 13）</div>
+      </div>
+      <div class="step">
+        <div class="num">0<small> 枚</small></div>
+        <div class="label">重複除外</div>
+        <div class="note">既出アルバム累積リストと照合し重複ゼロ、全27枚が残った</div>
+      </div>
+      <div class="step">
+        <div class="num">4<small> 枚</small></div>
+        <div class="label">Sランク候補を検証</div>
+        <div class="note">S判定4枚で下限5枚に届かずゲート停止</div>
+      </div>
+      <div class="step">
+        <div class="num">Hiro<small> 判断</small></div>
+        <div class="label">ゲート判断</div>
+        <div class="note">「S4枚のまま確定する」を選択。A昇格なし（今回限りの判断）</div>
+      </div>
+      <div class="step final">
+        <div class="num">4<small> 枚</small></div>
+        <div class="label">最終選出</div>
+        <div class="note">S 4枚で確定。女性3／4で厳格ルールは充足</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="final">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>最終選出 — S 4枚</h2>
+      <span class="count">4 ALBUMS</span>
+    </div>
+    <p class="sec-desc">S検証でS確定した4枚。Sarah McLachlan『Better Broken』と David Gray『Dear Life』は <strong>Wikipediaでは確認できない</strong>（専用アルバムページがなく、公式／レーベル・AllMusic・Metacritic 等の別サイトで検証）。いずれも絶対除外要素には該当しない。</p>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>発売日</th><th>区分</th><th>ジャンル根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr>
+<td class="no-cell" data-label="No.">1</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Brandi Carlile</div><div class="album">Returning to Myself</div></td>
+<td data-label="発売日"><span class="date">2025-10-24</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia lists genres as Synth rock and Americana; Discogs lists Rock/Folk with Indie Rock/Folk Rock styles. Americana singer-songwriter core fits AAA S criteria. No rap/hip-hop, nu-metal/mixture, or trance/electronica exclusion. Eighth studio album (Wikipedia footnote: counting nuance due to the 2025 collaborative album Who Believes in Angels? with Elton John released the same year; this is her eighth solo studio album / first solo release in four years). 10 tracks, 43:19 — not a short album. Billboard Americana/Folk Albums No.1 and Top Rock &amp; Alternative Albums No.1, Metacritic 82.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Returning_to_Myself" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.discogs.com/release/35461852-Brandi-Carlile-Returning-To-Myself" target="_blank" rel="noopener">Discogs</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">2</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sarah McLachlan</div><div class="album">Better Broken</div></td>
+<td data-label="発売日"><span class="date">2025-09-19</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">AllMusic describes it as sweeping adult contemporary and classifies her style as Adult Alternative Pop/Rock / Contemporary Singer/Songwriter; Metacritic genre Pop/Rock; Qobuz genre Pop/Rock Pop. Juno 2026 Adult Contemporary Album of the Year winner. Core AAA/adult-alternative singer-songwriter fit for S. No absolute exclusion genres as the album&#x27;s identity. Wikipediaでは確認できない (no dedicated Wikipedia album page found; verification via Concord Records official announcement, AllMusic, Metacritic and Qobuz). Tenth studio album and first album of original material in over a decade since Shine On (2014), per Concord; counting excludes the 2016 Christmas album Wonderland. Apple Music notes trip-hop textures as a historical stylistic reference in one track description, but the album itself is adult contemporary/pop-rock, not electronica/trance — not an exclusion flag.</td>
+<td data-label="出典"><div class="sources"><a href="https://www.concordrecords.com/blogs/news/sarah-mclachlan-announces-first-album-in-over-a-decade-better-broken" target="_blank" rel="noopener">Concord Records</a><a href="https://www.allmusic.com/album/better-broken-mw0004554548" target="_blank" rel="noopener">AllMusic</a><a href="https://www.metacritic.com/music/better-broken/sarah-mclachlan/" target="_blank" rel="noopener">Metacritic</a><a href="https://www.qobuz.com/us-en/album/better-broken-sarah-mclachlan/rvbexydm798da" target="_blank" rel="noopener">Qobuz</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">3</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">HAIM</div><div class="album">I Quit</div></td>
+<td data-label="発売日"><span class="date">2025-06-20</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia genre: Soft rock; AllMusic genre Pop/Rock with styles Adult Alternative Pop/Rock, Alternative/Indie Rock, Pop — Adult Alternative is a direct AAA match. Discogs: Pop Rock/Alternative Rock. No rap/hip-hop, nu-metal/mixture, or trance/electronica identity. Fourth studio album, 15 tracks, 52:55 — full-length, not short. An expanded/deluxe version with 3 extra tracks was issued in October 2025 and is separate from the original studio album. Minor note only: one review described vocals on &#x27;Relationships&#x27; as rap-adjacent, but the album is classified soft rock/adult alternative throughout and this does not constitute a hip-hop exclusion. Metacritic 79.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/I_Quit_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/i-quit-mw0004521933" target="_blank" rel="noopener">AllMusic</a><a href="https://www.discogs.com/release/34322923-Haim-I-Quit" target="_blank" rel="noopener">Discogs</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">4</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">David Gray</div><div class="album">Dear Life</div></td>
+<td data-label="発売日"><span class="date">2025-01-17</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Metacritic genres Folk and Pop/Rock; AllMusic lists Dear Life (2025) as Folk, Pop/Rock; RIFF Magazine and The Upcoming describe it as folk-rock / soft pop-folk-rock singer-songwriter work. Classic AAA singer-songwriter fit for S. Electronic textures appear as production colouring only, not a trance/electronica identity. Wikipediaでは確認できない (no dedicated Wikipedia album page found; Wikipedia&#x27;s David Gray discography page does list Dear Life as released 17 January 2025 on Laugh A Minute, and verification also rests on AllMusic, Metacritic and American Songwriter). Thirteenth studio album, 13 tracks — full-length, not short.</td>
+<td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/release/dear-life-mr0006490551" target="_blank" rel="noopener">AllMusic</a><a href="https://www.metacritic.com/music/dear-life/david-gray/" target="_blank" rel="noopener">Metacritic</a><a href="https://en.wikipedia.org/wiki/David_Gray_discography" target="_blank" rel="noopener">Wikipedia</a><a href="https://americansongwriter.com/david-gray-shares-sheer-pleasure-of-songwriting-on-new-album-dear-life-exclusive-qa/" target="_blank" rel="noopener">americansongwriter.com</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="pool">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>候補プール — 不採用 23枚</h2>
+      <span class="count">23 ALBUMS</span>
+    </div>
+    <p class="sec-desc">候補収集時のプール判定（A 10枚／B 13枚）。品質・適合の観点でSに届かず、Hiro の判断によりA昇格も行わなかったため全て不採用。境界フラグは各行の備考に明記した。</p>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>発売日</th><th>区分</th><th>ジャンル根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr>
+<td class="no-cell" data-label="No.">1</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Bon Iver</div><div class="album">SABLE, fABLE</div></td>
+<td data-label="発売日"><span class="date">2025-04-11</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">AllMusic: Styles Alternative Singer/Songwriter, Indie Folk; Wikipedia genres include soft rock, pop, soul, folk-leaning output foregrounding voice and words. Includes the 3 tracks from 2024 SABLE EP as opening section - later stage should check original-album rule.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Sable,_Fable" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/mw0004475836" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">2</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Lucy Dacus</div><div class="album">Forever Is a Feeling</div></td>
+<td data-label="発売日"><span class="date">2025-03-28</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: Indie rock, folk-pop; artist is a singer-songwriter, tender/mature melodic songwriting with acoustic guitar. Female artist.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Forever_Is_A_Feeling" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">3</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Japanese Breakfast</div><div class="album">For Melancholy Brunettes (&amp; Sad Women)</div></td>
+<td data-label="発売日"><span class="date">2025-03-21</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: Indie pop, indie rock; Qobuz notes richly melodic sound evoking Court and Spark-era Joni Mitchell, mature contemplative work by frontwoman/songwriter Michelle Zauner. Female-fronted. Conditional fit - indie pop side.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/For_Melancholy_Brunettes_(%26_Sad_Women)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.qobuz.com/us-en/album/for-melancholy-brunettes-sad-women-japanese-breakfast/f1jke2fiayrtb" target="_blank" rel="noopener">Qobuz</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">4</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Mumford &amp; Sons</div><div class="album">Rushmere</div></td>
+<td data-label="発売日"><span class="date">2025-03-28</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: Folk rock studio album; acoustic folk-rock roots return, furiously played guitars and vocal harmonies, song-forward production by Dave Cobb - Acoustic Rock conditional fit.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Rushmere_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">5</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">The Lumineers</div><div class="album">Automatic</div></td>
+<td data-label="発売日"><span class="date">2025-02-14</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: fifth studio album by American indie folk band; upbeat infectious melodies, sky-high choruses, raw personal songwriting - acoustic/indie folk conditional fit.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Automatic_(The_Lumineers_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">6</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Jason Isbell</div><div class="album">Foxes in the Snow</div></td>
+<td data-label="発売日"><span class="date">2025-03-07</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: tenth studio album by American singer-songwriter Jason Isbell, his first solo acoustic album, vocals and acoustic guitar only - Singer-Songwriter fit. Americana/country side - borderline with genre 3, flag for later stage.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Foxes_in_the_Snow" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">7</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Elton John and Brandi Carlile</div><div class="album">Who Believes in Angels?</div></td>
+<td data-label="発売日"><span class="date">2025-04-04</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">AllMusic review: two singer/songwriters splitting writing and vocal duties; collaborative studio album with melodic pop/rock songwriting. Collaborative album; Carlile is female co-lead/co-writer - female-count treatment needs Hiro/stage decision. Carlile also has solo album in same year.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Who_Believes_in_Angels%3F" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/who-believes-in-angels--mw0004468420" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">8</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Counting Crows</div><div class="album">Butter Miracle, The Complete Sweets!</div></td>
+<td data-label="発売日"><span class="date">2025-05-09</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Official site: signature blend of rock, folk and alternative, Adam Duritz&#x27;s deeply personal songwriting, rich melodies; American Songwriter calls it a roots rock record. FLAG: expands 2021 EP Butter Miracle Suite One with 5 new songs and rewritten EP songs - later stage must judge re-recording/EP-expansion exclusion.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Butter_Miracle,_The_Complete_Sweets!" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.countingcrows.com/news/counting-crows-release-new-album-butter-miracle-the-complete-sweets" target="_blank" rel="noopener">countingcrows.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">9</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sam Fender</div><div class="album">People Watching</div></td>
+<td data-label="発売日"><span class="date">2025-02-21</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: Heartland rock, pop; AllMusic Styles British Trad Rock, Indie Rock. Melodic singer-songwriter pop/rock, conditional fit - harder guitar anthems noted. Borderline with MAINSTREAM ROCK - flag for later stage.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/People_Watching_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://Www.Allmusic.com/album/people-watching-mw0004417706" target="_blank" rel="noopener">Www.Allmusic.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">10</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Neko Case</div><div class="album">Neon Grey Midnight Green</div></td>
+<td data-label="発売日"><span class="date">2025-09-26</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: eighth studio album by American singer-songwriter Neko Case; NPR notes singular songwriter, Americana and chamber/string textures. Female artist.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Neon_Grey_Midnight_Green" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">11</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Patty Griffin</div><div class="album">Crown of Roses</div></td>
+<td data-label="発売日"><span class="date">2025-07-25</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: eleventh studio album by American singer-songwriter Patty Griffin, stripped-down folk songwriting, spare folk to Americana - Singer-Songwriter fit. Female artist. Only 8 tracks - check length later.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Crown_of_Roses" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">12</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Mary Chapin Carpenter</div><div class="album">Personal History</div></td>
+<td data-label="発売日"><span class="date">2025-06-06</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: 17th studio album by American singer-songwriter, genre Country folk; autobiographical songs recorded live, acoustic strumming and smoky alto praised by MusicRow. Female artist. Country-folk side - borderline with genre 3, flag for later stage.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Personal_History_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">13</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Alison Krauss &amp; Union Station</div><div class="album">Arcadia</div></td>
+<td data-label="発売日"><span class="date">2025-03-28</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: eighth studio album by American bluegrass band fronted by singer/fiddler Alison Krauss; AllMusic notes mainstream country artist career and traditional music reframed with modern production - acoustic conditional fit. Female-fronted. Bluegrass/country side - borderline with genre 3, flag for later stage.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Arcadia_(Alison_Krauss_%26_Union_Station_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.Allmusic.com/album/arcadia-mw0004461841" target="_blank" rel="noopener">Allmusic.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">14</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sharon Van Etten</div><div class="album">Sharon Van Etten &amp; the Attachment Theory</div></td>
+<td data-label="発売日"><span class="date">2025-02-07</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">AllMusic: Styles New Wave/Post-Punk Revival, Alternative/Indie Rock, Alternative Singer/Songwriter; seventh studio album by singer-songwriter Sharon Van Etten. Female artist. Post-punk/synth edge - check absolute-exclusion (excess electronic) and FEMALE VOCAL border at later stage.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Sharon_Van_Etten_&amp;_the_Attachment_Theory" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/sharon-van-etten-the-attachment-theory-mw0004401948/" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">15</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">My Morning Jacket</div><div class="album">Is</div></td>
+<td data-label="発売日"><span class="date">2025-03-21</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Tenth studio album; lead single Time Waited reached Billboard top 10 for Adult Alternative Airplay (NYSMusic); AllMusic Pop/Rock album, dreamy melodic single. Album title stylized &#x27;is&#x27;.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Is_(My_Morning_Jacket_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/is-mw0004440525" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">16</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Ed Sheeran</div><div class="album">Play</div></td>
+<td data-label="発売日"><span class="date">2025-09-12</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: eighth studio album by English singer-songwriter, genre Pop; AllMusic: blend of heartfelt busker material and big pop anthems, near-acoustic gems - Adult Pop conditional fit. Electropop elements noted by Wikipedia - check absolute-exclusion screening at later stage.</td>
+<td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/play-mw0004532124" target="_blank" rel="noopener">AllMusic</a><a href="https://www.officialcharts.com/chart-news/ed-sheeran-play-album-tracklist-release-date/" target="_blank" rel="noopener">officialcharts.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">17</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Olivia Dean</div><div class="album">The Art of Loving</div></td>
+<td data-label="発売日"><span class="date">2025-09-26</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: second studio album by British singer-songwriter, genres Pop, R&amp;B, soul with jazz pop, bossa nova and Motown elements; sophisticated melodic adult pop - conditional fit. Female artist.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/The_Art_of_Loving_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">18</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Laufey</div><div class="album">A Matter of Time</div></td>
+<td data-label="発売日"><span class="date">2025-08-22</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Official Charts: third studio album by Icelandic singer-songwriter, elegant fusion of jazz, orchestral pop, bossa nova and cinematic songwriting; Apple Music genre Pop - modern AOR/Adult Pop conditional fit. Female artist.</td>
+<td data-label="出典"><div class="sources"><a href="https://www.officialcharts.com/albums/laufey-a-matter-of-time/" target="_blank" rel="noopener">officialcharts.com</a><a href="https://music.apple.com/id/album/a-matter-of-time/1810514672" target="_blank" rel="noopener">music.apple.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">19</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Madi Diaz</div><div class="album">Fatal Optimist</div></td>
+<td data-label="発売日"><span class="date">2025-10-10</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: seventh studio album by American singer-songwriter Madi Diaz; mostly voice and acoustic guitar, melodic folk/indie rock storytelling - Singer-Songwriter fit. Female artist.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Fatal_Optimist" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">20</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Lord Huron</div><div class="album">The Cosmic Selector, Vol. 1</div></td>
+<td data-label="発売日"><span class="date">2025-07-18</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: fifth studio album by American indie-folk band; Metacritic/PopMatters note beautifully poetic Americana songwriting - acoustic/indie folk conditional fit.</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/The_Cosmic_Selector,_Vol._1" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">21</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Matt Berninger</div><div class="album">Get Sunk</div></td>
+<td data-label="発売日"><span class="date">2025-05-30</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">AllMusic: intimate, ruminative second solo album by The National singer/songwriter Matt Berninger, published May 30 2025; Concord announcement as sophomore solo album - Singer-Songwriter fit. Wikipedia album page not directly used; release confirmed by AllMusic and Concord Records (label).</td>
+<td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/get-sunk-mw0004483678" target="_blank" rel="noopener">AllMusic</a><a href="https://www.concordrecords.com/blogs/news/the-national-s-matt-berninger-announces-sophomore-solo-album-get-sunk" target="_blank" rel="noopener">Concord Records</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">22</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Djo</div><div class="album">The Crux</div></td>
+<td data-label="発売日"><span class="date">2025-04-04</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">AllMusic review: organic, emotionally textured album-oriented pop/rock, lush guitars reminiscent of late 60s/70s pop, catchy melodic anthems - Adult Pop/Rock conditional fit. Some synth-pop tracks - check absolute-exclusion screening at later stage. Deluxe reissue exists separately, candidate is original album only.</td>
+<td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/the-crux-mw0004462491" target="_blank" rel="noopener">AllMusic</a><a href="http://www.allmusic.com/album/release/the-crux-mr0006612599" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">23</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Perfume Genius</div><div class="album">Glory</div></td>
+<td data-label="発売日"><span class="date">2025-03-28</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">AllMusic: Genre Pop/Rock, Styles Alternative Singer/Songwriter, Indie Rock; Qobuz notes singer-songwriter with Blake Mills, folk and countrified ballads. Male artist (Mike Hadreas).</td>
+<td data-label="出典"><div class="sources"><a href="https://Www.Allmusic.com/album/glory-mw0004457516" target="_blank" rel="noopener">Www.Allmusic.com</a><a href="https://www.qobuz.com/us-en/album/glory-perfume-genius/ofv6ki1pd09lb" target="_blank" rel="noopener">Qobuz</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="notes">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <h2>判定メモ</h2>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <h3>ゲートと Hiro の判断</h3>
+        <p>S判定が4枚で最終枠（5〜10枚）の下限に届かず停止。選択肢として「女性A候補を検証して昇格」「S4枚のまま確定」「男性Aも含めて検討」を提示し、Hiro は <strong>「S4枚のまま確定する」</strong> を選択した。これは今回限りの判断であり、恒常ルールの変更ではない。2023年の AAA も4枚で確定した前例がある。</p>
+      </div>
+      <div class="note-card">
+        <h3>厳格ルール（女性）</h3>
+        <p>最終4枚のうち女性／女性フロントは <strong>3枚</strong>（Brandi Carlile、Sarah McLachlan、HAIM）。半数以上の条件を満たすため、厳格ルール上の問題はない。</p>
+      </div>
+      <div class="note-card">
+        <h3>境界フラグ</h3>
+        <p>Jason Isbell『Foxes in the Snow』、Mary Chapin Carpenter『Personal History』、Alison Krauss &amp; Union Station『Arcadia』はジャンル3（STADIUM COUNTRY）寄り。Sam Fender『People Watching』はジャンル1寄り。Sharon Van Etten はシンセ色があり絶対除外チェック対象。Counting Crows『Butter Miracle, The Complete Sweets!』は2021年EPの拡張盤。Elton John &amp; Brandi Carlile『Who Believes in Angels?』はコラボ盤で、Carlile はソロ作で採用済み。これらはいずれもプール判定で不採用。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>2025年 AAA (Adult Alternative) アルバム選出エビデンス。発売日とジャンル適合は各行の出典で確認。再生回数等の第三者集計は第三者集計と明記している。</footer>
+</div>
+</body>
+</html>

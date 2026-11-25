@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 AAA 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2ef;
+    --surface:#ffffff;
+    --surface-2:#eceae6;
+    --ink:#191817;
+    --ink-2:#4b4844;
+    --muted:#76716b;
+    --line:#ddd9d2;
+    --line-strong:#191817;
+    --accent:#b91c1c;
+    --accent-ink:#ffffff;
+    --accent-soft:#fdecec;
+    --gold:#8a6d1b;
+    --gold-bg:#f7ecd0;
+    --silver:#5b5f66;
+    --silver-bg:#e8eaed;
+    --bronze:#7c4a1e;
+    --bronze-bg:#f3e2d3;
+    --warn-bg:#fff7e6;
+    --warn-line:#e3c878;
+    --warn-ink:#5c4a12;
+    --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131211;
+      --surface:#1e1d1b;
+      --surface-2:#262422;
+      --ink:#f0ede8;
+      --ink-2:#c9c4bb;
+      --muted:#9a958c;
+      --line:#35322e;
+      --line-strong:#f0ede8;
+      --accent:#e5484d;
+      --accent-soft:#3a1d1e;
+      --gold:#e3c878;
+      --gold-bg:#332b14;
+      --silver:#c3c8cf;
+      --silver-bg:#2a2d31;
+      --bronze:#e0a878;
+      --bronze-bg:#33241a;
+      --warn-bg:#2e2712;
+      --warn-line:#6b5a22;
+      --warn-ink:#e8d48a;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 64px}
+
+  header{padding:40px 0 0}
+  .year-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .year{font-family:"Oswald",sans-serif;font-weight:700;font-size:64px;line-height:.95;letter-spacing:.01em}
+  .year-sub{font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:10px 0 0;font-size:clamp(26px,4.6vw,40px);line-height:1.25;font-weight:900;letter-spacing:.01em}
+  h1 .en{display:block;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;font-size:.62em;color:var(--ink-2);margin-top:6px}
+  .lead{margin:16px 0 0;color:var(--ink-2);max-width:46em;font-size:15.5px}
+  .lead strong{color:var(--ink)}
+
+  .flow{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--line-strong);box-shadow:var(--shadow);padding:20px 20px 18px}
+  .flow h2{margin:0 0 14px;font-size:13px;letter-spacing:.14em;font-weight:900}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .step{padding:0 14px;border-left:1px solid var(--line)}
+  .step:first-child{padding-left:0;border-left:none}
+  .step .num{font-family:"Oswald",sans-serif;font-weight:700;font-size:34px;line-height:1}
+  .step .num small{font-size:16px;color:var(--muted);font-weight:600}
+  .step .label{margin-top:6px;font-weight:700;font-size:13.5px;line-height:1.5}
+  .step .note{margin-top:2px;color:var(--muted);font-size:12.5px;line-height:1.55}
+  .step.final .num{color:var(--accent)}
+  @media (max-width:760px){
+    .flow-steps{grid-template-columns:1fr 1fr}
+    .step{padding:10px 12px 10px 0;border-left:none;border-top:1px solid var(--line)}
+    .step:nth-child(-n+2){border-top:none;padding-top:0}
+    .step:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+  }
+
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line-strong);padding-bottom:10px}
+  .sec-no{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.08em}
+  .sec-head h2{margin:0;font-size:clamp(20px,3.4vw,26px);font-weight:900;line-height:1.3}
+  .sec-head .count{margin-left:auto;font-family:"Oswald",sans-serif;font-weight:600;font-size:14px;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
+  .sec-desc{margin:12px 0 0;color:var(--ink-2);max-width:52em}
+  .sec-desc strong{color:var(--ink)}
+
+  .table-card{margin-top:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:var(--surface-2);text-align:left;font-size:12px;letter-spacing:.1em;font-weight:900;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--ink-2)}
+  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  .artist{font-weight:900;font-size:15px;line-height:1.4}
+  .album{font-weight:700;font-size:15px;line-height:1.4}
+  .album .formal{display:block;margin-top:4px;font-weight:500;font-size:12.5px;color:var(--muted);line-height:1.55}
+  .date{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.03em;white-space:nowrap;font-size:14.5px}
+  .basis{color:var(--ink-2);line-height:1.7}
+  .basis strong{color:var(--ink)}
+  .sources{display:flex;flex-direction:column;gap:2px;min-width:132px}
+  .sources a{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:4px 0;font-size:13px;font-weight:700;text-decoration:none;line-height:1.35}
+  .sources a:hover{text-decoration:underline}
+  .sources a::after{content:"↗";font-size:11px;opacity:.7}
+  .no-cell{font-family:"Oswald",sans-serif;font-weight:700;color:var(--muted);font-size:15px}
+
+  .badge{display:inline-block;font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;padding:2px 10px;border-radius:999px;line-height:1.6;white-space:nowrap}
+  .badge-s{background:var(--accent);color:var(--accent-ink)}
+  .badge-a{background:var(--gold-bg);color:var(--gold)}
+  .badge-b{background:var(--silver-bg);color:var(--silver)}
+  .badge-down{background:var(--bronze-bg);color:var(--bronze)}
+
+  .flag{display:block;margin-top:8px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:12.5px;line-height:1.6;padding:7px 10px;border-radius:6px;font-weight:500}
+  .flag b{font-weight:900}
+
+  .group-row td{background:var(--surface-2);font-weight:900;font-size:12.5px;letter-spacing:.1em;padding:8px 14px;color:var(--ink-2)}
+
+  @media (max-width:760px){
+    .year{font-size:48px}
+    header{padding-top:28px}
+    .table-card{border:none;box-shadow:none;background:transparent;overflow:visible}
+    table, thead, tbody, tr, td{display:block;width:100%}
+    thead{display:none}
+    tbody tr{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:12px;padding:6px 2px}
+    tbody td{border-bottom:1px dashed var(--line);padding:10px 14px}
+    tbody td:last-child{border-bottom:none}
+    td::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--muted);margin-bottom:4px}
+    td.no-cell::before, td.rank-cell::before{margin-bottom:2px}
+    .no-cell{font-size:13px}
+    .group-row td{margin:18px 0 10px;border:1px solid var(--line);box-shadow:none}
+    .group-row td::before{display:none}
+    .sources{min-width:0}
+    .date{white-space:normal}
+  }
+
+  .notes{margin-top:16px;display:grid;gap:12px}
+  .note-card{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 18px}
+  .note-card h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .note-card h3 .who{color:var(--accent)}
+  .note-card p{margin:0;color:var(--ink-2)}
+  .note-card p strong{color:var(--ink)}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="year-line">
+      <span class="year">2025</span>
+      <span class="year-sub">Track Selection — Evidence</span>
+    </div>
+    <h1>AAA (Adult Alternative) 楽曲選出
+      <span class="en">Genre 4 — AAA (Adult Alternative)</span>
+    </h1>
+    <p class="lead">2025年の <strong>AAA (Adult Alternative)</strong> 最終選出4枚から、各2曲・計 <strong>8曲</strong> を選出したエビデンスページ。全曲オリジナル曲で、カバーなし、2分以下なし、<strong>バラード例外なし</strong>。Hiro が「この8曲で確定する」と承認済み。Spotifyプレイリスト「2025年AAA」は作成済み（8/8曲・全曲選出アルバム収録版・TSV順）。</p>
+  </header>
+
+  <div class="flow" aria-label="選出の流れ">
+    <h2>選出の流れ — 概要</h2>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="num">4<small> 枚</small></div>
+        <div class="label">対象アルバム</div>
+        <div class="note">S確定4枚（Hiro が4枚構成を承認）</div>
+      </div>
+      <div class="step">
+        <div class="num">2<small> 曲</small></div>
+        <div class="label">各アルバムから選出</div>
+        <div class="note">シングル・人気曲を優先し2サイト以上で収録確認</div>
+      </div>
+      <div class="step">
+        <div class="num">0<small> 件</small></div>
+        <div class="label">バラード例外</div>
+        <div class="note">バラードは本命から除外し例外適用なし</div>
+      </div>
+      <div class="step">
+        <div class="num">8<small> 曲</small></div>
+        <div class="label">Hiro 承認</div>
+        <div class="note">「この8曲で確定する」</div>
+      </div>
+      <div class="step final">
+        <div class="num">8<small> 曲</small></div>
+        <div class="label">Spotify 作成済み</div>
+        <div class="note">全曲アルバム版・TSV順で検証済み</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="final">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>最終選出 — 8曲</h2>
+      <span class="count">8 TRACKS</span>
+    </div>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>曲名</th><th>長さ</th><th>区分</th><th>選出根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr>
+<td class="no-cell" data-label="No.">1</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Brandi Carlile</div><div class="album">Returning to Myself</div></td>
+<td data-label="曲名"><div class="album">Church &amp; State</div></td>
+<td data-label="長さ"><span class="date">4:18</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">第3シングル</span></td>
+<td class="basis" data-label="選出根拠">アルバム唯一の疾走感あるロック曲。Qobuz は「hard-charging, New Wave-flavored」、Variety は「blazing rock song」と紹介。大統領選の夜に書かれたプロテスト・アンセムで SNL でも披露。バラードではない。Spotify再生数は第三者集計（Kworb）で約181万回。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Returning_to_Myself" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.qobuz.com/us-en/album/returning-to-myself-brandi-carlile/r8nx9cretutcb" target="_blank" rel="noopener">Qobuz</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">2</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Brandi Carlile</div><div class="album">Returning to Myself</div></td>
+<td data-label="曲名"><div class="album">Human</div></td>
+<td data-label="長さ"><span class="date">4:20</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">アルバム曲</span></td>
+<td class="basis" data-label="選出根拠">Qobuz が「the showstopper」と評し、「The Joke」「The Story」に並ぶ代表曲級と明言。静かに始まりバンドが入って高揚する構成でバラードではない。Spotify再生数は第三者集計（Kworb）で約384万回、アルバム内2位。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Returning_to_Myself" target="_blank" rel="noopener">Wikipedia</a><a href="https://kworb.net/spotify/artist/2sG4zTOLvjKG1PSoOyf5Ej_songs.html" target="_blank" rel="noopener">Kworb（第三者集計）</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">3</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sarah McLachlan</div><div class="album">Better Broken</div></td>
+<td data-label="曲名"><div class="album">Better Broken</div></td>
+<td data-label="長さ"><span class="date">4:00</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">リードシングル</span></td>
+<td class="basis" data-label="選出根拠">Stereogum は「quietly funky guitar、booming trip-hop drums のオルタナティブロック」と評し、New York Times は「resolute」と紹介。バラードではない。再生回数は確認できない。Wikipediaにアルバムページなし（Concord公式＋Deezer＋Tower Recordsで収録確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.concordrecords.com/blogs/news/sarah-mclachlan-announces-first-album-in-over-a-decade-better-broken" target="_blank" rel="noopener">Concord Records</a><a href="https://www.deezer.com/us/artist/1344" target="_blank" rel="noopener">Deezer</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">4</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sarah McLachlan</div><div class="album">Better Broken</div></td>
+<td data-label="曲名"><div class="album">One In a Long Line</div></td>
+<td data-label="長さ"><span class="date">3:44</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">アルバム曲</span></td>
+<td class="basis" data-label="選出根拠">レーベル公式PR（Concord／Shore Fire）が「an irrepressible anthem（女性の権利の後退に抗議するアンセム）」と真っ先にハイライトとして挙げる、アルバムで最もアップテンポで力強い曲。スローなシングル勢より優先した。</td>
+<td data-label="出典"><div class="sources"><a href="https://shorefire.com/releases/entry/sarah-mclachlan-releases-new-single-gravity" target="_blank" rel="noopener">Shore Fire Media</a><a href="https://www.deezer.com/us/artist/1344" target="_blank" rel="noopener">Deezer</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">5</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">HAIM</div><div class="album">I Quit</div></td>
+<td data-label="曲名"><div class="album">Relationships</div></td>
+<td data-label="長さ"><span class="date">3:22</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">リードシングル</span></td>
+<td class="basis" data-label="選出根拠">公式MVのYouTube再生回数は第三者集計（Kworb）で3,087,751回、アルバム収録曲で最多。アップテンポなポップロックでバラードではない。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/I_Quit_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://kworb.net/youtube/video/dOI_QTmK8Ks.html" target="_blank" rel="noopener">Kworb（第三者集計）</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">6</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">HAIM</div><div class="album">I Quit</div></td>
+<td data-label="曲名"><div class="album">Down to Be Wrong</div></td>
+<td data-label="長さ"><span class="date">4:09</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">第3シングル</span></td>
+<td class="basis" data-label="選出根拠">公式MVのYouTube再生回数は第三者集計（Kworb）で1,439,278回、シングル曲中2位。ミッドテンポのロック曲でバラード扱いの評はなし。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/I_Quit_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://kworb.net/youtube/artist/haim.html" target="_blank" rel="noopener">Kworb（第三者集計）</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">7</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">David Gray</div><div class="album">Dear Life</div></td>
+<td data-label="曲名"><div class="album">Plus &amp; Minus</div></td>
+<td data-label="長さ"><span class="date">3:08</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">リードシングル</span></td>
+<td class="basis" data-label="選出根拠">feat. Talia Rae。BBC Radio 2 で初オンエア＋プレイリスト入り。Return to Sound は「his most immediately infectious」、jambands は「bouncy little dynamo」と評するポップな曲でバラードではない。再生回数は確認できない。Wikipediaにアルバムページなし（Offizielle Charts＋HMV＋Deezerで収録確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.returntosound.co.uk/music-news/david-gray-acclaimed-new-album-released" target="_blank" rel="noopener">Return to Sound</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">8</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">David Gray</div><div class="album">Dear Life</div></td>
+<td data-label="曲名"><div class="album">After the Harvest</div></td>
+<td data-label="長さ"><span class="date">4:36</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">シングル</span></td>
+<td class="basis" data-label="選出根拠">アルバム冒頭曲。RIFF Magazine は「Single “After the Harvest” begins the record, hooking you with a beat that blends acoustic and electronic percussion」と紹介。ビートのある曲でバラードではない（Spotify表記は4:35）。</td>
+<td data-label="出典"><div class="sources"><a href="https://riffmagazine.com/album-reviews/david-gray-dear-life/" target="_blank" rel="noopener">RIFF Magazine</a><a href="https://www.bandslate.com/band/david-gray" target="_blank" rel="noopener">Band Slate</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="notes">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>次点・除外メモ</h2>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <h3>Brandi Carlile のタイトル曲</h3>
+        <p>「Returning to Myself」はリードシングルで、第三者集計（Kworb）ではアルバム内最多再生、グラミー候補にもなった「その年に重要」な曲。ただし穏やかなバラード寄りのため本命から外した。Hiro に例外採用の可否を提示し、8曲案のまま確定した。「A War with Time」（第2シングル、Justin Vernon 参加）も次点。</p>
+      </div>
+      <div class="note-card">
+        <h3>バラードとして除外した曲</h3>
+        <p>Sarah McLachlan「Gravity」（第2シングル）は公式PRが「tender piano ballad」と明言するバラードのため除外（本人にとって重要な曲という公式説明はあり、例外候補としては最有力だった）。同「Reminds Me」（第3シングル）はスローなラブソングで次点。</p>
+      </div>
+      <div class="note-card">
+        <h3>人気指標について</h3>
+        <p>出典のある再生回数が取れたのは HAIM（Kworb の YouTube 集計）と Brandi Carlile（Kworb の Spotify 集計）のみで、いずれも <strong>第三者集計</strong> であり公式発表値ではない。Sarah McLachlan と David Gray は楽曲別再生回数が確認できなかったため、シングル順位とメディア／レーベルのハイライト記述を根拠にした。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>2025年 AAA (Adult Alternative) 楽曲選出エビデンス。収録確認は各行の出典2サイト以上で行った。</footer>
+</div>
+</body>
+</html>
