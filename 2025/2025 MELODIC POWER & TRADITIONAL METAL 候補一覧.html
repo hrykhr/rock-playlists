@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 MELODIC POWER &amp; TRADITIONAL METAL 候補一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2ef;
+    --surface:#ffffff;
+    --surface-2:#eceae6;
+    --ink:#191817;
+    --ink-2:#4b4844;
+    --muted:#76716b;
+    --line:#ddd9d2;
+    --line-strong:#191817;
+    --accent:#b91c1c;
+    --accent-ink:#ffffff;
+    --accent-soft:#fdecec;
+    --gold:#8a6d1b;
+    --gold-bg:#f7ecd0;
+    --silver:#5b5f66;
+    --silver-bg:#e8eaed;
+    --bronze:#7c4a1e;
+    --bronze-bg:#f3e2d3;
+    --warn-bg:#fff7e6;
+    --warn-line:#e3c878;
+    --warn-ink:#5c4a12;
+    --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131211;
+      --surface:#1e1d1b;
+      --surface-2:#262422;
+      --ink:#f0ede8;
+      --ink-2:#c9c4bb;
+      --muted:#9a958c;
+      --line:#35322e;
+      --line-strong:#f0ede8;
+      --accent:#e5484d;
+      --accent-soft:#3a1d1e;
+      --gold:#e3c878;
+      --gold-bg:#332b14;
+      --silver:#c3c8cf;
+      --silver-bg:#2a2d31;
+      --bronze:#e0a878;
+      --bronze-bg:#33241a;
+      --warn-bg:#2e2712;
+      --warn-line:#6b5a22;
+      --warn-ink:#e8d48a;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 64px}
+
+  header{padding:40px 0 0}
+  .year-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .year{font-family:"Oswald",sans-serif;font-weight:700;font-size:64px;line-height:.95;letter-spacing:.01em}
+  .year-sub{font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:10px 0 0;font-size:clamp(26px,4.6vw,40px);line-height:1.25;font-weight:900;letter-spacing:.01em}
+  h1 .en{display:block;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;font-size:.62em;color:var(--ink-2);margin-top:6px}
+  .lead{margin:16px 0 0;color:var(--ink-2);max-width:46em;font-size:15.5px}
+  .lead strong{color:var(--ink)}
+
+  .flow{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--line-strong);box-shadow:var(--shadow);padding:20px 20px 18px}
+  .flow h2{margin:0 0 14px;font-size:13px;letter-spacing:.14em;font-weight:900}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .step{padding:0 14px;border-left:1px solid var(--line)}
+  .step:first-child{padding-left:0;border-left:none}
+  .step .num{font-family:"Oswald",sans-serif;font-weight:700;font-size:34px;line-height:1}
+  .step .num small{font-size:16px;color:var(--muted);font-weight:600}
+  .step .label{margin-top:6px;font-weight:700;font-size:13.5px;line-height:1.5}
+  .step .note{margin-top:2px;color:var(--muted);font-size:12.5px;line-height:1.55}
+  .step.final .num{color:var(--accent)}
+  @media (max-width:760px){
+    .flow-steps{grid-template-columns:1fr 1fr}
+    .step{padding:10px 12px 10px 0;border-left:none;border-top:1px solid var(--line)}
+    .step:nth-child(-n+2){border-top:none;padding-top:0}
+    .step:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+  }
+
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line-strong);padding-bottom:10px}
+  .sec-no{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.08em}
+  .sec-head h2{margin:0;font-size:clamp(20px,3.4vw,26px);font-weight:900;line-height:1.3}
+  .sec-head .count{margin-left:auto;font-family:"Oswald",sans-serif;font-weight:600;font-size:14px;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
+  .sec-desc{margin:12px 0 0;color:var(--ink-2);max-width:52em}
+  .sec-desc strong{color:var(--ink)}
+
+  .table-card{margin-top:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:var(--surface-2);text-align:left;font-size:12px;letter-spacing:.1em;font-weight:900;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--ink-2)}
+  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  .artist{font-weight:900;font-size:15px;line-height:1.4}
+  .album{font-weight:700;font-size:15px;line-height:1.4}
+  .album .formal{display:block;margin-top:4px;font-weight:500;font-size:12.5px;color:var(--muted);line-height:1.55}
+  .date{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.03em;white-space:nowrap;font-size:14.5px}
+  .basis{color:var(--ink-2);line-height:1.7}
+  .basis strong{color:var(--ink)}
+  .sources{display:flex;flex-direction:column;gap:2px;min-width:132px}
+  .sources a{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:4px 0;font-size:13px;font-weight:700;text-decoration:none;line-height:1.35}
+  .sources a:hover{text-decoration:underline}
+  .sources a::after{content:"↗";font-size:11px;opacity:.7}
+  .no-cell{font-family:"Oswald",sans-serif;font-weight:700;color:var(--muted);font-size:15px}
+
+  .badge{display:inline-block;font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;padding:2px 10px;border-radius:999px;line-height:1.6;white-space:nowrap}
+  .badge-s{background:var(--accent);color:var(--accent-ink)}
+  .badge-a{background:var(--gold-bg);color:var(--gold)}
+  .badge-b{background:var(--silver-bg);color:var(--silver)}
+  .badge-down{background:var(--bronze-bg);color:var(--bronze)}
+
+  .flag{display:block;margin-top:8px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:12.5px;line-height:1.6;padding:7px 10px;border-radius:6px;font-weight:500}
+  .flag b{font-weight:900}
+
+  .group-row td{background:var(--surface-2);font-weight:900;font-size:12.5px;letter-spacing:.1em;padding:8px 14px;color:var(--ink-2)}
+
+  @media (max-width:760px){
+    .year{font-size:48px}
+    header{padding-top:28px}
+    .table-card{border:none;box-shadow:none;background:transparent;overflow:visible}
+    table, thead, tbody, tr, td{display:block;width:100%}
+    thead{display:none}
+    tbody tr{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:12px;padding:6px 2px}
+    tbody td{border-bottom:1px dashed var(--line);padding:10px 14px}
+    tbody td:last-child{border-bottom:none}
+    td::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--muted);margin-bottom:4px}
+    td.no-cell::before, td.rank-cell::before{margin-bottom:2px}
+    .no-cell{font-size:13px}
+    .group-row td{margin:18px 0 10px;border:1px solid var(--line);box-shadow:none}
+    .group-row td::before{display:none}
+    .sources{min-width:0}
+    .date{white-space:normal}
+  }
+
+  .notes{margin-top:16px;display:grid;gap:12px}
+  .note-card{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 18px}
+  .note-card h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .note-card h3 .who{color:var(--accent)}
+  .note-card p{margin:0;color:var(--ink-2)}
+  .note-card p strong{color:var(--ink)}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="year-line">
+      <span class="year">2025</span>
+      <span class="year-sub">Album Selection — Evidence</span>
+    </div>
+    <h1>MELODIC POWER & TRADITIONAL METAL 候補一覧
+      <span class="en">Genre 5 — MELODIC POWER & TRADITIONAL METAL</span>
+    </h1>
+    <p class="lead">2025年の <strong>MELODIC POWER & TRADITIONAL METAL</strong> におけるアルバム選出のエビデンスページ。候補26枚を収集し重複除外は0件。Sランク検証の結果は <strong>S 19枚</strong>で、最終枠の上限10枚を超えたためゲートで停止した。Hiro が <strong>推薦の10枚で確定する</strong> を選択し、<strong>最終選出10枚</strong> が確定した。新ジャンル MODERN METAL との境界判定も各行に明記している。</p>
+  </header>
+
+  <div class="flow" aria-label="選出の流れ">
+    <h2>選出の流れ — 概要</h2>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="num">26<small> 枚</small></div>
+        <div class="label">候補を収集</div>
+        <div class="note">2025年リリース作から候補26枚を収集（収集時 S 22／A 3／B 1）</div>
+      </div>
+      <div class="step">
+        <div class="num">0<small> 枚</small></div>
+        <div class="label">重複除外</div>
+        <div class="note">既出アルバム累積リストと照合し重複ゼロ、全26枚が残った</div>
+      </div>
+      <div class="step">
+        <div class="num">19<small> 枚</small></div>
+        <div class="label">Sランク候補を検証</div>
+        <div class="note">S判定19枚で上限10枚を超えゲート停止（A判定は3枚）</div>
+      </div>
+      <div class="step">
+        <div class="num">Hiro<small> 判断</small></div>
+        <div class="label">ゲート判断</div>
+        <div class="note">推薦の10枚（大物・王道中心）を提示し「推薦の10枚で確定する」を選択</div>
+      </div>
+      <div class="step final">
+        <div class="num">10<small> 枚</small></div>
+        <div class="label">最終選出</div>
+        <div class="note">S 10枚で確定</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="final">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>最終選出 — S 10枚</h2>
+      <span class="count">10 ALBUMS</span>
+    </div>
+    <p class="sec-desc">S検証でS確定した19枚から Hiro が承認した10枚。Majestica『Power Train』、Burning Witches『Inquisition』、Bloodbound『Field of Swords』は <strong>Wikipediaでは確認できない</strong>（専用アルバムページがなく、レーベル公式・Discogs 等の別サイトで検証）。Rage『A New World Rising』は Wikipedia のバンドページで確認した。いずれも絶対除外要素には該当しない。</p>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>発売日</th><th>区分</th><th>ジャンル根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr>
+<td class="no-cell" data-label="No.">1</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Helloween</div><div class="album">Giants &amp; Monsters</div></td>
+<td data-label="発売日"><span class="date">2025-08-29</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: 17th studio album by German power metal band Helloween; Metal Storm also lists style as Power metal. オリジナル・スタジオ盤。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Giants_%26_Monsters" target="_blank" rel="noopener">Wikipedia</a><a href="https://metalstorm.net/bands/album.php?album_id=198217" target="_blank" rel="noopener">metalstorm.net</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">2</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Avantasia</div><div class="album">Here Be Dragons</div></td>
+<td data-label="発売日"><span class="date">2025-02-28</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Official site/Blabbermouth: 10th studio album, classic Avantasia choirs and theatrical symphonic metal elements built on melodic power metal; Napalm release. シンフォニック要素は強いが中核はメロディック・パワーメタルであり本ジャンル適合。境界線として明記。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Avantasia_discography" target="_blank" rel="noopener">Wikipedia</a><a href="http://blabbermouth.net/news/avantasia-shares-against-the-wind-song-from-upcoming-here-be-dragons-album" target="_blank" rel="noopener">Blabbermouth</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">3</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Primal Fear</div><div class="album">Domination</div></td>
+<td data-label="発売日"><span class="date">2025-09-05</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: 15th studio album by German heavy metal band Primal Fear; multiple sources describe German power metal band. オリジナル・スタジオ盤。絶対除外要素なし。AllMusicの一部エディションに別日付表記があるが、Wikipedia/CDJapan等で2025-09-05を確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Domination_(Primal_Fear_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.cdjapan.co.jp/product/GQCS-91640" target="_blank" rel="noopener">cdjapan.co.jp</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">4</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Battle Beast</div><div class="album">Steelbound</div></td>
+<td data-label="発売日"><span class="date">2025-10-17</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia/Nuclear Blast: 7th studio album, Finnish heavy metal powerhouse; melodic heavy/power metal. ポップなフックはあるがラップ／エレクトロニカ等の絶対除外要素ではなく、ヘヴィ／パワーメタルとして適合。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Battle_Beast_(band)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.nuclearblast.com/pages/album/steelbound" target="_blank" rel="noopener">Nuclear Blast</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">5</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sabaton</div><div class="album">Legends</div></td>
+<td data-label="発売日"><span class="date">2025-10-17</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: 11th studio album by Swedish power metal band Sabaton; official site confirms 11th studio album. オリジナル・スタジオ盤。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Legends_(Sabaton_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.sabaton.net/news/music/new-album-legends-out-october-17-pre-order-and-listen-to-2-new-songs-today/" target="_blank" rel="noopener">sabaton.net</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">6</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Majestica</div><div class="album">Power Train</div></td>
+<td data-label="発売日"><span class="date">2025-02-07</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Nuclear Blast: Swedish symphonic and power metal band, Power Train scheduled Feb 2025; reviews confirm symphonic power metal, 10 tracks, studio album #3. Wikipediaでは確認できない（アルバム単独ページなし）。シンフォニック色はあるが中核はメロディック・パワーメタル。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.nuclearblast.com/pages/album/power-train" target="_blank" rel="noopener">Nuclear Blast</a><a href="https://www.discogs.com/release/33068706-Majestica-Power-Train" target="_blank" rel="noopener">Discogs</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">7</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Grave Digger</div><div class="album">Bone Collector</div></td>
+<td data-label="発売日"><span class="date">2025-01-17</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: 22nd studio album by German heavy metal band Grave Digger; genre Heavy/Power Metal in other listings. 45周年盤。オリジナル・スタジオ盤。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Bone_Collector_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/bone-collector-mw0004404188" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">8</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Rage</div><div class="album">A New World Rising</div></td>
+<td data-label="発売日"><span class="date">2025-09-26</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: German heavy/speed/power metal band, 28th studio album released September 2025; AllMusic/Bandcamp confirm 2025-09-26, heavy/thrash-tinged metal. Wikipediaのアルバム単独ページではなくバンドページで確認。通算枚数に数え方の違いあり（Wikipediaは28th、一部記事は27thと表記）。スラッシュ寄りの曲を含むが絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Rage_(German_band)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.allmusic.com/album/a-newworld-rising-mw0004568015" target="_blank" rel="noopener">AllMusic</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">9</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Burning Witches</div><div class="album">Inquisition</div></td>
+<td data-label="発売日"><span class="date">2025-08-22</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Sonic Perspectives: 6th studio opus, traditional/power/thrash metal, genre Heavy Metal, Napalm; Bandcamp confirms release date and 12 tracks. Wikipediaでは確認できない。一部レビューが5thと誤記するが複数ソースで6th studio albumを確認。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://burningwitches.bandcamp.com/album/inquisition?action=buy" target="_blank" rel="noopener">burningwitches.bandcamp.com</a><a href="https://www.sonicperspectives.com/album-reviews/burning-witches-inquisition/" target="_blank" rel="noopener">sonicperspectives.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">10</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Bloodbound</div><div class="album">Field of Swords</div></td>
+<td data-label="発売日"><span class="date">2025-11-21</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">Napalm: 11th album, melodic and heavy power metal, 11 battle hymns; AllMusic confirms 2025-11-21. Wikipediaでは確認できない。Napalmのジャンル欄にSymphonic Metal表記があるが、本文説明はmelodic/heavy power metalであり本ジャンル適合と判定。境界線として明記。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/release/field-of-swords-mr0006826864" target="_blank" rel="noopener">AllMusic</a><a href="https://bloodbound.bandcamp.com/album/field-of-swords?label=4115243786&amp;tab=music" target="_blank" rel="noopener">bloodbound.bandcamp.com</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="pool">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>候補プール — 不採用 16枚</h2>
+      <span class="count">16 ALBUMS</span>
+    </div>
+    <p class="sec-desc">S判定だが枠外となった9枚、A判定の3枚、候補収集で A／B 判定となり S検証に進まなかった4枚。Dynazty『Game of Faces』と Epica『Aspiral』は、新ジャンル MODERN METAL 回の候補として残る。</p>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>発売日</th><th>区分</th><th>ジャンル根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr>
+<td class="no-cell" data-label="No.">1</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Ambush</div><div class="album">Evil in All Dimensions</div></td>
+<td data-label="発売日"><span class="date">2025-09-05</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">S判定だが枠外で不採用。NWOTHMの有望株だが、トラディショナル枠が大物で埋まったため。 Napalm official: classic heavy metal, traditional metal, inspired by Judas Priest/Accept/Iron Maiden; Discogs style Heavy Metal. Wikipediaでは確認できない。4th full-length、9曲のNapalmデビュー盤。短めのトラディショナル盤だが曲数・内容ともフルアルバム。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.metal-archives.com/albums/Ambush/Evil_in_All_Dimensions/1332191" target="_blank" rel="noopener">Metal Archives</a><a href="https://napalmrecords.com/english/ambush-evil-in-all-dimensions-yellow-orange-marbled-vinyl.html" target="_blank" rel="noopener">Napalm Records</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">2</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Warkings</div><div class="album">Armageddon</div></td>
+<td data-label="発売日"><span class="date">2025-07-04</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">S判定だが枠外で不採用。中堅どころで、枠の競争で劣ったため。 Wikipedia: 5th studio album by power metal band Warkings, released 4 July 2025 via Napalm. 14曲。ゲスト参加曲あり。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Armageddon_(Warkings_album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.cdjapan.co.jp/product/GQCS-91628" target="_blank" rel="noopener">cdjapan.co.jp</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">3</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Mob Rules</div><div class="album">Rise of the Ruler</div></td>
+<td data-label="発売日"><span class="date">2025-08-22</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">S判定だが枠外で不採用。ベテランだが知名度で劣ったため。 Metal Epidemic: Genre Power Metal, ROAR, 2025-08-22; MyGlobalMind: German heavy/power metal, tenth full-length. Wikipediaでは確認できない。通算枚数に数え方の違いあり（10thとするソースと11枚目とする紹介あり）。Earbook盤にはボーナスCD5曲があるが通常盤は11曲。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://mhf-mag.com/mob-rules-rise-of-the-ruler/" target="_blank" rel="noopener">mhf-mag.com</a><a href="https://www.metalepidemic.com/mob-rules-rise-of-the-ruler/" target="_blank" rel="noopener">metalepidemic.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">4</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Insania</div><div class="album">The Great Apocalypse</div></td>
+<td data-label="発売日"><span class="date">2025-06-13</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">S判定だが枠外で不採用。18年ぶりの復活作で惜しいが、近年の実績で Bloodbound を優先したため。 Frontiers/BraveWords: Swedish power metal masters, new studio album out June 13 via Frontiers; Metal Archives full-length 2025-06-13. Wikipediaでは確認できない。9曲のみだが総演奏時間は長く、最終曲は14:16の長尺曲のため短いアルバムではない。日本盤は2025-06-18。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.metal-archives.com/albums/Insania/The_Great_Apocalypse/1346217" target="_blank" rel="noopener">Metal Archives</a><a href="https://bravewords.com/news/insania-premier-the-trinity-music-video/" target="_blank" rel="noopener">bravewords.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">5</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Wings of Steel</div><div class="album">Winds of Time</div></td>
+<td data-label="発売日"><span class="date">2025-10-17</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">S判定だが枠外で不採用。上昇株だが8曲と小粒なため。 Sonic Perspectives: Genre Heavy Metal, High Roller Records, 2025-10-17, NWOTHM/power trio; Discogs CD album Oct 17 2025. Wikipediaでは確認できない。8曲のみだが49:35でフルアルバム。AllMusicはOct 24表記で日付に揺れがあるが、Bandcamp/Discogs/複数レビューで2025-10-17を確認（候補日を採用）。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://officialwingsofsteel.bandcamp.com/album/winds-of-time" target="_blank" rel="noopener">officialwingsofsteel.bandcamp.com</a><a href="https://www.discogs.com/release/35402431-Wings-Of-Steel-Winds-Of-Time" target="_blank" rel="noopener">Discogs</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">6</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Century</div><div class="album">Sign of the Storm</div></td>
+<td data-label="発売日"><span class="date">2025-01-24</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">S判定だが枠外で不採用。小粒で枠外となったため。 Angry Metal Guy/PopMatters: Swedish traditional heavy metal/NWOTHM, sophomore album, influences Maiden/Priest/Heavy Load. Wikipediaでは確認できない。発売日に揺れあり：Angry Metal GuyはReleases Worldwide January 24th 2025、Bandcamp/インタビューはJanuary 25, 2025。いずれも2025年内。10曲。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.angrymetalguy.com/century-sign-of-the-storm-review/" target="_blank" rel="noopener">angrymetalguy.com</a><a href="http://electricassaultrecords.bandcamp.com/album/sign-of-the-storm" target="_blank" rel="noopener">electricassaultrecords.bandcamp.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">7</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sacred</div><div class="album">Fire to Ice</div></td>
+<td data-label="発売日"><span class="date">2025-01-11</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">S判定だが枠外で不採用。デビュー作で、Queensrÿche のカバーを1曲含むため。 Metal Archives full-length 2025-01-11 Stormspell; Forgotten Scroll: traditional heavy metal, heavy/power metal debut album. Wikipediaでは確認できない。デビュー・フルレングス。10曲中1曲はQueensrÿcheカバー「Queen of the Reich」でオリジナルは9曲。その点をnotesとして明記。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://metal-archives.com/albums/Sacred/Fire_to_Ice/1305303" target="_blank" rel="noopener">metal-archives.com</a><a href="https://www.forgotten-scroll.net/metal-reviews/fire-to-ice/" target="_blank" rel="noopener">forgotten-scroll.net</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">8</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Aedan Sky</div><div class="album">The Universal Realm</div></td>
+<td data-label="発売日"><span class="date">2025-09-12</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">S判定だが枠外で不採用。デビュー作で実績が薄いため。 Rockshots official: Genre Power Metal, debut full-length, Release Date 12/09/2025; AllMusic confirms Sep 12 2025; description melodic speed/power metal in Helloween/Gamma Ray/Avantasia lineage. Wikipediaでは確認できない。デビュー盤、10曲（Opening/Interlude含む）。日本盤は2025-09-26発売で日付に地域差あり。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.allmusic.com/album/release/the-universal-realm-mr0006739196" target="_blank" rel="noopener">AllMusic</a><a href="https://rockshots.eu/products/aedan-sky-the-universal-realm-cd" target="_blank" rel="noopener">rockshots.eu</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">9</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Feanor</div><div class="album">Hellhammer</div></td>
+<td data-label="発売日"><span class="date">2025-09-19</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-s">S</span></td>
+<td class="basis" data-label="ジャンル根拠">S判定だが枠外で不採用。候補群で実績が最も薄いため。 Metal Archives full-length 2025-09-19 No Remorse; Forgotten Scroll: heavy/power metal, epic power metal, German-styled power metal. Wikipediaでは確認できない。同名のスイスのバンドHellhammerとは無関係（アルバム名のみ）。13曲・70分超。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.metal-archives.com/albums/Feanor/Hellhammer/1358980" target="_blank" rel="noopener">Metal Archives</a><a href="https://www.forgotten-scroll.net/metal-reviews/hellhammer/" target="_blank" rel="noopener">forgotten-scroll.net</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">10</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Dynazty</div><div class="album">Game of Faces</div></td>
+<td data-label="発売日"><span class="date">2025-02-14</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia discography lists 2025 release on Nuclear Blast; Nuclear Blast系告知でPower metal masterminds／melodic metalと紹介。 Wikipediaでは確認できない単独アルバムページはなくバンドページのディスコグラフィで確認。現代的メロディック・メタル色が強く、王道パワー寄りの他候補より境界線側のためA判定。絶対除外要素なし。11曲。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Dynazty" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.metalexpressradio.com/2025/02/24/dynazty-game-of-faces/" target="_blank" rel="noopener">metalexpressradio.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">11</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Helms Deep</div><div class="album">Chasing the Dragon</div></td>
+<td data-label="発売日"><span class="date">2025-06-20</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Bandcamp/Metal Epidemic: US traditional/power metal, second full-length, genre Power/Heavy/Traditional Metal, Nameless Grave, 2025-06-20. Wikipediaでは確認できない。プログ／フュージョンの味付けがあるとバンド自身が述べるが中核は80s speed/power metalであり絶対除外要素なし。11曲。知名度・実績面では大物候補より弱くA判定。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.metal-archives.com/albums/Helms_Deep/Chasing_the_Dragon/1330613" target="_blank" rel="noopener">Metal Archives</a><a href="https://helmsdeep666.bandcamp.com/album/chasing-the-dragon" target="_blank" rel="noopener">helmsdeep666.bandcamp.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">12</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Reinforcer</div><div class="album">Ice and Death</div></td>
+<td data-label="発売日"><span class="date">2025-08-22</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Metalheads Forever/Dead Rhetoric: German melodic power metal, second album, Scarlet Records, out August 22 2025, heroic power metal. Wikipediaでは確認できない。9曲・38:52と本候補群で最も短いアルバム（全曲5分未満）。2ndアルバムで実績も相対的に小さくA判定。絶対除外要素なし。</td>
+<td data-label="出典"><div class="sources"><a href="https://mhf-mag.com/reinforcer-ice-and-death/" target="_blank" rel="noopener">mhf-mag.com</a><a href="https://deadrhetoric.com/reviews/reinforcer-ice-and-death-scarlet-records/" target="_blank" rel="noopener">deadrhetoric.com</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">13</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Epica</div><div class="album">Aspiral</div></td>
+<td data-label="発売日"><span class="date">2025-04-11</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: Genre Symphonic metal, ninth studio album released 11 April 2025 — A criteria Symphonic Metal シンフォニック色が支配的だが王道クラシカル色も強く本ジャンル候補。境界は後段で要判定</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Aspiral_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">14</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Labÿrinth</div><div class="album">In the Vanishing Echoes of Goodbye</div></td>
+<td data-label="発売日"><span class="date">2025-01-24</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: Genres Power metal, progressive metal, tenth album released 24 January 2025 — A criteria Progressive Metal / Progressive Power アーティスト表記は Labyrinth / Labÿrinth 両表記あり</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/In_the_Vanishing_Echoes_of_Goodbye" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">15</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Dream Theater</div><div class="album">Parasomnia</div></td>
+<td data-label="発売日"><span class="date">2025-02-07</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-a">A</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: Genre Progressive metal, sixteenth studio album released February 7 2025 — A criteria Progressive Metal 大作主義・劇的展開は本ジャンルと接点があるがプログ色が支配的。境界判定は後段で明示が必要</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Parasomnia_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">16</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Alestorm</div><div class="album">The Thunderfist Chronicles</div></td>
+<td data-label="発売日"><span class="date">2025-06-20</span></td>
+<td class="rank-cell" data-label="区分"><span class="badge badge-b">B</span></td>
+<td class="basis" data-label="ジャンル根拠">Wikipedia: eighth studio album by Scottish heavy metal band released 20 June 2025; folk/pirate power-metal colour — B conditional Heavy Metal with melodic/speed elements フォーク／パイレーツ色が強く条件付き適合。境界判定は後段で明示が必要</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/The_Thunderfist_Chronicles" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="notes">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <h2>判定メモ</h2>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <h3>ゲートと Hiro の判断</h3>
+        <p>S判定が19枚で最終枠（5〜10枚）の上限を超えたため停止。大物・王道を中心に推薦の10枚を提示し、Hiro は <strong>「推薦の10枚で確定する」</strong> を選択した。落とした9枚はいずれもS判定であり、品質ではなく枠の競争で外れた。これは今回限りの絞り込みであり、恒常ルールの変更ではない。</p>
+      </div>
+      <div class="note-card">
+        <h3>MODERN METAL との境界</h3>
+        <p>2026年から新設される MODERN METAL（メタルコア／メロデス／ゴシック／シンフォニック）との線引きとして、Avantasia『Here Be Dragons』と Bloodbound『Field of Swords』はシンフォニック色があるものの中核がメロディック・パワーメタルのため本ジャンルで適合とした。Dynazty『Game of Faces』は現代的メロディック・メタル色が強く A 判定とし、MODERN METAL 回の候補に残る。Epica『Aspiral』もシンフォニックのため MODERN METAL 回の候補。</p>
+      </div>
+      <div class="note-card">
+        <h3>Avantasia の Spotify 検索について</h3>
+        <p>『Here Be Dragons』は Spotify 内の検索（API・Web とも）で表示されなかったため、Napalm Records 公式のスマートリンクからアルバムIDを特定し、アルバム収録版の2曲を取得した。プレイリストへの追加と読み戻し確認は完了している。日本での再生可否は Hiro が自分のアプリで確認する運用。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>2025年 MELODIC POWER & TRADITIONAL METAL アルバム選出エビデンス。発売日とジャンル適合は各行の出典で確認。再生回数等の第三者集計は第三者集計と明記している。</footer>
+</div>
+</body>
+</html>

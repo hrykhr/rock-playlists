@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>2025 MELODIC POWER &amp; TRADITIONAL METAL 楽曲選出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2ef;
+    --surface:#ffffff;
+    --surface-2:#eceae6;
+    --ink:#191817;
+    --ink-2:#4b4844;
+    --muted:#76716b;
+    --line:#ddd9d2;
+    --line-strong:#191817;
+    --accent:#b91c1c;
+    --accent-ink:#ffffff;
+    --accent-soft:#fdecec;
+    --gold:#8a6d1b;
+    --gold-bg:#f7ecd0;
+    --silver:#5b5f66;
+    --silver-bg:#e8eaed;
+    --bronze:#7c4a1e;
+    --bronze-bg:#f3e2d3;
+    --warn-bg:#fff7e6;
+    --warn-line:#e3c878;
+    --warn-ink:#5c4a12;
+    --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131211;
+      --surface:#1e1d1b;
+      --surface-2:#262422;
+      --ink:#f0ede8;
+      --ink-2:#c9c4bb;
+      --muted:#9a958c;
+      --line:#35322e;
+      --line-strong:#f0ede8;
+      --accent:#e5484d;
+      --accent-soft:#3a1d1e;
+      --gold:#e3c878;
+      --gold-bg:#332b14;
+      --silver:#c3c8cf;
+      --silver-bg:#2a2d31;
+      --bronze:#e0a878;
+      --bronze-bg:#33241a;
+      --warn-bg:#2e2712;
+      --warn-line:#6b5a22;
+      --warn-ink:#e8d48a;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 64px}
+
+  header{padding:40px 0 0}
+  .year-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .year{font-family:"Oswald",sans-serif;font-weight:700;font-size:64px;line-height:.95;letter-spacing:.01em}
+  .year-sub{font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:10px 0 0;font-size:clamp(26px,4.6vw,40px);line-height:1.25;font-weight:900;letter-spacing:.01em}
+  h1 .en{display:block;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;font-size:.62em;color:var(--ink-2);margin-top:6px}
+  .lead{margin:16px 0 0;color:var(--ink-2);max-width:46em;font-size:15.5px}
+  .lead strong{color:var(--ink)}
+
+  .flow{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--line-strong);box-shadow:var(--shadow);padding:20px 20px 18px}
+  .flow h2{margin:0 0 14px;font-size:13px;letter-spacing:.14em;font-weight:900}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .step{padding:0 14px;border-left:1px solid var(--line)}
+  .step:first-child{padding-left:0;border-left:none}
+  .step .num{font-family:"Oswald",sans-serif;font-weight:700;font-size:34px;line-height:1}
+  .step .num small{font-size:16px;color:var(--muted);font-weight:600}
+  .step .label{margin-top:6px;font-weight:700;font-size:13.5px;line-height:1.5}
+  .step .note{margin-top:2px;color:var(--muted);font-size:12.5px;line-height:1.55}
+  .step.final .num{color:var(--accent)}
+  @media (max-width:760px){
+    .flow-steps{grid-template-columns:1fr 1fr}
+    .step{padding:10px 12px 10px 0;border-left:none;border-top:1px solid var(--line)}
+    .step:nth-child(-n+2){border-top:none;padding-top:0}
+    .step:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+  }
+
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line-strong);padding-bottom:10px}
+  .sec-no{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.08em}
+  .sec-head h2{margin:0;font-size:clamp(20px,3.4vw,26px);font-weight:900;line-height:1.3}
+  .sec-head .count{margin-left:auto;font-family:"Oswald",sans-serif;font-weight:600;font-size:14px;color:var(--muted);letter-spacing:.06em;white-space:nowrap}
+  .sec-desc{margin:12px 0 0;color:var(--ink-2);max-width:52em}
+  .sec-desc strong{color:var(--ink)}
+
+  .table-card{margin-top:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:var(--surface-2);text-align:left;font-size:12px;letter-spacing:.1em;font-weight:900;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--ink-2)}
+  tbody td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  .artist{font-weight:900;font-size:15px;line-height:1.4}
+  .album{font-weight:700;font-size:15px;line-height:1.4}
+  .album .formal{display:block;margin-top:4px;font-weight:500;font-size:12.5px;color:var(--muted);line-height:1.55}
+  .date{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.03em;white-space:nowrap;font-size:14.5px}
+  .basis{color:var(--ink-2);line-height:1.7}
+  .basis strong{color:var(--ink)}
+  .sources{display:flex;flex-direction:column;gap:2px;min-width:132px}
+  .sources a{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:4px 0;font-size:13px;font-weight:700;text-decoration:none;line-height:1.35}
+  .sources a:hover{text-decoration:underline}
+  .sources a::after{content:"↗";font-size:11px;opacity:.7}
+  .no-cell{font-family:"Oswald",sans-serif;font-weight:700;color:var(--muted);font-size:15px}
+
+  .badge{display:inline-block;font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;padding:2px 10px;border-radius:999px;line-height:1.6;white-space:nowrap}
+  .badge-s{background:var(--accent);color:var(--accent-ink)}
+  .badge-a{background:var(--gold-bg);color:var(--gold)}
+  .badge-b{background:var(--silver-bg);color:var(--silver)}
+  .badge-down{background:var(--bronze-bg);color:var(--bronze)}
+
+  .flag{display:block;margin-top:8px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);font-size:12.5px;line-height:1.6;padding:7px 10px;border-radius:6px;font-weight:500}
+  .flag b{font-weight:900}
+
+  .group-row td{background:var(--surface-2);font-weight:900;font-size:12.5px;letter-spacing:.1em;padding:8px 14px;color:var(--ink-2)}
+
+  @media (max-width:760px){
+    .year{font-size:48px}
+    header{padding-top:28px}
+    .table-card{border:none;box-shadow:none;background:transparent;overflow:visible}
+    table, thead, tbody, tr, td{display:block;width:100%}
+    thead{display:none}
+    tbody tr{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:12px;padding:6px 2px}
+    tbody td{border-bottom:1px dashed var(--line);padding:10px 14px}
+    tbody td:last-child{border-bottom:none}
+    td::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--muted);margin-bottom:4px}
+    td.no-cell::before, td.rank-cell::before{margin-bottom:2px}
+    .no-cell{font-size:13px}
+    .group-row td{margin:18px 0 10px;border:1px solid var(--line);box-shadow:none}
+    .group-row td::before{display:none}
+    .sources{min-width:0}
+    .date{white-space:normal}
+  }
+
+  .notes{margin-top:16px;display:grid;gap:12px}
+  .note-card{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 18px}
+  .note-card h3{margin:0 0 6px;font-size:15px;font-weight:900}
+  .note-card h3 .who{color:var(--accent)}
+  .note-card p{margin:0;color:var(--ink-2)}
+  .note-card p strong{color:var(--ink)}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="year-line">
+      <span class="year">2025</span>
+      <span class="year-sub">Track Selection — Evidence</span>
+    </div>
+    <h1>MELODIC POWER & TRADITIONAL METAL 楽曲選出
+      <span class="en">Genre 5 — MELODIC POWER & TRADITIONAL METAL</span>
+    </h1>
+    <p class="lead">2025年の <strong>MELODIC POWER & TRADITIONAL METAL</strong> 最終選出10枚から、各2曲・計 <strong>20曲</strong> を選出したエビデンスページ。全曲シングルでオリジナル曲、カバーなし、2分以下なし、<strong>バラード例外なし</strong>。Spotifyプレイリスト「2025年MELODIC POWER & TRADITIONAL METAL」は作成済み（20/20曲・全曲選出アルバム収録版・TSV順で検証済み）。再生回数は第三者集計・公式PR・インデックス表示の種別を各行に明記した。</p>
+  </header>
+
+  <div class="flow" aria-label="選出の流れ">
+    <h2>選出の流れ — 概要</h2>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="num">10<small> 枚</small></div>
+        <div class="label">対象アルバム</div>
+        <div class="note">S確定10枚（Hiro が推薦10枚を承認）</div>
+      </div>
+      <div class="step">
+        <div class="num">2<small> 曲</small></div>
+        <div class="label">各アルバムから選出</div>
+        <div class="note">シングル・人気曲を優先し2サイト以上で収録確認</div>
+      </div>
+      <div class="step">
+        <div class="num">0<small> 件</small></div>
+        <div class="label">バラード例外</div>
+        <div class="note">バラードは本命から除外し例外適用なし</div>
+      </div>
+      <div class="step">
+        <div class="num">20<small> 曲</small></div>
+        <div class="label">全曲シングル</div>
+        <div class="note">20曲すべてがシングル曲で確定</div>
+      </div>
+      <div class="step final">
+        <div class="num">20<small> 曲</small></div>
+        <div class="label">Spotify 作成済み</div>
+        <div class="note">全曲アルバム版・TSV順で検証済み</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="final">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>最終選出 — 20曲</h2>
+      <span class="count">20 TRACKS</span>
+    </div>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr><th style="width:36px">#</th><th>アーティスト ／ アルバム</th><th>曲名</th><th>長さ</th><th>区分</th><th>選出根拠</th><th>出典</th></tr>
+        </thead>
+        <tbody>
+<tr>
+<td class="no-cell" data-label="No.">1</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Helloween</div><div class="album">Giants &amp; Monsters</div></td>
+<td data-label="曲名"><div class="album">A Little Is a Little Too Much</div></td>
+<td data-label="長さ"><span class="date">3:30</span></td>
+<td class="rank-cell" data-label="区分">第3シングル</td>
+<td class="basis" data-label="選出根拠">公式MVの再生回数【第三者の数字】SocialCounts 4,320,730回でシングル中最多。Wikipedia＋Discogs で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=8wcT6IkMOdw" target="_blank" rel="noopener">YouTube</a><a href="https://en.wikipedia.org/wiki/Giants_%26_Monsters" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">2</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Helloween</div><div class="album">Giants &amp; Monsters</div></td>
+<td data-label="曲名"><div class="album">This Is Tokyo</div></td>
+<td data-label="長さ"><span class="date">4:14</span></td>
+<td class="rank-cell" data-label="区分">第1シングル</td>
+<td class="basis" data-label="選出根拠">公式MVの再生回数【第三者の数字】SocialCounts 3,036,270回。Wikipedia＋Discogs で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=88Nn7CIpmWQ" target="_blank" rel="noopener">YouTube</a><a href="https://en.wikipedia.org/wiki/Giants_%26_Monsters" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">3</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Avantasia</div><div class="album">Here Be Dragons</div></td>
+<td data-label="曲名"><div class="album">Creepshow</div></td>
+<td data-label="長さ"><span class="date">3:07</span></td>
+<td class="rank-cell" data-label="区分">第1シングル</td>
+<td class="basis" data-label="選出根拠">公式ビデオの再生回数【第三者の数字】SocialCounts 1,864,438回でアルバム最多。Wikipediaでは確認できない（公式サイト＋Discogs で収録確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=SNEdqMFkXO4" target="_blank" rel="noopener">YouTube</a><a href="https://www.discogs.com/release/33254514-Tobias-Sammets-Avantasia-Here-Be-Dragons" target="_blank" rel="noopener">Discogs</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">4</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Avantasia</div><div class="album">Here Be Dragons</div></td>
+<td data-label="曲名"><div class="album">The Witch</div></td>
+<td data-label="長さ"><span class="date">4:15</span></td>
+<td class="rank-cell" data-label="区分">第3シングル</td>
+<td class="basis" data-label="選出根拠">公式ビデオの再生回数【第三者の数字】SocialCounts 1,629,607回。feat. Tommy Karevik。公式サイト＋Discogs で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=yg-32mWU8_E" target="_blank" rel="noopener">YouTube</a><a href="https://www.discogs.com/release/33254514-Tobias-Sammets-Avantasia-Here-Be-Dragons" target="_blank" rel="noopener">Discogs</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">5</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Primal Fear</div><div class="album">Domination</div></td>
+<td data-label="曲名"><div class="album">Tears of Fire</div></td>
+<td data-label="長さ"><span class="date">5:03</span></td>
+<td class="rank-cell" data-label="区分">第3シングル</td>
+<td class="basis" data-label="選出根拠">バンド公式が「Over 1.2 million views on YouTube」と告知。【第三者の数字】viplist 1,162,414回。Wikipedia＋Qobuz で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=AWwtxnDjdBw" target="_blank" rel="noopener">YouTube</a><a href="https://en.wikipedia.org/wiki/Domination_(Primal_Fear_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">6</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Primal Fear</div><div class="album">Domination</div></td>
+<td data-label="曲名"><div class="album">Far Away</div></td>
+<td data-label="長さ"><span class="date">4:19</span></td>
+<td class="rank-cell" data-label="区分">第1シングル</td>
+<td class="basis" data-label="選出根拠">【第三者の数字】viplist 803,599〜814,965回。公式Instagramで「公開2週間で500,000 views超え」告知。Wikipedia＋Qobuz で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=ed7iHIFNP0Y" target="_blank" rel="noopener">YouTube</a><a href="https://en.wikipedia.org/wiki/Domination_(Primal_Fear_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">7</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Battle Beast</div><div class="album">Steelbound</div></td>
+<td data-label="曲名"><div class="album">Last Goodbye</div></td>
+<td data-label="長さ"><span class="date">3:33</span></td>
+<td class="rank-cell" data-label="区分">第1シングル</td>
+<td class="basis" data-label="選出根拠">公式動画の再生回数【第三者の数字】SocialCounts 2,511,893回で突出した1位。Wikipediaでは確認できない（Bandcamp＋Metal Archives で収録確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=FLCAQvULi-o" target="_blank" rel="noopener">YouTube</a><a href="https://battlebeastband.bandcamp.com/album/steelbound" target="_blank" rel="noopener">Bandcamp</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">8</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Battle Beast</div><div class="album">Steelbound</div></td>
+<td data-label="曲名"><div class="album">Steelbound</div></td>
+<td data-label="長さ"><span class="date">4:29</span></td>
+<td class="rank-cell" data-label="区分">第2シングル</td>
+<td class="basis" data-label="選出根拠">タイトル曲。公式動画の再生回数【第三者の数字】Popnable 1M total views。Bandcamp＋Metal Archives で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=FXnaOOncf1c" target="_blank" rel="noopener">YouTube</a><a href="https://battlebeastband.bandcamp.com/album/steelbound" target="_blank" rel="noopener">Bandcamp</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">9</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sabaton</div><div class="album">Legends</div></td>
+<td data-label="曲名"><div class="album">Templars</div></td>
+<td data-label="長さ"><span class="date">4:54</span></td>
+<td class="rank-cell" data-label="区分">第1シングル</td>
+<td class="basis" data-label="選出根拠">現在の正確な再生回数は確認できない。参考: 発売時PR（Better Noise系）で「公式MV＋リリックビデオ合算570万回超」。長さは Wikipedia 4:54／Metal Archives 5:48 と不一致だったが、Spotify 収録版は 4:54 で Wikipedia 側と一致した。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=B10ECkQXQtU" target="_blank" rel="noopener">YouTube</a><a href="https://en.wikipedia.org/wiki/Legends_(Sabaton_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">10</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Sabaton</div><div class="album">Legends</div></td>
+<td data-label="曲名"><div class="album">Hordes of Khan</div></td>
+<td data-label="長さ"><span class="date">3:43</span></td>
+<td class="rank-cell" data-label="区分">第2シングル</td>
+<td class="basis" data-label="選出根拠">現在の正確な再生回数は確認できない。参考: 同PRで「動画140万回超」。Wikipedia＋Better Noise で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=Ug0isWpubjk" target="_blank" rel="noopener">YouTube</a><a href="https://en.wikipedia.org/wiki/Legends_(Sabaton_album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">11</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Majestica</div><div class="album">Power Train</div></td>
+<td data-label="曲名"><div class="album">Power Train</div></td>
+<td data-label="長さ"><span class="date">4:04</span></td>
+<td class="rank-cell" data-label="区分">第1シングル</td>
+<td class="basis" data-label="選出根拠">タイトル曲。再生回数は確認できない。Wikipediaでは確認できない（Nuclear Blast 公式＋Discogs で収録確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=rBJ7L5LyAk4" target="_blank" rel="noopener">YouTube</a><a href="https://www.nuclearblast.com/pages/album/power-train" target="_blank" rel="noopener">Nuclear Blast</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">12</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Majestica</div><div class="album">Power Train</div></td>
+<td data-label="曲名"><div class="album">A Story In The Night</div></td>
+<td data-label="長さ"><span class="date">5:34</span></td>
+<td class="rank-cell" data-label="区分">第2シングル</td>
+<td class="basis" data-label="選出根拠">再生回数は確認できない。Tommy Johansson 本人談「アルバムで最も速い曲」。Nuclear Blast 公式＋Discogs で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=dP08ex8nbKE" target="_blank" rel="noopener">YouTube</a><a href="https://www.nuclearblast.com/pages/album/power-train" target="_blank" rel="noopener">Nuclear Blast</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">13</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Grave Digger</div><div class="album">Bone Collector</div></td>
+<td data-label="曲名"><div class="album">Kingdom of Skulls</div></td>
+<td data-label="長さ"><span class="date">3:44</span></td>
+<td class="rank-cell" data-label="区分">第1シングル</td>
+<td class="basis" data-label="選出根拠">再生回数は確認できない（シングル順＋公式MV有無で判定）。Wikipedia＋Qobuz で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=NmYPjHBCshk" target="_blank" rel="noopener">YouTube</a><a href="https://en.wikipedia.org/wiki/Bone_Collector_(album)" target="_blank" rel="noopener">Wikipedia</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">14</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Grave Digger</div><div class="album">Bone Collector</div></td>
+<td data-label="曲名"><div class="album">The Devil&#x27;s Serenade</div></td>
+<td data-label="長さ"><span class="date">4:01</span></td>
+<td class="rank-cell" data-label="区分">シングル</td>
+<td class="basis" data-label="選出根拠">再生回数は確認できない。公式MVあり。Wikipedia＋Qobuz で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://en.wikipedia.org/wiki/Bone_Collector_(album)" target="_blank" rel="noopener">Wikipedia</a><a href="https://www.qobuz.com/us-en/album/bone-collector-grave-digger/pdlajn2zd4w4a" target="_blank" rel="noopener">Qobuz</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">15</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Rage</div><div class="album">A New World Rising</div></td>
+<td data-label="曲名"><div class="album">Freedom</div></td>
+<td data-label="長さ"><span class="date">3:11</span></td>
+<td class="rank-cell" data-label="区分">第1シングル</td>
+<td class="basis" data-label="選出根拠">再生回数は確認できない。Wikipediaでは確認できない（公式Bandcamp＋Blabbermouth で収録確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://rageofficial.bandcamp.com/album/a-new-world-rising" target="_blank" rel="noopener">Bandcamp</a><a href="https://blabbermouth.net/news/rage-announces-new-album-a-new-world-rising" target="_blank" rel="noopener">Blabbermouth</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">16</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Rage</div><div class="album">A New World Rising</div></td>
+<td data-label="曲名"><div class="album">Innovation</div></td>
+<td data-label="長さ"><span class="date">3:17</span></td>
+<td class="rank-cell" data-label="区分">第2シングル</td>
+<td class="basis" data-label="選出根拠">再生回数は確認できない。公式MVあり。公式Bandcamp＋Blabbermouth で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=9ei585LlN74" target="_blank" rel="noopener">YouTube</a><a href="https://rageofficial.bandcamp.com/album/a-new-world-rising" target="_blank" rel="noopener">Bandcamp</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">17</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Burning Witches</div><div class="album">Inquisition</div></td>
+<td data-label="曲名"><div class="album">High Priestess Of The Night</div></td>
+<td data-label="長さ"><span class="date">4:27</span></td>
+<td class="rank-cell" data-label="区分">シングル</td>
+<td class="basis" data-label="選出根拠">公式動画 469,408 views（YouTube公式チャンネル一覧の検索インデックス表示値）でシングル中最高値。Wikipediaでは確認できない（Bandcamp＋Discogs で収録確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=RwomV4za97A" target="_blank" rel="noopener">YouTube</a><a href="https://burningwitches.bandcamp.com/album/inquisition" target="_blank" rel="noopener">Bandcamp</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">18</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Burning Witches</div><div class="album">Inquisition</div></td>
+<td data-label="曲名"><div class="album">Inquisition</div></td>
+<td data-label="長さ"><span class="date">5:41</span></td>
+<td class="rank-cell" data-label="区分">先行シングル</td>
+<td class="basis" data-label="選出根拠">タイトル曲。公式動画 247,916 views（同インデックス表示値）。Bandcamp＋Discogs で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=p2C5FDpKO-g" target="_blank" rel="noopener">YouTube</a><a href="https://burningwitches.bandcamp.com/album/inquisition" target="_blank" rel="noopener">Bandcamp</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">19</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Bloodbound</div><div class="album">Field of Swords</div></td>
+<td data-label="曲名"><div class="album">Field Of Swords</div></td>
+<td data-label="長さ"><span class="date">4:11</span></td>
+<td class="rank-cell" data-label="区分">第3シングル</td>
+<td class="basis" data-label="選出根拠">タイトル曲。公式Lyric Videoの再生回数【第三者の数字】Popnable 913.4K total views。Wikipediaでは確認できない（The Headbanging Moose＋Ghost Cult で収録確認）。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=9swV-2azONc" target="_blank" rel="noopener">YouTube</a><a href="https://theheadbangingmoose.com/2025/11/20/album-review-bloodbound-field-of-swords-2025/" target="_blank" rel="noopener">The Headbanging Moose</a></div></td>
+</tr>
+<tr>
+<td class="no-cell" data-label="No.">20</td>
+<td data-label="アーティスト ／ アルバム"><div class="artist">Bloodbound</div><div class="album">Field of Swords</div></td>
+<td data-label="曲名"><div class="album">As Empires Fall</div></td>
+<td data-label="長さ"><span class="date">3:54</span></td>
+<td class="rank-cell" data-label="区分">第2シングル</td>
+<td class="basis" data-label="選出根拠">公式動画の再生回数【第三者の数字】Popnable 725.5K total views。The Headbanging Moose＋Ghost Cult で収録確認。</td>
+<td data-label="出典"><div class="sources"><a href="https://www.youtube.com/watch?v=8gEr_uiASZs" target="_blank" rel="noopener">YouTube</a><a href="https://theheadbangingmoose.com/2025/11/20/album-review-bloodbound-field-of-swords-2025/" target="_blank" rel="noopener">The Headbanging Moose</a></div></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="notes">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>次点・除外メモ</h2>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <h3>次点にした曲</h3>
+        <p>Helloween「Universe (Gravity for Hearts)」（第2シングル）、Avantasia「Against the Wind」（第2シングル、リリックビデオのみ）、Primal Fear「The Hunter」（第2シングル）、Battle Beast「Angel Of Midnight」（第4シングル、タイトル曲に僅差）、Sabaton「The Duelist」、Majestica「Battle Cry」、Grave Digger「Killing Is My Pleasure」（公式映像が Visualizer のみ）、Rage「Fire In Your Eyes」（第4シングル）、Burning Witches「Soul Eater」（第3シングル、227,249 views と僅差）。Bloodbound「Defenders Of Jerusalem」は第1シングルで勢いはあったが、現在の正確な総再生数が確認できなかったため、具体的総数が取れた2曲を優先した。</p>
+      </div>
+      <div class="note-card">
+        <h3>バラード・対象外として除外した曲</h3>
+        <p>Helloween「Into the Sun」、Primal Fear「Eden」「A Tune I Won't Forget」、Burning Witches「Release Me」（レビューで "the album's ballad" と明記）はバラードのため除外し、例外は使わなかった。Burning Witches「Sanguini Hominum」1:04／「Malus Maga」1:27 と Rage のタイトル曲「A New World Rising」1:20 は2分以下のため除外。Rage「Straight To Hell '25」は2001年盤収録曲の再録のため対象外。</p>
+      </div>
+      <div class="note-card">
+        <h3>人気指標について</h3>
+        <p>YouTube 公式ページ上の現在の正確な再生回数は全曲で直接確認できていない。数字があるものは第三者集計（SocialCounts／Popnable／viplist）、レーベル／バンド公式PR、YouTube 公式チャンネル一覧の検索インデックス表示値のいずれかで、種別は各行に明記した。数字が確認できない曲は、シングル順位と公式MVの有無で順位付けした。</p>
+      </div>
+      <div class="note-card">
+        <h3>収録確認で Wikipedia を使えなかったアルバム</h3>
+        <p>Avantasia、Battle Beast、Majestica、Rage、Burning Witches、Bloodbound の6枚は Wikipedia にトラックリスト付きのアルバムページがなく、レーベル公式・Discogs・Bandcamp・Metal Archives・レビューサイトの2サイト以上で代替確認した。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>2025年 MELODIC POWER & TRADITIONAL METAL 楽曲選出エビデンス。収録確認は各行の出典2サイト以上で行った。</footer>
+</div>
+</body>
+</html>
